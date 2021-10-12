@@ -1,0 +1,20 @@
+{
+  "appId": "com.houseninja.app",
+  "appName": "houseninja",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist",
+  "server": {
+    "url": "http://localhost:4200",
+    "allowNavigation": [
+      "houseninja.co",
+      "*.houseninja.co"
+    ]
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

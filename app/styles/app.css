@@ -1,0 +1,131 @@
+@font-face {
+  font-family: Campton-Light;
+  src: url(fonts/Campton-Light.otf);
+}
+
+@font-face {
+  font-family: Campton-Medium;
+  src: url(fonts/Campton-Medium.otf);
+}
+
+html * {
+  font-family: Campton-Light;
+}
+
+.top-bar {
+  /* Top Bar */
+
+
+  position: absolute;
+  height: 99px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+
+  /* Primary Linear Fill - 500 */
+
+  background: linear-gradient(42.3deg, #00C0BB 24.99%, #CCFFFE 211.89%);
+  /* Primary Shadow - Level 2 */
+
+  box-shadow: -2px 2px 4px rgba(0, 56, 55, 0.4),
+  -1px 1px 1px rgba(0, 56, 55, 0.3);
+}
+
+.top-bar .logo {
+  position: absolute;
+  width: 151.09px;
+  height: 40px;
+  left: calc(50% - 151.09px/2 + 0px);
+  top: calc(50% - 32px/2 + 16.5px);
+
+  /* background: url('assets/images/top-bar-logo.svg'); */
+}
+
+.breadcrumbs {
+  /* Step 2 */
+
+
+  position: absolute;
+  width: 95px;
+  height: 21px;
+  left: 147.5px;
+  top: 111px;
+
+  /* Default/Regular/Callout */
+
+  font-family: Campton-Medium;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height, or 131% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.32px;
+
+  /* Primary / 500 */
+
+  color: #00C0BB;
+
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+
+.onboarding .vertical-logo {
+  position: absolute;
+  display: block;
+  /* width: 326px; */
+  width: 50%;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 300px;
+  left: 0px;
+  right: 0px;
+
+  /* background: url(images/logo.color.vertical.svg); */
+  border-radius: 4px;
+}
+
+.get-started {
+  /* Paragraph - We don’t cover this area at the moment, but we are expanding. We’ll let you know when we’re available in your area. */
+
+
+  position: absolute;
+  display: block;
+  width: 326px;
+  height: 44px;
+  left: 10%;
+  /* right: 50%; */
+  top: 450px;
+  text-align: center;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+
+  /* Default/Regular/Body */
+
+  font-family: Campton-Light;
+  font-size: 17px;
+  line-height: 22px;
+  /* or 129% */
+
+  letter-spacing: -0.408px;
+
+  /* Gray / 600 */
+
+  color: #666666;
+
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 16px 0px;
+}
