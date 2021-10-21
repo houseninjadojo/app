@@ -7,6 +7,9 @@ export default class LoginController extends Controller {
   @tracked errorMessage;
   @service session;
 
+  identification = '';
+  password = '';
+
   @action
   async authenticate(e) {
     e.preventDefault();
@@ -24,5 +27,15 @@ export default class LoginController extends Controller {
     if (this.session.isAuthenticated) {
       // What to do with all this success?
     }
+  }
+
+  @action
+  updateIdentification(e) {
+    this.identification = e.target.value;
+  }
+
+  @action
+  updatePassword(e) {
+    this.password = e.target.value;
   }
 }

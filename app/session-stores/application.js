@@ -10,10 +10,4 @@ import CapacitorSecureStorageStore from './secure-storage';
 export default class ApplicationSessionStore extends CapacitorSecureStorageStore {
   // Key used to save/fetch session data
   key = 'houseninja-session';
-
-  // Endpoint for token auth
-  serverTokenEndpoint = 'https://api.houseninja.co/oauth/token';
-
-  // Endpoint for token revocation
-  serverTokenRevocationEndpoint = 'https://api.houseninja.co/oauth/revoke';
 }
