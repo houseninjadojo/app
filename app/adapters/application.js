@@ -1,0 +1,28 @@
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
+import { inject as service } from '@ember/service';
+// eslint-disable-next-line ember/no-computed-properties-in-native-classes
+import { computed } from '@ember/object';
+import ENV from 'dojo/config/environment';
+
+export default class ApplicationAdapter extends JSONAPIAdapter {
+  @service session;
+
+  host = ENV.apiHost;
+
+  @computed('session.{data.authenticated.token,isAuthenticated}')
+  get headers() {
+    let headers = {};
+    if (this.session.isAuthenticated) {
+      // eslint-disable-next-line
+      headers['Authorization'] = `Bearer ${this.session.data.authenticated.token}`;
+    }
+    return headers;
+  }
+
+  handleResponse(status) {
+    if (status === 401 && this.session.isAuthenticated) {
+      this.session.invalidate();
+    }
+    return super.handleResponse(...arguments);
+  }
+}

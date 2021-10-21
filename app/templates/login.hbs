@@ -2,8 +2,8 @@
 
 <form {{on "submit" this.authenticate}}>
   <label for="identification">Login</label>
-  <input id='identification' placeholder="Enter Login" value={{this.identification}} {{on "change"
-    this.updateIdentification}}>
+  <input id='username' placeholder="Enter Email" value={{this.username}} {{on "change"
+    this.updateUsername}}>
   <label for="password">Password</label>
   <input id='password' placeholder="Enter Password" value={{this.password}} {{on "change" this.updatePassword}}>
   <button type="submit">Login</button>

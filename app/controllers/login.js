@@ -7,20 +7,15 @@ export default class LoginController extends Controller {
   @tracked errorMessage;
   @service session;
 
-  identification = '';
-  password = '';
-
   @action
   async authenticate(e) {
     e.preventDefault();
-    let { identification, password } = this;
+    let { username, password } = this;
+    let creds = { username, password };
     try {
-      await this.session.authenticate(
-        'authenticator:oauth2',
-        identification,
-        password
-      );
+      await this.session.authenticate('authenticator:jwt', creds);
     } catch (error) {
+      console.log(error);
       this.errorMessage = error.error || error;
     }
 
@@ -30,8 +25,8 @@ export default class LoginController extends Controller {
   }
 
   @action
-  updateIdentification(e) {
-    this.identification = e.target.value;
+  updateUsername(e) {
+    this.username = e.target.value;
   }
 
   @action
