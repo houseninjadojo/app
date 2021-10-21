@@ -51,9 +51,9 @@
     "ember-page-title": "^6.2.2",
     "ember-qunit": "^5.1.4",
     "ember-resolver": "^8.0.2",
+    "ember-simple-auth": "^4.0.2",
     "ember-source": "~3.28.0",
     "ember-template-lint": "^3.6.0",
-    "ember-welcome-page": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.4",
@@ -73,6 +73,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@capacitor/dialog": "^1.0.3"
+    "@capacitor/dialog": "^1.0.3",
+    "capacitor-secure-storage-plugin": "^0.6.2"
   }
 }
