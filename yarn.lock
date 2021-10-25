@@ -5462,9 +5462,10 @@ ember-router-generator@^2.0.0:
     "@babel/traverse" "^7.4.5"
     recast "^0.18.1"
 
-"ember-simple-auth-token@https://github.com/fenichelar/ember-simple-auth-token":
-  version "5.2.2"
-  resolved "https://github.com/fenichelar/ember-simple-auth-token#362a00fff1c5699e8c79715ae87ecc8e4fc72b20"
+ember-simple-auth-token@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth-token/-/ember-simple-auth-token-5.3.0.tgz#0e55876b79dec9d2d8a7d28085bba545f84d88f2"
+  integrity sha512-x5tNoOOQ6jJupoYfmxIeVho5G9NFGAOVBeOaKn5EVoqX2JNc991/6O9ByYMYe+T4ArL227yWbYVwb2KsAzeEpA==
   dependencies:
     ember-cli-babel "^6.6.0 || ^7.0.0"
     ember-fetch "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
