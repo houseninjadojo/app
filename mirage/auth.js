@@ -1,5 +1,6 @@
 import { SignJWT, importJWK } from 'jose';
 
+// Dummy JWK Private Key for signing JWTs
 const PRIVATE_KEY = {
   kty: 'RSA',
   n: '4coiv3OIXifhKWZwKNs0nzQUObq6kUEzPpE5ugEp1SNwvOPhuPgIJC4iwmsHkev0VtpZVr4ugawKu1kkavdz5PKuOIbW0HVaxuTSwSwW7iB-IoJw6Wpy3jP4o_3fPiRDA_JF-sHuAEFwWzmGu037BEogMj6UyzyiOPV2hiLgK0tGid7PFKwNxyTIZAoSMWIrvztICSieK-ptKOOQW6leAsDqIyQ0TpF9KDKaJZ0jkt08pb9MRAhRUfngap0sap--DDIXOwudkrJt9vp3Pz7e6SgkHyrUKh1sifY_RQpBT2zhXVjE7-2yoCa7Gilh2ynJUQlmGRiPNRoAUrRQikO2IQ',
@@ -12,6 +13,14 @@ const PRIVATE_KEY = {
   qi: '0kMTarh2j3x0Jb7NDKoyAP9Zr5NUsKoJ7u_MMle2iJBCX8l44QCe50Mh0wpp1vPWtkuc7imGC_F-7LiihTn3GcfXbbK0lC1CUSUyJZe-lBzTlB2nuNGRxMBVjj3B2bGkGYIHwbK-bHAWSPyi0IjuyfpqMEo6j2o39fe78ilV8Ok'
 };
 
+/**
+ * Generate JSON Web Tokens in Mirage
+ * Used with `this.post('/oauth/token')`
+ *
+ * @param {Object} schema Mirage `schema` object
+ * @param {Object} req Mirage `Request` object
+ * @returns {Object} OAuth JWT Response Object
+ */
 export async function tokenAuthHandler(schema, req) {
   let body = JSON.parse(req.requestBody);
   let payload = {
