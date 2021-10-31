@@ -29,10 +29,10 @@ export default class CapacitorSecureStorageStore extends BaseStore {
     @return {Promise} A promise that resolves when the data has successfully been persisted and rejects otherwise.
     @public
   */
-  persist(data) {
+  async persist(data) {
     this._lastData = data;
     data = JSON.stringify(data || {});
-    return SecureStoragePlugin.set({ key: this.key, data });
+    return await SecureStoragePlugin.set({ key: this.key, value: data });
   }
 
   /**
@@ -41,8 +41,9 @@ export default class CapacitorSecureStorageStore extends BaseStore {
     @return {Promise} A promise that resolves with the data currently persisted in the store when the data has been restored successfully and rejects otherwise.
     @public
   */
-  restore() {
-    return SecureStoragePlugin.get({ key: this.key }).then(JSON.parse);
+  async restore() {
+    const { value: data } = await SecureStoragePlugin.get({ key: this.key });
+    return JSON.parse(data || {});
   }
 
   /**
@@ -52,8 +53,8 @@ export default class CapacitorSecureStorageStore extends BaseStore {
     @return {Promise} A promise that resolves when the store has been cleared successfully and rejects otherwise.
     @public
   */
-  clear() {
+  async clear() {
     this._lastData = {};
-    return SecureStoragePlugin.remove({ key: this.key });
+    return await SecureStoragePlugin.remove({ key: this.key });
   }
 }

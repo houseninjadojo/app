@@ -5,6 +5,8 @@ import isNativePlatform from 'dojo/utils/is-native-platform';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { isEqual } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';
+import { later, cancel } from "@ember/runloop";
+import { debug } from '@ember/debug';
 
 const STASH_TOKEN = 'PKCE';
 
@@ -109,9 +111,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   */
   get redirectUri() {
     if (isNativePlatform()) {
-      return `${ENV.appScheme}://localhost:4200/login`;
+      return `${ENV.appScheme}://localhost:4200/login/callback`;
     } else {
-      return `${ENV.appHost}/login`;
+      return `${ENV.appHost}/login/callback`;
     }
   }
 
@@ -126,6 +128,16 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   refreshAccessTokens = true;
 
   /**
+   * The refresh leeway for ensuring tokens are refreshed before abolute expiration
+   * Expressed in seconds
+   * @property refreshLeeway
+   * @type {Number}
+   * @default 300 (5 minutes)
+   * @public
+   */
+  refreshLeeway = 300;
+
+  /**
     The unique `aud` or audience identifier attached to the grant request. Most
     commonly set to the API root endpoint you are authorizing access to.
     @property audience
@@ -133,7 +145,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     @default null;
     @public
   */
-  audience = '';
+  audience = `${ENV.auth.audience}`;
 
   /**
    * The requested access scopes
@@ -145,17 +157,27 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   scope = 'openid profile offline_access';
 
   /**
+   * Property to store scheduled refresh
+   * @property _upcomingRefresh
+   * @type {Function}
+   * @private
+   */
+  _upcomingRefresh = null;
+
+  /**
    * Generate an authorization URL for logging in
    * @method generateAuthorizationURL
    * @return {String}
    */
   async generateAuthorizationURL() {
+    await this.stashData('login', { state: 'started' });
     const rootURL = this.serverAuthorizationEndpoint;
     const code_verifier = generateCodeVerifier();
     const code_challenge = await generateCodeChallenge(code_verifier);
     const code_challenge_method = 'S256';
     const client_id = this.clientId;
     const redirect_uri = this.redirectUri;
+    const audience = this.audience;
     const scope = this.scope;
     const state = generateCodeVerifier();
 
@@ -172,15 +194,16 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       `code_challenge_method=${code_challenge_method}`,
       `client_id=${encodeURIComponent(client_id)}`,
       `redirect_uri=${encodeURIComponent(redirect_uri)}`,
+      `audience=${encodeURIComponent(audience)}`,
       `scope=${encodeURIComponent(scope)}`,
       `state=${state}`,
     ]
       .filter(Boolean)
       .join('&');
 
-    console.log(`code_challenge: ${code_challenge}`);
-    console.log(`code_verifier: ${code_verifier}`);
-    console.log(`state: ${state}`);
+    debug(`auth url code_challenge: ${code_challenge}`);
+    debug(`auth url code_verifier: ${code_verifier}`);
+    debug(`auth url state: ${state}`);
 
     return `${rootURL}?${params}`;
   }
@@ -200,19 +223,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       throw new Error('state is missing or invalid');
     }
 
-    console.log('test');
-
     const { code_verifier } = await this.unstashData(STASH_TOKEN);
 
-    const postData = [
-      `grant_type=authorization_code`,
-      `client_id=${encodeURIComponent(this.clientId)}`,
-      `code_verifier=${code_verifier}`,
-      `code=${code}`,
-      `redirect_uri=${encodeURIComponent(this.redirectUri)}`,
-    ].join('&');
-
-    const mobilePostData = {
+    const postData = {
       grant_type: 'authorization_code',
       client_id: encodeURIComponent(this.clientId),
       code_verifier: code_verifier,
@@ -221,41 +234,102 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     };
 
     this.clearStash();
-    console.log(postData);
+    debug('authenticate post data - code: ' + postData.code);
+    debug('authenticate post data - code_verifier: ' + postData.code_verifier);
 
-    let response, data;
-    if (isNativePlatform()) {
-      const postOptions = {
-        url: this.serverTokenEndpoint,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        data: mobilePostData,
-      };
-      try {
-        response = await MobileHTTP.post(postOptions);
-      } catch (e) {
-        console.error(e);
-      }
-      data = response.data;
-    } else {
-      response = await fetch(this.serverTokenEndpoint, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include',
-        header: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        postData,
-      });
-      data = await response.json();
-    }
+    let data = await this._post(this.serverTokenEndpoint, postData);
 
-    console.log('authenticate data: ', data);
+    let expires_at = new Date().getTime() + (data.expires_in + 1000);
+    data.expires_at = expires_at;
+
+    await this._scheduleRefresh(data.expires_in, data.refresh_token);
+
+    debug('authenticate response data - access_token: ' + data.access_token);
 
     return data;
+  }
+
+  /**
+   * Restore the session after a page refresh. This will check if an access
+   * token exists and tries to refresh said token. If the refresh token is
+   * already expired, the auth backend will throw an error which will cause a
+   * new login.
+   *
+   * @method restore
+   * @param {Object} data The current session data
+   * @param {String} data.access_token The raw access token
+   * @param {String} data.refresh_token The raw refresh token
+   * @returns {Promise} A promise which resolves with the session data
+   * @public
+   */
+  async restore(data) {
+    debug('restore - access_token: ' + data.access_token);
+    debug('restore - refresh_token: ' + data.refresh_token);
+    const { refresh_token, expires_at, expires_in } = data;
+
+    if (!refresh_token) {
+      throw new Error('Refresh token is missing');
+    }
+
+    if (expires_at && expires_at <= new Date().getTime()) {
+      return await this._refresh(refresh_token);
+    }
+    this._scheduleRefresh(expires_in, refresh_token);
+    return data;
+  }
+
+  /**
+   * Refresh the access token
+   *
+   * @method _refresh
+   * @param {String} refresh_token The refresh token
+   * @returns {Object} The parsed response data
+   * @private
+   */
+  async _refresh(refresh_token, retryCount = 0) {
+    debug('_refresh: ' + refresh_token);
+    const postData = {
+      grant_type: 'refresh_token',
+      client_id: this.clientId,
+      refresh_token,
+    };
+    let data = await this._post(this.serverTokenEndpoint, postData);
+    let expires_at = new Date().getTime() + (data.expires_in + 1000);
+    data.expires_at = expires_at;
+    await this._scheduleRefresh(data.expires_in, data.refresh_token);
+    return data;
+  }
+
+  /**
+   * Schedule a refresh of the access token.
+   * This refresh needs to happen before the access token actually expires.
+   *
+   * @see https://github.com/adfinis-sygroup/ember-simple-auth-oidc/blob/master/addon/authenticators/oidc.js#L202
+   * @param {Number} expireTime Timestamp in milliseconds at which the access token expires
+   * @param {String} token The refresh token
+   */
+  async _scheduleRefresh(expires_in, refresh_token) {
+    debug('_scheduleRefresh: ' + refresh_token);
+    if (expires_in * 1000 <= new Date().getTime()) {
+      return;
+    }
+
+    if (this._upcomingRefresh) {
+      cancel(this.upcomingRefresh);
+    }
+
+    this._upcomingRefresh = later(
+      // the context this callback function will run in
+      this,
+      // the callback function
+      async (refresh_token) => {
+        this.trigger('sessionDataUpdated', await this._refresh(refresh_token));
+      },
+      // pass the refresh_token into the callback function
+      refresh_token,
+      // call this function in the millisecond delta until expiration
+      (expires_in - this.refreshLeeway) * 1000 - new Date().getTime()
+    );
   }
 
   /**
@@ -265,7 +339,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {Object} data
    * @return {RSVP.Promise}
    */
-  async stashData(key, data) {
+  async stashData(key = STASH_TOKEN, data) {
     const value = JSON.stringify(data);
     return await SecureStoragePlugin.set({ key, value });
   }
@@ -276,7 +350,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} key
    * @return {RSVP.Promise}
    */
-  async unstashData(key) {
+  async unstashData(key = STASH_TOKEN) {
     let encodedValue = await SecureStoragePlugin.get({ key });
     return JSON.parse(encodedValue.value);
   }
@@ -284,9 +358,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   /**
    * Clear stash data
    */
-  async clearStash() {
+  async clearStash(key = STASH_TOKEN) {
     try {
-      await SecureStoragePlugin.remove({ key: STASH_TOKEN });
+      await SecureStoragePlugin.remove({ key });
     } catch {
       //
     }
@@ -319,5 +393,50 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   async _isValidState(state) {
     const { state: localState } = await this.unstashData(STASH_TOKEN);
     return isEqual(localState, state);
+  }
+
+  /**
+   * Post for appropriate platform (native mobile or web)
+   * @method _post
+   * @param {String} url
+   * @param {Object} postData
+   */
+  async _post(url, postData = {}) {
+    let response, data;
+    if (isNativePlatform()) {
+      const mobilePostData = postData;
+      const postOptions = {
+        url: url,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        data: mobilePostData,
+      };
+      try {
+        response = await MobileHTTP.post(postOptions);
+      } catch (e) {
+        console.error(e);
+      }
+      data = response.data;
+    } else {
+      const webPostData = postData
+        .map((k, v) => {
+          return `${k}=${encodeURIComponent(v)}`;
+        })
+        .join('&');
+      response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        header: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        webPostData,
+      });
+      data = await response.json();
+    }
+    return data;
   }
 }

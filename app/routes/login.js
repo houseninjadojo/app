@@ -3,40 +3,30 @@ import { inject as service } from '@ember/service';
 import isNativePlatform from 'dojo/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
+
 export default class LoginRoute extends Route {
   @service session;
-
-  queryParams = {
-    code: { refreshModel: false },
-    state: { refreshModel: false },
-    error: { refreshModel: false },
-  };
-
-  url = null;
-
-  // @service auth;
+  @service router;
 
   async beforeModel() {
     const pkce = getOwner(this).lookup('authenticator:pkce');
-    const hasLoginData = await pkce.loginDataExists();
-    // pkce.clearStash();
-    if (!hasLoginData) {
-      const url = await pkce.generateAuthorizationURL();
+    const { state: loginState } = await this.loginState();
+
+    // we are not logged in
+    if (!this.session.isAuthenticated && loginState !== 'active') {
+      pkce.clearStash();
+      await pkce.stashData('login', { state: 'active' });
+      let url = await pkce.generateAuthorizationURL();
       await this.nativeOpen(url);
     }
   }
 
-  async afterModel(_, transition) {
-    const queryParams = transition.to
-      ? transition.to.queryParams
-      : transition.queryParams;
-    if (queryParams.code) {
-      await this.session.authenticate(
-        'authenticator:pkce',
-        queryParams.code,
-        queryParams.state
-      );
-      this.transitionTo('index');
+  async loginState() {
+    const pkce = getOwner(this).lookup('authenticator:pkce');
+    try {
+      return await pkce.unstashData('login');
+    } catch {
+      return Promise.resolve({});
     }
   }
 
@@ -47,6 +37,4 @@ export default class LoginRoute extends Route {
       window.location.assign(url);
     }
   }
-
-
 }

@@ -3,7 +3,7 @@ import isNativePlatform from 'dojo/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
 import { run } from '@ember/runloop';
 import { Browser } from '@capacitor/browser';
-// import ObjectProxy from '@ember/object/proxy';
+import { debug } from '@ember/debug';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -32,22 +32,37 @@ export default class DeepLinksService extends Service {
   }
 
   forwardRoute(url) {
-    const route = this.router.recognize(url);
-    if (route && route.name) {
-      this.router.transitionTo(url);
-    }
+    debug('url: ', url);
+    let route = this.router.recognize(url.raw);
+    debug('route: ' + route.name);
+    this.router.transitionTo(url.raw);
+  }
+
+  parseUrl(url) {
+    let parsed = new URL(url);
+    let queryParams = Object.fromEntries(parsed.searchParams.entries());
+    debug('deep link queryParams: ' + queryParams);
+    let pathName = parsed.pathname;
+    return {
+      raw: `${parsed.pathname}${parsed.search}`,
+      name: pathName,
+      model: null, // perhaps later
+      options: {
+        queryParams,
+      },
+    };
   }
 
   closeBrowser() {
-    Browser.close().then(console.log).catch(console.error);
+    Browser.close().then(debug).catch(debug);
   }
 
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
       run(() => {
         // co.houseninja.app://page => /page
-        let url = event.url.split('localhost:4200').pop();
-        this.closeBrowser();
+        let url = this.parseUrl(event.url);
+        // this.closeBrowser();
         this.forwardRoute(url);
       });
     });
