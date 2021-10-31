@@ -10,4 +10,6 @@ Router.map(function () {
   this.route('login', function() {
     this.route('callback');
   });
+  this.route('logout');
+  this.route('signup');
 });

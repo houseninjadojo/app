@@ -2,7 +2,6 @@ import Service, { inject as service } from '@ember/service';
 import isNativePlatform from 'dojo/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
 import { run } from '@ember/runloop';
-import { Browser } from '@capacitor/browser';
 import { debug } from '@ember/debug';
 
 /**
@@ -51,10 +50,6 @@ export default class DeepLinksService extends Service {
         queryParams,
       },
     };
-  }
-
-  closeBrowser() {
-    Browser.close().then(debug).catch(debug);
   }
 
   setupRouteHandler() {

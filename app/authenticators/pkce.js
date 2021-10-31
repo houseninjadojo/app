@@ -3,7 +3,7 @@ import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import ENV from 'dojo/config/environment';
 import isNativePlatform from 'dojo/utils/is-native-platform';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
-import { isEqual } from '@ember/utils';
+import { isEqual, isEmpty } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
@@ -14,7 +14,7 @@ const STASH_TOKEN = 'PKCE';
  * Generate a code_verifier
  */
 function generateCodeVerifier() {
-  const length = 120; // Byte Length
+  const length = 60; // Byte Length
   const possible =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let text = '';
@@ -99,7 +99,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     @default null
     @public
   */
-  serverTokenRevocationEndpoint = null;
+  serverTokenRevocationEndpoint = `https://${ENV.auth.domain}/oauth/revoke`;
 
   /**
     The client-side redirectUri path. Be sure to include it in your `router.js`
@@ -276,6 +276,42 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     }
     this._scheduleRefresh(expires_in, refresh_token);
     return data;
+  }
+
+  /**
+    If token revocation is enabled, this will revoke the access token (and the
+    refresh token if present). If token revocation succeeds, this method
+    returns a resolving promise, otherwise it will return a rejecting promise,
+    thus intercepting session invalidation.
+    If token revocation is not enabled this method simply returns a resolving
+    promise.
+    @method invalidate
+    @param {Object} data The current authenticated session data
+    @return {Ember.RSVP.Promise} A promise that when it resolves results in the session being invalidated. If invalidation fails, the promise will reject with the server response (in case token revocation is used); however, the authenticator reads that response already so if you need to read it again you need to clone the response object first
+    @public
+  */
+  async invalidate(data) {
+    cancel(this._upcomingRefresh);
+    if (isEmpty(this.serverTokenRevocationEndpoint)) {
+      return;
+    } else {
+      const { access_token, refresh_token } = data;
+      if (!isEmpty(access_token)) {
+        let postData = {
+          token_type_hint: 'access_token',
+          token: access_token,
+        };
+        await this._post(this.serverTokenEndpoint, postData);
+      }
+      if (!isEmpty(refresh_token)) {
+        let postData = {
+          token_type_hint: 'refresh_token',
+          token: refresh_token,
+        };
+        await this._post(this.serverTokenEndpoint, postData);
+      }
+      return;
+    }
   }
 
   /**

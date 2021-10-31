@@ -7,6 +7,7 @@ import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
   Simple Auth with FastBoot, configure the
   {{#crossLink "CookieStore"}}{{/crossLink}} as the application's session
   store.__
+  @see https://github.com/martinkasa/capacitor-secure-storage-plugin
   @class CapacitorSecureStorageStore
   @module ember-simple-auth/session-stores/capacitor-secure-storage
   @extends BaseStore
