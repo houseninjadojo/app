@@ -5,23 +5,23 @@ import { computed } from '@ember/object';
 import ENV from 'dojo/config/environment';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
-  @service session;
+  @service auth;
 
   host = ENV.apiHost;
 
-  @computed('session.{data.authenticated.token,isAuthenticated}')
+  @computed('auth.{tokens.access_token,isAuthenticated}')
   get headers() {
     let headers = {};
-    if (this.session.isAuthenticated) {
+    if (this.auth.isAuthenticated) {
       // eslint-disable-next-line
-      headers['Authorization'] = `Bearer ${this.session.data.authenticated.token}`;
+      headers['Authorization'] = `Bearer ${this.auth.tokens.access_token}`;
     }
     return headers;
   }
 
   handleResponse(status) {
-    if (status === 401 && this.session.isAuthenticated) {
-      this.session.invalidate();
+    if (status === 401 && this.auth.isAuthenticated) {
+      this.auth.invalidate();
     }
     return super.handleResponse(...arguments);
   }

@@ -10,7 +10,7 @@ const PRIVATE_KEY = {
   q: '49WXAIJ6BjkeQ1Da4pRLM4HrAwVkUZFZJ-WRhZt7-3W85TH9NGBrQ2_SaNtoDiQpe77dl87BB88j3gonLSSEAywF_lJRRwFJVLEZFvmv0N3W_TXKsT0nLZqFAeF0SxPh_kYUAg30Bi3w6vK-8Ie4NMBGKhQ2A3QYtRNyvk-CxDk',
   dp: '1PB_VeWkg-uMAeVK3EB148xY_wXmpv_l_0Czxny9UqUBbm1oVm8TqgjbiCmxod_MSFVV6PjmuVHRnStJjkpl4hjPVp26WnJTUs1NoOImiVy4u53s-bNPd7nX9qv8ojyoqvHR49Iii64fQQU-E003F9ewad3rsIH_9cnmZUOe4dk',
   dq: 'kRlUY-S05gW2elSiMi8Tfag-Ddx_OVuCFmCkPxz45vri5Gzjv1mwtnAe5tzk9iydpsu1wJrSYLDRPPXmYV-iG4sL_h5a2Qe-tgtb2UAHctP1ualqf1pc-zQvhTUapT3ybcgfsfdE9DKJ_ne-lt04uY_Cn8XjaGul2JycNQvaUjE',
-  qi: '0kMTarh2j3x0Jb7NDKoyAP9Zr5NUsKoJ7u_MMle2iJBCX8l44QCe50Mh0wpp1vPWtkuc7imGC_F-7LiihTn3GcfXbbK0lC1CUSUyJZe-lBzTlB2nuNGRxMBVjj3B2bGkGYIHwbK-bHAWSPyi0IjuyfpqMEo6j2o39fe78ilV8Ok'
+  qi: '0kMTarh2j3x0Jb7NDKoyAP9Zr5NUsKoJ7u_MMle2iJBCX8l44QCe50Mh0wpp1vPWtkuc7imGC_F-7LiihTn3GcfXbbK0lC1CUSUyJZe-lBzTlB2nuNGRxMBVjj3B2bGkGYIHwbK-bHAWSPyi0IjuyfpqMEo6j2o39fe78ilV8Ok',
 };
 
 /**
@@ -46,4 +46,4 @@ export async function tokenAuthHandler(schema, req) {
     .sign(pk);
 
   return { token: jwt, refresh_token: jwt };
-};
+}

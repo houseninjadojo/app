@@ -1,12 +1,25 @@
 {
-	"appId": "com.houseninja.app",
+	"appId": "co.houseninja.app",
 	"appName": "houseninja",
 	"bundledWebRuntime": false,
+	"loggingBehavior": "debug",
 	"npmClient": "yarn",
 	"webDir": "dist",
+	"android": {
+		"allowMixedContent": false
+	},
+	"ios": {
+		"contentInset": "never",
+		"scrollEnabled": "false"
+	},
 	"server": {
+		"hostname": "localhost",
+		"iosScheme": "co.houseninja.app",
+		"androidScheme": "co.houseninja.app",
+		"cleartext": false,
 		"url": "http://localhost:4200",
 		"allowNavigation": [
+			"auth.houseninja.co",
 			"houseninja.co",
 			"*.houseninja.co"
 		]

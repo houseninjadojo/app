@@ -1,5 +1,5 @@
 {
-	"appId": "com.houseninja.app",
+	"appId": "co.houseninja.app",
 	"appName": "houseninja",
 	"bundledWebRuntime": false,
 	"npmClient": "yarn",
