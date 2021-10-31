@@ -5,7 +5,7 @@ import isNativePlatform from 'dojo/utils/is-native-platform';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { isEqual } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';
-import { later, cancel } from "@ember/runloop";
+import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
 const STASH_TOKEN = 'PKCE';
@@ -286,7 +286,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @returns {Object} The parsed response data
    * @private
    */
-  async _refresh(refresh_token, retryCount = 0) {
+  async _refresh(refresh_token /*, retryCount = 0 */) {
     debug('_refresh: ' + refresh_token);
     const postData = {
       grant_type: 'refresh_token',
