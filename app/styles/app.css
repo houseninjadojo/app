@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 @font-face {
   font-family: Campton-Light;
   src: url(fonts/Campton-Light.otf);
@@ -13,32 +17,10 @@ html * {
 }
 
 .top-bar {
-  /* Top Bar */
-
-
-  position: absolute;
-  height: 99px;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-
-  /* Primary Linear Fill - 500 */
-
-  background: linear-gradient(42.3deg, #00C0BB 24.99%, #CCFFFE 211.89%);
-  /* Primary Shadow - Level 2 */
-
-  box-shadow: -2px 2px 4px rgba(0, 56, 55, 0.4),
-  -1px 1px 1px rgba(0, 56, 55, 0.3);
-}
-
-.top-bar .logo {
-  position: absolute;
-  width: 151.09px;
-  height: 40px;
-  left: calc(50% - 151.09px/2 + 0px);
-  top: calc(50% - 32px/2 + 16.5px);
-
-  /* background: url('assets/images/top-bar-logo.svg'); */
+/* Linear Gradient / Gray / 900 */
+  background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #1A1A1A;
+/* Gray Shadow - Level 2 */
+  box-shadow: -1px 1px 1px rgba(26, 26, 26, 0.2), -2px 2px 4px rgba(26, 26, 26, 0.4);
 }
 
 .breadcrumbs {
