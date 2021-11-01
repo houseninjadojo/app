@@ -23,7 +23,6 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
-    "@auth0/auth0-spa-js": "^1.19.2",
     "@capacitor/android": "^3.2.4",
     "@capacitor/cli": "^3.2.4",
     "@capacitor/core": "^3.2.4",

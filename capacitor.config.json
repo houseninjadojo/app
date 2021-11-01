@@ -1,6 +1,6 @@
 {
   "appId": "co.houseninja.app",
-  "appName": "houseninja",
+  "appName": "House Ninja",
   "bundledWebRuntime": false,
   "loggingBehavior": "debug",
   "npmClient": "yarn",

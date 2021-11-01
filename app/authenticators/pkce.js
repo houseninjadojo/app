@@ -128,14 +128,14 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   refreshAccessTokens = true;
 
   /**
-   * The refresh leeway for ensuring tokens are refreshed before abolute expiration
+   * The refresh leeway for managing clock drift
    * Expressed in seconds
    * @property refreshLeeway
    * @type {Number}
-   * @default 300 (5 minutes)
+   * @default 60 (1 minute)
    * @public
    */
-  refreshLeeway = 300;
+  refreshLeeway = 60;
 
   /**
     The unique `aud` or audience identifier attached to the grant request. Most

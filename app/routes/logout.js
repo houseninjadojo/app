@@ -5,8 +5,8 @@ export default class LogoutRoute extends Route {
   @service session;
   @service router;
 
-  async beforeModel(transition) {
+  async beforeModel() {
     await this.session.invalidate();
-    transition.to('index');
+    this.router.transitionTo('index');
   }
 }
