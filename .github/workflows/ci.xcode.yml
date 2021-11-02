@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - xcode-github
+
 jobs:
   build:
     name: xcode build
@@ -12,4 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mxcl/xcodebuild@v1
         with:
+          xcode: ^13
           action: build
+          platform: iOS
+          working-directory: ${{github.workspace}}/ios
