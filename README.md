@@ -39,6 +39,18 @@ This will install the nodejs and yarn versions locked in `.tool-versions` file a
 
 In the app directory, run: `yarn install`.
 
+### Install Code Editor Addons (VSCode)
+
+To help with debugging, VSCode has several helpful addons we recommend you use:
+
+* [Unstable Ember Language Server](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-ember-unstable) - A popular fork of Ember Language Server with different features. Don't let the 'unstable' name confuse you - it's safe to use!
+* [Ember JS (ES6) and Handlebars code snippets](https://marketplace.visualstudio.com/items?itemName=phanitejakomaravolu.EmberES6Snippets) - Enables Ember.js and Handlebars snippets to let you to type less and code more.
+* [EditorConfig for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) - Attempts to override user/workspace settings with settings found in .editorconfig files. The .editorconfig file helps developers define and maintain consistent coding styles between different editors and IDEs.
+* [Glimmer Templates Syntax](https://marketplace.visualstudio.com/items?itemName=lifeart.vscode-glimmer-syntax) - Syntax formatting for glimmer templates.
+* [Prettier for Handlebars](https://marketplace.visualstudio.com/items?itemName=Alonski.prettier-for-handlebars-vscode) - Format your handlebars files with Prettier ...that's it! Note, because this uses the currently unreleased Prettier, it may break with future changes to Prettier.
+
+For other editors like Atom or Sublime Text, see [https://guides.emberjs.com/release/code-editors/](https://guides.emberjs.com/release/code-editors/)
+
 ## Running / Development
 
 To compile and serve on Xcode, run:
