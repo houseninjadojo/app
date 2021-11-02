@@ -56,9 +56,9 @@ module.exports = function (environment) {
     ENV.apiHost = 'https://api.dev.houseninja.co';
     ENV.auth.audience = 'http://localhost:3000';
     ENV.auth.connection = 'dev';
-      // redirect_uri: 'http://localhost:4200',
-      // host: 'https://api.dev.houseninja.co',
-      // clientId: '',
+    // redirect_uri: 'http://localhost:4200',
+    // host: 'https://api.dev.houseninja.co',
+    // clientId: '',
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

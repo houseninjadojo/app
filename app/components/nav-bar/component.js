@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class NavBarComponent extends Component {
+  @service router;
+
   /**
    * The current route selection
    */
