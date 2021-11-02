@@ -1,4 +1,4 @@
-import isNativePlatform from 'dojo/utils/is-native-platform';
+import isNativePlatform from 'app/utils/is-native-platform';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 

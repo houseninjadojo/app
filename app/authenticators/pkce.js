@@ -1,7 +1,7 @@
 // import RSVP from 'rsvp';
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
-import ENV from 'dojo/config/environment';
-import isNativePlatform from 'dojo/utils/is-native-platform';
+import ENV from 'app/config/environment';
+import isNativePlatform from 'app/utils/is-native-platform';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { isEqual, isEmpty } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';

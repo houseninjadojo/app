@@ -1,11 +1,11 @@
 {
-  "name": "dojo",
+  "name": "houseninja",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for dojo goes here",
-  "repository": "",
+  "description": "House Ninja Mobile App",
+  "repository": "https://github.com/houseninjadojo/app.git",
   "license": "MIT",
-  "author": "",
+  "author": "House Ninja Engineering <engineering@houseninja.co>",
   "directories": {
     "doc": "doc",
     "test": "tests"

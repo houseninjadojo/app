@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'dojo',
+    modulePrefix: 'app',
     environment,
     rootURL: '/',
     locationType: 'hash',
