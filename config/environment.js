@@ -46,19 +46,16 @@ module.exports = function (environment) {
       useRefreshTokens: true,
     },
 
-    // 'ember-simple-auth-token': {
-    //   refreshAccessTokens: true,
-    //   refreshLeeway: 300, // refresh 5 minutes (300 seconds) before expiration
-    // },
+    'ember-simple-auth': {
+      useSessionSetupMethod: true,
+    },
   };
 
   if (environment === 'development') {
     ENV.apiHost = 'https://api.dev.houseninja.co';
     ENV.auth.audience = 'http://localhost:3000';
     ENV.auth.connection = 'dev';
-    // redirect_uri: 'http://localhost:4200',
-    // host: 'https://api.dev.houseninja.co',
-    // clientId: '',
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
