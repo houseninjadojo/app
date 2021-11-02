@@ -12,51 +12,26 @@
   src: url(fonts/Campton-Medium.otf);
 }
 
+@font-face {
+  font-family: Campton-Book;
+  src: url(fonts/Campton-Book.otf);
+}
+
 html * {
-  font-family: Campton-Light;
+  font-family: Campton-Book;
 }
 
-.top-bar {
-/* Linear Gradient / Gray / 900 */
-  background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #1A1A1A;
-/* Gray Shadow - Level 2 */
-  box-shadow: -1px 1px 1px rgba(26, 26, 26, 0.2), -2px 2px 4px rgba(26, 26, 26, 0.4);
+.background-container {
+  /* Linear Gradient/Black/1000 */
+  background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000;
+  /* Gray Shadow - Level 3 */
+  box-shadow: -1px 1px 1px rgba(0, 56, 55, 0.1), -4px 3px 6px rgba(26, 26, 26, 0.35);
+  border-radius: 12px 12px 0px 0px;
 }
 
-.breadcrumbs {
-  /* Step 2 */
-
-
-  position: absolute;
-  width: 95px;
-  height: 21px;
-  left: 147.5px;
-  top: 111px;
-
-  /* Default/Regular/Callout */
-
-  font-family: Campton-Medium;
-  font-size: 16px;
-  line-height: 21px;
-  /* identical to box height, or 131% */
-
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.32px;
-
-  /* Primary / 500 */
-
-  color: #00C0BB;
-
-
-  /* Inside Auto Layout */
-
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  margin: 0px 8px;
-}
+/* .top-bar {
+  border-bottom: 0.5px solid #CCCCCC;
+} */
 
 .onboarding .vertical-logo {
   position: absolute;
@@ -72,42 +47,4 @@ html * {
 
   /* background: url(images/logo.color.vertical.svg); */
   border-radius: 4px;
-}
-
-.get-started {
-  /* Paragraph - We don’t cover this area at the moment, but we are expanding. We’ll let you know when we’re available in your area. */
-
-
-  position: absolute;
-  display: block;
-  width: 326px;
-  height: 44px;
-  left: 10%;
-  /* right: 50%; */
-  top: 450px;
-  text-align: center;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-
-  /* Default/Regular/Body */
-
-  font-family: Campton-Light;
-  font-size: 17px;
-  line-height: 22px;
-  /* or 129% */
-
-  letter-spacing: -0.408px;
-
-  /* Gray / 600 */
-
-  color: #666666;
-
-
-  /* Inside Auto Layout */
-
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 16px 0px;
 }

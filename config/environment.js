@@ -55,7 +55,7 @@ module.exports = function (environment) {
   if (environment === 'development') {
     ENV.apiHost = 'https://api.dev.houseninja.co';
     ENV.auth.audience = 'http://localhost:3000';
-    ENV.auth.connection = 'development';
+    ENV.auth.connection = 'dev';
       // redirect_uri: 'http://localhost:4200',
       // host: 'https://api.dev.houseninja.co',
       // clientId: '',
@@ -81,8 +81,8 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.appHost = 'https://app.houseninja.co';
     ENV.apiHost = 'https://api.houseninja.co';
-    ENV.auth.host = 'https://auth.houseninja.co',
-    ENV.auth.clientId = '';
+    ENV.auth.audience = 'https://api.houseninja.co';
+    ENV.auth.connection = 'prod';
     // here you can enable a production-specific feature
   }
 
