@@ -16,4 +16,4 @@ jobs:
           xcode: ^12
           action: build
           platform: iOS
-          working-directory: ${{github.workspace}}/ios
+          working-directory: ${{github.workspace}}/ios/App
