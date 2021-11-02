@@ -3,7 +3,7 @@ name: CI - Xcode
 on:
   push:
     branches:
-      - xcode-github
+      - main
 
 jobs:
   build:
