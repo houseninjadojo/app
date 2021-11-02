@@ -1,0 +1,19 @@
+name: CI - Xcode
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: xcode build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mxcl/xcodebuild@v1
+        with:
+          xcode: ^12
+          action: build
+          platform: iOS
+          working-directory: ${{github.workspace}}/ios/App
