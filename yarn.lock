@@ -8054,10 +8054,10 @@ istextorbinary@^2.5.1:
     editions "^2.2.0"
     textextensions "^2.5.0"
 
-jose@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.1.1.tgz#c4aa72d6eff30b2719c702ebcb9e983271560cec"
-  integrity sha512-tNr6sbn5AWaCFHMgTQu0H0lJ6RxMacL35bMAzlRzq1hN0Lovyer1eOK88gVH1s+Q9BKChMRXbNgEl2Jk0PVSTA==
+jose@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.1.4.tgz#0ed1229b3a1d1f90c255fd4777c746f8b2f12b65"
+  integrity sha512-iCCOrCZuG+BjP3SsjTmJtgFZey1hwHMUqv9nBqFkdJtJ/jd193QgCl/u339IdyS+2opUklON+9VzGzmKaudsfg==
 
 jquery@^3.5.1:
   version "3.6.0"
