@@ -16,5 +16,5 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: 'yarn install'
-      - run: 'yarn test:ember'
+      - run: yarn install --frozen-lockfile
+      - run: yarn test:ember

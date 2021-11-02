@@ -16,6 +16,7 @@
 .*/
 .eslintcache
 tailwind.config.js
+/.github/
 
 # ember-try
 /.node_modules.ember-try/

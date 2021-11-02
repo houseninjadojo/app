@@ -16,16 +16,20 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: 'yarn install'
-      - run: 'yarn lint:hbs'
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint:hbs
   js:
     name: lint js
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: wearerequired/lint-action@v1
         with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: 'yarn install'
-      - run: 'yarn lint:js'
+          eslint: true
+          prettier: true
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '16'
+      #     cache: 'yarn'
+      # - run: yarn install --frozen-lockfile
+      # - run: yarn lint:js
