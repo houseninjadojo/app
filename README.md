@@ -35,6 +35,12 @@ In a directory of your choosing run: `git clone git@github.com:houseninjadojo/ap
 
 This will install the nodejs and yarn versions locked in `.tool-versions` file and create a version-locked space for global node modules.
 
+### Install Ember CLI
+
+```sh
+npm install -g ember-cli
+```
+
 ### Install node modules
 
 In the app directory, run: `yarn install`.
