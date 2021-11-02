@@ -27,9 +27,15 @@ After installing Xcode13, [follow these instructions](https://developer.apple.co
 
 In a directory of your choosing run: `git clone git@github.com:houseninjadojo/app.git`
 
+### Install ASDF plugins
+
+`cd` into the app directory you just checked out and run: `asdf install`.
+
+This will install the nodejs and yarn versions locked in `.tool-versions` file and create a version-locked space for global node modules.
+
 ### Install node modules
 
-`cd` into the app directory you just checked out, and run: `yarn install`.
+In the app directory, run: `yarn install`.
 
 ## Running / Development
 
