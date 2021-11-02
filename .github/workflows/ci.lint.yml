@@ -1,0 +1,31 @@
+name: CI - Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  templates:
+    name: lint hbs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: 'yarn install'
+      - run: 'yarn lint:hbs'
+  js:
+    name: lint js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: 'yarn install'
+      - run: 'yarn lint:js'
