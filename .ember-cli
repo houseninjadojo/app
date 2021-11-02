@@ -9,5 +9,7 @@
   "ssl": false,
   "sslKey": "config/ssl/server.key",
   "sslCert": "config/ssl/server.crt",
-  "liveReload": true
+  "liveReload": true,
+  "componentClass": "@glimmer/component",
+  "componentStructure": "nested"
 }

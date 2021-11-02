@@ -1,0 +1,7 @@
+<nav class="navbar">
+  <ul>
+    <li class="{{fn this.isActive 'dashboard'}}">
+      <button type="button" {{on "click" (fn this.selectRoute 'dashboard')}}>Dashboard</button>
+    </li>
+  </ul>
+</nav>
