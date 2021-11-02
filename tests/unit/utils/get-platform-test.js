@@ -1,4 +1,4 @@
-import getPlatform from 'app/utils/get-platform';
+import getPlatform from 'houseninja/utils/get-platform';
 import { module, test } from 'qunit';
 import sinon from 'sinon';
 

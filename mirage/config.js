@@ -1,5 +1,5 @@
 import { tokenAuthHandler } from './auth';
-import ENV from 'app/config/environment';
+import ENV from 'houseninja/config/environment';
 
 export default function () {
   // These comments are here to help you get started. Feel free to delete them.

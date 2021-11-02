@@ -21,7 +21,8 @@ After following the ASDF installation instructions, add the nodejs and yarn plug
 
 #### Set up Xcode 13
 
-After installing Xcode13, [follow these instructions](https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device) to add an iPhone simulator.
+1. Install xcodeselect: `xcode-select --install`. Click "Install" after the prompt.
+2. [Install an iPhone Simulator](https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device).
 
 *Note: it's best to pick one of the later iPhone models, with the latest iOS version.*
 

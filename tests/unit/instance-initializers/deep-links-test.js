@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 
-import config from 'app/config/environment';
-import { initialize } from 'app/instance-initializers/deep-links';
+import config from 'houseninja/config/environment';
+import { initialize } from 'houseninja/instance-initializers/deep-links';
 import { module, test } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';

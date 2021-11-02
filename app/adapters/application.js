@@ -2,7 +2,7 @@ import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import { inject as service } from '@ember/service';
 // eslint-disable-next-line ember/no-computed-properties-in-native-classes
 import { computed } from '@ember/object';
-import ENV from 'app/config/environment';
+import ENV from 'houseninja/config/environment';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   @service session;

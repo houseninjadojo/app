@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import isNativePlatform from 'app/utils/is-native-platform';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
 

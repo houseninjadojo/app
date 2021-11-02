@@ -1,5 +1,5 @@
-import Application from 'app/app';
-import config from 'app/config/environment';
+import Application from 'houseninja/app';
+import config from 'houseninja/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
