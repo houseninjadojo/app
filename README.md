@@ -1,6 +1,7 @@
 # app
 
 House Ninja Mobile App
+
 ## Installation
 
 ### Prerequisites
@@ -9,6 +10,7 @@ Before you install the app, you will need the following installed:
 
 * [asdf-vm](https://github.com/asdf-vm/asdf)
 * [Xcode 13](https://apps.apple.com/us/app/xcode/id497799835)
+* [GPG Suite](https://gpgtools.org/) (only core, gpg mail is not needed)
 
 #### Set up ASDF
 
@@ -40,6 +42,7 @@ In the app directory, run: `yarn install`.
 ## Running / Development
 
 To compile and serve on Xcode, run:
+
 * `ember ios:serve`
 
 When the terminal prompt shows `iOS Serve: Serving Ember app in Xcode`, Xcode will open if you have not opened it.
