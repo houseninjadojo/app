@@ -1,0 +1,15 @@
+name: CI - Xcode
+
+on:
+  push:
+    branches:
+      - xcode-github
+jobs:
+  build:
+    name: xcode build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mxcl/xcodebuild@v1
+        with:
+          action: build
