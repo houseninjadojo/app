@@ -71,7 +71,7 @@
     "postcss-import": "^14.0.2",
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
-    "qunit-dom": "^1.6.0",
+    "qunit-dom": "^2.0.0",
     "tailwindcss": "^2.2.19"
   },
   "engines": {
