@@ -1081,10 +1081,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/dialog@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-1.0.3.tgz#00aade0cec777bbf8796b4bac3879324c82304b3"
-  integrity sha512-iktIT6tFkvYQVjH4Uoxv9bOe6cJipDtJaw3uqgnx35aOLGu/DraUlMq+XEGcbl+twRSmT9d6pvqJ2dWKwewqNA==
+"@capacitor/dialog@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-1.0.5.tgz#4802694c82f1817bf931d29a96444dceacf6520c"
+  integrity sha512-GvdUAaI25qPBp9VHZNG6Ah7gMK3XOyxnOXaeKyYKAT2pNsj7f974tqrTgSq1yP5M2yUA6v5D5kbo3MC9GoLcQQ==
 
 "@capacitor/filesystem@^1.0.0":
   version "1.0.5"
