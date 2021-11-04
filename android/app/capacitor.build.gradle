@@ -9,9 +9,14 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
+    implementation project(':capacitor-community-http')
+    implementation project(':capacitor-app')
+    implementation project(':capacitor-browser')
     implementation project(':capacitor-dialog')
     implementation project(':capacitor-secure-storage-plugin')
-
+    implementation "com.mixpanel.android:mixpanel-android:5.9.1"
+    implementation "com.google.android.gms:play-services-base:+"
+    implementation "com.google.firebase:firebase-messaging:+"
 }
 
 

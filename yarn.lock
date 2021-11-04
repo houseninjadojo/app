@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@awesome-cordova-plugins/mixpanel@^5.37.0":
+  version "5.37.0"
+  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/mixpanel/-/mixpanel-5.37.0.tgz#fe2c11d0bb6a773df4b1d9d9440c7e2868c8ada2"
+  integrity sha512-z8CHsw8EZ2xzJ9L8k830Snv5594HTB1U4BI2ustn8h9ZgpLqYl4IuXwNEeQELPyBUgKxl64Gq4eE52IAHH+UAQ==
+  dependencies:
+    "@types/cordova" latest
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -1777,6 +1784,11 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
   integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
+
+"@types/cordova@latest":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/cordova/-/cordova-0.0.34.tgz#ea7addf74ecec3d7629827a0c39e2c9addc73d04"
+  integrity sha1-6nrd907Ow9dimCegw54smt3HPQQ=
 
 "@types/cors@^2.8.12":
   version "2.8.12"
@@ -4352,6 +4364,11 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+
+cordova-plugin-mixpanel@^4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-mixpanel/-/cordova-plugin-mixpanel-4.7.2.tgz#757da7e886c96d7a0cb2d2a7f6c2c78171f2b12a"
+  integrity sha512-+SVogeTZMcNHmvE0+Ehh4XI8OJZSS3N2WMJYZcrk3MOYwA/wbiGQUv5TFcBXnifWFuxlf//0R9hE6JXXhfUZeA==
 
 core-js-compat@^3.16.0, core-js-compat@^3.16.2:
   version "3.18.2"

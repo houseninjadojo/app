@@ -40,10 +40,14 @@ module.exports = function (environment) {
       // login_hint: 'user@email.com',
       prompt: 'none',
       // redirect_uri: 'https://app.houseninja.co/login',
-      scope: '',
+      scope: 'openid profile email',
       screen_hint: 'login',
       useCookiesForTransactions: false,
       useRefreshTokens: true,
+    },
+
+    analytics: {
+      mixpanelToken: 'cd20057a467eef665b9e86f0b687a5e3',
     },
 
     'ember-simple-auth': {

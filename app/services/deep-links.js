@@ -17,6 +17,7 @@ import { debug } from '@ember/debug';
  */
 export default class DeepLinksService extends Service {
   @service router;
+  @service analytics;
 
   listener = null;
 
@@ -57,7 +58,10 @@ export default class DeepLinksService extends Service {
       run(() => {
         // co.houseninja.app://page => /page
         let url = this.parseUrl(event.url);
-        // this.closeBrowser();
+        this.analytics.track('deep_link_visit', {
+          page: url.raw,
+          name: url.name,
+        });
         this.forwardRoute(url);
       });
     });
