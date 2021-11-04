@@ -102,6 +102,14 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   serverTokenRevocationEndpoint = `https://${ENV.auth.domain}/oauth/revoke`;
 
   /**
+    The endpoint on the server that yields user info data.
+    @type String
+    @default null
+    @public
+  */
+  userInfoEndpoint = `https://${ENV.auth.domain}/userinfo`;
+
+  /**
     The client-side redirectUri path. Be sure to include it in your `router.js`
     file.
     @property redirectUri
@@ -154,7 +162,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @default 'openid profile offline_access'
    * @public
    */
-  scope = 'openid profile offline_access';
+  scope = 'openid profile email offline_access';
 
   /**
    * Property to store scheduled refresh
@@ -246,6 +254,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     debug('authenticate response data - access_token: ' + data.access_token);
 
+    data.userinfo = await this._getUserinfo(data.access_token);
+
     return data;
   }
 
@@ -275,6 +285,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       return await this._refresh(refresh_token);
     }
     this._scheduleRefresh(expires_in, refresh_token);
+
+    data.userinfo = await this._getUserinfo(data.access_token);
     return data;
   }
 
@@ -432,7 +444,35 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   }
 
   /**
-   * Post for appropriate platform (native mobile or web)
+   * Request user information from the openid userinfo endpoint
+   *
+   * @param {String} accessToken The raw access token
+   * @returns {Object} Object containing the user information
+   */
+  async _getUserinfo(accessToken) {
+    const options = {
+      url: this.userInfoEndpoint,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/json',
+      },
+    };
+
+    let response;
+    try {
+      response = await MobileHTTP.get(options);
+    } catch (e) {
+      console.error(e);
+    }
+
+    const userinfo = response.data;
+    userinfo.user_id = userinfo.sub.replace('auth0|', '');
+
+    return userinfo;
+  }
+
+  /**
+   * HTTP Request for appropriate platform (native mobile or web)
    * @method _post
    * @param {String} url
    * @param {Object} postData

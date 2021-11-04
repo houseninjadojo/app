@@ -7,6 +7,7 @@ import { getOwner } from '@ember/application';
 export default class LoginCallbackRoute extends Route {
   @service session;
   @service router;
+  @service analytics;
 
   queryParams = {
     code: { refreshModel: false },
@@ -32,8 +33,25 @@ export default class LoginCallbackRoute extends Route {
         queryParams.state
       );
       await pkce.clearStash('login');
+      await this.setTrackingProperties();
       this.router.transitionTo('index');
     }
+  }
+
+  async setTrackingProperties() {
+    const userinfo = this.session.data.authenticated.userinfo;
+    await this.analytics.setProfile({
+      '$email': userinfo.email,
+      '$name': userinfo.name,
+    });
+
+    // A bug requires us to pass fake callbacks
+    await this.analytics.identify(
+      userinfo.email,
+      true, // usePeople = true
+      console.log,
+      console.log
+    );
   }
 
   async closeBrowser() {

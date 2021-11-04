@@ -7,6 +7,7 @@ import { getOwner } from '@ember/application';
 export default class LoginRoute extends Route {
   @service session;
   @service router;
+  @service analytics;
 
   async beforeModel() {
     const pkce = getOwner(this).lookup('authenticator:pkce');
@@ -17,6 +18,7 @@ export default class LoginRoute extends Route {
       pkce.clearStash();
       await pkce.stashData('login', { state: 'active' });
       let url = await pkce.generateAuthorizationURL();
+      await this.analytics.track('login');
       await this.nativeOpen(url);
     }
   }
