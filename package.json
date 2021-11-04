@@ -59,6 +59,7 @@
     "ember-sinon-qunit": "^6.0.0",
     "ember-source": "~3.28.4",
     "ember-template-lint": "^3.11.0",
+    "ember-user-activity": "^6.0.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.7",
@@ -74,7 +75,8 @@
     "qunit": "^2.16.0",
     "qunit-dom": "^2.0.0",
     "tailwindcss": "^2.2.19",
-    "webpack": "5"
+    "webpack": "5",
+    "whatwg-url": "11.0.0"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
