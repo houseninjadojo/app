@@ -11,6 +11,6 @@ module('Unit | Utility | get-platform', function (hooks) {
 
   test('it returns Capacitor#getPlatform', function (assert) {
     let result = getPlatform();
-    assert.equal(result, 'ios');
+    assert.strictEqual(result, 'ios');
   });
 });
