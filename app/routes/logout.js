@@ -7,7 +7,7 @@ export default class LogoutRoute extends Route {
   @service analytics;
 
   async beforeModel() {
-    await this.analytics.track('logout')
+    await this.analytics.track('logout');
     await this.session.invalidate();
     await this.analytics.reset();
     this.router.transitionTo('index');
