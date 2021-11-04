@@ -33,25 +33,20 @@ export default class LoginCallbackRoute extends Route {
         queryParams.state
       );
       await pkce.clearStash('login');
-      await this.setTrackingProperties();
+      await this.identifyAndTrackUser();
       this.router.transitionTo('index');
     }
   }
 
-  async setTrackingProperties() {
+  async identifyAndTrackUser() {
     const userinfo = this.session.data.authenticated.userinfo;
     await this.analytics.setProfile({
+      // eslint-disable-next-line
       '$email': userinfo.email,
+      // eslint-disable-next-line
       '$name': userinfo.name,
     });
-
-    // A bug requires us to pass fake callbacks
-    await this.analytics.identify(
-      userinfo.email,
-      true, // usePeople = true
-      console.log,
-      console.log
-    );
+    await this.analytics.identify(userinfo.email);
   }
 
   async closeBrowser() {

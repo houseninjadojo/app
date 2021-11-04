@@ -24,7 +24,8 @@ export default class AnalyticsService extends Service {
 
   async identify(id) {
     try {
-      await this.client.identify(id, true);
+      // A bug requires us to pass fake callbacks
+      await this.client.identify(id, true, console.log, console.log);
     } catch (e) {
       debug(`AnalyticsService: ` + e);
     }
