@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
+import { setUser } from '@sentry/capacitor';
 
 export default class LoginCallbackRoute extends Route {
   @service session;
@@ -40,6 +41,7 @@ export default class LoginCallbackRoute extends Route {
 
   async identifyAndTrackUser() {
     const userinfo = this.session.data.authenticated.userinfo;
+    setUser({ id: userinfo.user_id, email: userinfo.email });
     await this.analytics.setProfile({
       // eslint-disable-next-line
       '$email': userinfo.email,

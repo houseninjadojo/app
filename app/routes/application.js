@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import Sentry from '@sentry/capacitor';
 
 export default class ApplicationRoute extends Route {
   @service session;
@@ -27,6 +28,7 @@ export default class ApplicationRoute extends Route {
 
     if (this.session.isAuthenticated) {
       const { email } = this.session.data.authenticated.userinfo;
+      Sentry.setUser({ email });
       await this.analytics.identify(email);
     }
   }

@@ -53,6 +53,21 @@ module.exports = function (environment) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
+
+    '@sentry/ember': {
+      sentry: {
+        dsn: 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789',
+        tracesSampleRate: 1.0,
+        debug: true,
+        autoSessionTracking: true,
+      },
+      tracingOrigins: [
+        'localhost:4200',
+        'https://api.houseninja.co',
+        'localhost',
+        'co.houseninja.app://localhost',
+      ],
+    },
   };
 
   if (environment === 'development') {
@@ -77,6 +92,8 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV['@sentry/ember'].sentry.debug = false;
   }
 
   if (environment === 'production') {
@@ -84,7 +101,8 @@ module.exports = function (environment) {
     ENV.apiHost = 'https://api.houseninja.co';
     ENV.auth.audience = 'https://api.houseninja.co';
     ENV.auth.connection = 'prod';
-    // here you can enable a production-specific feature
+
+    ENV['@sentry/ember'].sentry.debug = false;
   }
 
   return ENV;
