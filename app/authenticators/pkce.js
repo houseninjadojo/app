@@ -102,6 +102,16 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   serverTokenRevocationEndpoint = `https://${ENV.auth.domain}/oauth/revoke`;
 
   /**
+    Logout endpoint for external auth
+    @type String
+    @default null
+    @public
+  */
+  get logoutEndpoint() {
+    return `https://${ENV.auth.domain}/v2/logout?client_id=${this.clientId}`;
+  }
+
+  /**
     The endpoint on the server that yields user info data.
     @type String
     @default null
