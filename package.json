@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -33,6 +33,9 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@sentry/capacitor": "^0.4.0",
+    "@sentry/ember": "^6.14.1",
+    "@sentry/tracing": "^6.14.1",
     "autoprefixer": "^10.4.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.3",

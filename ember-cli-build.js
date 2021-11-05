@@ -1,5 +1,6 @@
 'use strict';
 
+// const SentryCliPlugin = require('@sentry/webpack-plugin');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
@@ -14,6 +15,21 @@ module.exports = function (defaults) {
         ],
       },
     },
+    sourcemaps: {
+      enabled: true,
+    },
+    // autoImport: {
+    //   webpack: {
+    //     plugins: [
+    //       new SentryCliPlugin({
+    //         include: '.',
+    //         ignoreFile: '.sentrycliignore',
+    //         ignore: ['node_modules', 'ember-cli-build.js'],
+    //         configFile:
+    //       }),
+    //     ],
+    //   },
+    // },
   });
 
   // Use `app.import` to add additional libraries to the generated
