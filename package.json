@@ -28,7 +28,7 @@
     "@capacitor/android": "^3.2.5",
     "@capacitor/cli": "^3.3.0",
     "@capacitor/core": "^3.3.0",
-    "@capacitor/ios": "^3.2.5",
+    "@capacitor/ios": "^3.3.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.2",
     "@glimmer/component": "^1.0.4",
