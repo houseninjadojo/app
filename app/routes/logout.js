@@ -20,7 +20,10 @@ export default class LogoutRoute extends Route {
     Browser.addListener('browserPageLoaded', () => {
       Browser.close();
     });
-    await Browser.open({ url: this.logoutUrl(), presentationStyle: 'popover' });
+    await Browser.open({
+      url: this.logoutUrl(),
+      presentationStyle: 'popover',
+    });
   }
 
   logoutUrl() {
