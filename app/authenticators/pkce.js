@@ -5,7 +5,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { isEqual, isEmpty } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';
-import { later, cancel } from '@ember/runloop';
+import { later, cancel, run } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
 const STASH_TOKEN = 'PKCE';
@@ -389,7 +389,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   async stashData(key = STASH_TOKEN, data) {
     const value = JSON.stringify(data);
-    return await SecureStoragePlugin.set({ key, value });
+    return await run(async () => {
+      return await SecureStoragePlugin.set({ key, value });
+    });
   }
 
   /**
@@ -399,7 +401,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @return {RSVP.Promise}
    */
   async unstashData(key = STASH_TOKEN) {
-    let encodedValue = await SecureStoragePlugin.get({ key });
+    let encodedValue = await run(async () => {
+      return await SecureStoragePlugin.get({ key });
+    });
     return JSON.parse(encodedValue.value);
   }
 
@@ -407,11 +411,13 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * Clear stash data
    */
   async clearStash(key = STASH_TOKEN) {
-    try {
-      await SecureStoragePlugin.remove({ key });
-    } catch {
-      //
-    }
+    await run(async () => {
+      try {
+        await SecureStoragePlugin.remove({ key });
+      } catch {
+        //
+      }
+    });
     return;
   }
 
@@ -460,7 +466,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     let response;
     try {
-      response = await MobileHTTP.get(options);
+      response = await run(async () => {
+        return await MobileHTTP.get(options);
+      });
     } catch (e) {
       console.error(e);
     }
@@ -490,7 +498,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         data: mobilePostData,
       };
       try {
-        response = await MobileHTTP.post(postOptions);
+        response = await run(async () => {
+          return await MobileHTTP.post(postOptions);
+        });
       } catch (e) {
         console.error(e);
       }

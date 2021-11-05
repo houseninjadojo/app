@@ -1,79 +1,104 @@
 import Service from '@ember/service';
 import ENV from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
+import { run } from '@ember/runloop';
 
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
   client = window.mixpanel;
 
   async setup() {
-    try {
-      await this.client.init(ENV.analytics.mixpanelToken);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.init(
+          ENV.analytics.mixpanelToken,
+          this._debug,
+          this._debug
+        );
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async track(event, properties) {
-    try {
-      await this.client.track(event, properties);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.track(event, properties);
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async identify(id) {
-    try {
-      // A bug requires us to pass fake callbacks
-      await this.client.identify(id, true, console.log, console.log);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        // A bug requires us to pass fake callbacks
+        await this.client.identify(id, true, this._debug, this._debug);
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async alias(id) {
-    try {
-      await this.client.alias(id);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.alias(id);
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async registerSuperProperties(properties = {}) {
-    try {
-      await this.client.registerSuperProperties(properties);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.registerSuperProperties(properties);
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async reset() {
-    try {
-      await this.client.reset();
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.reset();
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   // MUST BE CALLED BEFORE `#identify`
   async setProfile(profile = {}) {
-    try {
-      await this.client.people.set(profile);
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.people.set(profile);
+      } catch (e) {
+        this._debug(e);
+      }
+    });
   }
 
   async trackCharge(amount, options = {}) {
-    try {
-      await this.client.people.trackCharge(
-        amount,
-        options,
-        console.log,
-        console.log
-      );
-    } catch (e) {
-      debug(`AnalyticsService: ` + e);
-    }
+    await run(async () => {
+      try {
+        await this.client.people.trackCharge(
+          amount,
+          options,
+          this._debug,
+          this._debug
+        );
+      } catch (e) {
+        this._debug(e);
+      }
+    });
+  }
+
+  _debug(e) {
+    debug(`AnalyticsService - ${e}`);
   }
 }

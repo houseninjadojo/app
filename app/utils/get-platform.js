@@ -1,4 +1,6 @@
 import { Capacitor } from '@capacitor/core';
+import { run } from '@ember/runloop';
+import { debug } from '@ember/debug';
 
 /**
  * Return the running platform. One of:
@@ -7,5 +9,7 @@ import { Capacitor } from '@capacitor/core';
  * @return String
  */
 export default function getPlatform() {
-  return Capacitor.getPlatform();
+  const val = run(Capacitor, 'getPlatform');
+  debug(`getPlatform() - ${val}`);
+  return val;
 }
