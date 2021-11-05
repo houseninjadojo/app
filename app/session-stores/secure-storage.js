@@ -1,5 +1,6 @@
 import BaseStore from 'ember-simple-auth/session-stores/base';
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+import { run } from '@ember/runloop';
 
 /**
   Session store that persists data using capacitor-secure-storage-plugin.
@@ -33,7 +34,9 @@ export default class CapacitorSecureStorageStore extends BaseStore {
   async persist(data) {
     this._lastData = data;
     data = JSON.stringify(data || {});
-    return await SecureStoragePlugin.set({ key: this.key, value: data });
+    return await run(async () => {
+      return await SecureStoragePlugin.set({ key: this.key, value: data });
+    });
   }
 
   /**
@@ -43,7 +46,9 @@ export default class CapacitorSecureStorageStore extends BaseStore {
     @public
   */
   async restore() {
-    const { value: data } = await SecureStoragePlugin.get({ key: this.key });
+    const { value: data } = await run(async () => {
+      return await SecureStoragePlugin.get({ key: this.key });
+    });
     return JSON.parse(data || {});
   }
 
@@ -56,6 +61,8 @@ export default class CapacitorSecureStorageStore extends BaseStore {
   */
   async clear() {
     this._lastData = {};
-    return await SecureStoragePlugin.remove({ key: this.key });
+    return await run(async () => {
+      return await SecureStoragePlugin.remove({ key: this.key });
+    });
   }
 }
