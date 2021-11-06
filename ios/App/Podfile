@@ -19,7 +19,7 @@ def capacitor_pods
   pod 'CordovaPluginsResources', :path => '../capacitor-cordova-ios-plugins'
 end
 
-target 'App' do
+target 'House Ninja' do
   capacitor_pods
   # Add your Pods here
 end
