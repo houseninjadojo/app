@@ -94,6 +94,7 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
 
     ENV['@sentry/ember'].sentry.debug = false;
+    ENV['@sentry/ember'].sentry.dsn = '_DSN_';
   }
 
   if (environment === 'production') {
