@@ -8452,10 +8452,10 @@ jest-worker@^27.0.6:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jose@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.3.5.tgz#890ec0b3bf26db0b36946ca54087335200deb6f7"
-  integrity sha512-mdTu3En79OYMGBNHw4828hl6ZUOb+gQtNZVRgM+eVL3Rrs4ZYUv/yHPpfDh65GN2HhKBvJsvA0/6tKEcpkyzeg==
+jose@^4.3.6:
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.3.6.tgz#82988bca38e8a2759d561ae99c07ff50b66c8258"
+  integrity sha512-A/JgZGUerqG2IMuxkUDBtZ4aTxg/l1Y+pt/QAAYiRAR3EFlxIE0Su0xdpB8tQcPZK5eudB7g1PHCZ5uHatbY+g==
 
 jquery@^3.5.1:
   version "3.6.0"
