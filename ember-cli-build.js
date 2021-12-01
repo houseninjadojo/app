@@ -49,9 +49,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 /**
  * Build Options
+ * @see https://cli.emberjs.com/release/advanced-use/
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    // PostCSS Options
+    // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
       compile: {
         enabled: true,
