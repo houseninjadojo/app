@@ -8442,11 +8442,6 @@ jest-worker@^27.0.6:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jose@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.3.5.tgz#890ec0b3bf26db0b36946ca54087335200deb6f7"
-  integrity sha512-mdTu3En79OYMGBNHw4828hl6ZUOb+gQtNZVRgM+eVL3Rrs4ZYUv/yHPpfDh65GN2HhKBvJsvA0/6tKEcpkyzeg==
-
 jquery@^3.5.1:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
