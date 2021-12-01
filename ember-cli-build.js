@@ -1,38 +1,66 @@
 'use strict';
 
-// const SentryCliPlugin = require('@sentry/webpack-plugin');
+/**
+ * PostCSS Plugins
+ * Format is:
+ *   {
+ *     module: require('my-postcss-module'),
+ *     options: {}, // (optional)
+ *   };
+ */
+
+// Tailwind Configuration
+// @see https://tailwindcss.com/docs/configuration
+const TailwindPlugin = {
+  module: require('tailwindcss'),
+  options: {
+    // eslint-disable-next-line
+    purge: [
+      './src/**/*.html',
+      './src/**/*.js',
+    ],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
+  },
+};
+
+// Autoprefix Configuration
+// @see https://github.com/postcss/autoprefixer
+const AutoprefixerPlugin = {
+  module: require('autoprefixer'),
+};
+
+// PostCSS Import
+// @see https://github.com/postcss/postcss-import
+const PostCSSImportPlugin = {
+  module: require('postcss-import'),
+};
+
+/**
+ * Ember Application
+ */
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+/**
+ * Build Options
+ */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     postcssOptions: {
       compile: {
         enabled: true,
-        plugins: [
-          { module: require('postcss-import') },
-          { module: require('autoprefixer') },
-          {
-            module: require('tailwindcss'),
-            options: require('./tailwind.config.js'),
-          },
-        ],
+        plugins: [PostCSSImportPlugin, AutoprefixerPlugin, TailwindPlugin],
       },
     },
     sourcemaps: {
       enabled: true,
     },
-    // autoImport: {
-    //   webpack: {
-    //     plugins: [
-    //       new SentryCliPlugin({
-    //         include: '.',
-    //         ignoreFile: '.sentrycliignore',
-    //         ignore: ['node_modules', 'ember-cli-build.js'],
-    //         configFile:
-    //       }),
-    //     ],
-    //   },
-    // },
   });
 
   // Use `app.import` to add additional libraries to the generated
