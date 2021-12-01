@@ -1,4 +1,3 @@
-import { tokenAuthHandler } from './auth';
 import ENV from 'houseninja/config/environment';
 
 export default function () {
@@ -25,8 +24,6 @@ export default function () {
 
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
-
-  this.post('/oauth/token', tokenAuthHandler);
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
