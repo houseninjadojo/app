@@ -16,7 +16,7 @@ export default class NavBarComponent extends Component {
   }
 
   openChatModal() {
-    console.log("Chat ");
+    console.log('Open Chat');
   }
 
   @action
