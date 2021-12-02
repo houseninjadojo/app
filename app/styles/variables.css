@@ -3,63 +3,63 @@
         Size        
     */
 
-    --btn-sm: 36px;
+        --btn-sm: 36px;
 
     /* 
         Colors
     */
 
-    /* White */
-    --white: #fff;
+        /* White */
+        --white: #fff;
 
-    /* Black */
-    --black: #000;
-    
-    /* Gray */
-    --gray-10: #FCFCFC;
-    --gray-25: #F7F7F7;
-    --gray-50: #F2F2F2;
-    --gray-100: #E6E6E6;
-    --gray-200: #CCCCCC;
-    --gray-300: #B3B3B3;
-    --gray-400: #B3B3B3;
-    --gray-400: #999999;
-    --gray-500: #808080;
-    --gray-600: #666666;
-    --gray-700: #4D4D4D;
-    --gray-800: #333333;
-    --gray-850: #262626;
-    --gray-900: #1A1A1A;
-    --gray-950: #0F0F0F;
-    
-    /* Teal */
-    --teal-10: #F5FFFF;
-    --teal-100: #CFFCFB;
-    --teal-200: #A2F6F4;
-    --teal-300: #5DDFDC;
-    --teal-400: #27D3CF;
-    --teal-500: #00C0BB;
-    --teal-600: #008581;
-    --teal-700: #00524F;
-    --teal-800: #001F1E;
+        /* Black */
+        --black: #000;
+        
+        /* Gray */
+        --gray-10: #FCFCFC;
+        --gray-25: #F7F7F7;
+        --gray-50: #F2F2F2;
+        --gray-100: #E6E6E6;
+        --gray-200: #CCCCCC;
+        --gray-300: #B3B3B3;
+        --gray-400: #B3B3B3;
+        --gray-400: #999999;
+        --gray-500: #808080;
+        --gray-600: #666666;
+        --gray-700: #4D4D4D;
+        --gray-800: #333333;
+        --gray-850: #262626;
+        --gray-900: #1A1A1A;
+        --gray-950: #0F0F0F;
+        
+        /* Teal */
+        --teal-10: #F5FFFF;
+        --teal-100: #CFFCFB;
+        --teal-200: #A2F6F4;
+        --teal-300: #5DDFDC;
+        --teal-400: #27D3CF;
+        --teal-500: #00C0BB;
+        --teal-600: #008581;
+        --teal-700: #00524F;
+        --teal-800: #001F1E;
 
-    /* Blue */
-    /* Green */
-    /* Red */
-    /* Orange */
+        /* Blue */
+        /* Green */
+        /* Red */
+        /* Orange */
 
     /* 
         Gradients 
     */
 
-    --grad-teal-500: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%),
-    linear-gradient(0deg, #00C0BB, #00C0BB);
+        --grad-teal-500: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%),
+        linear-gradient(0deg, #00C0BB, #00C0BB);
     
     /* 
         Shadows 
     */
-    --shadow-teal-1: -0.5px 0.5px 0.5px rgba(0, 82, 79, 0.4), -1px 1px 1px rgba(0, 82, 79, 0.3);
-    --shadow-teal-2: -1px 1px 1px rgba(0, 82, 79, 0.2), -2px 2px 4px rgba(0, 82, 79, 0.4);
-    --shadow-teal-3: -1px 1px 1px rgba(0, 82, 79, 0.1), -4px 3px 6px rgba(0, 82, 79, 0.35);    
-    
+        --shadow-teal-1: -0.5px 0.5px 0.5px rgba(0, 82, 79, 0.4), -1px 1px 1px rgba(0, 82, 79, 0.3);
+        --shadow-teal-2: -1px 1px 1px rgba(0, 82, 79, 0.2), -2px 2px 4px rgba(0, 82, 79, 0.4);
+        --shadow-teal-3: -1px 1px 1px rgba(0, 82, 79, 0.1), -4px 3px 6px rgba(0, 82, 79, 0.35);    
+        
 }

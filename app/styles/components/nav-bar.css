@@ -4,26 +4,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: fixed;
-    bottom: 0;  
+    
     background: #000000E5;
     width: 100vw;
+    
+    position: fixed;
+    bottom: 0;
+
     padding: 12px 24px;
+    
     backdrop-filter: blur(4px);
   }  
   
   .nav-menu {
-    width: 88%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;  
+    
+    width: 88%;
   }
     
   .nav-menu-item, .nav-menu-item button {
-    width: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    width: 80px;
   }
   
   .nav-menu-item button {
