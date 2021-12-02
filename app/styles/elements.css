@@ -1,4 +1,21 @@
 /* 
+    Typography 
+*/
+ .view-title {    
+    font-family: Campton-Book;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    
+    line-height: 20px;    
+    letter-spacing: -0.23999999463558197px;
+    
+    text-align: center;
+    
+    margin-bottom: 16px;
+ }
+
+/* 
     Buttons
 */
 
@@ -26,4 +43,43 @@
     .hn.btn.solid.accent {
         background: var(--grad-teal-500);
         color: var(--white);
+    }
+
+/* 
+    Input
+*/
+    /* Default */
+    .hn.hn-input {
+        width: 100%;
+        height: 44px;
+
+        margin-bottom: 8px;
+        border-radius: 2px;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 16px 12px;
+
+        outline: none;
+        
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: -0.3199999928474426px;    
+    }
+    
+    /* Dark Theme */
+    .hn.hn-input.dark {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--white);
+    }
+
+    .hn.hn-input.dark:focus {
+        background: rgba(0, 192, 187, 0.1);
+        border-bottom: 1px solid var(--teal-500);
+    }
+
+    .hn.hn-input.dark.warning {
+        background: rgba(255, 251, 245, 0.06);
+        border-bottom: 1px solid var(--orange-400);
+        color: var(--orange-400);        
     }

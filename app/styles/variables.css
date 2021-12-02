@@ -47,13 +47,15 @@
         /* Green */
         /* Red */
         /* Orange */
+        --orange-400: #FFA31A;
 
     /* 
         Gradients 
     */
 
         --grad-teal-500: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%),
-        linear-gradient(0deg, #00C0BB, #00C0BB);
+        linear-gradient(0deg, #00C0BB, #00C0BB);        
+        --grad-black-1000: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000;
     
     /* 
         Shadows 
