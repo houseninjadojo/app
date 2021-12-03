@@ -24,7 +24,11 @@
 }
 
 html * {
-  font-family: Campton-Book;
+  font-family: var(--campton-default);
+}
+
+html .dark * {
+  color: var(--gray-100);
 }
 
 .background-container {

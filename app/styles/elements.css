@@ -1,21 +1,20 @@
 /* 
     Typography 
 */
- .view-title {    
+ .hn.view-title {    
     height: 48px;
 
-    font-family: Campton-Book;
+    font-family: var(--campton-default);
     font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    
-    line-height: 20px;    
-    letter-spacing: -0.23999999463558197px;
     
     text-align: center;
     
     margin-bottom: 16px;
  }
+ .hn.label {    
+    font-family: var(--campton-strong);
+    font-size: 17px;        
+ } 
 
 /* 
     Buttons
@@ -55,13 +54,7 @@
         display: flex;
         flex-direction: column;        
 
-        margin-bottom: 16px;
-        
-        font-family: var(--campton-default);
-        font-style: normal;
-        font-weight: 400;
-        line-height: 21px;
-        letter-spacing: -0.3199999928474426px;
+        margin-bottom: 16px;        
     }
 
     .hn.hn-input-field .hn-input-container {
@@ -103,41 +96,37 @@
 
     .hn.hn-input-field .hn-input-description {                    
         margin-left: 116px;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 16px;
-        letter-spacing: 0px;            
+        font-size: 14px;        
     }
     
     /* Dark Theme */
-    .hn.hn-input-field.dark .hn-input-description {
+    .dark .hn.hn-input-field .hn-input-description {
         color: var(--gray-400);
     }
 
-    .hn.hn-input-field.dark.warn .hn-input-description {
+    .dark .hn.hn-input-field.warn .hn-input-description {
         color: var(--orange-400);
     }
 
-    .hn.hn-input-field.dark .hn-input-label {                
+    .dark .hn.hn-input-field .hn-input-label {                
         color: var(--gray-200);
     }
 
-    .hn.hn-input-field.dark .hn-input-container .hn-input {
+    .dark .hn.hn-input-field .hn-input-container .hn-input {
         background: none;
         color: var(--gray-100);
     }
 
-    .hn.hn-input-field.dark .hn-input-container:focus-within {
+    .dark .hn.hn-input-field .hn-input-container:focus-within {
         background: rgba(0, 192, 187, 0.1);
         border-bottom: 1px solid var(--teal-500);
     }
 
-    .hn.hn-input-field.dark.warn .hn-input-container {
+    .dark .hn.hn-input-field.warn .hn-input-container {
         background: #FFA31A05 !important;
         border-bottom: 1px solid var(--orange-400) !important;        
     }
 
-    .hn.hn-input-field.dark.warn .hn-input-container input {        
+    .dark .hn.hn-input-field.warn .hn-input-container input {        
         color: var(--orange-400) !important; 
     }
