@@ -6,23 +6,23 @@ export default class ContactComponent extends Component {
     {
         required: true,
         label: 'First Name',
-        placeholder: '(Required)',
+        placeholder: '',
     },
     {
         required: true,
         label: 'Last Name',
-        placeholder: '(Required)',
+        placeholder: '',
     },
     {
         required: true,
         label: 'Phone',
-        placeholder: '(Required)',
+        placeholder: '',
         description: 'We only use your phone number to contact you.'
     },
     {
         required: true,
         label: 'Email',
-        placeholder: '(Required)',
+        placeholder: '',
     },    
   ]
 }
