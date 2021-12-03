@@ -1,0 +1,6 @@
+<div class="settings-view">
+    <h1 class="view-title">Edit Contact Information</h1>
+    {{#each this.contactFields as |field|}}            
+        <Primitive::Input @field={{field}} @warn={{true}}/>
+    {{/each}}
+</div>

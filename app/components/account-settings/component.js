@@ -42,7 +42,7 @@ export default class AccountSettingsComponent extends Component {
         label: 'Logout',
         name: 'logout',
     },
-  ];
+  ];  
 
   @action
   selectRoute(routeName) {
