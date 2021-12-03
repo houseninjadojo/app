@@ -2,6 +2,8 @@
     Typography 
 */
  .view-title {    
+    height: 48px;
+
     font-family: Campton-Book;
     font-size: 15px;
     font-style: normal;
@@ -27,7 +29,7 @@
         
         box-shadow: var(--shadow-teal-1);
         
-        font-family: Campton-Book;
+        font-family: var(--campton-default);
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -48,38 +50,94 @@
 /* 
     Input
 */
-    /* Default */
-    .hn.hn-input {
+    /* Default */  
+    .hn.hn-input-field {
+        display: flex;
+        flex-direction: column;        
+
+        margin-bottom: 16px;
+        
+        font-family: var(--campton-default);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: -0.3199999928474426px;
+    }
+
+    .hn.hn-input-field .hn-input-container {
+        display: flex;
+        flex-direction: row;
+
         width: 100%;
         height: 44px;
 
         margin-bottom: 8px;
-        border-radius: 2px;
-        border-bottom: 1px solid var(--gray-200);
-        padding: 16px 12px;
-
-        outline: none;
         
-        font-size: 16px;
+        border-radius: 2px;        
+        border-bottom: 1px solid var(--gray-400);
+        
+        padding: 0 8px;
+        
+        font-size: 16px;        
+    }
+
+        .hn.hn-input-field .hn-input-container .hn-input-label {                
+            display: flex;
+            flex-direction: row;        
+            align-items: center;
+            white-space: nowrap;        
+            
+            width: 128px;
+            height: 44px;
+        }
+
+        .hn.hn-input-field .hn-input-container .hn-input {        
+            width: 100%;
+            height: 44px;
+        
+            border-radius: 0;
+            padding: 16px 12px;
+
+            outline: none;                
+        }
+
+    .hn.hn-input-field .hn-input-description {                    
+        margin-left: 116px;
+        font-size: 12px;
         font-style: normal;
         font-weight: 400;
-        line-height: 21px;
-        letter-spacing: -0.3199999928474426px;    
+        line-height: 16px;
+        letter-spacing: 0px;            
     }
     
     /* Dark Theme */
-    .hn.hn-input.dark {
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--white);
+    .hn.hn-input-field.dark .hn-input-description {
+        color: var(--gray-400);
     }
 
-    .hn.hn-input.dark:focus {
+    .hn.hn-input-field.dark.warn .hn-input-description {
+        color: var(--orange-400);
+    }
+
+    .hn.hn-input-field.dark .hn-input-label {                
+        color: var(--gray-200);
+    }
+
+    .hn.hn-input-field.dark .hn-input-container .hn-input {
+        background: none;
+        color: var(--gray-100);
+    }
+
+    .hn.hn-input-field.dark .hn-input-container:focus-within {
         background: rgba(0, 192, 187, 0.1);
         border-bottom: 1px solid var(--teal-500);
     }
 
-    .hn.hn-input.dark.warning {
-        background: rgba(255, 251, 245, 0.06);
-        border-bottom: 1px solid var(--orange-400);
-        color: var(--orange-400);        
+    .hn.hn-input-field.dark.warn .hn-input-container {
+        background: #FFA31A05 !important;
+        border-bottom: 1px solid var(--orange-400) !important;        
+    }
+
+    .hn.hn-input-field.dark.warn .hn-input-container input {        
+        color: var(--orange-400) !important; 
     }

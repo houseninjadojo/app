@@ -1,0 +1,9 @@
+<div class="hn hn-input-field dark {{if @warn 'warn' ''}}">
+    <div class="hn-input-container">
+        <label class="hn-input-label">{{@field.label}}</label>
+        <input class="hn-input" aria-label={{@field.label}} type="text" placeholder={{@field.placeholder}}/>
+    </div>
+    {{#if @field.description}}
+        <p class="hn-input-description">{{@field.description}}</p>
+    {{/if}}
+</div>
