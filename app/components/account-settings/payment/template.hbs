@@ -1,0 +1,15 @@
+<div class="settings-view dark">
+    <h1 class="hn view-title">Edit Payment Information</h1>
+    
+    {{!-- {{#if @account.cardNumber}} --}}
+    {{#if true}}
+        <div class="mb-16">
+            <p class="hn label">Current Payment Information</p>
+            <p>Card ending in {{@account.cardNumber}}</p>
+        </div>
+    {{/if}}
+
+    {{#each this.contactFields as |field|}}
+        <Primitive::Input @field={{field}} required={{field}} @warn={{false}} />
+    {{/each}}
+</div>
