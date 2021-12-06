@@ -9,7 +9,7 @@
         </div>
     {{/if}}
 
-    {{#each this.contactFields as |field|}}
+    {{#each this.paymentFields as |field|}}
         <Primitive::Input @field={{field}} required={{field}} @warn={{false}} />
     {{/each}}
 </div>

@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
 
-export default class ContactComponent extends Component {
+export default class PaymentComponent extends Component {
   
-  contactFields = [
+  paymentFields = [
     {
         required: true,
         label: 'Card Number',
