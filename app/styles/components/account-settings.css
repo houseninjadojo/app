@@ -45,3 +45,8 @@
             width: 21px;
             height: 21px;
         }
+
+.hn.pw-match {    
+    color: var(--gray-600);
+    text-decoration: line-through;
+}

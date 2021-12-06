@@ -1,0 +1,17 @@
+<div class="settings-view dark">
+    <h1 class="hn view-title">Edit Security Details</h1>
+
+    {{#each this.securityFields as |field|}}
+        <Primitive::Input @field={{field}} required={{field}} @warn={{false}} />
+    {{/each}}
+
+    <p class="hn label center mt-16 mb-4">Password Requirements</p>
+    <ul>       
+        <AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{false}} />
+        <AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{false}}/>
+        <AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{false}}/>
+        <AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{false}}/>
+        <AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{false}}/>
+        <AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & .  # @" @reqPassed={{false}}/>
+    </ul>
+</div>
