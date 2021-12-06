@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
 
-export default class ContactComponent extends Component {
+export default class InputComponent extends Component {
     
 }
