@@ -1,0 +1,16 @@
+<div class="hn modal">
+    <div class="overlay" />
+    <div class="container tray dark">
+        <div class="head">
+            <div class="actions">
+                <div class="swipe-bar"/>
+            </div>
+        </div>
+        <div class="body">
+            {{yield}}           
+        </div>
+        <div class="footer">
+            <button class="hn btn solid accent" type="button" {{!-- {{on "click" (fn this.openChatModal)}} --}}>Save</button>
+        </div>
+    </div>
+</div>

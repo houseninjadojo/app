@@ -5,6 +5,8 @@
 @import "./variables.css";
 @import "./elements.css";
 
+@import "./components/modal.css";
+@import "./components/top-bar.css";
 @import "./components/nav-bar.css";
 @import "./components/account-settings.css";
 

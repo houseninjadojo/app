@@ -34,7 +34,7 @@
   
   .nav-menu-item button {
     /* Inactive Hex Equivalent: var(--gray-200) */  
-    filter: invert(68%) sepia(0%) saturate(7395%) hue-rotate(325deg) brightness(115%) contrast(104%);  
+    filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%);
   }
   
   .nav-menu-item button.active {
