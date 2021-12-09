@@ -16,23 +16,23 @@ export default class AccountSettingsComponent extends Component {
     },
     {
       label: 'Contact Information',
-      name: 'contact',
+      name: 'settings/contact',
     },
     {
       label: 'Payment Method',
-      name: 'payment',
+      name: 'settings/payment',
     },
     {
       label: 'Security Settings',
-      name: 'security',
+      name: 'settings/security',
     },
     {
       label: 'Property Details',
-      name: 'property',
+      name: 'settings/property',
     },
     {
       label: 'Contact Us',
-      name: 'contact',
+      name: 'contact-us',
     },
     {
       label: 'FAQ',
@@ -48,6 +48,6 @@ export default class AccountSettingsComponent extends Component {
   selectRoute(routeName) {
     console.log(routeName);
     // this.selected = routeName;
-    // this.router.transitionTo(routeName);
+    this.router.transitionTo(routeName);
   }
 }
