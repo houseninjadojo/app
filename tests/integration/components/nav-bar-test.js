@@ -12,7 +12,7 @@ module('Integration | Component | nav-bar', function (hooks) {
 
     await render(hbs`<NavBar />`);
 
-    assert.dom(this.element).hasText('Dashboard');
+    assert.dom(this.element).hasText('Help me with... Home Handle It History');
 
     // // Template block usage:
     // await render(hbs`

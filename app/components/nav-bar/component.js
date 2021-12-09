@@ -9,14 +9,19 @@ export default class NavBarComponent extends Component {
   /**
    * The current route selection
    */
-  @tracked selected = 'dashboard';
+  @tracked selected = 'home';
 
   isActive(routeName) {
     return this.selected === routeName ? 'active' : '';
   }
 
+  openChatModal() {
+    console.log('Open Chat');
+  }
+
   @action
   selectRoute(routeName) {
+    console.log(routeName);
     this.selected = routeName;
     this.router.transitionTo(routeName);
   }

@@ -1,0 +1,29 @@
+/* 
+    Buttons
+*/
+
+    /* Default */
+    .hn.btn {
+        width: 100%;    
+        
+        border-radius: 1px;
+        
+        box-shadow: var(--shadow-teal-1);
+        
+        font-family: Campton-Book;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+
+/* Size */
+    .hn.btn.sm {
+        height: var(--btn-sm);    
+    }
+
+    .hn.btn.solid.accent {
+        background: var(--grad-teal-500);
+        color: var(--white);
+    }

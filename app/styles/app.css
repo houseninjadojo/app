@@ -2,6 +2,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "./variables.css";
+@import "./elements.css";
+
+@import "./components/nav-bar.css";
+
 @font-face {
   font-family: Campton-Light;
   src: url(fonts/Campton-Light.otf);
@@ -23,7 +28,11 @@ html * {
 
 .background-container {
   /* Linear Gradient/Black/1000 */
-  background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000;
+  /* background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000; */
+
+  /* Temporary background color */
+  background: #F2F2F2;
+
   /* Gray Shadow - Level 3 */
   box-shadow: -1px 1px 1px rgba(0, 56, 55, 0.1), -4px 3px 6px rgba(26, 26, 26, 0.35);
   border-radius: 12px 12px 0px 0px;
