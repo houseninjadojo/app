@@ -1,25 +1,25 @@
-/* 
-    Typography 
+/*
+    Typography
 */
- .hn.view-title {    
+ .hn.view-title {
     height: 48px;
 
     font-family: var(--campton-default);
     font-size: 15px;
-    
+
     text-align: center;
-    
+
     margin-bottom: 16px;
  }
- .hn.label {    
+ .hn.label {
     font-family: var(--campton-strong);
-    font-size: 17px;        
+    font-size: 17px;
  }
- .hn.label.center {    
+ .hn.label.center {
     text-align: center;
- } 
+ }
 
-/* 
+/*
     Buttons
 */
 
@@ -30,16 +30,16 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 21px;
-    }    
+    }
 
     /* Size */
     .hn.btn.sm {
-        height: var(--btn-sm);    
+        height: var(--btn-sm);
     }
 
     .hn.btn.solid {
         width: 100%;
-        border-radius: 1px; 
+        border-radius: 1px;
     }
 
     .hn.btn.solid.accent {
@@ -48,21 +48,21 @@
 
         color: var(--white);
     }
-    
+
     .hn.btn.floating {
         background: none;
         color: var(--blue-400);
     }
 
-/* 
+/*
     Input Field
 */
     /* Base Styles */
     .hn.hn-input-field {
         display: flex;
-        flex-direction: column;        
+        flex-direction: column;
 
-        margin-bottom: 16px;            
+        margin-bottom: 16px;
     }
 
     .hn.hn-input-field .hn-input-container {
@@ -73,22 +73,22 @@
         height: 44px;
 
         margin-bottom: 8px;
-        
-        border-radius: 2px;        
+
+        border-radius: 2px;
         border-bottom: 1px solid var(--gray-400);
-        
+
         padding: 0 8px;
-        
-        font-size: 16px;        
-    }  
-    /* Base Styles */        
-        /* Label */    
-        .hn.hn-input-field .hn-input-container .hn-input-label {                
+
+        font-size: 16px;
+    }
+    /* Base Styles */
+        /* Label */
+        .hn.hn-input-field .hn-input-container .hn-input-label {
             display: flex;
-            flex-direction: row;        
+            flex-direction: row;
             align-items: center;
-            white-space: nowrap;        
-            
+            white-space: nowrap;
+
             width: 192px;
             height: 44px;
 
@@ -98,10 +98,10 @@
         .hn.hn-input-field .hn-input-container .hn.hn-select,  .hn.hn-input-field .hn-input-container .hn-input{
             width: 100%;
             height: 44px;
-            
+
             border-radius: 0;
 
-            outline: none;                
+            outline: none;
         }
 
         /* Input */
@@ -113,19 +113,19 @@
         .hn.hn-input-field .hn-input-container .hn-select {
             padding: 0px 12px;
         }
-        
+
         /* Description */
-        .hn.hn-input-field .hn-input-description {                    
+        .hn.hn-input-field .hn-input-description {
             margin-left: 8px;
-            font-size: 14px;        
+            font-size: 14px;
         }
-    
+
     /* Dark Theme */
-    
-    /* Select */ 
+
+    /* Select */
     .dark .hn.hn-select {
-        background-color: rgba(0, 0, 0, 0);        
-        
+        background-color: rgba(0, 0, 0, 0);
+
         /* Arrow */
         background:
             linear-gradient(45deg, transparent 50%, var(--gray-200) 50%),
@@ -173,7 +173,7 @@
         color: var(--orange-400);
     }
 
-    .dark .hn.hn-input-field .hn-input-label {                
+    .dark .hn.hn-input-field .hn-input-label {
         color: var(--gray-200);
     }
 
@@ -198,19 +198,19 @@
     }
 
     .dark .hn.hn-input-field.disabled .hn-input-container label {
-        color: var(--gray-500) !important; 
+        color: var(--gray-500) !important;
     }
 
     .dark .hn.hn-input-field.disabled .hn-input-container select {
-        color: var(--gray-500) !important; 
+        color: var(--gray-500) !important;
     }
 
     /* Warning */
     .dark .hn.hn-input-field.warn .hn-input-container {
         background: #FFA31A05 !important;
-        border-bottom: 1px solid var(--orange-500) !important;        
+        border-bottom: 1px solid var(--orange-500) !important;
     }
 
     .dark .hn.hn-input-field.warn .hn-input-container label {
-        color: var(--orange-400) !important; 
+        color: var(--orange-400) !important;
     }
