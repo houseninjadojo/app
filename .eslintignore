@@ -22,3 +22,6 @@ tailwind.config.js
 /.node_modules.ember-try/
 /bower.json.ember-try
 /package.json.ember-try
+
+# configs
+/config/environment.js
