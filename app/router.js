@@ -12,5 +12,5 @@ Router.map(function () {
   });
   this.route('logout');
   this.route('signup');
-  this.route('dashboard');
+  this.route('home');
 });

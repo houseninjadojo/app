@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
 
-export default class InputComponent extends Component {
-    
-}
+// eslint-disable-next-line
+export default class InputComponent extends Component {}
