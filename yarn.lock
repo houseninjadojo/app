@@ -1159,10 +1159,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-1.0.6.tgz#8d7648b14e7704e06a974293b03c36b34980c3ad"
   integrity sha512-ZDx+HNPRQZKHpWxbYEyDz34Ge4fwhiiGg2UEnA+ol+pmdvHyYxw/c8HafCEVRJutHrXcVdSNoBNAeEPkQeabrQ==
 
-"@capacitor/cli@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.3.2.tgz#3b78c735935cde30677af282ba63ed51f5f69b0e"
-  integrity sha512-LmH3DzuwNL3k995CgAs20KXjQhDWrQCQgur3M8nqIKecZk0xCoSGghht+rEK8/Gqn0XqdBGdgUgop+nep17edg==
+"@capacitor/cli@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.3.3.tgz#07a146615a9723e89879a8e4847be3e57a0cbc5d"
+  integrity sha512-dRwBnHuc6UzXfQX3nvfMR70hG59CpXumqIXNtl+bZqoGWRUafJiGSY5KJJYOqk5xslQDA2VdBLkq39+wslQGAg==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.1"
     "@ionic/utils-fs" "^3.1.5"
@@ -1181,10 +1181,10 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@^3.0.0", "@capacitor/core@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.3.2.tgz#dde52353ad5d261635ef0ec38401e70ffb9722de"
-  integrity sha512-pyI3dQdQjA1L5iEw0jkeKCogx9t5d5kIFTB5M3CJRg9Uj5MIpU2J5CRj+74A7BflvZJo8IBd6IfMJaOArRumaw==
+"@capacitor/core@^3.0.0", "@capacitor/core@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.3.3.tgz#a1868a536a0b82381c2eaeb9aeca424ffbc5bca3"
+  integrity sha512-5oN3dUxdVXSvrTvTkmKBoBh7qISi+PVrsxHyjqq7Kr573dQnm8LsZ0/24PpJsGp08lD/+nFtFzOtPODJvYLVgg==
   dependencies:
     tslib "^2.1.0"
 
@@ -5998,10 +5998,10 @@ ember-router-generator@^2.0.0:
     "@babel/traverse" "^7.4.5"
     recast "^0.18.1"
 
-ember-simple-auth@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-4.1.0.tgz#296e5e3828f694837ff7ff391d5acce1eb4aa385"
-  integrity sha512-T+b2XEHmIzWA1DVBR2dJv5EIzPgJp+QtgF8YVvAIvKn1PCYLe1GJazo3nJwaMu2uwQUWAzA858XN6u8ywIilFQ==
+ember-simple-auth@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/ember-simple-auth/-/ember-simple-auth-4.1.1.tgz#61e67af369d2654eba579e700de8a1e59d5fd172"
+  integrity sha512-OF6Fq8zEJvApnqO0n7ZHropgrKUYYSwOuXv8I0iP3EnIr7P4/1SohU+4xCWIDejU4EXkxv4HWupPYqcaSb+ywg==
   dependencies:
     base-64 "^0.1.0"
     broccoli-file-creator "^2.1.1"
