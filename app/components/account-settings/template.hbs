@@ -1,0 +1,14 @@
+<div class="settings-view dark">
+    <h1 class="hn view-title">Account Settings</h1>
+    {{!-- <ReferralCode/> --}}
+    <ul class="settings-menu">
+        {{#each this.menuItems as |item|}}
+            <li class="menu-item">
+                <button type="button" {{on "click" (fn this.selectRoute item.name) }}>
+                    <span class="menu-item-label">{{item.label}}</span>
+                    <img src="assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                </button>
+            </li>
+        {{/each}}
+    </ul>
+</div>

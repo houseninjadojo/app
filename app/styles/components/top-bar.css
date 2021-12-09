@@ -1,0 +1,45 @@
+@import "../variables.css";
+
+.hn.top-bar {
+  background: #000000E5;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+
+  padding: 12px 16px;
+
+  backdrop-filter: blur(4px);
+}
+
+.hn.top-bar .action-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hn.top-bar .action-container .logo {
+  /* width: 32px; */
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hn.top-bar .action-container .action {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*Hex Equivalent: var(--gray-200) */
+  filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%);
+}
+
+.hn.top-bar .action-container .action.right {
+  visibility: hidden;  
+}
+

@@ -1,8 +1,19 @@
 {{page-title "House Ninja"}}
 
 <div class="container background-container h-screen">
-  <TopBar></TopBar>
-  <LinkTo @route="login">Login</LinkTo>
-  <LinkTo @route="logout">Logout</LinkTo>
+  {{!-- <LinkTo @route="login">Login</LinkTo>
+  <LinkTo @route="logout">Logout</LinkTo> --}}
   {{outlet}}
+
+  {{!-- <Modal::Shelf>
+    <AccountSettings/>
+  </Modal::Shelf>
+
+  <Modal::Tray>
+    <AccountSettings::Contact/>
+    <AccountSettings::Payment/>
+    <AccountSettings::Security/>
+    <AccountSettings::Property/>
+  </Modal::Tray> --}}
+
 </div>

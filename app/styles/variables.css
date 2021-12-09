@@ -1,11 +1,16 @@
 :root {
-    /* 
-        Size        
+    /*
+        Typography
+    */
+        --campton-default: Campton-Book;
+        --campton-strong: Campton-Medium;
+    /*
+        Size
     */
 
         --btn-sm: 36px;
 
-    /* 
+    /*
         Colors
     */
 
@@ -14,7 +19,7 @@
 
         /* Black */
         --black: #000;
-        
+
         /* Gray */
         --gray-10: #FCFCFC;
         --gray-25: #F7F7F7;
@@ -31,7 +36,7 @@
         --gray-850: #262626;
         --gray-900: #1A1A1A;
         --gray-950: #0F0F0F;
-        
+
         /* Teal */
         --teal-10: #F5FFFF;
         --teal-100: #CFFCFB;
@@ -44,22 +49,25 @@
         --teal-800: #001F1E;
 
         /* Blue */
+        --blue-400: #0086E6;
         /* Green */
         /* Red */
         /* Orange */
+        --orange-400: #FFA31A;
 
-    /* 
-        Gradients 
+    /*
+        Gradients
     */
 
         --grad-teal-500: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%),
         linear-gradient(0deg, #00C0BB, #00C0BB);
-    
-    /* 
-        Shadows 
+        --grad-black-1000: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000;
+
+    /*
+        Shadows
     */
         --shadow-teal-1: -0.5px 0.5px 0.5px rgba(0, 82, 79, 0.4), -1px 1px 1px rgba(0, 82, 79, 0.3);
         --shadow-teal-2: -1px 1px 1px rgba(0, 82, 79, 0.2), -2px 2px 4px rgba(0, 82, 79, 0.4);
-        --shadow-teal-3: -1px 1px 1px rgba(0, 82, 79, 0.1), -4px 3px 6px rgba(0, 82, 79, 0.35);    
-        
+        --shadow-teal-3: -1px 1px 1px rgba(0, 82, 79, 0.1), -4px 3px 6px rgba(0, 82, 79, 0.35);
+
 }

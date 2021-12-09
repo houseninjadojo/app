@@ -5,7 +5,10 @@
 @import "./variables.css";
 @import "./elements.css";
 
+@import "./components/modal.css";
+@import "./components/top-bar.css";
 @import "./components/nav-bar.css";
+@import "./components/account-settings.css";
 
 @font-face {
   font-family: Campton-Light;
@@ -23,7 +26,11 @@
 }
 
 html * {
-  font-family: Campton-Book;
+  font-family: var(--campton-default);
+}
+
+html .dark * {
+  color: var(--gray-100);
 }
 
 .background-container {

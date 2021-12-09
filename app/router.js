@@ -12,5 +12,13 @@ Router.map(function () {
   });
   this.route('logout');
   this.route('signup');
-  this.route('dashboard');
+  this.route('home');
+  this.route('settings', function () {
+    this.route('contact');
+    this.route('payment');
+    this.route('security');
+    this.route('property');
+  });
+  this.route('contact-us');
+  this.route('faq');
 });
