@@ -8,41 +8,41 @@ export default class AccountSettingsComponent extends Component {
   /**
    * The current route selection
    */
-    
+
   menuItems = [
     {
-        label: 'Home',
-        name: 'home',
+      label: 'Home',
+      name: 'home',
     },
     {
-        label: 'Contact Information',
-        name: 'contact',
+      label: 'Contact Information',
+      name: 'contact',
     },
     {
-        label: 'Payment Method',
-        name: 'payment',
+      label: 'Payment Method',
+      name: 'payment',
     },
     {
-        label: 'Security Settings',
-        name: 'security',
-    },
-    {        
-        label: 'Property Details',
-        name: 'property',
+      label: 'Security Settings',
+      name: 'security',
     },
     {
-        label: 'Contact Us',
-        name: 'contact',
+      label: 'Property Details',
+      name: 'property',
     },
     {
-        label: 'FAQ',
-        name: 'faq',
+      label: 'Contact Us',
+      name: 'contact',
     },
     {
-        label: 'Logout',
-        name: 'logout',
+      label: 'FAQ',
+      name: 'faq',
     },
-  ];  
+    {
+      label: 'Logout',
+      name: 'logout',
+    },
+  ];
 
   @action
   selectRoute(routeName) {

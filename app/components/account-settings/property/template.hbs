@@ -1,10 +1,10 @@
 <div class="settings-view dark">
-    <h1 class="hn view-title">Edit Property Address</h1>       
+    <h1 class="hn view-title">Edit Property Address</h1>
 
     {{#each this.addressFields as |field|}}
         {{#if field.isSelect}}
             <Primitive::Select @options={{field.options}} @label={{field.label}} @required={{true}} @warn={{false}} @disabled={{field.disabled}}/>
-        {{else}}            
+        {{else}}
             <Primitive::Input @field={{field}} @label={{field.label}} @required={{field}} @warn={{false}} @disabled={{field.disabled}}/>
         {{/if}}
     {{/each}}

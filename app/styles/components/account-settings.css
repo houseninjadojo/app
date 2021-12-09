@@ -1,11 +1,11 @@
 .settings-view {
     width: 100%;
-    height: 100%;        
-    
+    height: 100%;
+
     background: none;
 
-    padding: 16px;    
-    
+    padding: 16px;
+
     overflow-y: auto;
 }
 
@@ -18,16 +18,16 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        
+
         width: 100%;
-        height: 64px;        
+        height: 64px;
     }
     .settings-menu .menu-item:not(:last-child) {
         border-bottom: 1px solid var(--gray-100);
     }
-        .settings-menu .menu-item button span.menu-item-label {            
+        .settings-menu .menu-item button span.menu-item-label {
             font-family: var(--campton-strong);
-            /* Hex Equivalent: var(--gray-100) */            
+            /* Hex Equivalent: var(--gray-100) */
         }
 
         .dark .settings-menu .menu-item button span.menu-item-label {
@@ -39,7 +39,7 @@
             height: 21px;
         }
 
-.hn.pw-match {    
+.hn.pw-match {
     color: var(--gray-600);
     text-decoration: line-through;
 }

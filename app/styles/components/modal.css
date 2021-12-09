@@ -1,23 +1,23 @@
 .hn.modal {
     width: 100vw;
-    height: 100vh;    
+    height: 100vh;
     background: none;
-    
+
     padding: 0;
-    
+
     position: fixed;
     top:0; bottom: 0;
     left: 0; right: 0;
-    
+
     /* overflow-y: auto; */
 }
 
 .hn.modal .overlay {
-    background: rgba(255,255,255, .25);    
+    background: rgba(255,255,255, .25);
     position: fixed;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    
+
     /* Note: backdrop-filter has minimal browser support */
     backdrop-filter: blur(4px);
 }
@@ -28,29 +28,29 @@
     justify-content: start;
 }
 
-.hn.modal .container {    
+.hn.modal .container {
     width: 100%;
     padding: 0;
 }
 
 .hn.modal .container.tray {
     height: 88vh;
-    /* background: var(--teal-500); */        
+    /* background: var(--teal-500); */
 
     border-radius: 40px 40px 0px 0px;
 
     position: fixed;
-    bottom: 0;    
+    bottom: 0;
 }
 
 .hn.modal .container.shelf {
     height: 100%;
-    
-    /* background: var(--teal-500); */        
+
+    /* background: var(--teal-500); */
 
     position: absolute;
     top: 0; bottom: 0;
-    left: 0; right: 0;    
+    left: 0; right: 0;
 }
 
 .hn.modal .container.dark {
@@ -58,36 +58,36 @@
 }
 
 .hn.modal .container .head, .hn.modal .container .body, .hn.modal .container .footer {
-    width: 100%;    
+    width: 100%;
 }
 
 .hn.modal .container .head {
-    height: 88px;    
+    height: 88px;
     padding: 0 16px;
 }
 
-.hn.modal .shelf .head .actions {    
-    height: 100%;    
+.hn.modal .shelf .head .actions {
+    height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;    
+    align-items: flex-end;
 }
 
-.hn.modal .tray .head .actions {    
-    height: 100%;    
+.hn.modal .tray .head .actions {
+    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
 
 .hn.modal .container .head .actions .swipe-bar {
     height: 4px;
-    width: 100px;    
+    width: 100px;
     border-radius: 4px;
     background: #999999;
 }
 
-.hn.modal .container .body {    
+.hn.modal .container .body {
     height: 100%;
     overflow-y: scroll;
 }

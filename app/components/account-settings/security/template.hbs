@@ -6,7 +6,7 @@
     {{/each}}
 
     <p class="hn label center mt-16 mb-4">Password Requirements</p>
-    <ul>       
+    <ul>
         <AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{false}} />
         <AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{false}}/>
         <AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{false}}/>

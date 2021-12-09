@@ -2,9 +2,9 @@
     <div class="hn-input-container">
         <label class="hn-input-label" for={{@field.id}}>{{@label}}</label>
         <select class="hn hn-select {{if @warn 'warn' ''}}" name={{@field.id}} id={{@field.id}} placeholder="Select" required={{@required}} disabled={{@disabled}}>
-            {{#each @options as |o|}}            
+            {{#each @options as |o|}}
                 <option value={{o.value}} selected={{o.selected}}>{{o.label}}</option>
-            {{/each}}            
+            {{/each}}
         </select>
     </div>
     {{#if @field.description}}
