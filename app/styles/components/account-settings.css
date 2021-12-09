@@ -1,45 +1,45 @@
 .settings-view {
-    width: 100%;
-    height: 100%;
-
-    background: none;
-
-    padding: 16px;
-
-    overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding: 16px;
+  overflow-y: auto;
 }
 
 .settings-view.dark .settings-menu {
-    /* Hex Equivalent: var(--gray-100) */
-    filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
+  /* Hex Equivalent: var(--gray-100) */
+  filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
 }
-    .settings-menu .menu-item button {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
 
-        width: 100%;
-        height: 64px;
-    }
-    .settings-menu .menu-item:not(:last-child) {
-        border-bottom: 1px solid var(--gray-100);
-    }
-        .settings-menu .menu-item button span.menu-item-label {
-            font-family: var(--campton-strong);
-            /* Hex Equivalent: var(--gray-100) */
-        }
+.settings-menu .menu-item button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+}
 
-        .dark .settings-menu .menu-item button span.menu-item-label {
-            filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
-        }
+.settings-menu .menu-item:not(:last-child) {
+  border-bottom: 1px solid var(--gray-100);
+}
 
-        .settings-menu .menu-item button img.menu-item-icon {
-            width: 21px;
-            height: 21px;
-        }
+.settings-menu .menu-item button span.menu-item-label {
+  font-family: var(--campton-strong);
+
+  /* Hex Equivalent: var(--gray-100) */
+}
+
+.dark .settings-menu .menu-item button span.menu-item-label {
+  filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
+}
+
+.settings-menu .menu-item button img.menu-item-icon {
+  width: 21px;
+  height: 21px;
+}
 
 .hn.pw-match {
-    color: var(--gray-600);
-    text-decoration: line-through;
+  color: var(--gray-600);
+  text-decoration: line-through;
 }

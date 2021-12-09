@@ -1,10 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 @import "./variables.css";
 @import "./elements.css";
-
 @import "./components/modal.css";
 @import "./components/top-bar.css";
 @import "./components/nav-bar.css";
@@ -12,17 +10,17 @@
 
 @font-face {
   font-family: Campton-Light;
-  src: url(fonts/Campton-Light.otf);
+  src: url("fonts/Campton-Light.otf");
 }
 
 @font-face {
   font-family: Campton-Medium;
-  src: url(fonts/Campton-Medium.otf);
+  src: url("fonts/Campton-Medium.otf");
 }
 
 @font-face {
   font-family: Campton-Book;
-  src: url(fonts/Campton-Book.otf);
+  src: url("fonts/Campton-Book.otf");
 }
 
 html * {
@@ -35,14 +33,15 @@ html .dark * {
 
 .background-container {
   /* Linear Gradient/Black/1000 */
+
   /* background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000; */
 
   /* Temporary background color */
-  background: #F2F2F2;
+  background: #f2f2f2;
 
   /* Gray Shadow - Level 3 */
-  box-shadow: -1px 1px 1px rgba(0, 56, 55, 0.1), -4px 3px 6px rgba(26, 26, 26, 0.35);
-  border-radius: 12px 12px 0px 0px;
+  box-shadow: -1px 1px 1px rgb(0 56 55 / 10%), -4px 3px 6px rgb(26 26 26 / 35%);
+  border-radius: 12px 12px 0 0;
 }
 
 /* .top-bar {
@@ -52,14 +51,15 @@ html .dark * {
 .onboarding .vertical-logo {
   position: absolute;
   display: block;
+
   /* width: 326px; */
   width: 50%;
   height: 160px;
   margin-left: auto;
   margin-right: auto;
   top: 300px;
-  left: 0px;
-  right: 0px;
+  left: 0;
+  right: 0;
 
   /* background: url(images/logo.color.vertical.svg); */
   border-radius: 4px;
