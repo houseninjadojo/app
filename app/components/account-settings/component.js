@@ -16,19 +16,19 @@ export default class AccountSettingsComponent extends Component {
     },
     {
       label: 'Contact Information',
-      name: 'settings/contact',
+      name: 'settings.contact',
     },
     {
       label: 'Payment Method',
-      name: 'settings/payment',
+      name: 'settings.payment',
     },
     {
       label: 'Security Settings',
-      name: 'settings/security',
+      name: 'settings.security',
     },
     {
       label: 'Property Details',
-      name: 'settings/property',
+      name: 'settings.property',
     },
     {
       label: 'Contact Us',
