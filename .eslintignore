@@ -25,3 +25,4 @@ tailwind.config.js
 
 # configs
 /config/environment.js
+ember-cli-build.js
