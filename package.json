@@ -18,6 +18,8 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:css": "stylelint 'app/styles/**/*.css'",
+    "lint:css:fix": "stylelint 'app/styles/**/*.css' --fix",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
@@ -76,6 +78,8 @@
     "prettier": "^2.5.1",
     "qunit": "^2.16.0",
     "qunit-dom": "^2.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-standard": "^24.0.0",
     "tailwindcss": "^3.0.0",
     "webpack": "5",
     "whatwg-url": "11.0.0"
