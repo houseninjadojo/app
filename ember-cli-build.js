@@ -14,16 +14,11 @@
 const TailwindPlugin = {
   module: require('tailwindcss'),
   options: {
-    // eslint-disable-next-line
-    purge: [
-      './src/**/*.html',
-      './src/**/*.js',
+    content: [
+      './app/**/*.{hbs}',
+      './app/index.html',
     ],
-    darkMode: false, // or 'media' or 'class'
     theme: {
-      extend: {},
-    },
-    variants: {
       extend: {},
     },
     plugins: [],
@@ -58,7 +53,11 @@ module.exports = function (defaults) {
     postcssOptions: {
       compile: {
         enabled: true,
-        plugins: [PostCSSImportPlugin, AutoprefixerPlugin, TailwindPlugin],
+        plugins: [
+          PostCSSImportPlugin,
+          AutoprefixerPlugin,
+          TailwindPlugin
+        ],
       },
     },
     sourcemaps: {
