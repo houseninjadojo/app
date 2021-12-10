@@ -1198,10 +1198,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-1.0.5.tgz#74a87219ca0b815c5093bcce768868195b2a2e1a"
   integrity sha512-NQNSCgSu6vXsStt+rcJlaLUGYSFH3zow3pAJR5T75uoSN1WhLV7M2FhsjHdWbk21mhokzF1b7foKLvTDfgH2mg==
 
-"@capacitor/ios@^3.0.0", "@capacitor/ios@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.3.2.tgz#18828c3ae88f385982d4c8c84e2f0d35ae4a7cb2"
-  integrity sha512-qXbWo9zTtinIYDxKsLdkXXuZD8H+wlJII3+ZF9QzH+38IYyd+sohOG3NLC8EaX7GRtwCymd+mGotoN420SfQ4Q==
+"@capacitor/ios@^3.0.0", "@capacitor/ios@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.3.3.tgz#c5e3342187b35b2dcef13054461f9691f10351a0"
+  integrity sha512-SQ35AaHUIJjjEX22wwdoN1sUZ3uMwG0HrZ0izMeBJBDE+vmNI78SP9wMqJxKuCaaX4oFKrxCtf/fQZGVTSxpCQ==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
