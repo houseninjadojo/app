@@ -17,4 +17,9 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: yarn test:ember --reporter dot
+      - run: mkdir -p tmp
+      - run: yarn test:ember --reporter dot -o tmp/app
+      - uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: tmp/app/
