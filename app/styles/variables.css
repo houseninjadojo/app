@@ -1,5 +1,10 @@
 :root {
   /*
+    Offsets
+  */
+  --top-nav-bars-offset: 128px;
+
+  /*
         Typography
     */
   --campton-default: campton-book;
