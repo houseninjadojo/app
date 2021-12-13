@@ -1,0 +1,12 @@
+.top-bar,
+.nav-bar {
+  opacity: 0.5;
+}
+
+.hn.view {
+  width: 100%;
+  height: 100%;
+  background: red;
+  padding: calc(var(--top-nav-bars-offset) + 16px) 16px;
+  overflow-y: auto;
+}

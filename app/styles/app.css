@@ -7,6 +7,7 @@
 @import "./components/top-bar.css";
 @import "./components/nav-bar.css";
 @import "./components/account-settings.css";
+@import "./components/view.css";
 
 @font-face {
   font-family: Campton-Light;
