@@ -31,8 +31,7 @@ export default function () {
   // this.patch('/homes/:id');
   // this.del('/homes/:id');
   this.resource('homes', { path: '/homes' });
-  this.get('/homes/addresses/:id');
-  this.get('/homes/addresses');
+  this.get('/homes/id:/address');
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
