@@ -9,7 +9,7 @@ export default class NavBarComponent extends Component {
    * The current route selection
    */
   get currentRoute() {
-    return this.router.currentRouteName;
+    return this.router.currentRouteName || '';
   }
 
   get isHomeActive() {
