@@ -16,7 +16,7 @@ export default class NavBarComponent extends Component {
     return this.currentRoute.includes('home') ? 'active' : '';
   }
   get isHandleItActive() {
-    return this.router.currentRouteName.includes('handle-it') ? 'active' : '';
+    return this.currentRoute.includes('handle-it') ? 'active' : '';
   }
   get isWorkHistoryActive() {
     return this.currentRoute.includes('work-history') ? 'active' : '';
