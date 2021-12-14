@@ -12,4 +12,10 @@ export default function (server) {
     firstName: 'Miles',
     lastName: 'Zimmerman',
   });
+  server.create('user', {
+    id: '22d8949b-11da-4d13-b4f2-574bede56e0f',
+    email: 'achilles@houseninj.co',
+    firstName: 'Achilles',
+    lastName: 'Imperial',
+  });
 }
