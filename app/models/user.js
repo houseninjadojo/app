@@ -6,6 +6,7 @@ export default class UserModel extends Model {
   @belongsTo('home') home;
 
   @attr('string') email;
-  @attr('string') name;
+  @attr('string') firstName;
+  @attr('string') lastName;
   @attr('string') phoneNumber;
 }

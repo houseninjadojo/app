@@ -25,12 +25,8 @@ export default function () {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  // this.get('/homes');
-  // this.post('/homes');
-  // this.get('/homes/:id');
-  // this.patch('/homes/:id');
-  // this.del('/homes/:id');
   this.resource('homes', { path: '/homes' });
+  this.resource('users', { path: '/users' });
   this.get('/homes/id:/address');
 
   // Auth
