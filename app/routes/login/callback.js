@@ -6,6 +6,7 @@ import { getOwner } from '@ember/application';
 import { setUser } from '@sentry/capacitor';
 
 export default class LoginCallbackRoute extends Route {
+  @service current;
   @service session;
   @service router;
   @service analytics;
@@ -35,6 +36,7 @@ export default class LoginCallbackRoute extends Route {
       );
       await pkce.clearStash('login');
       await this.identifyAndTrackUser();
+      await this.current.load();
       this.router.transitionTo('index');
     }
   }

@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
 
 export default class ApplicationRoute extends Route {
+  @service current;
   @service session;
   @service router;
   @service analytics;
@@ -23,6 +24,7 @@ export default class ApplicationRoute extends Route {
   async beforeModel() {
     await this.session.setup();
     await this.analytics.setup();
+    await this.current.load();
 
     await this.analytics.track('application_started');
 

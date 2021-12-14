@@ -5,5 +5,11 @@ export default function (server) {
   */
   // server.createList('post', 10);
 
-  server.createList('property', 1);
+  // server.createList('property', 1);
+  server.create('user', {
+    id: '01ce0d37-cf98-4f3d-9810-2f5781085d5f',
+    email: 'miles@houseninja.co',
+    firstName: 'Miles',
+    lastName: 'Zimmerman',
+  });
 }
