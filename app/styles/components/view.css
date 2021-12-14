@@ -1,16 +1,13 @@
 .top-bar,
 .nav-bar {
-  /*temporary style*/
+  /* temporary style */
   opacity: 0.5;
 }
 
-
 .hn.view {
-  /* temp background color */
-  background: red;
-  
   width: 100%;
   height: 100%;
+  background: none;
   padding: calc(var(--top-nav-bars-offset) + 16px) 16px;
   overflow-y: auto;
 }
