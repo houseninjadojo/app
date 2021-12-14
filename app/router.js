@@ -21,4 +21,6 @@ Router.map(function () {
   });
   this.route('contact-us');
   this.route('faq');
+  this.route('work-history');
+  this.route('handle-it');
 });
