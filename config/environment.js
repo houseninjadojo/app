@@ -22,6 +22,7 @@ module.exports = function (environment) {
       // when it is created
     },
 
+    apiHost: 'https://api.dev.houseninja.co',
     appHost: 'https://localhost:4200',
     appScheme: 'co.houseninja.app',
 
@@ -71,7 +72,6 @@ module.exports = function (environment) {
   };
 
   if (environment === 'development') {
-    ENV.apiHost = 'https://api.dev.houseninja.co';
     ENV.auth.audience = 'http://localhost:3000';
     ENV.auth.connection = 'dev';
 

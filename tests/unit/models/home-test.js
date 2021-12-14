@@ -8,12 +8,9 @@ module('Unit | Model | home', function (hooks) {
 
   // Replace this with your real tests.
   test('it exists', function (assert) {
-    let serverHome = this.server.create('home');
-
+    let record = this.server.create('home');
     let store = this.owner.lookup('service:store');
-    // let model = store.createRecord('home', {});
-    let model = store.findRecord('home', serverHome.id);
-    console.log(model);
+    let model = store.findRecord('home', record.id);
     assert.ok(model);
   });
 });
