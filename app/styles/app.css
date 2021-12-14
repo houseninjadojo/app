@@ -8,6 +8,8 @@
 @import "./components/nav-bar.css";
 @import "./components/account-settings.css";
 @import "./components/view.css";
+@import "./components/home.css";
+@import "./components/section.css";
 
 @font-face {
   font-family: Campton-Light;
@@ -38,7 +40,7 @@ html .dark * {
   /* background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000; */
 
   /* Temporary background color */
-  background: #f2f2f2;
+  background: var(--gray-25);
 
   /* Gray Shadow - Level 3 */
   box-shadow: -1px 1px 1px rgb(0 56 55 / 10%), -4px 3px 6px rgb(26 26 26 / 35%);
