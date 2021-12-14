@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default class HomeModel extends Model {
-  @belongsTo('home/address', { async: false, inverse: 'home' }) address;
+export default class PropertyModel extends Model {
+  @belongsTo('property/address', { async: false, inverse: 'property' }) address;
   @belongsTo('user') user;
 
   @attr('boolean') default;

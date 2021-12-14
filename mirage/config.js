@@ -25,9 +25,9 @@ export default function () {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  this.resource('homes', { path: '/homes' });
-  this.resource('users', { path: '/users' });
-  this.get('/homes/id:/address');
+  this.resource('property', { path: '/properties' });
+  this.resource('user', { path: '/users' });
+  this.get('/properties/id:/address');
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
