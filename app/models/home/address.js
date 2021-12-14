@@ -7,5 +7,5 @@ export default class HomeAddressModel extends Model {
   @attr('string') line2;
   @attr('string') city;
   @attr('string') state;
-  @attr('string') postal_code;
+  @attr('string') postalCode;
 }
