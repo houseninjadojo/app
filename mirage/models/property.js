@@ -1,5 +1,6 @@
 import { Model, belongsTo } from 'ember-cli-mirage';
 
 export default Model.extend({
-  home: belongsTo(),
+  address: belongsTo('property/address'),
+  user: belongsTo('user'),
 });

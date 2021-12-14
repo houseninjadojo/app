@@ -5,5 +5,5 @@ export default function (server) {
   */
   // server.createList('post', 10);
 
-  server.createList('home', 1);
+  server.createList('property', 1);
 }
