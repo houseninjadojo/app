@@ -8,6 +8,8 @@ export default class IndexRoute extends Route {
   beforeModel() {
     if (this.session.isAuthenticated) {
       this.router.transitionTo('home');
+    } else {
+      this.router.transitionTo('signup');
     }
   }
 }

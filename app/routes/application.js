@@ -24,7 +24,7 @@ export default class ApplicationRoute extends Route {
   async beforeModel() {
     await this.session.setup();
     await this.analytics.setup();
-    await this.current.load();
+    // await this.current.load();
 
     await this.analytics.track('application_started');
 
