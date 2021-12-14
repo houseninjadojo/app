@@ -18,5 +18,5 @@ export default Factory.extend({
 
   phoneNumber() {
     return faker.phone.phoneNumber();
-  }
+  },
 });
