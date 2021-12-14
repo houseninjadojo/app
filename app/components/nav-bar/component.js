@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { readOnly } from '@ember/object/computed';
 
 export default class NavBarComponent extends Component {
   @service router;
@@ -9,10 +10,18 @@ export default class NavBarComponent extends Component {
   /**
    * The current route selection
    */
-  @tracked selected = 'home';
+  get currentRoute() {
+    return this.router.currentRouteName;
+  }
 
-  isActive(routeName) {
-    return this.selected === routeName ? 'active' : '';
+  get isHomeActive() {
+    return this.currentRoute.includes('home') ? 'active' : '';
+  }
+  get isHandleItActive() {
+    return this.router.currentRouteName.includes('handle-it') ? 'active' : '';
+  }
+  get isWorkHistoryActive() {
+    return this.currentRoute.includes('work-history') ? 'active' : '';
   }
 
   openChatModal() {
