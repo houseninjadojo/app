@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
 
 export default class NavBarComponent extends Component {
   @service router;
@@ -30,8 +28,6 @@ export default class NavBarComponent extends Component {
 
   @action
   selectRoute(routeName) {
-    console.log(routeName);
-    this.selected = routeName;
     this.router.transitionTo(routeName);
   }
 }
