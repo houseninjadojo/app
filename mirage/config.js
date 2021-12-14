@@ -27,7 +27,6 @@ export default function () {
 
   this.resource('property', { path: '/properties' });
   this.resource('user', { path: '/users' });
-  this.get('/properties/id:/address');
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
