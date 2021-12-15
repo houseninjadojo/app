@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 const baseURI = 'assets/images/common-requests';
 
-export default class CommonRequestsComponent extends Component {  
+export default class CommonRequestsComponent extends Component {
   commonRequests = [
     {
       caption: 'Request Plumbing Service',
@@ -38,7 +38,7 @@ export default class CommonRequestsComponent extends Component {
       caption: 'Request GFCI Outlet Fix',
       imgURI: `${baseURI}/clint-patterson-exfrR9KkzlE-unsplash.jpg`,
       defaultHNChatMessage: '',
-    },  
+    },
     {
       caption: 'Request Painting',
       imgURI: `${baseURI}/theme-photos-Cl-OpYWFFm0-unsplash.jpg`,
@@ -59,5 +59,5 @@ export default class CommonRequestsComponent extends Component {
       imgURI: `${baseURI}/vlado-paunovic-u1Q3Aem_TWc-unsplash.jpg`,
       defaultHNChatMessage: '',
     },
-  ]
+  ];
 }

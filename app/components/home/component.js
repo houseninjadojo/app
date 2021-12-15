@@ -3,13 +3,13 @@ import Component from '@glimmer/component';
 export default class HomeContentComponent extends Component {
   user = {
     firstName: 'Roycroft',
-  }
+  };
 
   property = {
     address: {
       street1: '55 Austin Way',
-    }
-  }
+    },
+  };
 
   get getSalutation() {
     const myDate = new Date();
@@ -18,11 +18,11 @@ export default class HomeContentComponent extends Component {
     let greet;
 
     if (hrs < 12)
-        greet = 'Good Morning';
+      greet = 'Good Morning';
     else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon';
+      greet = 'Good Afternoon';
     else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening';
+      greet = 'Good Evening';
 
     return `${greet}, ${this.user.firstName}!`;
   }
