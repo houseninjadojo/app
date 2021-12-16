@@ -1,0 +1,16 @@
+<div class="hn tabbed-content">
+  <div class="tab-container">
+    <ul class="tab-list">
+      {{#each @tabs as |tab|}}
+        <li>
+          <button type="button" class="tab {{if tab.active 'active'}}">
+            {{tab.label}}
+          </button>          
+        </li>
+      {{/each}}
+    </ul>
+  </div> 
+  <div class="content">
+    {{yield}}
+  </div> 
+</div>
