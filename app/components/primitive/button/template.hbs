@@ -1,0 +1,13 @@
+{{!-- 
+    OPTIONS
+    Size: sm, md, lg
+    Variant: solid, floating
+    Semantic: primary, accent
+ --}}
+<button 
+    class="hn btn {{@size}} {{@variant}} {{@semantic}}" 
+    type={{@type}}    
+    ...attributes
+>
+    {{yield}}
+</button>
