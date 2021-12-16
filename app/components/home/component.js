@@ -1,15 +1,14 @@
 import Component from '@glimmer/component';
+@service current;
 
 export default class HomeContentComponent extends Component {
-  user = {
-    firstName: 'Roycroft',
-  };
+  get user() {
+    return this.current.user;
+  }
 
-  property = {
-    address: {
-      street1: '55 Austin Way',
-    },
-  };
+  get property() {
+    return this.current.property;
+  }
 
   get getSalutation() {
     const myDate = new Date();
@@ -28,6 +27,6 @@ export default class HomeContentComponent extends Component {
   }
 
   get getPrompt() {
-    return `What can we help you with at ${this.property.address.street1}?`;
+    return `What can we help you with at ${this.property.line1}?`;
   }
 }
