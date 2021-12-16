@@ -1,0 +1,10 @@
+<div class="hn service-activity">
+    <Primitive::TabbedContent @tabs={{this.tabs}}>        
+        {{#if this.userHasUpcomingService}}
+        {{!-- {{#if false}} --}}
+            <HouseNinja::ServiceActivity::ServiceActivityList @serviceRecords={{this.serviceRecords}} />
+        {{else}}                    
+            <HouseNinja::ServiceActivity::NoUpcomingService />
+        {{/if}}
+    </Primitive::TabbedContent>
+</div>

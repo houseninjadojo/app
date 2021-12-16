@@ -2,10 +2,6 @@
   width: 100%;
 }
 
-.hn.service-activity .filled {}
-
-.hn.service-activity .filled ul.service-activity-list {}
-
 .hn.service-activity .filled ul.service-activity-list li .record {
   display: flex;
   flex-direction: column;
