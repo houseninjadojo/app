@@ -66,8 +66,8 @@
   --orange-400: #ffa31a;
 
   /*
-        Gradients
-    */
+      Gradients
+  */
 
   --grad-teal-500:
     linear-gradient(206.57deg, rgb(255 255 255 / 20%) 0%, rgb(0 0 0 / 0%) 83.33%),
@@ -75,8 +75,8 @@
   --grad-black-1000: linear-gradient(206.57deg, rgb(255 255 255 / 20%) 0%, rgb(0 0 0 / 0%) 83.33%), #000;
 
   /*
-        Shadows
-    */
+    Shadows
+  */
   --shadow-teal-1: -0.5px 0.5px 0.5px rgb(0 82 79 / 40%), -1px 1px 1px rgb(0 82 79 / 30%);
   --shadow-teal-2: -1px 1px 1px rgb(0 82 79 / 20%), -2px 2px 4px rgb(0 82 79 / 40%);
   --shadow-teal-3: -1px 1px 1px rgb(0 82 79 / 10%), -4px 3px 6px rgb(0 82 79 / 35%);
