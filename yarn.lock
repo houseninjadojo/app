@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@awesome-cordova-plugins/mixpanel@^5.37.1":
-  version "5.37.1"
-  resolved "https://registry.npmjs.org/@awesome-cordova-plugins/mixpanel/-/mixpanel-5.37.1.tgz"
-  integrity sha512-zdrP9WjEm+K0miMMrzYd1jyaGWvZZfMnEJkvojuBL3di0Jn6lfTAhKj/c0F+rg53R7K/4MQdY/zs6ACSOGL98w==
+"@awesome-cordova-plugins/mixpanel@^5.37.2":
+  version "5.37.2"
+  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/mixpanel/-/mixpanel-5.37.2.tgz#7a4e43f873d82f4ae66004b0458b6b9cf233a4b6"
+  integrity sha512-SY0175PBlOmaOQp3dUP8wni2Z+DZRg21jE2OqCQFoiOoR4n2noZzLqH+QScIDG19s9wtjuJr2ugIGnRhdjw4Nw==
   dependencies:
     "@types/cordova" latest
 
