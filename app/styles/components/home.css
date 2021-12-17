@@ -1,0 +1,89 @@
+.home-content {
+  width: 100%;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  color: var(--gray-900);
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.home-content .greeting .salutation {
+  font-family: var(--campton-strong);
+  font-size: 22px;
+  text-align: center;
+}
+
+.home-content .greeting .prompt {
+  font-family: var(--campton-default);
+  font-size: 17px;
+  text-align: center;
+}
+
+.home-content .hn.line {
+  margin: 16px 0;
+  border: 0.5px solid var(--gray-200);
+}
+
+ul.common-request-list {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  padding: 8px 0;
+}
+
+.common-request-list li.common-request {
+  flex: 0 1 calc(50%);
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.common-request-list .common-request .image-mask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 150 / 80;
+  margin-bottom: 4px;
+  border-radius: 2px;
+}
+
+.common-request-list .common-request .caption {
+  font-size: 14px;
+  text-align: left;
+  color: var(--blue-400);
+}
+
+.section .body.home-care-tip-section {
+  min-height: 300px;
+  background-image: url("images/marcus-urbenz-Gu62ldgRZJo-unsplash.jpg");
+  background-size: cover;
+  padding: 16px;
+}
+
+.home-care-tip {
+  background-color: rgb(255 255 255 / 80%);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 2px;
+}
+
+.home-care-tip .heading {
+  font-family: var(--campton-strong);
+  font-size: 20px;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.home-care-tip .description {
+  font-size: 17px;
+  margin: 16px 0;
+}
