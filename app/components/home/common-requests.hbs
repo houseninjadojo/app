@@ -1,0 +1,12 @@
+<ul class="common-request-list">
+    {{#each this.commonRequests as |request|}}
+        <li class="common-request">
+           <button type="button">
+               <div class="image-mask">
+                   <img src={{request.imgURI}} alt={{request.caption}}/>
+               </div>
+               <p class="caption">{{request.caption}}</p>
+           </button> 
+        </li>
+    {{/each}}
+</ul>

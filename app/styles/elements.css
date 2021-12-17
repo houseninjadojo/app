@@ -36,9 +36,23 @@
   height: var(--btn-sm);
 }
 
+.hn.btn.md {
+  height: var(--btn-md);
+}
+
+.hn.btn.lg {
+  height: var(--btn-lg);
+}
+
 .hn.btn.solid {
   width: 100%;
   border-radius: 1px;
+}
+
+.hn.btn.solid.primary {
+  background: var(--grad-black-1000);
+  box-shadow: var(--shadow-gray-1);
+  color: var(--white);
 }
 
 .hn.btn.solid.accent {
