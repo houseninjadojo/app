@@ -12,7 +12,9 @@
             {{yield}}
         </div>
         <div class="footer">
-            <button class="hn btn solid accent" type="button" {{!-- {{on "click" (fn this.openChatModal)}} --}}>Save</button>
+            <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" @disabled={{@formIsNotValid}}>
+                Save
+            </Primitive::Button>
         </div>
     </div>
 </div>
