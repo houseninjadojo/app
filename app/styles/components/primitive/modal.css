@@ -37,20 +37,18 @@
 }
 
 .hn.modal .container.tray {
-  height: 88vh;
+  /* height: 88vh;   */
 
-  /* background: var(--teal-500); */
+  /* border-radius: 40px 40px 0 0; */
 
-  border-radius: 40px 40px 0 0;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+
+  /* bottom: 0; */
 }
 
-.hn.modal .container.shelf {
+.hn.modal .container.shelf,
+.hn.modal .container.tray {
   height: 100%;
-
-  /* background: var(--teal-500); */
-
   position: absolute;
   top: 0;
   bottom: 0;
@@ -73,25 +71,12 @@
   padding: 0 16px;
 }
 
-.hn.modal .shelf .head .actions {
+.hn.modal .shelf .head .actions,
+.hn.modal .tray .head .actions {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-}
-
-.hn.modal .tray .head .actions {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hn.modal .container .head .actions .swipe-bar {
-  height: 4px;
-  width: 100px;
-  border-radius: 4px;
-  background: #999;
 }
 
 .hn.modal .container .body {

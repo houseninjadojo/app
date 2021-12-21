@@ -3,16 +3,7 @@
 @import "tailwindcss/utilities";
 @import "./variables.css";
 @import "./elements.css";
-@import "./components/modal.css";
-@import "./components/top-bar.css";
-@import "./components/nav-bar.css";
-@import "./components/account-settings.css";
-@import "./components/view.css";
-@import "./components/home.css";
-@import "./components/section.css";
-@import "./components/house-ninja/service-activity.css";
-@import "./components/primitive/tabbed-content.css";
-@import "./components/primitive/button.css";
+@import "./components/components.css";
 
 @font-face {
   font-family: Campton-Light;

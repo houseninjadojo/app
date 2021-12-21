@@ -9,7 +9,19 @@ export default class HomeContentComponent extends Component {
   }
 
   get getProperty() {
-    const streetAddress = this.current.property.content.line1;
+    let streetAddress = '';
+    const hasAStreetAddress =
+      this.current.property &&
+      this.current.property.content &&
+      this.current.property.content.line1;
+
+    if (hasAStreetAddress) {
+      streetAddress =
+        this.current.property &&
+        this.current.property.content &&
+        this.current.property.content.line1;
+    }
+
     return streetAddress || 'home';
   }
 
@@ -23,7 +35,7 @@ export default class HomeContentComponent extends Component {
     else if (hrs >= 12 && hrs <= 17) greet = 'Good Afternoon';
     else if (hrs >= 17 && hrs <= 24) greet = 'Good Evening';
 
-    return `${greet}, ${this.getUser.firstName}!`;
+    return `${greet}${this.getUser ? ', ' + this.getUser.firstName : ''}!`;
   }
 
   get getPrompt() {

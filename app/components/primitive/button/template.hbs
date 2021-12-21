@@ -5,8 +5,8 @@
     Semantic: primary, accent
  --}}
 <button 
-    class="hn btn {{@size}} {{@variant}} {{@semantic}}" 
-    type={{@type}}    
+    class="hn btn {{@size}} {{@variant}} {{@semantic}} {{if @disabled 'disabled'}}" 
+    type={{@type}} disabled={{@disabled}}    
     ...attributes
 >
     {{yield}}

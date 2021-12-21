@@ -1,0 +1,20 @@
+<div class="hn modal">
+    <div class="overlay" />
+    <div class="container tray dark">
+        <div class="head">
+            <div class="actions">
+                <button type="button" class="hn btn sm floating" {{on "click" this.goBack}}>
+                    Cancel
+                </button>
+            </div>
+        </div>
+        <div class="body">
+            {{yield}}
+        </div>
+        <div class="footer">
+            <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" @disabled={{@formIsNotValid}}>
+                Save
+            </Primitive::Button>
+        </div>
+    </div>
+</div>
