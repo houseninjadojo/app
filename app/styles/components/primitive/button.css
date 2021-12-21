@@ -42,3 +42,9 @@
   box-shadow: var(--shadow-teal-1);
   color: var(--white);
 }
+
+.hn.btn.solid.disabled {
+  background: var(--gray-400) !important;
+  box-shadow: none !important;
+  color: var(--gray-600) !important;
+}
