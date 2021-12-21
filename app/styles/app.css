@@ -13,6 +13,7 @@
 @import "./components/house-ninja/service-activity.css";
 @import "./components/primitive/tabbed-content.css";
 @import "./components/primitive/button.css";
+@import "./components/primitive/input.css";
 
 @font-face {
   font-family: Campton-Light;
