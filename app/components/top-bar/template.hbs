@@ -1,8 +1,14 @@
-<div class="hn top-bar w-screen top-0 z-1">
+<div class="hn top-bar w-screen top-0 z-1 {{@class}}">
   <div class="action-container pt-16">
-    <button type="button" class="action left" {{on 'click' this.toggleSettingsViewVisibility}}>
-      <img src="assets/icons/hamboyga.svg" alt="hamburger menu"/>
-    </button>
+    {{#if @userSignUpFlow }}
+      <button type="button" class="action left back">      
+        <img src="assets/icons/less-than.svg" class="prev"/>
+      </button>
+    {{else}}
+      <button type="button" class="action" {{on 'click' this.toggleSettingsViewVisibility}}>    
+        <img src="assets/icons/hamboyga.svg" alt="hamburger menu"/>            
+      </button>
+    {{/if}}
     <img src="assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>
     <button type="button" class="action right">
       {{!-- <img src="assets/icons/hamboyga.svg" alt="hamburger menu"/> --}}

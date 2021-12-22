@@ -1,6 +1,10 @@
 <main class="hn view default">
   {{yield}}
-  <div class="logo-container">
-    <img class="logo" src="assets/images/logo+black+teal.svg" alt="House Ninja" />
-  </div>
+  {{#if @hideLogo}}
+  {{else}}  
+    <div class="logo-container">
+      <img class="logo" src="assets/images/logo+black+teal.svg" alt="House Ninja" />
+    </div>
+  {{/if}}
+
 </main>
