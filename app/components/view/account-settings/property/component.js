@@ -7,21 +7,21 @@ export default class PropertyComponent extends Component {
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: this.args.property.line1,
+      value: this.args.address.street1,
     },
     {
       id: 'street2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: this.args.property.line2,
+      value: this.args.address.street2,
     },
     {
       id: 'city',
       required: true,
       label: 'City',
       placeholder: '',
-      value: this.args.property.city,
+      value: this.args.address.city,
       disabled: true,
     },
     {
@@ -38,7 +38,7 @@ export default class PropertyComponent extends Component {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: this.args.property.postalCode,
+      value: this.args.address.zipcode,
     },
   ];
 }

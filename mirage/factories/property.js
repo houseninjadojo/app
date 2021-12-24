@@ -2,24 +2,38 @@ import { Factory, association, trait } from 'ember-cli-mirage';
 import faker from 'faker';
 
 export default Factory.extend({
-  line1() {
-    return faker.address.streetAddress();
+  address: association(),
+
+  lotSize() {
+    return faker.random.number({ min: 10000, max: 100000 });
   },
 
-  line2() {
-    return null;
+  homeSize() {
+    return faker.random.number({ min: 1000, max: 10000 });
   },
 
-  city() {
-    return faker.address.city();
+  garageSize() {
+    return faker.random.number({ min: 0, max: 2 });
   },
 
-  state() {
-    return faker.address.stateAbbr();
+  homeAge() {
+    return faker.random.number({ min: 1, max: 100 });
   },
 
-  postalCode() {
-    return faker.address.zipCode();
+  estimatedValue() {
+    return faker.random.number({ min: 500000, max: 15000000 });
+  },
+
+  bedrooms() {
+    return faker.random.number({ min: 1, max: 10 });
+  },
+
+  bathrooms() {
+    return faker.random.number({ min: 1, max: 10 });
+  },
+
+  pools() {
+    return faker.random.number({ min: 0, max: 1 });
   },
 
   default: true,

@@ -1,8 +1,8 @@
-import { Factory, association } from 'ember-cli-mirage';
+import { Factory } from 'ember-cli-mirage';
 import faker from 'faker';
 
 export default Factory.extend({
-  property: association(),
+  // properties: association(),
 
   email() {
     return faker.internet.email();
@@ -18,5 +18,11 @@ export default Factory.extend({
 
   phoneNumber() {
     return faker.phone.phoneNumber();
+  },
+
+  afterCreate(user, server) {
+    user.update({
+      properties: server.createList('property', 1),
+    });
   },
 });
