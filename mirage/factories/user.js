@@ -19,4 +19,10 @@ export default Factory.extend({
   phoneNumber() {
     return faker.phone.phoneNumber();
   },
+
+  afterCreate(user, server) {
+    user.update({
+      properties: server.createList('property', 1),
+    });
+  },
 });
