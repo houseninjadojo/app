@@ -1,9 +1,7 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class UserModel extends Model {
-  // use belongsTo for a one-to-one relationship for now
-  // eventually we will want this to be a hasMany
-  @belongsTo('property') property;
+  @hasMany('property') properties;
 
   @attr('string') email;
   @attr('string') firstName;
