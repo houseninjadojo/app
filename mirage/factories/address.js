@@ -23,6 +23,6 @@ export default Factory.extend({
   },
 
   withProperty: trait({
-    property: association(),
+    addressible: association('property'),
   }),
 });
