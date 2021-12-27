@@ -4,28 +4,16 @@ import { inject as service } from '@ember/service';
 export default class HomeContentComponent extends Component {
   @service current;
 
-  get getUser() {
+  get user() {
     return this.current.user;
   }
 
-  get getProperty() {
-    let streetAddress = '';
-    const hasAStreetAddress =
-      this.current.property &&
-      this.current.property.content &&
-      this.current.property.content.line1;
-
-    if (hasAStreetAddress) {
-      streetAddress =
-        this.current.property &&
-        this.current.property.content &&
-        this.current.property.content.line1;
-    }
-
+  get streetAddress() {
+    const streetAddress = this.current.property.get('address.street1') || null;
     return streetAddress || 'home';
   }
 
-  get getSalutation() {
+  get salutation() {
     const myDate = new Date();
     const hrs = myDate.getHours();
 
@@ -35,10 +23,10 @@ export default class HomeContentComponent extends Component {
     else if (hrs >= 12 && hrs <= 17) greet = 'Good Afternoon';
     else if (hrs >= 17 && hrs <= 24) greet = 'Good Evening';
 
-    return `${greet}${this.getUser ? ', ' + this.getUser.firstName : ''}!`;
+    return `${greet}${this.user ? ', ' + this.user.firstName : ''}!`;
   }
 
-  get getPrompt() {
-    return `What can we help you with at ${this.getProperty}?`;
+  get prompt() {
+    return `What can we help you with at ${this.streetAddress}?`;
   }
 }

@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "phanitejakomaravolu.emberes6snippets",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "lifeart.vscode-glimmer-syntax",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "lifeart.vscode-ember-unstable",
+    "embertooling.emberjs",
+    "embertooling.prettier-for-handlebars-vscode",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig"
+  ]
+}
