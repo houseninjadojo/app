@@ -4,7 +4,7 @@
 @import "./primitive/section.css";
 @import "./primitive/tabbed-content.css";
 @import "./primitive/button.css";
-@import "./primitive/input.css";
+@import "./primitive/input/input.css";
 @import "./primitive/modal.css";
 @import "./view/view.css";
 @import "./view/account-settings.css";
