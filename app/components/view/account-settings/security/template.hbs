@@ -2,7 +2,7 @@
     <h1 class="hn view-title">Edit Security Details</h1>
 
     {{#each this.securityFields as |field|}}
-        <Primitive::Input @field={{field}} @label={{field.label}} required={{field}} @warn={{false}} />
+        <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @warn={{false}} />
     {{/each}}
 
     <p class="hn label center mt-16 mb-4">Password Requirements</p>
