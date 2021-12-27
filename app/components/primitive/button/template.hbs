@@ -1,12 +1,12 @@
 {{!-- 
     OPTIONS
     Size: sm, md, lg
-    Variant: solid, floating
+    Variant: solid, outline, floating
     Semantic: primary, accent
  --}}
 <button 
     class="hn btn {{@size}} {{@variant}} {{@semantic}} {{if @disabled 'disabled'}}" 
-    type={{@type}} disabled={{@disabled}}    
+    type={{if @type @type 'button'}} disabled={{@disabled}}    
     ...attributes
 >
     {{yield}}

@@ -17,3 +17,7 @@
 .hn.label.center {
   text-align: center;
 }
+
+.hn .strong {
+  font-family: var(--campton-strong);
+}

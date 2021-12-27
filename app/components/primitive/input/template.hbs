@@ -1,9 +1,14 @@
 <div class="hn hn-input-field {{if @warn 'warn' ''}}{{if @disabled 'disabled' ''}}">
     <div class="hn-input-container">
-        <label class="hn-input-label" for={{@field.id}} >{{@label}}</label>
-        <input class="hn-input" id={{@field.id}} type="text" required={{@field.required}} placeholder={{@field.placeholder}} value={{@field.value}} disabled={{@disabled}}/>
+        {{#if @hideLabel}}                    
+            {{!-- template-lint-disable require-input-label  --}}
+            <input class="hn-input label-hidden" id={{@id}} type="text" required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}} aria-label={{@label}}/>
+        {{else}}
+            <label class="hn-input-label" for={{@id}} >{{@label}}</label>
+            <input class="hn-input" id={{@id}} type="text" required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}}/>
+        {{/if}}
     </div>
-    {{#if @field.description}}
-        <p class="hn-input-description">{{@field.description}}</p>
+    {{#if @description}}
+        <span class="hn-input-description">{{@description}}</span>
     {{/if}}
 </div>
