@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'houseninja',
     environment,
     rootURL: '/',
-    locationType: 'hash',
+    locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,7 +23,7 @@ module.exports = function (environment) {
     },
 
     apiHost: 'https://api.dev.houseninja.co',
-    appHost: 'https://localhost:4200',
+    appHost: 'http://localhost:4200',
     appScheme: 'co.houseninja.app',
 
     /**
