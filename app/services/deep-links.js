@@ -1,4 +1,4 @@
-import Service, { inject as service } from '@ember/service';
+import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
 import { run } from '@ember/runloop';
