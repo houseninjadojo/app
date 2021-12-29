@@ -251,11 +251,11 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       redirect_uri: encodeURIComponent(this.redirectUri),
     };
 
-    this.clearStash();
+    let data = await this._post(this.serverTokenEndpoint, postData);
+
+    await this.clearStash();
     debug('authenticate post data - code: ' + postData.code);
     debug('authenticate post data - code_verifier: ' + postData.code_verifier);
-
-    let data = await this._post(this.serverTokenEndpoint, postData);
 
     let expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
@@ -477,7 +477,11 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     let response;
     try {
       response = await run(async () => {
-        return await MobileHTTP.get(options);
+        if (isNativePlatform()) {
+          return await MobileHTTP.get(options);
+        } else {
+          return await fetch(options);
+        }
       });
     } catch (e) {
       console.error(e);
@@ -516,9 +520,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       }
       data = response.data;
     } else {
-      const webPostData = postData
-        .map((k, v) => {
-          return `${k}=${encodeURIComponent(v)}`;
+      const webPostData = Object.keys(postData)
+        .map((k) => {
+          return `${k}=${encodeURIComponent(postData[k])}`;
         })
         .join('&');
       response = await fetch(url, {
