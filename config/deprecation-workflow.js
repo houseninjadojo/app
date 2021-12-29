@@ -1,3 +1,4 @@
+// @see https://github.com/mixonic/ember-cli-deprecation-workflow
 self.deprecationWorkflow = self.deprecationWorkflow || {};
 self.deprecationWorkflow.config = {
   workflow: [
