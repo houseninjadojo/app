@@ -5,7 +5,8 @@ module.exports = function (environment) {
     modulePrefix: 'houseninja',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    // @todo remove this when ember source v4 merged in
+    // locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
