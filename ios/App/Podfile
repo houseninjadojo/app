@@ -15,6 +15,7 @@ def capacitor_pods
   pod 'CapacitorDialog', :path => '../../node_modules/@capacitor/dialog'
   pod 'CapacitorHaptics', :path => '../../node_modules/@capacitor/haptics'
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
+  pod 'CapacitorPushNotifications', :path => '../../node_modules/@capacitor/push-notifications'
   pod 'CapacitorSecureStoragePlugin', :path => '../../node_modules/capacitor-secure-storage-plugin'
   pod 'SentryCapacitor', :path => '../../node_modules/@sentry/capacitor'
   pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
@@ -24,4 +25,5 @@ end
 target 'House Ninja' do
   capacitor_pods
   # Add your Pods here
+  pod 'Firebase/Messaging'
 end
