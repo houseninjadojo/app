@@ -3,11 +3,7 @@ import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
-import {
-  get as getData,
-  set as setData,
-  clear as clearData,
-} from 'houseninja/utils/secure-storage';
+import SecureStorage from 'houseninja/utils/secure-storage';
 
 export default class LoginRoute extends Route {
   @service session;
@@ -20,14 +16,14 @@ export default class LoginRoute extends Route {
 
     // forward to the callback route
     if (!this.session.isAuthenticated && loginState == 'callback') {
-      await clearData('login');
+      await SecureStorage.clear('login');
       return;
     }
 
     // we are not logged in
     if (!this.session.isAuthenticated && loginState !== 'active') {
-      await clearData('login');
-      await setData('login', { state: 'active' });
+      await SecureStorage.clear('login');
+      await SecureStorage.set('login', { state: 'active' });
       let url = await pkce.generateAuthorizationURL();
       await this.analytics.track('login');
       await this.nativeOpen(url);
@@ -36,7 +32,7 @@ export default class LoginRoute extends Route {
 
   async loginState() {
     try {
-      let data = await getData('login');
+      let data = await SecureStorage.get('login');
       return data;
     } catch {
       return Promise.resolve({});

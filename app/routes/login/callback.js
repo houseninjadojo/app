@@ -3,10 +3,7 @@ import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { setUser } from '@sentry/capacitor';
-import {
-  set as setData,
-  clear as clearData,
-} from 'houseninja/utils/secure-storage';
+import SecureStorage from 'houseninja/utils/secure-storage';
 
 export default class LoginCallbackRoute extends Route {
   @service current;
@@ -25,7 +22,7 @@ export default class LoginCallbackRoute extends Route {
    * `/login?state=1234abcd&code=1234abcd`
    */
   async model(params) {
-    await setData('login', { state: 'callback' });
+    await SecureStorage.set('login', { state: 'callback' });
     if (params.code) {
       await this.closeBrowser();
       await this.session.authenticate(
@@ -33,7 +30,7 @@ export default class LoginCallbackRoute extends Route {
         params.code,
         params.state
       );
-      await clearData('login');
+      await SecureStorage.clear('login');
       await this.identifyAndTrackUser();
       await this.current.load();
       this.router.transitionTo('index');

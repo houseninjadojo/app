@@ -1,14 +1,10 @@
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import ENV from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import {
-  get as getData,
-  set as setData,
-  clear as clearData,
-} from 'houseninja/utils/secure-storage';
+import SecureStorage from 'houseninja/utils/secure-storage';
+import HTTP, { encodeFormData } from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
-import { Http as MobileHTTP } from '@capacitor-community/http';
-import { later, cancel, run } from '@ember/runloop';
+import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
 const STASH_TOKEN = 'PKCE';
@@ -42,94 +38,100 @@ async function generateCodeChallenge(codeVerifier) {
 }
 
 /**
-  Authenticator that conforms to OAuth 2 ([RFC 6749](http://tools.ietf.org/html/rfc6749)),
-  specifically the _"Resource Owner Password Credentials Grant Type"_.
-  This authenticator also automatically refreshes access tokens (see [RFC 6749, section 6](http://tools.ietf.org/html/rfc6749#section-6))
-  if the server supports it.
-
-  @example
-    // routes/login.js
-    const { codeVerifier, codeChallenge, loginUrl } = this.authenticate('authenticator:pkce-challenge', )
-
-  @see https://auth0.com/docs/login/authentication/add-login-using-the-authorization-code-flow-with-pkce
-  @note In case I ever ask about this again: "Ember CLI will automatically register your customer authenticator in app/authenticators/* as authenticator:*"
-  @class PKCEAuthenticator
-  @module ember-simple-auth/authenticators/oauth2-pkce
-  @extends BaseAuthenticator
-*/
+ * Authenticator that conforms to OAuth 2 ([RFC 6749](http://tools.ietf.org/html/rfc6749)),
+ * specifically the _"Resource Owner Password Credentials Grant Type"_.
+ * This authenticator also automatically refreshes access tokens (see [RFC 6749, section 6](http://tools.ietf.org/html/rfc6749#section-6))
+ * if the server supports it.
+ *
+ * @example
+ *   // routes/login.js
+ *   const { codeVerifier, codeChallenge, loginUrl } = this.authenticate('authenticator:pkce-challenge', )
+ *
+ * @see https://auth0.com/docs/login/authentication/add-login-using-the-authorization-code-flow-with-pkce
+ * @note In case I ever ask about this again: "Ember CLI will automatically register your customer authenticator in app/authenticators/* as authenticator:*"
+ * @class PKCEAuthenticator
+ * @module ember-simple-auth/authenticators/oauth2-pkce
+ * @extends BaseAuthenticator
+ */
 export default class PKCEAuthenticator extends BaseAuthenticator {
   /**
-    The client_id to be sent to the authentication server (see
-    https://tools.ietf.org/html/rfc6749#appendix-A.1). __This should only be
-    used for statistics or logging etc. as it cannot actually be trusted since
-    it could have been manipulated on the client!__
-    @property clientId
-    @type String
-    @default null
-    @public
-  */
+   * The client_id to be sent to the authentication server (see
+   * https://tools.ietf.org/html/rfc6749#appendix-A.1). __This should only be
+   * used for statistics or logging etc. as it cannot actually be trusted since
+   * it could have been manipulated on the client!__
+   *
+   * @property clientId
+   * @type String
+   * @default null
+   * @public
+   */
   clientId = `${ENV.auth.client_id}`;
 
   /**
-    The endpoint on the server that authorization redirects
-    are sent to.
-    @property serverAuthorizationEndpoint
-    @type String
-    @default '/authorize'
-    @public
-  */
+   * The endpoint on the server that authorization redirects
+   * are sent to.
+   *
+   * @property serverAuthorizationEndpoint
+   * @type String
+   * @default '/authorize'
+   * @public
+   */
   serverAuthorizationEndpoint = `https://${ENV.auth.domain}/authorize`;
 
   /**
-    The endpoint on the server that token and token refresh requests
-    are sent to.
-    @property serverTokenEndpoint
-    @type String
-    @default '/oauth/token'
-    @public
-  */
+   * The endpoint on the server that token and token refresh requests
+   * are sent to.
+   *
+   * @property serverTokenEndpoint
+   * @type String
+   * @default '/oauth/token'
+   * @public
+   */
   serverTokenEndpoint = `https://${ENV.auth.domain}/oauth/token`;
 
   /**
-    The endpoint on the server that token revocation requests are sent to. Only
-    set this if the server actually supports token revocation. If this is
-    `null`, the authenticator will not revoke tokens on session invalidation.
-    __If token revocation is enabled but fails, session invalidation will be
-    intercepted and the session will remain authenticated (see
-    {{#crossLink "OAuth2PasswordGrantAuthenticator/invalidate:method"}}{{/crossLink}}).__
-    @property serverTokenRevocationEndpoint
-    @type String
-    @default null
-    @public
-  */
+   * The endpoint on the server that token revocation requests are sent to. Only
+   * set this if the server actually supports token revocation. If this is
+   * `null`, the authenticator will not revoke tokens on session invalidation.
+   * __If token revocation is enabled but fails, session invalidation will be
+   * intercepted and the session will remain authenticated (see
+   * {{#crossLink "OAuth2PasswordGrantAuthenticator/invalidate:method"}}{{/crossLink}}).__
+   *
+   * @property serverTokenRevocationEndpoint
+   * @type String
+   * @default null
+   * @public
+   */
   serverTokenRevocationEndpoint = `https://${ENV.auth.domain}/oauth/revoke`;
 
   /**
-    Logout endpoint for external auth
-    @type String
-    @default null
-    @public
-  */
+   * Logout endpoint for external auth
+   * @type String
+   * @default null
+   * @public
+   */
   get logoutEndpoint() {
     return `https://${ENV.auth.domain}/v2/logout?client_id=${this.clientId}`;
   }
 
   /**
-    The endpoint on the server that yields user info data.
-    @type String
-    @default null
-    @public
-  */
+   * The endpoint on the server that yields user info data.
+   *
+   * @type String
+   * @default null
+   * @public
+   */
   userInfoEndpoint = `https://${ENV.auth.domain}/userinfo`;
 
   /**
-    The client-side redirectUri path. Be sure to include it in your `router.js`
-    file.
-    @property redirectUri
-    @type String
-    @default '/login'
-    @public
-  */
+   * The client-side redirectUri path. Be sure to include it in your `router.js`
+   * file.
+   *
+   * @property redirectUri
+   * @type String
+   * @default '/login'
+   * @public
+   */
   get redirectUri() {
     if (isNativePlatform()) {
       return `${ENV.appScheme}://localhost:4200/#/login/callback`;
@@ -139,18 +141,20 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   }
 
   /**
-    Sets whether the authenticator automatically refreshes access tokens if the
-    server supports it.
-    @property refreshAccessTokens
-    @type Boolean
-    @default true
-    @public
-  */
+   * Sets whether the authenticator automatically refreshes access tokens if the
+   * server supports it.
+   *
+   * @property refreshAccessTokens
+   * @type Boolean
+   * @default true
+   * @public
+   */
   refreshAccessTokens = true;
 
   /**
    * The refresh leeway for managing clock drift
    * Expressed in seconds
+   *
    * @property refreshLeeway
    * @type {Number}
    * @default 60 (1 minute)
@@ -159,17 +163,19 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   refreshLeeway = 60;
 
   /**
-    The unique `aud` or audience identifier attached to the grant request. Most
-    commonly set to the API root endpoint you are authorizing access to.
-    @property audience
-    @type String
-    @default null;
-    @public
-  */
+   * The unique `aud` or audience identifier attached to the grant request. Most
+   * commonly set to the API root endpoint you are authorizing access to.
+   *
+   * @property audience
+   * @type String
+   * @default null;
+   * @public
+   */
   audience = `${ENV.auth.audience}`;
 
   /**
    * The requested access scopes
+   *
    * @property scope
    * @type String
    * @default 'openid profile offline_access'
@@ -179,6 +185,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
   /**
    * Property to store scheduled refresh
+   *
    * @property _upcomingRefresh
    * @type {Function}
    * @private
@@ -187,11 +194,12 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
   /**
    * Generate an authorization URL for logging in
+   *
    * @method generateAuthorizationURL
    * @return {String}
    */
   async generateAuthorizationURL() {
-    await setData('login', { state: 'started' });
+    await SecureStorage.set('login', { state: 'started' });
     const rootURL = this.serverAuthorizationEndpoint;
     const code_verifier = generateCodeVerifier();
     const code_challenge = await generateCodeChallenge(code_verifier);
@@ -202,13 +210,15 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const scope = this.scope;
     const state = generateCodeVerifier();
 
-    // Stash state, verifier, challenge
-    await setData(STASH_TOKEN, {
+    // Clear stash then set state, verifier, challenge
+    await SecureStorage.clear(STASH_TOKEN);
+    await SecureStorage.set(STASH_TOKEN, {
       code_challenge,
       code_verifier,
       state,
     });
 
+    // assemble authentication query params
     const params = [
       `response_type=code`,
       `code_challenge=${code_challenge}`,
@@ -222,16 +232,13 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       .filter(Boolean)
       .join('&');
 
-    debug(`auth url code_challenge: ${code_challenge}`);
-    debug(`auth url code_verifier: ${code_verifier}`);
-    debug(`auth url state: ${state}`);
-
     return `${rootURL}?${params}`;
   }
 
   /**
    * Authenticate with authorization response. This exchanges
    * the auth code response for access, id, and refresh tokens.
+   *
    * @method authenticate
    * @param {String} code
    * @param {String} state
@@ -244,9 +251,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       throw new Error('state is missing or invalid');
     }
 
-    const { code_verifier } = await getData(STASH_TOKEN);
+    const { code_verifier } = await SecureStorage.get(STASH_TOKEN);
 
-    const postData = {
+    const params = {
       grant_type: 'authorization_code',
       client_id: encodeURIComponent(this.clientId),
       code_verifier: code_verifier,
@@ -254,19 +261,20 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       redirect_uri: encodeURIComponent(this.redirectUri),
     };
 
-    let data = await this._post(this.serverTokenEndpoint, postData);
-    await clearData(STASH_TOKEN);
+    // fetch token data
+    let data = await this._post(this.serverTokenEndpoint, params);
 
-    debug('authenticate post data - code: ' + postData.code);
-    debug('authenticate post data - code_verifier: ' + postData.code_verifier);
+    // // clear spent code challenge and verifier
+    // await SecureStorage.clear(STASH_TOKEN);
 
+    // calculate token expiration
     let expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
 
+    // schedule token refresh for later
     await this._scheduleRefresh(data.expires_in, data.refresh_token);
 
-    debug('authenticate response data - access_token: ' + data.access_token);
-
+    // fetch user info
     data.userinfo = await this._getUserinfo(data.access_token);
 
     return data;
@@ -286,57 +294,69 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @public
    */
   async restore(data) {
-    debug('restore - access_token: ' + data.access_token);
-    debug('restore - refresh_token: ' + data.refresh_token);
     const { refresh_token, expires_at, expires_in } = data;
 
     if (!refresh_token) {
       throw new Error('Refresh token is missing');
     }
 
+    // if the token has expired already, try to refresh it
     if (expires_at && expires_at <= new Date().getTime()) {
       return await this._refresh(refresh_token);
     }
+
+    // schedule token refresh for later
     this._scheduleRefresh(expires_in, refresh_token);
 
+    // fetch user info
     data.userinfo = await this._getUserinfo(data.access_token);
+
     return data;
   }
 
   /**
-    If token revocation is enabled, this will revoke the access token (and the
-    refresh token if present). If token revocation succeeds, this method
-    returns a resolving promise, otherwise it will return a rejecting promise,
-    thus intercepting session invalidation.
-    If token revocation is not enabled this method simply returns a resolving
-    promise.
-    @method invalidate
-    @param {Object} data The current authenticated session data
-    @return {Ember.RSVP.Promise} A promise that when it resolves results in the session being invalidated. If invalidation fails, the promise will reject with the server response (in case token revocation is used); however, the authenticator reads that response already so if you need to read it again you need to clone the response object first
-    @public
-  */
+   * If token revocation is enabled, this will revoke the access token (and the
+   * refresh token if present). If token revocation succeeds, this method
+   * returns a resolving promise, otherwise it will return a rejecting promise,
+   * thus intercepting session invalidation.
+   * If token revocation is not enabled this method simply returns a resolving
+   * promise.
+   *
+   * @method invalidate
+   * @param {Object} data The current authenticated session data
+   * @return {Ember.RSVP.Promise} A promise that when it resolves results in the session being invalidated. If invalidation fails, the promise will reject with the server response (in case token revocation is used); however, the authenticator reads that response already so if you need to read it again you need to clone the response object first
+   * @public
+   */
   async invalidate(data) {
+    // cancel any scheduled future token refresh
     cancel(this._upcomingRefresh);
+
+    // if no revocation endpoint, do nothing
     if (isEmpty(this.serverTokenRevocationEndpoint)) {
       return;
-    } else {
-      const { access_token, refresh_token } = data;
-      if (!isEmpty(access_token)) {
-        let postData = {
-          token_type_hint: 'access_token',
-          token: access_token,
-        };
-        await this._post(this.serverTokenEndpoint, postData);
-      }
-      if (!isEmpty(refresh_token)) {
-        let postData = {
-          token_type_hint: 'refresh_token',
-          token: refresh_token,
-        };
-        await this._post(this.serverTokenEndpoint, postData);
-      }
-      return;
     }
+
+    const { access_token, refresh_token } = data;
+
+    // invalidate the access token if it exists
+    if (!isEmpty(access_token)) {
+      const params = {
+        token_type_hint: 'access_token',
+        token: access_token,
+      };
+      await this._post(this.serverTokenEndpoint, params);
+    }
+
+    // invalidate the refresh token if it exists
+    if (!isEmpty(refresh_token)) {
+      const params = {
+        token_type_hint: 'refresh_token',
+        token: refresh_token,
+      };
+      await this._post(this.serverTokenEndpoint, params);
+    }
+
+    return;
   }
 
   /**
@@ -348,13 +368,16 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @private
    */
   async _refresh(refresh_token /*, retryCount = 0 */) {
-    debug('_refresh: ' + refresh_token);
-    const postData = {
+    // Stash
+    let stashed_refresh_token = await SecureStorage.get(`${STASH_TOKEN}:refresh_token`);
+
+    const params = {
       grant_type: 'refresh_token',
       client_id: this.clientId,
-      refresh_token,
+      refresh_token: refresh_token || stashed_refresh_token,
     };
-    let data = await this._post(this.serverTokenEndpoint, postData);
+
+    let data = await this._post(this.serverTokenEndpoint, params);
     let expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
     await this._scheduleRefresh(data.expires_in, data.refresh_token);
@@ -370,81 +393,46 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} token The refresh token
    */
   async _scheduleRefresh(expires_in, refresh_token) {
-    debug('_scheduleRefresh: ' + refresh_token);
+    // if token already expired, do nothing
     if (expires_in * 1000 <= new Date().getTime()) {
       return;
     }
 
+    // if a token refresh is already scheduled, cancel it
     if (this._upcomingRefresh) {
       cancel(this.upcomingRefresh);
     }
 
+    // Stash
+    await SecureStorage.set(`${STASH_TOKEN}:refresh_token`, refresh_token);
+
+    // calculate a random delta before token expiration
+    const expiry =
+      (expires_in - this.refreshLeeway) * 1000 - new Date().getTime();
+
+    // schedule token refresh for later
     this._upcomingRefresh = later(
-      // the context this callback function will run in
+      // context this callback function will run in
       this,
-      // the callback function
+      // callback function
       async (refresh_token) => {
         this.trigger('sessionDataUpdated', await this._refresh(refresh_token));
       },
       // pass the refresh_token into the callback function
       refresh_token,
-      // call this function in the millisecond delta until expiration
-      (expires_in - this.refreshLeeway) * 1000 - new Date().getTime()
+      // call the function at this time
+      expiry
     );
+
+    debug(`auth - token refresh scheduled for ${expiry}`);
   }
-
-  // /**
-  //  * Stash token data safely
-  //  * @method stashData
-  //  * @param {String} key
-  //  * @param {Object} data
-  //  * @return {RSVP.Promise}
-  //  */
-  // async stashData(key = STASH_TOKEN, data) {
-  //   const value = JSON.stringify(data);
-  //   return await run(async () => {
-  //     return await SecureStoragePlugin.set({ key, value });
-  //   });
-  // }
-
-  // /**
-  //  * Fetch token data safely
-  //  * @method unstashData
-  //  * @param {String} key
-  //  * @return {RSVP.Promise}
-  //  */
-  // async unstashData(key = STASH_TOKEN) {
-  //   try {
-  //     let encodedValue = await run(async () => {
-  //       return await SecureStoragePlugin.get({ key });
-  //     });
-  //     return JSON.parse(encodedValue.value);
-  //   } catch (e) {
-  //     console.error(e);
-  //     return {};
-  //   }
-  // }
-
-  // /**
-  //  * Clear stash data
-  //  */
-  // async clearStash(key = STASH_TOKEN) {
-  //   await run(async () => {
-  //     try {
-  //       await SecureStoragePlugin.remove({ key });
-  //     } catch {
-  //       //
-  //     }
-  //   });
-  //   return;
-  // }
 
   /**
    * check for login data
    */
   async loginDataExists() {
     try {
-      let data = await getData(STASH_TOKEN);
+      let data = await SecureStorage.get(STASH_TOKEN);
       if (Object.keys(data).length > 0) {
         return true;
       } else {
@@ -456,95 +444,55 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   }
 
   /**
-   * Validate the state param against storage
+   * @private
    * @method _isValidState
+   *
+   * Validate the state param against storage
+   *
    * @param {String} state
    * @return {Boolean}
-   * @private
    */
   async _isValidState(state) {
-    const { state: localState } = await getData(STASH_TOKEN);
+    const { state: localState } = await SecureStorage.get(STASH_TOKEN);
     return isEqual(localState, state);
   }
 
   /**
+   * @private
+   * @method _getUserinfo
+   *
    * Request user information from the openid userinfo endpoint
    *
    * @param {String} accessToken The raw access token
    * @returns {Object} Object containing the user information
    */
   async _getUserinfo(accessToken) {
-    const options = {
-      url: this.userInfoEndpoint,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        Accept: 'application/json',
-      },
+    let headers = {
+      Authorization: `Bearer ${accessToken}`,
+      Accept: 'application/json',
     };
 
-    let response;
-    try {
-      response = await run(async () => {
-        if (isNativePlatform()) {
-          return await MobileHTTP.get(options);
-        } else {
-          let res = await fetch(options.url, { headers: options.headers });
-          return { data: await res.json() };
-        }
-      });
-    } catch (e) {
-      console.error(e);
-    }
-
-    const userinfo = response.data;
+    const userinfo = await HTTP.get(this.userInfoEndpoint, headers);
     userinfo.user_id = userinfo.sub.replace('auth0|', '');
 
     return userinfo;
   }
 
   /**
-   * HTTP Request for appropriate platform (native mobile or web)
+   * @private
    * @method _post
+   *
+   * HTTP Request for appropriate platform (native mobile or web)
+   *
    * @param {String} url
-   * @param {Object} postData
+   * @param {Object} params
    */
-  async _post(url, postData = {}) {
-    let response, data;
-    if (isNativePlatform()) {
-      const mobilePostData = postData;
-      const postOptions = {
-        url: url,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        data: mobilePostData,
-      };
-      try {
-        response = await run(async () => {
-          return await MobileHTTP.post(postOptions);
-        });
-      } catch (e) {
-        console.error(e);
-      }
-      data = response.data;
-    } else {
-      const webPostData = Object.keys(postData)
-        .map((k) => `${k}=${postData[k]}`)
-        .join('&');
-      response = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'same-origin',
-        crossDomain: true,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: webPostData,
-      });
-      data = await response.json();
-    }
-    return data;
+  async _post(url, params = {}) {
+    let headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
+    params = encodeFormData(params);
+    return HTTP.post(url, headers, params);
   }
 }

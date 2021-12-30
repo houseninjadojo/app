@@ -1,5 +1,5 @@
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
-import { run } from '@ember/run';
+import { run } from '@ember/runloop';
 
 /**
  * Store key/value data in secure storage
@@ -55,3 +55,9 @@ export async function clear(key) {
   });
   return;
 }
+
+export default {
+  get,
+  set,
+  clear,
+};
