@@ -1,10 +1,9 @@
-import sentry from 'houseninja/utils/sentry';
+import Sentry from 'houseninja/utils/sentry';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | sentry', function () {
   // TODO: Replace this with your real tests.
-  test('it works', function (assert) {
-    let result = sentry();
-    assert.ok(result);
+  test('it has init function', function (assert) {
+    assert.strictEqual(typeof Sentry.init, 'function');
   });
 });

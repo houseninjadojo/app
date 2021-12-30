@@ -1,10 +1,9 @@
-import network from 'houseninja/utils/network';
+import HTTP from 'houseninja/utils/http';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | network', function () {
+module('Unit | Utility | http', function () {
   // TODO: Replace this with your real tests.
   test('it works', function (assert) {
-    let result = network();
-    assert.ok(result);
+    assert.strictEqual(typeof HTTP.get, 'function');
   });
 });
