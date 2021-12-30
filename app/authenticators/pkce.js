@@ -1,8 +1,11 @@
-// import RSVP from 'rsvp';
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import ENV from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+import {
+  get as getData,
+  set as setData,
+  clear as clearData,
+} from 'houseninja/utils/secure-storage';
 import { isEqual, isEmpty } from '@ember/utils';
 import { Http as MobileHTTP } from '@capacitor-community/http';
 import { later, cancel, run } from '@ember/runloop';
@@ -188,7 +191,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @return {String}
    */
   async generateAuthorizationURL() {
-    await this.stashData('login', { state: 'started' });
+    await setData('login', { state: 'started' });
     const rootURL = this.serverAuthorizationEndpoint;
     const code_verifier = generateCodeVerifier();
     const code_challenge = await generateCodeChallenge(code_verifier);
@@ -200,7 +203,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const state = generateCodeVerifier();
 
     // Stash state, verifier, challenge
-    await this.stashData(STASH_TOKEN, {
+    await setData(STASH_TOKEN, {
       code_challenge,
       code_verifier,
       state,
@@ -241,7 +244,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       throw new Error('state is missing or invalid');
     }
 
-    const { code_verifier } = await this.unstashData(STASH_TOKEN);
+    const { code_verifier } = await getData(STASH_TOKEN);
 
     const postData = {
       grant_type: 'authorization_code',
@@ -252,7 +255,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     };
 
     let data = await this._post(this.serverTokenEndpoint, postData);
-    await this.clearStash();
+    await clearData(STASH_TOKEN);
+
     debug('authenticate post data - code: ' + postData.code);
     debug('authenticate post data - code_verifier: ' + postData.code_verifier);
 
@@ -389,58 +393,58 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     );
   }
 
-  /**
-   * Stash token data safely
-   * @method stashData
-   * @param {String} key
-   * @param {Object} data
-   * @return {RSVP.Promise}
-   */
-  async stashData(key = STASH_TOKEN, data) {
-    const value = JSON.stringify(data);
-    return await run(async () => {
-      return await SecureStoragePlugin.set({ key, value });
-    });
-  }
+  // /**
+  //  * Stash token data safely
+  //  * @method stashData
+  //  * @param {String} key
+  //  * @param {Object} data
+  //  * @return {RSVP.Promise}
+  //  */
+  // async stashData(key = STASH_TOKEN, data) {
+  //   const value = JSON.stringify(data);
+  //   return await run(async () => {
+  //     return await SecureStoragePlugin.set({ key, value });
+  //   });
+  // }
 
-  /**
-   * Fetch token data safely
-   * @method unstashData
-   * @param {String} key
-   * @return {RSVP.Promise}
-   */
-  async unstashData(key = STASH_TOKEN) {
-    try {
-      let encodedValue = await run(async () => {
-        return await SecureStoragePlugin.get({ key });
-      });
-      return JSON.parse(encodedValue.value);
-    } catch (e) {
-      console.error(e);
-      return {};
-    }
-  }
+  // /**
+  //  * Fetch token data safely
+  //  * @method unstashData
+  //  * @param {String} key
+  //  * @return {RSVP.Promise}
+  //  */
+  // async unstashData(key = STASH_TOKEN) {
+  //   try {
+  //     let encodedValue = await run(async () => {
+  //       return await SecureStoragePlugin.get({ key });
+  //     });
+  //     return JSON.parse(encodedValue.value);
+  //   } catch (e) {
+  //     console.error(e);
+  //     return {};
+  //   }
+  // }
 
-  /**
-   * Clear stash data
-   */
-  async clearStash(key = STASH_TOKEN) {
-    await run(async () => {
-      try {
-        await SecureStoragePlugin.remove({ key });
-      } catch {
-        //
-      }
-    });
-    return;
-  }
+  // /**
+  //  * Clear stash data
+  //  */
+  // async clearStash(key = STASH_TOKEN) {
+  //   await run(async () => {
+  //     try {
+  //       await SecureStoragePlugin.remove({ key });
+  //     } catch {
+  //       //
+  //     }
+  //   });
+  //   return;
+  // }
 
   /**
    * check for login data
    */
   async loginDataExists() {
     try {
-      let data = await this.unstashData(STASH_TOKEN);
+      let data = await getData(STASH_TOKEN);
       if (Object.keys(data).length > 0) {
         return true;
       } else {
@@ -459,7 +463,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @private
    */
   async _isValidState(state) {
-    const { state: localState } = await this.unstashData(STASH_TOKEN);
+    const { state: localState } = await getData(STASH_TOKEN);
     return isEqual(localState, state);
   }
 
