@@ -35,7 +35,7 @@ module.exports = function (environment) {
       client_id: 'BY1EBCu3dN01Cl28OrcmJ3N1K5PqqFnF',
       connection: 'development',
       // display: 'touch',
-      domain: 'auth.sandbox.houseninja.co',
+      domain: 'sandbox.auth.houseninja.co',
       // login_hint: 'user@email.com',
       prompt: 'none',
       scope: 'openid profile email',
