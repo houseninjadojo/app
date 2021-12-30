@@ -13,6 +13,12 @@ export default class LoginRoute extends Route {
     const pkce = getOwner(this).lookup('authenticator:pkce');
     const { state: loginState } = await this.loginState();
 
+    // forward to the callback route
+    if (!this.session.isAuthenticated && loginState == 'callback') {
+      pkce.clearStash('login');
+      return;
+    }
+
     // we are not logged in
     if (!this.session.isAuthenticated && loginState !== 'active') {
       pkce.clearStash();
@@ -26,7 +32,8 @@ export default class LoginRoute extends Route {
   async loginState() {
     const pkce = getOwner(this).lookup('authenticator:pkce');
     try {
-      return await pkce.unstashData('login');
+      let data = await pkce.unstashData('login');
+      return data;
     } catch {
       return Promise.resolve({});
     }

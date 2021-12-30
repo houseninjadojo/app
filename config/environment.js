@@ -4,6 +4,7 @@ module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'houseninja',
     environment,
+    locationType: 'history',
     rootURL: '/',
     EmberENV: {
       FEATURES: {
@@ -22,7 +23,7 @@ module.exports = function (environment) {
     },
 
     apiHost: 'https://api.dev.houseninja.co',
-    appHost: 'http://localhost:4200',
+    appHost: 'https://localhost:4200',
     appScheme: 'co.houseninja.app',
 
     /**
@@ -33,6 +34,7 @@ module.exports = function (environment) {
       audience: 'http://localhost:3000',
       // cache
       client_id: 'BY1EBCu3dN01Cl28OrcmJ3N1K5PqqFnF',
+      // client_id: 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh',
       connection: 'houseninja',
       // display: 'touch',
       // domain: 'dev-ctzabcoc.us.auth0.com',

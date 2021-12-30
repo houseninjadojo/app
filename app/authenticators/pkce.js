@@ -129,7 +129,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   */
   get redirectUri() {
     if (isNativePlatform()) {
-      return `${ENV.appScheme}://localhost:4200/login/callback`;
+      return `${ENV.appScheme}://localhost:4200/#/login/callback`;
     } else {
       return `${ENV.appHost}/login/callback`;
     }
@@ -252,7 +252,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     };
 
     let data = await this._post(this.serverTokenEndpoint, postData);
-
     await this.clearStash();
     debug('authenticate post data - code: ' + postData.code);
     debug('authenticate post data - code_verifier: ' + postData.code_verifier);
@@ -411,10 +410,15 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @return {RSVP.Promise}
    */
   async unstashData(key = STASH_TOKEN) {
-    let encodedValue = await run(async () => {
-      return await SecureStoragePlugin.get({ key });
-    });
-    return JSON.parse(encodedValue.value);
+    try {
+      let encodedValue = await run(async () => {
+        return await SecureStoragePlugin.get({ key });
+      });
+      return JSON.parse(encodedValue.value);
+    } catch (e) {
+      console.error(e);
+      return {};
+    }
   }
 
   /**
@@ -480,7 +484,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         if (isNativePlatform()) {
           return await MobileHTTP.get(options);
         } else {
-          return await fetch(options);
+          let res = await fetch(options.url, { headers: options.headers });
+          return { data: await res.json() };
         }
       });
     } catch (e) {
@@ -521,19 +526,18 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       data = response.data;
     } else {
       const webPostData = Object.keys(postData)
-        .map((k) => {
-          return `${k}=${encodeURIComponent(postData[k])}`;
-        })
+        .map((k) => `${k}=${postData[k]}`)
         .join('&');
       response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
-        credentials: 'include',
-        header: {
+        credentials: 'same-origin',
+        crossDomain: true,
+        headers: {
           Accept: 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        webPostData,
+        body: webPostData,
       });
       data = await response.json();
     }

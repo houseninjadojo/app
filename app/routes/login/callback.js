@@ -21,18 +21,15 @@ export default class LoginCallbackRoute extends Route {
    * Handle loading a callback route:
    * `/login?state=1234abcd&code=1234abcd`
    */
-  async afterModel(_, transition) {
+  async model(params) {
     const pkce = getOwner(this).lookup('authenticator:pkce');
     await pkce.stashData('login', { state: 'callback' });
-    const queryParams = transition.to
-      ? transition.to.queryParams
-      : transition.queryParams;
-    if (queryParams.code) {
+    if (params.code) {
       await this.closeBrowser();
       await this.session.authenticate(
         'authenticator:pkce',
-        queryParams.code,
-        queryParams.state
+        params.code,
+        params.state
       );
       await pkce.clearStash('login');
       await this.identifyAndTrackUser();
