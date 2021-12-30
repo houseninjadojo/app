@@ -27,6 +27,9 @@
 	"plugins": {
 		"SplashScreen": {
 			"launchShowDuration": 0
+		},
+		"Keyboard": {
+			"resize": "body"
 		}
 	},
 	"cordova": {}
