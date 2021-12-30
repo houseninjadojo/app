@@ -369,7 +369,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   async _refresh(refresh_token /*, retryCount = 0 */) {
     // Stash
-    let stashed_refresh_token = await SecureStorage.get(`${STASH_TOKEN}:refresh_token`);
+    let stashed_refresh_token = await SecureStorage.get(
+      `${STASH_TOKEN}:refresh_token`
+    );
 
     const params = {
       grant_type: 'refresh_token',
