@@ -32,16 +32,12 @@ module.exports = function (environment) {
      */
     auth: {
       audience: 'http://localhost:3000',
-      // cache
       client_id: 'BY1EBCu3dN01Cl28OrcmJ3N1K5PqqFnF',
-      // client_id: 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh',
-      connection: 'houseninja',
+      connection: 'development',
       // display: 'touch',
-      // domain: 'dev-ctzabcoc.us.auth0.com',
-      domain: 'auth.houseninja.co',
+      domain: 'auth.sandbox.houseninja.co',
       // login_hint: 'user@email.com',
       prompt: 'none',
-      // redirect_uri: 'https://app.houseninja.co/login',
       scope: 'openid profile email',
       screen_hint: 'login',
       useCookiesForTransactions: false,
@@ -67,14 +63,14 @@ module.exports = function (environment) {
         'localhost:4200',
         'https://api.houseninja.co',
         'localhost',
-        'co.houseninja.app://localhost',
+        'co.houseninja.app://#',
       ],
     },
   };
 
   if (environment === 'development') {
     ENV.auth.audience = 'http://localhost:3000';
-    ENV.auth.connection = 'dev';
+    ENV.auth.connection = 'development';
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -97,14 +93,34 @@ module.exports = function (environment) {
     ENV['@sentry/ember'].sentry.debug = false;
   }
 
-  if (environment === 'production') {
-    ENV.appHost = 'https://app.houseninja.co';
-    ENV.apiHost = 'https://api.houseninja.co';
-    ENV.auth.audience = 'https://api.houseninja.co';
-    ENV.auth.connection = 'prod';
+  if (environment === 'sandbox') {
+    ENV.appHost = 'https://sandbox.app.houseninja.co';
+    ENV.apiHost = 'https://sandbox.api.houseninja.co';
+
+    ENV.auth.client_id = 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh';
+    ENV.auth.audience = 'https://sandbox.api.houseninja.co';
+    ENV.auth.connection = 'sandbox';
 
     // Sentry
     ENV['@sentry/ember'].sentry.debug = false;
+    ENV['@sentry/ember'].sentry.environment = 'sandbox';
+    ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
+
+    // Analytics
+    // ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
+  }
+
+  if (environment === 'production') {
+    ENV.appHost = 'https://app.houseninja.co';
+    ENV.apiHost = 'https://api.houseninja.co';
+
+    ENV.auth.client_id = 'ebbRorM6pQsiFoyUBkzEtSMF2BrdK7Zt';
+    ENV.auth.audience = 'https://api.houseninja.co/';
+    ENV.auth.connection = 'houseninja';
+
+    // Sentry
+    ENV['@sentry/ember'].sentry.debug = false;
+    ENV['@sentry/ember'].sentry.environment = 'production';
     ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
