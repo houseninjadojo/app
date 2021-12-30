@@ -2,8 +2,8 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
-import { getOwner } from '@ember/application';
 import { setUser } from '@sentry/capacitor';
+import SecureStorage from 'houseninja/utils/secure-storage';
 
 export default class LoginCallbackRoute extends Route {
   @service current;
@@ -21,20 +21,16 @@ export default class LoginCallbackRoute extends Route {
    * Handle loading a callback route:
    * `/login?state=1234abcd&code=1234abcd`
    */
-  async afterModel(_, transition) {
-    const pkce = getOwner(this).lookup('authenticator:pkce');
-    await pkce.stashData('login', { state: 'callback' });
-    const queryParams = transition.to
-      ? transition.to.queryParams
-      : transition.queryParams;
-    if (queryParams.code) {
+  async model(params) {
+    await SecureStorage.set('login', { state: 'callback' });
+    if (params.code) {
       await this.closeBrowser();
       await this.session.authenticate(
         'authenticator:pkce',
-        queryParams.code,
-        queryParams.state
+        params.code,
+        params.state
       );
-      await pkce.clearStash('login');
+      await SecureStorage.clear('login');
       await this.identifyAndTrackUser();
       await this.current.load();
       this.router.transitionTo('index');

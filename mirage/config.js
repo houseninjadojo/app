@@ -32,4 +32,5 @@ export default function () {
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
   this.passthrough(`https://${ENV.auth.domain}/oauth/token`);
+  this.passthrough(`https://${ENV.auth.domain}/userinfo`);
 }

@@ -8,5 +8,8 @@
   "disableAnalytics": true,
   "liveReload": true,
   "componentClass": "@glimmer/component",
-  "componentStructure": "nested"
+  "componentStructure": "nested",
+  "ssl": true,
+  "sslKey": "vendor/ssl/server.key",
+  "sslCert": "vendor/ssl/server.crt"
 }
