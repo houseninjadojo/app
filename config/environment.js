@@ -117,6 +117,7 @@ module.exports = function (environment) {
     ENV.auth.client_id = 'ebbRorM6pQsiFoyUBkzEtSMF2BrdK7Zt';
     ENV.auth.audience = 'https://api.houseninja.co/';
     ENV.auth.connection = 'houseninja';
+    ENV.auth.domain = 'auth.houseninja.co'
 
     // Sentry
     ENV['@sentry/ember'].sentry.debug = false;
