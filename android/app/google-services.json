@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "803774737135",
+    "project_id": "houseninja-dev",
+    "storage_bucket": "houseninja-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803774737135:android:d41898f364566ab024c91a",
+        "android_client_info": {
+          "package_name": "co.houseninja.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803774737135-6lrao1rej2g90n5n14btmmcg75ph06vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0O4Qj3HojAI_n1NhxsSHkjvCBQzm6ymQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803774737135-6lrao1rej2g90n5n14btmmcg75ph06vp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "803774737135-u57gl6clji55nms8j6j5b32s1dd8hss5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.houseninja.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

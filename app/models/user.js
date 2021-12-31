@@ -1,8 +1,9 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class UserModel extends Model {
-  @hasMany('property') properties;
+  @hasMany('devices') devices;
   @hasMany('payment-method', { polymorphic: true }) paymentMethods;
+  @hasMany('property') properties;
 
   @attr('string') email;
   @attr('string') firstName;
