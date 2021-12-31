@@ -1,11 +1,11 @@
-import nativePushNotifications from 'houseninja/utils/native/push-notifications';
-import { module, test } from 'qunit';
+import { checkPermissions } from 'houseninja/utils/native/push-notifications';
+import { module, skip } from 'qunit';
 
-module('Unit | Utility | native/push-notifications', function() {
-
-  // TODO: Replace this with your real tests.
-  test('it works', function(assert) {
-    let result = nativePushNotifications();
+module('Unit | Utility | native/push-notifications', function () {
+  // This requires running on a non-web platform
+  // until then, skip
+  skip('it works', async function (assert) {
+    let result = await checkPermissions();
     assert.ok(result);
   });
 });

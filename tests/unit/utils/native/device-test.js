@@ -1,10 +1,9 @@
-import nativeDevice from 'houseninja/utils/native/device';
+import { getInfo } from 'houseninja/utils/native/device';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | native/device', function () {
-  // TODO: Replace this with your real tests.
-  test('it works', function (assert) {
-    let result = nativeDevice();
+  test('getInfo', async function (assert) {
+    let result = await getInfo();
     assert.ok(result);
   });
 });

@@ -3,6 +3,7 @@ import {
   addListener,
   register,
 } from 'houseninja/utils/native/push-notifications';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 /**
  * Register push notification event handlers
@@ -11,6 +12,11 @@ import {
  * @see https://guides.emberjs.com/release/applications/initializers/#toc_application-instance-initializers
  */
 export async function initialize(appInstance) {
+  // if we're on early, skip this
+  if (!isNativePlatform()) {
+    return;
+  }
+
   let notifications = appInstance.lookup('service:notifications');
   // let store = appInstance.lookup('service:store');
   let current = appInstance.lookup('service:current');

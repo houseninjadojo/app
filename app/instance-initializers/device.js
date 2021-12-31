@@ -1,4 +1,4 @@
-import { getId, getInfo } from 'houseninja/util/native/device';
+import { getId, getInfo } from 'houseninja/utils/native/device';
 import { debug } from '@ember/debug';
 
 /**
@@ -22,7 +22,7 @@ export async function initialize(appInstance) {
   debug(`initializing device id=${id}`);
   debug(deviceInfo);
 
-  let device = await store.createRecord('store', deviceInfo);
+  let device = await store.createRecord('device', deviceInfo);
   current.set('device', device);
 }
 
