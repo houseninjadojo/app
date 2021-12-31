@@ -1171,6 +1171,11 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/device@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-1.1.1.tgz#f6ee5abf43c142c7954c04830db81a4542f25186"
+  integrity sha512-JBRWABHILmJ8SWEKUEb886xnD/+Aqpp3eo7MyNCIty8lj0dBscR57sis5BiUG8eEBMsPtPgh6fvda34AlzZvVw==
+
 "@capacitor/dialog@^1.0.6":
   version "1.0.6"
   resolved "https://registry.npmjs.org/@capacitor/dialog/-/dialog-1.0.6.tgz"

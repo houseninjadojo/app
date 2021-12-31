@@ -1,12 +1,12 @@
 import Application from '@ember/application';
 
 import config from 'houseninja/config/environment';
-import { initialize } from 'houseninja/instance-initializers/push-notifications';
+import { initialize } from 'houseninja/instance-initializers/notifications';
 import { module, test } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';
 
-module('Unit | Instance Initializer | push-notifications', function (hooks) {
+module('Unit | Instance Initializer | notifications', function (hooks) {
   hooks.beforeEach(function () {
     this.TestApplication = class TestApplication extends Application {
       modulePrefix = config.modulePrefix;

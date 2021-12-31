@@ -3,6 +3,4 @@ import { A } from '@ember/array';
 
 export default class NotificationsService extends Service {
   queue = A();
-
-
 }
