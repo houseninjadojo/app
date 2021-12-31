@@ -7,6 +7,7 @@ export default class CurrentService extends Service {
   user = null;
   // properties = [];
   property = null;
+  device = null;
 
   async load() {
     if (this.session.isAuthenticated) {

@@ -33,6 +33,11 @@
     },
     "PushNotifications": {
       "presentationOptions": ["badge", "sound", "alert"]
+    },
+    "LocalNotifications": {
+      "smallIcon": "",
+      "iconColor": "",
+      "sound": ""
     }
   },
   "cordova": {}
