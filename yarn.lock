@@ -1196,6 +1196,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-1.2.0.tgz#bb3e8fa0cfb7c80338494b29a81158f893b000d3"
   integrity sha512-FgtMAdNRtVarSo0P99UnkM+WcKCmWevUSccBVRqoGYnJOXkvByY8UtZcDe4YI0/uTTA4TiQKt/epuGHHUTaVSw==
 
+"@capacitor/local-notifications@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-1.0.9.tgz#411894f3d44a9d144882250148a1f6a301749d92"
+  integrity sha512-6znL6l2gDj1IS05yWLyo7ENYmid89rmNTQmQxURrJLdkn98AGDNrFlYoApo7+Hfjbb3cpGX4LNKPh+uWgeaBnw==
+
 "@capacitor/push-notifications@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-1.0.7.tgz#ebff9bfea3d343602b97f707f246d13ea7735f15"

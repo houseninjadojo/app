@@ -1,5 +1,6 @@
 /**
  * Start the deep links handler service on application boot
+ *
  * @see /app/services/deep-links.js
  * @see https://guides.emberjs.com/release/applications/initializers/#toc_application-instance-initializers
  */
