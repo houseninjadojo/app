@@ -24,8 +24,8 @@ const NOTIFICATION_TYPE = {
  */
 export async function impact(strength = 'default') {
   debug(`Haptics - impact strength='${strength}' called`);
-  return run(async () => {
-    return Haptics.impact({ style: IMPACT_STRENGTHS[strength] });
+  return await run(async () => {
+    return await Haptics.impact({ style: IMPACT_STRENGTHS[strength] });
   });
 }
 
@@ -37,8 +37,8 @@ export async function impact(strength = 'default') {
  */
 export async function notification(type = 'default') {
   debug(`Haptics - notification type='${type}' called`);
-  return run(async () => {
-    return Haptics.impact({ style: NOTIFICATION_TYPE[type] });
+  return await run(async () => {
+    return await Haptics.impact({ style: NOTIFICATION_TYPE[type] });
   });
 }
 
@@ -50,8 +50,8 @@ export async function notification(type = 'default') {
  */
 export async function vibrate(duration = 300) {
   debug(`Haptics - vibrate duration=${duration} called`);
-  return run(async () => {
-    return Haptics.impact({ duration });
+  return await run(async () => {
+    return await Haptics.impact({ duration });
   });
 }
 
@@ -62,8 +62,8 @@ export async function vibrate(duration = 300) {
  */
 export async function selectionStart() {
   debug(`Haptics - selectionStart called`);
-  return run(async () => {
-    return Haptics.selectionStart();
+  return await run(async () => {
+    return await Haptics.selectionStart();
   });
 }
 
@@ -74,8 +74,8 @@ export async function selectionStart() {
  */
 export async function selectionChanged() {
   debug(`Haptics - selectionStart called`);
-  return run(async () => {
-    return Haptics.selectionStart();
+  return await run(async () => {
+    return await Haptics.selectionStart();
   });
 }
 
@@ -86,7 +86,7 @@ export async function selectionChanged() {
  */
 export async function selectionEnd() {
   debug(`Haptics - selectionStart called`);
-  return run(async () => {
-    return Haptics.selectionStart();
+  return await run(async () => {
+    return await Haptics.selectionStart();
   });
 }
