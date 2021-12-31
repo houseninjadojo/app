@@ -1,5 +1,7 @@
 import { PushNotifications } from '@capacitor/push-notifications';
 import { run } from '@ember/runloop';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 
 /**
  * @see https://capacitorjs.com/docs/apis/push-notifications#register
@@ -26,7 +28,10 @@ export async function register() {
 export async function getDeliveredNotifications() {
   return await run(async () => {
     let result = await PushNotifications.getDeliveredNotifications();
-    return result.notifications;
+    let notifications = result.notifications.map((n) => {
+      return new EmberObject(n);
+    });
+    return A(notifications);
   });
 }
 

@@ -1,8 +1,13 @@
 import {
-  requestPermissions,
+  requestPermissions as requestRemotePermissions,
   addListener,
   register,
+  getDeliveredNotifications,
 } from 'houseninja/utils/native/push-notifications';
+import {
+  requestPermissions as requestLocalPermissions,
+  getPending as getPendingNotifications,
+} from 'houseninja/utils/native/local-notifications';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 /**
@@ -32,11 +37,32 @@ export async function initialize(appInstance) {
     console.error(error);
   });
 
+  addListener('pushNotificationReceived', (notification) => {
+    notifications.add('pushed', 'delivered', notification);
+  });
+
+  addListener('localNotificationReceived', (notification) => {
+    notifications.add('local', 'delivered', notification);
+  });
+
   // permissions check
-  let permissionState = await requestPermissions();
-  if (permissionState === 'granted') {
+  // @todo this whole thing is ugly
+  let localPermissionsState = await requestLocalPermissions();
+  if (localPermissionsState === 'granted') {
+    notifications.set('canShowLocalNotifications', true);
+    let pendingNotifications = await getPendingNotifications();
+    pendingNotifications.forEach((n) => {
+      notifications.add('local', 'pending', n);
+    });
+  }
+  let remotePermissionState = await requestRemotePermissions();
+  if (remotePermissionState === 'granted') {
+    notifications.set('canShowRemoteNotifications', true);
+    let deliveredNotifications = await getDeliveredNotifications();
+    deliveredNotifications.forEach((n) => {
+      notifications.add('push', 'delivered', n);
+    });
     await register();
-    notifications.set('canShowNotifications', true);
   }
 }
 

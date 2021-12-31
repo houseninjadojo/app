@@ -1,5 +1,7 @@
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { run } from '@ember/runloop';
+import EmberObject from '@ember/object';
+import { A } from '@ember/array';
 
 /**
  * @see https://capacitorjs.com/docs/apis/local-notifications#schedule
@@ -13,7 +15,7 @@ export async function schedule(notifications) {
   return await run(async () => {
     notifications = [notifications].flat();
     let result = await LocalNotifications.schedule({ notifications });
-    return result.notifications;
+    return A(result.notifications);
   });
 }
 
@@ -27,7 +29,10 @@ export async function schedule(notifications) {
 export async function getPending() {
   return await run(async () => {
     let result = await LocalNotifications.getPending();
-    return result.notifications;
+    let notifications = result.notifications.map((n) => {
+      return new EmberObject(n);
+    });
+    return A(notifications);
   });
 }
 
@@ -56,7 +61,8 @@ export async function registerActionTypes(types) {
 export async function cancel(notifications) {
   return await run(async () => {
     notifications = [notifications].flat();
-    return await LocalNotifications.cancel(notifications);
+    let result = LocalNotifications.cancel(notifications);
+    return A(result.notifications);
   });
 }
 
