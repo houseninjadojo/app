@@ -3,7 +3,8 @@ import Model, { attr, belongsTo } from '@ember-data/model';
 export default class DeviceModel extends Model {
   @belongsTo('user') user;
 
-  @attr('string') pushRegistrationId;
+  @attr('string') apnsDeviceToken; // apple push notification token
+  @attr('string') fcmToken; // firebase cloud messaging token
 
   @attr('string') deviceId;
   @attr('string') name;

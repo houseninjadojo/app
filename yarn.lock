@@ -1254,6 +1254,13 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@capacitor-community/fcm@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor-community/fcm/-/fcm-2.0.2.tgz#8e35f452d4929ce0a7aba000a215f2e4779e2d0a"
+  integrity sha512-O/xxizQyPdD6AejJjmhZC+WBquy1UHrS0KvmnVf58Ji9TtQiaCb6iQhZMjTidNqOHJIj1YxeIFGAcXlt8nqgyw==
+  dependencies:
+    "@capacitor/core" "^3.0.1"
+
 "@capacitor-community/http@^1.4.1":
   version "1.4.1"
   resolved "https://registry.npmjs.org/@capacitor-community/http/-/http-1.4.1.tgz"
@@ -1301,7 +1308,7 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@^3.0.0", "@capacitor/core@^3.3.3":
+"@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1", "@capacitor/core@^3.3.3":
   version "3.3.3"
   resolved "https://registry.npmjs.org/@capacitor/core/-/core-3.3.3.tgz"
   integrity sha512-5oN3dUxdVXSvrTvTkmKBoBh7qISi+PVrsxHyjqq7Kr573dQnm8LsZ0/24PpJsGp08lD/+nFtFzOtPODJvYLVgg==

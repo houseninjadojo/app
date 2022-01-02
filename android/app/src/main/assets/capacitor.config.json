@@ -37,6 +37,11 @@
 				"sound",
 				"alert"
 			]
+		},
+		"LocalNotifications": {
+			"smallIcon": "",
+			"iconColor": "",
+			"sound": ""
 		}
 	},
 	"cordova": {}
