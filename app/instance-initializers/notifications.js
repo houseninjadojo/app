@@ -2,13 +2,107 @@ import {
   requestPermissions as requestRemotePermissions,
   addListener,
   register,
-  getDeliveredNotifications,
+  // getDeliveredNotifications,
 } from 'houseninja/utils/native/push-notifications';
 import {
   requestPermissions as requestLocalPermissions,
   getPending as getPendingNotifications,
 } from 'houseninja/utils/native/local-notifications';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { getToken } from 'houseninja/utils/native/fcm';
+
+/**
+ * @todo
+ *
+ * THIS FILE IS A HOT MESS
+ */
+
+/**
+ * After device registers for push notifications,
+ * save the fcmToken to the device entry on our servers
+ * so we can send notifications to it later.
+ */
+const registrationHandler = async (fcmToken) => {
+  let current = this.appInstance.lookup('service:current');
+  if (!fcmToken) {
+    fcmToken = await getToken();
+  }
+  current.device.set('fcmToken', fcmToken);
+  current.device.save();
+};
+
+/**
+ * Register Listeners/Handlers
+ */
+const registerListenerHandlers = async (appInstance) => {
+  let notifications = appInstance.lookup('service:notifications');
+
+  // successful push notification registration
+  addListener('registration', registrationHandler.bind({ appInstance }));
+
+  // failed push notification registration
+  addListener('registrationError', (error) => {
+    console.error(error);
+  });
+
+  addListener('pushNotificationReceived', (notification) => {
+    notifications.add('push', 'delivered', notification);
+  });
+
+  addListener('localNotificationReceived', (notification) => {
+    notifications.add('local', 'delivered', notification);
+  });
+};
+
+/**
+ * Initialize local notifications into Ember
+ */
+const initializeLocalNotifications = async (appInstance) => {
+  let notifications = appInstance.lookup('service:notifications');
+
+  // permissions check
+  let localPermissionsState = await requestLocalPermissions();
+  if (localPermissionsState === 'granted') {
+    notifications.set('canShowLocalNotifications', true);
+
+    // load any notifications present in notifications center
+    let pendingNotifications = await getPendingNotifications();
+    pendingNotifications.forEach((n) => {
+      notifications.add('local', 'pending', n);
+    });
+  }
+};
+
+/**
+ * Initialize push notifications into Ember
+ */
+const initializePushNotifications = async (appInstance) => {
+  let notifications = appInstance.lookup('service:notifications');
+
+  // permissions check
+  let remotePermissionState = await requestRemotePermissions();
+  if (remotePermissionState === 'granted') {
+    // we've been granted permission, so register
+    await register();
+
+    notifications.set('canShowRemoteNotifications', true);
+
+    // @todo
+    //   currently gives an error:
+    //
+    //   ⚡️  To Native ->  PushNotifications getDeliveredNotifications 62185669
+    //   ERROR MESSAGE:  {"errorMessage":"event capacitorDidRegisterForRemoteNotifications not called.
+    //   Visit https:\/\/capacitorjs.com\/docs\/apis\/push-notifications for more information",
+    //   "message":"event capacitorDidRegisterForRemoteNotifications not called.  Visit
+    //   https:\/\/capacitorjs.com\/docs\/apis\/push-notifications for more information"}
+    //
+    // // load any notifications present in notifications center
+    // let deliveredNotifications = await getDeliveredNotifications();
+    // deliveredNotifications.forEach((n) => {
+    //   notifications.add('push', 'delivered', n);
+    // });
+  }
+};
 
 /**
  * Register push notification event handlers
@@ -17,53 +111,21 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
  * @see https://guides.emberjs.com/release/applications/initializers/#toc_application-instance-initializers
  */
 export async function initialize(appInstance) {
-  // if we're on early, skip this
+  this.appInstance = appInstance;
+
+  // if we're on the web, skip this
   if (!isNativePlatform()) {
     return;
   }
 
-  let notifications = appInstance.lookup('service:notifications');
-  // let store = appInstance.lookup('service:store');
-  let current = appInstance.lookup('service:current');
+  // setup event listeners
+  await registerListenerHandlers(appInstance);
 
-  // successful push notification registration
-  addListener('registration', (token) => {
-    current.device.set('pushNotificationId', token);
-    current.device.save();
-  });
+  // local setup
+  await initializeLocalNotifications(appInstance);
 
-  // failed push notification registration
-  addListener('registrationError', (error) => {
-    console.error(error);
-  });
-
-  addListener('pushNotificationReceived', (notification) => {
-    notifications.add('pushed', 'delivered', notification);
-  });
-
-  addListener('localNotificationReceived', (notification) => {
-    notifications.add('local', 'delivered', notification);
-  });
-
-  // permissions check
-  // @todo this whole thing is ugly
-  let localPermissionsState = await requestLocalPermissions();
-  if (localPermissionsState === 'granted') {
-    notifications.set('canShowLocalNotifications', true);
-    let pendingNotifications = await getPendingNotifications();
-    pendingNotifications.forEach((n) => {
-      notifications.add('local', 'pending', n);
-    });
-  }
-  let remotePermissionState = await requestRemotePermissions();
-  if (remotePermissionState === 'granted') {
-    notifications.set('canShowRemoteNotifications', true);
-    let deliveredNotifications = await getDeliveredNotifications();
-    deliveredNotifications.forEach((n) => {
-      notifications.add('push', 'delivered', n);
-    });
-    await register();
-  }
+  // remote setup
+  await initializePushNotifications(appInstance);
 }
 
 export default {
