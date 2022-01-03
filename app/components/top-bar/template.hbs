@@ -1,8 +1,8 @@
 <div class="hn top-bar w-screen top-0 z-1 {{@class}}">
-  <div class="action-container pt-16">
+  <div class="action-container">
     {{#if @userSignUpFlow }}
       <button type="button" class="action left back">      
-        <img src="assets/icons/less-than.svg" alt="previous" class="prev"/>
+        {{!-- <img src="assets/icons/less-than.svg" class="prev"/> --}}
       </button>
     {{else}}
       <button type="button" class="action" {{on 'click' this.toggleSettingsViewVisibility}}>    

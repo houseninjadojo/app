@@ -4,11 +4,11 @@
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  line-height: 21px;
   width: 100%;
   border-radius: 1px;
   padding: 0 16px;
   outline: none;
+  white-space: nowrap;
 }
 
 /* Size */
@@ -55,6 +55,13 @@
   background: var(--grad-black-1000);
   box-shadow: var(--shadow-gray-1);
   color: var(--white);
+}
+
+.hn.btn.hn.btn.solid.primary .icon {
+  filter: invert(93%) sepia(100%) saturate(28%) hue-rotate(54deg) brightness(106%) contrast(109%);
+  height: 24px;
+  margin-left: 16px;
+  margin-bottom: 2px;
 }
 
 .hn.btn.outline.primary {

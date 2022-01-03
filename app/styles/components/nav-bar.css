@@ -6,6 +6,7 @@
   width: 100%;
   height: var(--top-nav-bars-offset);
   position: absolute;
+  z-index: 100;
   bottom: 0;
   padding: 12px 24px;
   backdrop-filter: blur(4px);
@@ -35,4 +36,10 @@
 .nav-menu-item button.active {
   /* Active Hex Equivalent: var(--teal-600) */
   filter: invert(56%) sepia(88%) saturate(1163%) hue-rotate(133deg) brightness(90%) contrast(100%);
+}
+
+.nav-menu-item button img { width: 32px; }
+
+.hn.nav-bar > button {
+  margin-bottom: 8px;
 }

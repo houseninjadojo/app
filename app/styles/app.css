@@ -28,36 +28,22 @@ html .dark * {
   color: var(--gray-100);
 }
 
-.background-container {
-  /* Linear Gradient/Black/1000 */
-
-  /* background: linear-gradient(206.57deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 83.33%), #000000; */
-
-  /* Temporary background color */
-  background: var(--gray-25);
-
-  /* Gray Shadow - Level 3 */
-  box-shadow: -1px 1px 1px rgb(0 56 55 / 10%), -4px 3px 6px rgb(26 26 26 / 35%);
-  border-radius: 12px 12px 0 0;
+html .light * {
+  color: var(--gray-800);
 }
 
-/* .top-bar {
-  border-bottom: 0.5px solid #CCCCCC;
-} */
+body {
+  width: 100vw;
+  height: 100vh;
+}
 
-.onboarding .vertical-logo {
+.application {
   position: absolute;
-  display: block;
-
-  /* width: 326px; */
-  width: 50%;
-  height: 160px;
-  margin-left: auto;
-  margin-right: auto;
-  top: 300px;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-
-  /* background: url(images/logo.color.vertical.svg); */
-  border-radius: 4px;
+  width: 100vw;
+  height: 100vh;
+  background: var(--grad-teal-500);
 }
