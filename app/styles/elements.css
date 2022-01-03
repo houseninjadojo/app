@@ -21,3 +21,7 @@
 .hn .strong {
   font-family: var(--campton-strong);
 }
+
+.hn .accent {
+  color: var(--teal-500);
+}
