@@ -13,7 +13,7 @@ import { Haptics } from '@capacitor/haptics';
 
 // @todo I don't know how to spy on Proxy objects
 // If that is figured out then maybe we can test it
-module('Unit | Utility | haptics', function () {
+module('Unit | Utility | native/haptics', function () {
   // hooks.beforeEach(function () {
   //   console.log(HapticsPlugin);
   //   sinon.stub(HapticsPlugin, 'impact').return(true);
