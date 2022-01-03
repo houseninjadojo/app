@@ -1,0 +1,19 @@
+<div class="content mb-16">
+    <div class="hero mb-16">
+        <img src="assets/images/wordmark+vertical+black+teal.svg" class="view-logo" alt="house ninja"/>
+        <p>To get started, enter the zip code of the home property you’d like us to maintain.</p>
+    </div>
+    <div class="prompt">        
+        <p class="primary">What is your home zip code?</p>    
+        <Primitive::Input                
+            @label='Zipcode'
+            @placeholder='Zipcode'
+            @hideLabel={{true}}
+            @required={{true}}
+            @warn={{false}}                                
+        />    
+    </div>
+    <div class="action">        
+        <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
+    </div>
+</div>

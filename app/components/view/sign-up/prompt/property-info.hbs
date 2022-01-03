@@ -1,0 +1,12 @@
+<div class="content mb-16">    
+    <div class="prompt">        
+        <p class="hn primary">Home Address</p>            
+        {{#each @fields as |field|}}
+            <Primitive::Input @field={{field}} @label={{field.label}} required={{field}} @warn={{false}} />
+        {{/each}}
+    </div>
+    <div class="action">        
+        <Primitive::Button @size='lg' @variant='outline' @semantic='primary'>Previous</Primitive::Button>
+        <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
+    </div>
+</div>

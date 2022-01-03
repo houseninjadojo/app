@@ -1,0 +1,17 @@
+<li>    
+    <View::SignUp::Breadcrumbs::Label 
+        @label={{@label}}
+        @current={{eq @index @activeIndex}} 
+        @previous={{lt @index @activeIndex}} 
+        @next={{gt @index @activeIndex}} 
+    />
+</li>
+{{#if @isLastOrOnly}}
+{{else}}
+    <li class="track-item">
+        <View::SignUp::Breadcrumbs::Track 
+            @previous={{lt @index @activeIndex}} 
+            @next={{gte @index @activeIndex}} 
+        />
+    </li>
+{{/if}}
