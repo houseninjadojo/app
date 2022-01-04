@@ -7,6 +7,6 @@ export default class ShelfComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo(this.args.backRoute);
+    this.router.transitionTo(window.history.go(-1));
   }
 }
