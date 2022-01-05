@@ -2,10 +2,10 @@
     <div class="hn-input-container">
         {{#if @hideLabel}}                    
             {{!-- template-lint-disable require-input-label  --}}
-            <input class="hn-input label-hidden" id={{@id}} type="text" required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}} aria-label={{@label}}/>
+            <input class="hn-input label-hidden" id={{@id}} type={{if @type @type "text"}} required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}} aria-label={{@label}}/>
         {{else}}
             <label class="hn-input-label" for={{@id}} >{{@label}}</label>
-            <input class="hn-input" id={{@id}} type="text" required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}}/>
+            <input class="hn-input" id={{@id}} type={{if @type @type "text"}} required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}}/>
         {{/if}}
     </div>
     {{#if @description}}
