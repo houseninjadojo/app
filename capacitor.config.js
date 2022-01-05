@@ -21,7 +21,7 @@ const server = {
   iosScheme: 'co.houseninja.app',
   androidScheme: 'co.houseninja.app',
   cleartext: false,
-  url: 'http://localhost:4200',
+  url: 'https://localhost:4200',
   allowNavigation: [
     'auth.houseninja.co',
     'sandbox.auth.houseninja.co',
