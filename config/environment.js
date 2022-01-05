@@ -23,7 +23,7 @@ module.exports = function (environment) {
     },
 
     apiHost: 'https://api.dev.houseninja.co',
-    appHost: 'https://localhost:4200',
+    appHost: 'http://localhost:4200',
     appScheme: 'co.houseninja.app',
 
     /**

@@ -40,6 +40,7 @@ export default class LoginRoute extends Route {
   }
 
   async nativeOpen(url) {
+    console.log(url);
     if (isNativePlatform()) {
       return await Browser.open({ url, presentationStyle: 'popover' });
     } else {

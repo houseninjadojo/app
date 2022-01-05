@@ -32,7 +32,7 @@ export default class DeepLinksService extends Service {
   }
 
   forwardRoute(url) {
-    debug('url: ', url);
+    debug('url: ', url.raw);
     let route = this.router.recognize(url.raw);
     debug('route: ' + route.name);
     this.router.transitionTo(url.raw);
@@ -42,9 +42,10 @@ export default class DeepLinksService extends Service {
     let parsed = new URL(url);
     let queryParams = Object.fromEntries(parsed.searchParams.entries());
     debug('deep link queryParams: ' + queryParams);
-    let pathName = parsed.pathname;
+    let pathName =
+      parsed.hash.length > 0 ? parsed.hash.replace('#', '') : parsed.pathname;
     return {
-      raw: `${parsed.pathname}${parsed.search}`,
+      raw: `${pathName}${parsed.search}`,
       name: pathName,
       model: null, // perhaps later
       options: {
