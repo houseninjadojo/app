@@ -1,4 +1,4 @@
-<main class="hn view {{@class}}">
+<main class="hn view {{@class}}" {{did-insert this.applyPreservedScrollPosition}}>
   {{yield}}
   {{#if @hideLogo}}
   {{else}}  

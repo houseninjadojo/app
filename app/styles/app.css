@@ -22,6 +22,8 @@
 
 html * {
   font-family: var(--campton-default);
+  -webkit-touch-callout: none; /* iOS Safari */
+  user-select: none; /* Safari */
 }
 
 html .dark * {
@@ -45,5 +47,10 @@ body {
   right: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--grad-teal-500);
+  background: var(--white);
+}
+
+.ember-view {
+  width: 100%;
+  height: 100%;
 }
