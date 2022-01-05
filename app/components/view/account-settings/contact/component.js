@@ -15,6 +15,7 @@ export default class ContactComponent extends Component {
       placeholder: '',
     },
     {
+      type: 'tel',
       id: 'phone',
       required: true,
       label: 'Phone',
@@ -22,6 +23,7 @@ export default class ContactComponent extends Component {
       description: 'We only use your phone number to contact you.',
     },
     {
+      type: 'email',
       id: 'email',
       required: true,
       label: 'Email',
