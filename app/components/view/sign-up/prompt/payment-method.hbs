@@ -3,7 +3,7 @@
         <p class="primary">Payment Method</p>    
         <p>Let's get you signed up</p>
         {{#each @fields as |field|}}
-            <Primitive::Input @field={{field}} @label={{field.label}} required={{field}} @warn={{false}} />
+            <Primitive::Input @field={{field}} @id={{field.id}} @label={{field.label}} @required={{field.required}} @type={{field.type}} @warn={{false}} />
         {{/each}}
     </div>
     <div class="action">        
