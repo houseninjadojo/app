@@ -1,5 +1,5 @@
 const base = {
-  appId: 'co.houseninja.app',
+  appId: 'co.houseninja.application',
   appName: 'House Ninja',
   bundledWebRuntime: false,
   loggingBehavior: 'debug',
@@ -18,8 +18,8 @@ const ios = {
 
 const server = {
   hostname: 'localhost',
-  iosScheme: 'co.houseninja.app',
-  androidScheme: 'co.houseninja.app',
+  iosScheme: 'co.houseninja.application',
+  androidScheme: 'co.houseninja.application',
   cleartext: false,
   url: 'http://localhost:4200',
   allowNavigation: [

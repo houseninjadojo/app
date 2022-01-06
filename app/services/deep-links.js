@@ -6,13 +6,13 @@ import { debug } from '@ember/debug';
 
 /**
  * This service registers a listener to pick up incoming deep links.
- * Our app registers the deep link scheme `co.houseninja.app://`.
+ * Our app registers the deep link scheme `co.houseninja.application://`.
  *
  * This service listens to a deep link call to open our app, then
  * translates the request and forwards it to the ember router.
  *
  * In this way, both web native route requests (https://app.houseninja.co/some-page?query=param)
- * and mobile native route requests (co.houseninja.app://some-page?query=param)
+ * and mobile native route requests (co.houseninja.application://some-page?query=param)
  * are routed the same way.
  */
 export default class DeepLinksService extends Service {
@@ -57,7 +57,7 @@ export default class DeepLinksService extends Service {
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
       run(() => {
-        // co.houseninja.app://page => /page
+        // co.houseninja.application://page => /page
         let url = this.parseUrl(event.url);
         this.analytics.track('deep_link_visit', {
           page: url.raw,

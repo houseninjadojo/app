@@ -9,6 +9,7 @@
 		<string>webcredentials:houseninja.co</string>
 		<string>applinks:houseninja.co</string>
 		<string>applinks:app.houseninja.co</string>
+		<string>applinks:application.houseninja.co</string>
 	</array>
 </dict>
 </plist>
