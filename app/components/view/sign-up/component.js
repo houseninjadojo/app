@@ -61,6 +61,7 @@ export default class SignUpComponent extends Component {
       disabled: true,
     },
     {
+      type: 'number',
       id: 'zipcode',
       required: true,
       label: 'Zipcode',
@@ -77,24 +78,28 @@ export default class SignUpComponent extends Component {
       placeholder: '',
     },
     {
+      type: 'number',
       id: 'cvc',
       required: true,
       label: 'CVC',
       placeholder: '',
     },
     {
+      type: 'number',
       id: 'card-month',
       required: true,
       label: 'Month',
       placeholder: 'MM',
     },
     {
+      type: 'number',
       id: 'card-year',
       required: true,
       label: 'Year',
       placeholder: 'YYYY',
     },
     {
+      type: 'number',
       id: 'card-zipcode',
       required: true,
       label: 'Zipcode',
@@ -116,6 +121,7 @@ export default class SignUpComponent extends Component {
       placeholder: '',
     },
     {
+      type: 'tel',
       id: 'phone',
       required: true,
       label: 'Phone',
@@ -123,6 +129,7 @@ export default class SignUpComponent extends Component {
       description: 'We only use your phone number to contact you.',
     },
     {
+      type: 'email',
       id: 'email',
       required: true,
       label: 'Email',
