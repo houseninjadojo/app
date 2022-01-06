@@ -7,6 +7,12 @@ export default class ShelfComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo(window.history.go(-1));
+    const previousRoute = localStorage.getItem('preservedPreviousRoute');
+    if (previousRoute) {
+      this.router.transitionTo(previousRoute);
+      localStorage.removeItem('preservedPreviousRoute');
+    } else {
+      this.router.transitionTo('home');
+    }
   }
 }

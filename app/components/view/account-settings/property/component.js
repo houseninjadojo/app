@@ -34,6 +34,7 @@ export default class PropertyComponent extends Component {
       disabled: true,
     },
     {
+      type: 'number',
       id: 'zipcode',
       required: true,
       label: 'Zipcode',

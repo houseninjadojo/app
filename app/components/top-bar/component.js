@@ -5,14 +5,26 @@ import { service } from '@ember/service';
 export default class NavBarComponent extends Component {
   @service router;
 
-  @action
-  toggleSettingsViewVisibility() {
+  preserveViewScrollPosition() {
     const mainView = document.querySelector('main.hn.view');
     const position = mainView.scrollTop;
     localStorage.setItem(
       'preserveredScrollPosition',
       JSON.stringify({ route: this.router.currentRouteName, position })
     );
+  }
+
+  preservePreviousRoute() {
+    localStorage.setItem(
+      'preservedPreviousRoute',
+      this.router.currentRouteName
+    );
+  }
+
+  @action
+  toggleSettingsViewVisibility() {
+    this.preserveViewScrollPosition();
+    this.preservePreviousRoute();
 
     this.router.transitionTo('settings');
   }

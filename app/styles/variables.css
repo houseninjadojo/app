@@ -2,7 +2,8 @@
   /*
     Offsets
   */
-  --top-nav-bars-offset: 128px;
+  --top-bar-offset: 96px;
+  --nav-bar-offset: 128px;
 
   /*
         Typography

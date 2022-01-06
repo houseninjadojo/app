@@ -4,7 +4,7 @@
   align-items: center;
   background: #000000e5;
   width: 100%;
-  height: var(--top-nav-bars-offset);
+  height: var(--nav-bar-offset);
   position: absolute;
   z-index: 100;
   bottom: 0;
