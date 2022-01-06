@@ -24,7 +24,7 @@ module.exports = function (environment) {
 
     apiHost: 'https://api.dev.houseninja.co',
     appHost: 'http://localhost:4200',
-    appScheme: 'co.houseninja.app',
+    appScheme: 'co.houseninja.application',
 
     /**
      * Auth0 Config
@@ -63,7 +63,7 @@ module.exports = function (environment) {
         'localhost:4200',
         'https://api.houseninja.co',
         'localhost',
-        'co.houseninja.app://#',
+        'co.houseninja.application://#',
       ],
     },
   };

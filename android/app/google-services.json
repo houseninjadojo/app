@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:803774737135:android:d41898f364566ab024c91a",
+        "mobilesdk_app_id": "1:803774737135:android:27d7f6176ec4536c24c91a",
         "android_client_info": {
-          "package_name": "co.houseninja.app"
+          "package_name": "co.houseninja.application"
         }
       },
       "oauth_client": [
@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "803774737135-u57gl6clji55nms8j6j5b32s1dd8hss5.apps.googleusercontent.com",
+              "client_id": "803774737135-mk7ju7haola2vu1orr3r81nfcf0sjufh.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "co.houseninja.app"
+                "bundle_id": "co.houseninja.application"
               }
             }
           ]

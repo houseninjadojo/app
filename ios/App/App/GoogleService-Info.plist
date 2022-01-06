@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>803774737135-u57gl6clji55nms8j6j5b32s1dd8hss5.apps.googleusercontent.com</string>
+	<string>803774737135-mk7ju7haola2vu1orr3r81nfcf0sjufh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.803774737135-u57gl6clji55nms8j6j5b32s1dd8hss5</string>
+	<string>com.googleusercontent.apps.803774737135-mk7ju7haola2vu1orr3r81nfcf0sjufh</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCkSmBQVtf6g58KvZsKbOKLjMbm2okEYm4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>co.houseninja.app</string>
+	<string>co.houseninja.application</string>
 	<key>PROJECT_ID</key>
 	<string>houseninja-dev</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:803774737135:ios:b72dd020fc0f4dfe24c91a</string>
+	<string>1:803774737135:ios:813f89f21124713c24c91a</string>
 </dict>
 </plist>
