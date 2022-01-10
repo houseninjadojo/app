@@ -23,7 +23,6 @@
 html * {
   font-family: var(--campton-default);
   -webkit-touch-callout: none; /* iOS Safari */
-  user-select: none; /* Safari */
 }
 
 html .dark * {
