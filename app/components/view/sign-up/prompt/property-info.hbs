@@ -2,7 +2,11 @@
     <div class="prompt">        
         <p class="hn primary">Home Address</p>            
         {{#each @fields as |field|}}
-            <Primitive::Input @field={{field}} @id={{field.id}} @label={{field.label}} @required={{field.required}} @type={{field.type}} @warn={{false}} />
+            {{#if field.isSelect}}
+            <Primitive::Select @options={{field.options}} @label={{field.label}} @required={{true}} @disabled={{field.disabled}}/>
+        {{else}}
+            <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @disabled={{field.disabled}}/>
+        {{/if}}
         {{/each}}
     </div>
     <div class="action">        

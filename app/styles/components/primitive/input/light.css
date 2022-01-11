@@ -2,7 +2,7 @@
 
 /* Select */
 .light .hn.hn-input-field .hn-input-container .hn-select {
-  background-color: none;
+  background-color: rgb(255 255 255 / 0%);
 
   /* Arrow */
   background-image:
@@ -21,7 +21,6 @@
 }
 
 .light .hn.hn-input-field .hn-input-container .hn-select:focus {
-  border-bottom: 1px solid var(--teal-500);
   color: var(--teal-500);
 
   /* Arrow */
@@ -45,12 +44,8 @@
   color: var(--gray-400);
 }
 
-.light .hn.hn-input-field.warn .hn-input-description {
-  color: var(--orange-400);
-}
-
 .light .hn.hn-input-field .hn-input-label {
-  color: var(--gray-200);
+  color: var(--gray-600);
 }
 
 .light .hn.hn-input-field .hn-input-container .hn-input {
@@ -67,26 +62,48 @@
   color: var(--teal-500);
 }
 
-/* Disabled */
-.light .hn.hn-input-field.disabled .hn-input-container {
-  background: rgb(255 255 255 / 2.5%) !important;
-  border-bottom: none;
-}
-
-.light .hn.hn-input-field.disabled .hn-input-container label {
-  color: var(--gray-500) !important;
-}
-
-.light .hn.hn-input-field.disabled .hn-input-container select {
-  color: var(--gray-500) !important;
-}
-
-/* Warning */
+/* Warn */
 .light .hn.hn-input-field.warn .hn-input-container {
-  background: #ffa31a05 !important;
-  border-bottom: 1px solid var(--orange-500) !important;
+  background: #ffa31a0a !important;
+  border-bottom: 1px solid var(--orange-400) !important;
 }
 
 .light .hn.hn-input-field.warn .hn-input-container label {
   color: var(--orange-400) !important;
+}
+
+.light .hn.hn-input-field.warn .hn-input-description {
+  color: var(--orange-400);
+}
+
+/* Alert */
+.light .hn.hn-input-field.alert .hn-input-container {
+  background: #c322400a !important;
+  border-bottom: 1px solid var(--red-400) !important;
+}
+
+.light .hn.hn-input-field.alert .hn-input-container label {
+  color: var(--red-400) !important;
+}
+
+.light .hn.hn-input-field.alert .hn-input-description {
+  color: var(--red-400);
+}
+
+/* Disabled */
+.light .hn.hn-input-field.disabled .hn-input-container {
+  background: rgb(255 255 255 / 2.5%) !important;
+  border-bottom: none !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container label {
+  color: var(--gray-400) !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container input {
+  color: var(--gray-400) !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container select {
+  color: var(--gray-400) !important;
 }
