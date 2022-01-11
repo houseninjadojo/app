@@ -35,12 +35,12 @@
   justify-content: start;
 }
 
-.hn.modal .container {
+.hn.modal .modal-container {
   width: 100%;
   padding: 0;
 }
 
-.hn.modal .container.tray {
+.hn.modal .modal-container.tray {
   /* height: 88vh;   */
 
   /* border-radius: 40px 40px 0 0; */
@@ -50,8 +50,8 @@
   /* bottom: 0; */
 }
 
-.hn.modal .container.shelf,
-.hn.modal .container.tray {
+.hn.modal .modal-container.shelf,
+.hn.modal .modal-container.tray {
   height: 100%;
   position: absolute;
   top: 0;
@@ -60,17 +60,17 @@
   right: 0;
 }
 
-.hn.modal .container.dark {
+.hn.modal .modal-container.dark {
   background: var(--grad-black-1000);
 }
 
-.hn.modal .container .head,
-.hn.modal .container .body,
-.hn.modal .container .footer {
+.hn.modal .modal-container .head,
+.hn.modal .modal-container .body,
+.hn.modal .modal-container .footer {
   width: 100%;
 }
 
-.hn.modal .container .head {
+.hn.modal .modal-container .head {
   height: 88px;
   padding: 0 16px;
 }
@@ -83,11 +83,11 @@
   align-items: flex-end;
 }
 
-.hn.modal .container .body {
+.hn.modal .modal-container .body {
   height: 100%;
   overflow-y: scroll;
 }
 
-.hn.modal .container .footer button {
+.hn.modal .modal-container .footer button {
   height: 64px;
 }
