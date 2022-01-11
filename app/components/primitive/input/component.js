@@ -2,17 +2,15 @@ import Component from '@glimmer/component';
 
 export default class InputComponent extends Component {
   get descriptionText() {
-    const alert = this.args.alert;
-    const warn = this.args.warn;
-    let description = this.args.description;
-    var descriptionString = '';
+    const { alert, warn, description } = this.args;
+    const obj = alert || warn;
+    let descriptionString = '';
 
-    if (alert || warn) {
-      description = alert || warn;
-      if (description.title && description.detail) {
-        descriptionString += `${description.title} - ${description.detail}`;
+    if (obj) {
+      if (obj.title && obj.detail) {
+        descriptionString += `${obj.title} - ${obj.detail}`;
       } else {
-        descriptionString += description.title || description.detail;
+        descriptionString += obj.title || obj.detail;
       }
     } else if (description) {
       descriptionString = description;
