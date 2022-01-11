@@ -84,12 +84,22 @@
   color: var(--gray-400) !important;
 }
 
-/* Warning */
+/* Warn */
 .light .hn.hn-input-field.warn .hn-input-container {
-  background: #ffa31a05 !important;
-  border-bottom: 1px solid var(--orange-500) !important;
+  background: #ffa31a0a !important;
+  border-bottom: 1px solid var(--orange-400) !important;
 }
 
 .light .hn.hn-input-field.warn .hn-input-container label {
   color: var(--orange-400) !important;
+}
+
+/* Alert */
+.light .hn.hn-input-field.alert .hn-input-container {
+  background: #c322400a !important;
+  border-bottom: 1px solid var(--red-400) !important;
+}
+
+.light .hn.hn-input-field.alert .hn-input-container label {
+  color: var(--red-400) !important;
 }
