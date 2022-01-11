@@ -34,22 +34,20 @@ export default class SignUpComponent extends Component {
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      // value: this.args.property.line1,
     },
     {
       id: 'street2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      // value: this.args.property.line2,
     },
     {
       id: 'city',
       required: true,
       label: 'City',
       placeholder: '',
-      // value: this.args.property.city,
       disabled: true,
+      value: 'Austin',
     },
     {
       isSelect: true,
@@ -66,7 +64,6 @@ export default class SignUpComponent extends Component {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      // value: this.args.property.postalCode,
     },
   ];
 
