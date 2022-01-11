@@ -2,6 +2,7 @@
 .hn.hn-input-field {
   display: flex;
   flex-direction: column;
+  width: 100%;
   margin-bottom: 16px;
 }
 
@@ -48,6 +49,7 @@
 /* Select */
 .hn.hn-input-field .hn-input-container .hn-select {
   padding: 0 12px;
+  appearance: none;
 }
 
 /* Description */

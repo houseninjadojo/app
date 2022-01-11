@@ -2,7 +2,7 @@
 
 /* Select */
 .light .hn.hn-input-field .hn-input-container .hn-select {
-  background-color: none;
+  background-color: rgb(255 255 255 / 0%);
 
   /* Arrow */
   background-image:
@@ -21,7 +21,6 @@
 }
 
 .light .hn.hn-input-field .hn-input-container .hn-select:focus {
-  border-bottom: 1px solid var(--teal-500);
   color: var(--teal-500);
 
   /* Arrow */
@@ -50,7 +49,7 @@
 }
 
 .light .hn.hn-input-field .hn-input-label {
-  color: var(--gray-200);
+  color: var(--gray-600);
 }
 
 .light .hn.hn-input-field .hn-input-container .hn-input {
@@ -74,11 +73,15 @@
 }
 
 .light .hn.hn-input-field.disabled .hn-input-container label {
-  color: var(--gray-500) !important;
+  color: var(--gray-400) !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container input {
+  color: var(--gray-400) !important;
 }
 
 .light .hn.hn-input-field.disabled .hn-input-container select {
-  color: var(--gray-500) !important;
+  color: var(--gray-400) !important;
 }
 
 /* Warning */

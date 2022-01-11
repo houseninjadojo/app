@@ -21,7 +21,6 @@
 }
 
 .dark .hn.hn-input-field .hn-input-container .hn-select:focus {
-  border-bottom: 1px solid var(--teal-500);
   color: var(--teal-500);
 
   /* Arrow */
@@ -74,6 +73,10 @@
 }
 
 .dark .hn.hn-input-field.disabled .hn-input-container label {
+  color: var(--gray-500) !important;
+}
+
+.dark .hn.hn-input-field.disabled .hn-input-container input {
   color: var(--gray-500) !important;
 }
 
