@@ -66,24 +66,6 @@
   color: var(--teal-500);
 }
 
-/* Disabled */
-.light .hn.hn-input-field.disabled .hn-input-container {
-  background: rgb(255 255 255 / 2.5%) !important;
-  border-bottom: none;
-}
-
-.light .hn.hn-input-field.disabled .hn-input-container label {
-  color: var(--gray-400) !important;
-}
-
-.light .hn.hn-input-field.disabled .hn-input-container input {
-  color: var(--gray-400) !important;
-}
-
-.light .hn.hn-input-field.disabled .hn-input-container select {
-  color: var(--gray-400) !important;
-}
-
 /* Warn */
 .light .hn.hn-input-field.warn .hn-input-container {
   background: #ffa31a0a !important;
@@ -102,4 +84,22 @@
 
 .light .hn.hn-input-field.alert .hn-input-container label {
   color: var(--red-400) !important;
+}
+
+/* Disabled */
+.light .hn.hn-input-field.disabled .hn-input-container {
+  background: rgb(255 255 255 / 2.5%) !important;
+  border-bottom: none !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container label {
+  color: var(--gray-400) !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container input {
+  color: var(--gray-400) !important;
+}
+
+.light .hn.hn-input-field.disabled .hn-input-container select {
+  color: var(--gray-400) !important;
 }
