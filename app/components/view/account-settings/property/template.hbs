@@ -5,7 +5,7 @@
         {{#if field.isSelect}}
             <Primitive::Select @options={{field.options}} @label={{field.label}} @required={{true}} @warn={{false}} @disabled={{field.disabled}}/>
         {{else}}
-            <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @warn={{false}} />
+            <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @warn={{false}} @disabled={{field.disabled}}/>
         {{/if}}
     {{/each}}
 </div>

@@ -10,6 +10,6 @@
     {{/if}}
 
     {{#each this.paymentFields as |field|}}
-        <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @warn={{false}} />
+        <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @warn={{false}} @disabled={{field.disabled}}/>
     {{/each}}
 </div>
