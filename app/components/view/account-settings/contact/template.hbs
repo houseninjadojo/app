@@ -1,6 +1,6 @@
 <div class="settings-view dark">
     <h1 class="hn view-title">Edit Contact Information</h1>
     {{#each this.contactFields as |field|}}
-        <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @warn={{false}} @disabled={{field.disabled}}/>
+        <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @disabled={{field.disabled}}/>
     {{/each}}
 </div>

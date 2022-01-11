@@ -44,10 +44,6 @@
   color: var(--gray-400);
 }
 
-.light .hn.hn-input-field.warn .hn-input-description {
-  color: var(--orange-400);
-}
-
 .light .hn.hn-input-field .hn-input-label {
   color: var(--gray-600);
 }
@@ -76,6 +72,10 @@
   color: var(--orange-400) !important;
 }
 
+.light .hn.hn-input-field.warn .hn-input-description {
+  color: var(--orange-400);
+}
+
 /* Alert */
 .light .hn.hn-input-field.alert .hn-input-container {
   background: #c322400a !important;
@@ -84,6 +84,10 @@
 
 .light .hn.hn-input-field.alert .hn-input-container label {
   color: var(--red-400) !important;
+}
+
+.light .hn.hn-input-field.alert .hn-input-description {
+  color: var(--red-400);
 }
 
 /* Disabled */

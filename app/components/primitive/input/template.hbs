@@ -1,4 +1,4 @@
-<div class="hn hn-input-field {{if @warn 'warn' ''}}{{if @disabled 'disabled' ''}}">
+<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}}">
     <div class="hn-input-container">
         {{#if @hideLabel}}                    
             {{!-- template-lint-disable require-input-label  --}}
@@ -8,7 +8,7 @@
             <input class="hn-input" id={{@id}} type={{if @type @type "text"}} required={{@required}} placeholder={{@placeholder}} value={{@value}} disabled={{@disabled}}/>
         {{/if}}
     </div>
-    {{#if @description}}
-        <span class="hn-input-description">{{@description}}</span>
+    {{#if this.descriptionText}}
+        <span class="hn-input-description">{{this.descriptionText}}</span>
     {{/if}}
 </div>
