@@ -5,6 +5,11 @@
         {{#each @fields as |field|}}
             <Primitive::Input @field={{field}} @id={{field.id}} @label={{field.label}} @required={{field.required}} @type={{field.type}} />
         {{/each}}
+        <Primitive::Input @id={{'promo-code'}} @placeholder={{'Promo Code (optional)'}} @label={{'Promo Code'}} />
+        <div class='terms'>
+            <input type="checkbox" id="terms-agree" name="terms">
+            <span for="terms">I have read and agree to the <a href="" target="_blank" rel="noopener noreferrer">Terms and Conditions Agreement</a></span>
+        </div>
     </div>
     <div class="action">        
         <Primitive::Button @size='lg' @variant='outline' @semantic='primary'>Previous</Primitive::Button>
