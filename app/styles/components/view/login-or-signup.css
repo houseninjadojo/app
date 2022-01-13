@@ -1,0 +1,15 @@
+.login-or-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--grad-black-1000);
+  padding: 16px;
+}
+
+.login-or-signup .hn-logo {
+  max-width: 160px;
+  margin-bottom: 40px;
+}

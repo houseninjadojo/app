@@ -96,6 +96,17 @@
   align-items: center;
 }
 
+.sign-up-module .view .content .prompt .terms {
+  display: flex;
+  align-items: center;
+}
+
+.sign-up-module .view .content .prompt .terms input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
 .sign-up-module .view .content .action {
   width: 80%;
   display: flex;
