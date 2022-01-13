@@ -25,3 +25,8 @@
 .hn .accent {
   color: var(--teal-500);
 }
+
+.application .light a,
+.application .dark a {
+  color: var(--blue-400);
+}
