@@ -4,6 +4,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
 import SecureStorage from 'houseninja/utils/secure-storage';
+import { debug } from '@ember/debug';
 
 export default class LoginRoute extends Route {
   @service session;
@@ -40,6 +41,7 @@ export default class LoginRoute extends Route {
   }
 
   async nativeOpen(url) {
+    debug(`Opening Login URL: ${url}`);
     if (isNativePlatform()) {
       return await Browser.open({ url, presentationStyle: 'popover' });
     } else {
