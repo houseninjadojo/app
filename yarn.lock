@@ -1400,10 +1400,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-1.0.10.tgz#4170ef5111867a38ea6ba75e86b76301cd207204"
   integrity sha512-P9+UL7uI+ZBfHKfcEO8B9vv8p76aBWJubOU9mknCHsygbKjCvWWLtpimYQBGZrED7XbCuByA3xw63uSe0ZsjHg==
 
-"@capacitor/push-notifications@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-1.0.7.tgz#ebff9bfea3d343602b97f707f246d13ea7735f15"
-  integrity sha512-vbvAptFq5cI6xKYYWMb7tsWvA88/PTG4v6ptxN0Ygtc1fQ4l/AzONQiYqdtFpbBhF2fML2kXQ/5eSAfn8HY9aw==
+"@capacitor/push-notifications@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-1.0.8.tgz#9fe097922806f2b30a8a7ca0b4aeb8b842ae0140"
+  integrity sha512-WWmPCUtniid92fdwr1iBxY9u55ejePIeiBg0dhrHFeRzlgeS12x2tSNwKdDisRzilrWjVeAlHezhtKTdGavAoA==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
