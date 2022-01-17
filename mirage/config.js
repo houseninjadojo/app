@@ -33,4 +33,8 @@ export default function () {
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
   this.passthrough(`https://${ENV.auth.domain}/oauth/token`);
   this.passthrough(`https://${ENV.auth.domain}/userinfo`);
+
+  // Hubspot
+  this.passthrough('https://exceptions.hubspot.com/api/1/store/');
+  this.passthrough('https://api.hubspot.com/livechat-public/v1/message/public');
 }
