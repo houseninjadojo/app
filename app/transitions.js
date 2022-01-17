@@ -12,6 +12,8 @@ export default function () {
       'settings.payment',
       'settings.security',
       'settings.property',
+      'contact-us',
+      'faq',
     ]),
     this.use('toUp'),
     this.reverse('toDown')
