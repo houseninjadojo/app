@@ -12,7 +12,10 @@ export default class ViewComponent extends Component {
         localStorage.getItem('preserveredScrollPosition')
       );
 
-      if (preserveredScrollPosition.route === this.router.currentRouteName) {
+      if (
+        mainView &&
+        preserveredScrollPosition.route === this.router.currentRouteName
+      ) {
         mainView.scrollTop = preserveredScrollPosition.position;
       }
 
