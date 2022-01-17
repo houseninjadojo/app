@@ -6,6 +6,7 @@
 @import "./primitive/button.css";
 @import "./primitive/input/input.css";
 @import "./primitive/modal.css";
+@import "./primitive/embed.css";
 @import "./view/view.css";
 @import "./view/account-settings.css";
 @import "./view/home.css";

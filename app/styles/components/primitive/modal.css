@@ -88,6 +88,10 @@
   overflow-y: scroll;
 }
 
+.hn.modal .modal-container .body.lock-body-scroll {
+  overflow: hidden;
+}
+
 .hn.modal .modal-container .footer button {
   height: 64px;
 }

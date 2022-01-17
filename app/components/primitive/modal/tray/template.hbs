@@ -4,17 +4,21 @@
         <div class="head">
             <div class="actions">
                 <button type="button" class="hn btn sm floating" {{on "click" this.goBack}}>
-                    Cancel
+                    {{if @backText @backText 'Cancel'}}
                 </button>
             </div>
         </div>
-        <div class="body">
+        <div class="body {{if @lockBodyScroll 'lock-body-scroll'}}">
             {{yield}}
         </div>
-        <div class="footer">
-            <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" @disabled={{@formIsNotValid}}>
-                Save
-            </Primitive::Button>
-        </div>
+        {{#if @hideFooter}}
+        {{else}}
+            <div class="footer">
+                <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" @disabled={{@formIsNotValid}}>
+                    Save
+                </Primitive::Button>
+            </div>
+        {{/if}}
+
     </div>
 </div>
