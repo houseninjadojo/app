@@ -20,7 +20,7 @@ window.hsConversationsSettings = {
    * will be embedded inline within that DOM node. It will
    * always be open until it is removed via `widget.remove`
    */
-  inlineEmbedSelector: '',
+  inlineEmbedSelector: '#hn-hubspot-chat',
 
   /**
    * Control behavior of the cookie banner for all chatflows on the page:
