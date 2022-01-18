@@ -83,6 +83,11 @@
   align-items: flex-end;
 }
 
+.hn.modal .shelf .head .actions button.floating,
+.hn.modal .tray .head .actions button.floating {
+  padding: 0;
+}
+
 .hn.modal .modal-container .body {
   height: 100%;
   overflow-y: scroll;
