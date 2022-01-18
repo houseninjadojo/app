@@ -10,7 +10,7 @@ export default class IndexRoute extends Route {
   beforeModel() {
     if (isNativePlatform()) {
       this.session.isAuthenticated
-        ? this.router.transitionTo('home')
+        ? this.router.transitionTo('dashboard.home')
         : this.router.transitionTo('login-or-signup');
     } else {
       this.router.transitionTo('signup');

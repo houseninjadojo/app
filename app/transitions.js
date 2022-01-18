@@ -1,6 +1,6 @@
 export default function () {
   this.transition(
-    this.fromRoute(['home', 'handle-it', 'work-history']),
+    this.fromRoute(['dashboard']),
     this.toRoute('settings'),
     this.use('toRight'),
     this.reverse('toLeft')
@@ -15,7 +15,7 @@ export default function () {
       'contact-us',
       'faq',
     ]),
-    this.use('toUp'),
-    this.reverse('toDown')
+    this.use('slideOverUp'),
+    this.reverse('slideOverDown', { duration: 1000 })
   );
 }
