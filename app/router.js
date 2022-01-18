@@ -11,13 +11,17 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('dashboard', function () {
+    this.route('home');
+    this.route('work-history');
+    this.route('handle-it');
+  });
   this.route('login-or-signup');
   this.route('login', function () {
     this.route('callback');
   });
   this.route('logout');
   this.route('signup');
-  this.route('home');
   this.route('settings', function () {
     this.route('contact');
     this.route('payment');
@@ -26,6 +30,4 @@ Router.map(function () {
   });
   this.route('contact-us');
   this.route('faq');
-  this.route('work-history');
-  this.route('handle-it');
 });

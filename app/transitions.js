@@ -1,6 +1,10 @@
 export default function () {
   this.transition(
-    this.fromRoute(['home', 'handle-it', 'work-history']),
+    this.fromRoute([
+      'dashboard.home',
+      'dashboard.handle-it',
+      'dashboard.work-history',
+    ]),
     this.toRoute('settings'),
     this.use('toRight'),
     this.reverse('toLeft')
