@@ -12,7 +12,7 @@ export default class AccountSettingsComponent extends Component {
   menuItems = [
     {
       label: 'Home',
-      name: 'home',
+      name: 'dashboard.home',
     },
     {
       label: 'Contact Information',
