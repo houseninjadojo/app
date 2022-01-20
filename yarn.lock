@@ -1380,10 +1380,10 @@
   resolved "https://registry.npmjs.org/@capacitor/filesystem/-/filesystem-1.0.5.tgz"
   integrity sha512-NQNSCgSu6vXsStt+rcJlaLUGYSFH3zow3pAJR5T75uoSN1WhLV7M2FhsjHdWbk21mhokzF1b7foKLvTDfgH2mg==
 
-"@capacitor/haptics@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-1.1.3.tgz#54e25344d799b9bd7152246c57b5f56c142f225e"
-  integrity sha512-ui2mY/riK1Y4bxnJKJfclWO61obZ0RHmtErPhpmt4wIEVjG1segYdFop45R2PxyEwoUJgzEsAxnviM/T6k8seQ==
+"@capacitor/haptics@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-1.1.4.tgz#80d5bc4776740a227a8cb83c85fac4db1316db8e"
+  integrity sha512-+pJIb5X7xAcbrWj6rJaV+cwBlv8aFwB1/Ob6EV4atydThuuVSSsAL4hI4ZYlPNOxM6H5s+ZDLj7Pa2os4eFmtg==
 
 "@capacitor/ios@^3.0.0", "@capacitor/ios@^3.3.4":
   version "3.3.4"
