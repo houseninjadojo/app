@@ -7,6 +7,7 @@ export default class ApplicationRoute extends Route {
   @service session;
   @service router;
   @service analytics;
+  @service hubspotChat;
   @service('ember-user-activity@user-activity') userActivity;
 
   constructor() {
@@ -32,6 +33,8 @@ export default class ApplicationRoute extends Route {
       const { email } = this.session.data.authenticated.userinfo;
       Sentry.setUser({ email });
       await this.analytics.identify(email);
+      await this.hubspotChat.identifyUser();
+      this.hubspotChat.load();
     }
   }
 

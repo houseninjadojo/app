@@ -1,4 +1,4 @@
-import { Factory, association, trait } from 'ember-cli-mirage';
+import { Factory, association, trait } from 'miragejs';
 import faker from 'faker';
 
 export default Factory.extend({

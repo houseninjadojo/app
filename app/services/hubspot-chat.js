@@ -1,48 +1,8 @@
-import Service from '@ember/service';
-
-/**
- * HubSpot Chat SDK Service
- * @see https://developers.hubspot.com/docs/api/conversation/chat-widget-sdk
- */
-
-window.hsConversationsSettings = {
-  /**
-   * Whether the widget should implicitly load or wait until the
-   * `widget.load` method is called
-   *
-   * @param {Boolean}
-   */
-  loadImmediately: false,
-
-  /**
-   * Where the widget should be embedded in the page.
-   * If a selector (e.g. `#some-id`) is provided, the widget
-   * will be embedded inline within that DOM node. It will
-   * always be open until it is removed via `widget.remove`
-   */
-  inlineEmbedSelector: '#hn-hubspot-chat',
-
-  /**
-   * Control behavior of the cookie banner for all chatflows on the page:
-   *
-   *  - `false` - use the setting from chatflows (default)
-   *  - `true` - enable cookie banners when the widget is loaded
-   *  - `ON_WIDGET_LOAD` - same as true: enable cookie banners when the widget is loaded
-   *  - `ON_EXIT_INTENT` - enable cookie banners when the user exhibits an exit intent
-   *
-   * Note that this field used to be a Boolean. It can now accommodate both
-   * the original Boolean values and the updated enum values.
-   */
-  enableWidgetCookieBanner: false,
-
-  /**
-   * Whether or not the upload attachment button should be hidden
-   * in the chat widget.
-   */
-  disableAttachment: false,
-};
+import Service, { service } from '@ember/service';
 
 export default class HubspotChatService extends Service {
+  @service current;
+
   load() {
     window.HubSpotConversations.widget.load({ widgetOpen: true });
   }
@@ -72,5 +32,15 @@ export default class HubspotChatService extends Service {
   // clear out any chat related cookies
   clear(resetWidget = true) {
     window.HubSpotConversations.clear({ resetWidget });
+  }
+
+  async identifyUser() {
+    await this.current.user.reload();
+    const { email, hubspotVisitorToken } = this.current.user.getProperties(
+      'email',
+      'hubspotVisitorToken'
+    );
+    window.hsConversationsSettings['identificationEmail'] = email;
+    window.hsConversationsSettings['identificationToken'] = hubspotVisitorToken;
   }
 }
