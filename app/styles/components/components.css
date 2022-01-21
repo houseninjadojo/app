@@ -1,5 +1,6 @@
 @import "./top-bar.css";
 @import "./nav-bar.css";
+@import "./house-ninja/chat.css";
 @import "./house-ninja/service-activity.css";
 @import "./primitive/section.css";
 @import "./primitive/tabbed-content.css";

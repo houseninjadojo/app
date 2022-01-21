@@ -24,6 +24,7 @@ Router.map(function () {
     this.route('security');
     this.route('property');
   });
+  this.route('chat');
   this.route('contact-us');
   this.route('faq');
   this.route('work-history');

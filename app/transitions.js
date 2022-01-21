@@ -7,6 +7,13 @@ export default function () {
   );
 
   this.transition(
+    this.fromRoute(['home', 'handle-it', 'work-history']),
+    this.toRoute('chat'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+
+  this.transition(
     this.toRoute([
       'settings.contact',
       'settings.payment',

@@ -63,11 +63,3 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
-
-/* #hubspot-messages-iframe-container > div.widget-app-container > span.launcher-right-align {
-  visibility: hidden;
-}
-
-body > div > div.Application__WidgetAppContainer-sc-1f2l0a1-0.dvBAhE.widget-app-container > span {
-  visibility: hidden;
-} */

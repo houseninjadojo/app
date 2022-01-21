@@ -5,7 +5,6 @@ import { debug } from '@ember/debug';
 
 export default class NavBarComponent extends Component {
   @service router;
-  @service hubspotChat;
 
   /**
    * The current route selection
@@ -25,13 +24,13 @@ export default class NavBarComponent extends Component {
   }
 
   @action
-  openChatModal() {
-    debug('Open Chat');
-    this.hubspotChat.open();
-  }
-
-  @action
   selectRoute(routeName) {
+    if (routeName === 'chat') {
+      localStorage.setItem(
+        'preservedPreviousRoute',
+        this.router.currentRouteName
+      );
+    }
     this.router.transitionTo(routeName);
   }
 }

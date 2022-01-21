@@ -1,5 +1,5 @@
 <nav class="hn nav-bar">
-  <Primitive::Button @type="button" @size="sm" @variant="solid" @semantic="accent" {{on "click" this.openChatModal}}>
+  <Primitive::Button @type="button" @size="sm" @variant="solid" @semantic="accent" {{on "click" (fn this.selectRoute 'chat')}}>
         Help me with...
   </Primitive::Button>
   <ul class="nav-menu">
