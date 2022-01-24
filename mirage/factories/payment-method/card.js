@@ -1,4 +1,4 @@
-// import { Factory } from 'ember-cli-mirage';
+// import { Factory } from 'miragejs';
 import PaymentMethod from './index';
 import faker from 'faker';
 
