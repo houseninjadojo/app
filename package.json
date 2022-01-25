@@ -105,7 +105,7 @@
     "@capacitor/device": "^1.1.2",
     "@capacitor/dialog": "^1.0.6",
     "@capacitor/haptics": "^1.1.4",
-    "@capacitor/keyboard": "^1.2.0",
+    "@capacitor/keyboard": "^1.2.1",
     "@capacitor/local-notifications": "^1.1.0",
     "@capacitor/push-notifications": "^1.0.8",
     "capacitor-secure-storage-plugin": "^0.6.2",
