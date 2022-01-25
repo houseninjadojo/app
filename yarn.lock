@@ -1293,10 +1293,10 @@
   resolved "https://registry.npmjs.org/@capacitor/app/-/app-1.0.7.tgz"
   integrity sha512-7CcMGp9yshBR0fkmNPVsYmUUhlAQnJFCeJGJIF3862D5l+drBjEOE+QoGjiKtaqPriadkGCsoYVrX10yGULDpA==
 
-"@capacitor/browser@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@capacitor/browser/-/browser-1.0.6.tgz"
-  integrity sha512-ZDx+HNPRQZKHpWxbYEyDz34Ge4fwhiiGg2UEnA+ol+pmdvHyYxw/c8HafCEVRJutHrXcVdSNoBNAeEPkQeabrQ==
+"@capacitor/browser@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-1.0.7.tgz#2602ca1df5580a58e5edf3e7bed7ebfed7466d13"
+  integrity sha512-ni8IjsPyFUYqQ2JxBwzI7VpJUZHPr7QiRds5hQWM/1cpfH0+DWvjWHwzxQXuSbW0h+QGXGSJ/vwqjRns7NzLfQ==
 
 "@capacitor/cli@^3.3.4":
   version "3.3.4"
@@ -1357,10 +1357,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-1.2.0.tgz#bb3e8fa0cfb7c80338494b29a81158f893b000d3"
   integrity sha512-FgtMAdNRtVarSo0P99UnkM+WcKCmWevUSccBVRqoGYnJOXkvByY8UtZcDe4YI0/uTTA4TiQKt/epuGHHUTaVSw==
 
-"@capacitor/local-notifications@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-1.0.10.tgz#4170ef5111867a38ea6ba75e86b76301cd207204"
-  integrity sha512-P9+UL7uI+ZBfHKfcEO8B9vv8p76aBWJubOU9mknCHsygbKjCvWWLtpimYQBGZrED7XbCuByA3xw63uSe0ZsjHg==
+"@capacitor/local-notifications@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-1.1.0.tgz#614c3d27fd6fe3f1d89bbed8dbdf4c7eaf234f08"
+  integrity sha512-l6S9rBylxGPq/U+xpJzZcOL4l2s8I2Igq7uDTidR4imIxxX3bLRz9nDSQREWsbQkFx7ALFm/5Y8PJGz2C6qKPw==
 
 "@capacitor/push-notifications@^1.0.8":
   version "1.0.8"
@@ -5794,10 +5794,10 @@ ember-cli-lodash-subset@^2.0.1:
   resolved "https://registry.yarnpkg.com/ember-cli-lodash-subset/-/ember-cli-lodash-subset-2.0.1.tgz#20cb68a790fe0fde2488ddfd8efbb7df6fe766f2"
   integrity sha1-IMtop5D+D94kiN39jvu332/nZvI=
 
-ember-cli-mirage@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-mirage/-/ember-cli-mirage-2.3.1.tgz#da88f737c4bde94844862515225b7772026f4d7a"
-  integrity sha512-Goc8lfToxP0NvMzd5mpz+ERmBhdAWPwvUiyo727w5lW96llOv3C95AIDvdYBBwW/IXn3Sivd6EALVnLQF4hqwg==
+ember-cli-mirage@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-mirage/-/ember-cli-mirage-2.4.0.tgz#7414573c3f9c5d40cefa44835858103691af95f6"
+  integrity sha512-cy8B+IZV07V6xgnFzktKUsntTQvIqPSS3u4+XaLdNW91yOowLsN2BsuQldN3eCnwswgE3a9eGNGS4I0BD4llNA==
   dependencies:
     "@embroider/macros" "^0.41.0"
     broccoli-file-creator "^2.1.1"
