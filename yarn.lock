@@ -1293,10 +1293,10 @@
   resolved "https://registry.npmjs.org/@capacitor/app/-/app-1.0.7.tgz"
   integrity sha512-7CcMGp9yshBR0fkmNPVsYmUUhlAQnJFCeJGJIF3862D5l+drBjEOE+QoGjiKtaqPriadkGCsoYVrX10yGULDpA==
 
-"@capacitor/browser@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@capacitor/browser/-/browser-1.0.6.tgz"
-  integrity sha512-ZDx+HNPRQZKHpWxbYEyDz34Ge4fwhiiGg2UEnA+ol+pmdvHyYxw/c8HafCEVRJutHrXcVdSNoBNAeEPkQeabrQ==
+"@capacitor/browser@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-1.0.7.tgz#2602ca1df5580a58e5edf3e7bed7ebfed7466d13"
+  integrity sha512-ni8IjsPyFUYqQ2JxBwzI7VpJUZHPr7QiRds5hQWM/1cpfH0+DWvjWHwzxQXuSbW0h+QGXGSJ/vwqjRns7NzLfQ==
 
 "@capacitor/cli@^3.4.0":
   version "3.4.0"
