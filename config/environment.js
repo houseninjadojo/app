@@ -66,6 +66,12 @@ module.exports = function (environment) {
         'co.houseninja.application://#',
       ],
     },
+
+    smooch: {
+      integrationId: '61f0a9b38d4a6900eb8d40ae',
+      apiKeyId: 'app_61f0bbccb1b39b00eb1b79c8',
+      apiSecret: 'AXo8O_D_jY8Fp808-CqJix0TiOTUVUt_0kjCAqiMVzXMENyWkMy8neO_gKkDIPtyTlC61aU9O5SlzobAFgxjWA',
+    },
   };
 
   if (environment === 'development') {
@@ -105,6 +111,10 @@ module.exports = function (environment) {
     ENV['@sentry/ember'].sentry.debug = false;
     ENV['@sentry/ember'].sentry.environment = 'sandbox';
     ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
+
+    // Smooch
+    ENV.smooch.apiKeyId = null;
+    ENV.smooch.apiSecret = null;
 
     // Analytics
     // ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';

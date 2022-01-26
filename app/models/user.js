@@ -9,4 +9,8 @@ export default class UserModel extends Model {
   @attr('string') firstName;
   @attr('string') lastName;
   @attr('string') phoneNumber;
+
+  // JSON Web Token for smooch.io authorization/identification
+  // @see https://docs.smooch.io/guide/authenticating-users/
+  @attr('string') smoochJWT;
 }

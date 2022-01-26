@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class NavBarComponent extends Component {
   @service router;
+  @service chat;
 
   /**
    * The current route selection
@@ -24,6 +25,7 @@ export default class NavBarComponent extends Component {
 
   openChatModal() {
     console.log('Open Chat');
+    this.chat.open();
   }
 
   @action

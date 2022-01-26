@@ -3,10 +3,11 @@ import { service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
 
 export default class ApplicationRoute extends Route {
-  @service current;
-  @service session;
-  @service router;
   @service analytics;
+  @service chat;
+  @service current;
+  @service router;
+  @service session;
   @service('ember-user-activity@user-activity') userActivity;
 
   constructor() {
@@ -22,6 +23,7 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    // this.chat.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();
@@ -32,6 +34,7 @@ export default class ApplicationRoute extends Route {
       const { email } = this.session.data.authenticated.userinfo;
       Sentry.setUser({ email });
       await this.analytics.identify(email);
+      await this.chat.login();
     }
   }
 
