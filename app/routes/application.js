@@ -43,8 +43,8 @@ export default class ApplicationRoute extends Route {
       await Intercom.registerIdentifiedUser({
         userId: id,
         userEmail: email,
-        userHash: intercomHash,
       });
+      await Intercom.setUserHash({ hmac: intercomHash });
     }
   }
 

@@ -30,7 +30,6 @@ export default Factory.extend({
 
     // compute the hash
     let hash = hmacSHA256(this.id, secret);
-    console.log(hash.toString());
     return hash.toString();
   },
 
