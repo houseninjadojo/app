@@ -6,10 +6,11 @@ import { setUser } from '@sentry/capacitor';
 import SecureStorage from 'houseninja/utils/secure-storage';
 
 export default class LoginCallbackRoute extends Route {
-  @service current;
-  @service session;
-  @service router;
   @service analytics;
+  @service chat;
+  @service current;
+  @service router;
+  @service session;
 
   queryParams = {
     code: { refreshModel: false },
@@ -47,6 +48,7 @@ export default class LoginCallbackRoute extends Route {
       '$name': userinfo.name,
     });
     await this.analytics.identify(userinfo.email);
+    await this.chat.login();
   }
 
   async closeBrowser() {

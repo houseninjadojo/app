@@ -23,7 +23,7 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
-    // this.chat.setup();
+    this.chat.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();

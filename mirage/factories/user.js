@@ -10,7 +10,7 @@ const strToBuffer = (str) => {
     newUint[i] = str.charCodeAt(i);
   });
   return newUint;
-}
+};
 
 const signJwt = async (userId) => {
   const header = {
@@ -46,10 +46,6 @@ export default Factory.extend({
   phoneNumber() {
     return faker.phone.phoneNumber();
   },
-
-  // async smoochJWT() {
-  //   return await signJwt(this.email);
-  // },
 
   afterCreate(user, server) {
     signJwt(user.email).then((jwt) => {

@@ -28,19 +28,11 @@ export default class ChatService extends Service {
    * resolves when the Web Messenger is ready again.
    */
   async login() {
-    const { integrationId } = ENV.smooch;
     const { email, smoochJWT } = await this.current.user.getProperties(
       'email',
       'smoochJWT'
     );
-    console.log('smoochJWT: ', smoochJWT);
-    console.log('email: ', email);
-    Smooch.init({
-      integrationId,
-      embedded: false,
-      externalId: email,
-      jwt: smoochJWT,
-    });
+    return Smooch.login(email, smoochJWT);
   }
 
   /**
@@ -120,5 +112,31 @@ export default class ChatService extends Service {
       ],
     };
     return await Smooch.createConversation(options);
+  }
+
+  /**
+   * Returns a list of conversations for the current user that were fetched during
+   * app initialization as well as the paginated results.
+   *
+   * Note:
+   *  - The messages property in each conversation may only have the most recent
+   *    message in the conversation. The full message list will be available either
+   *    when the conversation was loaded to the view or `Smooch.getConversationById`
+   *    gets called.
+   *  - In the event that the client reconnects due to a network issue, the list may
+   *    only contain the 10 most recent conversations for the user. All the additional
+   *    conversations that were fetched as a result of pagination will be discarded.
+   *
+   * @see `Smooch.getConversationById`` for the definition of a conversation
+   */
+  async getConversations() {
+    return await Smooch.getConversations();
+  }
+
+  /**
+   * Prefills the user's chat input with a predefined message.
+   */
+  async setPredefinedMessage(msg) {
+    return await Smooch.setPredefinedMessage(msg);
   }
 }
