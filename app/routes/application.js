@@ -35,6 +35,7 @@ export default class ApplicationRoute extends Route {
       Sentry.setUser({ email });
       await this.analytics.identify(email);
       await this.chat.login();
+      await this.chat.updateUser();
     }
   }
 

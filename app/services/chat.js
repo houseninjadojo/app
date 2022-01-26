@@ -75,7 +75,6 @@ export default class ChatService extends Service {
    * when it is created.
    */
   async updateUser() {
-    await this.current.user.reload();
     const { firstName, lastName, email } =
       await this.current.user.getProperties('firstName', 'lastName', 'email');
     return await Smooch.updateUser({

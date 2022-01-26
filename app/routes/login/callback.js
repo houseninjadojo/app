@@ -49,6 +49,7 @@ export default class LoginCallbackRoute extends Route {
     });
     await this.analytics.identify(userinfo.email);
     await this.chat.login();
+    await this.chat.updateUser();
   }
 
   async closeBrowser() {
