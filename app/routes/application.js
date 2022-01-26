@@ -33,15 +33,17 @@ export default class ApplicationRoute extends Route {
     await this.analytics.track('application_started');
 
     if (this.session.isAuthenticated) {
-      const { intercomHash, email } = this.current.user.getProperties(
+      const { id, intercomHash, email } = this.current.user.getProperties(
+        'id',
         'intercomHash',
         'email'
       );
       Sentry.setUser({ email });
       await this.analytics.identify(email);
       await Intercom.registerIdentifiedUser({
-        userId: intercomHash,
+        userId: id,
         userEmail: email,
+        userHash: intercomHash,
       });
     }
   }
