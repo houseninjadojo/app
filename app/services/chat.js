@@ -15,7 +15,7 @@ export default class ChatService extends Service {
   }
 
   // @see https://github.com/zendesk/sunshine-conversations-web#embedded-mode
-  async render(element) {
+  render(element) {
     return Smooch.render(element);
   }
 
