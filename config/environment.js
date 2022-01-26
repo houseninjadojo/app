@@ -52,6 +52,14 @@ module.exports = function (environment) {
       useSessionSetupMethod: true,
     },
 
+    intercom: {
+      identityVerificationSecrets: {
+        web: 'dejx2Tlkuw3l4TCN7JBKHvfG9qCgLWQy2Ga8NCyW',
+        ios: 'azhgAa2K5NBb4qhImwqsr_0yCH540SsZyREnBVWN',
+        android: 'Ms8uIJaobMpwRSrtKQM3IPxnJM9f7WTjM-lgdT9L',
+      },
+    },
+
     '@sentry/ember': {
       sentry: {
         dsn: null,

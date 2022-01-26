@@ -1,5 +1,8 @@
 import { Factory } from 'miragejs';
 import faker from 'faker';
+import hmacSHA256 from 'crypto-js/hmac-sha256';
+import ENV from 'houseninja/config/environment';
+import getPlatform from 'houseninja/utils/get-platform';
 
 export default Factory.extend({
   // properties: association(),
@@ -18,6 +21,17 @@ export default Factory.extend({
 
   phoneNumber() {
     return faker.phone.phoneNumber();
+  },
+
+  intercomHash() {
+    // get the secret corresponding to platform (web, ios, or android)
+    let currentPlatform = getPlatform();
+    let secret = ENV.intercom.identityVerificationSecrets[currentPlatform];
+
+    // compute the hash
+    let hash = hmacSHA256(this.id, secret);
+    console.log(hash.toString());
+    return hash.toString();
   },
 
   afterCreate(user, server) {

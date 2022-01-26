@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { Intercom } from '@capacitor-community/intercom';
 
 export default class NavBarComponent extends Component {
   @service router;
@@ -22,8 +23,10 @@ export default class NavBarComponent extends Component {
     return this.currentRoute.includes('work-history') ? 'active' : '';
   }
 
+  @action
   openChatModal() {
     console.log('Open Chat');
+    Intercom.displayMessenger();
   }
 
   @action

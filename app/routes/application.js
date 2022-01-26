@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
+import { Intercom } from '@capacitor-community/intercom';
 
 export default class ApplicationRoute extends Route {
   @service current;
@@ -22,6 +23,9 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await Intercom.hideLauncher();
+    await Intercom.hideInAppMessages();
+
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();
@@ -29,9 +33,16 @@ export default class ApplicationRoute extends Route {
     await this.analytics.track('application_started');
 
     if (this.session.isAuthenticated) {
-      const { email } = this.session.data.authenticated.userinfo;
+      const { intercomHash, email } = this.current.user.getProperties(
+        'intercomHash',
+        'email'
+      );
       Sentry.setUser({ email });
       await this.analytics.identify(email);
+      await Intercom.registerIdentifiedUser({
+        userId: intercomHash,
+        userEmail: email,
+      });
     }
   }
 

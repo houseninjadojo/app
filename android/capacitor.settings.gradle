@@ -8,6 +8,9 @@ project(':capacitor-community-fcm').projectDir = new File('../node_modules/@capa
 include ':capacitor-community-http'
 project(':capacitor-community-http').projectDir = new File('../node_modules/@capacitor-community/http/android')
 
+include ':capacitor-community-intercom'
+project(':capacitor-community-intercom').projectDir = new File('../node_modules/@capacitor-community/intercom/android')
+
 include ':capacitor-app'
 project(':capacitor-app').projectDir = new File('../node_modules/@capacitor/app/android')
 
