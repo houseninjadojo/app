@@ -15,7 +15,7 @@ export default function () {
       'contact-us',
       'faq',
     ]),
-    this.use('slideOverUp'),
+    this.use('slideOverUp', { duration: 1000, easing: [100, 20] }),
     this.reverse('slideOverDown', { duration: 1000 })
   );
 }
