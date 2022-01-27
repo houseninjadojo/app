@@ -18,4 +18,10 @@ export default function (server) {
     firstName: 'Achilles',
     lastName: 'Imperial',
   });
+  server.create('user', {
+    id: '61f1f8d79f08390069a537c3',
+    email: 'achilles.imperial@gmail.com',
+    firstName: 'Ottomanelli',
+    lastName: 'Imperial',
+  });
 }
