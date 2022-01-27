@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
+import { Capacitor } from '@capacitor/core';
 import { Intercom } from '@capacitor-community/intercom';
 
 export default class ApplicationRoute extends Route {
@@ -23,8 +24,10 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
-    await Intercom.hideLauncher();
-    await Intercom.hideInAppMessages();
+    if (Capacitor.isNativePlatform()) {
+      await Intercom.hideLauncher();
+      await Intercom.hideInAppMessages();
+    }
 
     await this.session.setup();
     await this.analytics.setup();
