@@ -6,5 +6,9 @@
     <param name="android-package" value="com.samz.cordova.mixpanel.MixpanelPlugin"/>
   </feature>
 
+  <feature name="UXCam">
+    <param name="android-package" value="com.uxcam.cordova.UXCam"/>
+  </feature>
+
   
 </widget>

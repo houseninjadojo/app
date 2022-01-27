@@ -25,7 +25,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-base:+"
     implementation "com.google.firebase:firebase-messaging:+"
 }
-
+apply from: "../../node_modules/cordova-uxcam/src/android/uxcam-plugin.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

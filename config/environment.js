@@ -66,6 +66,10 @@ module.exports = function (environment) {
         'co.houseninja.application://#',
       ],
     },
+
+    uxcam: {
+      appKey: 'qabrm2fclc9bhbw',
+    },
   };
 
   if (environment === 'development') {

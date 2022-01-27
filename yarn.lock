@@ -4961,6 +4961,11 @@ cordova-plugin-mixpanel@^4.7.2:
   resolved "https://registry.npmjs.org/cordova-plugin-mixpanel/-/cordova-plugin-mixpanel-4.7.2.tgz"
   integrity sha512-+SVogeTZMcNHmvE0+Ehh4XI8OJZSS3N2WMJYZcrk3MOYwA/wbiGQUv5TFcBXnifWFuxlf//0R9hE6JXXhfUZeA==
 
+cordova-uxcam@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/cordova-uxcam/-/cordova-uxcam-3.4.3.tgz#4db962c14d3876403a878d0b302fa6fd5f38c571"
+  integrity sha512-CTPJObseVmZa17Mm/TlYIQBwuliqMvijcZgONiHiX7w1w/gIbTcZ6c5kXnXX0X/NsN3ign66O4MrfzN8g5nbwg==
+
 core-js-compat@^3.16.2:
   version "3.18.2"
   resolved "https://registry.npmjs.org/core-js-compat/-/core-js-compat-3.18.2.tgz"

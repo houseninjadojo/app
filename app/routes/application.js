@@ -8,6 +8,7 @@ export default class ApplicationRoute extends Route {
   @service router;
   @service analytics;
   @service('ember-user-activity@user-activity') userActivity;
+  @service uxcam;
 
   constructor() {
     super(...arguments);
@@ -22,6 +23,8 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await this.uxcam.getPermission();
+    await this.uxcam.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();
@@ -32,6 +35,7 @@ export default class ApplicationRoute extends Route {
       const { email } = this.session.data.authenticated.userinfo;
       Sentry.setUser({ email });
       await this.analytics.identify(email);
+      await this.uxcam.setUserIdentity(email);
     }
   }
 
@@ -39,6 +43,7 @@ export default class ApplicationRoute extends Route {
     const page = this.router.currentURL;
     const title = this.router.currentRouteName || 'unknown';
     await this.analytics.track('page_visit', { page, title });
+    await this.uxcam.tagScreenName(page);
   }
 
   /**
