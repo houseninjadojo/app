@@ -79,5 +79,9 @@ if (environment === 'development') {
   // nothing yet
 }
 
+if (environment === 'mobile') {
+  config.server.url = 'co.houseninja.application://localhost:4200';
+}
+
 // eslint-disable-next-line
 module.exports = config;
