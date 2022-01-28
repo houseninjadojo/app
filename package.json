@@ -97,7 +97,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@awesome-cordova-plugins/mixpanel": "^5.37.3",
+    "@awesome-cordova-plugins/mixpanel": "^5.38.0",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
     "@capacitor/app": "^1.1.0",
