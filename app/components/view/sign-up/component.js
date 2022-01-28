@@ -9,12 +9,6 @@ export default class SignUpComponent extends Component {
   };
   securityFields = [
     {
-      id: 'current-password',
-      required: true,
-      label: 'Current Password',
-      placeholder: '',
-    },
-    {
       id: 'new-password',
       required: true,
       label: 'New Password',

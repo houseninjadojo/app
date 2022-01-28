@@ -109,7 +109,7 @@
     "@capacitor/haptics": "^1.1.4",
     "@capacitor/keyboard": "^1.2.1",
     "@capacitor/local-notifications": "^1.1.0",
-    "@capacitor/push-notifications": "^1.0.8",
+    "@capacitor/push-notifications": "^1.0.9",
     "capacitor-secure-storage-plugin": "^0.6.2",
     "cordova-plugin-mixpanel": "^4.7.2"
   }
