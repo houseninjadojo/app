@@ -1,4 +1,4 @@
 {{page-title "Settings - Property Information"}}
-<Primitive::Modal::Tray @backRoute="settings">
-  <View::AccountSettings::Property @address={{this.model}} />
+<Primitive::Modal::Tray @backRoute="settings" @saveAction={{this.saveAction}}>
+  <View::AccountSettings::Property @model={{this.model}} />
 </Primitive::Modal::Tray>

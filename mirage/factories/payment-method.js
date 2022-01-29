@@ -1,8 +1,8 @@
-import { Factory, association } from 'miragejs';
+import { Factory, association, trait } from 'miragejs';
 // import faker from 'faker';
 
 export default Factory.extend({
-  user: association(),
+  // user: association(),
   address: association(),
 
   createdAt() {
@@ -12,4 +12,8 @@ export default Factory.extend({
   updatedAt() {
     return new Date();
   },
+
+  withUser: trait({
+    user: association(),
+  }),
 });

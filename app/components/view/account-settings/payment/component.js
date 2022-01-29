@@ -7,6 +7,7 @@ export default class PaymentComponent extends Component {
       required: true,
       label: 'Card Number',
       placeholder: '',
+      value: 'number',
     },
     {
       type: 'number',
@@ -14,6 +15,7 @@ export default class PaymentComponent extends Component {
       required: true,
       label: 'CVC',
       placeholder: '',
+      value: 'cvv',
     },
     {
       type: 'number',
@@ -21,6 +23,7 @@ export default class PaymentComponent extends Component {
       required: true,
       label: 'Month',
       placeholder: 'MM',
+      value: 'expMonth',
     },
     {
       type: 'number',
@@ -28,13 +31,15 @@ export default class PaymentComponent extends Component {
       required: true,
       label: 'Year',
       placeholder: 'YYYY',
+      value: 'expYear',
     },
     {
-      type: 'number',
+      // type: 'number',
       id: 'card-zipcode',
       required: true,
       label: 'Zipcode',
       placeholder: '',
+      value: 'zipcode',
     },
   ];
 }

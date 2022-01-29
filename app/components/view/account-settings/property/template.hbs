@@ -3,9 +3,24 @@
 
     {{#each this.addressFields as |field|}}
         {{#if field.isSelect}}
-            <Primitive::Select @options={{field.options}} @label={{field.label}} @required={{true}} @disabled={{field.disabled}}/>
+            <Primitive::Select
+              @options={{field.options}}
+              @label={{field.label}}
+              @required={{true}}
+              @disabled={{field.disabled}}
+            />
         {{else}}
-            <Primitive::Input @id={{field.id}} @required={{field.required}} @placeholder={{field.placeholder}} @value={{field.value}} @description={{field.description}} @label={{field.label}} @type={{field.type}} @disabled={{field.disabled}}/>
+            <Primitive::Input
+              @id={{field.id}}
+              @required={{field.required}}
+              @placeholder={{field.placeholder}}
+              @value={{mut (get @model field.value)}}
+              @description={{field.description}}
+              @label={{field.label}}
+              @type={{field.type}}
+              @disabled={{field.disabled}}
+              @pattern={{field.pattern}}
+            />
         {{/if}}
     {{/each}}
 </div>
