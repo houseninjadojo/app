@@ -7,7 +7,7 @@ module('Unit | Model | payment method/card', function (hooks) {
   // Replace this with your real tests.
   test('it exists', function (assert) {
     let store = this.owner.lookup('service:store');
-    let model = store.createRecord('payment-method/card', {});
+    let model = store.createRecord('credit-card', {});
     assert.ok(model);
   });
 });
