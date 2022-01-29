@@ -5,16 +5,23 @@
             <span>Welcome!</span>
         </div>
 
-        <p>Let’s book your home walkthrough with your personal House Ninja (who will carefully evaluate inside and outside your home using our 99-point checklist).</p>        
+        <p>Let’s book your home walkthrough with your personal House Ninja (who will carefully evaluate inside and outside your home using our 99-point checklist).</p>
     </div>
-    <div class="prompt">        
-        <p class="primary">To setup your walkthrough we’ll just need to...</p>        
+    <div class="prompt">
+        <p class="primary">To setup your walkthrough we’ll just need to...</p>
         <ol>
-            <li>Add your home address to your Home Profile</li>        
-            <li>Schedule your walkth rough</li>            
+            <li>Add your home address to your Home Profile</li>
+            <li>Schedule your walkth rough</li>
         </ol>
     </div>
-    <div class="action">        
-        <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Add my home address <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
+    <div class="action">
+        <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'
+            {{on 'click' @clickAction}}
+        >
+            Add my home address <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
+        </Primitive::Button>
     </div>
 </div>
