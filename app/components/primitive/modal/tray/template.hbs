@@ -14,7 +14,14 @@
         {{#if @hideFooter}}
         {{else}}
             <div class="footer">
-                <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" @disabled={{@formIsNotValid}}>
+                <Primitive::Button
+                  @type="button"
+                  @size="lg"
+                  @variant="solid"
+                  @semantic="accent"
+                  @disabled={{@formIsNotValid}}
+                  {{on 'click' this.callSaveAction}}
+                >
                     Save
                 </Primitive::Button>
             </div>
