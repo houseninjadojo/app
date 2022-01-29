@@ -28,13 +28,7 @@ export default function () {
   this.resource('address', { path: '/addresses' });
   this.resource('property', { path: '/properties' });
   this.resource('user', { path: '/users' });
-
-  this.get('/payment-methods', 'credit-cards');
-  this.get('/payment-methods/:id', 'credit-cards');
-  this.post('/payment-methods', 'credit-cards');
-  this.patch('/payment-methods/:id', 'credit-cards');
-  this.put('/payment-methods/:id', 'credit-cards');
-  this.del('/payment-methods/:id', 'credit-cards');
+  this.resource('credit-card', { path: '/payment-methods' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
