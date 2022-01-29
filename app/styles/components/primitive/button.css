@@ -1,9 +1,7 @@
 /* Default */
 .hn.btn {
   font-family: var(--campton-default);
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
+  font-size: 17px;
   width: 100%;
   border-radius: 1px;
   padding: 0 16px;

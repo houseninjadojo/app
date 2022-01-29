@@ -7,7 +7,11 @@ export default class IndexRoute extends Route {
 
   beforeModel() {
     if (Capacitor.isNativePlatform()) {
-      this.router.transitionTo('login-or-signup');
+      if (this.session.isAuthenticated) {
+        this.router.transitionTo('dashboard.home');
+      } else {
+        this.router.transitionTo('login-or-signup');
+      }
     } else {
       this.router.transitionTo('signup');
     }

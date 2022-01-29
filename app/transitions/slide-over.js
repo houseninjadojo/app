@@ -27,7 +27,6 @@ export default function slideOver(dimension, direction, opts) {
 
     if (direction === -1) {
       this.oldElement.css('z-index', 0);
-      this.oldElement.css('border-radius', 32);
       this.newElement.css('z-index', 1);
       oldParams[property] = '0px';
       oldParams['scale'] = '0.95';
