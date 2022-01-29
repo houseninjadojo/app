@@ -29,6 +29,7 @@ export default function () {
   this.resource('credit-card', { path: '/payment-methods' });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
+  this.get('/subscription-plans');
   this.resource('user', { path: '/users' });
 
   // Auth

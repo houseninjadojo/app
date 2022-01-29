@@ -1,16 +1,19 @@
 <div class="content landscape mb-16">
-    <div class="hero mb-16">        
-        <p class="hn strong mb-4">Home maintenance is a hassle.<br/>Let House Ninja handle it.</p>    
+    <div class="hero mb-16">
+        <p class="hn strong mb-4">Home maintenance is a hassle.<br/>Let House Ninja handle it.</p>
         <ul>
-            <li>Dedicated House Ninja team</li>        
+            <li>Dedicated House Ninja team</li>
             <li>Automated home maintenance</li>
             <li>24/7 availability</li>
             <li>High-quality vendor network</li>
             <li>Digital home record</li>
-            <li>Annual home evaluations</li>        
-        </ul>        
-    </div>    
+            <li>Annual home evaluations</li>
+        </ul>
+    </div>
     <div class="action">
-        <View::SignUp::Prompt::PlanSelection::PlanOptions />
+        <View::SignUp::Prompt::PlanSelection::PlanOptions
+            @plans={{@plans}}
+            @clickAction={{@clickAction}}
+        />
     </div>
 </div>

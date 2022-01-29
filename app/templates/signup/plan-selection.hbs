@@ -1,4 +1,10 @@
 {{page-title "PlanSelection"}}
 
-<View::SignUp::Breadcrumbs @breadcrumbs={{this.breadcrumbs.signUp}} @activeIndex={{0}}/>
-<View::SignUp::Prompt::PlanSelection />
+<View::SignUp::Breadcrumbs
+    @breadcrumbs={{this.breadcrumbs}}
+    @activeIndex={{0}}
+/>
+<View::SignUp::Prompt::PlanSelection
+    @plans={{this.model}}
+    @clickAction={{this.selectPlan}}
+/>

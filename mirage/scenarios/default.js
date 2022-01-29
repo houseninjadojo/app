@@ -25,5 +25,5 @@ export default function (server) {
     lastName: 'Imperial',
   });
 
-  // server.loadFixtures();
+  server.loadFixtures();
 }
