@@ -12,6 +12,7 @@ export default class CurrentService extends Service {
 
   signup = {
     zipcode: null,
+    contactInfo: {},
   };
 
   async load() {

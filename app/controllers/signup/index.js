@@ -5,13 +5,13 @@ import { service } from '@ember/service';
 import breadcrumbs from 'houseninja/utils/signup/breadcrumbs';
 
 export default class SignupIndexController extends Controller {
+  breadcrumbs = breadcrumbs.serviceArea;
+
   @service current;
   @service store;
   @service router;
 
   @tracked zipcode;
-
-  breadcrumbs = breadcrumbs.serviceArea;
 
   @action
   async checkServiceArea() {

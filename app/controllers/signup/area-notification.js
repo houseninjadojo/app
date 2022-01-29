@@ -6,10 +6,10 @@ import breadcrumbs from 'houseninja/utils/signup/breadcrumbs';
 import * as Sentry from '@sentry/ember';
 
 export default class SignupAreaNotificationController extends Controller {
+  breadcrumbs = breadcrumbs.serviceaArea;
+
   @service store;
   @service current;
-
-  breadcrumbs = breadcrumbs.serviceaArea;
 
   @tracked email;
 

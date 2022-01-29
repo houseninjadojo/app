@@ -1,12 +1,32 @@
-<div class="content mb-16">    
-    <div class="prompt">        
-        <p class="primary">Account Details</p>    
+<div class="content mb-16">
+    <div class="prompt">
+        <p class="primary">Account Details</p>
         {{#each @fields as |field|}}
-            <Primitive::Input @field={{field}} @id={{field.id}} @label={{field.label}} @required={{field.required}} @type={{field.type}} />
+            <Primitive::Input
+                @field={{field}}
+                @id={{field.id}}
+                @label={{field.label}}
+                @required={{field.required}}
+                @type={{field.type}}
+                @value={{mut field.value}}
+            />
         {{/each}}
     </div>
-    <div class="action">        
-        <Primitive::Button @size='lg' @variant='outline' @semantic='primary'>Previous</Primitive::Button>
-        <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
+    <div class="action">
+        <Primitive::Button
+            @size='lg'
+            @variant='outline'
+            @semantic='primary'
+        >
+            Previous
+        </Primitive::Button>
+        <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'
+            {{on 'click' @clickAction}}
+        >
+            Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
+        </Primitive::Button>
     </div>
 </div>
