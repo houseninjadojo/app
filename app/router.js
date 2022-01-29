@@ -25,6 +25,7 @@ Router.map(function () {
     this.route('area-notification');
     this.route('plan-selection');
     this.route('contact-info');
+    this.route('payment-method');
   });
   this.route('settings', function () {
     this.route('contact');

@@ -60,4 +60,9 @@ export default class SignupContactInfoController extends Controller {
     this.current.signup.contactInfo = contactInfo;
     this.router.transitionTo('signup.payment-method');
   }
+
+  @action
+  goBack() {
+    this.router.transitionTo('signup.plan-selection');
+  }
 }

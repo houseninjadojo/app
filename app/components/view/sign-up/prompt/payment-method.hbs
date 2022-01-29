@@ -1,18 +1,46 @@
-<div class="content mb-16">    
-    <div class="prompt">        
-        <p class="primary">Payment Method</p>    
+<div class="content mb-16">
+    <div class="prompt">
+        <p class="primary">Payment Method</p>
         <p>Let's get you signed up</p>
         {{#each @fields as |field|}}
-            <Primitive::Input @field={{field}} @id={{field.id}} @label={{field.label}} @required={{field.required}} @type={{field.type}} />
+            <Primitive::Input
+                @field={{field}}
+                @id={{field.id}}
+                @label={{field.label}}
+                @required={{field.required}}
+                @type={{field.type}}
+            />
         {{/each}}
-        <Primitive::Input @id={{'promo-code'}} @placeholder={{'Promo Code (optional)'}} @label={{'Promo Code'}} />
+        <Primitive::Input
+            @id={{'promo-code'}}
+            @placeholder={{'Promo Code (optional)'}}
+            @label={{'Promo Code'}}
+        />
         <div class='terms'>
-            <input type="checkbox" id="terms-agree" name="terms">
+            <Input
+                @type="checkbox"
+                @checked={{mut @agreesToTermsAndConditions}}
+                id="terms-agree"
+                name="terms"
+            />
             <span for="terms">I have read and agree to the <a href="" target="_blank" rel="noopener noreferrer">Terms and Conditions Agreement</a></span>
         </div>
     </div>
-    <div class="action">        
-        <Primitive::Button @size='lg' @variant='outline' @semantic='primary'>Previous</Primitive::Button>
-        <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Subscribe</Primitive::Button>
+    <div class="action">
+        <Primitive::Button
+            @size='lg' @variant='outline'
+            @semantic='primary'
+            {{on 'click' this.previousAction}}
+        >
+            Previous
+        </Primitive::Button>
+        <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'
+            {{on 'click' this.clickAction}}
+        >
+            Subscribe
+        </Primitive::Button>
     </div>
 </div>

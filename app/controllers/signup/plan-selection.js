@@ -17,4 +17,9 @@ export default class SignupPlanSelectionController extends Controller {
 
     this.router.transitionTo('signup.contact-info');
   }
+
+  @action
+  goBack() {
+    this.router.transitionTo('signup.index');
+  }
 }
