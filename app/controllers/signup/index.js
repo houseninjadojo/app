@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import breadcrumbs from 'houseninja/utils/signup/breadcrumbs';
 
 export default class SignupIndexController extends Controller {
+  @service current;
   @service store;
   @service router;
 
@@ -22,6 +23,7 @@ export default class SignupIndexController extends Controller {
     if (serviceAreas.length > 0) {
       this.router.transitionTo('signup.plan-selection');
     } else {
+      this.current.signup.zipcode = this.zipcode;
       this.router.transitionTo('signup.area-notification');
     }
   }

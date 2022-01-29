@@ -9,4 +9,6 @@ export default class UserModel extends Model {
   @attr('string') firstName;
   @attr('string') lastName;
   @attr('string') phoneNumber;
+
+  @attr('string') requestedZipcode;
 }
