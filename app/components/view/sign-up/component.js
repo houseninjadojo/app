@@ -4,21 +4,6 @@ import breadcrumbs from 'houseninja/utils/signup/breadcrumbs';
 export default class SignUpComponent extends Component {
   breadcrumbs = breadcrumbs;
 
-  securityFields = [
-    {
-      id: 'new-password',
-      required: true,
-      label: 'New Password',
-      placeholder: '',
-    },
-    {
-      id: 'confirm-password',
-      required: true,
-      label: 'Confirm Password',
-      placeholder: '',
-    },
-  ];
-
   addressFields = [
     {
       id: 'street1',
