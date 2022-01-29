@@ -1,8 +1,9 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class PropertyModel extends Model {
-  @belongsTo('user') user;
   @belongsTo('address') address;
+  @belongsTo('service-area') serviceArea;
+  @belongsTo('user') user;
 
   @attr('number') lotSize;
   @attr('number') homeSize;
