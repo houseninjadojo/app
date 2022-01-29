@@ -3,6 +3,8 @@ import { service } from '@ember/service';
 // eslint-disable-next-line ember/no-computed-properties-in-native-classes
 import { computed } from '@ember/object';
 import ENV from 'houseninja/config/environment';
+import { decamelize } from '@ember/string';
+import { pluralize } from 'ember-inflector';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   @service session;
@@ -25,5 +27,10 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
       this.session.invalidate();
     }
     return super.handleResponse(...arguments);
+  }
+
+  pathForType(modelName) {
+    var decamelized = decamelize(modelName);
+    return pluralize(decamelized);
   }
 }

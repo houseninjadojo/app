@@ -1,5 +1,5 @@
 // import { Factory } from 'miragejs';
-import PaymentMethod from './index';
+import PaymentMethod from './payment-method';
 import faker from 'faker';
 
 export default PaymentMethod.extend({
@@ -34,5 +34,9 @@ export default PaymentMethod.extend({
 
   number() {
     return faker.finance.creditCardNumber(this.brand);
+  },
+
+  zipcode() {
+    return faker.address.zipCode();
   },
 });

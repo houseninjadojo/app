@@ -1,4 +1,4 @@
 // import { belongsTo } from 'miragejs';
-import PaymentMethod from './index';
+import PaymentMethod from './payment-method';
 
 export default PaymentMethod.extend({});

@@ -1,4 +1,4 @@
 {{page-title "Settings - Security Settings"}}
-<Primitive::Modal::Tray @backRoute="settings">
-  <View::AccountSettings::Security />
+<Primitive::Modal::Tray @backRoute="settings" @saveAction={{this.saveAction}}>
+  <View::AccountSettings::Security @model={{this.model}}/>
 </Primitive::Modal::Tray>
