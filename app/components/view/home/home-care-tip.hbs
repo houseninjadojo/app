@@ -1,7 +1,7 @@
 <div class="home-care-tip">
-    <p class="heading">{{this.homeCareTips.0.label}}</p>
-    <p class="description">{{this.homeCareTips.0.description}}</p>
-    {{#if this.this.homeCareTips.0.showButton}}
+    <p class="heading">{{@homeCareTip.label}}</p>
+    <p class="description">{{@homeCareTip.description}}</p>
+    {{#if @homeCareTip.showButton}}
         <button class="hn btn solid md primary" type="button">Handle It For Me</button>
-    {{/if}}    
+    {{/if}}
 </div>
