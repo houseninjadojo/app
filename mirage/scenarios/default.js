@@ -24,4 +24,6 @@ export default function (server) {
     firstName: 'Ottomanelli',
     lastName: 'Imperial',
   });
+
+  server.loadFixtures();
 }

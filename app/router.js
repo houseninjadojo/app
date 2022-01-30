@@ -21,7 +21,17 @@ Router.map(function () {
     this.route('callback');
   });
   this.route('logout');
-  this.route('signup');
+  this.route('signup', function () {
+    this.route('area-notification');
+    this.route('plan-selection');
+    this.route('contact-info');
+    this.route('payment-method');
+    this.route('set-password');
+    this.route('welcome');
+    this.route('property-info');
+    this.route('walkthrough-booking');
+    this.route('booking-confirmation');
+  });
   this.route('settings', function () {
     this.route('contact');
     this.route('payment');

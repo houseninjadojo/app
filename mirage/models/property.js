@@ -1,6 +1,7 @@
 import { Model, belongsTo } from 'miragejs';
 
 export default Model.extend({
-  user: belongsTo('user'),
   address: belongsTo('address'),
+  serviceArea: belongsTo('service-area'),
+  user: belongsTo('user'),
 });

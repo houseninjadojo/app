@@ -1,23 +1,22 @@
 <div class="hn plan-options">
-    <p class="primary">Select Your Plan</p>                
+    <p class="primary">Select Your Plan</p>
+    {{#each @plans as |plan|}}
     <div class="option">
         <div class="column left">
-            <span class="label">Annual</span>
-            <span class="billing">$539 / year</span>
-            <span class="perk hn accent">1 month free</span>
+            <span class="label">{{plan.name}}</span>
+            <span class="billing">${{plan.price}} / {{plan.interval}}</span>
+            <span class="perk">{{plan.perk}}</span>
         </div>
         <div class="column right">
-            <Primitive::Button @size='md' @variant='solid' @semantic='primary'>Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
+            <Primitive::Button
+                @size='md'
+                @variant='solid'
+                @semantic='primary'
+                {{on 'click' (fn @selectPlan plan.id)}}
+            >
+                Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            </Primitive::Button>
         </div>
     </div>
-    <div class="option">
-        <div class="column left">
-            <span class="label">Monthly</span>
-            <span class="billing">$49 / month</span>
-            <span class="perk">More flexible</span>
-        </div>
-        <div class="column right">
-            <Primitive::Button @size='md' @variant='solid' @semantic='primary'>Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/></Primitive::Button>
-        </div>
-    </div>
+    {{/each}}
 </div>

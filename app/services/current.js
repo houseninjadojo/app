@@ -10,6 +10,12 @@ export default class CurrentService extends Service {
   device = null;
   paymentMethod = null;
 
+  signup = {
+    zipcode: null,
+    selectedPlan: null,
+    contactInfo: {},
+  };
+
   async load() {
     if (this.session.isAuthenticated) {
       const { user_id } = this.session.data.authenticated.userinfo;

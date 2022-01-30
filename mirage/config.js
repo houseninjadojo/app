@@ -26,9 +26,11 @@ export default function () {
   */
 
   this.resource('address', { path: '/addresses' });
-  this.resource('property', { path: '/properties' });
-  this.resource('user', { path: '/users' });
   this.resource('credit-card', { path: '/payment-methods' });
+  this.resource('property', { path: '/properties' });
+  this.get('/service-areas');
+  this.get('/subscription-plans');
+  this.resource('user', { path: '/users' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);

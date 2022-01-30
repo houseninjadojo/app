@@ -7,20 +7,28 @@
             <p>We don’t cover this area at the moment, but we’ll let you know as soon as we do!</p>
         {{/if}}
     </div>
-    <div class="prompt">        
-        <p class="primary">What email address should we notify?</p>    
-        <Primitive::Input                
+    <div class="prompt">
+        <p class="primary">What email address should we notify?</p>
+        <Primitive::Input
             @label='Email'
             @placeholder='Email'
             @hideLabel={{true}}
             @required={{true}}
-            @type={{'email'}}            
-        />    
+            @type={{'email'}}
+            @value={{mut this.email}}
+        />
     </div>
-    {{#if false}}        
+    {{#if false}}
     {{else}}
-        <div class="action">        
-            <Primitive::Button @size='lg' @variant='solid' @semantic='primary'>Notify Me</Primitive::Button>
+        <div class="action">
+            <Primitive::Button
+                @size='lg'
+                @variant='solid'
+                @semantic='primary'
+                {{on 'click' this.saveUserEmail}}
+            >
+                Notify Me
+            </Primitive::Button>
         </div>
     {{/if}}
 </div>
