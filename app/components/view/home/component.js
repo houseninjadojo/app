@@ -29,4 +29,9 @@ export default class HomeContentComponent extends Component {
   get prompt() {
     return `What can we help you with at ${this.streetAddress}?`;
   }
+
+  get randomHomeCareTip() {
+    let tipNumber = Math.floor(Math.random() * this.args.homeCareTips.length);
+    return this.args.homeCareTips.objectAt(tipNumber);
+  }
 }
