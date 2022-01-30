@@ -22,7 +22,7 @@
                 @id={{field.id}}
                 @required={{field.required}}
                 @placeholder={{field.placeholder}}
-                @value={{field.value}}
+                @value={{mut (get this.passwords field.value)}}
                 @description={{field.description}}
                 @label={{field.label}}
                 @type={{field.type}}
@@ -35,7 +35,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
-            {{on 'click' @clickAction}}
+            {{on 'click' this.savePassword}}
         >
             Set Password
         </Primitive::Button>

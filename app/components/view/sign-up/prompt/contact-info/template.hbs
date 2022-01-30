@@ -8,7 +8,7 @@
                 @label={{field.label}}
                 @required={{field.required}}
                 @type={{field.type}}
-                @value={{mut field.value}}
+                @value={{mut (get this.contactInfo field.value)}}
             />
         {{/each}}
     </div>
@@ -17,7 +17,7 @@
             @size='lg'
             @variant='outline'
             @semantic='primary'
-            {{on 'click' @previousAction}}
+            {{on 'click' this.goBack}}
         >
             Previous
         </Primitive::Button>
@@ -25,7 +25,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
-            {{on 'click' @clickAction}}
+            {{on 'click' this.saveContactInfo}}
         >
             Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>

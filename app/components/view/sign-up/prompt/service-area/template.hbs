@@ -11,7 +11,7 @@
             @hideLabel={{true}}
             @required={{true}}
             @type={{'number'}}
-            @value={{mut @value}}
+            @value={{mut this.zipcode}}
         />
     </div>
     <div class="action">
@@ -19,7 +19,7 @@
           @size='lg'
           @variant='solid'
           @semantic='primary'
-          {{on 'click' @clickAction}}
+          {{on 'click' this.checkServiceArea}}
         >
             Next <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>

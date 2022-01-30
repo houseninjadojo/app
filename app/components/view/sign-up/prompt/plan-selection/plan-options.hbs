@@ -12,43 +12,11 @@
                 @size='md'
                 @variant='solid'
                 @semantic='primary'
-                {{on 'click' (fn @clickAction plan.id)}}
+                {{on 'click' (fn @selectPlan plan.id)}}
             >
                 Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
             </Primitive::Button>
         </div>
     </div>
     {{/each}}
-    {{!-- <div class="option">
-        <div class="column left">
-            <span class="label">Annual</span>
-            <span class="billing">$539 / year</span>
-            <span class="perk hn accent">1 month free</span>
-        </div>
-        <div class="column right">
-            <Primitive::Button
-                @size='md'
-                @variant='solid'
-                @semantic='primary'
-            >
-                    Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
-            </Primitive::Button>
-        </div>
-    </div>
-    <div class="option">
-        <div class="column left">
-            <span class="label">Monthly</span>
-            <span class="billing">$49 / month</span>
-            <span class="perk">More flexible</span>
-        </div>
-        <div class="column right">
-            <Primitive::Button
-                @size='md'
-                @variant='solid'
-                @semantic='primary'
-            >
-                Choose <img src="assets/icons/right-arrow.svg" alt="right" class="icon"/>
-            </Primitive::Button>
-        </div>
-    </div> --}}
 </div>
