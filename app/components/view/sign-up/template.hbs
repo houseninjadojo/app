@@ -1,16 +1,6 @@
 <div class="sign-up-module">
     <TopBar @userSignUpFlow={{true}} @class="browser-version" />
-    <View @hideLogo={{true}} @class="light">        
-        <View::SignUp::Breadcrumbs @breadcrumbs={{this.breadcrumbs.walkthrough}} @activeIndex={{0}}/>
-        <View::SignUp::Prompt::ServiceArea />
-        <View::SignUp::Prompt::AreaNotification />
-        <View::SignUp::Prompt::PlanSelection />
-        <View::SignUp::Prompt::ContactInfo @fields={{this.contactFields}}/>
-        <View::SignUp::Prompt::PaymentMethod @fields={{this.paymentFields}}/>
-        <View::SignUp::Prompt::SetPassword />
-        <View::SignUp::Prompt::Welcome />
-        <View::SignUp::Prompt::PropertyInfo @fields={{this.addressFields}}/>
-        <View::SignUp::Prompt::WalkthroughBooking />
-        <View::SignUp::Prompt::BookingConfirmation />
-    </View>    
+    <View @hideLogo={{true}} @class="light">
+        {{yield}}
+    </View>
 </div>

@@ -38,6 +38,7 @@ export default class ApplicationRoute extends Route {
         'intercomHash',
         'email'
       );
+      await this.current.registerDeviceToUser();
       Sentry.setUser({ email });
       await this.analytics.identify(email);
       await Intercom.registerIdentifiedUser({

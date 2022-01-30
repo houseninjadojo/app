@@ -1,4 +1,4 @@
 {{page-title "Settings - Payment Methods"}}
-<Primitive::Modal::Tray @backRoute="settings">
-  <View::AccountSettings::Payment />
+<Primitive::Modal::Tray @backRoute="settings" @saveAction={{this.saveAction}}>
+  <View::AccountSettings::Payment @model={{this.model}}/>
 </Primitive::Modal::Tray>

@@ -1,23 +1,23 @@
-<div class="filled">                
+<div class="filled">
     <ul class="service-activity-list">
-        {{#each @records as |record|}}                    
+        {{#each @records as |record|}}
             <li>
                 <button type="button" class='record'>
-                    <p class="timestamp">                    
-                        <span>                            
-                            {{record.time}}
+                    <p class="timestamp">
+                        <span>
+                            {{record.scheduledTime}}
                         </span>
                         <span>
-                            {{record.date}}
+                            {{record.scheduledDate}}
                         </span>
                     </p>
                     <p class="description">
                         {{record.description}}
                     </p>
                     <p class="vendor">
-                        {{record.vendor}}                                            
-                    </p>                                        
-                </button>                                    
+                        {{record.vendor}}
+                    </p>
+                </button>
             </li>
         {{/each}}
     </ul>

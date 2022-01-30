@@ -1,0 +1,34 @@
+<div class="content mb-16">
+    <div class="hero mb-16">
+        <img src="/assets/images/pin-adventure-map-SJvNVEcU5Rc-unsplash.jpg" class="view-hero" alt="generic map"/>
+        {{#if false}}
+            <p>We’ll let you know when we’re in the neighborhood! In the meantime, you can set up a House Ninja account that you can use to manage your home.</p>
+        {{else}}
+            <p>We don’t cover this area at the moment, but we’ll let you know as soon as we do!</p>
+        {{/if}}
+    </div>
+    <div class="prompt">
+        <p class="primary">What email address should we notify?</p>
+        <Primitive::Input
+            @label='Email'
+            @placeholder='Email'
+            @hideLabel={{true}}
+            @required={{true}}
+            @type={{'email'}}
+            @value={{mut this.email}}
+        />
+    </div>
+    {{#if false}}
+    {{else}}
+        <div class="action">
+            <Primitive::Button
+                @size='lg'
+                @variant='solid'
+                @semantic='primary'
+                {{on 'click' this.saveUserEmail}}
+            >
+                Notify Me
+            </Primitive::Button>
+        </div>
+    {{/if}}
+</div>

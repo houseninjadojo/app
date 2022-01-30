@@ -9,4 +9,11 @@ export default class TrayComponent extends Component {
   goBack() {
     this.router.transitionTo(this.args.backRoute);
   }
+
+  @action
+  async callSaveAction() {
+    if (this.args.saveAction) {
+      await this.args.saveAction();
+    }
+  }
 }

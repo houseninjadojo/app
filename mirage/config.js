@@ -26,8 +26,15 @@ export default function () {
   */
 
   this.resource('address', { path: '/addresses' });
+  this.get('/common-requests');
+  this.resource('credit-card', { path: '/payment-methods' });
+  this.resource('device', { path: '/devices' });
+  this.get('/home-care-tips');
   this.resource('property', { path: '/properties' });
+  this.get('/service-areas');
+  this.get('/subscription-plans');
   this.resource('user', { path: '/users' });
+  this.resource('work-order', { path: '/work-orders' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);

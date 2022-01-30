@@ -7,12 +7,14 @@ export default class ContactComponent extends Component {
       required: true,
       label: 'First Name',
       placeholder: '',
+      value: 'firstName',
     },
     {
       id: 'last-name',
       required: true,
       label: 'Last Name',
       placeholder: '',
+      value: 'lastName',
     },
     {
       type: 'tel',
@@ -21,6 +23,7 @@ export default class ContactComponent extends Component {
       label: 'Phone',
       placeholder: '',
       description: 'We only use your phone number to contact you.',
+      value: 'phoneNumber',
     },
     {
       type: 'email',
@@ -28,6 +31,7 @@ export default class ContactComponent extends Component {
       required: true,
       label: 'Email',
       placeholder: '',
+      value: 'email',
     },
   ];
 }

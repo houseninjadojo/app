@@ -33,7 +33,8 @@ export default class LoginCallbackRoute extends Route {
       await SecureStorage.clear('login');
       await this.identifyAndTrackUser();
       await this.current.load();
-      this.router.transitionTo('home');
+      await this.current.registerDeviceToUser();
+      this.router.transitionTo('dashboard.home');
     }
   }
 

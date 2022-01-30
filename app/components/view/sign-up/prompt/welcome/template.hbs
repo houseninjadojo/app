@@ -1,0 +1,27 @@
+<div class="content mb-16">
+    <div class="hero mb-16">
+        <div class="welcome-hero">
+            <img src="/assets/images/thor-alvis-sgrCLKYdw5g-unsplash.jpg" class="view-hero" alt="confetti"/>
+            <span>Welcome!</span>
+        </div>
+
+        <p>Let’s book your home walkthrough with your personal House Ninja (who will carefully evaluate inside and outside your home using our 99-point checklist).</p>
+    </div>
+    <div class="prompt">
+        <p class="primary">To setup your walkthrough we’ll just need to...</p>
+        <ol>
+            <li>Add your home address to your Home Profile</li>
+            <li>Schedule your walkth rough</li>
+        </ol>
+    </div>
+    <div class="action">
+        <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'
+            {{on 'click' this.nextStep}}
+        >
+            Add my home address <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+        </Primitive::Button>
+    </div>
+</div>

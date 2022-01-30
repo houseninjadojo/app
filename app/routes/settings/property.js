@@ -5,7 +5,7 @@ export default class SettingsPropertyRoute extends Route {
   @service current;
 
   async model() {
-    await this.current.property.address.reload();
+    await this.current.property.reload();
     return this.current.property.address;
   }
 }
