@@ -30,6 +30,7 @@ Router.map(function () {
     this.route('welcome');
     this.route('property-info');
     this.route('walkthrough-booking');
+    this.route('booking-confirmation');
   });
   this.route('settings', function () {
     this.route('contact');
