@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push Notifications
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
+        // NotificationCenter.default.post(name: .capacitorDidRegisterForRemoteNotifications, object: deviceToken)
         Messaging.messaging().token(completion: { (token, error) in
             if let error = error {
                 NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)

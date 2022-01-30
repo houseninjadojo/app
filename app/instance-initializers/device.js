@@ -1,5 +1,6 @@
 import { getId, getInfo } from 'houseninja/utils/native/device';
 import { debug } from '@ember/debug';
+import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
 
 /**
  * Initialize the device model
@@ -13,19 +14,29 @@ export async function initialize(appInstance) {
 
   let id = await getId();
   let info = await getInfo();
+  let pushToken = await unstash('pushToken');
 
   let deviceInfo = {
     ...info,
+    ...pushToken,
     deviceId: id,
   };
 
   debug(`initializing device id=${id}`);
-  debug(deviceInfo);
 
-  let device = await store.createRecord('device', deviceInfo);
+  let device = store.createRecord('device', deviceInfo);
+  try {
+    await device.save();
+  } catch (e) {
+    debug('COULD NOT SAVE DEVICE INFO ON BOOT');
+    debug(e);
+  }
+
+  await stash('device', deviceInfo);
   current.set('device', device);
 }
 
 export default {
   initialize,
+  after: 'notifications',
 };
