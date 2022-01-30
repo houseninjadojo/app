@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { debug } from '@ember/debug';
+import * as Sentry from '@sentry/ember';
 
 export default class SettingsPropertyController extends Controller {
   @service router;
@@ -8,8 +10,13 @@ export default class SettingsPropertyController extends Controller {
   @action
   async saveAction() {
     if (this.model.hasDirtyAttributes) {
-      await this.model.save();
-      this.router.transitionTo('settings.index');
+      try {
+        await this.model.save();
+        this.router.transitionTo('settings.index');
+      } catch (e) {
+        debug(e);
+        Sentry.captureException(e);
+      }
     }
   }
 }
