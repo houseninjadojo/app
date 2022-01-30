@@ -29,6 +29,7 @@ Router.map(function () {
     this.route('set-password');
     this.route('welcome');
     this.route('property-info');
+    this.route('walkthrough-booking');
   });
   this.route('settings', function () {
     this.route('contact');
