@@ -35,11 +35,11 @@ export default class SetPasswordComponent extends Component {
   @action
   async savePassword() {
     let user = this.current.user;
-    let { password, passwordConfirmation } = this.password;
-    if (password === passwordConfirmation) {
-      user.password = password;
+    if (this.passwordsMatch()) {
+      user.password = this.passwords.password;
       try {
         await user.save();
+        await user.reload(); // clear the password
         this.router.transitionTo('signup.welcome');
       } catch (e) {
         debug(e);
@@ -51,5 +51,10 @@ export default class SetPasswordComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.payment-method');
+  }
+
+  get passwordsMatch() {
+    let { password, passwordConfirmation } = this.password;
+    return password === passwordConfirmation;
   }
 }

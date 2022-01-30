@@ -11,6 +11,7 @@ export default class UserModel extends Model {
   @attr('string') phoneNumber;
 
   @attr('string') requestedZipcode;
+  @attr('write-only') password;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
