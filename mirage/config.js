@@ -33,6 +33,7 @@ export default function () {
   this.get('/service-areas');
   this.get('/subscription-plans');
   this.resource('user', { path: '/users' });
+  this.resource('work-order', { path: '/work-orders' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
