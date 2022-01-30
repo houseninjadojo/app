@@ -32,6 +32,7 @@ export default class ApplicationRoute extends Route {
       const { email } = this.session.data.authenticated.userinfo;
       Sentry.setUser({ email });
       await this.analytics.identify(email);
+      await this.current.registerDeviceToUser();
     }
   }
 
