@@ -21,7 +21,7 @@ Router.map(function () {
     this.route('callback');
   });
   this.route('logout');
-  this.route('signup', function() {
+  this.route('signup', function () {
     this.route('area-notification');
     this.route('plan-selection');
     this.route('contact-info');
