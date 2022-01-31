@@ -98,6 +98,7 @@
   },
   "dependencies": {
     "@awesome-cordova-plugins/mixpanel": "^5.38.0",
+    "@byteowls/capacitor-oauth2": "^3.0.1",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
     "@capacitor/app": "^1.1.0",
