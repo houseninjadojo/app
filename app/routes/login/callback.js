@@ -52,6 +52,7 @@ export default class LoginCallbackRoute extends Route {
   async closeBrowser() {
     if (isNativePlatform()) {
       try {
+        Browser.removeAllListeners();
         return await Browser.close();
       } catch {
         return null;
