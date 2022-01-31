@@ -1,10 +1,11 @@
-import { animate, Promise } from 'liquid-fire';
+import { stop, animate, Promise, isAnimating, finish } from 'liquid-fire';
 
 export default function slideOver(dimension, direction, opts) {
   let oldParams = {},
     newParams = {},
     property,
-    measure;
+    measure,
+    firstStep;
 
   if (dimension.toLowerCase() === 'x') {
     property = 'translateX';
@@ -14,22 +15,32 @@ export default function slideOver(dimension, direction, opts) {
     measure = 'height';
   }
 
-  let bigger = biggestSize(this, measure);
-
-  if (direction === -1) {
-    this.oldElement.css('z-index', 0);
-    this.newElement.css('z-index', 1);
-    oldParams[property] = '0px';
-    newParams[property] = ['0px', -1 * bigger * direction + 'px'];
+  if (isAnimating(this.oldElement, 'moving-in')) {
+    firstStep = finish(this.oldElement, 'moving-in');
   } else {
-    oldParams[property] = bigger * direction + '0px';
-    newParams[property] = ['0px', '0px'];
+    stop(this.oldElement);
+    firstStep = Promise.resolve();
   }
 
-  return Promise.all([
-    animate(this.oldElement, oldParams, opts),
-    animate(this.newElement, newParams, opts, 'moving-in'),
-  ]);
+  return firstStep.then(() => {
+    let bigger = biggestSize(this, measure);
+
+    if (direction === -1) {
+      this.oldElement.css('z-index', 0);
+      this.newElement.css('z-index', 1);
+      oldParams[property] = '0px';
+      oldParams['scale'] = '0.95';
+      newParams[property] = ['0px', -1 * bigger * direction + 'px'];
+    } else {
+      oldParams[property] = bigger * direction + '0px';
+      newParams[property] = ['0px', '0px'];
+    }
+
+    return Promise.all([
+      animate(this.oldElement, oldParams, opts),
+      animate(this.newElement, newParams, opts, 'moving-in'),
+    ]);
+  });
 }
 
 function biggestSize(context, dimension) {

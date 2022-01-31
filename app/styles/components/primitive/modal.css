@@ -4,16 +4,6 @@
   background: none;
   padding: 0;
   z-index: 100;
-
-  /* position: fixed; */
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  /*
-  transform: translateX(-100%);
-  -webkit-transform: translateX(-100%); */
 }
 
 .hn.modal .overlay {
@@ -40,19 +30,10 @@
   padding: 0;
 }
 
-.hn.modal .modal-container.tray {
-  /* height: 88vh;   */
-
-  /* border-radius: 40px 40px 0 0; */
-
-  /* position: fixed; */
-
-  /* bottom: 0; */
-}
-
 .hn.modal .modal-container.shelf,
 .hn.modal .modal-container.tray {
   height: 100%;
+  border-radius: 40px 40px 0 0;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -97,6 +78,7 @@
   overflow: hidden;
 }
 
-.hn.modal .modal-container .footer button {
+.hn.modal .modal-container .footer button.btn {
   height: 64px;
+  border-radius: 0;
 }

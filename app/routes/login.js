@@ -43,6 +43,12 @@ export default class LoginRoute extends Route {
   async nativeOpen(url) {
     debug(`Opening Login URL: ${url}`);
     if (isNativePlatform()) {
+      Browser.addListener('browserFinished', () => {
+        debug(`Popover browser closed.`);
+        debug(`Transitioning to /login-or-signup`);
+        this.router.transitionTo('login-or-signup');
+        Browser.removeAllListeners();
+      });
       return await Browser.open({ url, presentationStyle: 'popover' });
     } else {
       window.location.assign(url);
