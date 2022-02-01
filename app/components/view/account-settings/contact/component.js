@@ -33,5 +33,5 @@ export default class ContactComponent extends Component {
       placeholder: '',
       value: 'email',
     },
-  ];  
+  ];
 }
