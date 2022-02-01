@@ -4,6 +4,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { setUser } from '@sentry/capacitor';
 import SecureStorage from 'houseninja/utils/secure-storage';
+import { task } from 'ember-concurrency';
 
 export default class LoginCallbackRoute extends Route {
   @service current;
@@ -30,24 +31,28 @@ export default class LoginCallbackRoute extends Route {
         params.code,
         params.state
       );
-      await SecureStorage.clear('login');
-      await this.identifyAndTrackUser();
-      await this.current.load();
-      await this.current.registerDeviceToUser();
+
       this.router.transitionTo('dashboard.home');
     }
   }
 
-  async identifyAndTrackUser() {
+  @task *performOnSuccess() {
+    yield SecureStorage.clear('login');
+    yield this.identifyAndTrackUser();
+    yield this.current.load();
+    yield this.current.registerDeviceToUser();
+  }
+
+  @task *identifyAndTrackUser() {
     const userinfo = this.session.data.authenticated.userinfo;
-    setUser({ id: userinfo.user_id, email: userinfo.email });
-    await this.analytics.setProfile({
+    yield setUser({ id: userinfo.user_id, email: userinfo.email });
+    yield this.analytics.setProfile({
       // eslint-disable-next-line
       '$email': userinfo.email,
       // eslint-disable-next-line
       '$name': userinfo.name,
     });
-    await this.analytics.identify(userinfo.email);
+    yield this.analytics._identify(userinfo.email);
   }
 
   async closeBrowser() {

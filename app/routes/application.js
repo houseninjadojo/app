@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import { task } from 'ember-concurrency';
 import Sentry from '@sentry/capacitor';
 
 export default class ApplicationRoute extends Route {
@@ -12,34 +13,45 @@ export default class ApplicationRoute extends Route {
   constructor() {
     super(...arguments);
 
-    this.router.on('routeDidChange', async () => {
-      await this._trackPage();
+    this.router.on('routeDidChange', () => {
+      this._trackPage.perform();
     });
 
-    this.userActivity.on('touchstart', this, async (event) => {
-      await this._trackClick(event);
+    this.userActivity.on('touchstart', this, (event) => {
+      this._trackClick.perform(event);
     });
   }
 
-  async beforeModel() {
-    await this.session.setup();
-    await this.analytics.setup();
-    await this.current.load();
+  beforeModel() {
+    this.generalSetup.perform();
+  }
 
-    await this.analytics.track('application_started');
+  afterModel() {
+    // this.postAuthSetup.perform();
+  }
 
+  @task *generalSetup() {
+    yield this.session.setup();
+    yield this.analytics.setup.perform();
+    yield this.current.load();
+    yield this.postAuthSetup.perform();
+  }
+
+  @task *postAuthSetup() {
+    yield this.analytics.track('application_started');
     if (this.session.isAuthenticated) {
       const { email } = this.session.data.authenticated.userinfo;
       Sentry.setUser({ email });
-      await this.analytics.identify(email);
-      await this.current.registerDeviceToUser();
+      yield this.analytics.identify(email);
+      yield this.current.registerDeviceToUser.perform();
     }
   }
 
-  async _trackPage() {
+  @task({ enqueue: true })
+  *_trackPage() {
     const page = this.router.currentURL;
     const title = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('page_visit', { page, title });
+    yield this.analytics.track('page_visit', { page, title });
   }
 
   /**
@@ -47,12 +59,13 @@ export default class ApplicationRoute extends Route {
    * from the triggering DOM element and create an analytics event.
    * <div id="a" class="b c"></div> => `div.b.c#a`
    */
-  async _trackClick(event) {
+  @task({ enqueue: true })
+  *_trackClick(event) {
     const tag = event.target.localName;
     const classNames = event.target.className.replaceAll(' ', '.');
     const id = event.target.id;
     const queryString = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    await this.analytics.track('click', {
+    yield this.analytics.track('click', {
       selector: queryString,
     });
   }

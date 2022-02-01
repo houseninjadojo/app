@@ -1,8 +1,8 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
-import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
+import { task } from 'ember-concurrency';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -55,16 +55,19 @@ export default class DeepLinksService extends Service {
   }
 
   setupRouteHandler() {
-    this.listener = MobileApp.addListener('appUrlOpen', (event) => {
-      run(() => {
-        // co.houseninja.application://page => /page
-        let url = this.parseUrl(event.url);
-        this.analytics.track('deep_link_visit', {
-          page: url.raw,
-          name: url.name,
-        });
-        this.forwardRoute(url);
-      });
+    this.listener = MobileApp.addListener(
+      'appUrlOpen',
+      this.trackIncomingDeepLink.perform
+    );
+  }
+
+  @task *trackIncomingDeepLink(event) {
+    // co.houseninja.application://page => /page
+    let url = this.parseUrl(event.url);
+    yield this.analytics._track.perform('deep_link_visit', {
+      page: url.raw,
+      name: url.name,
     });
+    this.forwardRoute(url);
   }
 }

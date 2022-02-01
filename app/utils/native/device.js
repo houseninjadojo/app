@@ -1,5 +1,6 @@
 import { Device } from '@capacitor/device';
 import { run } from '@ember/runloop';
+// import { task } from 'ember-concurrency';
 
 /**
  * @see https://capacitorjs.com/docs/apis/device#getid
