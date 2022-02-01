@@ -17,7 +17,7 @@
 
     </div>
     <div class="prompt">
-        {{#each @fields as |field|}}
+        {{#each this.fields as |field|}}
             <Primitive::Input
                 @id={{field.id}}
                 @required={{field.required}}
