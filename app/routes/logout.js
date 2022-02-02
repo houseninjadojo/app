@@ -17,9 +17,7 @@ export default class LogoutRoute extends Route {
   }
 
   async logoutExternal() {
-    Browser.addListener('browserPageLoaded', () => {
-      Browser.close();
-    });
+    await Browser.addListener('browserPageLoaded', Browser.close);
     await Browser.open({
       url: this.logoutUrl(),
       presentationStyle: 'popover',

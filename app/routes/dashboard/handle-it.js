@@ -10,12 +10,24 @@ export default class DashboardHandleItRoute extends Route {
     let query = {
       status: 'open',
     };
-    return this.fetchWorkOrders.perform(query);
+    // spawn refresh
+    this.refreshModel.perform(query);
+    return this.store.peekAll('work-order');
   }
 
   @task({ keepLatest: true })
   *fetchWorkOrders(query) {
-    return yield this.store.query('work-order', {
+    try {
+      return yield this.store.query('work-order', {
+        filter: query,
+      });
+    } catch (e) {
+      return yield this.store.peekAll('work-order');
+    }
+  }
+
+  @task({ drop: true }) *refreshModel(query) {
+    yield this.store.query('work-order', {
       filter: query,
     });
   }

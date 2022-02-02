@@ -9,8 +9,8 @@ export default Factory.extend({
     return '10:00AM - 2:00PM';
   },
 
-  vendor() {
-    return "Paulie's Plumbing Services";
+  vendor(i) {
+    return `Paulie's Plumbing Services ${i}`;
   },
 
   description() {
