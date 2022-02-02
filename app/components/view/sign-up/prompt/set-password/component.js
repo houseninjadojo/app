@@ -15,16 +15,20 @@ export default class SetPasswordComponent extends Component {
     passwordConfirmation: null,
   };
 
+  @tracked formIsInvalid = true;
+
+  @tracked requirementsModel;
+
   fields = [
     {
-      id: 'new-password',
+      id: 'password',
       required: true,
       label: 'New Password',
       placeholder: '',
       value: 'password',
     },
     {
-      id: 'confirm-password',
+      id: 'passwordConfirmation',
       required: true,
       label: 'Confirm Password',
       placeholder: '',
@@ -33,9 +37,34 @@ export default class SetPasswordComponent extends Component {
   ];
 
   @action
+  validatePasswordRequirement(e) {
+    this.passwords[e.target.id] = e.target.value;
+
+    this.requirementsModel = {
+      passwordsMatch:
+        this.passwords.password === this.passwords.passwordConfirmation,
+      atLeastThisLong:
+        this.passwords.password && this.passwords.password.length >= 12,
+      hasLowercase: /[a-z]/.test(this.passwords.password),
+      hasUppercase: /[A-Z]/.test(this.passwords.password),
+      hasNumber: /\d/.test(this.passwords.password),
+      hasSymbol: /[!$&.#@]/.test(this.passwords.password),
+    };
+
+    const allRequirementsMet =
+      Object.values(this.requirementsModel).indexOf(false) === -1;
+
+    if (allRequirementsMet) {
+      this.formIsInvalid = false;
+    } else {
+      this.formIsInvalid = true;
+    }
+  }
+
+  @action
   async savePassword() {
     let user = this.current.user;
-    if (this.passwordsMatch()) {
+    if (!this.formIsInvalid) {
       user.password = this.passwords.password;
       try {
         await user.save();
@@ -51,10 +80,5 @@ export default class SetPasswordComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.payment-method');
-  }
-
-  get passwordsMatch() {
-    let { password, passwordConfirmation } = this.password;
-    return password === passwordConfirmation;
   }
 }
