@@ -85,9 +85,9 @@
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^2.0.0",
-    "stylelint": "^14.2.0",
+    "stylelint": "^14.3.0",
     "stylelint-config-standard": "^24.0.0",
-    "tailwindcss": "^3.0.15",
+    "tailwindcss": "^3.0.17",
     "webpack": "^5.67.0",
     "whatwg-url": "11.0.0"
   },
@@ -98,7 +98,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@awesome-cordova-plugins/mixpanel": "^5.37.3",
+    "@awesome-cordova-plugins/mixpanel": "^5.38.0",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
     "@capacitor-community/intercom": "^3.0.1",

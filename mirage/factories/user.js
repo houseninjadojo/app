@@ -30,13 +30,15 @@ export default Factory.extend({
 
     // compute the hash
     let hash = hmacSHA256(this.id, secret);
-    console.log(hash.toString());
     return hash.toString();
   },
 
   afterCreate(user, server) {
+    let paymentMethods = server.createList('credit-card', 1);
+    let properties = server.createList('property', 1);
     user.update({
-      properties: server.createList('property', 1),
+      properties,
+      paymentMethods,
     });
   },
 });

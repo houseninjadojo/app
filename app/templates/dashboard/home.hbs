@@ -1,5 +1,8 @@
 {{page-title "Home"}}
 
 <View>
-    <View::Home/>
+    <View::Home
+      @commonRequests={{this.model.commonRequests}}
+      @homeCareTips={{this.model.homeCareTips}}
+    />
 </View>

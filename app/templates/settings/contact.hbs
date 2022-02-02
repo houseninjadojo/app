@@ -1,4 +1,4 @@
 {{page-title "Settings - Contact Information"}}
-<Primitive::Modal::Tray @backRoute="settings">
-  <View::AccountSettings::Contact />
+<Primitive::Modal::Tray @backRoute="settings" @saveAction={{this.saveAction}}>
+  <View::AccountSettings::Contact @model={{this.model}}/>
 </Primitive::Modal::Tray>

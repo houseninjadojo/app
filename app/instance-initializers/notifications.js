@@ -10,6 +10,12 @@ import {
 } from 'houseninja/utils/native/local-notifications';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { getToken } from 'houseninja/utils/native/fcm';
+import {
+  set as stash,
+  clear as clearStash,
+} from 'houseninja/utils/secure-storage';
+import * as Sentry from '@sentry/ember';
+import { Intercom } from '@capacitor-community/intercom';
 
 /**
  * @todo
@@ -22,13 +28,12 @@ import { getToken } from 'houseninja/utils/native/fcm';
  * save the fcmToken to the device entry on our servers
  * so we can send notifications to it later.
  */
-const registrationHandler = async (fcmToken) => {
-  let current = this.appInstance.lookup('service:current');
-  if (!fcmToken) {
-    fcmToken = await getToken();
-  }
-  current.device.set('fcmToken', fcmToken);
-  current.device.save();
+const registrationHandler = async (token) => {
+  const pushToken = {
+    apnsDeviceToken: token && token.value,
+    fcmToken: await getToken(),
+  };
+  await stash('pushToken', pushToken);
 };
 
 /**
@@ -38,11 +43,12 @@ const registerListenerHandlers = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
 
   // successful push notification registration
-  addListener('registration', registrationHandler.bind({ appInstance }));
+  addListener('registration', registrationHandler);
 
   // failed push notification registration
-  addListener('registrationError', (error) => {
-    console.error(error);
+  addListener('registrationError', async (error) => {
+    Sentry.captureException(error);
+    await clearStash('pushToken');
   });
 
   addListener('pushNotificationReceived', (notification) => {
@@ -51,6 +57,15 @@ const registerListenerHandlers = async (appInstance) => {
 
   addListener('localNotificationReceived', (notification) => {
     notifications.add('local', 'delivered', notification);
+  });
+
+  // @todo handle clicking a notification
+  addListener('pushNotificationActionPerformed', (payload) => {
+    // console.log(notification);
+    const { notification /* , actionId */ } = payload;
+    if (notification.data.intercom_push_type === 'notification') {
+      Intercom.displayMessenger();
+    }
   });
 };
 
@@ -129,6 +144,6 @@ export async function initialize(appInstance) {
 }
 
 export default {
-  after: 'device',
+  before: 'device',
   initialize,
 };

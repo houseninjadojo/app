@@ -5,9 +5,9 @@
     </div>
     <hr class="hn line" />
     <Primitive::Section @label="Common Requests" @subLabel="Here’s What Your Neighbors Are Doing">
-        <View::Home::CommonRequests />
+        <View::Home::CommonRequests @commonRequests={{@commonRequests}}/>
     </Primitive::Section>
     <Primitive::Section @label="Home Care Tip" @bodyClass='home-care-tip-section'>
-        <View::Home::HomeCareTip />
+        <View::Home::HomeCareTip @homeCareTip={{this.randomHomeCareTip}}/>
     </Primitive::Section>
 </div>

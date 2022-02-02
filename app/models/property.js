@@ -1,8 +1,11 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class PropertyModel extends Model {
+  @belongsTo('address', { inverse: 'property' }) address;
+  @belongsTo('service-area') serviceArea;
   @belongsTo('user') user;
-  @belongsTo('address') address;
+
+  @hasMany('work-order') workOrders;
 
   @attr('number') lotSize;
   @attr('number') homeSize;
