@@ -11,8 +11,8 @@ export default class SetPasswordComponent extends Component {
   @service store;
 
   @tracked passwords = {
-    password: null,
-    passwordConfirmation: null,
+    password: '',
+    passwordConfirmation: '',
   };
 
   @tracked formIsInvalid = true;
@@ -21,6 +21,7 @@ export default class SetPasswordComponent extends Component {
 
   fields = [
     {
+      type: 'password',
       id: 'password',
       required: true,
       label: 'New Password',
@@ -28,6 +29,7 @@ export default class SetPasswordComponent extends Component {
       value: 'password',
     },
     {
+      type: 'password',
       id: 'passwordConfirmation',
       required: true,
       label: 'Confirm Password',
@@ -42,9 +44,9 @@ export default class SetPasswordComponent extends Component {
 
     this.requirementsModel = {
       passwordsMatch:
+        this.passwords.password &&
         this.passwords.password === this.passwords.passwordConfirmation,
-      atLeastThisLong:
-        this.passwords.password && this.passwords.password.length >= 12,
+      atLeastThisLong: this.passwords.password.length >= 12,
       hasLowercase: /[a-z]/.test(this.passwords.password),
       hasUppercase: /[A-Z]/.test(this.passwords.password),
       hasNumber: /\d/.test(this.passwords.password),

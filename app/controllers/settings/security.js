@@ -9,9 +9,9 @@ export default class SettingsSecurityController extends Controller {
   @service router;
 
   @tracked passwords = {
-    currentPassword: null,
-    newPassword: null,
-    confirmPassword: null,
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
   };
 
   @tracked formIsInvalid = true;
@@ -23,19 +23,16 @@ export default class SettingsSecurityController extends Controller {
     this.passwords[e.target.id] = e.target.value;
 
     this.requirementsModel = {
-      currentPasswordIsNotEmpty:
-        this.passwords.currentPassword !== null &&
-        this.passwords.currentPassword.length > 0,
+      currentPasswordIsNotEmpty: this.passwords.currentPassword.length > 0,
       passwordsMatch:
+        this.passwords.newPassword &&
         this.passwords.newPassword === this.passwords.confirmPassword,
-      atLeastThisLong:
-        this.passwords.newPassword && this.passwords.newPassword.length >= 12,
+      atLeastThisLong: this.passwords.newPassword.length >= 12,
       hasLowercase: /[a-z]/.test(this.passwords.newPassword),
       hasUppercase: /[A-Z]/.test(this.passwords.newPassword),
       hasNumber: /\d/.test(this.passwords.newPassword),
       hasSymbol: /[!$&.#@]/.test(this.passwords.newPassword),
     };
-
     const allRequirementsMet =
       Object.values(this.requirementsModel).indexOf(false) === -1;
 
