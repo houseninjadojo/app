@@ -12,6 +12,7 @@
               @value={{mut @value}}
               disabled={{@disabled}}
               aria-label={{@label}}
+              {{on 'input' this.handleChange}}
             />
         {{else}}
             <label class="hn-input-label" for={{@id}} >{{@label}}</label>
@@ -24,6 +25,7 @@
               placeholder={{@placeholder}}
               @value={{mut @value}}
               disabled={{@disabled}}
+              {{on 'input' this.handleChange}}
             />
         {{/if}}
     </div>
