@@ -1,10 +1,13 @@
-import { animate, Promise } from 'liquid-fire';
+import { stop, animate, Promise, isAnimating, finish } from 'liquid-fire';
 
 export default function slideOver(dimension, direction, opts) {
   let oldParams = {},
     newParams = {},
     property,
-    measure;
+    measure,
+    firstStep;
+
+  const context = this;
 
   if (dimension.toLowerCase() === 'x') {
     property = 'translateX';
@@ -14,22 +17,48 @@ export default function slideOver(dimension, direction, opts) {
     measure = 'height';
   }
 
-  let bigger = biggestSize(this, measure);
+  disableButtons(context, true);
 
-  if (direction === -1) {
-    this.oldElement.css('z-index', 0);
-    this.newElement.css('z-index', 1);
-    oldParams[property] = '0px';
-    newParams[property] = ['0px', -1 * bigger * direction + 'px'];
+  if (isAnimating(this.oldElement, 'moving-in')) {
+    firstStep = finish(this.oldElement, 'moving-in');
   } else {
-    oldParams[property] = bigger * direction + '0px';
-    newParams[property] = ['0px', '0px'];
+    stop(this.oldElement);
+    firstStep = Promise.resolve();
   }
 
-  return Promise.all([
-    animate(this.oldElement, oldParams, opts),
-    animate(this.newElement, newParams, opts, 'moving-in'),
-  ]);
+  return firstStep.then(() => {
+    let bigger = biggestSize(context, measure);
+
+    if (direction === -1) {
+      this.oldElement.css('z-index', 0);
+      this.newElement.css('z-index', 1);
+      oldParams[property] = '0px';
+      oldParams['scale'] = '0.95';
+      newParams[property] = ['0px', -1 * bigger * direction + 'px'];
+    } else {
+      oldParams[property] = bigger * direction + '0px';
+      newParams[property] = ['0px', '0px'];
+    }
+
+    return Promise.all([
+      animate(this.oldElement, oldParams, opts),
+      animate(this.newElement, newParams, opts, 'moving-in'),
+    ]).then(() => {
+      new Promise((resolve) => {
+        resolve(disableButtons(context, false));
+      });
+    });
+  });
+}
+
+function disableButtons(context, disable) {
+  const oldButtons = new Array(context.oldElement.find('button'));
+  const newButtons = new Array(context.newElement.find('button'));
+  const allButtons = [...oldButtons, ...newButtons];
+
+  allButtons.forEach((element) => {
+    element.prop('disabled', disable);
+  });
 }
 
 function biggestSize(context, dimension) {

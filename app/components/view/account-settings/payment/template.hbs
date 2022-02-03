@@ -1,11 +1,10 @@
 <div class="settings-view dark">
     <h1 class="hn view-title">Edit Payment Information</h1>
 
-    {{!-- {{#if @account.cardNumber}} --}}
-    {{#if true}}
+    {{#if (get @model 'number')}}    
         <div class="mb-16">
             <p class="hn label">Current Payment Information</p>
-            <p>Card ending in {{@account.cardNumber}}</p>
+            <p>{{@model.obfuscated.brand}} ending in {{@model.obfuscated.lastFour}}</p>
         </div>
     {{/if}}
 
@@ -14,7 +13,7 @@
           @id={{field.id}}
           @required={{field.required}}
           @placeholder={{field.placeholder}}
-          @value={{mut (get @model field.value)}}
+          @value={{mut (get @model.obfuscated field.value)}}
           @description={{field.description}}
           @label={{field.label}}
           @type={{field.type}}

@@ -1,5 +1,5 @@
 <div class="hn modal">
-    <div class="overlay" />
+    {{!-- <div class="overlay" /> --}}
     <div class="modal-container tray dark">
         <div class="head">
             <div class="actions">
@@ -19,7 +19,7 @@
                   @size="lg"
                   @variant="solid"
                   @semantic="accent"
-                  @disabled={{@formIsNotValid}}
+                  @disabled={{@formIsInvalid}}
                   {{on 'click' this.callSaveAction}}
                 >
                     Save

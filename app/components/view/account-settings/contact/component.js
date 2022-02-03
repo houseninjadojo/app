@@ -3,14 +3,14 @@ import Component from '@glimmer/component';
 export default class ContactComponent extends Component {
   contactFields = [
     {
-      id: 'first-name',
+      id: 'firstName',
       required: true,
       label: 'First Name',
       placeholder: '',
       value: 'firstName',
     },
     {
-      id: 'last-name',
+      id: 'lastName',
       required: true,
       label: 'Last Name',
       placeholder: '',
@@ -18,7 +18,7 @@ export default class ContactComponent extends Component {
     },
     {
       type: 'tel',
-      id: 'phone',
+      id: 'phoneNumber',
       required: true,
       label: 'Phone',
       placeholder: '',

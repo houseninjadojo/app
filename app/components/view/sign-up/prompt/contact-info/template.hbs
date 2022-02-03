@@ -1,7 +1,7 @@
 <div class="content mb-16">
     <div class="prompt">
         <p class="primary">Account Details</p>
-        {{#each @fields as |field|}}
+        {{#each this.fields as |field|}}
             <Primitive::Input
                 @field={{field}}
                 @id={{field.id}}

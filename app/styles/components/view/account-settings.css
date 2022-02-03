@@ -30,7 +30,7 @@
   /* Hex Equivalent: var(--gray-100) */
 }
 
-.dark .settings-menu .menu-item button span.menu-item-label {
+.dark .settings-menu .menu-item button {
   filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
 }
 

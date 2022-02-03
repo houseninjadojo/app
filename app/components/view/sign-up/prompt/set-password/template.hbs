@@ -6,18 +6,18 @@
         <div class="password-reqs">
             <p class="hn label">Password Requirements</p>
             <ul>
-                <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{false}} />
-                <View::AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{false}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{false}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{false}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{false}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{false}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{this.requirementsModel.passwordsMatch}} />
+                <View::AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{this.requirementsModel.atLeastThisLong}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{this.requirementsModel.hasLowercase}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{this.requirementsModel.hasUppercase}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{this.requirementsModel.hasNumber}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{this.requirementsModel.hasSymbol}}/>
             </ul>
         </div>
 
     </div>
     <div class="prompt">
-        {{#each @fields as |field|}}
+        {{#each this.fields as |field|}}
             <Primitive::Input
                 @id={{field.id}}
                 @required={{field.required}}
@@ -27,6 +27,7 @@
                 @label={{field.label}}
                 @type={{field.type}}
                 @disabled={{field.disabled}}
+                @onChange={{this.validatePasswordRequirement}}
             />
         {{/each}}
     </div>
@@ -35,7 +36,8 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
-            {{on 'click' this.savePassword}}
+            @disabled={{this.formIsInvalid}}
+            {{on 'click' this.savePassword}}            
         >
             Set Password
         </Primitive::Button>

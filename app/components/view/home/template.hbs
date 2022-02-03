@@ -2,6 +2,9 @@
     <div class="greeting">
         <p class="salutation">{{this.salutation}}</p>
         <p class="prompt">{{this.prompt}}</p>
+        {{#if this.streetAddress}}
+            <p class="prompt">{{this.streetAddress}}?</p>
+        {{/if}}
     </div>
     <hr class="hn line" />
     <Primitive::Section @label="Common Requests" @subLabel="Here’s What Your Neighbors Are Doing">
