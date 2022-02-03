@@ -8,7 +8,7 @@
   position: absolute;
   z-index: 100;
   bottom: 0;
-  padding: 12px 24px;
+  padding: 16px 24px;
   backdrop-filter: blur(4px);
   box-shadow: var(--shadow-gray-1);
 }
@@ -42,4 +42,8 @@
 
 .hn.nav-bar > button {
   margin-bottom: 8px;
+}
+
+.hn.nav-bar .nav-menu-item button {
+  font-size: 14px;
 }

@@ -1,5 +1,5 @@
 import { Factory, association, trait } from 'miragejs';
-import faker from 'faker';
+import faker from '@faker-js/faker';
 
 export default Factory.extend({
   street1() {

@@ -8,6 +8,9 @@ export default class TrayComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo(this.args.backRoute);
+    if (this.args.onBack) {
+      this.args.onBack();
+    }
   }
 
   @action

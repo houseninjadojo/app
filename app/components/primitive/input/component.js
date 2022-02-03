@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 export default class InputComponent extends Component {
   get descriptionText() {
@@ -16,5 +17,10 @@ export default class InputComponent extends Component {
       descriptionString = description;
     }
     return descriptionString;
+  }
+
+  @action
+  handleChange(e) {
+    this.args.onChange && this.args.onChange(e);
   }
 }

@@ -9,8 +9,12 @@ export default class HomeContentComponent extends Component {
   }
 
   get streetAddress() {
-    const streetAddress = this.current.property.get('address.street1') || null;
-    return streetAddress || 'home';
+    const streetAddress =
+      (this.current &&
+        this.current.property &&
+        this.current.property.get('address.street1')) ||
+      null;
+    return streetAddress;
   }
 
   get salutation() {
@@ -27,7 +31,7 @@ export default class HomeContentComponent extends Component {
   }
 
   get prompt() {
-    return `What can we help you with at ${this.streetAddress}?`;
+    return `What can we help you with at ${!this.streetAddress ? 'home?' : ''}`;
   }
 
   get randomHomeCareTip() {

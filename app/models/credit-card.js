@@ -9,4 +9,17 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('number') expYear;
   @attr('string') number;
   @attr('string') zipcode;
+
+  get obfuscated() {
+    return {
+      brand: this.brand.toUpperCase() || 'Card',
+      country: '',
+      cvv: '',
+      expMonth: null,
+      expYear: null,
+      number: '',
+      zipcode: '',
+      lastFour: this.number.substring(this.number.length - 4),
+    };
+  }
 }

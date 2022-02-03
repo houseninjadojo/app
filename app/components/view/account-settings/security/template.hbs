@@ -6,21 +6,22 @@
           @id={{field.id}}
           @required={{field.required}}
           @placeholder={{field.placeholder}}
-          @value={{mut (get @model field.value)}}
+          @value={{mut (get @passwords field.id)}}
           @description={{field.description}}
           @label={{field.label}}
           @type={{field.type}}
-          @disabled={{field.disabled}}
+          @disabled={{field.disabled}}          
+          @onChange={{@validatePasswordRequirement}}
         />
     {{/each}}
 
     <p class="hn label center mt-16 mb-4">Password Requirements</p>
     <ul>
-        <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{false}} />
-        <View::AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{false}}/>
-        <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{false}}/>
-        <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{false}}/>
-        <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{false}}/>
-        <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{false}}/>
+        <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{@requirementsModel.passwordsMatch}} />
+        <View::AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{@requirementsModel.atLeastThisLong}}/>
+        <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{@requirementsModel.hasLowercase}}/>
+        <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{@requirementsModel.hasUppercase}}/>
+        <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{@requirementsModel.hasNumber}}/>
+        <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{@requirementsModel.hasSymbol}}/>
     </ul>
 </div>
