@@ -35,7 +35,7 @@ export async function initialize(appInstance) {
     let device;
     let devices = await store.query('device', {
       filter: {
-        deviceId: id,
+        device_id: id,
       },
     });
     if (devices.length > 0) {
