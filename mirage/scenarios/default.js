@@ -24,6 +24,12 @@ export default function (server) {
     firstName: 'Ottomanelli',
     lastName: 'Imperial',
   });
+  server.create('user', {
+    id: '61fc347b504a01006933ed13',
+    email: 'miles@houseninja.co',
+    firstName: 'Miles',
+    lastName: 'Zimmerman',
+  });
 
   server.loadFixtures();
 }

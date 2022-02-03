@@ -134,7 +134,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   get redirectUri() {
     if (isNativePlatform()) {
-      let showLocal = ENV.environment === 'mobile' ? 'localhost:4200/' : '';
+      let showLocal =
+        ENV.environment === 'mobile' || ENV.environment === 'development'
+          ? 'localhost:4200/'
+          : '';
       return `${ENV.appScheme}://${showLocal}#/login/callback`;
     } else {
       // return `${ENV.appHost}/login/callback`;
