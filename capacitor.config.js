@@ -63,12 +63,12 @@ const environment = process.env.NODE_ENV;
 
 if (environment === 'production') {
   config.loggingBehavior = 'production';
-  config.server.url = null;
+  config.server.url = 'co.houseninja.application://';
 }
 
 if (environment === 'sandbox') {
   config.loggingBehavior = 'production';
-  config.server.url = null;
+  config.server.url = 'co.houseninja.application://';
 }
 
 if (environment === 'test') {

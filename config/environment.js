@@ -22,7 +22,7 @@ module.exports = function (environment) {
       // when it is created
     },
 
-    apiHost: 'https://api.dev.houseninja.co',
+    apiHost: 'https://sandbox.api.houseninja.co',
     appHost: 'http://localhost:4200',
     appScheme: 'co.houseninja.application',
 
@@ -48,6 +48,10 @@ module.exports = function (environment) {
       mixpanelToken: null,
     },
 
+    'ember-cli-mirage': {
+      enabled: true,
+    },
+
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
@@ -62,6 +66,7 @@ module.exports = function (environment) {
       tracingOrigins: [
         'localhost:4200',
         'https://api.houseninja.co',
+        'https://sandbox.api.houseninja.co',
         'localhost',
         'co.houseninja.application://#',
       ],
@@ -100,6 +105,10 @@ module.exports = function (environment) {
     ENV.auth.client_id = 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh';
     ENV.auth.audience = 'https://sandbox.api.houseninja.co';
     ENV.auth.connection = 'sandbox';
+    ENV.auth.domain = 'sandbox.auth.houseninja.co';
+
+    // Mirage
+    ENV['ember-cli-mirage'].enabled = false;
 
     // Sentry
     ENV['@sentry/ember'].sentry.debug = false;
@@ -107,7 +116,7 @@ module.exports = function (environment) {
     ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
-    // ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
+    ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
   }
 
   if (environment === 'production') {
@@ -118,6 +127,9 @@ module.exports = function (environment) {
     ENV.auth.audience = 'https://api.houseninja.co/';
     ENV.auth.connection = 'houseninja';
     ENV.auth.domain = 'auth.houseninja.co'
+
+    // Mirage
+    ENV['ember-cli-mirage'].enabled = false;
 
     // Sentry
     ENV['@sentry/ember'].sentry.debug = false;
