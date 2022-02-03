@@ -82,6 +82,6 @@
 .hn.btn.disabled {
   background: var(--gray-400) !important;
   box-shadow: none !important;
-  color: var(--gray-600) !important;
+  filter: invert(32%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(95%) contrast(89%) !important;
   border: none !important;
 }
