@@ -33,15 +33,18 @@ export async function initialize(appInstance) {
 
   try {
     let device;
+    // check if we know about the device already
     let devices = await store.query('device', {
       filter: {
         device_id: id,
       },
     });
     if (devices.length > 0) {
+      // we know about this device, so update any changes
       device = devices.firstObject();
       device.setProperties(deviceInfo);
     } else {
+      // this is a new device, so create it
       device = store.createRecord('device', deviceInfo);
     }
     await device.save();

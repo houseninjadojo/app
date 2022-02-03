@@ -65,7 +65,7 @@ export default class SetPasswordComponent extends Component {
 
   @action
   async savePassword() {
-    let user = this.current.user;
+    let user = await this.store.peekAll('user').get('firstObject');
     if (!this.formIsInvalid) {
       user.password = this.passwords.password;
       try {
