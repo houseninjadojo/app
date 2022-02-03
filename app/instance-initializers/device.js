@@ -31,8 +31,19 @@ export async function initialize(appInstance) {
 
   debug(`initializing device id=${id}`);
 
-  let device = store.createRecord('device', deviceInfo);
   try {
+    let device;
+    let devices = await store.query('device', {
+      filter: {
+        deviceId: id,
+      },
+    });
+    if (devices.length > 0) {
+      device = devices.firstObject();
+      device.setProperties(deviceInfo);
+    } else {
+      device = store.createRecord('device', deviceInfo);
+    }
     await device.save();
   } catch (e) {
     debug('COULD NOT SAVE DEVICE INFO ON BOOT');
