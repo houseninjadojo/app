@@ -7,6 +7,8 @@ export default function slideOver(dimension, direction, opts) {
     measure,
     firstStep;
 
+  const context = this;
+
   if (dimension.toLowerCase() === 'x') {
     property = 'translateX';
     measure = 'width';
@@ -14,6 +16,8 @@ export default function slideOver(dimension, direction, opts) {
     property = 'translateY';
     measure = 'height';
   }
+
+  disableButtons(context, true);
 
   if (isAnimating(this.oldElement, 'moving-in')) {
     firstStep = finish(this.oldElement, 'moving-in');
@@ -23,7 +27,7 @@ export default function slideOver(dimension, direction, opts) {
   }
 
   return firstStep.then(() => {
-    let bigger = biggestSize(this, measure);
+    let bigger = biggestSize(context, measure);
 
     if (direction === -1) {
       this.oldElement.css('z-index', 0);
@@ -39,7 +43,21 @@ export default function slideOver(dimension, direction, opts) {
     return Promise.all([
       animate(this.oldElement, oldParams, opts),
       animate(this.newElement, newParams, opts, 'moving-in'),
-    ]);
+    ]).then(() => {
+      new Promise((resolve) => {
+        resolve(disableButtons(context, false));
+      });
+    });
+  });
+}
+
+function disableButtons(context, disable) {
+  const oldButtons = new Array(context.oldElement.find('button'));
+  const newButtons = new Array(context.newElement.find('button'));
+  const allButtons = [...oldButtons, ...newButtons];
+
+  allButtons.forEach((element) => {
+    element.prop('disabled', disable);
   });
 }
 

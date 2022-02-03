@@ -55,6 +55,10 @@ body {
   background: var(--gray-950);
 }
 
+.light .ember-view {
+  background: var(--white);
+}
+
 input[type="number"] {
   appearance: textfield;
 }

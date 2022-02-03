@@ -55,7 +55,7 @@
 
 .light .hn.hn-input-field .hn-input-container:focus-within {
   background: rgb(0 192 187 / 10%);
-  border-bottom: 1px solid var(--teal-500);
+  border: 1px solid var(--teal-500);
 }
 
 .light .hn.hn-input-field .hn-input-container:focus-within label {
@@ -65,7 +65,7 @@
 /* Warn */
 .light .hn.hn-input-field.warn .hn-input-container {
   background: #ffa31a0a !important;
-  border-bottom: 1px solid var(--orange-400) !important;
+  border: 1px solid var(--orange-400) !important;
 }
 
 .light .hn.hn-input-field.warn .hn-input-container label {
@@ -79,7 +79,7 @@
 /* Alert */
 .light .hn.hn-input-field.alert .hn-input-container {
   background: #c322400a !important;
-  border-bottom: 1px solid var(--red-400) !important;
+  border: 1px solid var(--red-400) !important;
 }
 
 .light .hn.hn-input-field.alert .hn-input-container label {
@@ -93,7 +93,7 @@
 /* Disabled */
 .light .hn.hn-input-field.disabled .hn-input-container {
   background: rgb(255 255 255 / 2.5%) !important;
-  border-bottom: none !important;
+  border: none !important;
 }
 
 .light .hn.hn-input-field.disabled .hn-input-container label {

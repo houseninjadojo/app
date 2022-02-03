@@ -21,7 +21,11 @@
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/houseninja.js"></script>
     <script>
-      document.body.addEventListener("touchstart", () => document.activeElement.blur() );
+      document.body.addEventListener("touchstart", (e) => {        
+        if(e.target.tagName !== 'INPUT'){
+          document.activeElement.blur();
+        } 
+      });
     </script>
     {{content-for "body-footer"}}
   </body>

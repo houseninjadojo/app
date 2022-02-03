@@ -4,24 +4,23 @@ export default class SecurityComponent extends Component {
   securityFields = [
     {
       type: 'password',
-      id: 'current-password',
+      id: 'currentPassword',
       required: true,
       label: 'Current Password',
       placeholder: '',
     },
     {
       type: 'password',
-      id: 'new-password',
+      id: 'newPassword',
       required: true,
       label: 'New Password',
       placeholder: '',
     },
     {
       type: 'password',
-      id: 'confirm-password',
+      id: 'confirmPassword',
       required: true,
       label: 'Confirm Password',
-      placeholder: '',
     },
   ];
 }
