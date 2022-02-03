@@ -104,7 +104,7 @@ module.exports = function (environment) {
 
     ENV.auth.client_id = 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh';
     ENV.auth.audience = 'https://sandbox.api.houseninja.co/';
-    ENV.auth.connection = 'sandbox';
+    ENV.auth.connection = 'development';
     ENV.auth.domain = 'sandbox.auth.houseninja.co';
 
     // Mirage
