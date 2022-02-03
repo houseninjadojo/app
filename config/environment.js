@@ -22,7 +22,7 @@ module.exports = function (environment) {
       // when it is created
     },
 
-    apiHost: 'https://sandbox.api.houseninja.co',
+    apiHost: 'https://api.dev.houseninja.co',
     appHost: 'http://localhost:4200',
     appScheme: 'co.houseninja.application',
 
