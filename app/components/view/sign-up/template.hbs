@@ -1,6 +1,8 @@
 <div class="sign-up-module">
     <TopBar @userSignUpFlow={{true}} @class="browser-version" />
     <View @hideLogo={{true}} @class="light">
-        {{yield}}
+        <View::SignUp::Wrapper>
+            {{yield}}
+        </View::SignUp::Wrapper>
     </View>
 </div>
