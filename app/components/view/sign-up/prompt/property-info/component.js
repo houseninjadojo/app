@@ -82,7 +82,7 @@ export default class PropertyInfoComponent extends Component {
 
   async createProperty() {
     let serviceArea = this.store.peekAll('service-area').get('firstObject');
-    let user = this.current.user;
+    let user = this.store.peekAll('user').get('firstObject');
     return await this.store.createRecord('property', {
       serviceArea,
       user,
