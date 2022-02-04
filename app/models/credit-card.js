@@ -7,7 +7,7 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('string') cvv;
   @attr('number') expMonth;
   @attr('number') expYear;
-  @attr('string') number;
+  @attr('string') cardNumber;
   @attr('string') zipcode;
 
   get obfuscated() {
@@ -17,9 +17,9 @@ export default class CreditCardModel extends PaymentMethod {
       cvv: '',
       expMonth: null,
       expYear: null,
-      number: '',
+      cardNumber: '',
       zipcode: '',
-      lastFour: this.number.substring(this.number.length - 4),
+      lastFour: this.cardNumber.substring(this.cardNumber.length - 4),
     };
   }
 }

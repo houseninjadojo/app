@@ -26,7 +26,7 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Card Number',
       placeholder: '',
-      value: 'number',
+      value: 'cardNumber',
     },
     {
       type: 'number',
