@@ -11,4 +11,14 @@ export default class ApplicationSerializer extends JSONAPISerializer {
   keyForAttribute(attr /* , method */) {
     return underscore(attr);
   }
+
+  /**
+   * Map dasherized keys to underscore
+   *
+   * @example
+   *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
+   */
+  keyForRelationship(key /* , relationship, method */) {
+    return underscore(key);
+  }
 }

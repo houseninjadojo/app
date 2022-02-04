@@ -23,7 +23,7 @@ export default class CurrentService extends Service {
     if (this.session.isAuthenticated) {
       const { user_id } = this.session.data.authenticated.userinfo;
       this.user = await this.store.findRecord('user', user_id, {
-        include: 'properties,properties.address,payment-methods',
+        include: 'properties,payment-methods',
       });
 
       const property = await this.user.properties.get('firstObject');
@@ -46,7 +46,7 @@ export default class CurrentService extends Service {
     if (this.session.isAuthenticated) {
       const { user_id } = this.session.data.authenticated.userinfo;
       this.user = await this.store.findRecord('user', user_id, {
-        include: 'properties,properties.address,payment-methods',
+        include: 'properties,payment-methods',
       });
     }
   }

@@ -1,6 +1,3 @@
-import { Model, belongsTo } from 'miragejs';
+import { Model } from 'miragejs';
 
-export default Model.extend({
-  // addressible: belongsTo({ polymorphic: true, inverse: 'property' }),
-  property: belongsTo('property'),
-});
+export default Model.extend({});
