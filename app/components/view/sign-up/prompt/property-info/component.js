@@ -69,12 +69,15 @@ export default class PropertyInfoComponent extends Component {
       // let address = await this.createAddress({ property });
       // await address.save();
       let serviceArea = this.store.peekAll('service-area').get('firstObject');
+      console.log(serviceArea);
       let user = this.store.peekAll('user').get('firstObject');
-      let address = await this.store.createRecord('address', {
+      console.log(user);
+      let address = this.store.createRecord('address', {
         ...this.propertyInfo,
         // ...attributes,
       });
-      let property = await this.store.createRecord('property', {
+      console.log(address);
+      let property = this.store.createRecord('property', {
         address,
         serviceArea,
         user,
