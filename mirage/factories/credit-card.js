@@ -1,4 +1,3 @@
-// import { Factory } from 'miragejs';
 import PaymentMethod from './payment-method';
 import faker from '@faker-js/faker';
 
@@ -32,7 +31,7 @@ export default PaymentMethod.extend({
     });
   },
 
-  number() {
+  cardNumber() {
     return faker.finance.creditCardNumber(this.brand);
   },
 

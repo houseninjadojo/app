@@ -10,7 +10,7 @@ export default class PropertyModel extends Model {
   @attr('number') lotSize;
   @attr('number') homeSize;
   @attr('number') garageSize;
-  @attr('number') homeAge;
+  @attr('number') yearBuilt;
   @attr('string') estimatedValue;
   @attr('number') bedrooms;
   @attr('number') bathrooms;

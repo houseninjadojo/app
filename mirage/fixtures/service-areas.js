@@ -37,6 +37,6 @@ export default [
       '78758',
       '78759',
     ],
-    calendarUrl: 'https://meetings.hubspot.com/house-ninja/atx?embed=true',
+    calendarUrl: 'https://meetings.hubspot.com/miles-zimmerman?embed=true',
   },
 ];

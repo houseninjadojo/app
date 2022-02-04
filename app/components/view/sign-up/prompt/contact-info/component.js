@@ -58,7 +58,7 @@ export default class ContactInfoComponent extends Component {
     });
     try {
       await user.save();
-      this.router.transitionTo('signup.set-password');
+      this.router.transitionTo('signup.payment-method');
     } catch (e) {
       debug(e);
       Sentry.captureException(e);
