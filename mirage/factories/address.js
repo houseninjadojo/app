@@ -1,4 +1,4 @@
-import { Factory, association, trait } from 'miragejs';
+import { Factory } from 'miragejs';
 import faker from '@faker-js/faker';
 
 export default Factory.extend({
@@ -21,8 +21,4 @@ export default Factory.extend({
   zipcode() {
     return faker.address.zipCode();
   },
-
-  withProperty: trait({
-    property: association('property'),
-  }),
 });

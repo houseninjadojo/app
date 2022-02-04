@@ -3,7 +3,6 @@ import { Factory, association, trait } from 'miragejs';
 
 export default Factory.extend({
   // user: association(),
-  // address: association(),
 
   createdAt() {
     return new Date();

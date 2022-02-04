@@ -6,6 +6,6 @@ export default class SettingsPropertyRoute extends Route {
 
   async model() {
     await this.current.property.reload();
-    return this.current.property.address;
+    return this.current.property;
   }
 }

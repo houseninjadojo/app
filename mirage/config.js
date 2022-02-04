@@ -25,7 +25,6 @@ export default function () {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  this.resource('address', { path: '/addresses' });
   this.get('/common-requests');
   this.resource('credit-card', { path: '/payment-methods' });
   this.resource('device', { path: '/devices' });

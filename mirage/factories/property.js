@@ -2,7 +2,25 @@ import { Factory, association, trait } from 'miragejs';
 import faker from '@faker-js/faker';
 
 export default Factory.extend({
-  address: association(),
+  streetAddress1() {
+    return faker.address.streetAddress();
+  },
+
+  streetAddress2() {
+    return null;
+  },
+
+  city() {
+    return faker.address.city();
+  },
+
+  state() {
+    return faker.address.stateAbbr();
+  },
+
+  zipcode() {
+    return faker.address.zipCode();
+  },
 
   lotSize() {
     return faker.datatype.number({ min: 10000, max: 100000 });

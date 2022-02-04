@@ -1,9 +1,6 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr } from '@ember-data/model';
 
 export default class AddressModel extends Model {
-  @belongsTo('addressible', { polymorphic: true }) addressible;
-  // @belongsTo('property', { inverse: 'address' }) property;
-
   @attr('string') street1;
   @attr('string') street2;
   @attr('string') city;
