@@ -64,10 +64,25 @@ export default class PropertyInfoComponent extends Component {
   @action
   async savePropertyInfo() {
     try {
-      let property = await this.createProperty();
+      // let property = await this.createProperty();
+      // await property.save();
+      // let address = await this.createAddress({ property });
+      // await address.save();
+      let serviceArea = this.store.peekAll('service-area').get('firstObject');
+      let user = this.store.peekAll('user').get('firstObject');
+      let address = await this.store.createRecord('address', {
+        ...this.propertyInfo,
+        // ...attributes,
+      });
+      let property = await this.store.createRecord('property', {
+        address,
+        serviceArea,
+        user,
+        default: true,
+        selected: true,
+      });
+      console.log(property);
       await property.save();
-      let address = await this.createAddress({ property });
-      await address.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
       debug(e);
@@ -83,8 +98,12 @@ export default class PropertyInfoComponent extends Component {
   async createProperty() {
     let serviceArea = this.store.peekAll('service-area').get('firstObject');
     let user = this.store.peekAll('user').get('firstObject');
-    console.log(user);
+    let address = await this.store.createRecord('address', {
+      ...this.propertyInfo,
+      // ...attributes,
+    });
     return await this.store.createRecord('property', {
+      address,
       serviceArea,
       user,
       default: true,
