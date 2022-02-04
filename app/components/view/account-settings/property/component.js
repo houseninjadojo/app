@@ -3,18 +3,18 @@ import Component from '@glimmer/component';
 export default class PropertyComponent extends Component {
   addressFields = [
     {
-      id: 'street1',
+      id: 'streetAddress1',
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: 'street1',
+      value: 'streetAddress1',
     },
     {
-      id: 'street2',
+      id: 'streetAddress2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: 'street2',
+      value: 'streetAddress2',
     },
     {
       id: 'city',

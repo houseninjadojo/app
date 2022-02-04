@@ -11,8 +11,8 @@ export default class PropertyInfoComponent extends Component {
   @service store;
 
   @tracked propertyInfo = {
-    street1: null,
-    street2: null,
+    streetAddress1: null,
+    streetAddress2: null,
     city: 'Austin',
     state: 'TX',
     zipcode: null,
@@ -20,18 +20,18 @@ export default class PropertyInfoComponent extends Component {
 
   fields = [
     {
-      id: 'street1',
+      id: 'streetAddress1',
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: 'street1',
+      value: 'streetAddress1',
     },
     {
-      id: 'street2',
+      id: 'streetAddress2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: 'street2',
+      value: 'streetAddress2',
     },
     {
       id: 'city',
@@ -64,10 +64,16 @@ export default class PropertyInfoComponent extends Component {
   @action
   async savePropertyInfo() {
     try {
-      let property = await this.createProperty();
+      let serviceArea = this.store.peekAll('service-area').get('firstObject');
+      let user = this.store.peekAll('user').get('firstObject');
+      let property = await this.store.createRecord('property', {
+        serviceArea,
+        user,
+        ...this.propertyInfo,
+        default: true,
+        selected: true,
+      });
       await property.save();
-      let address = await this.createAddress({ property });
-      await address.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
       debug(e);
@@ -78,23 +84,5 @@ export default class PropertyInfoComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.welcome');
-  }
-
-  async createProperty() {
-    let serviceArea = this.store.peekAll('service-area').get('firstObject');
-    let user = this.current.user;
-    return await this.store.createRecord('property', {
-      serviceArea,
-      user,
-      default: true,
-      selected: true,
-    });
-  }
-
-  async createAddress(attributes = {}) {
-    return await this.store.createRecord('address', {
-      ...this.propertyInfo,
-      ...attributes,
-    });
   }
 }

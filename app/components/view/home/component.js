@@ -12,7 +12,7 @@ export default class HomeContentComponent extends Component {
     const streetAddress =
       (this.current &&
         this.current.property &&
-        this.current.property.get('address.street1')) ||
+        this.current.property.get('streetAddress1')) ||
       null;
     return streetAddress;
   }
