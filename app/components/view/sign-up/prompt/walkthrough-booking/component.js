@@ -5,8 +5,8 @@ import { service } from '@ember/service';
 export default class WalkthroughBookingComponent extends Component {
   @service router;
 
-  constructor(owner, args) {
-    super(owner, args);
+  constructor() {
+    super(...arguments);
     window.addEventListener('message', this.receiveWindowMessage.bind(this));
   }
 
