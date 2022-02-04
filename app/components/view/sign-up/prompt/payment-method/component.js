@@ -64,7 +64,7 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   async savePaymentMethod() {
-    const user = this.current.user;
+    const user = await this.store.peekAll('user').get('firstObject');
     let paymentMethod = this.store.createRecord('credit-card', {
       ...this.paymentMethod,
       user,
