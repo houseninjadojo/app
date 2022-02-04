@@ -5,6 +5,7 @@ export default class ServiceAreaModel extends Model {
 
   @attr('string') name;
   @attr('array') zipcodes;
+  @attr('string') calendarUrl;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
