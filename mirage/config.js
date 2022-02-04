@@ -39,4 +39,14 @@ export default function () {
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
   this.passthrough(`https://${ENV.auth.domain}/oauth/token`);
   this.passthrough(`https://${ENV.auth.domain}/userinfo`);
+  this.passthrough('https://api.stripe.com');
+  this.passthrough('https://checkout.stripe.com');
+  this.passthrough('https://dashboard.stripe.com');
+  this.passthrough('https://files.stripe.com');
+  this.passthrough('https://js.stripe.com');
+  this.passthrough('https://m.stripe.com');
+  this.passthrough('https://m.stripe.network');
+  this.passthrough('https://q.stripe.com');
+  this.passthrough('https://verify.stripe.com');
+  this.passthrough('https://stripe.com');
 }

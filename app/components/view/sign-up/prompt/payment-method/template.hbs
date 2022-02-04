@@ -2,16 +2,12 @@
     <div class="prompt">
         <p class="primary">Payment Method</p>
         <p>Let's get you signed up</p>
-        {{#each this.fields as |field|}}
-            <Primitive::Input
-                {{!-- @field={{field}} --}}
-                @id={{field.id}}
-                @label={{field.label}}
-                @required={{field.required}}
-                @type={{field.type}}
-                @value={{mut (get this.paymentMethod field.value)}}
-            />
-        {{/each}}
+        <StripeElements as |Elements|>
+          <Elements.cardNumber @onReady={{this.handleReady}} />
+          <Elements.cardExpiry />
+          <Elements.cardCvc />
+          <Elements.postalCode />
+        </StripeElements>
         <Primitive::Input
             @id={{'promo-code'}}
             @placeholder={{'Promo Code (optional)'}}

@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@adopted-ember-addons/ember-stripe-elements@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@adopted-ember-addons/ember-stripe-elements/-/ember-stripe-elements-2.0.2.tgz#f4f3a0f646612b11c99becf0d585875648840e98"
+  integrity sha512-H//1NXiRz6TrY7m7r2Inn5QqgKqqRu5VrXuXwsSvXLxP7Cu1z5oMMWClDuoKYlwHRBFbkrGsAzRhXg3QoLYFdQ==
+  dependencies:
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.0.1"
+
 "@awesome-cordova-plugins/mixpanel@^5.39.0":
   version "5.39.0"
   resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/mixpanel/-/mixpanel-5.39.0.tgz#ca6c7561cee635315aa3664971b2f134ce2798dd"
@@ -5678,7 +5686,7 @@ ember-user-activity@houseninjadojo/ember-user-activity:
   version "6.0.0"
   resolved "https://codeload.github.com/houseninjadojo/ember-user-activity/tar.gz/e57b20c7028c6987d794dbc141cff766e72d65df"
   dependencies:
-    ember-classic-decorator "^3.0.0"
+    ember-classic-decorator boris-petrov/ember-classic-decorator#fix-using-global-ember
     ember-cli-babel "^7.26.11"
 
 emoji-regex@^8.0.0:

@@ -71,6 +71,13 @@ module.exports = function (environment) {
         'co.houseninja.application://#',
       ],
     },
+
+    stripe: {
+      publishableKey: 'pk_test_51IH0d5AWN1SYQ0CtVgIamg51s58UB9J7BE7oYJbLExWyvLrLVNoiZNHR3GkBNsK43sMnWxIyABsgervqoK8MidlL00vr5KsF8W',
+      stripeOptions: {
+        locale: 'en',
+      },
+    },
   };
 
   if (environment === 'development') {

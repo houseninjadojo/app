@@ -6,71 +6,47 @@ import { debug } from '@ember/debug';
 import * as Sentry from '@sentry/ember';
 
 export default class PaymentMethodComponent extends Component {
+  stripeElement = null;
+
   @service current;
   @service router;
   @service store;
+  @service('stripev3') stripe;
 
   @tracked agreesToTermsAndConditions;
   @tracked promoCode;
-  @tracked paymentMethod = {
-    cvv: null,
-    expMonth: null,
-    expYear: null,
-    number: null,
-    zipcode: null,
-  };
 
-  fields = [
-    {
-      id: 'card-number',
-      required: true,
-      label: 'Card Number',
-      placeholder: '',
-      value: 'cardNumber',
-    },
-    {
-      type: 'number',
-      id: 'cvc',
-      required: true,
-      label: 'CVC',
-      placeholder: '',
-      value: 'cvv',
-    },
-    {
-      type: 'number',
-      id: 'card-month',
-      required: true,
-      label: 'Month',
-      placeholder: 'MM',
-      value: 'expMonth',
-    },
-    {
-      type: 'number',
-      id: 'card-year',
-      required: true,
-      label: 'Year',
-      placeholder: 'YYYY',
-      value: 'expYear',
-    },
-    {
-      type: 'number',
-      id: 'card-zipcode',
-      required: true,
-      label: 'Zipcode',
-      placeholder: '',
-      value: 'zipcode',
-    },
-  ];
+  /**
+   * When you are creating your own form, you will need access to
+   * the Stripe Elements object that links all the individual inputs.
+   */
+  @action
+  handleReady(stripeElement) {
+    this.stripeElement = stripeElement;
+  }
 
   @action
   async savePaymentMethod() {
-    const user = await this.store.peekAll('user').get('firstObject');
-    let paymentMethod = this.store.createRecord('credit-card', {
-      ...this.paymentMethod,
-      user,
-    });
     try {
-      await paymentMethod.save();
+      let user = this.store.peekAll('user').get('firstObject');
+
+      let { paymentMethod } = await this.stripe.createPaymentMethod({
+        type: 'card',
+        card: this.stripeElement,
+      });
+
+      let creditCard = this.store.createRecord('credit-card', {
+        user,
+        stripeToken: paymentMethod.id,
+        brand: paymentMethod.card.brand,
+        country: paymentMethod.card.country,
+        expMonth: paymentMethod.card.exp_month,
+        expYear: paymentMethod.card.exp_year,
+        lastFour: paymentMethod.card.last4,
+        zipcode: paymentMethod.billing_details.address.postal_code,
+      });
+      await creditCard.save();
+
       this.router.transitionTo('signup.set-password');
     } catch (e) {
       debug(e);

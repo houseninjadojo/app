@@ -31,8 +31,8 @@ export default PaymentMethod.extend({
     });
   },
 
-  cardNumber() {
-    return faker.finance.creditCardNumber(this.brand);
+  lastFour() {
+    return '1111';
   },
 
   zipcode() {

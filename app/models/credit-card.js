@@ -4,10 +4,9 @@ import PaymentMethod from './payment-method';
 export default class CreditCardModel extends PaymentMethod {
   @attr('string') brand;
   @attr('string') country;
-  @attr('string') cvv;
   @attr('number') expMonth;
   @attr('number') expYear;
-  @attr('string') cardNumber;
+  @attr('string') lastFour;
   @attr('string') zipcode;
 
   get obfuscated() {
@@ -19,7 +18,8 @@ export default class CreditCardModel extends PaymentMethod {
       expYear: null,
       cardNumber: '',
       zipcode: '',
-      lastFour: this.cardNumber.substring(this.cardNumber.length - 4),
+      // lastFour: this.cardNumber.substring(this.cardNumber.length - 4),
+      lastFour: this.lastFour,
     };
   }
 }

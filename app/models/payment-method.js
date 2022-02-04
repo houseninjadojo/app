@@ -8,6 +8,8 @@ import Model, { attr, belongsTo } from '@ember-data/model';
 export default class PaymentMethodModel extends Model {
   @belongsTo('user', { inverse: 'paymentMethods' }) user;
 
+  @attr('string') stripeToken;
+
   @attr('date') createdAt;
   @attr('date') updatedAt;
 }
