@@ -16,8 +16,8 @@ export default Factory.extend({
     return faker.datatype.number({ min: 0, max: 2 });
   },
 
-  homeAge() {
-    return faker.datatype.number({ min: 1, max: 100 });
+  yearBuilt() {
+    return faker.datatype.number({ min: 1800, max: 2022 });
   },
 
   estimatedValue() {
