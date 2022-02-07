@@ -1,5 +1,6 @@
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { run } from '@ember/runloop';
+import { debug } from '@ember/debug';
 
 /**
  * Store key/value data in secure storage
@@ -16,8 +17,8 @@ export async function set(key, value) {
         value: JSON.stringify(value),
       });
     });
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    debug(e);
   }
 }
 
@@ -50,7 +51,7 @@ export async function clear(key) {
     try {
       await SecureStoragePlugin.remove({ key });
     } catch {
-      console.warn(`SecureStorage: Unable to clear contents of key '${key}'`);
+      debug(`SecureStorage: Unable to clear contents of key '${key}'`);
     }
   });
   return;

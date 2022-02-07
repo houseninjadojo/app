@@ -6,5 +6,6 @@ export default Model.extend({
   properties: hasMany('property'),
   paymentMethods: hasMany('payment-method', { polymorphic: true }),
   payments: hasMany('payment'),
+  promoCode: belongsTo('promo-code'),
   subscription: belongsTo('subscription'),
 });

@@ -6,6 +6,7 @@ export default class UserModel extends Model {
   @hasMany('payment-method', { polymorphic: true }) paymentMethods;
   @hasMany('payment') payments;
   @hasMany('property') properties;
+  @belongsTo('promo-code') promoCode;
   @belongsTo('subscription') subscription;
 
   @attr('string') email;

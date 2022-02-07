@@ -14,9 +14,12 @@
         {{/each}}
         <Primitive::Input
             @id={{'promo-code'}}
+            @alert={{this.promoCodeAlert}}
+            @description={{this.promoCodeDescription}}
             @placeholder={{'Promo Code (optional)'}}
             @label={{'Promo Code'}}
-            @value={{mut this.promoCode}}
+            @value={{mut this.promoCodeInput}}
+            @onChange={{(perform this.checkPromoCode)}}
         />
         <div class='terms'>
             <Input

@@ -31,6 +31,11 @@ export default function () {
   this.resource('invoice', { path: '/invoices' });
   this.resource('credit-card', { path: '/payment-methods' });
   this.resource('payment', { path: '/payments' });
+  this.resource('promo-code', { path: '/promo-codes' });
+  this.get('/promo-codes', (schema, request) => {
+    let code = request.queryParams['filter[code]'];
+    return schema.promoCodes.where({ code });
+  });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
   this.get('/subscription-plans');
