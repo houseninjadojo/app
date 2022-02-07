@@ -6,6 +6,7 @@ import Model, { attr, belongsTo } from '@ember-data/model';
  * @see app/models/payment-method/card
  */
 export default class PaymentMethodModel extends Model {
+  @belongsTo('subscription') subscription;
   @belongsTo('user', { inverse: 'paymentMethods' }) user;
 
   @attr('string') stripeToken;

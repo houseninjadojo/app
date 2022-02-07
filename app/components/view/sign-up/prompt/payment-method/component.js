@@ -27,15 +27,16 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   async savePaymentMethod() {
-    try {
-      let user = this.store.peekAll('user').get('firstObject');
+    const user = this.store.peekAll('user').get('firstObject');
+    const subscription = this.store.peekAll('subscription').get('firstObject');
 
-      let { paymentMethod } = await this.stripe.createPaymentMethod({
+    try {
+      const { paymentMethod } = await this.stripe.createPaymentMethod({
         type: 'card',
         card: this.stripeElement,
       });
 
-      let creditCard = this.store.createRecord('credit-card', {
+      const creditCard = this.store.createRecord('credit-card', {
         user,
         stripeToken: paymentMethod.id,
         brand: paymentMethod.card.brand,
@@ -46,6 +47,10 @@ export default class PaymentMethodComponent extends Component {
         zipcode: paymentMethod.billing_details.address.postal_code,
       });
       await creditCard.save();
+
+      subscription.user = user;
+      subscription.paymentMethod = paymentMethod;
+      await subscription.save();
 
       this.router.transitionTo('signup.set-password');
     } catch (e) {

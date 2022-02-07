@@ -1,6 +1,8 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class SubscriptionPlanModel extends Model {
+  @hasMany('subscription') subscriptions;
+
   @attr('string') slug;
   @attr('string') name;
   @attr('number') price;
