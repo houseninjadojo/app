@@ -26,9 +26,11 @@ export default function () {
   */
 
   this.get('/common-requests');
-  this.resource('credit-card', { path: '/payment-methods' });
   this.resource('device', { path: '/devices' });
   this.get('/home-care-tips');
+  this.resource('invoice', { path: '/invoices' });
+  this.resource('credit-card', { path: '/payment-methods' });
+  this.resource('payment', { path: '/payments' });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
   this.get('/subscription-plans');

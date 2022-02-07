@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 /**
  * Generic Parent Class for payment models
@@ -8,6 +8,7 @@ import Model, { attr, belongsTo } from '@ember-data/model';
 export default class PaymentMethodModel extends Model {
   @belongsTo('subscription') subscription;
   @belongsTo('user', { inverse: 'paymentMethods' }) user;
+  @hasMany('payments', { inverse: 'paymentMethod' }) payments;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
