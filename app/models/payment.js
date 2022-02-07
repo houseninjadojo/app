@@ -7,7 +7,7 @@ export default class PaymentModel extends Model {
 
   @attr('string') amount;
   @attr('string') description;
-  @attr('string') statementDesciptor;
+  @attr('string') statementDescriptor;
   @attr('string') status;
 
   @attr('boolean') refunded;
