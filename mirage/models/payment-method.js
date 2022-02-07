@@ -1,6 +1,7 @@
-import { Model, belongsTo } from 'miragejs';
+import { Model, belongsTo, hasMany } from 'miragejs';
 
 export default Model.extend({
-  user: belongsTo('user', { inverse: 'paymentMethods' }),
+  payments: hasMany('payment', { inverse: 'paymentMethod' }),
   subscription: belongsTo('subscription'),
+  user: belongsTo('user', { inverse: 'paymentMethods' }),
 });

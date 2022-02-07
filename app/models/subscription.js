@@ -1,9 +1,10 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class SubscriptionModel extends Model {
   @belongsTo('credit-card') paymentMethod;
   @belongsTo('subscription-plan') subscriptionPlan;
   @belongsTo('user') user;
+  @hasMany('invoice') invoices;
 
   @attr('string') status;
 
