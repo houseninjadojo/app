@@ -8,18 +8,19 @@
                 @label={{field.label}}
                 @required={{true}}
                 @disabled={{field.disabled}}
-                @value={{mut (get this.propertyInfo field.value)}}
+                @value={{mut (get this.propertyInfo field.id)}}
             />
         {{else}}
             <Primitive::Input
                 @id={{field.id}}
                 @required={{field.required}}
                 @placeholder={{field.placeholder}}
-                @value={{mut (get this.propertyInfo field.value)}}
+                @value={{mut (get this.propertyInfo field.id)}}
                 @description={{field.description}}
                 @label={{field.label}}
                 @type={{field.type}}
                 @disabled={{field.disabled}}
+                @onChange={{this.validateForm}}
             />
         {{/if}}
         {{/each}}
@@ -37,6 +38,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
+            @disabled={{this.formIsInvalid}}
             {{on 'click' this.savePropertyInfo}}
         >
             Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>

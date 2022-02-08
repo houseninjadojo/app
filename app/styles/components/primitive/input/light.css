@@ -92,7 +92,7 @@
 
 /* Disabled */
 .light .hn.hn-input-field.disabled .hn-input-container {
-  background: rgb(255 255 255 / 2.5%) !important;
+  background: rgb(26 26 26 / 10%) !important;
   border: none !important;
 }
 

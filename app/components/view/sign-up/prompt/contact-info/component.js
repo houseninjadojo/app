@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
+import { inputValidation } from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
 
 export default class ContactInfoComponent extends Component {
@@ -17,29 +18,31 @@ export default class ContactInfoComponent extends Component {
     email: null,
   };
 
-  fields = [
+  @tracked formIsInvalid = true;
+
+  @tracked fields = [
     {
-      id: 'first-name',
+      id: 'firstName',
       required: true,
       label: 'First Name',
       placeholder: '',
-      value: 'firstName',
+      value: null,
     },
     {
-      id: 'last-name',
+      id: 'lastName',
       required: true,
       label: 'Last Name',
       placeholder: '',
-      value: 'lastName',
+      value: null,
     },
     {
       type: 'tel',
-      id: 'phone',
+      id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      placeholder: '',
+      placeholder: 'XXX-XXX-XXXX',
       description: 'We only use your phone number to contact you.',
-      value: 'phoneNumber',
+      value: null,
     },
     {
       type: 'email',
@@ -47,7 +50,7 @@ export default class ContactInfoComponent extends Component {
       required: true,
       label: 'Email',
       placeholder: '',
-      value: 'email',
+      value: null,
     },
   ];
 
@@ -68,5 +71,17 @@ export default class ContactInfoComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.contact-info');
+  }
+
+  @action
+  validateForm(e) {
+    this.contactInfo[e.target.id] = e.target.value.trim();
+    this.fields.filter((f) => f.id === e.target.id)[0].value =
+      this.contactInfo[e.target.id];
+
+    this.formIsInvalid = inputValidation(this.fields, [
+      'phoneIsValid',
+      'emailIsValid',
+    ]).isInvalid;
   }
 }

@@ -12,6 +12,7 @@
             @required={{true}}
             @type={{'number'}}
             @value={{mut this.zipcode}}
+            @onChange={{this.validateForm}}
         />
     </div>
     <div class="action">
@@ -19,6 +20,7 @@
           @size='lg'
           @variant='solid'
           @semantic='primary'
+          @disabled={{this.formIsInvalid}}
           {{on 'click' this.checkServiceArea}}
         >
             Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>

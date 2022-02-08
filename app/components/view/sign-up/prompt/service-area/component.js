@@ -11,6 +11,7 @@ export default class ServiceAreaComponent extends Component {
   @service store;
 
   @tracked zipcode;
+  @tracked formIsInvalid = true;
 
   @action
   async checkServiceArea() {
@@ -29,6 +30,17 @@ export default class ServiceAreaComponent extends Component {
     } catch (e) {
       debug(e);
       Sentry.captureException(e);
+    }
+  }
+
+  @action
+  validateForm(e) {
+    this.zipcode = e.target.value;
+
+    if (this.zipcode && this.zipcode.length >= 5) {
+      this.formIsInvalid = false;
+    } else {
+      this.formIsInvalid = true;
     }
   }
 }

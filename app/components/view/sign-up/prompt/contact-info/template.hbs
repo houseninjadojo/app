@@ -3,12 +3,14 @@
         <p class="primary">Account Details</p>
         {{#each this.fields as |field|}}
             <Primitive::Input
-                @field={{field}}
                 @id={{field.id}}
+                @placeholder={{field.placeholder}}
                 @label={{field.label}}
+                @description={{field.description}}
                 @required={{field.required}}
                 @type={{field.type}}
-                @value={{mut (get this.contactInfo field.value)}}
+                @value={{mut (get this.contactInfo field.id)}}
+                @onChange={{this.validateForm}}
             />
         {{/each}}
     </div>
@@ -25,6 +27,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
+            @disabled={{this.formIsInvalid}}
             {{on 'click' this.saveContactInfo}}
         >
             Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>

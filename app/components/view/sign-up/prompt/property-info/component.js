@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
+import { inputValidation } from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
 
 export default class PropertyInfoComponent extends Component {
@@ -13,33 +14,35 @@ export default class PropertyInfoComponent extends Component {
   @tracked propertyInfo = {
     streetAddress1: null,
     streetAddress2: null,
-    city: 'Austin',
+    city: null,
     state: 'TX',
     zipcode: null,
   };
 
-  fields = [
+  @tracked formIsInvalid = true;
+
+  @tracked fields = [
     {
       id: 'streetAddress1',
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: 'streetAddress1',
+      value: null,
     },
     {
       id: 'streetAddress2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: 'streetAddress2',
+      value: null,
     },
     {
       id: 'city',
       required: true,
       label: 'City',
       placeholder: '',
-      disabled: true,
-      value: 'city',
+      disabled: false,
+      value: null,
     },
     {
       isSelect: true,
@@ -49,7 +52,7 @@ export default class PropertyInfoComponent extends Component {
       placeholder: '',
       options: [{ value: 'TX', label: 'TX', selected: true }],
       disabled: true,
-      value: 'state',
+      value: 'TX',
     },
     {
       type: 'number',
@@ -57,7 +60,7 @@ export default class PropertyInfoComponent extends Component {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: 'zipcode',
+      value: null,
     },
   ];
 
@@ -84,5 +87,16 @@ export default class PropertyInfoComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.welcome');
+  }
+
+  @action
+  validateForm(e) {
+    this.propertyInfo[e.target.id] = e.target.value.trim();
+    this.fields.filter((f) => f.id === e.target.id)[0].value =
+      this.propertyInfo[e.target.id];
+
+    this.formIsInvalid = inputValidation(this.fields, [
+      'zipcodeIsValid',
+    ]).isInvalid;
   }
 }

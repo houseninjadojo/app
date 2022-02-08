@@ -22,7 +22,6 @@ export default class PropertyComponent extends Component {
       label: 'City',
       placeholder: '',
       value: 'city',
-      disabled: true,
     },
     {
       isSelect: true,
