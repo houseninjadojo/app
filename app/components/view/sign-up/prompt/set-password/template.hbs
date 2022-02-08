@@ -22,12 +22,12 @@
                 @id={{field.id}}
                 @required={{field.required}}
                 @placeholder={{field.placeholder}}
-                @value={{mut (get this.passwords field.value)}}
+                @value={{mut (get this.passwords field.id)}}
                 @description={{field.description}}
                 @label={{field.label}}
                 @type={{field.type}}
                 @disabled={{field.disabled}}
-                @onChange={{this.validatePasswordRequirement}}
+                @onChange={{this.validateForm}}
             />
         {{/each}}
     </div>

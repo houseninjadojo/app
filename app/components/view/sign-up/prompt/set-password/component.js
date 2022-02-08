@@ -3,6 +3,10 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
+import {
+  inputValidation,
+  passwordValidation,
+} from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
 
 export default class SetPasswordComponent extends Component {
@@ -17,7 +21,7 @@ export default class SetPasswordComponent extends Component {
 
   @tracked formIsInvalid = true;
 
-  @tracked requirementsModel;
+  @tracked requirementsModel = passwordValidation;
 
   fields = [
     {
@@ -26,7 +30,7 @@ export default class SetPasswordComponent extends Component {
       required: true,
       label: 'New Password',
       placeholder: '',
-      value: 'password',
+      value: null,
     },
     {
       type: 'password',
@@ -34,33 +38,20 @@ export default class SetPasswordComponent extends Component {
       required: true,
       label: 'Confirm Password',
       placeholder: '',
-      value: 'passwordConfirmation',
+      value: null,
     },
   ];
 
   @action
-  validatePasswordRequirement(e) {
+  validateForm(e) {
     this.passwords[e.target.id] = e.target.value;
+    this.fields.filter((f) => f.id === e.target.id)[0].value =
+      this.passwords[e.target.id];
 
-    this.requirementsModel = {
-      passwordsMatch:
-        this.passwords.password &&
-        this.passwords.password === this.passwords.passwordConfirmation,
-      atLeastThisLong: this.passwords.password.length >= 12,
-      hasLowercase: /[a-z]/.test(this.passwords.password),
-      hasUppercase: /[A-Z]/.test(this.passwords.password),
-      hasNumber: /\d/.test(this.passwords.password),
-      hasSymbol: /[!$&.#@]/.test(this.passwords.password),
-    };
-
-    const allRequirementsMet =
-      Object.values(this.requirementsModel).indexOf(false) === -1;
-
-    if (allRequirementsMet) {
-      this.formIsInvalid = false;
-    } else {
-      this.formIsInvalid = true;
-    }
+    this.requirementsModel = passwordValidation(this.fields);
+    this.formIsInvalid = inputValidation(this.fields, [
+      'passwordIsValid',
+    ]).isInvalid;
   }
 
   @action
