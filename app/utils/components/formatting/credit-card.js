@@ -1,7 +1,7 @@
-import { setCursorPosition } from './set-cursor-position';
+import { trackCursorPosition } from './track-cursor-position';
 
 export function formatCreditCardNumber(inputEl) {
-  setCursorPosition(inputEl, formatCardNumber, '-');
+  trackCursorPosition(inputEl, formatCardNumber, '-');
 }
 
 function formatCardNumber(inputEl) {

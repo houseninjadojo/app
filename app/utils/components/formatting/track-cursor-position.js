@@ -1,4 +1,4 @@
-export function setCursorPosition(inputEl, formatter, delimiter = ' ') {
+export function trackCursorPosition(inputEl, formatter, delimiter = ' ') {
   const node = inputEl; // vanilla javascript element
   const lastValue = inputEl.value; // get value before formatting
   const formattedValue = formatter(inputEl);

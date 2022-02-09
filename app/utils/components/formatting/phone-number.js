@@ -1,10 +1,10 @@
-import { setCursorPosition } from './set-cursor-position';
+import { trackCursorPosition } from './track-cursor-position';
 
-export function formatCreditCardNumber(inputEl) {
-  setCursorPosition(inputEl, formatPhoneNumber, '-');
+export function formatPhoneNumber(inputEl) {
+  trackCursorPosition(inputEl, formatPhone, '-');
 }
 
-function formatPhoneNumber(inputEl) {
+function formatPhone(inputEl) {
   var value = inputEl.value.replace(/\D/g, '');
   var formattedValue;
 
