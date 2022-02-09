@@ -9,7 +9,7 @@
                 @required={{field.required}}
                 @type={{field.type}}
                 @placeholder={{field.placeholder}}
-                @value={{(get this.paymentMethod field.id)}}
+                @value={{mut (get this.paymentMethod field.id)}}
                 @onInput={{this.validateForm}}
                 @maxLength={{field.maxLength}}
             />
