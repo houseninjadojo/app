@@ -49,12 +49,10 @@ export default class ApplicationRoute extends Route {
         user: email,
       });
       await Intercom.setUserHash({ hmac: intercomHash });
-      await Intercom.addListener('onUnreadCountChange', ({ value }) => {
-        console.log('UNREAD COUNT CHANGED: ', value);
-      });
-      let count = await Intercom.unreadConversationCount();
-      console.log('UNREAD COUNT: ', count);
-      window.Intercom = Intercom;
+      // await Intercom.addListener('onUnreadCountChange', ({ value }) => {
+      //   console.log('UNREAD COUNT CHANGED: ', value);
+      // });
+      // let count = await Intercom.unreadConversationCount();
     }
   }
 
