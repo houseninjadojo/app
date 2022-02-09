@@ -10,7 +10,7 @@
                 @required={{field.required}}
                 @type={{field.type}}
                 @value={{mut (get this.contactInfo field.id)}}
-                @onChange={{this.validateForm}}
+                @onInput={{this.validateForm}}
             />
         {{/each}}
     </div>
