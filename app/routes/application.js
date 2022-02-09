@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
-import { Capacitor } from '@capacitor/core';
 
 export default class ApplicationRoute extends Route {
   @service analytics;
