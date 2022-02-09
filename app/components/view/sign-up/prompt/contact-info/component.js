@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
+import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import * as Sentry from '@sentry/ember';
 
 export default class ContactInfoComponent extends Component {
@@ -40,7 +41,6 @@ export default class ContactInfoComponent extends Component {
       id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      placeholder: 'XXX-XXX-XXXX',
       description: 'We only use your phone number to contact you.',
       value: null,
     },
@@ -75,9 +75,15 @@ export default class ContactInfoComponent extends Component {
 
   @action
   validateForm(e) {
-    this.contactInfo[e.target.id] = e.target.value.trim();
-    this.fields.filter((f) => f.id === e.target.id)[0].value =
-      this.contactInfo[e.target.id];
+    if (e.target.id === 'phoneNumber') {
+      this.contactInfo[e.target.id] = e.target.value.replace(/\D/g, '');
+      formatPhoneNumber(e.target);
+      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+    } else {
+      this.contactInfo[e.target.id] = e.target.value;
+      this.fields.filter((f) => f.id === e.target.id)[0].value =
+        this.contactInfo[e.target.id];
+    }
 
     this.formIsInvalid = inputValidation(this.fields, [
       'phoneIsValid',
