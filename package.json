@@ -102,7 +102,7 @@
     "@awesome-cordova-plugins/mixpanel": "^5.39.0",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
-    "@capacitor-community/intercom": "^3.0.1",
+    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom",
     "@capacitor/app": "^1.1.0",
     "@capacitor/browser": "^1.0.7",
     "@capacitor/device": "^1.1.2",

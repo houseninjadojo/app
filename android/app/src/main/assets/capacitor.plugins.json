@@ -9,7 +9,7 @@
 	},
 	{
 		"pkg": "@capacitor-community/intercom",
-		"classpath": "com.getcapacitor.community.intercom.intercom.IntercomPlugin"
+		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
 	},
 	{
 		"pkg": "@capacitor/app",

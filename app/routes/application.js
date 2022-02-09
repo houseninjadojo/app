@@ -46,9 +46,15 @@ export default class ApplicationRoute extends Route {
       await this.analytics.identify(email);
       await Intercom.registerIdentifiedUser({
         userId: id,
-        userEmail: email,
+        user: email,
       });
       await Intercom.setUserHash({ hmac: intercomHash });
+      await Intercom.addListener('onUnreadCountChange', ({ value }) => {
+        console.log('UNREAD COUNT CHANGED: ', value);
+      });
+      let count = await Intercom.unreadConversationCount();
+      console.log('UNREAD COUNT: ', count);
+      window.Intercom = Intercom;
     }
   }
 

@@ -1006,10 +1006,9 @@
     "@capacitor/filesystem" "^1.0.0"
     "@capacitor/ios" "^3.0.0"
 
-"@capacitor-community/intercom@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor-community/intercom/-/intercom-3.0.1.tgz#1a4675cbd99d26c27e6a9a350d8ac8c4b90d225c"
-  integrity sha512-6ZmizpL7edA2gaW8bLD5XP8U3uNLtltEA/NRHUw39P+zl9MT6DulSk0xQi70Tx1bPqzs/fTT7+fSzn+QcX9rXQ==
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
+  version "4.1.3"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/0cf9557131431288887a58fa91d7bb94ae5d166b"
 
 "@capacitor/android@^3.0.0", "@capacitor/android@^3.4.0":
   version "3.4.0"

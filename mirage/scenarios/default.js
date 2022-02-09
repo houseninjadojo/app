@@ -7,7 +7,7 @@ export default function (server) {
 
   // server.createList('property', 1);
   server.create('user', {
-    id: '01ce0d37-cf98-4f3d-9810-2f5781085d5f',
+    id: 'c1022bb5-80f3-4248-918c-48f6eb7114c0',
     email: 'miles@houseninja.co',
     firstName: 'Miles',
     lastName: 'Zimmerman',
