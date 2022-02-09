@@ -25,14 +25,21 @@ export default function () {
     https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
   */
 
-  this.resource('address', { path: '/addresses' });
   this.get('/common-requests');
-  this.resource('credit-card', { path: '/payment-methods' });
   this.resource('device', { path: '/devices' });
   this.get('/home-care-tips');
+  this.resource('invoice', { path: '/invoices' });
+  this.resource('credit-card', { path: '/payment-methods' });
+  this.resource('payment', { path: '/payments' });
+  this.resource('promo-code', { path: '/promo-codes' });
+  this.get('/promo-codes', (schema, request) => {
+    let code = request.queryParams['filter[code]'];
+    return schema.promoCodes.where({ code });
+  });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
   this.get('/subscription-plans');
+  this.resource('subscription', { path: '/subscriptions' });
   this.resource('user', { path: '/users' });
   this.resource('work-order', { path: '/work-orders' });
 

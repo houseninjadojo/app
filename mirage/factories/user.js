@@ -1,5 +1,5 @@
 import { Factory } from 'miragejs';
-import faker from 'faker';
+import faker from '@faker-js/faker';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import ENV from 'houseninja/config/environment';
 import getPlatform from 'houseninja/utils/get-platform';

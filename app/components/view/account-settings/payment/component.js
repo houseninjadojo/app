@@ -3,15 +3,14 @@ import Component from '@glimmer/component';
 export default class PaymentComponent extends Component {
   paymentFields = [
     {
-      id: 'card-number',
+      id: 'number',
       required: true,
       label: 'Card Number',
       placeholder: '',
       value: 'number',
     },
     {
-      type: 'number',
-      id: 'cvc',
+      id: 'cvv',
       required: true,
       label: 'CVC',
       placeholder: '',
@@ -19,7 +18,7 @@ export default class PaymentComponent extends Component {
     },
     {
       type: 'number',
-      id: 'card-month',
+      id: 'expMonth',
       required: true,
       label: 'Month',
       placeholder: 'MM',
@@ -27,15 +26,14 @@ export default class PaymentComponent extends Component {
     },
     {
       type: 'number',
-      id: 'card-year',
+      id: 'expYear',
       required: true,
       label: 'Year',
       placeholder: 'YYYY',
       value: 'expYear',
     },
     {
-      // type: 'number',
-      id: 'card-zipcode',
+      id: 'zipcode',
       required: true,
       label: 'Zipcode',
       placeholder: '',

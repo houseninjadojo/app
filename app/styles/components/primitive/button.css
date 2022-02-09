@@ -1,9 +1,7 @@
 /* Default */
 .hn.btn {
   font-family: var(--campton-default);
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
+  font-size: 17px;
   width: 100%;
   border-radius: 1px;
   padding: 0 16px;
@@ -84,6 +82,6 @@
 .hn.btn.disabled {
   background: var(--gray-400) !important;
   box-shadow: none !important;
-  color: var(--gray-600) !important;
+  filter: invert(32%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(95%) contrast(89%) !important;
   border: none !important;
 }

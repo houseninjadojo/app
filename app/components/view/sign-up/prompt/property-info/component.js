@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
+import { inputValidation } from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
 
 export default class PropertyInfoComponent extends Component {
@@ -11,35 +12,37 @@ export default class PropertyInfoComponent extends Component {
   @service store;
 
   @tracked propertyInfo = {
-    street1: null,
-    street2: null,
-    city: 'Austin',
+    streetAddress1: null,
+    streetAddress2: null,
+    city: null,
     state: 'TX',
     zipcode: null,
   };
 
-  fields = [
+  @tracked formIsInvalid = true;
+
+  @tracked fields = [
     {
-      id: 'street1',
+      id: 'streetAddress1',
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: 'street1',
+      value: null,
     },
     {
-      id: 'street2',
+      id: 'streetAddress2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: 'street2',
+      value: null,
     },
     {
       id: 'city',
       required: true,
       label: 'City',
       placeholder: '',
-      disabled: true,
-      value: 'city',
+      disabled: false,
+      value: null,
     },
     {
       isSelect: true,
@@ -49,7 +52,7 @@ export default class PropertyInfoComponent extends Component {
       placeholder: '',
       options: [{ value: 'TX', label: 'TX', selected: true }],
       disabled: true,
-      value: 'state',
+      value: 'TX',
     },
     {
       type: 'number',
@@ -57,17 +60,23 @@ export default class PropertyInfoComponent extends Component {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: 'zipcode',
+      value: null,
     },
   ];
 
   @action
   async savePropertyInfo() {
     try {
-      let property = await this.createProperty();
+      let serviceArea = this.store.peekAll('service-area').get('firstObject');
+      let user = this.store.peekAll('user').get('firstObject');
+      let property = await this.store.createRecord('property', {
+        serviceArea,
+        user,
+        ...this.propertyInfo,
+        default: true,
+        selected: true,
+      });
       await property.save();
-      let address = await this.createAddress({ property });
-      await address.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
       debug(e);
@@ -80,21 +89,14 @@ export default class PropertyInfoComponent extends Component {
     this.router.transitionTo('signup.welcome');
   }
 
-  async createProperty() {
-    let serviceArea = this.store.peekAll('service-area').get('firstObject');
-    let user = this.current.user;
-    return await this.store.createRecord('property', {
-      serviceArea,
-      user,
-      default: true,
-      selected: true,
-    });
-  }
+  @action
+  validateForm(e) {
+    this.propertyInfo[e.target.id] = e.target.value.trim();
+    this.fields.filter((f) => f.id === e.target.id)[0].value =
+      this.propertyInfo[e.target.id];
 
-  async createAddress(attributes = {}) {
-    return await this.store.createRecord('address', {
-      ...this.propertyInfo,
-      ...attributes,
-    });
+    this.formIsInvalid = inputValidation(this.fields, [
+      'zipcodeIsValid',
+    ]).isInvalid;
   }
 }

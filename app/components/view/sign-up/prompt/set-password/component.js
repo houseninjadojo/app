@@ -3,6 +3,10 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
+import {
+  inputValidation,
+  passwordValidation,
+} from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
 
 export default class SetPasswordComponent extends Component {
@@ -11,31 +15,49 @@ export default class SetPasswordComponent extends Component {
   @service store;
 
   @tracked passwords = {
-    password: null,
-    passwordConfirmation: null,
+    password: '',
+    passwordConfirmation: '',
   };
+
+  @tracked formIsInvalid = true;
+
+  @tracked requirementsModel = passwordValidation;
 
   fields = [
     {
-      id: 'new-password',
+      type: 'password',
+      id: 'password',
       required: true,
       label: 'New Password',
       placeholder: '',
-      value: 'password',
+      value: null,
     },
     {
-      id: 'confirm-password',
+      type: 'password',
+      id: 'passwordConfirmation',
       required: true,
       label: 'Confirm Password',
       placeholder: '',
-      value: 'passwordConfirmation',
+      value: null,
     },
   ];
 
   @action
+  validateForm(e) {
+    this.passwords[e.target.id] = e.target.value;
+    this.fields.filter((f) => f.id === e.target.id)[0].value =
+      this.passwords[e.target.id];
+
+    this.requirementsModel = passwordValidation(this.fields);
+    this.formIsInvalid = inputValidation(this.fields, [
+      'passwordIsValid',
+    ]).isInvalid;
+  }
+
+  @action
   async savePassword() {
-    let user = this.current.user;
-    if (this.passwordsMatch()) {
+    let user = await this.store.peekAll('user').get('firstObject');
+    if (!this.formIsInvalid) {
       user.password = this.passwords.password;
       try {
         await user.save();
@@ -51,10 +73,5 @@ export default class SetPasswordComponent extends Component {
   @action
   goBack() {
     this.router.transitionTo('signup.payment-method');
-  }
-
-  get passwordsMatch() {
-    let { password, passwordConfirmation } = this.password;
-    return password === passwordConfirmation;
   }
 }

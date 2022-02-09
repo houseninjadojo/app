@@ -1,8 +1,24 @@
 import JSONAPISerializer from '@ember-data/serializer/json-api';
-// import { underscore } from '@ember/string';
+import { underscore } from '@ember/string';
 
 export default class ApplicationSerializer extends JSONAPISerializer {
-  // keyForAttribute(attr /* , method */) {
-  //   return underscore(attr);
-  // }
+  /**
+   * Map dasherized keys to underscore
+   *
+   * @example
+   *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
+   */
+  keyForAttribute(attr /* , method */) {
+    return underscore(attr);
+  }
+
+  /**
+   * Map dasherized keys to underscore
+   *
+   * @example
+   *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
+   */
+  keyForRelationship(key /* , relationship, method */) {
+    return underscore(key);
+  }
 }

@@ -7,12 +7,16 @@ import { service } from '@ember/service';
 export default class PlanSelectionComponent extends Component {
   @service current;
   @service router;
-  // @service store;
+  @service store;
 
   @action
   async selectPlan(planId) {
     let plan = this.args.plans.findBy('id', planId);
-    this.current.signup.selectedPlan = plan;
+    let subscription = this.store.createRecord('subscription', {
+      subscriptionPlan: plan,
+    });
+
+    this.current.signup.subscription = subscription;
 
     this.router.transitionTo('signup.contact-info');
   }

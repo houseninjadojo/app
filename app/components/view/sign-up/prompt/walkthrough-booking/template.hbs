@@ -1,6 +1,3 @@
-<div class="content mb-16">    
-    {{!-- Replace with iFrame --}}
-    <Primitive::Embed>
-        <p>HubSpot Embed</p>    
-    </Primitive::Embed>     
+<div class="content mb-16" {{did-insert this.injectScript}}>
+    <div class="meetings-iframe-container" data-src="{{@calendarUrl}}"></div>
 </div>
