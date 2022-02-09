@@ -2,13 +2,13 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import Sentry from '@sentry/capacitor';
 import { Capacitor } from '@capacitor/core';
-import { Intercom } from '@capacitor-community/intercom';
 
 export default class ApplicationRoute extends Route {
+  @service analytics;
   @service current;
+  @service intercom;
   @service session;
   @service router;
-  @service analytics;
   @service('ember-user-activity@user-activity') userActivity;
 
   constructor() {
@@ -24,11 +24,7 @@ export default class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
-    if (Capacitor.isNativePlatform()) {
-      await Intercom.hideLauncher();
-      await Intercom.hideInAppMessages();
-    }
-
+    await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();
@@ -44,15 +40,7 @@ export default class ApplicationRoute extends Route {
       await this.current.registerDeviceToUser();
       Sentry.setUser({ email });
       await this.analytics.identify(email);
-      await Intercom.registerIdentifiedUser({
-        userId: id,
-        user: email,
-      });
-      await Intercom.setUserHash({ hmac: intercomHash });
-      // await Intercom.addListener('onUnreadCountChange', ({ value }) => {
-      //   console.log('UNREAD COUNT CHANGED: ', value);
-      // });
-      // let count = await Intercom.unreadConversationCount();
+      await this.intercom.registerUser(id, email, intercomHash);
     }
   }
 
