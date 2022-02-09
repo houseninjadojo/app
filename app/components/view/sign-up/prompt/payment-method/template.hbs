@@ -16,7 +16,7 @@
         {{/each}}
         <Primitive::Input
             @id={{'promo-code'}}
-            @alert={{this.promoCodeAlert}}
+            @warn={{if this.promoCodeInput this.promoCodeAlert}}
             @description={{this.promoCodeDescription}}
             @placeholder={{'Promo Code (optional)'}}
             @label={{'Promo Code'}}
