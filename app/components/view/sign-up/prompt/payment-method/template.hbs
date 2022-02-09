@@ -4,12 +4,14 @@
         <p>Let's get you signed up</p>
         {{#each this.fields as |field|}}
             <Primitive::Input
-                {{!-- @field={{field}} --}}
                 @id={{field.id}}
                 @label={{field.label}}
                 @required={{field.required}}
                 @type={{field.type}}
-                @value={{mut (get this.paymentMethod field.value)}}
+                @placeholder={{field.placeholder}}
+                @value={{(get this.paymentMethod field.id)}}
+                @onInput={{this.validateForm}}
+                @maxLength={{field.maxLength}}
             />
         {{/each}}
         <Primitive::Input
@@ -19,7 +21,7 @@
             @placeholder={{'Promo Code (optional)'}}
             @label={{'Promo Code'}}
             @value={{mut this.promoCodeInput}}
-            @onChange={{(perform this.checkPromoCode)}}
+            @onInput={{(perform this.checkPromoCode)}}
         />
         <div class='terms'>
             <Input
@@ -43,6 +45,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
+            @disabled={{this.formIsInvalid}}
             {{on 'click' this.savePaymentMethod}}
         >
             Subscribe
