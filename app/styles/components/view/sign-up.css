@@ -20,9 +20,10 @@
 }
 
 .sign-up-module .view .wrapper .constraint {
+  display: flex;
+  max-width: 800px;
   width: 100%;
   height: 100%;
-  display: flex;
 }
 
 .sign-up-module .action .hn.btn {
@@ -233,6 +234,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hn.plan-options .option {
@@ -264,7 +266,7 @@
 
 @media (orientation: landscape) {
   .sign-up-module .view .wrapper .constraint {
-    max-width: 800px;
+    
   }
 
   .sign-up-module .view .content {
