@@ -53,8 +53,10 @@ module.exports = function (defaults) {
       webpack: {
         plugins: [
           new SentryWebpackPlugin({
-            release: process.env.CF_PAGES_COMMIT_SHA,
             include: "./dist",
+            release: process.env.CF_PAGES_COMMIT_SHA,
+            org: 'houseninja',
+            project: 'app',
           }),
         ],
       },
