@@ -1,10 +1,10 @@
 .sign-up-module {
-  height: calc(100% - 80px);
+  height: 100%;
 }
 
 .sign-up-module .view {
   background-color: var(--white);
-  padding: 16px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +20,7 @@
 
 .sign-up-module .view .wrapper .constraint {
   max-width: 1000px;
+  width: 100%;
 }
 
 .sign-up-module .action .hn.btn {
@@ -165,7 +166,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24px;
+  padding: 16px 24px;
 }
 
 .hn.breadcrumbs .trail,
