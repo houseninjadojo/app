@@ -52,7 +52,7 @@ module.exports = function (defaults) {
   if (['sandbox', 'production'].includes(process.env.NODE_ENV)) {
     webpackPlugins.push(
       new SentryWebpackPlugin({
-        include: "dist/",
+        include: ".",
         release: process.env.CF_PAGES_COMMIT_SHA,
         org: 'houseninja',
         project: 'app',
