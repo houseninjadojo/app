@@ -1,5 +1,6 @@
 import { attr } from '@ember-data/model';
 import PaymentMethod from './payment-method';
+import { isPresent } from '@ember/utils';
 
 export default class CreditCardModel extends PaymentMethod {
   @attr('string') brand;
@@ -11,8 +12,9 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('string') zipcode;
 
   get obfuscated() {
+    const brand = isPresent(this.brand) ? this.brand.toUpperCase() : 'Card';
     return {
-      brand: this.brand.toUpperCase() || 'Card',
+      brand,
       country: '',
       cvv: '',
       expMonth: null,
