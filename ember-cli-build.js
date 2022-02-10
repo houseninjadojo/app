@@ -1,5 +1,7 @@
 'use strict';
 
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
+
 /**
  * PostCSS Plugins
  * Format is:
@@ -15,7 +17,7 @@ const TailwindPlugin = {
   module: require('tailwindcss'),
   options: {
     content: [
-      './app/**/*.{hbs,html}',  
+      './app/**/*.{hbs,html}',
     ],
     theme: {
       extend: {},
@@ -47,6 +49,16 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    autoImport: {
+      webpack: {
+        plugins: [
+          new SentryPlugin({
+            release: process.env.CF_PAGES_COMMIT_SHA,
+            include: "./dist",
+          }),
+        ],
+      },
+    },
     // PostCSS Options
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
