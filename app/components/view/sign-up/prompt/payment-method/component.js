@@ -15,8 +15,10 @@ export default class PaymentMethodComponent extends Component {
   @service router;
   @service store;
 
-  @tracked formIsInvalid = true;
-  @tracked agreesToTermsAndConditions = true;
+  @tracked showTermsAndConditions = false;
+  @tracked agreedToTermsAndConditions = false;
+  @tracked formIsValid = false;
+  @tracked shallNotPass = true;
   @tracked promoCode;
   @tracked promoCodeAlert;
   @tracked promoCodeDescription = '';
@@ -71,6 +73,18 @@ export default class PaymentMethodComponent extends Component {
     this.router.transitionTo('signup.contact-info');
   }
 
+  @action showTermsAndConditionsComponent(isVisible) {
+    this.showTermsAndConditions = isVisible;
+  }
+
+  @action
+  handleAgreement(agreesToTermsAndConditions) {
+    this.agreedToTermsAndConditions = agreesToTermsAndConditions;
+    this.shallNotPass =
+      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.showTermsAndConditionsComponent(false);
+  }
+
   @task({ restartable: true })
   *checkPromoCode() {
     if (this.promoCodeInput.length < 3) {
@@ -113,9 +127,9 @@ export default class PaymentMethodComponent extends Component {
         this.paymentMethod[e.target.id];
     }
 
-    this.formIsInvalid = inputValidation(this.fields, [
-      'cardIsValid',
-    ]).isInvalid;
+    this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
+    this.shallNotPass =
+      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
   }
 
   @action

@@ -1,0 +1,32 @@
+<div class="hn terms-and-conditions-agreement">
+    <div class="hn-container">
+        <div class="agreement-container">
+            <p>
+                {{this.termsAndConditions}}                
+            </p>            
+        </div>
+        <div class="agreement-prompt-container">                    
+            <div class="footer">
+            <p class="hn label center">Do you accept these terms and conditions?</p>            
+                <div class="action">
+                    <Primitive::Button
+                        @size='lg' @variant='outline'
+                        @semantic='primary'
+                        {{on 'click' (fn @handleAgreement false)}}
+                    >
+                        I Decline
+                    </Primitive::Button>
+                    <Primitive::Button
+                        @size='lg'
+                        @variant='solid'
+                        @semantic='primary'                        
+                        {{on 'click' (fn @handleAgreement true)}}
+                    >
+                        I Accept
+                    </Primitive::Button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

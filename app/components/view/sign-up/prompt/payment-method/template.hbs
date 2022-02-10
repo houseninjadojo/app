@@ -1,4 +1,4 @@
-<div class="content mb-16">
+<div class="content mb-4">
     <div class="prompt">
         <p class="primary">Payment Method</p>
         <p>Let's get you signed up</p>
@@ -27,14 +27,14 @@
             <Primitive::Button
             @size='lg' @variant='secondary'
             @semantic='outline'
-            {{!-- {{on 'click' this.goBack}} --}}
+            {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
         >
-            View Terms and Conditions Agreement
+            View Terms and Conditions
         </Primitive::Button>
             <div class='agreement'>
                 <Input
                     @type="checkbox"
-                    @checked={{mut this.agreesToTermsAndConditions}}
+                    @checked={{mut this.agreedToTermsAndConditions}}
                     id="terms-agree"
                     name="terms"
                     disabled={{true}}
@@ -56,10 +56,13 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
-            @disabled={{this.formIsInvalid}}
+            @disabled={{this.shallNotPass}}
             {{on 'click' this.savePaymentMethod}}
         >
             Subscribe
         </Primitive::Button>
     </div>
+    {{#if this.showTermsAndConditions}}
+        <HouseNinja::TermsAndConditionsAgreement @agreesToTermsAndConditions={{this.agreesToTermsAndConditions}} @handleAgreement={{this.handleAgreement}} />
+    {{/if}}
 </div>
