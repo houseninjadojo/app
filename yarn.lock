@@ -1021,10 +1021,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-1.0.7.tgz#2602ca1df5580a58e5edf3e7bed7ebfed7466d13"
   integrity sha512-ni8IjsPyFUYqQ2JxBwzI7VpJUZHPr7QiRds5hQWM/1cpfH0+DWvjWHwzxQXuSbW0h+QGXGSJ/vwqjRns7NzLfQ==
 
-"@capacitor/cli@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.4.0.tgz#a2328849cb9d5aa5459ffd329b7daa727657d655"
-  integrity sha512-vIGLu36S0neW4hJKiC+gC7Egl9ih/rGaQ+jusom8hjPj4PNdRbnu9NUHGn+yiQYS8udtbIENUBysZiokY4UAjA==
+"@capacitor/cli@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.4.1.tgz#0664ee82215071553174a7a0cb3378d77f9a5d2b"
+  integrity sha512-48MA50ExfMJgndunsoh9kI3ItNJDwJrl6+DNocdEZfnIw45IUtmmeu+V3JsoDM2LfwxG9tamJV4zXWM0o4MSOw==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.1"
     "@ionic/utils-fs" "^3.1.5"
@@ -1075,10 +1075,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.4.0.tgz#ce51ac6bf98e10b1b8c030d8e48dfe81886b21f5"
   integrity sha512-S500W45rxLrcrrt+Vx4fJDhmt+07P6yaiE+l32ANV3SHcUvQMWOLXQ7JlKqwkec5er1xonmtor7PQhIt/5UKAA==
 
-"@capacitor/keyboard@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-1.2.1.tgz#ff5550aa4c0a3a7a4127e303bf4f0281fbe002cb"
-  integrity sha512-wNBzVFQ5OSXJ+V4AaExG3KcpfWoDZYLi9DgxsOqEPx58TebWCWAaLvmbbtByQMkfTMElc3AKeHb1H5z8cVtl4A==
+"@capacitor/keyboard@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-1.2.2.tgz#7be5d2e4956b77e5eb7235ec020d131c9f87f30a"
+  integrity sha512-dOZSXJTY/tTbRQ+Neiny72BIXN2Hvf/2AgPpMdTErDfaQM7C2MMgtJrm+Mi+YUeT6AnJFmt68nHJGImAL4lzmA==
 
 "@capacitor/local-notifications@^1.1.0":
   version "1.1.0"
