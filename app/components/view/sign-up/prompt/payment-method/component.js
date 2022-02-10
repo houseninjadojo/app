@@ -16,7 +16,7 @@ export default class PaymentMethodComponent extends Component {
   @service store;
 
   @tracked formIsInvalid = true;
-  @tracked agreesToTermsAndConditions;
+  @tracked agreesToTermsAndConditions = true;
   @tracked promoCode;
   @tracked promoCodeAlert;
   @tracked promoCodeDescription = '';
