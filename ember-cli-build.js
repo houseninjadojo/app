@@ -48,17 +48,21 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  * @see https://cli.emberjs.com/release/advanced-use/
  */
 module.exports = function (defaults) {
+  let webpackPlugins = [];
+  if (['sandbox', 'production'].includes(process.env.NODE_ENV)) {
+    webpackPlugins.push(
+      new SentryWebpackPlugin({
+        include: "./dist",
+        release: process.env.CF_PAGES_COMMIT_SHA,
+        org: 'houseninja',
+        project: 'app',
+      })
+    )
+  }
   let app = new EmberApp(defaults, {
     autoImport: {
       webpack: {
-        plugins: [
-          new SentryWebpackPlugin({
-            include: "./dist",
-            release: process.env.CF_PAGES_COMMIT_SHA,
-            org: 'houseninja',
-            project: 'app',
-          }),
-        ],
+        plugins: webpackPlugins,
       },
     },
     // PostCSS Options
