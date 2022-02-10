@@ -11,10 +11,11 @@ export default class DashboardWorkHistoryRoute extends Route {
         property: {
           id: this.current.property.id,
         },
-
-        // this is how we will paginate through
-        offset: 0,
-        limit: 5,
+        page: {
+          // offset: 0,
+          number: 1,
+          size: 20,
+        },
       },
     });
   }
