@@ -73,6 +73,13 @@
   color: var(--teal-500);
 }
 
+.hn.btn.outline.secondary {
+  border-color: var(--blue-400);
+
+  /* box-shadow: var(--shadow-teal-1); */
+  color: var(--blue-400);
+}
+
 .hn.btn.solid.accent {
   background: var(--grad-teal-500);
   box-shadow: var(--shadow-teal-1);
