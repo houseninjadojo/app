@@ -52,7 +52,7 @@ module.exports = function (defaults) {
     autoImport: {
       webpack: {
         plugins: [
-          new SentryPlugin({
+          new SentryWebpackPlugin({
             release: process.env.CF_PAGES_COMMIT_SHA,
             include: "./dist",
           }),
