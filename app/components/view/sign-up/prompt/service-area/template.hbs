@@ -1,4 +1,4 @@
-<div class="content mb-16">
+<div class="content mb-4">
     <div class="hero mb-16">
         <img src="/assets/images/wordmark+vertical+black+teal.svg" class="view-logo" alt="house ninja"/>
         <p>To get started, enter the zip code of the home property you’d like us to maintain.</p>
@@ -12,10 +12,10 @@
             @required={{true}}
             @type={{'number'}}
             @value={{mut this.zipcode}}
-            @onChange={{this.validateForm}}
+            @onInput={{this.validateForm}}
         />
     </div>
-    <div class="action">
+    <div class="action single">
         <Primitive::Button
           @size='lg'
           @variant='solid'

@@ -1,5 +1,5 @@
-<div class="content mb-16">
-    <div class="hero mb-16">
+<div class="content mb-4">
+    <div class="hero mb-4">
         <p class="hn strong">Let’s set your account password.</p>
         <br/>
         <br/>
@@ -27,11 +27,11 @@
                 @label={{field.label}}
                 @type={{field.type}}
                 @disabled={{field.disabled}}
-                @onChange={{this.validateForm}}
+                @onInput={{this.validateForm}}
             />
         {{/each}}
     </div>
-    <div class="action">
+    <div class="action single">
         <Primitive::Button
             @size='lg'
             @variant='solid'

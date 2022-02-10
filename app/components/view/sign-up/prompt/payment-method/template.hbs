@@ -4,31 +4,44 @@
         <p>Let's get you signed up</p>
         {{#each this.fields as |field|}}
             <Primitive::Input
-                {{!-- @field={{field}} --}}
                 @id={{field.id}}
                 @label={{field.label}}
                 @required={{field.required}}
                 @type={{field.type}}
-                @value={{mut (get this.paymentMethod field.value)}}
+                @placeholder={{field.placeholder}}
+                @value={{mut (get this.paymentMethod field.id)}}
+                @onInput={{this.validateForm}}
+                @maxLength={{field.maxLength}}
             />
         {{/each}}
         <Primitive::Input
             @id={{'promo-code'}}
-            @alert={{this.promoCodeAlert}}
+            @warn={{if this.promoCodeInput this.promoCodeAlert}}
             @description={{this.promoCodeDescription}}
             @placeholder={{'Promo Code (optional)'}}
             @label={{'Promo Code'}}
             @value={{mut this.promoCodeInput}}
-            @onChange={{(perform this.checkPromoCode)}}
+            @onInput={{(perform this.checkPromoCode)}}
         />
         <div class='terms'>
-            <Input
-                @type="checkbox"
-                @checked={{mut this.agreesToTermsAndConditions}}
-                id="terms-agree"
-                name="terms"
-            />
-            <span for="terms">I have read and agree to the <a href="" target="_blank" rel="noopener noreferrer">Terms and Conditions Agreement</a></span>
+            <Primitive::Button
+            @size='lg' @variant='secondary'
+            @semantic='outline'
+            {{!-- {{on 'click' this.goBack}} --}}
+        >
+            View Terms and Conditions Agreement
+        </Primitive::Button>
+            <div class='agreement'>
+                <Input
+                    @type="checkbox"
+                    @checked={{mut this.agreesToTermsAndConditions}}
+                    id="terms-agree"
+                    name="terms"
+                    disabled={{true}}
+                />
+                <span for="terms">I have read and agree to the Terms and Conditions Agreement</span>
+            </div>
+            
         </div>
     </div>
     <div class="action">
@@ -43,6 +56,7 @@
             @size='lg'
             @variant='solid'
             @semantic='primary'
+            @disabled={{this.formIsInvalid}}
             {{on 'click' this.savePaymentMethod}}
         >
             Subscribe

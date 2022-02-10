@@ -1,4 +1,4 @@
-<div class="content mb-16">
+<div class="content mb-4">
     <div class="prompt">
         <p class="hn primary">Home Address</p>
         {{#each this.fields as |field|}}
@@ -20,7 +20,7 @@
                 @label={{field.label}}
                 @type={{field.type}}
                 @disabled={{field.disabled}}
-                @onChange={{this.validateForm}}
+                @onInput={{this.validateForm}}
             />
         {{/if}}
         {{/each}}

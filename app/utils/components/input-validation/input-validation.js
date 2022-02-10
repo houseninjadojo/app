@@ -1,4 +1,4 @@
-import { passwordValidation } from './password-validation';
+import { passwordValidation, cardValidation } from '../input-validation';
 
 const EMAIL_REGGIE =
   // eslint-disable-next-line no-control-regex
@@ -20,6 +20,9 @@ export function inputValidation(fields, requirementsArray = []) {
     passwordIsValid:
       !requirementsArray.includes('passwordIsValid') ||
       isValid('passwordIsValid', fields),
+    cardIsValid:
+      !requirementsArray.includes('cardIsValid') ||
+      isValid('cardIsValid', fields),
   };
 
   const actualRequirements = Object.entries(ALL_REQS).filter((entry) => {
@@ -36,7 +39,6 @@ export function inputValidation(fields, requirementsArray = []) {
     Object.values(validationObject.requirements).indexOf(false) === -1;
 
   validationObject.isInvalid = !allRequirementsMet;
-
   return validationObject;
 }
 
@@ -60,9 +62,9 @@ function isValid(test, fields) {
       const zipcode = fields.filter((f) => f.id === 'zipcode')[0].value;
       return zipcode && zipcode.length >= 5;
     case 'passwordIsValid':
-      // eslint-disable-next-line no-case-declarations
-      const requirements = passwordValidation(fields);
-      return Object.values(requirements).indexOf(false) === -1;
+      return Object.values(passwordValidation(fields)).indexOf(false) === -1;
+    case 'cardIsValid':
+      return Object.values(cardValidation(fields)).indexOf(false) === -1;
     default:
       return;
   }
