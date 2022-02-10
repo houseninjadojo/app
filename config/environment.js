@@ -62,6 +62,7 @@ module.exports = function (environment) {
         tracesSampleRate: 1.0,
         debug: true,
         autoSessionTracking: true,
+        release: process.env.CF_PAGES_COMMIT_SHA,
       },
       tracingOrigins: [
         'localhost:4200',

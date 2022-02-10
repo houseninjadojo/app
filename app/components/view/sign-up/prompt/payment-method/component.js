@@ -14,7 +14,6 @@ export default class PaymentMethodComponent extends Component {
   @service current;
   @service router;
   @service store;
-
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
   @tracked formIsValid = false;
