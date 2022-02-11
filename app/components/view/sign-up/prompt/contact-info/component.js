@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class ContactInfoComponent extends Component {
   @service current;

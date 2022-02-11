@@ -1,7 +1,7 @@
 import Service, { service } from '@ember/service';
 import { get as unstash } from 'houseninja/utils/secure-storage';
 import debug from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class CurrentService extends Service {
   @service store;

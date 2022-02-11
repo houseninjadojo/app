@@ -1,6 +1,5 @@
 import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
-// import { Integrations as TracingIntegrations } from '@sentry/tracing';
 import { BrowserTracing } from '@sentry/tracing';
 import config from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -43,6 +42,6 @@ export function init() {
   }
 }
 
-export default {
-  init,
-};
+const Sentry = isNativePlatform() ? SentryCapacitor : SentryEmber;
+
+export default Sentry;

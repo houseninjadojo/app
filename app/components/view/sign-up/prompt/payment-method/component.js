@@ -6,7 +6,7 @@ import { debug } from '@ember/debug';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumber } from 'houseninja/utils/components/formatting';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 const DEBOUNCE_MS = 250;
 
