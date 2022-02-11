@@ -56,7 +56,7 @@ body {
 }
 
 .light .ember-view {
-  background: var(--white);
+  background: none;
 }
 
 input[type="number"] {
