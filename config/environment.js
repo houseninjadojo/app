@@ -65,11 +65,10 @@ module.exports = function (environment) {
         release: process.env.CF_PAGES_COMMIT_SHA,
       },
       tracingOrigins: [
-        'localhost:4200',
-        'https://api.houseninja.co',
-        'https://sandbox.api.houseninja.co',
-        'localhost',
-        'co.houseninja.application://#',
+        'api.houseninja.co',
+        'auth.houseninja.co',
+        'sandbox.api.houseninja.co',
+        'sandbox.auth.houseninja.co',
       ],
     },
   };

@@ -1,0 +1,23 @@
+name: CD - Pre-Release
+
+on:
+  pull_request:
+  push:
+    branches:
+      - sentry-sourcemaps-part-2
+
+jobs:
+  sentry:
+    name: send sourcemaps to sentry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: sandbox
+          sourcemaps: './dist'
+          version: ${{ github.sha }}

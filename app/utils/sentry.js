@@ -1,6 +1,7 @@
-import * as Sentry from '@sentry/capacitor';
+import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
-import { Integrations as TracingIntegrations } from '@sentry/tracing';
+// import { Integrations as TracingIntegrations } from '@sentry/tracing';
+import { BrowserTracing } from '@sentry/tracing';
 import config from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
@@ -10,11 +11,11 @@ const tracingOrigins = config['@sentry/ember'].tracingOrigins;
 sentryOptions.environment = config.environment;
 
 export function nativeInit() {
-  Sentry.init(
+  SentryCapacitor.init(
     {
       ...sentryOptions,
       integrations: [
-        new TracingIntegrations.BrowserTracing({
+        new BrowserTracing({
           tracingOrigins,
         }),
       ],
@@ -27,7 +28,7 @@ export function webInit() {
   SentryEmber.init({
     ...sentryOptions,
     integrations: [
-      new TracingIntegrations.BrowserTracing({
+      new BrowserTracing({
         tracingOrigins,
       }),
     ],
