@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class SettingsPaymentController extends Controller {
   @service router;

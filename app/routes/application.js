@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import Sentry from '@sentry/capacitor';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class ApplicationRoute extends Route {
   @service current;

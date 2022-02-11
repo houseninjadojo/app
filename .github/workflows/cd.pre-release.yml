@@ -1,0 +1,33 @@
+name: cd / pre-release
+
+on:
+  workflow_run:
+    workflows:
+      - "ci / tests"
+    branches:
+      - main
+    types:
+      - completed
+
+jobs:
+  sentry:
+    name: send sourcemaps to sentry
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: NODE_ENV=sandbox yarn build:env
+      - uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: sandbox
+          sourcemaps: './dist'
+          version: ${{ github.sha }}

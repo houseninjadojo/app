@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
-import { setUser } from '@sentry/capacitor';
+import Sentry from 'houseninja/utils/sentry';
 import SecureStorage from 'houseninja/utils/secure-storage';
 
 export default class LoginCallbackRoute extends Route {
@@ -40,7 +40,7 @@ export default class LoginCallbackRoute extends Route {
 
   async identifyAndTrackUser() {
     const userinfo = this.session.data.authenticated.userinfo;
-    setUser({ id: userinfo.user_id, email: userinfo.email });
+    Sentry.setUser({ id: userinfo.user_id, email: userinfo.email });
     await this.analytics.setProfile({
       // eslint-disable-next-line
       '$email': userinfo.email,
