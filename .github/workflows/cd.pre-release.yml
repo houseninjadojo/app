@@ -1,15 +1,19 @@
-name: CD - Pre-Release
+name: cd / pre-release
 
 on:
-  # pull_request:
-  push:
+  workflow_run:
+    workflows:
+      - "ci / tests"
     branches:
-      - sentry-sourcemaps-part-2
+      - main
+    types:
+      - completed
 
 jobs:
   sentry:
     name: send sourcemaps to sentry
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
