@@ -11,6 +11,7 @@ export default class AreaNotificationComponent extends Component {
   @service store;
 
   @tracked email;
+  @tracked userSubmittedEmail = false;
 
   @action
   async saveUserEmail() {
@@ -20,7 +21,9 @@ export default class AreaNotificationComponent extends Component {
       requestedZipcode: zipcode,
     });
     try {
-      return await user.save();
+      await user.save();
+      this.userSubmittedEmail = true;
+      return;
     } catch (e) {
       debug(e);
       Sentry.captureException(e);
