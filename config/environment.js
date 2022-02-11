@@ -66,9 +66,7 @@ module.exports = function (environment) {
       },
       tracingOrigins: [
         'api.houseninja.co',
-        'auth.houseninja.co',
         'sandbox.api.houseninja.co',
-        'sandbox.auth.houseninja.co',
       ],
     },
   };
