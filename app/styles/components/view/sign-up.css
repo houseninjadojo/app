@@ -136,6 +136,10 @@
   align-items: center;
 }
 
+.sign-up-module .view .content .prompt .hn.hn-input-field {
+  max-width: 500px;
+}
+
 .sign-up-module .view .content .prompt .terms {
   display: flex;
   flex-direction: column;
@@ -291,9 +295,16 @@
   }
 
   @media (min-height: 768px) {
+    .hn.breadcrumbs {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
     .sign-up-module .view .content {
       height: unset;
       justify-content: center;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
     }
 
     .sign-up-module .view .wrapper .constraint .position {
