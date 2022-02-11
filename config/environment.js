@@ -63,6 +63,7 @@ module.exports = function (environment) {
         debug: true,
         autoSessionTracking: true,
         release: process.env.CF_PAGES_COMMIT_SHA,
+        enableComponentDefinition: true,
       },
       tracingOrigins: [
         'api.houseninja.co',

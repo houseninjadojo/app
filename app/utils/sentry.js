@@ -1,5 +1,6 @@
 import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
+import { InitSentryForEmber } from '@sentry/ember';
 import { BrowserTracing } from '@sentry/tracing';
 import config from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -24,7 +25,8 @@ export function nativeInit() {
 }
 
 export function webInit() {
-  SentryEmber.init({
+  console.log('Init');
+  InitSentryForEmber({
     ...sentryOptions,
     integrations: [
       new BrowserTracing({
