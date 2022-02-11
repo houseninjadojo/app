@@ -12,7 +12,7 @@ export function nativeInit() {
 }
 
 export function webInit() {
-  SentryEmber.init(sentryOptions);
+  SentryEmber.init();
 }
 
 export function init() {
