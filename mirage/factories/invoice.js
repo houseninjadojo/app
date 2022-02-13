@@ -1,7 +1,9 @@
-import { Factory } from 'miragejs';
+import { Factory, association } from 'miragejs';
 import faker from '@faker-js/faker';
 
 export default Factory.extend({
+  document: association(),
+
   description() {
     return 'House Ninja Monthly Recurring Subscription';
   },
