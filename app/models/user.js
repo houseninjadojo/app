@@ -25,4 +25,8 @@ export default class UserModel extends Model {
   // Required for Intercom Identify Verification
   // @see https://developers.intercom.com/installing-intercom/docs/cordova-phonegap-identity-verification
   @attr('string') intercomHash;
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }

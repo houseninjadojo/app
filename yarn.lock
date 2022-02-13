@@ -1008,7 +1008,7 @@
 
 "@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
   version "5.0.1"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/66b44845fbcd7815640422cee58d1fba3b3e7ec5"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/b2343b3950d40c9142e1c4aad9476eb7273f4761"
 
 "@capacitor/android@^3.0.0", "@capacitor/android@^3.4.1":
   version "3.4.1"

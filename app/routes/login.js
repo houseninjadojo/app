@@ -12,6 +12,8 @@ export default class LoginRoute extends Route {
   @service analytics;
 
   async beforeModel() {
+    this.session.prohibitAuthentication('dashboard.home');
+
     const pkce = getOwner(this).lookup('authenticator:pkce');
     const { state: loginState } = await this.loginState();
 
