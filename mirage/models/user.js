@@ -1,6 +1,7 @@
 import { Model, hasMany, belongsTo } from 'miragejs';
 
 export default Model.extend({
+  documents: hasMany('document'),
   devices: hasMany('device'),
   invoices: hasMany('invoice'),
   properties: hasMany('property'),
