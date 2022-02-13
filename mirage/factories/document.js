@@ -10,10 +10,6 @@ export default Factory.extend({
     return faker.system.commonFileName();
   },
 
-  // key() {
-  //   return '';
-  // },
-
   url() {
     return 'https://s3.amazonaws.com/sandbox.documents.houseninja.co/test.pdf';
   },

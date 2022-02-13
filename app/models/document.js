@@ -7,7 +7,6 @@ export default class DocumentModel extends Model {
 
   @attr('string') contentType;
   @attr('string') filename;
-  // @attr('string') key;
   @attr('string') url;
 
   @attr('date') createdAt;
