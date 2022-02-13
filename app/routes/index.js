@@ -6,18 +6,23 @@ export default class IndexRoute extends Route {
   @service router;
 
   beforeModel() {
+    // we are logged in
+    // => go to dashboard.home
     if (this.session.isAuthenticated) {
       this.router.transitionTo('dashboard.home');
       return;
     }
 
+    // are we mobile or web?
     if (Capacitor.isNativePlatform()) {
-      if (this.session.isAuthenticated) {
-        this.router.transitionTo('dashboard.home');
-      } else {
-        this.router.transitionTo('login-or-signup');
-      }
+      // we are NOT logged in
+      // but we are on mobile
+      // => go to login/signup page
+      this.router.transitionTo('login-or-signup');
     } else {
+      // we are NOT logged in
+      // we are NOT on mobile
+      // => go to signup page
       this.router.transitionTo('signup');
     }
   }

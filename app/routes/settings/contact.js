@@ -5,7 +5,7 @@ export default class SettingsContactRoute extends Route {
   @service current;
 
   async model() {
-    await this.current.user.reload();
+    await this.current.loadUser();
     return this.current.user;
   }
 }

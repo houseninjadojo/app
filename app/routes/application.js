@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import Sentry from 'houseninja/utils/sentry';
 import { instrumentRoutePerformance } from '@sentry/ember';
 
 class ApplicationRoute extends Route {
@@ -27,21 +26,10 @@ class ApplicationRoute extends Route {
     await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
-    await this.current.load();
+
+    this.current.loadIdentifyAndTrack.perform();
 
     await this.analytics.track('application_started');
-
-    if (this.session.isAuthenticated) {
-      const { id, intercomHash, email } = this.current.user.getProperties(
-        'id',
-        'intercomHash',
-        'email'
-      );
-      await this.current.registerDeviceToUser();
-      Sentry.setUser({ email });
-      await this.analytics.identify(email);
-      await this.intercom.registerUser(id, email, intercomHash);
-    }
   }
 
   async _trackPage() {
