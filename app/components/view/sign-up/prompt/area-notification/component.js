@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class AreaNotificationComponent extends Component {
   @service current;
@@ -11,6 +11,7 @@ export default class AreaNotificationComponent extends Component {
   @service store;
 
   @tracked email;
+  @tracked userSubmittedEmail = false;
 
   @action
   async saveUserEmail() {
@@ -20,7 +21,9 @@ export default class AreaNotificationComponent extends Component {
       requestedZipcode: zipcode,
     });
     try {
-      return await user.save();
+      await user.save();
+      this.userSubmittedEmail = true;
+      return;
     } catch (e) {
       debug(e);
       Sentry.captureException(e);

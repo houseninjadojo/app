@@ -1,39 +1,58 @@
 .sign-up-module {
-  height: calc(100% - 80px);
+  height: 100%;
 }
 
 .sign-up-module .view {
   background-color: var(--white);
-  padding: 16px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .sign-up-module .view .wrapper {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
 }
 
 .sign-up-module .view .wrapper .constraint {
-  max-width: 1000px;
+  display: flex;
+  max-width: 740px;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.sign-up-module .view .wrapper .constraint .position {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 }
 
 .sign-up-module .action .hn.btn {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 49%;
+}
+
+.sign-up-module .action.single .hn.btn {
+  max-width: 100%;
 }
 
 .sign-up-module .view .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 16px 88px;
+  background-color: var(--white);
 }
 
 .sign-up-module .view .content ul {
@@ -100,6 +119,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   margin-bottom: 16px;
 }
 
@@ -116,31 +136,58 @@
   align-items: center;
 }
 
+.sign-up-module .view .content .prompt .hn.hn-input-field {
+  max-width: 500px;
+}
+
 .sign-up-module .view .content .prompt .terms {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--gray-25);
+  padding: 16px;
   align-items: center;
 }
 
-.sign-up-module .view .content .prompt .terms input[type="checkbox"] {
+.hn.plan-options .option .column .hn.btn {
+  max-width: 100%;
+}
+
+.sign-up-module .view .content .prompt .terms .hn.btn {
+  margin-bottom: 8px;
+}
+
+.sign-up-module .view .content .prompt .terms .agreement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-module .view .content .prompt .terms .agreement input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-right: 8px;
 }
 
 .sign-up-module .view .content .action {
-  width: 80%;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
+.sign-up-module .view .content .action.single {
+  justify-content: center;
+}
+
 .hn.breadcrumbs {
-  margin-bottom: 80px;
-  width: 100%;
-  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  font-size: 16px;
+  background-color: var(--white);
+  padding: 16px 24px;
 }
 
 .hn.breadcrumbs .trail,
@@ -205,6 +252,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hn.plan-options .option {
@@ -236,14 +284,37 @@
 
 @media (orientation: landscape) {
   .sign-up-module .view .content {
+    /* height: 80%; */
     min-width: 600px;
   }
 
   .sign-up-module .view .content.landscape {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+  }
+
+  @media (min-height: 768px) {
+    .hn.breadcrumbs {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .sign-up-module .view .content {
+      height: unset;
+      justify-content: center;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .sign-up-module .view .wrapper .constraint .position {
+      height: calc(100%);
+      justify-content: center;
+    }
+
+    .sign-up-module .view .content.landscape {
+      align-items: center;
+    }
   }
 
   .hn.breadcrumbs .trail .crumb .label {
@@ -258,10 +329,6 @@
   .sign-up-module .view .content.landscape .action {
     margin-left: 16px;
   }
-}
-
-.sign-up-module .view .content.confirmed-booking {
-  max-width: 600px;
 }
 
 .sign-up-module .view .content.confirmed-booking .hero {

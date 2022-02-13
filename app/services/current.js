@@ -1,7 +1,7 @@
 import Service, { service } from '@ember/service';
 import { get as unstash } from 'houseninja/utils/secure-storage';
 import debug from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class CurrentService extends Service {
   @service store;
@@ -24,7 +24,7 @@ export default class CurrentService extends Service {
     if (this.session.isAuthenticated) {
       const { user_id } = this.session.data.authenticated.userinfo;
       this.user = await this.store.findRecord('user', user_id, {
-        include: 'properties,payment-methods',
+        include: 'properties,payment_methods',
       });
 
       const property = await this.user.properties.get('firstObject');
@@ -47,7 +47,7 @@ export default class CurrentService extends Service {
     if (this.session.isAuthenticated) {
       const { user_id } = this.session.data.authenticated.userinfo;
       this.user = await this.store.findRecord('user', user_id, {
-        include: 'properties,payment-methods',
+        include: 'properties,payment_methods',
       });
     }
   }

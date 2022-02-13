@@ -71,15 +71,16 @@ module.exports = function (environment) {
         tracesSampleRate: 1.0,
         debug: true,
         autoSessionTracking: true,
-        release: process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA,
+        release: process.env.CF_PAGES_COMMIT_SHA,
+        browserTracingOptions: {
+          tracingOrigins: [
+            'api.houseninja.co',
+            'sandbox.api.houseninja.co',
+          ],
+        }
       },
-      tracingOrigins: [
-        'localhost:4200',
-        'https://api.houseninja.co',
-        'https://sandbox.api.houseninja.co',
-        'localhost',
-        'co.houseninja.application://#',
-      ],
+      enableComponentDefinition: true,
+      disablePerformance: false,
     },
   };
 

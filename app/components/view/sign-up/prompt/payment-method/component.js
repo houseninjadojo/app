@@ -4,7 +4,9 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { task, timeout } from 'ember-concurrency';
-import * as Sentry from '@sentry/ember';
+import { inputValidation } from 'houseninja/utils/components/input-validation';
+import { formatCreditCardNumber } from 'houseninja/utils/components/formatting';
+import Sentry from 'houseninja/utils/sentry';
 
 const DEBOUNCE_MS = 250;
 
@@ -12,89 +14,74 @@ export default class PaymentMethodComponent extends Component {
   @service current;
   @service router;
   @service store;
-
-  @tracked agreesToTermsAndConditions;
+  @tracked showTermsAndConditions = false;
+  @tracked agreedToTermsAndConditions = false;
+  @tracked formIsValid = false;
+  @tracked shallNotPass = true;
   @tracked promoCode;
   @tracked promoCodeAlert;
   @tracked promoCodeDescription = '';
   @tracked promoCodeInput = '';
   @tracked paymentMethod = {
+    cardNumber: null,
     cvv: null,
     expMonth: null,
     expYear: null,
-    number: null,
     zipcode: null,
   };
 
   fields = [
     {
-      id: 'card-number',
+      id: 'cardNumber',
       required: true,
       label: 'Card Number',
       placeholder: '',
-      value: 'cardNumber',
     },
     {
       type: 'number',
-      id: 'cvc',
+      id: 'cvv',
       required: true,
-      label: 'CVC',
+      label: 'Security Code',
       placeholder: '',
-      value: 'cvv',
     },
     {
       type: 'number',
-      id: 'card-month',
+      id: 'expMonth',
       required: true,
       label: 'Month',
       placeholder: 'MM',
-      value: 'expMonth',
     },
     {
       type: 'number',
-      id: 'card-year',
+      id: 'expYear',
       required: true,
       label: 'Year',
-      placeholder: 'YYYY',
-      value: 'expYear',
+      placeholder: 'YY',
     },
     {
       type: 'number',
-      id: 'card-zipcode',
+      id: 'zipcode',
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: 'zipcode',
     },
   ];
 
   @action
-  async savePaymentMethod() {
-    const user = this.store.peekAll('user').get('firstObject');
-    const subscription = this.store.peekAll('subscription').get('firstObject');
-    const paymentMethod = this.store.createRecord('credit-card', {
-      ...this.paymentMethod,
-      user,
-    });
-    try {
-      await paymentMethod.save();
+  goBack() {
+    this.router.transitionTo('signup.contact-info');
+  }
 
-      subscription.user = user;
-      subscription.paymentMethod = paymentMethod;
-      subscription.promoCode = this.promoCode;
-
-      await subscription.save();
-
-      this.router.transitionTo('signup.set-password');
-    } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
-    }
+  @action showTermsAndConditionsComponent(isVisible) {
+    this.showTermsAndConditions = isVisible;
   }
 
   @action
-  goBack() {
-    this.router.transitionTo('signup.contact-info');
+  handleAgreement(agreesToTermsAndConditions) {
+    this.agreedToTermsAndConditions = agreesToTermsAndConditions;
+    this.shallNotPass =
+      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.showTermsAndConditionsComponent(false);
   }
 
   @task({ restartable: true })
@@ -124,6 +111,47 @@ export default class PaymentMethodComponent extends Component {
         };
         this.promoCodeDescription = '';
       }
+    }
+  }
+
+  @action
+  validateForm(e) {
+    if (e.target.id === 'cardNumber') {
+      this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
+      formatCreditCardNumber(e.target);
+      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+    } else {
+      this.paymentMethod[e.target.id] = e.target.value;
+      this.fields.filter((f) => f.id === e.target.id)[0].value =
+        this.paymentMethod[e.target.id];
+    }
+
+    this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
+    this.shallNotPass =
+      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+  }
+
+  @action
+  async savePaymentMethod() {
+    const user = this.store.peekAll('user').get('firstObject');
+    const subscription = this.store.peekAll('subscription').get('firstObject');
+    const paymentMethod = this.store.createRecord('credit-card', {
+      ...this.paymentMethod,
+      user,
+    });
+    try {
+      await paymentMethod.save();
+
+      subscription.user = user;
+      subscription.paymentMethod = paymentMethod;
+      subscription.promoCode = this.promoCode;
+
+      await subscription.save();
+
+      this.router.transitionTo('signup.set-password');
+    } catch (e) {
+      debug(e);
+      Sentry.captureException(e);
     }
   }
 }

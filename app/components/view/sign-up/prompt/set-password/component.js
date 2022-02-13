@@ -7,7 +7,7 @@ import {
   inputValidation,
   passwordValidation,
 } from 'houseninja/utils/components/input-validation';
-import * as Sentry from '@sentry/ember';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class SetPasswordComponent extends Component {
   @service current;

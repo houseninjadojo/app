@@ -1,0 +1,40 @@
+.hn .terms-and-conditions-agreement {
+  width: 100%;
+  height: calc(100% - 80px);
+  background-color: rgb(153 153 153 / 40%);
+  backdrop-filter: blur(4px);
+
+  /* padding-top: 80px !important; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.hn .terms-and-conditions-agreement,
+.hn .terms-and-conditions-agreement .hn-container,
+.hn .terms-and-conditions-agreement .hn-container .action {
+  padding: 32px;
+}
+
+.hn .terms-and-conditions-agreement .hn-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+  position: relative;
+}
+
+.hn .terms-and-conditions-agreement .hn-container .agreement-container {
+  height: calc(100% - 160px);
+  overflow-y: scroll;
+}
+
+.hn .terms-and-conditions-agreement .hn-container .agreement-prompt-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

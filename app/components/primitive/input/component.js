@@ -21,7 +21,7 @@ export default class InputComponent extends Component {
   }
 
   @action
-  handleChange(e) {
-    this.args.onChange && this.args.onChange(e);
+  handleInput(e) {
+    this.args.onInput && this.args.onInput(e);
   }
 }

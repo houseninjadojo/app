@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import Sentry from '@sentry/capacitor';
+import Sentry from 'houseninja/utils/sentry';
+import { instrumentRoutePerformance } from '@sentry/ember';
 
-export default class ApplicationRoute extends Route {
+class ApplicationRoute extends Route {
   @service analytics;
   @service current;
   @service intercom;
@@ -64,3 +65,5 @@ export default class ApplicationRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(ApplicationRoute);

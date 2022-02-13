@@ -22,12 +22,12 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     return headers;
   }
 
-  handleResponse(status) {
-    if (status === 401 && this.session.isAuthenticated) {
-      this.session.invalidate();
-    }
-    return super.handleResponse(...arguments);
-  }
+  // handleResponse(status) {
+  //   if (status === 401 && this.session.isAuthenticated) {
+  //     this.session.invalidate();
+  //   }
+  //   return super.handleResponse(...arguments);
+  // }
 
   // pathForType(modelName) {
   //   let pluralized = pluralize(modelName);

@@ -15,7 +15,7 @@ const TailwindPlugin = {
   module: require('tailwindcss'),
   options: {
     content: [
-      './app/**/*.{hbs,html}',  
+      './app/**/*.{hbs,html}',
     ],
     theme: {
       extend: {},
