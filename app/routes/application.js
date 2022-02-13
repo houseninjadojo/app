@@ -23,12 +23,9 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
-    await this.intercom.setup();
     await this.session.setup();
+    await this.intercom.setup();
     await this.analytics.setup();
-
-    this.current.loadIdentifyAndTrack.perform();
-
     await this.analytics.track('application_started');
   }
 

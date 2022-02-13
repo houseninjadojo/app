@@ -13,4 +13,9 @@ export default class SessionService extends BaseSessionService {
       await this.invalidate();
     }
   }
+
+  async setup() {
+    super.setup();
+    this.current.loadIdentifyAndTrack.perform();
+  }
 }
