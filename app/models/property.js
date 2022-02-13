@@ -4,6 +4,7 @@ export default class PropertyModel extends Model {
   @belongsTo('service-area') serviceArea;
   @belongsTo('user') user;
 
+  @hasMany('document') documents;
   @hasMany('work-order') workOrders;
 
   @attr('string') streetAddress1;
