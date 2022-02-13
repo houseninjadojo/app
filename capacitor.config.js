@@ -45,6 +45,12 @@ const plugins = {
     iconColor: '',
     sound: '',
   },
+  Intercom: {
+    androidApiKey: 'android_sdk-a93cf5fe93b642764014a740fca5425649a231f8',
+    androidAppId: 'rgqc8u39',
+    iosApiKey: 'ios_sdk-952078c58482051e56f9534434101ca50e6f7de7',
+    iosAppId: 'rgqc8u39',
+  },
 };
 
 const cordova = {};

@@ -29,6 +29,11 @@ export default class LoginRoute extends Route {
       await this.analytics.track('login');
       await this.nativeOpen(url);
     }
+
+    // we are logged in
+    if (this.session.isAuthenticated) {
+      this.router.transitionTo('dashboard.home');
+    }
   }
 
   async loginState() {

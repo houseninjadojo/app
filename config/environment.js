@@ -56,6 +56,15 @@ module.exports = function (environment) {
       useSessionSetupMethod: true,
     },
 
+    intercom: {
+      appId: 'rgqc8u39',
+      identityVerificationSecrets: {
+        web: 'dejx2Tlkuw3l4TCN7JBKHvfG9qCgLWQy2Ga8NCyW',
+        ios: 'azhgAa2K5NBb4qhImwqsr_0yCH540SsZyREnBVWN',
+        android: 'Ms8uIJaobMpwRSrtKQM3IPxnJM9f7WTjM-lgdT9L',
+      },
+    },
+
     '@sentry/ember': {
       sentry: {
         dsn: null,
@@ -109,6 +118,9 @@ module.exports = function (environment) {
     ENV.auth.connection = 'development';
     ENV.auth.domain = 'sandbox.auth.houseninja.co';
 
+    // Intercom
+    ENV.intercom.identityVerificationSecrets = {};
+
     // Mirage
     ENV['ember-cli-mirage'].enabled = false;
 
@@ -129,6 +141,9 @@ module.exports = function (environment) {
     ENV.auth.audience = 'https://api.houseninja.co/';
     ENV.auth.connection = 'houseninja';
     ENV.auth.domain = 'auth.houseninja.co'
+
+    // Intercom
+    ENV.intercom.identityVerificationSecrets = {};
 
     // Mirage
     ENV['ember-cli-mirage'].enabled = false;

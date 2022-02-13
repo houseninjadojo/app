@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { debug } from '@ember/debug';
 
 export default class NavBarComponent extends Component {
+  @service intercom;
   @service router;
 
   /**
@@ -22,8 +24,10 @@ export default class NavBarComponent extends Component {
     return this.currentRoute.includes('work-history') ? 'active' : '';
   }
 
+  @action
   openChatModal() {
-    console.log('Open Chat');
+    debug('Open Chat');
+    this.intercom.show();
   }
 
   @action

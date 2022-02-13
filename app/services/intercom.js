@@ -1,0 +1,62 @@
+import Service from '@ember/service';
+import { service } from '@ember/service';
+import { Intercom } from '@capacitor-community/intercom';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
+import ENV from 'houseninja/config/environment';
+import { task } from 'ember-concurrency';
+
+export default class IntercomService extends Service {
+  @service current;
+
+  unreadConversationCount = '';
+  isOpen = false;
+
+  async setup() {
+    // hide launcher on mobile devices
+    if (isNativePlatform()) {
+      await Intercom.hideLauncher();
+      await Intercom.hideInAppMessages();
+    }
+  }
+
+  async registerUser(userId, email, hmac) {
+    if (isNativePlatform()) {
+      await Intercom.registerIdentifiedUser({
+        userId,
+        email,
+      });
+      await Intercom.setUserHash({ hmac });
+    } else {
+      await Intercom.boot({
+        appId: ENV.intercom.appId,
+        userId,
+        email,
+        userHash: hmac,
+      });
+    }
+  }
+
+  async setupListeners() {
+    await Intercom.addListener('onUnreadCountChange', ({ value }) => {
+      this.unreadConversationCount = value;
+    });
+  }
+
+  show() {
+    this._show.perform();
+  }
+
+  @task({ drop: true }) *_show() {
+    this.isOpen = true;
+    yield Intercom.displayMessenger();
+  }
+
+  hide() {
+    this._hide.perform();
+  }
+
+  @task({ drop: true }) *_hide() {
+    this.isOpen = false;
+    yield Intercom.hideMessenger();
+  }
+}

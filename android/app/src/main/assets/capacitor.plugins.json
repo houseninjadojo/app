@@ -8,6 +8,10 @@
 		"classpath": "com.getcapacitor.plugin.http.Http"
 	},
 	{
+		"pkg": "@capacitor-community/intercom",
+		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},

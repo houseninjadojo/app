@@ -1,7 +1,7 @@
 <ul class="common-request-list">
     {{#each @commonRequests as |request|}}
         <li class="common-request">
-           <button type="button">
+           <button type="button" {{on 'click' (fn this.openChatWithPrompt request.defaultHnChatMessage)}}>
                <div class="image-mask">
                    <img src={{request.imgURI}} alt={{request.caption}}/>
                </div>

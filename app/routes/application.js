@@ -4,10 +4,11 @@ import Sentry from 'houseninja/utils/sentry';
 import { instrumentRoutePerformance } from '@sentry/ember';
 
 class ApplicationRoute extends Route {
+  @service analytics;
   @service current;
+  @service intercom;
   @service session;
   @service router;
-  @service analytics;
   @service('ember-user-activity@user-activity') userActivity;
 
   constructor() {
@@ -23,6 +24,7 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.current.load();
@@ -30,10 +32,15 @@ class ApplicationRoute extends Route {
     await this.analytics.track('application_started');
 
     if (this.session.isAuthenticated) {
-      const { email } = this.session.data.authenticated.userinfo;
+      const { id, intercomHash, email } = this.current.user.getProperties(
+        'id',
+        'intercomHash',
+        'email'
+      );
+      await this.current.registerDeviceToUser();
       Sentry.setUser({ email });
       await this.analytics.identify(email);
-      await this.current.registerDeviceToUser();
+      await this.intercom.registerUser(id, email, intercomHash);
     }
   }
 

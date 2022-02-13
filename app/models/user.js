@@ -19,4 +19,9 @@ export default class UserModel extends Model {
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
+
+  // An HMAC signed hash of the user id.
+  // Required for Intercom Identify Verification
+  // @see https://developers.intercom.com/installing-intercom/docs/cordova-phonegap-identity-verification
+  @attr('string') intercomHash;
 }

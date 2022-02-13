@@ -15,6 +15,7 @@ import {
   clear as clearStash,
 } from 'houseninja/utils/secure-storage';
 import * as Sentry from '@sentry/ember';
+import { Intercom } from '@capacitor-community/intercom';
 
 /**
  * @todo
@@ -56,6 +57,15 @@ const registerListenerHandlers = async (appInstance) => {
 
   addListener('localNotificationReceived', (notification) => {
     notifications.add('local', 'delivered', notification);
+  });
+
+  // @todo handle clicking a notification
+  addListener('pushNotificationActionPerformed', (payload) => {
+    // console.log(notification);
+    const { notification /* , actionId */ } = payload;
+    if (notification.data.intercom_push_type === 'notification') {
+      Intercom.displayMessenger();
+    }
   });
 };
 

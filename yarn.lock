@@ -1006,6 +1006,10 @@
     "@capacitor/filesystem" "^1.0.0"
     "@capacitor/ios" "^3.0.0"
 
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
+  version "5.0.1"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/66b44845fbcd7815640422cee58d1fba3b3e7ec5"
+
 "@capacitor/android@^3.0.0", "@capacitor/android@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.4.1.tgz#d4accc41c843927853d27c7f638487bd52633486"
@@ -4660,6 +4664,11 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
