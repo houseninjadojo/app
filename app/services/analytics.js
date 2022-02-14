@@ -68,25 +68,20 @@ export default class AnalyticsService extends Service {
     });
   }
 
-  async setProfile(profile = {}) {
+  async setProfile(properties = {}) {
     await run(async () => {
       try {
-        await Mixpanel.people.set(profile);
+        await Mixpanel.setProfile({ properties });
       } catch (e) {
         this._debug(e);
       }
     });
   }
 
-  async trackCharge(amount, options = {}) {
+  async trackCharge(amount, properties = {}) {
     await run(async () => {
       try {
-        await Mixpanel.people.trackCharge(
-          amount,
-          options,
-          this._debug,
-          this._debug
-        );
+        await Mixpanel.trackCharge({ amount, properties });
       } catch (e) {
         this._debug(e);
       }
