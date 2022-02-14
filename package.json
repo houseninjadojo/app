@@ -110,7 +110,7 @@
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/local-notifications": "^1.1.0",
     "@capacitor/push-notifications": "^1.0.9",
-    "@houseninja/capacitor-mixpanel": "^0.0.5",
+    "@houseninja/capacitor-mixpanel": "^0.0.6",
     "capacitor-secure-storage-plugin": "^0.6.2"
   }
 }
