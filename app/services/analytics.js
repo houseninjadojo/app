@@ -11,7 +11,7 @@ export default class AnalyticsService extends Service {
     if (!isNativePlatform()) {
       try {
         const token = ENV.analytics.mixpanelToken;
-        await Mixpanel.init({ token });
+        await Mixpanel.initialize({ token });
       } catch (e) {
         this._debug(e);
       }
@@ -21,7 +21,7 @@ export default class AnalyticsService extends Service {
   async track(event, properties) {
     await run(async () => {
       try {
-        await Mixpanel.track({ event, properties });
+        Mixpanel.track({ event, properties });
       } catch (e) {
         this._debug(e);
       }
@@ -31,7 +31,7 @@ export default class AnalyticsService extends Service {
   async identify(distinctId) {
     await run(async () => {
       try {
-        await Mixpanel.identify({ distinctId });
+        Mixpanel.identify({ distinctId });
       } catch (e) {
         this._debug(e);
       }
@@ -41,7 +41,7 @@ export default class AnalyticsService extends Service {
   async alias(alias, distinctId) {
     await run(async () => {
       try {
-        await Mixpanel.alias({ alias, distinctId });
+        Mixpanel.alias({ alias, distinctId });
       } catch (e) {
         this._debug(e);
       }
@@ -51,7 +51,7 @@ export default class AnalyticsService extends Service {
   async registerSuperProperties(properties = {}) {
     await run(async () => {
       try {
-        await Mixpanel.registerSuperProperties({ properties });
+        Mixpanel.registerSuperProperties({ properties });
       } catch (e) {
         this._debug(e);
       }
@@ -61,7 +61,7 @@ export default class AnalyticsService extends Service {
   async reset() {
     await run(async () => {
       try {
-        await Mixpanel.reset();
+        Mixpanel.reset();
       } catch (e) {
         this._debug(e);
       }
@@ -71,7 +71,7 @@ export default class AnalyticsService extends Service {
   async setProfile(properties = {}) {
     await run(async () => {
       try {
-        await Mixpanel.setProfile({ properties });
+        Mixpanel.setProfile({ properties });
       } catch (e) {
         this._debug(e);
       }
@@ -81,7 +81,7 @@ export default class AnalyticsService extends Service {
   async trackCharge(amount, properties = {}) {
     await run(async () => {
       try {
-        await Mixpanel.trackCharge({ amount, properties });
+        Mixpanel.trackCharge({ amount, properties });
       } catch (e) {
         this._debug(e);
       }
