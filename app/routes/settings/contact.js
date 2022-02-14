@@ -3,9 +3,12 @@ import { service } from '@ember/service';
 
 export default class SettingsContactRoute extends Route {
   @service current;
+  @service store;
 
   async model() {
-    await this.current.loadUser();
-    return this.current.user;
+    const userId = this.current.user.id;
+    return await this.store.findRecord('user', userId, {
+      backgroundReload: true,
+    });
   }
 }

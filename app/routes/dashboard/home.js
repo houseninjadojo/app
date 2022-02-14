@@ -8,8 +8,12 @@ export default class DashboardHomeRoute extends Route {
 
   model() {
     return RSVP.hash({
-      commonRequests: this.store.findAll('common-request'),
-      homeCareTips: this.store.findAll('home-care-tip'),
+      commonRequests: this.store.findAll('common-request', {
+        backgroundReload: true,
+      }),
+      homeCareTips: this.store.findAll('home-care-tip', {
+        backgroundReload: true,
+      }),
       user: this.current.user,
     });
   }
