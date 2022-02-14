@@ -25,29 +25,6 @@ export default class CurrentService extends Service {
     subscription: null,
   };
 
-  async load() {
-    if (this.session.isAuthenticated) {
-      const { user_id } = this.session.data.authenticated.userinfo;
-      this.user = await this.store.findRecord('user', user_id, {
-        include: 'properties,payment_methods',
-      });
-
-      const property = await this.user.properties.get('firstObject');
-      this.property = await this.store.findRecord(
-        'property',
-        property.get('id'),
-        { preload: { user: user_id } }
-      );
-
-      const paymentMethod = await this.user.paymentMethods.get('firstObject');
-      this.paymentMethod = await this.store.findRecord(
-        'payment-method',
-        paymentMethod.get('id'),
-        { preload: { user: user_id } }
-      );
-    }
-  }
-
   @task({ drop: true }) *_loadUser() {
     if (!this.session.isAuthenticated) {
       return;
@@ -63,6 +40,8 @@ export default class CurrentService extends Service {
     this.user = yield this.store.findRecord('user', user_id, {
       include: includes.join(','),
     });
+    this.paymentMethod = this.user.get('paymentMethods.firstObject');
+    this.property = this.user.get('properties.firstObject');
   }
 
   async loadUser() {
@@ -96,6 +75,10 @@ export default class CurrentService extends Service {
 
   @task *loadIdentifyAndTrack() {
     this.isLoadingUser = true;
+    if (!this.session.isAuthenticated) {
+      this.isLoadingUser = false;
+      return;
+    }
     yield this._loadUser.perform();
     yield this.registerDeviceToUser();
     const { id, intercomHash, email, fullName } = this.user.getProperties(
