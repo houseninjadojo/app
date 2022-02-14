@@ -9,14 +9,13 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 export default class AnalyticsService extends Service {
   async setup() {
     if (!isNativePlatform()) {
-      await run(async () => {
-        try {
-          const token = ENV.analytics.mixpanelToken;
-          await Mixpanel.init({ token });
-        } catch (e) {
-          this._debug(e);
-        }
-      });
+      try {
+        const token = ENV.analytics.mixpanelToken;
+        await Mixpanel.init({ token });
+        window.mixpanel.init(token);
+      } catch (e) {
+        this._debug(e);
+      }
     }
   }
 
@@ -24,6 +23,7 @@ export default class AnalyticsService extends Service {
     await run(async () => {
       try {
         await Mixpanel.track({ event, properties });
+        window.mixpanel.track(event, properties);
       } catch (e) {
         this._debug(e);
       }
@@ -34,6 +34,7 @@ export default class AnalyticsService extends Service {
     await run(async () => {
       try {
         await Mixpanel.identify({ distinctId });
+        window.mixpanel.identify(distinctId);
       } catch (e) {
         this._debug(e);
       }

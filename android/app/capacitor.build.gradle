@@ -20,11 +20,10 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-local-notifications')
     implementation project(':capacitor-push-notifications')
+    implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
-    implementation "com.mixpanel.android:mixpanel-android:5.9.1"
-    implementation "com.google.android.gms:play-services-base:+"
-    implementation "com.google.firebase:firebase-messaging:+"
+
 }
 
 

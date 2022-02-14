@@ -44,6 +44,10 @@
 		"classpath": "com.capacitorjs.plugins.pushnotifications.PushNotificationsPlugin"
 	},
 	{
+		"pkg": "@houseninja/capacitor-mixpanel",
+		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
+	},
+	{
 		"pkg": "capacitor-secure-storage-plugin",
 		"classpath": "com.whitestein.securestorage.SecureStoragePlugin"
 	},
