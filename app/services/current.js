@@ -88,11 +88,11 @@ export default class CurrentService extends Service {
       'fullName'
     );
     Sentry.setUser({ email });
+    yield this.analytics.identify(email);
     yield this.analytics.setProfile({
       $email: email,
       $name: fullName,
     });
-    yield this.analytics.identify(email);
     yield this.intercom.registerUser(id, email, intercomHash);
     this.isLoadingUser = false;
   }
