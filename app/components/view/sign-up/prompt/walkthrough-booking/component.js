@@ -27,7 +27,7 @@ export default class WalkthroughBookingComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.welcome');
+    this.router.transitionTo('signup.property-info');
   }
 
   receiveWindowMessage(event) {

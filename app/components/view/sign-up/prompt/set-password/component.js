@@ -8,6 +8,7 @@ import {
   passwordValidation,
 } from 'houseninja/utils/components/input-validation';
 import Sentry from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 export default class SetPasswordComponent extends Component {
   @service current;
@@ -42,6 +43,16 @@ export default class SetPasswordComponent extends Component {
     },
   ];
 
+  constructor() {
+    super(...arguments);
+
+    if (isPresent(this.args.user)) {
+      this.passwords.password = this.args.user.password;
+      this.passwords.passwordConfirmation = this.args.user.password;
+      this.formIsInvalid = false;
+    }
+  }
+
   @action
   validateForm(e) {
     this.passwords[e.target.id] = e.target.value;
@@ -56,12 +67,16 @@ export default class SetPasswordComponent extends Component {
 
   @action
   async savePassword() {
-    let user = await this.store.peekAll('user').get('firstObject');
+    let user;
+    if (isPresent(this.args.user)) {
+      user = this.args.user;
+    } else {
+      user = await this.store.peekAll('user').get('firstObject');
+    }
     if (!this.formIsInvalid) {
       user.password = this.passwords.password;
       try {
         await user.save();
-        await user.reload(); // clear the password
         this.router.transitionTo('signup.welcome');
       } catch (e) {
         debug(e);

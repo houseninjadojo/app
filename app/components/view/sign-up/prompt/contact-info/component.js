@@ -6,6 +6,7 @@ import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -54,11 +55,31 @@ export default class ContactInfoComponent extends Component {
     },
   ];
 
+  constructor() {
+    super(...arguments);
+
+    if (isPresent(this.args.user)) {
+      this.contactInfo = this.args.user.getProperties(
+        'email',
+        'phoneNumber',
+        'firstName',
+        'lastName'
+      );
+      this.formIsInvalid = false;
+    }
+  }
+
   @action
   async saveContactInfo() {
-    let user = this.store.createRecord('user', {
-      ...this.contactInfo,
-    });
+    let user;
+    if (isPresent(this.args.user)) {
+      user = this.args.user;
+      user.setProperties(this.contactInfo);
+    } else {
+      user = this.store.createRecord('user', {
+        ...this.contactInfo,
+      });
+    }
     try {
       await user.save();
       this.router.transitionTo('signup.payment-method');
@@ -70,7 +91,7 @@ export default class ContactInfoComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.contact-info');
+    this.router.transitionTo('signup.plan-selection');
   }
 
   @action
