@@ -1503,10 +1503,10 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
-"@houseninja/capacitor-mixpanel@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.0.6.tgz#b57e6b2699d0468517506a9678bf306b50e5f9be"
-  integrity sha512-zpCDBfkE8erypGxIECJ/DAchSFe/UZNXMZKqj4B1DFs0Ng+F5EIuyqLVwMyNfGFcpXsLUgl/bwI5nc0Jm25eDg==
+"@houseninja/capacitor-mixpanel@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.0.12.tgz#72cf81b833104cd620e8026d138015d18b7f44d5"
+  integrity sha512-UN0HJHqBUNEsS5zljkmtCaH+1r4T8tHTOyAKhbHLk79w3NOpUGp8Waw2CSPA++LSDPwY6T9g1wFLJiF/dRMmzQ==
   dependencies:
     mixpanel-browser "^2.43.0"
 
