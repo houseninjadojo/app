@@ -5,6 +5,6 @@ export default class SignupPaymentMethodRoute extends Route {
   @service store;
 
   model() {
-    return this.store.peekAll('payment-method').get('firstObject');
+    return this.store.peekAll('credit-card').get('firstObject');
   }
 }

@@ -96,8 +96,7 @@ export default class PaymentMethodComponent extends Component {
   @action
   handleAgreement(agreesToTermsAndConditions) {
     this.agreedToTermsAndConditions = agreesToTermsAndConditions;
-    this.shallNotPass =
-      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
     this.showTermsAndConditionsComponent(false);
   }
 
@@ -144,8 +143,7 @@ export default class PaymentMethodComponent extends Component {
     }
 
     this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
-    this.shallNotPass =
-      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
   }
 
   @action
