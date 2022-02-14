@@ -75,6 +75,10 @@ export default class CurrentService extends Service {
 
   @task *loadIdentifyAndTrack() {
     this.isLoadingUser = true;
+    if (!this.session.isAuthenticated) {
+      this.isLoadingUser = false;
+      return;
+    }
     yield this._loadUser.perform();
     yield this.registerDeviceToUser();
     const { id, intercomHash, email, fullName } = this.user.getProperties(

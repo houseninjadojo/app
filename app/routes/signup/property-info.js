@@ -4,7 +4,10 @@ import { service } from '@ember/service';
 export default class SignupPropertyInfoRoute extends Route {
   @service store;
 
-  async model() {
-    await this.store.findAll('service-area');
+  model() {
+    this.store.findAll('service-area', {
+      backgroundReload: true,
+    });
+    return this.store.peekAll('property').get('firstObject');
   }
 }

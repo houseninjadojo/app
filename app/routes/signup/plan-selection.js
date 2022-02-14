@@ -5,6 +5,8 @@ export default class SignupPlanSelectionRoute extends Route {
   @service store;
 
   async model() {
-    return await this.store.findAll('subscription-plan');
+    return await this.store.findAll('subscription-plan', {
+      backgroundReload: true,
+    });
   }
 }

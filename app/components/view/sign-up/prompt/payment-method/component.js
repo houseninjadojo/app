@@ -7,6 +7,7 @@ import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumber } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 const DEBOUNCE_MS = 250;
 
@@ -14,6 +15,7 @@ export default class PaymentMethodComponent extends Component {
   @service current;
   @service router;
   @service store;
+
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
   @tracked formIsValid = false;
@@ -67,6 +69,21 @@ export default class PaymentMethodComponent extends Component {
     },
   ];
 
+  constructor() {
+    super(...arguments);
+
+    if (isPresent(this.args.paymentMethod)) {
+      this.paymentMethod = this.args.paymentMethod.getProperties(
+        'cardNumber',
+        'cvv',
+        'expMonth',
+        'expYear',
+        'zipcode'
+      );
+      this.formIsValid = true;
+    }
+  }
+
   @action
   goBack() {
     this.router.transitionTo('signup.contact-info');
@@ -79,8 +96,7 @@ export default class PaymentMethodComponent extends Component {
   @action
   handleAgreement(agreesToTermsAndConditions) {
     this.agreedToTermsAndConditions = agreesToTermsAndConditions;
-    this.shallNotPass =
-      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
     this.showTermsAndConditionsComponent(false);
   }
 
@@ -127,18 +143,26 @@ export default class PaymentMethodComponent extends Component {
     }
 
     this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
-    this.shallNotPass =
-      this.formIsValid && this.agreedToTermsAndConditions ? false : true;
+    this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
   }
 
   @action
   async savePaymentMethod() {
     const user = this.store.peekAll('user').get('firstObject');
     const subscription = this.store.peekAll('subscription').get('firstObject');
-    const paymentMethod = this.store.createRecord('credit-card', {
-      ...this.paymentMethod,
-      user,
-    });
+    let paymentMethod;
+    if (isPresent(this.args.paymentMethod)) {
+      paymentMethod = this.args.paymentMethod;
+      paymentMethod.setProperties({
+        ...this.paymentMethod,
+        user,
+      });
+    } else {
+      paymentMethod = this.store.createRecord('credit-card', {
+        ...this.paymentMethod,
+        user,
+      });
+    }
     try {
       await paymentMethod.save();
 

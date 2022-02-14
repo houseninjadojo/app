@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import Sentry from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 export default class PropertyInfoComponent extends Component {
   @service current;
@@ -64,18 +65,45 @@ export default class PropertyInfoComponent extends Component {
     },
   ];
 
+  constructor() {
+    super(...arguments);
+
+    if (isPresent(this.args.property)) {
+      this.propertyInfo = this.args.property.getProperties(
+        'streetAddress1',
+        'streetAddress2',
+        'city',
+        'state',
+        'zipcode'
+      );
+      this.formIsInvalid = false;
+    }
+  }
+
   @action
   async savePropertyInfo() {
     try {
       let serviceArea = this.store.peekAll('service-area').get('firstObject');
       let user = this.store.peekAll('user').get('firstObject');
-      let property = await this.store.createRecord('property', {
-        serviceArea,
-        user,
-        ...this.propertyInfo,
-        default: true,
-        selected: true,
-      });
+      let property;
+      if (isPresent(this.args.property)) {
+        property = this.args.property;
+        property.setProperties({
+          serviceArea,
+          user,
+          ...this.propertyInfo,
+          default: true,
+          selected: true,
+        });
+      } else {
+        property = await this.store.createRecord('property', {
+          serviceArea,
+          user,
+          ...this.propertyInfo,
+          default: true,
+          selected: true,
+        });
+      }
       await property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
