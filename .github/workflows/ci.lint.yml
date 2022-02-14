@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  ENV_FILE: ${{ secrets.ENV_FILE }}
+
 jobs:
   templates:
     name: lint hbs
@@ -28,7 +31,9 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: yarn lint:js
+      - run: |
+          export $(echo $ENV_FILE | xargs)
+          yarn lint:js
   css:
     name: lint css
     runs-on: ubuntu-latest
@@ -39,4 +44,6 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: yarn lint:css
+      - run: |
+          export $(echo $ENV_FILE | xargs)
+          yarn lint:css

@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  ENV_FILE: ${{ secrets.ENV_FILE }}
+
 jobs:
   test:
     name: ember test
@@ -18,7 +21,9 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - run: mkdir -p tmp
-      - run: yarn test:ember -o tmp/app
+      - run: |
+          export $(echo $ENV_FILE | xargs)
+          yarn test:ember -o tmp/app
       - uses: actions/upload-artifact@v2
         with:
           name: app
