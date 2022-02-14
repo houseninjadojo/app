@@ -41,7 +41,7 @@
     "@glimmer/tracking": "^1.0.4",
     "@sentry/capacitor": "^0.4.1",
     "@sentry/ember": "^6.17.6",
-    "@sentry/tracing": "^6.14.1",
+    "@sentry/tracing": "^6.17.7",
     "autoprefixer": "^10.4.2",
     "broccoli-asset-rev": "^3.0.0",
     "crypto-js": "^4.1.1",
