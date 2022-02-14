@@ -51,6 +51,10 @@ const plugins = {
     iosApiKey: 'ios_sdk-952078c58482051e56f9534434101ca50e6f7de7',
     iosAppId: 'rgqc8u39',
   },
+  Mixpanel: {
+    iosToken: 'cd20057a467eef665b9e86f0b687a5e3',
+    androidToken: 'cd20057a467eef665b9e86f0b687a5e3',
+  },
 };
 
 const cordova = {};
