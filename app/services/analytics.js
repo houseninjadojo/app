@@ -2,50 +2,46 @@ import Service from '@ember/service';
 import ENV from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
 import { run } from '@ember/runloop';
+import { Mixpanel } from '@houseninja/capacitor-mixpanel';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
-  client = window.mixpanel;
-
   async setup() {
-    await run(async () => {
+    if (!isNativePlatform()) {
       try {
-        await this.client.init(
-          ENV.analytics.mixpanelToken,
-          this._debug,
-          this._debug
-        );
+        const token = ENV.analytics.mixpanelToken;
+        await Mixpanel.init({ token });
       } catch (e) {
         this._debug(e);
       }
-    });
+    }
   }
 
   async track(event, properties) {
     await run(async () => {
       try {
-        await this.client.track(event, properties);
+        await Mixpanel.track({ event, properties });
       } catch (e) {
         this._debug(e);
       }
     });
   }
 
-  async identify(id) {
+  async identify(distinctId) {
     await run(async () => {
       try {
-        // A bug requires us to pass fake callbacks
-        await this.client.identify(id, true, this._debug, this._debug);
+        await Mixpanel.identify({ distinctId });
       } catch (e) {
         this._debug(e);
       }
     });
   }
 
-  async alias(id) {
+  async alias(alias, distinctId) {
     await run(async () => {
       try {
-        await this.client.alias(id);
+        await Mixpanel.alias({ alias, distinctId });
       } catch (e) {
         this._debug(e);
       }
@@ -55,7 +51,7 @@ export default class AnalyticsService extends Service {
   async registerSuperProperties(properties = {}) {
     await run(async () => {
       try {
-        await this.client.registerSuperProperties(properties);
+        await Mixpanel.registerSuperProperties({ properties });
       } catch (e) {
         this._debug(e);
       }
@@ -65,33 +61,27 @@ export default class AnalyticsService extends Service {
   async reset() {
     await run(async () => {
       try {
-        await this.client.reset();
+        await Mixpanel.reset();
       } catch (e) {
         this._debug(e);
       }
     });
   }
 
-  // MUST BE CALLED BEFORE `#identify`
-  async setProfile(profile = {}) {
+  async setProfile(properties = {}) {
     await run(async () => {
       try {
-        await this.client.people.set(profile);
+        await Mixpanel.setProfile({ properties });
       } catch (e) {
         this._debug(e);
       }
     });
   }
 
-  async trackCharge(amount, options = {}) {
+  async trackCharge(amount, properties = {}) {
     await run(async () => {
       try {
-        await this.client.people.trackCharge(
-          amount,
-          options,
-          this._debug,
-          this._debug
-        );
+        await Mixpanel.trackCharge({ amount, properties });
       } catch (e) {
         this._debug(e);
       }

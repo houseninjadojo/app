@@ -9,13 +9,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@awesome-cordova-plugins/mixpanel@^5.39.0":
-  version "5.39.0"
-  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/mixpanel/-/mixpanel-5.39.0.tgz#ca6c7561cee635315aa3664971b2f134ce2798dd"
-  integrity sha512-nDDCSJLF0wMKB6D0kumSrXp0H62JrDRKDqGRS64xPfs0HCVYcuY3JgE4lMg0baOpzY1tiBQnOeki0rMe9kpE6Q==
-  dependencies:
-    "@types/cordova" latest
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
@@ -1510,6 +1503,13 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
+"@houseninja/capacitor-mixpanel@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.0.6.tgz#b57e6b2699d0468517506a9678bf306b50e5f9be"
+  integrity sha512-zpCDBfkE8erypGxIECJ/DAchSFe/UZNXMZKqj4B1DFs0Ng+F5EIuyqLVwMyNfGFcpXsLUgl/bwI5nc0Jm25eDg==
+  dependencies:
+    mixpanel-browser "^2.43.0"
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.3.tgz#f2564c744b387775b436418491f15fce6601f63e"
@@ -1945,11 +1945,6 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
   integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
-
-"@types/cordova@latest":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@types/cordova/-/cordova-0.0.34.tgz#ea7addf74ecec3d7629827a0c39e2c9addc73d04"
-  integrity sha1-6nrd907Ow9dimCegw54smt3HPQQ=
 
 "@types/cors@^2.8.12":
   version "2.8.12"
@@ -4547,11 +4542,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
-
-cordova-plugin-mixpanel@^4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-mixpanel/-/cordova-plugin-mixpanel-4.7.2.tgz#757da7e886c96d7a0cb2d2a7f6c2c78171f2b12a"
-  integrity sha512-+SVogeTZMcNHmvE0+Ehh4XI8OJZSS3N2WMJYZcrk3MOYwA/wbiGQUv5TFcBXnifWFuxlf//0R9hE6JXXhfUZeA==
 
 core-js-compat@^3.20.2, core-js-compat@^3.21.0:
   version "3.21.0"
@@ -9073,6 +9063,11 @@ mixin-deep@^1.2.0:
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
+
+mixpanel-browser@^2.43.0:
+  version "2.43.0"
+  resolved "https://registry.yarnpkg.com/mixpanel-browser/-/mixpanel-browser-2.43.0.tgz#a4d4f97f5a7ca85411697ef70fa833177e67eb95"
+  integrity sha512-6zOjFXaRRWYo7YdcBwa9Z6nk9zRkkxPd9Qa/KNRcjSJ0OkMv7ka/p8rR+6VqMeY93pia/7X31c/HU5YhqAXnEQ==
 
 mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5:
   version "0.5.5"

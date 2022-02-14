@@ -99,7 +99,6 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@awesome-cordova-plugins/mixpanel": "^5.39.0",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom",
@@ -111,7 +110,7 @@
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/local-notifications": "^1.1.0",
     "@capacitor/push-notifications": "^1.0.9",
-    "capacitor-secure-storage-plugin": "^0.6.2",
-    "cordova-plugin-mixpanel": "^4.7.2"
+    "@houseninja/capacitor-mixpanel": "^0.0.6",
+    "capacitor-secure-storage-plugin": "^0.6.2"
   }
 }

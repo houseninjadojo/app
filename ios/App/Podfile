@@ -20,10 +20,9 @@ def capacitor_pods
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
   pod 'CapacitorLocalNotifications', :path => '../../node_modules/@capacitor/local-notifications'
   pod 'CapacitorPushNotifications', :path => '../../node_modules/@capacitor/push-notifications'
+  pod 'HouseninjaCapacitorMixpanel', :path => '../../node_modules/@houseninja/capacitor-mixpanel'
   pod 'CapacitorSecureStoragePlugin', :path => '../../node_modules/capacitor-secure-storage-plugin'
   pod 'SentryCapacitor', :path => '../../node_modules/@sentry/capacitor'
-  pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
-  pod 'CordovaPluginsResources', :path => '../capacitor-cordova-ios-plugins'
 end
 
 target 'House Ninja' do
