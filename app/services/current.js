@@ -34,6 +34,7 @@ export default class CurrentService extends Service {
       'invoices',
       'payments',
       'payment_methods',
+      'promo_code',
       'properties',
       'properties.work_orders',
     ];

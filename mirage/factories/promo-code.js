@@ -7,7 +7,7 @@ export default Factory.extend({
   },
 
   code() {
-    return faker.datatype.string(10);
+    return faker.random.alphaNumeric(12);
   },
 
   name() {
