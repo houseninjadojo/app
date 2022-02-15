@@ -10,5 +10,7 @@
             </li>
         {{/each}}
     </ul>
-    <HouseNinja::ReferralCode />
+    {{#if this.userHasPromoCode}}
+        <HouseNinja::ReferralCode />
+    {{/if}}
 </div>
