@@ -31,7 +31,8 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: |
+      - name: yarn lint:js
+        run: |
           export $(echo $ENV_FILE | xargs)
           yarn lint:js
   css:
@@ -44,6 +45,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: |
+      - name: yarn lint:css
+        run: |
           export $(echo $ENV_FILE | xargs)
           yarn lint:css

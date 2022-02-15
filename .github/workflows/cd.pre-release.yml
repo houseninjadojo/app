@@ -9,6 +9,10 @@ on:
     types:
       - completed
 
+env:
+  ENV_FILE: ${{ secrets.ENV_FILE }}
+  NODE_ENV: sandbox
+
 jobs:
   sentry:
     name: send sourcemaps to sentry
@@ -21,7 +25,10 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: NODE_ENV=sandbox yarn build:env
+      - name: yarn build:env
+        run: |
+          export $(echo $ENV_FILE | xargs)
+          yarn build:env
       - uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
