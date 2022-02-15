@@ -10,7 +10,7 @@ export default class ServiceAreaComponent extends Component {
   @service store;
 
   @tracked promoCode =
-    this.current.user.promoCode.isActive && this.current.user.promoCode.code;
+    this.current.user.promoCode.active && this.current.user.promoCode.code;
 
   @action
   async handleClick() {
