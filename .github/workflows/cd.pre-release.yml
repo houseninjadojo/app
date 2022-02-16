@@ -31,3 +31,4 @@ jobs:
           environment: sandbox
           sourcemaps: './dist'
           version: ${{ github.sha }}
+          url_prefix: '~/'
