@@ -45,8 +45,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 // Webpack Plugins
 // let plugins = [];
-// if (process.env.SENTRY_AUTH_TOKEN && process.env.CF_PAGES_COMMIT_SHA) {
+// if () {
 //   plugins =
+// }
+
+// const shouldDryRun = () => {
+//   return ;
 // }
 
 /**
@@ -59,13 +63,14 @@ module.exports = function (defaults) {
       webpack: {
         plugins: [
           new SentryCliPlugin({
-            include: '~/dist',
+            include: '.',
             org: 'houseninja',
             project: 'app',
             urlPrefix: '~/',
             environment: 'sandbox',
             release: process.env.CF_PAGES_COMMIT_SHA,
             authToken: process.env.SENTRY_AUTH_TOKEN,
+            dryRun: !process.env.SENTRY_AUTH_TOKEN || !process.env.CF_PAGES_COMMIT_SHA,
           }),
         ]
       },
