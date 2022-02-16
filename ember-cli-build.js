@@ -1,8 +1,5 @@
 'use strict';
 
-const SentryCliPlugin = require('@sentry/webpack-plugin');
-const HookShellScriptPlugin = require('hook-shell-script-webpack-plugin');
-
 /**
  * PostCSS Plugins
  * Format is:
@@ -44,41 +41,12 @@ const PostCSSImportPlugin = {
  */
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-// Webpack Plugins
-// let plugins = [];
-// if () {
-//   plugins =
-// }
-
-// const shouldDryRun = () => {
-//   return ;
-// }
-
 /**
  * Build Options
  * @see https://cli.emberjs.com/release/advanced-use/
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    autoImport: {
-      webpack: {
-        plugins: [
-          new SentryCliPlugin({
-            include: '.',
-            org: 'houseninja',
-            project: 'app',
-            urlPrefix: '~/',
-            environment: 'sandbox',
-            release: process.env.CF_PAGES_COMMIT_SHA,
-            authToken: process.env.SENTRY_AUTH_TOKEN,
-            dryRun: !process.env.SENTRY_AUTH_TOKEN || !process.env.CF_PAGES_COMMIT_SHA,
-          }),
-          new HookShellScriptPlugin({
-            afterEmit: ['ls -al'],
-          }),
-        ]
-      },
-    },
     // PostCSS Options
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
