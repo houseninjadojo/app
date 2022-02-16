@@ -6,7 +6,6 @@ on:
       - "ci / tests"
     branches:
       - main
-      - sentry-sourcemap-rewrite
     types:
       - completed
 
