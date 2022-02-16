@@ -6,6 +6,7 @@ on:
       - "ci / tests"
     branches:
       - main
+      - sentry-sourcemap-rewrite
     types:
       - completed
 
@@ -31,3 +32,4 @@ jobs:
           environment: sandbox
           sourcemaps: './dist'
           version: ${{ github.sha }}
+          url_prefix: '~/'
