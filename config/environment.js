@@ -134,13 +134,21 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.appHost = 'https://app.houseninja.co';
-    ENV.apiHost = 'https://api.houseninja.co';
+    // ENV.appHost = 'https://app.houseninja.co';
+    // ENV.apiHost = 'https://api.houseninja.co';
 
-    ENV.auth.client_id = 'ebbRorM6pQsiFoyUBkzEtSMF2BrdK7Zt';
-    ENV.auth.audience = 'https://api.houseninja.co/';
-    ENV.auth.connection = 'houseninja';
-    ENV.auth.domain = 'auth.houseninja.co'
+    // ENV.auth.client_id = 'ebbRorM6pQsiFoyUBkzEtSMF2BrdK7Zt';
+    // ENV.auth.audience = 'https://api.houseninja.co/';
+    // ENV.auth.connection = 'houseninja';
+    // ENV.auth.domain = 'auth.houseninja.co';
+
+    ENV.appHost = 'https://sandbox.app.houseninja.co';
+    ENV.apiHost = 'https://sandbox.api.houseninja.co';
+
+    ENV.auth.client_id = 'LOOiaA7T7x3V2LP5ZzOx7MdDg4xjJBuh';
+    ENV.auth.audience = 'https://sandbox.api.houseninja.co/';
+    ENV.auth.connection = 'development';
+    ENV.auth.domain = 'sandbox.auth.houseninja.co';
 
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};
@@ -150,11 +158,13 @@ module.exports = function (environment) {
 
     // Sentry
     ENV['@sentry/ember'].sentry.debug = false;
-    ENV['@sentry/ember'].sentry.environment = 'production';
+    // ENV['@sentry/ember'].sentry.environment = 'production';
+    ENV['@sentry/ember'].sentry.environment = 'sandbox';
     ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
-    ENV.analytics.mixpanelToken = 'a114d73d1af6fc278d53462a5c096fe7';
+    // ENV.analytics.mixpanelToken = 'a114d73d1af6fc278d53462a5c096fe7';
+    ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
   }
 
   return ENV;
