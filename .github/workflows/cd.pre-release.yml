@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: NODE_ENV=sandbox yarn build:env
+      - run: NODE_ENV=production yarn build:env
       - uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -31,4 +31,4 @@ jobs:
           environment: sandbox
           sourcemaps: './dist'
           version: ${{ github.sha }}
-          url_prefix: '~/assets'
+          url_prefix: '~/'
