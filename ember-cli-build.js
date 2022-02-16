@@ -1,6 +1,7 @@
 'use strict';
 
 const SentryCliPlugin = require('@sentry/webpack-plugin');
+const HookShellScriptPlugin = require('hook-shell-script-webpack-plugin');
 
 /**
  * PostCSS Plugins
@@ -71,6 +72,9 @@ module.exports = function (defaults) {
             release: process.env.CF_PAGES_COMMIT_SHA,
             authToken: process.env.SENTRY_AUTH_TOKEN,
             dryRun: !process.env.SENTRY_AUTH_TOKEN || !process.env.CF_PAGES_COMMIT_SHA,
+          }),
+          new HookShellScriptPlugin({
+            afterEmit: ['ls -al'],
           }),
         ]
       },
