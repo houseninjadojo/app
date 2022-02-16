@@ -41,6 +41,7 @@
   align-items: center;
 
   /* Hex Equivalent: var(--gray-200) */
+
   /* filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%); */
 }
 
@@ -60,11 +61,11 @@
   align-items: center;
   width: 20px;
   height: 20px;
-  background-color: var(--red-400);  
+  background-color: var(--red-400);
   border-radius: 100px;
   position: absolute;
   top: -6px;
-  right: -6px;  
+  right: -6px;
 }
 
 .hn-notification-count span {
