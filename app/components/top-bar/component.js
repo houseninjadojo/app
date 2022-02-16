@@ -1,9 +1,13 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 
 export default class TopBarComponent extends Component {
   @service router;
+  @service intercom;
+
+  @tracked unreadConversationCount = this.intercom.unreadConversationCount;
 
   preserveViewScrollPosition() {
     const mainView = document.querySelector('main.hn.view');
@@ -27,5 +31,10 @@ export default class TopBarComponent extends Component {
     this.preservePreviousRoute();
 
     this.router.transitionTo('settings');
+  }
+
+  @action
+  setupIntercomListener() {
+    this.intercom.setupListeners();
   }
 }
