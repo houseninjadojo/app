@@ -3,7 +3,9 @@
 
 module.exports = function (deployTarget) {
   let ENV = {
-    build: {},
+    build: {
+      outputPath: 'dist',
+    },
     // include other plugin configuration that applies to all deploy targets here
   };
 
