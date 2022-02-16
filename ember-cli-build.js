@@ -48,7 +48,7 @@ let plugins = [];
 if (process.env.SENTRY_AUTH_TOKEN && process.env.CF_PAGES_COMMIT_SHA) {
   plugins = [
     new SentryCliPlugin({
-      include: './dist',
+      include: '/opt/buildhome/repo/app/dist',
       org: 'houseninja',
       project: 'app',
       urlPrefix: '~/',
