@@ -1,5 +1,7 @@
 'use strict';
 
+const SentryCliPlugin = require('@sentry/webpack-plugin');
+
 /**
  * PostCSS Plugins
  * Format is:
@@ -41,12 +43,33 @@ const PostCSSImportPlugin = {
  */
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+// Webpack Plugins
+let plugins = [];
+if (process.env.SENTRY_AUTH_TOKEN && process.env.CF_PAGES_COMMIT_SHA) {
+  plugins = [
+    new SentryCliPlugin({
+      include: './dist',
+      org: 'houseninja',
+      project: 'app',
+      urlPrefix: '~/',
+      environment: 'sandbox',
+      release: process.env.CF_PAGES_COMMIT_SHA,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+    }),
+  ]
+}
+
 /**
  * Build Options
  * @see https://cli.emberjs.com/release/advanced-use/
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    autoImport: {
+      webpack: {
+        plugins,
+      },
+    },
     // PostCSS Options
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {

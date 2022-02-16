@@ -42,6 +42,7 @@
     "@sentry/capacitor": "^0.4.1",
     "@sentry/ember": "^6.17.8",
     "@sentry/tracing": "^6.14.1",
+    "@sentry/webpack-plugin": "^1.18.6",
     "autoprefixer": "^10.4.2",
     "broccoli-asset-rev": "^3.0.0",
     "crypto-js": "^4.1.1",
