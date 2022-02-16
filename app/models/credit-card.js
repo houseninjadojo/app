@@ -21,7 +21,9 @@ export default class CreditCardModel extends PaymentMethod {
       expYear: null,
       cardNumber: '',
       zipcode: '',
-      lastFour: this.cardNumber.substring(this.cardNumber.length - 4),
+      lastFour: isPresent(this.cardNumber)
+        ? this.cardNumber.substring(this.cardNumber.length - 4)
+        : '',
     };
   }
 }
