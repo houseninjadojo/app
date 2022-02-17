@@ -62,7 +62,7 @@
             Subscribe
         </Primitive::Button>
     </div>
-    {{#if true}}
+    {{#if this.showTermsAndConditions}}
         <HouseNinja::TermsAndConditionsAgreement @agreesToTermsAndConditions={{this.agreesToTermsAndConditions}} @handleAgreement={{this.handleAgreement}} />
     {{/if}}
 </div>
