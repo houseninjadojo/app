@@ -48,6 +48,7 @@
 
 .sign-up-module .action.single .hn.btn {
   width: 100%;
+  max-width: 100%;
 }
 
 .sign-up-module .view .content {
@@ -56,7 +57,7 @@
   align-items: center;
   height: 100%;
   overflow-y: auto;
-  padding: 32px 16px 88px;
+  padding: 0 16px 88px;
   background-color: var(--white);
 }
 
@@ -73,14 +74,21 @@
 .sign-up-module .view .content .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  max-width: 400px;
 }
 
 .sign-up-module .view .content .hero img {
   align-self: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.sign-up-module .view .content .hero img.crop {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
 }
 
 .sign-up-module .view .content .hero img.view-logo {
@@ -355,6 +363,12 @@
   align-items: flex-start;
 }
 
-.sign-up-module .view .content.confirmed-booking .hero .appt {
-  color: var(--red-400);
+.sign-up-module .view .content.confirmed-booking .hero h1 {
+  width: 100%;
+  font-size: 32px;
+  text-align: center;
+}
+
+.sign-up-module .view .content .hero img.filter-brighten {
+  filter: brightness(1.5);
 }
