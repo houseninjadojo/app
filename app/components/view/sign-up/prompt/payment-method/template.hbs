@@ -29,7 +29,7 @@
             @semantic='outline'
             {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
         >
-            View Terms and Conditions
+            View House Ninja Inc. Limited Warranty
         </Primitive::Button>
             <div class='agreement'>
                 <Input
@@ -62,7 +62,7 @@
             Subscribe
         </Primitive::Button>
     </div>
-    {{#if this.showTermsAndConditions}}
+    {{#if true}}
         <HouseNinja::TermsAndConditionsAgreement @agreesToTermsAndConditions={{this.agreesToTermsAndConditions}} @handleAgreement={{this.handleAgreement}} />
     {{/if}}
 </div>

@@ -162,6 +162,7 @@
 
 .sign-up-module .view .content .prompt .terms .hn.btn {
   margin-bottom: 8px;
+  white-space: initial;
 }
 
 .sign-up-module .view .content .prompt .terms .agreement {
