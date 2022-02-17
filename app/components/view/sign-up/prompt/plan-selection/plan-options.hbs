@@ -1,6 +1,6 @@
 <div class="hn plan-options">
     <p class="primary">Select Your Plan</p>
-    {{#each @plans as |plan|}}
+    {{#each @plans as |plan index|}}
     <div class="option">
         <div class="column left">
             <span class="label">{{plan.name}}</span>
@@ -10,7 +10,7 @@
         <div class="column right">
             <Primitive::Button
                 @size='md'
-                @variant='solid'
+                @variant='{{if (eq index 0) 'solid' 'outline'}}'
                 @semantic='primary'
                 {{on 'click' (fn @selectPlan plan.id)}}
             >
