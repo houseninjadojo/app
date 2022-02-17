@@ -18,11 +18,11 @@ export default class PlanSelectionComponent extends Component {
 
     this.current.signup.subscription = subscription;
 
-    this.router.transitionTo('signup.contact-info');
+    this.router.transitionTo('signup.payment-method');
   }
 
   @action
   goBack() {
-    this.router.transitionTo('signup.index');
+    this.router.transitionTo('signup.plan-contact-info');
   }
 }

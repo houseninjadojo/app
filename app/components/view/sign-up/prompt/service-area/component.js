@@ -22,7 +22,7 @@ export default class ServiceAreaComponent extends Component {
         },
       });
       if (serviceAreas.length > 0) {
-        this.router.transitionTo('signup.plan-selection');
+        this.router.transitionTo('signup.contact-info');
       } else {
         this.current.signup.zipcode = this.zipcode;
         this.router.transitionTo('signup.area-notification');

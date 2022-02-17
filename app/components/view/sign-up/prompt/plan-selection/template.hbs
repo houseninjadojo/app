@@ -10,10 +10,18 @@
             <li>Digital home record</li>
         </ul>
     </div>
-    <div class="action">
+    <div class="action with-plans">
         <View::SignUp::Prompt::PlanSelection::PlanOptions
             @plans={{@plans}}
             @selectPlan={{this.selectPlan}}
         />
+        <Primitive::Button
+            @size='sm'
+            @variant='outline'
+            @semantic='primary'
+            {{on 'click' this.goBack}}
+        >
+            Previous
+        </Primitive::Button>
     </div>
 </div>

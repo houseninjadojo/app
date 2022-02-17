@@ -38,11 +38,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 49%;
+  width: initial;
+  max-width: 50%;
+}
+
+.sign-up-module .action .hn.btn:nth-of-type(2) {
+  width: 100%;
 }
 
 .sign-up-module .action.single .hn.btn {
-  max-width: 100%;
+  width: 100%;
 }
 
 .sign-up-module .view .content {
@@ -174,8 +179,12 @@
 .sign-up-module .view .content .action {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+.sign-up-module .view .content .action.with-plans {
+  flex-direction: column;
 }
 
 .sign-up-module .view .content .action.single {
