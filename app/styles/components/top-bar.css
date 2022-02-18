@@ -39,10 +39,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* Hex Equivalent: var(--gray-200) */
-
-  /* filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%); */
 }
 
 .hn.top-bar .action-container .action img.prev {
@@ -59,8 +55,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 16px;
   background-color: var(--red-400);
   border-radius: 100px;
   position: absolute;
@@ -69,6 +65,8 @@
 }
 
 .hn-notification-count span {
+  width: 100%; height: 100%;
+  line-height: 19px;
   font-family: var(--campton-strong);
   font-size: 14px;
   color: var(--white);

@@ -1,4 +1,4 @@
-<div class="hn top-bar w-screen top-0 z-1 {{@class}}" {{did-insert this.setupIntercomListener}}>
+<div class="hn top-bar w-screen top-0 z-1 {{@class}}" {{did-insert this.getUnreadConversationCount}}>
   <div class="action-container">
     {{#if @userSignUpFlow }}
       <button type="button" class="action left back">
@@ -15,12 +15,14 @@
         {{!-- <img src="/assets/icons/less-than.svg" class="prev"/> --}}
       </button>
     {{else}}
-      <button type="button" class="action right">
-      <div class="hn-notification-count">
-        <span>{{this.unreadConversationCount}}</span>
-      </div>
-      <img src="/assets/icons/message-two.svg" alt="hamburger menu"/>      
-    </button>
+      <button type="button" class="action right" {{on 'click' this.showIntercom}}>
+        {{#if (gt this.unreadConversationCount 0)}}
+          <div class="hn-notification-count">
+            <span>{{this.unreadConversationCount}}</span>
+          </div>
+        {{/if}}
+        <img src="/assets/icons/message.svg" alt="messener"/>      
+      </button>
     {{/if}}    
   </div>
 </div>
