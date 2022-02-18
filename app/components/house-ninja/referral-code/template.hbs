@@ -1,0 +1,21 @@
+<div class="hn-referral-code">
+    <div class="hn-column left">
+        <span class="hn label">
+            2 Free Months
+        </span>
+        <span>
+            When someone signs up using your referral code
+        </span>
+    </div>
+    <div class="hn-separator"/>
+    <div class="hn-column right">
+        <Primitive::Button @variant={{'floating'}} {{on 'click' this.handleClick}}>
+            <span>                
+                Share
+            </span>
+            <span>
+                {{this.promoCode}}
+            </span>
+        </Primitive::Button>        
+    </div>
+</div>

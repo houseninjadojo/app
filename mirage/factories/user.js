@@ -1,11 +1,11 @@
-import { Factory } from 'miragejs';
+import { Factory, association } from 'miragejs';
 import faker from '@faker-js/faker';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import ENV from 'houseninja/config/environment';
 import getPlatform from 'houseninja/utils/get-platform';
 
 export default Factory.extend({
-  // properties: association(),
+  promoCode: association(),
 
   email() {
     return faker.internet.email();
