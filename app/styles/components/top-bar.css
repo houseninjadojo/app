@@ -65,7 +65,8 @@
 }
 
 .hn-notification-count span {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   line-height: 19px;
   font-family: var(--campton-strong);
   font-size: 14px;
