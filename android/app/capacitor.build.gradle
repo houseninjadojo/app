@@ -20,6 +20,7 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-local-notifications')
     implementation project(':capacitor-push-notifications')
+    implementation project(':capacitor-share')
     implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
