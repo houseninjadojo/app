@@ -7,7 +7,7 @@
             <p class="hn label">Password Requirements</p>
             <ul>
                 <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{this.requirementsModel.passwordsMatch}} />
-                <View::AccountSettings::Security::PasswordReq @requirement="At least 12 characters long" @reqPassed={{this.requirementsModel.atLeastThisLong}}/>
+                <View::AccountSettings::Security::PasswordReq @requirement="At least 8 characters long" @reqPassed={{this.requirementsModel.atLeastThisLong}}/>
                 <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{this.requirementsModel.hasLowercase}}/>
                 <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{this.requirementsModel.hasUppercase}}/>
                 <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{this.requirementsModel.hasNumber}}/>
