@@ -29,7 +29,7 @@
             @semantic='outline'
             {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
         >
-            View House Ninja Inc. Limited Warranty
+            {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
         </Primitive::Button>
             <div class='agreement'>
                 <Input
@@ -39,7 +39,7 @@
                     name="terms"
                     disabled={{true}}
                 />
-                <span for="terms">I have read and agree to the Terms and Conditions Agreement</span>
+                <span for="terms">I have read and agree to House Ninja Inc’s limited warranty.</span>
             </div>
             
         </div>
@@ -59,7 +59,7 @@
             @disabled={{this.shallNotPass}}
             {{on 'click' this.savePaymentMethod}}
         >
-            Subscribe
+            Join
         </Primitive::Button>
     </div>
     {{#if this.showTermsAndConditions}}
