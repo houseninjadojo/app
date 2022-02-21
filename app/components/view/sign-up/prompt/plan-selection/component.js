@@ -23,6 +23,6 @@ export default class PlanSelectionComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.plan-contact-info');
+    this.router.transitionTo('signup.contact-info');
   }
 }
