@@ -24,22 +24,8 @@
 
 .hn.btn.outline {
   background-color: var(--white);
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
-
-  /* border: 2px solid var(--transparent); */
-}
-
-.hn.btn.outline.sm {
-  height: var(--btn-sm);
-}
-
-.hn.btn.outline.md {
-  height: var(--btn-md);
-}
-
-.hn.btn.outline.lg {
-  height: var(--btn-lg);
 }
 
 .hn.btn.floating {
@@ -55,11 +41,15 @@
   color: var(--white);
 }
 
-.hn.btn.hn.btn.solid.primary .icon {
-  filter: invert(93%) sepia(100%) saturate(28%) hue-rotate(54deg) brightness(106%) contrast(109%);
+.hn.btn.hn.btn.solid.primary .icon,
+.hn.btn.hn.btn.outline.primary .icon {
   height: 24px;
   margin-left: 16px;
   margin-bottom: 2px;
+}
+
+.hn.btn.hn.btn.solid.primary .icon {
+  filter: invert(93%) sepia(100%) saturate(28%) hue-rotate(54deg) brightness(106%) contrast(109%);
 }
 
 .hn.btn.outline.primary {

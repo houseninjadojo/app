@@ -86,7 +86,7 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.contact-info');
+    this.router.transitionTo('signup.plan-selection');
   }
 
   @action showTermsAndConditionsComponent(isVisible) {
@@ -172,7 +172,7 @@ export default class PaymentMethodComponent extends Component {
 
       await subscription.save();
 
-      this.router.transitionTo('signup.set-password');
+      this.router.transitionTo('signup.welcome');
     } catch (e) {
       debug(e);
       Sentry.captureException(e);

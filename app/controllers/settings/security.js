@@ -27,7 +27,7 @@ export default class SettingsSecurityController extends Controller {
       passwordsMatch:
         this.passwords.newPassword &&
         this.passwords.newPassword === this.passwords.confirmPassword,
-      atLeastThisLong: this.passwords.newPassword.length >= 12,
+      atLeastThisLong: this.passwords.newPassword.length >= 8,
       hasLowercase: /[a-z]/.test(this.passwords.newPassword),
       hasUppercase: /[A-Z]/.test(this.passwords.newPassword),
       hasNumber: /\d/.test(this.passwords.newPassword),

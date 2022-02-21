@@ -82,7 +82,7 @@ export default class ContactInfoComponent extends Component {
     }
     try {
       await user.save();
-      this.router.transitionTo('signup.payment-method');
+      this.router.transitionTo('signup.plan-selection');
     } catch (e) {
       debug(e);
       Sentry.captureException(e);
@@ -91,7 +91,7 @@ export default class ContactInfoComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.plan-selection');
+    this.router.transitionTo('signup.service-area');
   }
 
   @action

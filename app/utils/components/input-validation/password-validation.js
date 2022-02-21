@@ -6,7 +6,7 @@ export function passwordValidation(fields) {
   return {
     passwordsMatch:
       password && passwordConfirmation && password === passwordConfirmation,
-    atLeastThisLong: password.length >= 12,
+    atLeastThisLong: password.length >= 8,
     hasLowercase: /[a-z]/.test(password),
     hasUppercase: /[A-Z]/.test(password),
     hasNumber: /\d/.test(password),
