@@ -314,12 +314,14 @@
     padding: 64px 32px;
   }
 
+  .sign-up-module .view .content.confirmed-booking {
+    border-radius: 8px;
+  }
+
   .sign-up-module .view .content.landscape {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-    /* align-items: center; */
   }
 
   .hn.breadcrumbs {
