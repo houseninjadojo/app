@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { debug } from '@ember/debug';
+import { Intercom } from '@capacitor-community/intercom';
 
 export default class NavBarComponent extends Component {
-  @service intercom;
   @service router;
 
   /**
@@ -25,9 +25,9 @@ export default class NavBarComponent extends Component {
   }
 
   @action
-  openChatModal() {
+  async openChatModal() {
     debug('Open Chat');
-    this.intercom.show();
+    await Intercom.displayMessageComposer({ message: 'Help me with ' });
   }
 
   @action

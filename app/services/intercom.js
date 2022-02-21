@@ -14,8 +14,8 @@ export default class IntercomService extends Service {
   async setup() {
     // hide launcher on mobile devices
     if (isNativePlatform()) {
-      await Intercom.hideLauncher();
       await Intercom.hideInAppMessages();
+      await Intercom.hideLauncher();
     }
   }
 
