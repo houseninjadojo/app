@@ -1,19 +1,13 @@
 <div class="hn top-bar w-screen top-0 z-1 {{@class}}" {{did-insert this.getUnreadConversationCount}}>
   <div class="action-container">
-    {{#if @userSignUpFlow }}
-      <button type="button" class="action left back">
-        {{!-- <img src="/assets/icons/less-than.svg" class="prev"/> --}}
-      </button>
+    {{#if @userSignUpFlow }}      
     {{else}}
       <button type="button" class="action" {{on 'click' this.toggleSettingsViewVisibility}}>
         <img src="/assets/icons/hamboyga.svg" alt="hamburger menu"/>
       </button>
     {{/if}}
     <img src="/assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>
-    {{#if @userSignUpFlow }}
-      <button type="button" class="action left back">
-        {{!-- <img src="/assets/icons/less-than.svg" class="prev"/> --}}
-      </button>
+    {{#if @userSignUpFlow }}      
     {{else}}
       <button type="button" class="action right" {{on 'click' this.showIntercom}}>
         {{#if (gt this.unreadConversationCount 0)}}
