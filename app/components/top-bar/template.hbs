@@ -19,4 +19,7 @@
       </button>
     {{/if}}    
   </div>
+  {{#if this.isLoading}}
+    <Primitive::Loader::Global />
+  {{/if}}
 </div>

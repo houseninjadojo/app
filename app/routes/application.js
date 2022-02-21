@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { instrumentRoutePerformance } from '@sentry/ember';
+import { action, set } from '@ember/object';
+import { getOwner } from '@ember/application';
 
 class ApplicationRoute extends Route {
   @service analytics;
@@ -48,6 +50,27 @@ class ApplicationRoute extends Route {
     await this.analytics.track('click', {
       selector: queryString,
     });
+  }
+
+  @action
+  loading(transition) {
+    this._showGlobalLoadingIndicator(transition);
+  }
+
+  _showGlobalLoadingIndicator(transition) {
+    let applicationController = getOwner(this).lookup('controller:application');
+
+    if (!applicationController) {
+      return;
+    }
+
+    set(applicationController, 'isLoading', true);
+
+    transition.promise.finally(() => {
+      set(applicationController, 'isLoading', false);
+    });
+
+    return true;
   }
 }
 
