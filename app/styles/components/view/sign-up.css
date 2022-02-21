@@ -303,39 +303,33 @@
   font-size: 22px;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-height: 768px) {
   .sign-up-module .view .content {
     /* height: 80%; */
     min-width: 600px;
+    height: unset;
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 64px 32px;
   }
 
   .sign-up-module .view .content.landscape {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+
+    /* align-items: center; */
   }
 
-  @media (min-height: 768px) {
-    .hn.breadcrumbs {
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
+  .hn.breadcrumbs {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
 
-    .sign-up-module .view .content {
-      height: unset;
-      justify-content: center;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-
-    .sign-up-module .view .wrapper .constraint .position {
-      height: calc(100%);
-      justify-content: center;
-    }
-
-    .sign-up-module .view .content.landscape {
-      align-items: center;
-    }
+  .sign-up-module .view .wrapper .constraint .position {
+    height: calc(100%);
+    justify-content: center;
   }
 
   .hn.breadcrumbs .trail .crumb .label {
