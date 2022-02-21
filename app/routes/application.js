@@ -12,6 +12,7 @@ class ApplicationRoute extends Route {
 
   constructor() {
     super(...arguments);
+    this.intercom.setup();
 
     this.router.on('routeDidChange', async () => {
       await this._trackPage();
@@ -24,7 +25,6 @@ class ApplicationRoute extends Route {
 
   async beforeModel() {
     await this.session.setup();
-    await this.intercom.setup();
     await this.analytics.setup();
     await this.analytics.track('application_started');
   }
