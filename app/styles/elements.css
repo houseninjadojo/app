@@ -14,7 +14,7 @@
   font-size: 17px;
 }
 
-.hn.label.center {
+.hn.center {
   text-align: center;
 }
 
@@ -29,4 +29,25 @@
 .application .light a,
 .application .dark a {
   color: var(--blue-400);
+}
+
+h1.hn {
+  font-size: 24px;
+  font-family: var(--campton-strong);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+ol li {
+  margin-bottom: 16px;
+}
+
+ol li ol {
+  margin-left: 16px;
+}
+
+ol li ol li {
+  list-style-type: lower-alpha;
 }

@@ -77,16 +77,11 @@ export default class SetPasswordComponent extends Component {
       user.password = this.passwords.password;
       try {
         await user.save();
-        this.router.transitionTo('signup.welcome');
+        this.router.transitionTo('signup.booking-confirmation');
       } catch (e) {
         debug(e);
         Sentry.captureException(e);
       }
     }
-  }
-
-  @action
-  goBack() {
-    this.router.transitionTo('signup.payment-method');
   }
 }

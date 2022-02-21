@@ -6,11 +6,14 @@
             <span class="label">{{plan.name}}</span>
             <span class="billing">${{plan.price}} / {{plan.interval}}</span>
             <span class="perk">{{plan.perk}}</span>
+            {{#if (eq plan.name 'Annual')}}
+                <span class="most-popular">most popular</span>            
+            {{/if}}
         </div>
         <div class="column right">
             <Primitive::Button
-                @size='md'
-                @variant='solid'
+                @size='lg'
+                @variant='{{if (eq plan.name 'Annual') 'solid' 'outline'}}'
                 @semantic='primary'
                 {{on 'click' (fn @selectPlan plan.id)}}
             >
