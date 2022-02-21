@@ -1,14 +1,10 @@
 <div class="content" {{did-insert this.throwConfetti}}>
     <div class="hero">
-        <img src="/assets/images/andrew-neel-o93echtXf84-unsplash.jpg" class="view-hero crop filter-brighten" alt="welcome"/>
-        <span>Let’s book your home walkthrough with your personal House Ninja (who will carefully evaluate inside and outside your home using our 88-point checklist).</span>
+        <img src="/assets/images/iStock-1081952636.jpg" class="view-hero" alt="welcome"/>
+        <p class="hn strong">Welcome to House Ninja!</p>
     </div>
     <div class="prompt">
-        <p class="primary">To setup your walkthrough we’ll just need to...</p>
-        <ol>
-            <li>Add your home address to your Home Profile</li>
-            <li>Schedule your walkthrough</li>
-        </ol>
+        <span>Let’s book your 60-minute home walkthrough with your personal House Ninja team. They will carefully evaluate the inside and outside of your home and create a plan for handling any work you want performed around your property.</span>
     </div>
     <div class="action single">
         <Primitive::Button
@@ -17,7 +13,7 @@
             @semantic='primary'
             {{on 'click' this.nextStep}}
         >
-            Add my home address <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            Step 1: Add my home address <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>
     </div>
 </div>
