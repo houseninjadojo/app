@@ -1,6 +1,6 @@
 export default {
   serviceArea: ['Service Area'],
-  signUp: ['My Plan', 'Tell Us About Yourself', 'Payment'],
+  signUp: ['Tell Us About Yourself', 'My Plan', 'Payment'],
   password: ['Set Password'],
-  walkthrough: ['Schedule Walkthrough', 'Home Address', 'Scheduling'],
+  walkthrough: ['Home Address', 'Schedule Walkthrough'],
 };

@@ -25,15 +25,7 @@
         {{/if}}
         {{/each}}
     </div>
-    <div class="action">
-        <Primitive::Button
-            @size='lg'
-            @variant='outline'
-            @semantic='primary'
-            {{on 'click' this.goBack}}
-        >
-            Previous
-        </Primitive::Button>
+    <div class="action single">        
         <Primitive::Button
             @size='lg'
             @variant='solid'
@@ -41,7 +33,7 @@
             @disabled={{this.formIsInvalid}}
             {{on 'click' this.savePropertyInfo}}
         >
-            Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            Next: Book My Walkthrough <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>
     </div>
 </div>

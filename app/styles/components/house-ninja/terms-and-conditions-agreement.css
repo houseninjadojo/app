@@ -30,6 +30,19 @@
   overflow-y: scroll;
 }
 
+.hn .terms-and-conditions-agreement .hn-container .agreement-container .words * {
+  font-family: serif !important;
+}
+
+.hn .terms-and-conditions-agreement .hn-container .agreement-container .words .hn.label {
+  font-weight: 600;
+}
+
+.hn .terms-and-conditions-agreement .hn-container .agreement-container .words .hn.label p,
+.hn .terms-and-conditions-agreement .hn-container .agreement-container .words .hn.label ol li {
+  font-weight: 400;
+}
+
 .hn .terms-and-conditions-agreement .hn-container .agreement-prompt-container {
   display: flex;
   flex-direction: column;

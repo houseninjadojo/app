@@ -22,12 +22,7 @@ export default class WalkthroughBookingComponent extends Component {
 
   @action
   async saveWalkthroughBooking() {
-    this.router.transitionTo('signup.booking-confirmation');
-  }
-
-  @action
-  goBack() {
-    this.router.transitionTo('signup.property-info');
+    this.router.transitionTo('signup.set-password');
   }
 
   receiveWindowMessage(event) {
@@ -40,7 +35,7 @@ export default class WalkthroughBookingComponent extends Component {
   }
 
   onMeetingBooked() {
-    this.router.transitionTo('signup.booking-confirmation');
+    this.router.transitionTo('signup.set-password');
   }
 
   /* eslint-disable */
