@@ -1,23 +1,26 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "splash-2732x2732-2.png",
+      "filename" : "logo+white+teal.png",
+      "idiom" : "iphone",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "splash-2732x2732-1.png",
+      "filename" : "logo+white+teal-1.png",
+      "idiom" : "iphone",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "splash-2732x2732.png",
+      "filename" : "logo+white+teal-2.png",
+      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

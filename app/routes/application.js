@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { instrumentRoutePerformance } from '@sentry/ember';
-import { action, set } from '@ember/object';
-import { getOwner } from '@ember/application';
+import { action } from '@ember/object';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 class ApplicationRoute extends Route {
   @service analytics;
@@ -10,12 +11,15 @@ class ApplicationRoute extends Route {
   @service intercom;
   @service session;
   @service router;
+  @service loader;
+
   @service('ember-user-activity@user-activity') userActivity;
 
   constructor() {
     super(...arguments);
-    this.intercom.setup();
-
+    if (isNativePlatform) {
+      SplashScreen.show({ fadeInDuration: 0 });
+    }
     this.router.on('routeDidChange', async () => {
       await this._trackPage();
     });
@@ -26,6 +30,7 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.analytics.track('application_started');
@@ -54,23 +59,7 @@ class ApplicationRoute extends Route {
 
   @action
   loading(transition) {
-    this._showGlobalLoadingIndicator(transition);
-  }
-
-  _showGlobalLoadingIndicator(transition) {
-    let applicationController = getOwner(this).lookup('controller:application');
-
-    if (!applicationController) {
-      return;
-    }
-
-    set(applicationController, 'isLoading', true);
-
-    transition.promise.finally(() => {
-      set(applicationController, 'isLoading', false);
-    });
-
-    return true;
+    this.loader.showGlobalLoadingIndicator(transition);
   }
 }
 

@@ -32,7 +32,9 @@ const server = {
 
 const plugins = {
   SplashScreen: {
-    launchShowDuration: 0,
+    launchShowDuration: 3000,
+    launchAutoHide: false,
+    backgroundColor: '#000000',
   },
   Keyboard: {
     resize: 'body',
