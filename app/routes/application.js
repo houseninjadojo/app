@@ -19,7 +19,6 @@ class ApplicationRoute extends Route {
     super(...arguments);
     if (isNativePlatform) {
       SplashScreen.show({ fadeInDuration: 0 });
-      this.intercom.setup();
     }
     this.router.on('routeDidChange', async () => {
       await this._trackPage();
@@ -31,6 +30,7 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
     await this.analytics.track('application_started');
