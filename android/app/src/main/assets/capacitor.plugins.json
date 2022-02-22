@@ -48,6 +48,10 @@
 		"classpath": "com.capacitorjs.plugins.share.SharePlugin"
 	},
 	{
+		"pkg": "@capacitor/splash-screen",
+		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
+	},
+	{
 		"pkg": "@houseninja/capacitor-mixpanel",
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
