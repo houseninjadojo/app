@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-// import { SplashScreen } from '@capacitor/splash-screen';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 class ApplicationRoute extends Route {
   @service analytics;
@@ -18,9 +18,9 @@ class ApplicationRoute extends Route {
   constructor() {
     super(...arguments);
     if (isNativePlatform) {
-      // SplashScreen.show();
+      SplashScreen.show({ fadeInDuration: 0 });
+      this.intercom.setup();
     }
-    this.intercom.setup();
     this.router.on('routeDidChange', async () => {
       await this._trackPage();
     });
