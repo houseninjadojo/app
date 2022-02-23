@@ -54,7 +54,7 @@ export default class SettingsContactController extends Controller {
   ];
 
   @action
-  resetInputs() {
+  reset() {
     this.contactInfo.firstName = this.model.firstName;
     this.contactInfo.lastName = this.model.lastName;
     this.contactInfo.phoneNumber = this.model.phoneNumber;
