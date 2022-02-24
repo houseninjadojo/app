@@ -1,0 +1,7 @@
+.hn.document-vault {
+  width: 100%;
+}
+
+.hn.document-vault .filled ul.record-list li .record {
+  flex-direction: row;
+}

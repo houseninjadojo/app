@@ -1,6 +1,6 @@
 {{#each @records as |record|}}
     <div class="filled">
-        <ul class="service-activity-list">
+        <ul class="record-list">
                 <li>
                     <button type="button" class='record'>
                         <p class="timestamp">
@@ -11,12 +11,14 @@
                                 {{record.scheduledDate}}
                             </span>
                         </p>
-                        <p class="name">
-                            {{record.description}}
-                        </p>
-                        <p class="description">
-                            {{record.vendor}}
-                        </p>
+                        <div class="details">
+                            <p class="name">
+                                {{record.description}}
+                            </p>
+                            <p class="description">
+                                {{record.vendor}}
+                            </p>
+                        </div>
                     </button>
                 </li>
         </ul>

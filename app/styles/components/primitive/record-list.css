@@ -1,0 +1,45 @@
+.filled ul.record-list li .record {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  border-bottom: 1px solid var(--gray-100);
+  padding: 8px 4px;
+}
+
+.filled ul.record-list li .record .timestamp {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+  font-size: 15px;
+  color: var(--gray-600);
+}
+
+.filled ul.record-list li .record .icon {
+  margin-right: 16px;
+}
+
+.filled ul.record-list li .record .details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 100%;
+}
+
+.filled ul.record-list li .record .name {
+  margin-bottom: 0;
+  font-size: 17px;
+  font-family: var(--campton-strong);
+  color: var(--gray-900);
+}
+
+.filled ul.record-list li .record .description {
+  font-size: 15px;
+  color: var(--gray-600);
+}
+
+.empty p {
+  text-align: center;
+  padding: 16px 0;
+}
