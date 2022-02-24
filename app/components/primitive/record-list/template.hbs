@@ -1,0 +1,49 @@
+{{#each @records as |record|}}
+  <div class='filled'>
+    <ul class='record-list'>
+      <li>
+        <button type='button' class='record'>
+          {{#if @showIcon}}
+            {{#if record.iconUri}}
+              <span class='icon'>
+                <img src={{record.iconUri}} alt={{record.type}} />
+              </span>
+            {{/if}}
+          {{/if}}
+          {{#if @showTimestamp}}
+            <p class='timestamp'>
+              {{#if record.scheduledTime}}
+                <span>
+                  {{record.scheduledTime}}
+                </span>
+              {{/if}}
+              <span>
+                {{record.scheduledDate}}
+              </span>
+            </p>
+          {{/if}}
+          <div class='details'>
+            <p class='name'>
+              {{record.name}}
+            </p>
+            <p class='description'>
+              {{record.description}}
+            </p>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </div>
+{{else}}
+  <div class='empty'>
+    <p>{{@ifEmpty.message}}</p>
+    <Primitive::Button
+      @type='button'
+      @size='sm'
+      @variant='outline'
+      @semantic='primary'
+    >
+      {{@ifEmpty.action}}
+    </Primitive::Button>
+  </div>
+{{/each}}

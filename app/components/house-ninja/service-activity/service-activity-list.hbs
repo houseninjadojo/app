@@ -1,28 +1,9 @@
-{{#each @records as |record|}}
-    <div class="filled">
-        <ul class="record-list">
-                <li>
-                    <button type="button" class='record'>
-                        <p class="timestamp">
-                            <span>
-                                {{record.scheduledTime}}
-                            </span>
-                            <span>
-                                {{record.scheduledDate}}
-                            </span>
-                        </p>
-                        <div class="details">
-                            <p class="name">
-                                {{record.description}}
-                            </p>
-                            <p class="description">
-                                {{record.vendor}}
-                            </p>
-                        </div>
-                    </button>
-                </li>
-        </ul>
-    </div>
-{{else}}
-    <HouseNinja::ServiceActivity::NoUpcomingService />
-{{/each}}
+<Primitive::RecordList
+  @showTimestamp={{true}}
+  @showIcon={{false}}
+  @records={{@records}}
+  @ifEmpty={{hash
+    message='You have no service activity'
+    action='Request Service'
+  }}
+/>
