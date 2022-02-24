@@ -94,12 +94,24 @@ export default class VaultContentComponent extends Component {
   }
 
   @action
-  selectRoute(routeName) {
-    if (typeof routeName === 'string') {
-      this.router.transitionTo(routeName);
+  selectRoute(route) {
+    if (route === 'vault.group.new') {
+      this.router.transitionTo(route);
     }
-    if (typeof routeName === 'object') {
-      console.log(routeName);
+    if (route === 'vault.upload') {
+      this.router.transitionTo(route);
+    }
+    if (typeof route === 'object') {
+      if (route.type === 'group') {
+        this.router.transitionTo(`vault.group`, route.id);
+      } else {
+        this.router.transitionTo();
+      }
+      if (route.type !== 'group') {
+        // view file
+        console.log(route);
+        this.router.transitionTo(`vault.document`, route.id);
+      }
     }
   }
 }
