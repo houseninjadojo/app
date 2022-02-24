@@ -13,10 +13,12 @@ export default class HandleItComponent extends Component {
 
   workOrders = this.args.workOrders.map((w) => {
     return {
+      id: w.id,
       name: w.description,
       description: w.vendor,
       scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
+      ...w,
     };
   });
 }

@@ -14,6 +14,20 @@ export default class VaultContentComponent extends Component {
       iconUri: '/assets/icons/hamboyga.svg',
     },
     {
+      id: 'warranty',
+      name: 'Home Warranty',
+      description: 'Home warranty documents',
+      type: 'group',
+      iconUri: '/assets/icons/hamboyga.svg',
+    },
+    {
+      id: 'inspection',
+      name: 'Home Inspection Reports',
+      description: 'Home inspections',
+      type: 'group',
+      iconUri: '/assets/icons/hamboyga.svg',
+    },
+    {
       id: 'manuals',
       name: 'Manuals',
       description: 'Appliance manuals',
@@ -40,6 +54,11 @@ export default class VaultContentComponent extends Component {
 
   @action
   selectRoute(routeName) {
-    this.router.transitionTo(routeName);
+    if (typeof routeName === 'string') {
+      this.router.transitionTo(routeName);
+    }
+    if (typeof routeName === 'object') {
+      console.log(routeName);
+    }
   }
 }

@@ -2,7 +2,7 @@
   <div class='filled'>
     <ul class='record-list'>
       <li>
-        <button type='button' class='record'>
+        <button type='button' class='record' {{on 'click' (fn @onRecordClick record)}}>
           {{#if @showIcon}}
             {{#if record.iconUri}}
               <span class='icon'>

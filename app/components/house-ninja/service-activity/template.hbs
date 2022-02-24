@@ -1,5 +1,8 @@
-<div class="hn service-activity">
-    <Primitive::TabbedContent @tabbedContentTabs={{@tabs}}>
-        <HouseNinja::ServiceActivity::ServiceActivityList @records={{@workOrders}} />        
-    </Primitive::TabbedContent>
+<div class='hn service-activity'>
+  <Primitive::TabbedContent @tabbedContentTabs={{@tabs}}>
+    <HouseNinja::ServiceActivity::ServiceActivityList
+      @records={{@workOrders}}
+      @onRecordClick={{this.selectRoute}}
+    />
+  </Primitive::TabbedContent>
 </div>

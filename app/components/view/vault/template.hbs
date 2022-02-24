@@ -6,9 +6,9 @@
         Upload
     </Primitive::Button>
     <Primitive::Section @label="Categories">
-        <HouseNinja::DocumentVault @records={{this.groups}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
+        <HouseNinja::DocumentVault @records={{this.groups}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
     </Primitive::Section>
     <Primitive::Section @label="Uncategorized">
-        <HouseNinja::DocumentVault @records={{this.documents}} @ifEmpty={{hash message="You have not uncategorized documents." action="Upload Document"}} />
+        <HouseNinja::DocumentVault @records={{this.documents}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not uncategorized documents." action="Upload Document"}} />
     </Primitive::Section>    
 </div>

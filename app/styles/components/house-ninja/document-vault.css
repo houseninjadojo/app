@@ -4,4 +4,5 @@
 
 .hn.document-vault .filled ul.record-list li .record {
   flex-direction: row;
+  align-items: center;
 }
