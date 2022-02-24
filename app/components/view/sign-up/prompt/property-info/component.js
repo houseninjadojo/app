@@ -56,7 +56,7 @@ export default class PropertyInfoComponent extends Component {
       value: 'TX',
     },
     {
-      type: 'number',
+      // type: 'number',
       id: 'zipcode',
       required: true,
       label: 'Zipcode',
