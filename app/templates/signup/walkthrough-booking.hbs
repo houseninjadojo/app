@@ -1,10 +1,12 @@
 {{page-title "Sign Up - Walkthrough Booking"}}
-<div class="position">  
+<div class="position">
   <View::SignUp::Breadcrumbs
       @breadcrumbs={{this.breadcrumbs}}
       @activeIndex={{1}}
   />
   <View::SignUp::Prompt::WalkthroughBooking
-    @calendarUrl={{this.model.calendarUrl}}
+    @calendarUrl={{this.model.serviceArea.calendarUrl}}
+    @property={{this.model.property}}
+    @user={{this.model.user}}
   />
 </div>

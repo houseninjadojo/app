@@ -38,6 +38,28 @@ export default class WalkthroughBookingComponent extends Component {
     this.router.transitionTo('signup.set-password');
   }
 
+  get calendarParams() {
+    const params = {
+      firstName: this.args.user.firstName,
+      lastName: this.args.user.lastName,
+      email: this.args.user.email,
+      address: this.args.property.streetAddress1,
+      address_2: this.args.property.streetAddress2,
+      city: 'Austin', // this.args.property.city,
+      state_new: 'Texas', // this.args.property.state,
+      zip: this.args.property.zipcode,
+    };
+    return Object.entries(params)
+      .map((entry) => {
+        return entry[0] ? `${entry[0]}=${entry[1] ? entry[1] : ''}` : '';
+      })
+      .join('&');
+  }
+
+  get prepopulatedCalendarUrl() {
+    return `${this.args.calendarUrl}&${this.calendarParams}`;
+  }
+
   /* eslint-disable */
   _injectScript() {
     !function(){
