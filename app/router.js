@@ -40,4 +40,17 @@ Router.map(function () {
   });
   this.route('contact-us');
   this.route('faq');
+  this.route('vault', function () {
+    this.route('upload');
+    this.route('document', function () {
+      this.route('document', { path: '/document/:doc_id' });
+      this.route('edit', { path: '/vault/document/edit/:doc_id' });
+    });
+
+    this.route('group', function () {
+      this.route('new', { path: '/group/new' });
+      this.route('group', { path: '/group/:group_id' });
+      this.route('edit', { path: '/vault/group/edit/:group_id' });
+    });
+  });
 });
