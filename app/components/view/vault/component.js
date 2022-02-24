@@ -5,37 +5,48 @@ import { action } from '@ember/object';
 export default class VaultContentComponent extends Component {
   @service router;
 
-  groups = [
+  groupStub = [
     {
       id: 'insurance',
       name: 'Insurance',
       description: 'Home insurance documents',
       type: 'group',
-      iconUri: '/assets/icons/hamboyga.svg',
+      iconUri: this.getIconUri('group'),
     },
     {
       id: 'warranty',
       name: 'Home Warranty',
       description: 'Home warranty documents',
       type: 'group',
-      iconUri: '/assets/icons/hamboyga.svg',
+      iconUri: this.getIconUri('group'),
     },
     {
       id: 'inspection',
       name: 'Home Inspection Reports',
       description: 'Home inspections',
       type: 'group',
-      iconUri: '/assets/icons/hamboyga.svg',
+      iconUri: this.getIconUri('group'),
     },
     {
       id: 'manuals',
       name: 'Manuals',
       description: 'Appliance manuals',
       type: 'group',
-      iconUri: '/assets/icons/hamboyga.svg',
+      iconUri: this.getIconUri('group'),
     },
   ];
-  documents = [
+
+  groups = this.groupStub.map((g) => {
+    return {
+      id: g.id,
+      name: g.name,
+      description: g.description,
+      type: g.type,
+      iconUri: this.getIconUri(g.type),
+    };
+  });
+
+  documentStub = [
     {
       id: 'asdf',
       name: 'asdfasdf.png',
@@ -51,6 +62,36 @@ export default class VaultContentComponent extends Component {
       iconUri: '/assets/icons/hamboyga.svg',
     },
   ];
+
+  documents = this.documentStub.map((g) => {
+    return {
+      id: g.id,
+      name: g.name,
+      description: g.description,
+      type: g.type,
+      iconUri: this.getIconUri(g.type),
+    };
+  });
+
+  getIconUri(type) {
+    const PATH = '/assets/icons';
+    switch (type) {
+      case 'group':
+        return `${PATH}/folder.svg`;
+      case 'pdf':
+        return `${PATH}/pdf.svg`;
+      case 'png':
+        return `${PATH}/image.svg`;
+      case 'jpg':
+        return `${PATH}/image.svg`;
+      case 'heic':
+        return `${PATH}/image.svg`;
+      case 'zip':
+        return `${PATH}/zip.svg`;
+      default:
+        return `${PATH}/`;
+    }
+  }
 
   @action
   selectRoute(routeName) {
