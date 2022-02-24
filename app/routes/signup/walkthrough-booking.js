@@ -5,6 +5,8 @@ export default class SignupWalkthroughBookingRoute extends Route {
   @service store;
 
   async model() {
-    return this.store.peekAll('service-area').get('firstObject');
+    // @todo
+    // we are doing this while we only have 1 service area
+    return this.store.findAll('service-area').get('firstObject');
   }
 }
