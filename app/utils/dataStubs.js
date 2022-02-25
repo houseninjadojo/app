@@ -12,7 +12,7 @@ export const vault = {
   documentStub: [
     {
       id: faker.datatype.uuid(),
-      name: faker.lorem.words(2),
+      name: 'home insurance',
       description: faker.lorem.sentence(4),
       type: 'png',
       uri: '/assets/demo/insurance.png',
@@ -21,7 +21,7 @@ export const vault = {
     },
     {
       id: faker.datatype.uuid(),
-      name: faker.lorem.words(2),
+      name: 'home inspection',
       description: faker.lorem.sentence(4),
       type: 'pdf',
       uri: '/assets/demo/inspection.pdf',
@@ -30,7 +30,7 @@ export const vault = {
     },
     {
       id: faker.datatype.uuid(),
-      name: faker.lorem.words(2),
+      name: 'home warranty',
       description: faker.lorem.sentence(4),
       type: 'jpg',
       uri: '/assets/demo/warranty.jpg',
@@ -39,7 +39,7 @@ export const vault = {
     },
     {
       id: faker.datatype.uuid(),
-      name: faker.lorem.words(2),
+      name: 'major home appliances manual',
       description: faker.lorem.sentence(4),
       type: 'pdf',
       uri: '/assets/demo/manual.pdf',
@@ -48,7 +48,7 @@ export const vault = {
     },
     {
       id: faker.datatype.uuid(),
-      name: faker.lorem.words(2),
+      name: 'paint colors',
       description: faker.lorem.sentence(4),
       type: 'jpg',
       uri: '/assets/demo/paint-colors.jpg',
