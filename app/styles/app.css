@@ -21,6 +21,11 @@
   src: url("fonts/Campton-Book.otf");
 }
 
+@font-face {
+  font-family: Campton-Bold;
+  src: url("fonts/Campton-Bold.otf");
+}
+
 html * {
   font-family: var(--campton-default);
   -webkit-touch-callout: none; /* iOS Safari */
