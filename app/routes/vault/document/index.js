@@ -1,7 +1,5 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { Browser } from '@capacitor/browser';
-import ENV from 'houseninja/config/environment';
 import { vault } from 'houseninja/utils/dataStubs';
 
 export default class VaultDocumentIndexRoute extends Route {
@@ -16,14 +14,6 @@ export default class VaultDocumentIndexRoute extends Route {
     if (group) {
       model['groupName'] = group.name;
     }
-
-    //isImage
-    Browser.open({
-      windowName: model.name || model.uri,
-      // url: model.uri,
-      url: `${ENV.appHost}/${model.uri}`,
-      presentationStyle: 'popover',
-    });
 
     return model;
   }
