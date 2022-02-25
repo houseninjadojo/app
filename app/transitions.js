@@ -7,6 +7,13 @@ export default function () {
   );
 
   this.transition(
+    this.fromRoute(['settings']),
+    this.toRoute('vault'),
+    this.use('toLeft', { duration: 500, easing: [100, 20] }),
+    this.reverse('toRight', { duration: 300 })
+  );
+
+  this.transition(
     this.toRoute([
       'settings.contact',
       'settings.payment',

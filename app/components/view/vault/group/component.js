@@ -20,14 +20,11 @@ export default class VaultGroupComponent extends Component {
     }
     if (route === 'vault.group.edit') {
       // edit group
-      console.log(route);
-      console.log(this.args.model);
       this.router.transitionTo(route, this.args.model.id);
     }
     if (typeof route === 'object') {
       if (route.type !== 'group') {
         // view file
-        console.log(route);
         this.router.transitionTo(`vault.document`, route.id);
       }
     }

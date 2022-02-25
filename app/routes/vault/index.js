@@ -13,12 +13,18 @@ export default class VaultGroupIndexRoute extends Route {
     };
   });
 
-  model(params) {
-    const model = vault.groupStub.filter((g) => g.id === params.group_id)[0];
-    model['documents'] = this.documents.filter((d) => {
-      return d.groupId === params.group_id;
-    });
+  groups = vault.groupStub.map((g) => {
+    return {
+      ...g,
+      iconUri: getIconUri(g.type),
+    };
+  });
 
+  model() {
+    const model = {
+      groups: this.groups,
+      documents: this.documents.filter((d) => !d.groupId),
+    };
     return model;
   }
 }

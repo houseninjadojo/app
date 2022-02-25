@@ -8,9 +8,9 @@
         </Primitive::Button>
     </div>
     <Primitive::Section @label="Categories">
-        <HouseNinja::DocumentVaultRecords @records={{this.groups}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
+        <HouseNinja::DocumentVaultRecords @records={{@model.groups}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
     </Primitive::Section>
     <Primitive::Section @label="Uncategorized">
-        <HouseNinja::DocumentVaultRecords @records={{this.documents}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have no uncategorized documents." action="Upload Document"}} />
+        <HouseNinja::DocumentVaultRecords @records={{@model.documents}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have no uncategorized documents." action="Upload Document"}} />
     </Primitive::Section>    
 </div>

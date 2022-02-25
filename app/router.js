@@ -41,6 +41,7 @@ Router.map(function () {
   this.route('contact-us');
   this.route('faq');
   this.route('vault', function () {
+    this.route('index', { path: '/' });
     this.route('upload');
     this.route('document', function () {
       this.route('index', { path: '/:doc_id' });
