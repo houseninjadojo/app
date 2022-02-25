@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
-
+import { service } from '@ember/service';
+import { action } from '@ember/object';
 export default class HandleItComponent extends Component {
+  @service router;
+
   tabs = [
     {
       label: 'Open Work Orders',
@@ -21,4 +24,9 @@ export default class HandleItComponent extends Component {
       ...w,
     };
   });
+
+  @action
+  selectRoute(routeName) {
+    this.router.transitionTo(routeName);
+  }
 }
