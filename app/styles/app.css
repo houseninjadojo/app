@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "./variables.css";
 @import "./elements.css";
+@import "./utilities.css";
 @import "./components/components.css";
 
 @font-face {
