@@ -353,8 +353,17 @@
 
 .sign-up-module .view .content.confirmed-booking .hero h1 {
   width: 100%;
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
+}
+
+.sign-up-module .view .content.confirmed-booking .prompt {
+  font-size: 17px;
+  max-width: 600px;
+}
+
+.sign-up-module .view .content.confirmed-booking .prompt .sign-off {
+  font-size: 21px;
 }
 
 .sign-up-module .view .content .hero img.filter-brighten {
