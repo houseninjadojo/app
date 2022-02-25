@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
+import { action } from '@ember/object';
 
 export default class HomeContentComponent extends Component {
   @service current;
+  @service router;
 
   get user() {
     return this.current.user;
@@ -37,5 +39,9 @@ export default class HomeContentComponent extends Component {
   get randomHomeCareTip() {
     let tipNumber = Math.floor(Math.random() * this.args.homeCareTips.length);
     return this.args.homeCareTips.objectAt(tipNumber);
+  }
+  @action
+  selectRoute(routeName) {
+    this.router.transitionTo(routeName);
   }
 }

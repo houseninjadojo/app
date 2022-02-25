@@ -20,9 +20,11 @@ export default class TopBarComponent extends Component {
   }
 
   preservePreviousRoute() {
+    const { name, params } = this.router.currentRoute;
+
     localStorage.setItem(
       'preservedPreviousRoute',
-      this.router.currentRouteName
+      JSON.stringify({ name, params })
     );
   }
 

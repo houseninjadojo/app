@@ -1,0 +1,36 @@
+.hn.document-vault {
+  width: 100%;
+}
+
+.hn.document-vault .actions,
+.hn.document-vault-group .actions {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 0;
+}
+
+.hn.document-vault .actions .hn.btn:nth-of-type(1) {
+  margin-right: 4px;
+}
+
+.hn.document-vault .actions .hn.btn:nth-of-type(2) {
+  margin-left: 4px;
+}
+
+.hn.document-vault .filled ul.record-list li .record {
+  flex-direction: row;
+  align-items: center;
+}
+
+.hn.document-vault.document .document-details {
+  background-color: var(--white);
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.hn.document-vault.document .document-container img {
+  border-radius: 2px;
+  width: 100%;
+  background-color: var(--white);
+}
