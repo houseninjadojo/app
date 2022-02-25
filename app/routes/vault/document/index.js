@@ -18,14 +18,12 @@ export default class VaultDocumentIndexRoute extends Route {
     }
 
     //isImage
-    if (true) {
-      Browser.open({
-        windowName: model.name || model.uri,
-        // url: model.uri,
-        url: `${ENV.appHost}/${model.uri}`,
-        presentationStyle: 'popover',
-      });
-    }
+    Browser.open({
+      windowName: model.name || model.uri,
+      // url: model.uri,
+      url: `${ENV.appHost}/${model.uri}`,
+      presentationStyle: 'popover',
+    });
 
     return model;
   }
