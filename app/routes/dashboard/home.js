@@ -1,5 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import { action } from '@ember/object';
+
 import RSVP from 'rsvp';
 
 export default class DashboardHomeRoute extends Route {
@@ -16,5 +18,10 @@ export default class DashboardHomeRoute extends Route {
       }),
       user: this.current.user,
     });
+  }
+
+  @action
+  loading() {
+    return true;
   }
 }
