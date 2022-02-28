@@ -11,7 +11,7 @@ init();
 export default class App extends Application {
   constructor() {
     super(...arguments);
-    if (isNativePlatform) {
+    if (isNativePlatform()) {
       Intercom.hideInAppMessages();
     }
   }

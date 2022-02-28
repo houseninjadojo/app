@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "./variables.css";
 @import "./elements.css";
+@import "./utilities.css";
 @import "./components/components.css";
 
 @font-face {
@@ -18,6 +19,11 @@
 @font-face {
   font-family: Campton-Book;
   src: url("fonts/Campton-Book.otf");
+}
+
+@font-face {
+  font-family: Campton-Bold;
+  src: url("fonts/Campton-Bold.otf");
 }
 
 html * {

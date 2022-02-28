@@ -17,8 +17,13 @@ class ApplicationRoute extends Route {
 
   constructor() {
     super(...arguments);
-    if (isNativePlatform) {
-      SplashScreen.show({ fadeInDuration: 0 });
+    if (isNativePlatform()) {
+      SplashScreen.show({
+        fadeInDuration: 0,
+        fadeOutDuration: 1000,
+        showDuration: 1000,
+        autoHide: false,
+      });
     }
     this.router.on('routeDidChange', async () => {
       await this._trackPage();
@@ -32,6 +37,10 @@ class ApplicationRoute extends Route {
   async beforeModel() {
     await this.intercom.setup();
     await this.session.setup();
+    if (isNativePlatform()) {
+      SplashScreen.hide();
+    }
+
     await this.analytics.setup();
     await this.analytics.track('application_started');
   }
@@ -60,6 +69,7 @@ class ApplicationRoute extends Route {
   @action
   loading(transition) {
     this.loader.showGlobalLoadingIndicator(transition);
+    return true;
   }
 }
 

@@ -19,6 +19,10 @@ export default class AccountSettingsComponent extends Component {
       name: 'dashboard.home',
     },
     {
+      label: 'Document Vault',
+      name: 'vault',
+    },
+    {
       label: 'Contact Information',
       name: 'settings.contact',
     },
