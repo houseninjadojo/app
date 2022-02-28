@@ -1692,10 +1692,10 @@
     "@sentry/utils" "6.18.0"
     tslib "^1.9.3"
 
-"@sentry/capacitor@^0.4.1":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.4.2.tgz#aef9d3db05eecf834e674603cb29ac0a693e54ff"
-  integrity sha512-cLTsvlR4aH439yJGFf8SOFO8P0KWkaic3GY8wcSzRIAum+HPLZcvY45MDScbu51tFW+jxgVhylbDjXKBpi7FPQ==
+"@sentry/capacitor@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.4.3.tgz#a6cb01dab8b272b7d78d6187940220f0e56d172e"
+  integrity sha512-w1rre2gFoMUV8+LwYbVcx+yUnb60y3GtRDQMMJkUv6LbZXh2X6I2yrOnkgixa4v0AqRKSb4msJUUKe2h4cNGTQ==
   dependencies:
     "@sentry/browser" "6.17.4"
     "@sentry/core" "6.17.4"

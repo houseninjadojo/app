@@ -39,7 +39,7 @@
     "@faker-js/faker": "^5.5.3",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@sentry/capacitor": "^0.4.1",
+    "@sentry/capacitor": "^0.4.3",
     "@sentry/cli": "^1.72.2",
     "@sentry/ember": "^6.18.0",
     "@sentry/tracing": "^6.14.1",
