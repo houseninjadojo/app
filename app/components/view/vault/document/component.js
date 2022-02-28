@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
-import { Capacitor } from '@capacitor/core';
 import ENV from 'houseninja/config/environment';
 
 export default class VaultDocumentComponent extends Component {
@@ -13,8 +12,7 @@ export default class VaultDocumentComponent extends Component {
     if (this.args.model) {
       Browser.open({
         windowName: this.args.model.name || this.args.model.uri,
-        // url: `${ENV.appHost}/${this.args.model.uri}`,
-        url: Capacitor.convertFileSrc(this.args.model.uri),
+        url: `${ENV.appHost}/${this.args.model.uri}`,
         // url: this.args.model.uri,
         presentationStyle: 'popover',
       });

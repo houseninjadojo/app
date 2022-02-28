@@ -276,6 +276,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
           params
         )}`
       );
+      throw new Error('failed token exchange');
     }
 
     // // clear spent code challenge and verifier
