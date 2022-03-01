@@ -6,7 +6,7 @@
 .hn.document-vault-group .actions {
   display: flex;
   flex-direction: row;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .hn.document-vault .actions .hn.btn:nth-of-type(1) {
