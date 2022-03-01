@@ -270,6 +270,15 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     // fetch token data
     let data = await this._post(this.serverTokenEndpoint, params);
 
+    if (isEmpty(data.refresh_token)) {
+      debug(
+        `PKCEAuthenticator#authenticate - failed token exchange with params: ${JSON.stringify(
+          params
+        )}`
+      );
+      throw new Error('failed token exchange');
+    }
+
     // // clear spent code challenge and verifier
     // await SecureStorage.clear(STASH_TOKEN);
 
