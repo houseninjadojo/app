@@ -150,26 +150,27 @@ export default class PaymentMethodComponent extends Component {
   async savePaymentMethod() {
     const user = this.store.peekAll('user').get('firstObject');
     const subscription = this.store.peekAll('subscription').get('firstObject');
-    let paymentMethod;
-    if (isPresent(this.args.paymentMethod)) {
-      paymentMethod = this.args.paymentMethod;
-      paymentMethod.setProperties({
-        ...this.paymentMethod,
-        user,
-      });
-    } else {
-      paymentMethod = this.store.createRecord('credit-card', {
-        ...this.paymentMethod,
-        user,
-      });
-    }
     try {
-      await paymentMethod.save();
-
       subscription.user = user;
-      subscription.paymentMethod = paymentMethod;
       subscription.promoCode = this.promoCode;
 
+      let paymentMethod;
+      if (isPresent(this.args.paymentMethod)) {
+        paymentMethod = this.args.paymentMethod;
+        paymentMethod.setProperties({
+          ...this.paymentMethod,
+          subscription,
+          user,
+        });
+      } else {
+        paymentMethod = this.store.createRecord('credit-card', {
+          ...this.paymentMethod,
+          subscription,
+          user,
+        });
+      }
+
+      await paymentMethod.save();
       await subscription.save();
 
       this.router.transitionTo('signup.welcome');
