@@ -17,7 +17,7 @@
 		"iosScheme": "co.houseninja.application",
 		"androidScheme": "co.houseninja.application",
 		"cleartext": false,
-		"url": "co.houseninja.application://localhost:4200",
+		"url": "http://localhost:4200",
 		"allowNavigation": [
 			"auth.houseninja.co",
 			"sandbox.auth.houseninja.co",

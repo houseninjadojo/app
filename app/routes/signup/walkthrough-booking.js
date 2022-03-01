@@ -5,6 +5,10 @@ export default class SignupWalkthroughBookingRoute extends Route {
   @service store;
 
   async model() {
-    return this.store.peekAll('service-area').get('firstObject');
+    return {
+      property: this.store.peekAll('property').get('firstObject'),
+      serviceArea: this.store.peekAll('service-area').get('firstObject'),
+      user: this.store.peekAll('user').get('firstObject'),
+    };
   }
 }
