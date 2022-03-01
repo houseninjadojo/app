@@ -51,7 +51,7 @@ export const vault = {
       name: 'paint colors',
       description: faker.lorem.sentence(4),
       type: 'jpg',
-      uri: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/manual.pdf',
+      uri: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/paint-colors.jpg',
       iconUri: '',
       groupId: null,
     },
