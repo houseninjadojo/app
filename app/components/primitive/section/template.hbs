@@ -1,9 +1,23 @@
 <div class="section">
-        <div class="label">
-            <p class="hn section-label">{{@label}}</p>
-            <p class="hn section-sub-label">{{@subLabel}}</p>
-        </div>
-        <div class="body {{@bodyClass}}">
+        <div class="head{{if this.isOpen "" " is-closed"}}">
+            <div class="label">
+                <p class="hn section-label">{{@label}}</p>
+                <p class="hn section-sub-label">{{@subLabel}}</p>
+            </div>
+            {{#if this.allowCollapse}}
+                <Primitive::Button {{on "click" this.toggle}}>
+                    <div class="icon">
+                        <span class="x"/>
+                        <span class="y{{if this.isOpen " is-open" ""}}"/>
+                    </div>
+                </Primitive::Button>
+            {{/if}}
+        </div>        
+        <div class="body {{@bodyClass}}{{if this.isOpen "" " is-closed"}}">
             {{yield}}
         </div>
+        {{#if this.isOpen}}
+        {{else}}
+            <hr/>
+        {{/if}}
     </div>

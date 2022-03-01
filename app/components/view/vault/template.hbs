@@ -7,7 +7,7 @@
             Upload
         </Primitive::Button>
     </div>
-    <Primitive::Section @label="Categories">
+    <Primitive::Section @label="Categories" @allowCollapse={{true}}>
         <HouseNinja::DocumentVaultRecords @records={{@model.groups}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
     </Primitive::Section>
     <Primitive::Section @label="Uncategorized Documents">

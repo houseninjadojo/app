@@ -2,7 +2,7 @@
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4">
         View Walkthrough Report
     </Primitive::Button>
-    <Primitive::Section @label="Service History">
+    <Primitive::Section @label="Service History" @allowCollapse={{true}}>
         <HouseNinja::ServiceActivityRecords @workOrders={{this.workOrders}} />
     </Primitive::Section>
 </div>
