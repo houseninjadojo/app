@@ -9,7 +9,7 @@ module.exports = {
   branches: [
     '+([0-9])?(.{+([0-9]),x}).x',
     'main',
-    'semantic-release',
+    { name: 'semantic-release', prerelease: true },
     // 'next',
     // 'next-major',
     { name: 'beta', prerelease: true },
