@@ -12,11 +12,11 @@ export default class SettingsPropertyController extends Controller {
   @tracked formIsInvalid = true;
 
   @tracked propertyInfo = {
-    streetAddress1: this.model.streetAddress1,
-    streetAddress2: this.model.streetAddress2,
-    city: this.model.city,
-    state: 'TX',
-    zipcode: this.model.zipcode,
+    streetAddress1: this.model && this.model.streetAddress1,
+    streetAddress2: this.model && this.model.streetAddress2,
+    city: this.model && this.model.city,
+    state: this.model && this.model.city,
+    zipcode: this.model && this.model.zipcode,
   };
 
   @tracked fields = [
@@ -25,14 +25,14 @@ export default class SettingsPropertyController extends Controller {
       required: true,
       label: 'Street Address 1',
       placeholder: '',
-      value: this.model.streetAddress1,
+      value: (this.model && this.model.streetAddress1) || null,
     },
     {
       id: 'streetAddress2',
       required: false,
       label: 'Street Address 2',
       placeholder: '(Optional)',
-      value: this.model.streetAddress2,
+      value: (this.model && this.model.streetAddress2) || null,
     },
     {
       id: 'city',
@@ -40,7 +40,7 @@ export default class SettingsPropertyController extends Controller {
       label: 'City',
       placeholder: '',
       disabled: false,
-      value: this.model.city,
+      value: (this.model && this.model.city) || null,
     },
     {
       isSelect: true,
@@ -50,7 +50,7 @@ export default class SettingsPropertyController extends Controller {
       placeholder: '',
       options: [{ value: 'TX', label: 'TX', selected: true }],
       disabled: true,
-      value: 'TX',
+      value: (this.model && this.model.state) || null,
     },
     {
       // type: 'number',
@@ -58,17 +58,20 @@ export default class SettingsPropertyController extends Controller {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: this.model.zipcode,
+      value: (this.model && this.model.zipcode) || null,
     },
   ];
 
   @action
   reset() {
-    this.propertyInfo.streetAddress1 = this.model.streetAddress1;
-    this.propertyInfo.streetAddress2 = this.model.streetAddress2;
-    this.propertyInfo.city = this.model.city;
-    this.propertyInfo.state = 'TX';
-    this.propertyInfo.zipcode = this.model.zipcode;
+    if (this.model) {
+      this.propertyInfo.streetAddress1 = this.model.streetAddress1;
+      this.propertyInfo.streetAddress2 = this.model.streetAddress2;
+      this.propertyInfo.city = this.model.city;
+      this.propertyInfo.state = this.model.state;
+      this.propertyInfo.zipcode = this.model.zipcode;
+    }
+
     this.formIsInvalid = true;
   }
 
@@ -81,8 +84,6 @@ export default class SettingsPropertyController extends Controller {
     this.formIsInvalid = inputValidation(this.fields, [
       'zipcodeIsValid',
     ]).isInvalid;
-
-    console.log(inputValidation(this.fields, ['zipcodeIsValid']));
   }
 
   @action
