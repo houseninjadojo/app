@@ -10,7 +10,7 @@ on:
 
 jobs:
   commits:
-    name: lint PR commit message
+    name: pull request title
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -7,8 +7,8 @@ on:
       - main
 
 jobs:
-  templates:
-    name: lint hbs
+  hbs:
+    # name: lint hbs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:hbs
   js:
-    name: lint js
+    # name: lint js
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:js
   css:
-    name: lint css
+    # name: css
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
