@@ -11,15 +11,27 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        'changelogFile': 'CHANGELOG.md',
+        changelogFile: 'CHANGELOG.md',
       },
     ],
-    // [
-    //   '@semantic-release/git',
-    //   {
-    //     'assets': ['CHANGELOG.md'],
-    //   },
-    // ],
-    // '@semantic-release/npm',
+    [
+      '@semantic-release/github',
+      {
+        publish: false,
+        assets: [
+          'CHANGELOG.md',
+          'package.json',
+          'yarn.lock',
+          { path: 'dist', name: 'Ember Application' },
+        ]
+      },
+    ],
+    [
+      '@semantic-release/npm',
+      {
+        npmPublish: false,
+      }
+    ],
+    '@semantic-release/git',
   ],
 };
