@@ -9,7 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Clear keychain on first run in case of reinstallation
+        if !UserDefaults.standard.bool(forKey: "FirstRun") {
+            // Delete values from keychain here
+            UserDefaults.standard.setValue("1strun", forKey: "FirstRun")
+            UserDefaults.standard.synchronize()
+        }
+
         return true
     }
 
