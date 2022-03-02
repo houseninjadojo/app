@@ -1,7 +1,5 @@
-{{#if this.isLoading}}
-    <div class="hn-loader global">
-        <div class="progress-bar">
-            <div class="progress-bar-value"></div>
-        </div>
+<div class="hn-loader global {{if this.loading "" "hide"}}">
+    <div class="progress-bar">
+        <div class="progress-bar-value"></div>
     </div>
-{{/if}}
+</div>

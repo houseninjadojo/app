@@ -1,22 +1,23 @@
 import Service from '@ember/service';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { getOwner } from '@ember/application';
 
 export default class LoaderService extends Service {
-  isLoading = false;
+  @tracked isLoading = false;
 
   @action
   showGlobalLoadingIndicator(transition) {
-    let applicationController = getOwner(this).lookup('controller:application');
+    let applicationRoute = getOwner(this).lookup('route:application');
 
-    if (!applicationController) {
+    if (!applicationRoute) {
       return;
     }
 
-    // this.isLoading = true;
+    this.isLoading = true;
 
     transition.promise.finally(() => {
-      // this.isLoading = false;
+      this.isLoading = false;
     });
 
     return true;

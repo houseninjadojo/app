@@ -7,6 +7,10 @@
   background-color: var(--teal-600);
 }
 
+.hn-loader.global.hide {
+  display: none;
+}
+
 .progress-bar {
   height: 4px;
   background-color: rgb(5 114 206 / 20%);

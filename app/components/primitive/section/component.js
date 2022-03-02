@@ -1,4 +1,13 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-// eslint-disable-next-line
-export default class SectionComponent extends Component {}
+export default class SectionComponent extends Component {
+  @tracked isOpen = true;
+  allowCollapse = false || this.args.allowCollapse;
+
+  @action
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+}

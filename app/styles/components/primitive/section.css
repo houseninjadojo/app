@@ -2,26 +2,72 @@
   margin-bottom: 32px;
 }
 
-.section .label {
-  margin-bottom: 8px;
+.section .head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
-.section .label .section-label {
+.section .head.is-closed {
+  margin-bottom: 0;
+}
+
+.section .head .label {
+  width: 100%;
+}
+
+.section .head .label .section-label {
+  width: 100%;
   font-size: 17px;
   color: var(--gray-600);
 }
 
-.section .label .section-sub-label {
+.section .head .label .section-sub-label {
   font-size: 15px;
   color: var(--gray-400);
 }
 
-.section .body {
-  background-color: var(--white);
-  width: 100%;
+.section .head button {
+  width: unset;
+  position: relative;
+}
+
+.section .head button .icon {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.section .head button .icon span {
+  background-color: var(--gray-400);
+  display: inline-block;
+  position: absolute;
+}
+
+.section .head button .icon .x {
+  width: 16px;
+  height: 2px;
+}
+
+.section .head button .icon .y {
+  width: 2px;
+  height: 16px;
+}
+
+.section .body {
+  display: block;
+  background-color: var(--white);
+  height: 100%;
+  width: 100%;
   border-radius: 2px;
   padding: 8px;
+}
+
+.section .head button .icon .y.is-open,
+.section .body.is-closed {
+  transform: scaleY(0);
+  height: 0;
+  opacity: 0;
+  transform-origin: top center;
+  transition: 100ms ease-out;
 }

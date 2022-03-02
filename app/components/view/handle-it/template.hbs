@@ -1,8 +1,5 @@
 <div class="hn handle-it">
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" (fn this.selectRoute 'vault')}}>
-        Document Vault
-    </Primitive::Button>
-    <Primitive::Section @label="Work Orders">
+    <Primitive::Section @label="Work Orders" @allowCollapse={{true}}>
         <HouseNinja::ServiceActivityRecords @tabs={{this.tabs}} @workOrders={{this.workOrders}} />
     </Primitive::Section>
     <Primitive::Section @label="My Preventative Maintenance Plan">
