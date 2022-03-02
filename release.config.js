@@ -1,9 +1,19 @@
 module.exports = {
-  dryRun: true,
+  dryRun: false,
   debug: true,
+  // branches: [
+  //   'main',
+  //   { name: 'semantic-release', prerelease: true },
+  //   { name: 'testflight', prerelease: true },
+  // ],
   branches: [
-    // 'main',
+    '+([0-9])?(.{+([0-9]),x}).x',
+    'main',
     'semantic-release',
+    // 'next',
+    // 'next-major',
+    { name: 'beta', prerelease: true },
+    // { name: 'alpha', prerelease: true }
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -14,24 +24,24 @@ module.exports = {
         changelogFile: 'CHANGELOG.md',
       },
     ],
-    [
-      '@semantic-release/github',
-      {
-        publish: false,
-        assets: [
-          'CHANGELOG.md',
-          'package.json',
-          'yarn.lock',
-          { path: 'dist', name: 'Ember Application' },
-        ]
-      },
-    ],
-    [
-      '@semantic-release/npm',
-      {
-        npmPublish: false,
-      }
-    ],
-    '@semantic-release/git',
+    // [
+    //   '@semantic-release/github',
+    //   {
+    //     publish: false,
+    //     assets: [
+    //       'CHANGELOG.md',
+    //       'package.json',
+    //       'yarn.lock',
+    //       { path: 'dist', name: 'Ember Application' },
+    //     ]
+    //   },
+    // ],
+    // [
+    //   '@semantic-release/npm',
+    //   {
+    //     npmPublish: false,
+    //   }
+    // ],
+    // '@semantic-release/git',
   ],
 };
