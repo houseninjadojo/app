@@ -22,7 +22,6 @@ export default class InputComponent extends Component {
 
   @action
   handleInput(e) {
-    e.target.value = e.target.value.trim();
     this.args.onInput && this.args.onInput(e);
   }
 }
