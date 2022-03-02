@@ -27,12 +27,14 @@ module.exports = {
         ]
       },
     ],
-    // [
-    //   '@semantic-release/npm',
-    //   {
-    //     npmPublish: false,
-    //   }
-    // ],
-    // '@semantic-release/git',
+    [
+      '@semantic-release/git',
+      {
+        assets: [
+          'CHANGELOG.md',
+          'package.json',
+        ],
+      },
+    ],
   ],
 };
