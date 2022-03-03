@@ -1,9 +1,15 @@
 name: cd / release / testflight
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - fastlane
+  # release:
+  #   types:
+  #     - published
+
+env:
+  RUBY_VERSION: 3.0.3
 
 jobs:
   build:
@@ -17,7 +23,16 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+      - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
+        working-directory: 'ios/App'
       - run: fastlane ios sandbox
         working-directory: 'ios/App'
         env:
-          MATCH_PASSWORD:
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+          BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
