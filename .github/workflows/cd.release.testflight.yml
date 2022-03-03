@@ -1,4 +1,4 @@
-name: cd / release / testflight
+name: cd / release
 
 on:
   push:
@@ -12,7 +12,7 @@ env:
   RUBY_VERSION: 3.0.3
 
 jobs:
-  build:
+  testflight:
     runs-on: macos-latest
     env:
       VERSION_TAG: ${{ github.event.release.tag_name }}
@@ -27,6 +27,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
+          working-directory: 'ios/App'
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
       - run: fastlane ios sandbox
