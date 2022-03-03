@@ -1,6 +1,6 @@
 import Service, { service } from '@ember/service';
 import { get as unstash } from 'houseninja/utils/secure-storage';
-import debug from '@ember/debug';
+import { debug } from '@ember/debug';
 import Sentry from 'houseninja/utils/sentry';
 import { task } from 'ember-concurrency';
 
@@ -60,10 +60,11 @@ export default class CurrentService extends Service {
         let stashedDevice = await unstash('device');
         device = this.store.createRecord('device', {
           ...stashedDevice.value,
+          user: this.user,
         });
+      } else {
+        device.user = this.user;
       }
-
-      device.user = this.user;
 
       try {
         await device.save();
