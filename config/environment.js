@@ -73,7 +73,7 @@ module.exports = function (environment) {
         tracesSampleRate: 1.0,
         debug: true,
         autoSessionTracking: true,
-        release: `${pkg.version} (1)`,
+        release: `co.houseninja.application@${pkg.version}+1`,
         browserTracingOptions: {
           tracingOrigins: [
             'api.houseninja.co',

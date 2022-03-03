@@ -35,7 +35,7 @@ module.exports = function (deployTarget) {
       // sentryApiKey:
       // 'ff65161f14594302ab7597df9d8b92122cfd8029129b41b38ac13c3a05e54698',
 
-      revisionKey: `${pkg.version} (1)`,
+      revisionKey: `co.houseninja.application@${pkg.version}+1`,
       enableRevisionTagging: false,
       // or
       sentryBearerApiKey:
