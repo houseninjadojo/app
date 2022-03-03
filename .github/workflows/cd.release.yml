@@ -28,8 +28,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build -o tmp/app
+      - run: yarn install --frozen-lockfile && yarn build -o tmp/app
+      - run: ls node_modules/.bin
+      # - run: yarn build -o tmp/app
       - uses: actions/upload-artifact@v2
         with:
           name: dist
