@@ -3,6 +3,8 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 import moment from 'moment';
 
+const DATE_FORMAT = 'MM/DD/YY';
+
 export default class HandleItComponent extends Component {
   @service router;
 
@@ -27,13 +29,20 @@ export default class HandleItComponent extends Component {
     };
   });
 
-  currentWorkOrders = this.allWorkOrders.filter((w) => {
-    const today = moment().format('MM/DD/YY');
-    const scheduleDateInMoment = moment(w.scheduledDate).format('MM/DD/YY');
-    const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
+  currentWorkOrders = this.allWorkOrders
+    .filter((w) => {
+      const today = moment().format(DATE_FORMAT);
+      const scheduleDateInMoment = moment(w.scheduledDate).format(DATE_FORMAT);
+      const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
 
-    return differenceInDays <= 0;
-  });
+      return differenceInDays <= 0;
+    })
+    .sort((a, b) => {
+      return (
+        moment(a.scheduledDate, DATE_FORMAT) >
+        moment(b.scheduledDate, DATE_FORMAT)
+      );
+    });
 
   @action
   selectRoute(routeName) {
