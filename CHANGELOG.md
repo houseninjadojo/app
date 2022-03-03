@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/houseninjadojo/app/compare/v1.0.3...v1.0.4) (2022-03-03)
+
+
+### Bug Fixes
+
+* portal adjustments ([#400](https://github.com/houseninjadojo/app/issues/400)) ([660a63f](https://github.com/houseninjadojo/app/commit/660a63f0f5f906606757010b9eaa32fa856d26cb))
+
 ## [1.0.3](https://github.com/houseninjadojo/app/compare/v1.0.2...v1.0.3) (2022-03-03)
 
 
