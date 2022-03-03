@@ -40,11 +40,11 @@ platform :ios do
       git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}"),
     )
     update_code_signing_settings(
-      use_automatic_signing: true,
+      use_automatic_signing: false,
       path: "./App.xcodeproj",
       team_id: ENV["APPLE_TEAM_ID"],
       bundle_identifier: "co.houseninja.application",
-      profile_name: "Automatic"
+      profile_name: "match AppStore co.houseninja.application"
       # entitlements_file_path: "Demo App/generated/New.entitlements"
     )
     increment_version_number_in_xcodeproj(
