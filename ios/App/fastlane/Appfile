@@ -1,5 +1,5 @@
-app_identifier("co.houseninja.application")
-apple_id("miles@houseninja.co")
+app_identifier(ENV["BUNDLE_ID"])
+apple_id(ENV["APPLE_ID"])
 
 
 # For more information about the Appfile, see:

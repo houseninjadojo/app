@@ -10,6 +10,7 @@ on:
 
 env:
   RUBY_VERSION: 3.0.3
+  NODE_ENV: production
 
 jobs:
   testflight:
@@ -30,6 +31,8 @@ jobs:
           working-directory: 'ios/App'
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
+      - run: yarn build
+      - run: yarn cap sync
       - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
         env:
@@ -37,3 +40,4 @@ jobs:
           APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
           APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
           BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}

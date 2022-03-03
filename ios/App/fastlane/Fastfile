@@ -1,3 +1,5 @@
+opt_out_usage
+
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
@@ -21,15 +23,15 @@ platform :ios do
   version = package['version']
   lane :sandbox do
     setup_ci if ENV['CI']
-    ENV['NODE_ENV'] ||= 'production'
-    yarn(
-      command: 'build',
-      project_root: '../..'
-    )
-    yarn(
-      command: 'cap sync',
-      project_root: '../..'
-    )
+    # ENV['NODE_ENV'] ||= 'production'
+    # yarn(
+    #   command: 'build',
+    #   project_root: '../..'
+    # )
+    # yarn(
+    #   command: 'cap sync',
+    #   project_root: '../..'
+    # )
     get_certificates
     get_provisioning_profile
     increment_version_number_in_xcodeproj(
