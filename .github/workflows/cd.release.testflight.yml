@@ -24,11 +24,14 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+        shell: bash
       - run: yarn build:env
+        shell: bash
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
       - run: yarn cap sync
+        shell: bash
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
       - uses: ruby/setup-ruby@v1
