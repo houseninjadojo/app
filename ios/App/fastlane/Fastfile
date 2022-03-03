@@ -42,8 +42,8 @@ platform :ios do
       api_key: api_key,
       type: "appstore",
       force: true,
-      # app_identifier: "co.houseninja.application",
-      # readonly: true,
+      app_identifier: "co.houseninja.application",
+      readonly: false,
       # username: "miles@houseninja.co",
       git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}")
     )
