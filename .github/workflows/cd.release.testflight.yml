@@ -51,4 +51,5 @@ jobs:
           APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
           BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          APPLE_APP_IDENTIFIER: ${{ secrets.APPLE_APP_IDENTIFIER }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
