@@ -87,7 +87,6 @@ platform :ios do
       project_slug: sentry_project_slug,
       version: version,
       app_identifier: bundle_identifier,
-      build: build_number,
       env: sentry_env, # The environment for this deploy. Required.
       # name: '...', # Optional human readable name
       # deploy_url: '...', # Optional URL that points to the deployment
