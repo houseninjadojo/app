@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
 import { vault } from 'houseninja/utils/dataStubs';
+import moment from 'moment';
 
 export default class WorkHistoryComponent extends Component {
   tabs = [
@@ -10,7 +11,7 @@ export default class WorkHistoryComponent extends Component {
     //   active: true,
     // },
   ];
-  workOrders = this.args.workOrders.map((w) => {
+  allWorkOrders = this.args.workOrders.map((w) => {
     return {
       id: w.id,
       name: w.description,
@@ -19,6 +20,14 @@ export default class WorkHistoryComponent extends Component {
       scheduledDate: w.scheduledDate,
       ...w,
     };
+  });
+
+  pastWorkOrders = this.allWorkOrders.filter((w) => {
+    const today = moment().format('MM/DD/YY');
+    const scheduleDateInMoment = moment(w.scheduledDate).format('MM/DD/YY');
+    const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
+
+    return differenceInDays > 0;
   });
 
   @action

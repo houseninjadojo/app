@@ -1,6 +1,8 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import moment from 'moment';
+
 export default class HandleItComponent extends Component {
   @service router;
 
@@ -14,7 +16,7 @@ export default class HandleItComponent extends Component {
     },
   ];
 
-  workOrders = this.args.workOrders.map((w) => {
+  allWorkOrders = this.args.workOrders.map((w) => {
     return {
       id: w.id,
       name: w.description,
@@ -23,6 +25,14 @@ export default class HandleItComponent extends Component {
       scheduledDate: w.scheduledDate,
       ...w,
     };
+  });
+
+  currentWorkOrders = this.allWorkOrders.filter((w) => {
+    const today = moment().format('MM/DD/YY');
+    const scheduleDateInMoment = moment(w.scheduledDate).format('MM/DD/YY');
+    const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
+
+    return differenceInDays <= 0;
   });
 
   @action
