@@ -31,8 +31,8 @@ jobs:
           working-directory: 'ios/App'
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
-      - run: npm install -g ember-cli
-      - run: yarn build
+      # - run: npm install -g ember-cli
+      - run: yarn ember build --environment=production
       - run: yarn cap sync
       - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
