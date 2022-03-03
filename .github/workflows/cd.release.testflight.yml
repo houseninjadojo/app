@@ -1,4 +1,4 @@
-name: cd / release / testflight
+name: cd / release
 
 on:
   # push:
@@ -9,7 +9,7 @@ on:
   #     - published
   workflow_run:
     workflows:
-      - "cd / release"
+      - "cd / release / generate"
     branches:
       - fastlane
     types:
@@ -21,6 +21,7 @@ env:
 
 jobs:
   testflight:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-latest
     env:
       VERSION_TAG: ${{ github.event.release.tag_name }}
