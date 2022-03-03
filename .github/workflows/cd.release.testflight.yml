@@ -4,6 +4,9 @@ on:
   release:
     types:
       - published
+  push:
+    branches:
+      - sentry-fastlane
 
 env:
   RUBY_VERSION: 3.0.3
