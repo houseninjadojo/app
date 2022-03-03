@@ -1,9 +1,6 @@
 name: cd / release
 
 on:
-  # push:
-  #   branches:
-  #     - fastlane
   release:
     types:
       - published
