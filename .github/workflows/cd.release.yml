@@ -1,4 +1,4 @@
-name: cd / release
+name: cd / release / generate
 
 on:
   workflow_run:
@@ -13,7 +13,6 @@ jobs:
   semantic-release:
     name: generate github release
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -23,7 +22,13 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: NODE_ENV=production yarn build:env
+      - run: yarn build
+        env:
+          NODE_ENV: production
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist/
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
