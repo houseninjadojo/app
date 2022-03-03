@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/houseninjadojo/app/compare/v1.0.6...v1.0.7) (2022-03-03)
+
+
+### Bug Fixes
+
+* homecare tip model attr change ([#406](https://github.com/houseninjadojo/app/issues/406)) ([fff2d1f](https://github.com/houseninjadojo/app/commit/fff2d1f9aba10133e794fe51e0566db8063e4855))
+
 ## [1.0.6](https://github.com/houseninjadojo/app/compare/v1.0.5...v1.0.6) (2022-03-03)
 
 
