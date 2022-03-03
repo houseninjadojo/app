@@ -1,25 +1,18 @@
 name: cd / release / generate
 
 on:
-  # workflow_run:
-  #   workflows:
-  #     - "ci / tests"
-  #   branches:
-  #     - main
-  #   types:
-  #     - completed
-  push:
+  workflow_run:
+    workflows:
+      - "ci / tests"
     branches:
-      - fastlane
-
-env:
-  NODE_ENV: production
+      - main
+    types:
+      - completed
 
 jobs:
   semantic-release:
     name: generate github release
     runs-on: ubuntu-latest
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -28,13 +21,14 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile && yarn build -o tmp/app
-      - run: ls node_modules/.bin
-      # - run: yarn build -o tmp/app
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+        env:
+          NODE_ENV: production
       - uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: tmp/app
+          path: ./dist/
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
