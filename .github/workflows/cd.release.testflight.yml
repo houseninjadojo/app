@@ -1,12 +1,19 @@
-name: cd / release
+name: cd / release / testflight
 
 on:
-  push:
-    branches:
-      - fastlane
+  # push:
+  #   branches:
+  #     - fastlane
   # release:
   #   types:
   #     - published
+  workflow_run:
+    workflows:
+      - "cd / release"
+    branches:
+      - fastlane
+    types:
+      - completed
 
 env:
   RUBY_VERSION: 3.0.3
@@ -25,8 +32,12 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
         shell: bash
-      - run: yarn build:env
-        shell: bash
+      # - run: yarn build:env
+      #   shell: bash
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: ./dist/
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}

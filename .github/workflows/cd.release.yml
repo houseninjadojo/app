@@ -5,9 +5,12 @@ on:
     workflows:
       - "ci / tests"
     branches:
-      - main
+      - fastlane
     types:
       - completed
+
+env:
+  NODE_ENV: production
 
 jobs:
   semantic-release:
@@ -23,7 +26,11 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: NODE_ENV=production yarn build:env
+      - run: NODE_ENV=production yarn build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist/
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
