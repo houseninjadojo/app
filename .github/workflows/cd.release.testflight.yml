@@ -19,21 +19,20 @@ jobs:
       VERSION_TAG: ${{ github.event.release.tag_name }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn cap sync
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
-      # - run: npm install -g ember-cli
-      - run: yarn ember build --environment=production
-      - run: yarn cap sync
       - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
         env:
