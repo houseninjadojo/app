@@ -1,5 +1,7 @@
 'use strict';
 
+const pkg = require('../package.json');
+
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'houseninja',
@@ -71,7 +73,7 @@ module.exports = function (environment) {
         tracesSampleRate: 1.0,
         debug: true,
         autoSessionTracking: true,
-        release: process.env.CF_PAGES_COMMIT_SHA,
+        release: pkg.version,
         browserTracingOptions: {
           tracingOrigins: [
             'api.houseninja.co',
