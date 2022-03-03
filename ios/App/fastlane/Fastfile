@@ -41,11 +41,12 @@ platform :ios do
     sync_code_signing(
       api_key: api_key,
       type: "appstore",
-      force: true,
+      # force: true,
       app_identifier: "co.houseninja.application",
       readonly: false,
       # username: "miles@houseninja.co",
-      git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}")
+      git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}"),
+      xcargs: "-allowProvisioningUpdates"
     )
     increment_version_number_in_xcodeproj(
       version_number: version,
