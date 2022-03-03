@@ -28,6 +28,7 @@ jobs:
           cache: 'yarn'
       - run: |
           yarn install --frozen-lockfile
+          echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
           yarn build
           yarn cap sync
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
