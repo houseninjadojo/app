@@ -19,17 +19,16 @@ jobs:
       VERSION_TAG: ${{ github.event.release.tag_name }}
     steps:
       - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: |
-          yarn install --frozen-lockfile
-          npx ember build --environment=production
-          npx cap sync
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:env
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - run: yarn cap sync
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
       - uses: ruby/setup-ruby@v1
