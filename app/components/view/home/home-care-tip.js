@@ -7,9 +7,7 @@ export default class HomeCareTipComponent extends Component {
   @service router;
 
   @action
-  async openChatModal() {
-    await Intercom.displayMessageComposer({
-      message: this.args.defaultHNChatMessage || '',
-    });
+  async openChatModal(message) {
+    await Intercom.displayMessageComposer({ message });
   }
 }
