@@ -11,4 +11,11 @@ export default class VaultContentComponent extends Component {
       this.args.onRecordClick(record);
     }
   }
+
+  @action
+  handleIfEmptyClick() {
+    if (this.args.onIfEmptyButtonClick) {
+      this.args.onIfEmptyButtonClick();
+    }
+  }
 }

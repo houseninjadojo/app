@@ -3,6 +3,7 @@
     <HouseNinja::ServiceActivityRecords::ServiceActivityList
       @records={{@workOrders}}
       @onRecordClick={{this.selectRoute}}
+      @onIfEmptyButtonClick={{this.openChatModal}}
     />
   </Primitive::TabbedContent>
 </div>
