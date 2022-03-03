@@ -15,7 +15,7 @@ opt_out_usage
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-app_key_id              = ENV["APPSTORE_KEY_ID"]
+app_store_key_id        = ENV["APPSTORE_KEY_ID"]
 app_store_issuer_id     = ENV["APPSTORE_ISSUER_ID"]
 app_store_key_content   = "#{ENV["APPSTORE_PRIVATE_KEY"]}".gsub('\n', '\\n')
 apple_team_id           = ENV["APPLE_TEAM_ID"]
@@ -25,8 +25,8 @@ gh_pat                  = ENV["GHCR_PAT"]
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
 provision_profile_name  = "match AppStore co.houseninja.application"
 scheme                  = "HouseNinja"
-workspace               = "App.xcworkspace"
 xcode_project_path      = "./App.xcodeproj"
+xcode_workspace          = "App.xcworkspace"
 
 # get version
 package = load_json(json_path: "../../package.json")
@@ -66,7 +66,7 @@ platform :ios do
     )
     build_app(
       scheme: scheme,
-      workspace: workspace,
+      workspace: xcode_workspace,
     )
     upload_to_testflight(
       api_key: api_key,

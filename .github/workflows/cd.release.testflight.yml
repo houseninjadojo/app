@@ -1,12 +1,12 @@
 name: cd / release
 
 on:
-  push:
-    branches:
-      - fastlane
-  # release:
-  #   types:
-  #     - published
+  # push:
+  #   branches:
+  #     - fastlane
+  release:
+    types:
+      - published
 
 env:
   RUBY_VERSION: 3.0.3
