@@ -74,12 +74,12 @@ platform :ios do
       scheme: scheme,
       workspace: xcode_workspace,
     )
-    # upload_to_testflight(
-    #   api_key: api_key,
-    #   skip_waiting_for_build_processing: true,
-    #   notify_external_testers: false,
-    #   app_identifier: bundle_identifier,
-    # )
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+      notify_external_testers: false,
+      app_identifier: bundle_identifier,
+    )
     end_time = Time.now.to_i
     sentry_create_deploy(
       auth_token: sentry_auth_token,
