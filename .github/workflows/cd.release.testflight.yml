@@ -1,0 +1,23 @@
+name: cd / release / testflight
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: macos-latest
+    env:
+      VERSION_TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: fastlane ios sandbox
+        working-directory: 'ios/App'
+        env:
+          MATCH_PASSWORD:

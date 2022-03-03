@@ -28,3 +28,17 @@
 /package.json.ember-try
 /package-lock.json.ember-try
 /yarn.lock.ember-try
+
+# fastlane
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+**/*.ipa
+**/*.app.*.zip
+
+# certs
+**/*.cer
+**/*.p12
+**/*.certSigningRequest
+**/*.mobileprovision
