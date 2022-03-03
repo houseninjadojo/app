@@ -36,13 +36,15 @@ platform :ios do
     #   certificate_path: ""
     # )
     # get_provisioning_profile(api_key: api_key)
+    gh_user = "mileszim"
+    gh_pat = ENV["GHCR_PAT"]
     sync_code_signing(
       api_key: api_key,
       type: "appstore",
       app_identifier: "co.houseninja.application",
       readonly: true,
       username: "miles@houseninja.co",
-      git_basic_authorization: ENV["GHCR_PAT"]
+      git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}")
     )
     increment_version_number_in_xcodeproj(
       version_number: version,
