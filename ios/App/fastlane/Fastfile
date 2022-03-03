@@ -40,7 +40,8 @@ platform :ios do
       git_basic_authorization: Base64.strict_encode64("#{gh_user}:#{gh_pat}"),
     )
     automatic_code_signing(
-      use_automatic_signing: false
+      use_automatic_signing: false,
+      code_sign_identity: "iPhone Distribution"
     )
     increment_version_number_in_xcodeproj(
       version_number: version,
