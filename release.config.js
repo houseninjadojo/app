@@ -23,7 +23,6 @@ module.exports = {
           'CHANGELOG.md',
           'package.json',
           'yarn.lock',
-          { path: 'dist', name: 'Ember Application' },
         ]
       },
     ],
