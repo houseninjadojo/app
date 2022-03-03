@@ -2,8 +2,10 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
 import { vault } from 'houseninja/utils/dataStubs';
+
 import moment from 'moment';
 
+const DATE_FORMAT = 'MM/DD/YY';
 export default class WorkHistoryComponent extends Component {
   tabs = [
     // {
@@ -22,13 +24,20 @@ export default class WorkHistoryComponent extends Component {
     };
   });
 
-  pastWorkOrders = this.allWorkOrders.filter((w) => {
-    const today = moment().format('MM/DD/YY');
-    const scheduleDateInMoment = moment(w.scheduledDate).format('MM/DD/YY');
-    const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
+  pastWorkOrders = this.allWorkOrders
+    .filter((w) => {
+      const today = moment().format(DATE_FORMAT);
+      const scheduleDateInMoment = moment(w.scheduledDate).format(DATE_FORMAT);
+      const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
 
-    return differenceInDays > 0;
-  });
+      return parseInt(differenceInDays) > 0;
+    })
+    .sort((a, b) => {
+      return (
+        moment(a.scheduledDate, DATE_FORMAT) <
+        moment(b.scheduledDate, DATE_FORMAT)
+      );
+    });
 
   @action
   openBrowser() {
