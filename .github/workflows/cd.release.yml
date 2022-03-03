@@ -1,13 +1,16 @@
 name: cd / release / generate
 
 on:
-  workflow_run:
-    workflows:
-      - "ci / tests"
+  # workflow_run:
+  #   workflows:
+  #     - "ci / tests"
+  #   branches:
+  #     - main
+  #   types:
+  #     - completed
+  push:
     branches:
       - fastlane
-    types:
-      - completed
 
 env:
   NODE_ENV: production
