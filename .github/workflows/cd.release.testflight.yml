@@ -26,9 +26,10 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn cap sync
+      - run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn cap sync
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
       - uses: ruby/setup-ruby@v1
