@@ -36,8 +36,8 @@ jobs:
       - run: yarn cap sync
         env:
           NODE_ENV: production
-      - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
-        working-directory: 'ios/App'
+      # - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
+      #   working-directory: 'ios/App'
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -54,3 +54,4 @@ jobs:
           APPLE_APP_IDENTIFIER: ${{ secrets.APPLE_APP_IDENTIFIER }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
