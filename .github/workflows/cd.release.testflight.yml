@@ -30,7 +30,7 @@ jobs:
           working-directory: 'ios/App'
       - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
         working-directory: 'ios/App'
-      - run: fastlane ios sandbox
+      - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
         env:
           APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
