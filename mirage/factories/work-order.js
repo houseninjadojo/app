@@ -1,8 +1,16 @@
 import { Factory } from 'miragejs';
+import faker from '@faker-js/faker';
+import moment from 'moment';
+
+function pastOrFuture() {
+  return faker.random.boolean()
+    ? faker.date.past(1, moment())
+    : faker.date.future(1, moment());
+}
 
 export default Factory.extend({
   scheduledDate() {
-    return '11/11/21';
+    return moment(pastOrFuture()).format('MM/DD/YY');
   },
 
   scheduledTime() {
@@ -10,11 +18,11 @@ export default Factory.extend({
   },
 
   vendor() {
-    return "Paulie's Plumbing Services";
+    return faker.company.companyName();
   },
 
   description() {
-    return 'Lorem ipsum dolor sit amet';
+    return faker.lorem.sentence(4);
   },
 
   status() {

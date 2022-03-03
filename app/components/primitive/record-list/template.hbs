@@ -42,6 +42,7 @@
       @size='sm'
       @variant='outline'
       @semantic='primary'
+      {{on "click" this.handleIfEmptyClick}}
     >
       {{@ifEmpty.action}}
     </Primitive::Button>
