@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/houseninjadojo/app/compare/v1.0.5...v1.0.6) (2022-03-03)
+
+
+### Bug Fixes
+
+* **current-service:** incorrect import call on debug ([#402](https://github.com/houseninjadojo/app/issues/402)) ([dbc674f](https://github.com/houseninjadojo/app/commit/dbc674fa2a1b026ad72d0a939ef679e5675067e2))
+
 ## [1.0.5](https://github.com/houseninjadojo/app/compare/v1.0.4...v1.0.5) (2022-03-03)
 
 
