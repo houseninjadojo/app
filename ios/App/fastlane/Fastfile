@@ -44,7 +44,7 @@ platform :ios do
       path: "./App.xcodeproj",
       team_id: ENV["APPLE_TEAM_ID"],
       bundle_identifier: "co.houseninja.application",
-      profile_name: "match AppStore co.houseninja.application"
+      profile_name: "Automatic"
       # entitlements_file_path: "Demo App/generated/New.entitlements"
     )
     increment_version_number_in_xcodeproj(
