@@ -19,12 +19,17 @@ app_store_key_id        = ENV["APPSTORE_KEY_ID"]
 app_store_issuer_id     = ENV["APPSTORE_ISSUER_ID"]
 app_store_key_content   = "#{ENV["APPSTORE_PRIVATE_KEY"]}".gsub('\n', '\\n')
 apple_team_id           = ENV["APPLE_TEAM_ID"]
+build_number            = 1
 bundle_identifier       = "co.houseninja.application"
 gh_user                 = "mileszim"
 gh_pat                  = ENV["GHCR_PAT"]
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
 provision_profile_name  = "match AppStore co.houseninja.application"
 scheme                  = "HouseNinja"
+sentry_auth_token       = ENV["SENTRY_AUTH_TOKEN"]
+sentry_env              = "sandbox"
+sentry_org_slug         = "houseninja"
+sentry_project_slug     = "app"
 xcode_project_path      = "./App.xcodeproj"
 xcode_workspace          = "App.xcworkspace"
 
@@ -37,6 +42,7 @@ default_platform(:ios)
 platform :ios do
   desc "Sandbox Release"
   lane :sandbox do
+    start_time = Time.now.to_i
     setup_ci if ENV["CI"]
     api_key = app_store_connect_api_key(
       key_id: app_store_key_id,
@@ -73,6 +79,20 @@ platform :ios do
       skip_waiting_for_build_processing: true,
       notify_external_testers: false,
       app_identifier: bundle_identifier,
+    )
+    end_time = Time.now.to_i
+    sentry_create_deploy(
+      auth_token: sentry_auth_token,
+      org_slug: sentry_org_slug,
+      project_slug: sentry_project_slug,
+      version: version,
+      app_identifier: bundle_identifier,
+      build: build_number,
+      env: sentry_env, # The environment for this deploy. Required.
+      # name: '...', # Optional human readable name
+      # deploy_url: '...', # Optional URL that points to the deployment
+      started: start_time,
+      finished: end_time, # Optional unix timestamp when the deployment finished
     )
   end
 end
