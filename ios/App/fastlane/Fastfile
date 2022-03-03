@@ -19,10 +19,10 @@ default_platform(:ios)
 
 platform :ios do
   desc "Sandbox Release"
-  package = load_json(json_path: '../../package.json')
-  version = package['version']
+  package = load_json(json_path: "../../package.json")
+  version = package["version"]
   lane :sandbox do
-    setup_ci if ENV['CI']
+    setup_ci if ENV["CI"]
     api_key = app_store_connect_api_key(
       key_id: ENV["APPSTORE_KEY_ID"],
       issuer_id: ENV["APPSTORE_ISSUER_ID"],
@@ -45,23 +45,21 @@ platform :ios do
       team_id: ENV["APPLE_TEAM_ID"],
       bundle_identifier: "co.houseninja.application",
       profile_name: "match AppStore co.houseninja.application"
-      # entitlements_file_path: "Demo App/generated/New.entitlements"
     )
     increment_version_number_in_xcodeproj(
       version_number: version,
-      xcodeproj: './App.xcodeproj',
-      scheme: 'HouseNinja'
+      xcodeproj: "./App.xcodeproj",
+      scheme: "HouseNinja"
     )
     build_app(
       scheme: "HouseNinja",
-      workspace: "App.xcworkspace",
-      # xcargs: "-allowProvisioningUpdates"
+      workspace: "App.xcworkspace"
     )
     upload_to_testflight(
       api_key: api_key,
       skip_waiting_for_build_processing: true,
       notify_external_testers: false,
-      app_identifier: ENV["APPLE_APP_IDENTIFIER"],
+      app_identifier: "co.houseninja.application",
     )
   end
 end

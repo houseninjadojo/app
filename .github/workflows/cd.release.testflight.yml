@@ -26,18 +26,12 @@ jobs:
       - run: yarn build
         env:
           NODE_ENV: production
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: dist
-      #     path: ./dist/
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
       - run: yarn cap sync
         env:
           NODE_ENV: production
-      # - run: echo $APPSTORE_PRIVATE_KEY > ./AuthKey.p8
-      #   working-directory: 'ios/App'
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -55,3 +49,13 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           GHCR_PAT: ${{ secrets.GHCR_PAT }}
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: House Ninja.ipa
+          path: 'ios/App/House Ninja.ipa'
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: House Ninja.app.dSYM.zip
+          path: 'ios/App/House Ninja.app.dSYM.zip'
