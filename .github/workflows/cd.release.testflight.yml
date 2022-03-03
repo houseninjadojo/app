@@ -19,6 +19,11 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
+      - uses: mathieu-bour/setup-sentry-cli@1.2.0
+        with:
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
       - run: yarn install --frozen-lockfile
       - run: yarn build
         env:
