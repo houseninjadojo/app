@@ -60,11 +60,10 @@ export default class CurrentService extends Service {
         let stashedDevice = await unstash('device');
         device = this.store.createRecord('device', {
           ...stashedDevice.value,
-          user: this.user,
         });
-      } else {
-        device.user = this.user;
       }
+
+      device.user = this.user;
 
       try {
         await device.save();
