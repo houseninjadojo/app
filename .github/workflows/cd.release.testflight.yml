@@ -4,9 +4,6 @@ on:
   release:
     types:
       - published
-  push:
-    branches:
-      - split-release
 
 env:
   RUBY_VERSION: 3.0.3
