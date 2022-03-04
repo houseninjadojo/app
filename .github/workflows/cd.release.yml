@@ -1,5 +1,7 @@
 name: cd / release / generate
 
+concurrency: release-lock
+
 on:
   workflow_run:
     workflows:
