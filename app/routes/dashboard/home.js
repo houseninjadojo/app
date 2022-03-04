@@ -20,6 +20,8 @@ export default class DashboardHomeRoute extends Route {
         include: 'properties',
       });
       property = user.get('properties.firstObject');
+    } else {
+      property = this.current.user.get('properties.firstObject');
     }
 
     return RSVP.hash({
