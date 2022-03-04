@@ -3,19 +3,15 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class HomeContentComponent extends Component {
-  @service current;
   @service router;
 
   get user() {
-    return this.current.user;
+    return this.args.user;
   }
 
   get streetAddress() {
     const streetAddress =
-      (this.current &&
-        this.current.property &&
-        this.current.property.get('streetAddress1')) ||
-      null;
+      (this.args.property && this.args.property.get('streetAddress1')) || null;
     return streetAddress;
   }
 
