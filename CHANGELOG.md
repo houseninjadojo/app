@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/houseninjadojo/app/compare/v1.0.13...v1.0.14) (2022-03-04)
+
+
+### Bug Fixes
+
+* dashboard.home model should fill property ([#418](https://github.com/houseninjadojo/app/issues/418)) ([f9dc53c](https://github.com/houseninjadojo/app/commit/f9dc53ca506c4b88c733d090df151ba20ef2e95e))
+
 ## [1.0.13](https://github.com/houseninjadojo/app/compare/v1.0.12...v1.0.13) (2022-03-04)
 
 
