@@ -79,7 +79,7 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
-      - run: bundle exec pod install
+      - run: pod install
         working-directory: 'ios/App'
       - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
