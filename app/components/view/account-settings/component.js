@@ -39,10 +39,6 @@ export default class AccountSettingsComponent extends Component {
       name: 'settings.property',
     },
     {
-      label: 'Contact Us',
-      name: 'contact-us',
-    },
-    {
       label: 'FAQ',
       name: 'faq',
     },
@@ -54,8 +50,6 @@ export default class AccountSettingsComponent extends Component {
 
   @action
   selectRoute(routeName) {
-    console.log(routeName);
-    // this.selected = routeName;
     this.router.transitionTo(routeName);
   }
 }
