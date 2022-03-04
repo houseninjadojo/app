@@ -27,6 +27,7 @@ git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
 provision_profile_name  = "match AppStore co.houseninja.application"
 scheme                  = "HouseNinja"
 sentry_auth_token       = ENV["SENTRY_AUTH_TOKEN"]
+sentry_deploy_name      = "testflight"
 sentry_env              = "sandbox"
 sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
@@ -84,13 +85,13 @@ platform :ios do
       scheme: scheme,
       workspace: xcode_workspace,
     )
-    # upload_to_testflight(
-    #   api_key: api_key,
-    #   skip_waiting_for_build_processing: true,
-    #   notify_external_testers: false,
-    #   app_identifier: bundle_identifier,
-    # )
     end_time = Time.now.to_i
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+      notify_external_testers: false,
+      app_identifier: bundle_identifier,
+    )
     sentry_upload_dif(
       auth_token: sentry_auth_token,
       org_slug: sentry_org_slug,
@@ -105,7 +106,7 @@ platform :ios do
       build: build_number,
       app_identifier: bundle_identifier,
       env: sentry_env,
-      name: "testflight",
+      name: sentry_deploy_name,
       started: start_time,
       finished: end_time, # Optional unix timestamp when the deployment finished
     )
