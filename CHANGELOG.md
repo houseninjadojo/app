@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/houseninjadojo/app/compare/v1.0.14...v1.0.15) (2022-03-04)
+
+
+### Bug Fixes
+
+* demo readiness ([#419](https://github.com/houseninjadojo/app/issues/419)) ([353eddc](https://github.com/houseninjadojo/app/commit/353eddc6544e753b65bf60ece259988fb6cf7bf8))
+
 ## [1.0.14](https://github.com/houseninjadojo/app/compare/v1.0.13...v1.0.14) (2022-03-04)
 
 
