@@ -31,7 +31,9 @@ jobs:
       - run: yarn cap sync
         env:
           NODE_ENV: production
-      - run: tar -cvf ios.tar ios
+      - run: |
+          tar -cvf ios.tar ios
+          tar -cvf android.tar android
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -77,6 +79,8 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
+      - run: bundle exec pod install
+        working-directory: 'ios/App'
       - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
         env:
