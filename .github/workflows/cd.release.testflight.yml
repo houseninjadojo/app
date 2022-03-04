@@ -35,7 +35,7 @@ jobs:
           tar -czvf web.tar.gz dist
           tar -czvf ios.tar.gz ios
           tar -czvf android.tar.gz android
-          tar -czf node_modules.tar,gz node_modules
+          tar -czf node_modules.tar.gz node_modules
       - uses: actions/upload-artifact@v2
         if: success()
         with:
