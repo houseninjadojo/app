@@ -12,11 +12,14 @@ export default class TopBarComponent extends Component {
 
   preserveViewScrollPosition() {
     const mainView = document.querySelector('main.hn.view');
-    const position = mainView.scrollTop;
-    localStorage.setItem(
-      'preserveredScrollPosition',
-      JSON.stringify({ route: this.router.currentRouteName, position })
-    );
+    const position = mainView && mainView.scrollTop;
+
+    if (position) {
+      localStorage.setItem(
+        'preserveredScrollPosition',
+        JSON.stringify({ route: this.router.currentRouteName, position })
+      );
+    }
   }
 
   preservePreviousRoute() {
