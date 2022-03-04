@@ -1,6 +1,9 @@
 name: cd / release
 
 on:
+  push:
+    branches:
+      - split-release
   release:
     types:
       - published
@@ -9,21 +12,14 @@ env:
   RUBY_VERSION: 3.0.3
 
 jobs:
-  testflight:
-    runs-on: macos-latest
-    env:
-      VERSION_TAG: ${{ github.event.release.tag_name }}
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
           cache: 'yarn'
-      - uses: mathieu-bour/setup-sentry-cli@1.2.0
-        with:
-          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          organization: houseninja
-          project: app
       - run: yarn install --frozen-lockfile
       - run: yarn build
         env:
@@ -34,12 +30,31 @@ jobs:
       - run: yarn cap sync
         env:
           NODE_ENV: production
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: ios
+          path: ios/
+  testflight:
+    needs: build
+    if: success()
+    runs-on: macos-latest
+    steps:
+      - uses: mathieu-bour/setup-sentry-cli@1.2.0
+        with:
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
+      - uses: actions/download-artifact@v2
+        with:
+          name: ios
+          path: ios
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
-      - run: bundle exec fastlane ios sandbox
+      - run: bundle exec fastlane ios sandbox --dry-run
         working-directory: 'ios/App'
         env:
           APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
