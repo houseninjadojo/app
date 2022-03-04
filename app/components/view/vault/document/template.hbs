@@ -10,7 +10,7 @@
     <div class="document-details">
         <p><span class="hn label">Name: </span>{{@model.name}}</p>
         <p><span class="hn label">Description: </span>{{@model.description}}</p>
-        <p><span class="hn label">Group: </span>{{if @model.groupName @model.groupName 'Uncategorized'}}</p>
+        <p><span class="hn label">Category: </span>{{if @model.groupName @model.groupName 'Uncategorized'}}</p>
     </div>
     <div class="document-container">
         <button type="button" {{on "click" this.openBrowser}}>
