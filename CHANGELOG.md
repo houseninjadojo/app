@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/houseninjadojo/app/compare/v1.0.9...v1.0.10) (2022-03-04)
+
+
+### Bug Fixes
+
+* **build:** trigger release ([6be3cf5](https://github.com/houseninjadojo/app/commit/6be3cf5ea98949585c913c2b008cd9abadb4ff46))
+
 ## [1.0.9](https://github.com/houseninjadojo/app/compare/v1.0.8...v1.0.9) (2022-03-03)
 
 
