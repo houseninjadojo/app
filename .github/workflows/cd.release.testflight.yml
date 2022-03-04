@@ -32,7 +32,7 @@ jobs:
           tar -czvf web.tar.gz dist
           tar -czvf ios.tar.gz ios
           tar -czvf android.tar.gz android
-          tar -cf node_modules.tar node_modules
+          tar -czf node_modules.tar.gz node_modules
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -41,8 +41,8 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: node_modules.tar
-          path: node_modules.tar
+          name: node_modules.tar.gz
+          path: node_modules.tar.gz
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -75,7 +75,7 @@ jobs:
           path: .
       - uses: actions/download-artifact@v2
         with:
-          name: node_modules.tar
+          name: node_modules.tar.gz
           path: .
       - uses: actions/download-artifact@v2
         with:
@@ -83,7 +83,7 @@ jobs:
           path: .
       - run: |
           tar -xzvf ios.tar.gz
-          tar -xf node_modules.tar
+          tar -xzf node_modules.tar.gz
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -129,5 +129,5 @@ jobs:
         name: clean artifacts
         with:
           name: |
-            node_modules.tar
+            node_modules.tar.gz
             android.tar.gz
