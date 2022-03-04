@@ -1087,10 +1087,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-1.0.9.tgz#8a8398cdbd17a06f1b3d003f60897bd6db7bd1fe"
   integrity sha512-NaH+drTYjOGgFMHl/2Jn1/+2rlgomtwP2NfK20E0i7+QoRze1ArcSThJ4vSF0m7VkYBsH3MgbXkWfNSSPaYrtw==
 
-"@capacitor/share@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-1.1.1.tgz#4959e62031d515a2edf7fd49f9a955fdcd617302"
-  integrity sha512-KmHHsTr/55uoT5CNztwX2ON7yClsPxQr8BIqKnkH8UyYSrOCy8w354fFTK8Q5nADrQGUKKXVjojDCA4u5TAjSQ==
+"@capacitor/share@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-1.1.2.tgz#7e35c2c3bccc9955e852d3dd401afe7bd5a69b7e"
+  integrity sha512-FUTdjA7MAiD1tkGVZ+C3gs7a4fyEhXojDO2HkZ954oupG1cQ51dEJ1xTNnR9BAmCwUJO4sa91cxy7SMyCDPuGg==
 
 "@capacitor/splash-screen@^1.2.2":
   version "1.2.2"
