@@ -1,6 +1,9 @@
 name: cd / release
 
 on:
+  push:
+    branches:
+      - sentry-fastlane
   release:
     types:
       - published
