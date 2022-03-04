@@ -54,7 +54,7 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
-      - run: bundle exec fastlane ios sandbox --dry-run
+      - run: bundle exec fastlane ios sandbox
         working-directory: 'ios/App'
         env:
           APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
