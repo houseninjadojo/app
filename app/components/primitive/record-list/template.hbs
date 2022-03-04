@@ -2,7 +2,7 @@
   <div class='filled'>
     <ul class='record-list'>
       <li>
-        <button type='button' class='record' {{on 'click' (fn this.handleClick record)}}>
+        <Primitive::Button {{on 'click' (fn this.handleClick record)}} @class="record" @variant="plain">        
           {{#if @showIcon}}
             {{#if record.iconUri}}
               <span class='icon'>
@@ -30,7 +30,7 @@
               {{record.description}}
             </p>
           </div>
-        </button>
+        </Primitive::Button>
       </li>
     </ul>
   </div>

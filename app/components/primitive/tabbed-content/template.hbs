@@ -2,10 +2,10 @@
   <div class="tab-container">
     <ul class="tab-list">
       {{#each @tabbedContentTabs as |tab|}}
-        <li>
-          <button type="button" class="tab {{if tab.active 'active'}}">
+        <li>          
+          <Primitive::Button @class="tab {{if tab.active 'active'}}" @variant="plain" @turnOffHapticFeedback={{if tab.active true}}>
             {{tab.label}}
-          </button>          
+          </Primitive::Button>         
         </li>
       {{/each}}
     </ul>

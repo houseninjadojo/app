@@ -33,6 +33,7 @@
   font-family: var(--campton-strong);
   color: var(--gray-900);
   text-align: left;
+  white-space: normal;
 }
 
 .filled ul.record-list li .record .description {

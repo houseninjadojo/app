@@ -4,22 +4,22 @@
   </Primitive::Button>
   <ul class="nav-menu">
     <li class="nav-menu-item">
-      <button type="button" {{on "click" (fn this.selectRoute 'dashboard.home')}} class="{{this.isHomeActive}}">
+      <Primitive::Button {{on "click" (fn this.selectRoute 'dashboard.home')}} @variant="plain" @class={{this.isHomeActive}}>
         <img src="/assets/icons/property.svg" alt="home icon" class="nav-menu-item-icon"/>
         Home
-      </button>
+      </Primitive::Button>
     </li>
     <li class="nav-menu-item">
-      <button type="button" {{on "click" (fn this.selectRoute 'dashboard.handle-it')}} class="{{this.isHandleItActive}}">
+      <Primitive::Button  {{on "click" (fn this.selectRoute 'dashboard.handle-it')}} @variant="plain" @class={{this.isHandleItActive}}>
         <img src="/assets/icons/tools.svg" alt="handle it icon" class="nav-menu-item-icon"/>
         Handle It
-      </button>
+      </Primitive::Button>
     </li>
     <li class="nav-menu-item">
-      <button type="button" {{on "click" (fn this.selectRoute 'dashboard.work-history')}} class="{{this.isWorkHistoryActive}}">
+      <Primitive::Button  {{on "click" (fn this.selectRoute 'dashboard.work-history')}} @variant="plain" @class={{this.isWorkHistoryActive}}>      
         <img src="/assets/icons/activity.svg" alt="history icon" class="nav-menu-item-icon"/>
         History
-      </button>
+      </Primitive::Button>
     </li>
   </ul>
 </nav>

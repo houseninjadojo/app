@@ -1,12 +1,12 @@
 <ul class="common-request-list">
     {{#each @commonRequests as |request|}}
         <li class="common-request">
-           <button type="button" {{on 'click' (fn this.openChatWithPrompt request.defaultHnChatMessage)}}>
+            <Primitive::Button {{on 'click' (fn this.openChatWithPrompt request.defaultHnChatMessage)}} @variant="plain"> 
                <div class="image-mask">
                    <img src={{request.imgURI}} alt={{request.caption}}/>
                </div>
                <p class="caption">{{request.caption}}</p>
-           </button>
+           </Primitive::Button>
         </li>
     {{/each}}
 </ul>

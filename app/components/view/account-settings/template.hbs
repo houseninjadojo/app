@@ -3,10 +3,10 @@
     <ul class="settings-menu">
         {{#each this.menuItems as |item|}}
             <li class="menu-item">
-                <button type="button" {{on "click" (fn this.selectRoute item.name) }}>
+                <Primitive::Button {{on "click" (fn this.selectRoute item.name)}} @variant="plain">                
                     <span class="menu-item-label">{{item.label}}</span>
                     <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
-                </button>
+                </Primitive::Button>
             </li>
         {{/each}}
     </ul>

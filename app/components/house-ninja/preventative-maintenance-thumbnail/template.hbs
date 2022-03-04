@@ -1,5 +1,5 @@
 <div class="hn pnp">
-    <button type="button" {{on "click" this.openBrowser}}>
+    <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
         <div class="overlay">
             <span class="block-text">My</span>
             <span class="block-text">Preventative</span>
@@ -8,5 +8,5 @@
             <span class="sig">View Plan</span>
         </div>
         <img src={{@thumbnailUri}} alt="preventative maintenance plan" />
-    </button>   
+    </Primitive::Button>
 </div>
