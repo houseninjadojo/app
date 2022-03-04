@@ -31,6 +31,7 @@ jobs:
       - run: yarn cap sync
         env:
           NODE_ENV: production
+      - run: tar -cvf ios.tar ios
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -39,8 +40,13 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: success()
         with:
+          name: web
+          path: dist
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
           name: ios
-          path: ios/
+          path: ios.tar
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -64,7 +70,8 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: ios
-          path: ios
+          path: .
+      - run: tar -xvf ios.tar
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
