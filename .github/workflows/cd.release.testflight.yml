@@ -32,10 +32,10 @@ jobs:
         env:
           NODE_ENV: production
       - run: |
-          tar -cvf web.tar dist
-          tar -cvf ios.tar ios
-          tar -cvf android.tar android
-          tar -cf node_modules.tar node_modules
+          tar -czvf web.tar.gz dist
+          tar -czvf ios.tar.gz ios
+          tar -czvf android.tar.gz android
+          tar -czf node_modules.tar,gz node_modules
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -44,23 +44,23 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: node_modules.tar
-          path: node_modules.tar
+          name: node_modules.tar.gz
+          path: node_modules.tar.gz
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: web.tar
-          path: web.tar
+          name: web.tar.gz
+          path: web.tar.gz
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: ios.tar
-          path: ios.tar
+          name: ios.tar.gz
+          path: ios.tar.gz
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: android.tar
-          path: android.tar
+          name: android.tar.gz
+          path: android.tar.gz
   ios:
     needs: web
     if: success()
@@ -78,15 +78,15 @@ jobs:
           path: .
       - uses: actions/download-artifact@v2
         with:
-          name: node_modules.tar
+          name: node_modules.tar.gz
           path: .
       - uses: actions/download-artifact@v2
         with:
-          name: ios.tar
+          name: ios.tar.gz
           path: .
       - run: |
-          tar -xvf ios.tar
-          tar -xf node_modules.tar
+          tar -xzvf ios.tar.gz
+          tar -xzf node_modules.tar.gz
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
