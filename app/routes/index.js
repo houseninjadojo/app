@@ -1,6 +1,8 @@
 import { Capacitor } from '@capacitor/core';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import { SplashScreen } from '@capacitor/splash-screen';
+
 export default class IndexRoute extends Route {
   @service session;
   @service router;
@@ -19,6 +21,7 @@ export default class IndexRoute extends Route {
       // but we are on mobile
       // => go to login/signup page
       this.router.transitionTo('login-or-signup');
+      SplashScreen.hide();
     } else {
       // we are NOT logged in
       // we are NOT on mobile
