@@ -12,7 +12,8 @@ env:
   RUBY_VERSION: 3.0.3
 
 jobs:
-  build:
+  web:
+    name: build / web
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -33,18 +34,33 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: success()
         with:
+          name: package.json
+          path: package.json
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
           name: ios
           path: ios/
-  testflight:
-    needs: build
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: android
+          path: android
+  ios:
+    needs: web
     if: success()
     runs-on: macos-latest
+    name: build / ios
     steps:
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
+      - uses: actions/download-artifact@v2
+        with:
+          name: package.json
+          path: package.json
       - uses: actions/download-artifact@v2
         with:
           name: ios
