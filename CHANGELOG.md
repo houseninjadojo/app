@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/houseninjadojo/app/compare/v1.0.11...v1.0.12) (2022-03-04)
+
+
+### Bug Fixes
+
+* **build:** trigger testflight release ([a7e9958](https://github.com/houseninjadojo/app/commit/a7e9958ddb9d7f7d57478c7e22498fd89e40107b))
+
 ## [1.0.11](https://github.com/houseninjadojo/app/compare/v1.0.10...v1.0.11) (2022-03-04)
 
 
