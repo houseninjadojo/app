@@ -27,7 +27,7 @@ export default class NavBarComponent extends Component {
   @action
   async openChatModal() {
     debug('Open Chat');
-    await Intercom.displayMessageComposer({ message: 'Help me with ' });
+    await Intercom.displayMessenger();
   }
 
   @action
