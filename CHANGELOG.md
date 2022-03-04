@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/houseninjadojo/app/compare/v1.0.12...v1.0.13) (2022-03-04)
+
+
+### Bug Fixes
+
+* ios clean-up ([#417](https://github.com/houseninjadojo/app/issues/417)) ([868e8b8](https://github.com/houseninjadojo/app/commit/868e8b806ec94c3df900947307522ef7d825ef7f))
+
 ## [1.0.12](https://github.com/houseninjadojo/app/compare/v1.0.11...v1.0.12) (2022-03-04)
 
 
