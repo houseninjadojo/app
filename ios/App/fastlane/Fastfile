@@ -34,8 +34,9 @@ xcode_project_path      = "./App.xcodeproj"
 xcode_workspace          = "App.xcworkspace"
 
 # get version
-package = load_json(json_path: "../../package.json")
-version = package["version"]
+package      = load_json(json_path: "../../package.json")
+version      = package["version"]
+full_version = "#{bundle_identifier}@#{version}+1"
 
 default_platform(:ios)
 
@@ -85,7 +86,7 @@ platform :ios do
       auth_token: sentry_auth_token,
       org_slug: sentry_org_slug,
       project_slug: sentry_project_slug,
-      version: version,
+      version: full_version,
       app_identifier: bundle_identifier,
       env: sentry_env, # The environment for this deploy. Required.
       # name: '...', # Optional human readable name
