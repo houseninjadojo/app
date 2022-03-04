@@ -35,7 +35,7 @@ jobs:
           tar -cvf web.tar dist
           tar -cvf ios.tar ios
           tar -cvf android.tar android
-          tar -cvf node_modules.tar node_modules
+          tar -cf node_modules.tar node_modules
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -86,7 +86,7 @@ jobs:
           path: .
       - run: |
           tar -xvf ios.tar
-          tar -xvf node_modules.tar
+          tar -xf node_modules.tar
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
