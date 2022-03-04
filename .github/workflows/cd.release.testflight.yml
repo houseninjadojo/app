@@ -116,3 +116,15 @@ jobs:
         with:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
+  cleanup:
+    needs: [ios]
+    if: always()
+    runs-on: ubuntu-latest
+    name: cleanup
+    steps:
+      - uses: geekyeggo/delete-artifact@v1
+        name: clean artifacts
+        with:
+          name: |
+            node_modules.tar.gz
+            android.tar.gz
