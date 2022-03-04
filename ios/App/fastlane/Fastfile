@@ -48,6 +48,7 @@ platform :ios do
       org_slug: sentry_org_slug,
       project_slug: sentry_project_slug,
       version: version,
+      build: build_number,
       app_identifier: bundle_identifier,
       # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
     )
@@ -101,9 +102,10 @@ platform :ios do
       org_slug: sentry_org_slug,
       project_slug: sentry_project_slug,
       version: version,
+      build: build_number,
       app_identifier: bundle_identifier,
       env: sentry_env,
-      build: build_number,
+      name: "testflight",
       started: start_time,
       finished: end_time, # Optional unix timestamp when the deployment finished
     )
