@@ -1,12 +1,12 @@
 name: cd / release
 
 on:
-  push:
-    branches:
-      - split-release
   release:
     types:
       - published
+  push:
+    branches:
+      - split-release
 
 env:
   RUBY_VERSION: 3.0.3
@@ -92,6 +92,12 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
+      - uses: actions/cache@v2
+        with:
+          path: ios/App/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
       - run: pod install
         working-directory: 'ios/App'
       - run: bundle exec fastlane ios sandbox
