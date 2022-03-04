@@ -32,8 +32,10 @@ jobs:
         env:
           NODE_ENV: production
       - run: |
+          tar -cvf web.tar dist
           tar -cvf ios.tar ios
           tar -cvf android.tar android
+          tar -cvf node_modules.tar node_modules
       - uses: actions/upload-artifact@v2
         if: success()
         with:
@@ -42,18 +44,23 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: web
-          path: dist
+          name: node_modules.tar
+          path: node_modules.tar
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: ios
+          name: web.tar
+          path: web.tar
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: ios.tar
           path: ios.tar
       - uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: android
-          path: android
+          name: android.tar
+          path: android.tar
   ios:
     needs: web
     if: success()
@@ -71,9 +78,15 @@ jobs:
           path: .
       - uses: actions/download-artifact@v2
         with:
-          name: ios
+          name: node_modules.tar
           path: .
-      - run: tar -xvf ios.tar
+      - uses: actions/download-artifact@v2
+        with:
+          name: ios.tar
+          path: .
+      - run: |
+          tar -xvf ios.tar
+          tar -xvf node_modules.tar
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
