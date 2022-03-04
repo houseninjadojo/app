@@ -12,9 +12,9 @@
         <p><span class="hn label">Description: </span>{{@model.description}}</p>
         <p><span class="hn label">Category: </span>{{if @model.groupName @model.groupName 'Uncategorized'}}</p>
     </div>
-    <div class="document-container">
-        <button type="button" {{on "click" this.openBrowser}}>
+    <div class="document-container">    
+        <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
             <img src={{@model.uri}} alt={{@model.name}} />
-        </button>
+        </Primitive::Button>
     </div>
 </div>

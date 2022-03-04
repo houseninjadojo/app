@@ -3,9 +3,9 @@
     <div class="modal-container shelf dark">
         <div class="head">
             <div class="actions">
-                <button type="button" class="hn btn sm floating" {{on "click" this.goBack}}>
+                <Primitive::Button {{on "click" this.goBack}} @size="sm" @variant="floating">
                     Back
-                </button>
+                </Primitive::Button>
             </div>
         </div>
         <div class="body">
