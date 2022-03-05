@@ -25,4 +25,20 @@ export default function () {
     this.use('slideOverUp', { duration: 500, easing: [100, 20] }),
     this.reverse('slideOverDown', { duration: 300 })
   );
+
+  this.transition(
+    this.fromRoute([
+      'dashboard.handle-it',
+      'dashboard.home',
+      'dashboard.index',
+      'dashboard.work-history',
+    ]),
+    this.toRoute([
+      'dashboard.handle-it',
+      'dashboard.home',
+      'dashboard.index',
+      'dashboard.work-history',
+    ]),
+    this.use('fade', { duration: 100 })
+  );
 }
