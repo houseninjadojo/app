@@ -1,3 +1,10 @@
+## [1.0.16](https://github.com/houseninjadojo/app/compare/v1.0.15...v1.0.16) (2022-03-05)
+
+
+### Bug Fixes
+
+* haptics service ([#420](https://github.com/houseninjadojo/app/issues/420)) ([5fcc911](https://github.com/houseninjadojo/app/commit/5fcc911ada91082400b78f7b5e2fab8ca748b151))
+
 ## [1.0.15](https://github.com/houseninjadojo/app/compare/v1.0.14...v1.0.15) (2022-03-04)
 
 
