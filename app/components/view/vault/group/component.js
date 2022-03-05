@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class VaultGroupComponent extends Component {
   @service router;
+  @service haptics;
 
   get getEmptyMessage() {
     return {
@@ -14,6 +15,8 @@ export default class VaultGroupComponent extends Component {
 
   @action
   selectRoute(route) {
+    this.haptics.giveFeedback();
+
     if (route === 'vault') {
       // transition back
       this.router.transitionTo(route);
