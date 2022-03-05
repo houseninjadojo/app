@@ -39,6 +39,6 @@ export default function () {
       'dashboard.index',
       'dashboard.work-history',
     ]),
-    this.use('fade', { duration: 100 })
+    this.use('crossFade', { duration: 150 })
   );
 }
