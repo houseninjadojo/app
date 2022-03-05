@@ -1,9 +1,11 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 export default class HomeContentComponent extends Component {
   @service router;
+  @service haptics;
 
   get user() {
     return this.args.user;
@@ -37,7 +39,8 @@ export default class HomeContentComponent extends Component {
     return this.args.homeCareTips.objectAt(tipNumber);
   }
   @action
-  selectRoute(routeName) {
+  async selectRoute(routeName) {
+    this.haptics.giveFeedback();
     this.router.transitionTo(routeName);
   }
 }

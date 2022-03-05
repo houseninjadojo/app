@@ -4,9 +4,11 @@ import { action } from '@ember/object';
 
 export default class VaultContentComponent extends Component {
   @service router;
+  @service haptics;
 
   @action
   selectRoute(route) {
+    this.haptics.giveFeedback();
     if (route === 'vault.group.new') {
       this.router.transitionTo(route);
     }
