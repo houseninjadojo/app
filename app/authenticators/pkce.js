@@ -6,6 +6,7 @@ import HTTP, { encodeFormData } from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
+import { Browser } from '@capacitor/browser';
 
 const STASH_TOKEN = 'PKCE';
 
@@ -369,6 +370,18 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         token: refresh_token,
       };
       await this._post(this.serverTokenEndpoint, params);
+    }
+
+    if (isNativePlatform()) {
+      Browser.addListener('browserPageLoaded', () => {
+        Browser.close();
+        Browser.removeAllListeners();
+      });
+
+      await Browser.open({
+        url: this.logoutEndpoint,
+        presentationStyle: 'popover',
+      });
     }
 
     return;
