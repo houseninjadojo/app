@@ -1,3 +1,10 @@
+## [1.0.18](https://github.com/houseninjadojo/app/compare/v1.0.17...v1.0.18) (2022-03-06)
+
+
+### Bug Fixes
+
+* **intercom:** logout intercom user to clear previous session ([#425](https://github.com/houseninjadojo/app/issues/425)) ([f474645](https://github.com/houseninjadojo/app/commit/f4746450d2acc16ef44c765598aa5369d4fa8804))
+
 ## [1.0.17](https://github.com/houseninjadojo/app/compare/v1.0.16...v1.0.17) (2022-03-06)
 
 
