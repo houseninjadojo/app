@@ -59,4 +59,11 @@ export default class IntercomService extends Service {
     this.isOpen = false;
     yield Intercom.hideMessenger();
   }
+
+  logout() {
+    if (this.isOpen) {
+      this._hide.perform();
+    }
+    Intercom.logout();
+  }
 }
