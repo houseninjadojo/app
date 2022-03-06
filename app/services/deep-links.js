@@ -59,7 +59,8 @@ export default class DeepLinksService extends Service {
       run(() => {
         // co.houseninja.application://page => /page
         let url = this.parseUrl(event.url);
-        this.analytics.track('deep_link_visit', {
+        this.analytics.track('Page Visit', {
+          deep_link: true,
           page: url.raw,
           name: url.name,
         });

@@ -42,13 +42,13 @@ class ApplicationRoute extends Route {
     }
 
     await this.analytics.setup();
-    await this.analytics.track('application_started');
+    await this.analytics.track('Ember App Started');
   }
 
   async _trackPage() {
     const page = this.router.currentURL;
     const title = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('page_visit', { page, title });
+    await this.analytics.track('Page Visited', { page, title });
   }
 
   /**
@@ -61,7 +61,7 @@ class ApplicationRoute extends Route {
     const classNames = event.target.className.replaceAll(' ', '.');
     const id = event.target.id;
     const queryString = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    await this.analytics.track('click', {
+    await this.analytics.track('Click', {
       selector: queryString,
     });
   }
