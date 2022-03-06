@@ -25,5 +25,12 @@ export default function (server) {
     lastName: 'Imperial',
   });
 
+  server.create('user', {
+    id: 'ac8e5f27-6929-4afa-9a04-07696efeedf9',
+    email: 'achilles+andrew@houseninja.co',
+    firstName: 'Andrew',
+    lastName: 'Demo',
+  });
+
   server.loadFixtures();
 }
