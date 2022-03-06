@@ -121,7 +121,7 @@
     "@capacitor/keyboard": "^1.2.2",
     "@capacitor/local-notifications": "^1.1.0",
     "@capacitor/push-notifications": "^1.0.9",
-    "@capacitor/share": "^1.1.1",
+    "@capacitor/share": "^1.1.2",
     "@capacitor/splash-screen": "^1.2.2",
     "@houseninja/capacitor-mixpanel": "^0.0.15",
     "capacitor-secure-storage-plugin": "^0.6.2",
