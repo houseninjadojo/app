@@ -48,7 +48,7 @@ class ApplicationRoute extends Route {
   async _trackPage() {
     const page = this.router.currentURL;
     const title = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('Page Visited', { page, title });
+    await this.analytics.track('Page Visit', { page, title });
   }
 
   /**
