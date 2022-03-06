@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Intercom } from '@capacitor-community/intercom';
-import Sentry from 'houseninja/utils/sentry';
 
 export default class NavBarComponent extends Component {
   @service analytics;
