@@ -1,3 +1,10 @@
+## [1.0.17](https://github.com/houseninjadojo/app/compare/v1.0.16...v1.0.17) (2022-03-06)
+
+
+### Bug Fixes
+
+* **auth:** open browser to logout endpoint to clear session ([#424](https://github.com/houseninjadojo/app/issues/424)) ([c64d699](https://github.com/houseninjadojo/app/commit/c64d699f144a3070c4926c92875e47176ce93c95))
+
 ## [1.0.16](https://github.com/houseninjadojo/app/compare/v1.0.15...v1.0.16) (2022-03-05)
 
 
