@@ -28,7 +28,7 @@ export default class LoginRoute extends Route {
       await SecureStorage.clear('login');
       await SecureStorage.set('login', { state: 'active' });
       let url = await pkce.generateAuthorizationURL();
-      await this.analytics.track('login');
+      await this.analytics.track('Login');
       await this.nativeOpen(url);
     }
 

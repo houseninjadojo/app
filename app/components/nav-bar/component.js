@@ -26,7 +26,7 @@ export default class NavBarComponent extends Component {
 
   @action
   async openChatModal() {
-    await this.analytics.track('opened intercom', {
+    await this.analytics.track('Intercom Opened', {
       message: '',
     });
     await Intercom.displayMessageComposer({ message: '' });

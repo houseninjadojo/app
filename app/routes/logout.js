@@ -9,7 +9,7 @@ export default class LogoutRoute extends Route {
 
   async beforeModel(transition) {
     this.session.requireAuthentication(transition, 'login-or-signup');
-    await this.analytics.track('logout');
+    await this.analytics.track('Logout');
     await this.session.invalidate();
     await this.analytics.reset();
     await this.intercom.logout();
