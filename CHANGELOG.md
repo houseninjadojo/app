@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/houseninjadojo/app/compare/v1.0.19...v1.0.20) (2022-03-06)
+
+
+### Bug Fixes
+
+* **analytics:** change tracking events to follow Mixpanel guidelines ([#427](https://github.com/houseninjadojo/app/issues/427)) ([da100bb](https://github.com/houseninjadojo/app/commit/da100bb754257855fcb2ab61b11ecf254974e285))
+
 ## [1.0.19](https://github.com/houseninjadojo/app/compare/v1.0.18...v1.0.19) (2022-03-06)
 
 
