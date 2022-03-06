@@ -1,3 +1,10 @@
+## [1.0.19](https://github.com/houseninjadojo/app/compare/v1.0.18...v1.0.19) (2022-03-06)
+
+
+### Bug Fixes
+
+* **intercom:** 'help me with' open to an empty message ([#426](https://github.com/houseninjadojo/app/issues/426)) ([c58a0db](https://github.com/houseninjadojo/app/commit/c58a0db47eef84d171ed5858ed7217cb000796bb))
+
 ## [1.0.18](https://github.com/houseninjadojo/app/compare/v1.0.17...v1.0.18) (2022-03-06)
 
 
