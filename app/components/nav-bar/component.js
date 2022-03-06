@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { debug } from '@ember/debug';
 import { Intercom } from '@capacitor-community/intercom';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class NavBarComponent extends Component {
+  @service analytics;
   @service router;
 
   /**
@@ -26,8 +27,10 @@ export default class NavBarComponent extends Component {
 
   @action
   async openChatModal() {
-    debug('Open Chat');
-    await Intercom.displayMessenger();
+    await this.analytics.track('opened intercom', {
+      message: '',
+    });
+    await Intercom.displayMessageComposer({ message: '' });
   }
 
   @action
