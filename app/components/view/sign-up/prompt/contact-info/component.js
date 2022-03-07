@@ -14,7 +14,7 @@ export default class ContactInfoComponent extends Component {
   @service router;
   @service store;
 
-  user = null;
+  @tracked user = null;
 
   @tracked contactInfo = {
     firstName: null,
