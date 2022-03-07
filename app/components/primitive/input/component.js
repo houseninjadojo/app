@@ -3,11 +3,6 @@ import { action } from '@ember/object';
 import { isPresent } from '@ember/utils';
 
 export default class InputComponent extends Component {
-  get errors() {
-    console.log(this.args.errors);
-    return this.args.errors;
-  }
-
   get descriptionText() {
     const { alert, warn, description } = this.args;
 
