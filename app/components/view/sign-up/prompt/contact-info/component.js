@@ -84,7 +84,11 @@ export default class ContactInfoComponent extends Component {
     }
     try {
       await this.user.save();
-      console.log(this.user.errors);
+      console.log(this.user.get('errors'));
+      console.log(this.user.get('errors.length'));
+      console.log(this.user.errors.email);
+      console.log(this.user.get('errors.email'));
+      console.log(this.user.errors.messages);
       this.router.transitionTo('signup.plan-selection');
     } catch (e) {
       debug(e);
