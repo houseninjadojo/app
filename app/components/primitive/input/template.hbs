@@ -29,12 +29,11 @@
             />
         {{/if}}
     </div>
-    {{#if this.descriptionText}}
-        <span class="hn-input-description">{{this.descriptionText}}</span>
-    {{/if}}
     {{#if @errors}}
         {{#each @errors as |error|}}
             <span class="hn-input-description">{{error.message}}</span>
         {{/each}}
+    {{else if this.descriptionText}}
+        <span class="hn-input-description">{{this.descriptionText}}</span>
     {{/if}}
 </div>
