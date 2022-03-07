@@ -1,3 +1,12 @@
+## [1.0.22](https://github.com/houseninjadojo/app/compare/v1.0.21...v1.0.22) (2022-03-07)
+
+
+### Bug Fixes
+
+* **images:** skeleton content loader image component ([#423](https://github.com/houseninjadojo/app/issues/423)) ([121341a](https://github.com/houseninjadojo/app/commit/121341a0341024ebc6e1205a17c1c36fbfa60a52))
+* **intercom:** remove config object deprecation warning on boot ([#429](https://github.com/houseninjadojo/app/issues/429)) ([25e0982](https://github.com/houseninjadojo/app/commit/25e09821a83096eb7b5ba767a8ddf6b2fb74cdbd))
+* **ui/ux:** fade animation between dashboard routes ([#421](https://github.com/houseninjadojo/app/issues/421)) ([837700e](https://github.com/houseninjadojo/app/commit/837700ed79803c94fae67b596fc720d99065d0b9))
+
 ## [1.0.21](https://github.com/houseninjadojo/app/compare/v1.0.20...v1.0.21) (2022-03-07)
 
 
