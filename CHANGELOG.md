@@ -1,3 +1,10 @@
+## [1.0.24](https://github.com/houseninjadojo/app/compare/v1.0.23...v1.0.24) (2022-03-07)
+
+
+### Bug Fixes
+
+* update datastub for demo ([#435](https://github.com/houseninjadojo/app/issues/435)) ([467fc7f](https://github.com/houseninjadojo/app/commit/467fc7fd9b24d3a13d8479892d2348f3e16b290a))
+
 ## [1.0.23](https://github.com/houseninjadojo/app/compare/v1.0.22...v1.0.23) (2022-03-07)
 
 
