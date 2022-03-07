@@ -5,7 +5,6 @@ import { isPresent } from '@ember/utils';
 export default class InputComponent extends Component {
   get descriptionText() {
     const { alert, warn, description } = this.args;
-
     const obj = alert || warn;
     let descriptionString = '';
 
