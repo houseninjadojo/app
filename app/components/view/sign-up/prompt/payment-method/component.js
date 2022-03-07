@@ -32,7 +32,15 @@ export default class PaymentMethodComponent extends Component {
     zipcode: null,
   };
 
-  paymentMethodModel = null;
+  @tracked errors = {
+    cardNumber: [],
+    cvv: [],
+    expMonth: [],
+    expYear: [],
+    zipcode: [],
+  };
+
+  @tracked paymentMethodModel = null;
 
   fields = [
     {
@@ -177,6 +185,7 @@ export default class PaymentMethodComponent extends Component {
 
       this.router.transitionTo('signup.welcome');
     } catch (e) {
+      this.errors = this.paymentMethodModel.errors;
       debug(e);
       Sentry.captureException(e);
     }

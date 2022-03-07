@@ -20,6 +20,14 @@ export default class PropertyInfoComponent extends Component {
     zipcode: null,
   };
 
+  @tracked errors = {
+    streetAddress1: [],
+    streetAddress2: [],
+    city: [],
+    state: [],
+    zipcode: [],
+  };
+
   @tracked formIsInvalid = true;
 
   @tracked fields = [
@@ -65,7 +73,7 @@ export default class PropertyInfoComponent extends Component {
     },
   ];
 
-  property = null;
+  @tracked property = null;
 
   constructor() {
     super(...arguments);
@@ -109,6 +117,7 @@ export default class PropertyInfoComponent extends Component {
       await this.property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
+      this.errors = this.property.errors;
       debug(e);
       Sentry.captureException(e);
     }

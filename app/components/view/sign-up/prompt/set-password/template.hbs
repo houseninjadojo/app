@@ -29,7 +29,7 @@
                 @type={{field.type}}
                 @disabled={{field.disabled}}
                 @onInput={{this.validateForm}}
-                @errors={{(get this.user field.id)}}
+                @errors={{(get this.errors field.id)}}
             />
         {{/each}}
     </div>

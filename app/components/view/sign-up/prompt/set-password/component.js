@@ -20,6 +20,11 @@ export default class SetPasswordComponent extends Component {
     passwordConfirmation: '',
   };
 
+  @tracked errors = {
+    password: [],
+    passwordConfirmation: [],
+  };
+
   @tracked formIsInvalid = true;
 
   @tracked requirementsModel = passwordValidation;
@@ -81,6 +86,7 @@ export default class SetPasswordComponent extends Component {
         await this.user.save();
         this.router.transitionTo('signup.booking-confirmation');
       } catch (e) {
+        this.errors = this.user.errors;
         debug(e);
         Sentry.captureException(e);
       }

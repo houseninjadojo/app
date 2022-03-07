@@ -12,7 +12,7 @@
                 @value={{mut (get this.paymentMethod field.id)}}
                 @onInput={{this.validateForm}}
                 @maxLength={{field.maxLength}}
-                @errors={{(get this.paymentMethodModel.errors field.id)}}
+                @errors={{(get this.errors field.id)}}
             />
         {{/each}}
         <Primitive::Input
