@@ -1,3 +1,10 @@
+## [1.0.23](https://github.com/houseninjadojo/app/compare/v1.0.22...v1.0.23) (2022-03-07)
+
+
+### Bug Fixes
+
+* update walkthrough uri ([#434](https://github.com/houseninjadojo/app/issues/434)) ([3c2041d](https://github.com/houseninjadojo/app/commit/3c2041d28b9438ef74c0af23291b67a1fe309018))
+
 ## [1.0.22](https://github.com/houseninjadojo/app/compare/v1.0.21...v1.0.22) (2022-03-07)
 
 
