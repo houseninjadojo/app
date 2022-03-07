@@ -60,7 +60,7 @@ export const vault = {
       name: 'Walkthrough Report',
       // description: faker.lorem.sentence(4),
       type: 'pdf',
-      uri: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Walkthrough+Report_General+Information+.pdf',
+      uri: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Walkthrough.pdf',
       iconUri: '',
       groupId: null,
       isWalkthroughReport: true,
