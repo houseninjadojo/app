@@ -7,7 +7,6 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
-import { get } from '@ember/object';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -39,7 +38,6 @@ export default class ContactInfoComponent extends Component {
       label: 'First Name',
       placeholder: '',
       value: null,
-      errors: get('user.errors.firstName'),
     },
     {
       id: 'lastName',
@@ -47,7 +45,6 @@ export default class ContactInfoComponent extends Component {
       label: 'Last Name',
       placeholder: '',
       value: null,
-      errors: get('user.errors.lastName'),
     },
     {
       type: 'tel',
@@ -56,7 +53,6 @@ export default class ContactInfoComponent extends Component {
       label: 'Phone',
       description: 'We only use your phone number to contact you.',
       value: null,
-      errors: get('user.errors.phoneNumber'),
     },
     {
       type: 'email',
@@ -65,7 +61,6 @@ export default class ContactInfoComponent extends Component {
       label: 'Email',
       placeholder: '',
       value: null,
-      errors: this.emailError,
     },
   ];
 
@@ -82,10 +77,6 @@ export default class ContactInfoComponent extends Component {
       this.formIsInvalid = false;
       this.user = this.args.user;
     }
-  }
-
-  get emailError() {
-    return this.user.get('errors.email');
   }
 
   @action
