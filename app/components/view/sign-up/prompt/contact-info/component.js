@@ -16,6 +16,13 @@ export default class ContactInfoComponent extends Component {
 
   @tracked user = null;
 
+  @tracked errors = {
+    firstName: [],
+    lastName: [],
+    phoneNumber: [],
+    email: [],
+  };
+
   @tracked contactInfo = {
     firstName: null,
     lastName: null,
@@ -77,7 +84,6 @@ export default class ContactInfoComponent extends Component {
     }
   }
 
-  // @computed('user.errors.email')
   get emailError() {
     return this.user.get('errors.email');
   }
@@ -94,18 +100,9 @@ export default class ContactInfoComponent extends Component {
     }
     try {
       await this.user.save();
-      console.log(this.user.get('errors'));
-      console.log(this.user.get('errors.length'));
-      console.log(this.user.errors.email);
-      console.log(this.user.get('errors.email'));
-      console.log(this.user.errors.messages);
       this.router.transitionTo('signup.plan-selection');
     } catch (e) {
-      console.log(this.user.get('errors'));
-      console.log(this.user.get('errors.length'));
-      console.log(this.user.errors.email);
-      console.log(this.user.get('errors.email'));
-      console.log(this.user.errors.messages);
+      this.errors = this.user.errors;
       debug(e);
       Sentry.captureException(e);
     }
