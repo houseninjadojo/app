@@ -31,6 +31,7 @@ export default class ContactInfoComponent extends Component {
       label: 'First Name',
       placeholder: '',
       value: null,
+      errors: this.user.get('errors.firstName'),
     },
     {
       id: 'lastName',
@@ -38,6 +39,7 @@ export default class ContactInfoComponent extends Component {
       label: 'Last Name',
       placeholder: '',
       value: null,
+      errors: this.user.get('errors.lastName'),
     },
     {
       type: 'tel',
@@ -46,6 +48,7 @@ export default class ContactInfoComponent extends Component {
       label: 'Phone',
       description: 'We only use your phone number to contact you.',
       value: null,
+      errors: this.user.get('errors.phoneNumber'),
     },
     {
       type: 'email',
@@ -54,6 +57,7 @@ export default class ContactInfoComponent extends Component {
       label: 'Email',
       placeholder: '',
       value: null,
+      errors: this.user.get('errors.email'),
     },
   ];
 
