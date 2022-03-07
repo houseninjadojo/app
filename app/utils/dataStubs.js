@@ -39,7 +39,7 @@ export const vault = {
     },
     {
       id: faker.datatype.uuid(),
-      name: 'major home appliances manual',
+      name: 'Major Home Appliances Manual',
       // description: faker.lorem.sentence(4),
       type: 'pdf',
       uri: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/manual.pdf',
