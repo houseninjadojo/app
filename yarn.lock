@@ -6726,7 +6726,7 @@ ember-cli-htmlbars@^5.3.2, ember-cli-htmlbars@^5.7.1:
     strip-bom "^4.0.0"
     walk-sync "^2.2.0"
 
-ember-cli-htmlbars@^6.0.1:
+ember-cli-htmlbars@^6.0.0, ember-cli-htmlbars@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-6.0.1.tgz#5487831d477e61682bc867fd138808269e5d2152"
   integrity sha512-IDsl9uty+MXtMfp/BUTEc/Q36EmlHYj8ZdPekcoRa8hmdsigHnK4iokfaB7dJFktlf6luruei+imv7JrJrBQPQ==
@@ -7050,6 +7050,14 @@ ember-concurrency@^2.2.1:
     ember-cli-htmlbars "^5.7.1"
     ember-compatibility-helpers "^1.2.0"
     ember-destroyable-polyfill "^2.0.2"
+
+ember-content-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ember-content-loader/-/ember-content-loader-3.0.0.tgz#ef70ea769c5396632a618cb6827480f9cc60215a"
+  integrity sha512-rZ97nMzPQ+3dAI9Toi6xSYa+lT8/dSPyk9ohN9vQ8ANHQuiHnxqbg0Kyncg69Z/gjclzvffx/wYTcKHs7ThTtQ==
+  dependencies:
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^6.0.0"
 
 ember-cookies@^0.5.0:
   version "0.5.2"
