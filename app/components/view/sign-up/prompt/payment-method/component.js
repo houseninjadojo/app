@@ -40,8 +40,6 @@ export default class PaymentMethodComponent extends Component {
     zipcode: [],
   };
 
-  @tracked paymentMethodModel = null;
-
   fields = [
     {
       id: 'cardNumber',
@@ -91,7 +89,6 @@ export default class PaymentMethodComponent extends Component {
         'zipcode'
       );
       this.formIsValid = true;
-      this.paymentMethodModel = this.args.paymentMethod;
     }
   }
 
@@ -161,31 +158,33 @@ export default class PaymentMethodComponent extends Component {
   async savePaymentMethod() {
     const user = this.store.peekAll('user').get('firstObject');
     const subscription = this.store.peekAll('subscription').get('firstObject');
+
+    let paymentMethod;
     try {
       subscription.user = user;
       subscription.promoCode = this.promoCode;
 
       if (isPresent(this.args.paymentMethod)) {
-        this.paymentMethodModel = this.args.paymentMethod;
-        this.paymentMethodModel.setProperties({
+        paymentMethod = this.args.paymentMethod;
+        paymentMethod.setProperties({
           ...this.paymentMethod,
           subscription,
           user,
         });
       } else {
-        this.paymentMethodModel = this.store.createRecord('credit-card', {
+        paymentMethod = this.store.createRecord('credit-card', {
           ...this.paymentMethod,
           subscription,
           user,
         });
       }
 
-      await this.paymentMethodModel.save();
+      await paymentMethod.save();
       await subscription.save();
 
       this.router.transitionTo('signup.welcome');
     } catch (e) {
-      this.errors = this.paymentMethodModel.errors;
+      this.errors = paymentMethod.errors;
       debug(e);
       Sentry.captureException(e);
     }

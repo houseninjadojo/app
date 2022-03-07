@@ -13,8 +13,6 @@ export default class ContactInfoComponent extends Component {
   @service router;
   @service store;
 
-  @tracked user = null;
-
   @tracked errors = {
     firstName: [],
     lastName: [],
@@ -75,25 +73,25 @@ export default class ContactInfoComponent extends Component {
         'lastName'
       );
       this.formIsInvalid = false;
-      this.user = this.args.user;
     }
   }
 
   @action
   async saveContactInfo() {
+    let user;
     if (isPresent(this.args.user)) {
-      this.user = this.args.user;
-      this.user.setProperties(this.contactInfo);
+      user = this.args.user;
+      user.setProperties(this.contactInfo);
     } else {
-      this.user = this.store.createRecord('user', {
+      user = this.store.createRecord('user', {
         ...this.contactInfo,
       });
     }
     try {
-      await this.user.save();
+      await user.save();
       this.router.transitionTo('signup.plan-selection');
     } catch (e) {
-      this.errors = this.user.errors;
+      this.errors = user.errors;
       debug(e);
       Sentry.captureException(e);
     }

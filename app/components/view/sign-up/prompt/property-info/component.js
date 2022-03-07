@@ -73,8 +73,6 @@ export default class PropertyInfoComponent extends Component {
     },
   ];
 
-  @tracked property = null;
-
   constructor() {
     super(...arguments);
 
@@ -87,18 +85,18 @@ export default class PropertyInfoComponent extends Component {
         'zipcode'
       );
       this.formIsInvalid = false;
-      this.property = this.args.property;
     }
   }
 
   @action
   async savePropertyInfo() {
+    let property;
     try {
       let serviceArea = this.store.peekAll('service-area').get('firstObject');
       let user = this.store.peekAll('user').get('firstObject');
       if (isPresent(this.args.property)) {
-        this.property = this.args.property;
-        this.property.setProperties({
+        property = this.args.property;
+        property.setProperties({
           serviceArea,
           user,
           ...this.propertyInfo,
@@ -106,7 +104,7 @@ export default class PropertyInfoComponent extends Component {
           selected: true,
         });
       } else {
-        this.property = await this.store.createRecord('property', {
+        property = await this.store.createRecord('property', {
           serviceArea,
           user,
           ...this.propertyInfo,
@@ -114,10 +112,10 @@ export default class PropertyInfoComponent extends Component {
           selected: true,
         });
       }
-      await this.property.save();
+      await property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
-      this.errors = this.property.errors;
+      this.errors = property.errors;
       debug(e);
       Sentry.captureException(e);
     }

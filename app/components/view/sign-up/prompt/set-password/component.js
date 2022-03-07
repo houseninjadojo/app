@@ -48,8 +48,6 @@ export default class SetPasswordComponent extends Component {
     },
   ];
 
-  user = null;
-
   constructor() {
     super(...arguments);
 
@@ -57,7 +55,6 @@ export default class SetPasswordComponent extends Component {
       this.passwords.password = this.args.user.password;
       this.passwords.passwordConfirmation = this.args.user.password;
       this.formIsInvalid = false;
-      this.user = this.args.user;
     }
   }
 
@@ -75,18 +72,19 @@ export default class SetPasswordComponent extends Component {
 
   @action
   async savePassword() {
+    let user;
     if (isPresent(this.args.user)) {
-      this.user = this.args.user;
+      user = this.args.user;
     } else {
-      this.user = await this.store.peekAll('user').get('firstObject');
+      user = await this.store.peekAll('user').get('firstObject');
     }
-    if (this.user && !this.formIsInvalid) {
-      this.user.password = this.passwords.password;
+    if (user && !this.formIsInvalid) {
+      user.password = this.passwords.password;
       try {
-        await this.user.save();
+        await user.save();
         this.router.transitionTo('signup.booking-confirmation');
       } catch (e) {
-        this.errors = this.user.errors;
+        this.errors = user.errors;
         debug(e);
         Sentry.captureException(e);
       }
