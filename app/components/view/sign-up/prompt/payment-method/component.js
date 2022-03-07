@@ -32,6 +32,8 @@ export default class PaymentMethodComponent extends Component {
     zipcode: null,
   };
 
+  paymentMethodModel = null;
+
   fields = [
     {
       id: 'cardNumber',
@@ -81,6 +83,7 @@ export default class PaymentMethodComponent extends Component {
         'zipcode'
       );
       this.formIsValid = true;
+      this.paymentMethodModel = this.args.paymentMethod;
     }
   }
 
@@ -154,23 +157,22 @@ export default class PaymentMethodComponent extends Component {
       subscription.user = user;
       subscription.promoCode = this.promoCode;
 
-      let paymentMethod;
       if (isPresent(this.args.paymentMethod)) {
-        paymentMethod = this.args.paymentMethod;
-        paymentMethod.setProperties({
+        this.paymentMethodModel = this.args.paymentMethod;
+        this.paymentMethodModel.setProperties({
           ...this.paymentMethod,
           subscription,
           user,
         });
       } else {
-        paymentMethod = this.store.createRecord('credit-card', {
+        this.paymentMethodModel = this.store.createRecord('credit-card', {
           ...this.paymentMethod,
           subscription,
           user,
         });
       }
 
-      await paymentMethod.save();
+      await this.paymentMethodModel.save();
       await subscription.save();
 
       this.router.transitionTo('signup.welcome');

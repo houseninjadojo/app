@@ -12,6 +12,7 @@
                 @value={{mut (get this.paymentMethod field.id)}}
                 @onInput={{this.validateForm}}
                 @maxLength={{field.maxLength}}
+                @errors={{(get this.paymentMethodModel.errors field.id)}}
             />
         {{/each}}
         <Primitive::Input
@@ -41,7 +42,7 @@
                 />
                 <span for="terms">I have read and agree to House Ninja Inc’s limited warranty.</span>
             </div>
-            
+
         </div>
     </div>
     <div class="action">

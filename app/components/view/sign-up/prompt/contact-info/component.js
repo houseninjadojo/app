@@ -13,6 +13,8 @@ export default class ContactInfoComponent extends Component {
   @service router;
   @service store;
 
+  user = null;
+
   @tracked contactInfo = {
     firstName: null,
     lastName: null,
@@ -66,22 +68,22 @@ export default class ContactInfoComponent extends Component {
         'lastName'
       );
       this.formIsInvalid = false;
+      this.user = this.args.user;
     }
   }
 
   @action
   async saveContactInfo() {
-    let user;
     if (isPresent(this.args.user)) {
-      user = this.args.user;
-      user.setProperties(this.contactInfo);
+      this.user = this.args.user;
+      this.user.setProperties(this.contactInfo);
     } else {
-      user = this.store.createRecord('user', {
+      this.user = this.store.createRecord('user', {
         ...this.contactInfo,
       });
     }
     try {
-      await user.save();
+      await this.user.save();
       this.router.transitionTo('signup.plan-selection');
     } catch (e) {
       debug(e);

@@ -65,6 +65,8 @@ export default class PropertyInfoComponent extends Component {
     },
   ];
 
+  property = null;
+
   constructor() {
     super(...arguments);
 
@@ -77,6 +79,7 @@ export default class PropertyInfoComponent extends Component {
         'zipcode'
       );
       this.formIsInvalid = false;
+      this.property = this.args.property;
     }
   }
 
@@ -85,10 +88,9 @@ export default class PropertyInfoComponent extends Component {
     try {
       let serviceArea = this.store.peekAll('service-area').get('firstObject');
       let user = this.store.peekAll('user').get('firstObject');
-      let property;
       if (isPresent(this.args.property)) {
-        property = this.args.property;
-        property.setProperties({
+        this.property = this.args.property;
+        this.property.setProperties({
           serviceArea,
           user,
           ...this.propertyInfo,
@@ -96,7 +98,7 @@ export default class PropertyInfoComponent extends Component {
           selected: true,
         });
       } else {
-        property = await this.store.createRecord('property', {
+        this.property = await this.store.createRecord('property', {
           serviceArea,
           user,
           ...this.propertyInfo,
@@ -104,7 +106,7 @@ export default class PropertyInfoComponent extends Component {
           selected: true,
         });
       }
-      await property.save();
+      await this.property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
       debug(e);
