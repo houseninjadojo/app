@@ -1,4 +1,4 @@
-<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}}">
+<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}}">
     <div class="hn-input-container">
         {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
