@@ -13,6 +13,13 @@ export default class ContactInfoComponent extends Component {
   @service router;
   @service store;
 
+  @tracked errors = {
+    firstName: [],
+    lastName: [],
+    phoneNumber: [],
+    email: [],
+  };
+
   @tracked contactInfo = {
     firstName: null,
     lastName: null,
@@ -84,6 +91,7 @@ export default class ContactInfoComponent extends Component {
       await user.save();
       this.router.transitionTo('signup.plan-selection');
     } catch (e) {
+      this.errors = user.errors;
       debug(e);
       Sentry.captureException(e);
     }

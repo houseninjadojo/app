@@ -9,6 +9,7 @@
                 @required={{true}}
                 @disabled={{field.disabled}}
                 @value={{mut (get this.propertyInfo field.id)}}
+                @errors={{(get this.errors field.id)}}
             />
         {{else}}
             <Primitive::Input
@@ -21,11 +22,12 @@
                 @type={{field.type}}
                 @disabled={{field.disabled}}
                 @onInput={{this.validateForm}}
+                @errors={{(get this.errors field.id)}}
             />
         {{/if}}
         {{/each}}
     </div>
-    <div class="action single">        
+    <div class="action single">
         <Primitive::Button
             @size='lg'
             @variant='solid'

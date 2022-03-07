@@ -29,6 +29,7 @@
                 @type={{field.type}}
                 @disabled={{field.disabled}}
                 @onInput={{this.validateForm}}
+                @errors={{(get this.errors field.id)}}
             />
         {{/each}}
     </div>
@@ -38,7 +39,7 @@
             @variant='solid'
             @semantic='primary'
             @disabled={{this.formIsInvalid}}
-            {{on 'click' this.savePassword}}            
+            {{on 'click' this.savePassword}}
         >
             Set Password
         </Primitive::Button>

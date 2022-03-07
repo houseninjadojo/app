@@ -32,6 +32,14 @@ export default class PaymentMethodComponent extends Component {
     zipcode: null,
   };
 
+  @tracked errors = {
+    cardNumber: [],
+    cvv: [],
+    expMonth: [],
+    expYear: [],
+    zipcode: [],
+  };
+
   fields = [
     {
       id: 'cardNumber',
@@ -150,11 +158,12 @@ export default class PaymentMethodComponent extends Component {
   async savePaymentMethod() {
     const user = this.store.peekAll('user').get('firstObject');
     const subscription = this.store.peekAll('subscription').get('firstObject');
+
+    let paymentMethod;
     try {
       subscription.user = user;
       subscription.promoCode = this.promoCode;
 
-      let paymentMethod;
       if (isPresent(this.args.paymentMethod)) {
         paymentMethod = this.args.paymentMethod;
         paymentMethod.setProperties({
@@ -175,6 +184,7 @@ export default class PaymentMethodComponent extends Component {
 
       this.router.transitionTo('signup.welcome');
     } catch (e) {
+      this.errors = paymentMethod.errors;
       debug(e);
       Sentry.captureException(e);
     }

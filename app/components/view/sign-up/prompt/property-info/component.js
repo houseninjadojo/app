@@ -20,6 +20,14 @@ export default class PropertyInfoComponent extends Component {
     zipcode: null,
   };
 
+  @tracked errors = {
+    streetAddress1: [],
+    streetAddress2: [],
+    city: [],
+    state: [],
+    zipcode: [],
+  };
+
   @tracked formIsInvalid = true;
 
   @tracked fields = [
@@ -82,10 +90,10 @@ export default class PropertyInfoComponent extends Component {
 
   @action
   async savePropertyInfo() {
+    let property;
     try {
       let serviceArea = this.store.peekAll('service-area').get('firstObject');
       let user = this.store.peekAll('user').get('firstObject');
-      let property;
       if (isPresent(this.args.property)) {
         property = this.args.property;
         property.setProperties({
@@ -107,6 +115,7 @@ export default class PropertyInfoComponent extends Component {
       await property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
+      this.errors = property.errors;
       debug(e);
       Sentry.captureException(e);
     }
