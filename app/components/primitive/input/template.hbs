@@ -1,4 +1,4 @@
-<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'warn' ''}}">
+<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}}">
     <div class="hn-input-container">
         {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
@@ -33,8 +33,6 @@
         <span class="hn-input-description">{{this.descriptionText}}</span>
     {{/if}}
     {{#if @errors}}
-        {{#each @errors as |error|}}
-            <span class="hn-input-description">{{error}}</span>
-        {{/each}}
+        <span class="hn-input-description">{{@errors}}</span>
     {{/if}}
 </div>
