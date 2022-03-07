@@ -2251,10 +2251,10 @@
     "@sentry/utils" "6.18.1"
     tslib "^1.9.3"
 
-"@sentry/capacitor@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.4.3.tgz#a6cb01dab8b272b7d78d6187940220f0e56d172e"
-  integrity sha512-w1rre2gFoMUV8+LwYbVcx+yUnb60y3GtRDQMMJkUv6LbZXh2X6I2yrOnkgixa4v0AqRKSb4msJUUKe2h4cNGTQ==
+"@sentry/capacitor@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.4.4.tgz#a3deb39bf4ed4caffb2b815a388112a98c0b8a29"
+  integrity sha512-3j75ylRVvjkxC4lSe3EIpdHePewg/TcNHGnslPU/WfAB0Ldf3V7f3naCor7w1OiMP5pu4UpCmSPkxihiUnPJgg==
   dependencies:
     "@sentry/browser" "6.17.4"
     "@sentry/core" "6.17.4"
