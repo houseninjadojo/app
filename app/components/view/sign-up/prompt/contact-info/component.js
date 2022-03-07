@@ -58,7 +58,7 @@ export default class ContactInfoComponent extends Component {
       label: 'Email',
       placeholder: '',
       value: null,
-      errors: get('user.errors.email'),
+      errors: this.emailError,
     },
   ];
 
@@ -75,6 +75,11 @@ export default class ContactInfoComponent extends Component {
       this.formIsInvalid = false;
       this.user = this.args.user;
     }
+  }
+
+  // @computed('user.errors.email')
+  get emailError() {
+    return this.user.get('errors.email');
   }
 
   @action
