@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/houseninjadojo/app/compare/v1.0.20...v1.0.21) (2022-03-07)
+
+
+### Bug Fixes
+
+* **components:** show attribute errors on input ([#428](https://github.com/houseninjadojo/app/issues/428)) ([429ddb8](https://github.com/houseninjadojo/app/commit/429ddb8bc72dacf37d18defc4b332dd682ab901b))
+
 ## [1.0.20](https://github.com/houseninjadojo/app/compare/v1.0.19...v1.0.20) (2022-03-06)
 
 
