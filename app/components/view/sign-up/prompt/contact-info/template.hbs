@@ -11,7 +11,7 @@
                 @type={{field.type}}
                 @value={{mut (get this.contactInfo field.id)}}
                 @onInput={{this.validateForm}}
-                @errors={{(get this.user.errors field.id)}}
+                @errors={{field.errors}}
             />
         {{/each}}
     </div>
