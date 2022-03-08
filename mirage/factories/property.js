@@ -57,12 +57,12 @@ export default Factory.extend({
   default: true,
   selected: true,
 
-  afterCreate(property, server) {
-    let workOrders = server.createList('work-order', 3);
-    property.update({
-      workOrders,
-    });
-  },
+  // afterCreate(property, server) {
+  //   let workOrders = server.createList('work-order', 3);
+  //   property.update({
+  //     workOrders,
+  //   });
+  // },
 
   withUser: trait({
     user: association(),
