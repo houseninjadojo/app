@@ -4,21 +4,20 @@ import { action } from '@ember/object';
 
 export default class ShelfComponent extends Component {
   @service router;
+  @service view;
 
   @action
   goBack() {
-    const previousRoute = JSON.parse(
-      localStorage.getItem('preservedPreviousRoute')
-    );
+    const previousRoute = this.view.history.preservedPreviousRoute;
     const { name, params } = previousRoute;
 
     if (Object.keys(params).length && name) {
       // @todo There's got to be a better way to pass the an >1 paramter values, but I can't figure it out.
       this.router.transitionTo(name, Object.values(params)[0]);
-      localStorage.removeItem('preservedPreviousRoute');
+      // localStorage.removeItem('preservedPreviousRoute');
     } else if (name) {
       this.router.transitionTo(name);
-      localStorage.removeItem('preservedPreviousRoute');
+      // localStorage.removeItem('preservedPreviousRoute');
     } else {
       this.router.transitionTo('dashboard.home');
     }
