@@ -83,11 +83,12 @@ ul.common-request-list {
   min-height: 300px;
   background-image: url("images/marcus-urbenz-Gu62ldgRZJo-unsplash.jpg");
   background-size: cover;
+  background-position: -6em;
   padding: 16px;
 }
 
 .home-care-tip {
-  background-color: rgb(255 255 255 / 64%);
+  background-color: rgb(255 255 255 / 24%);
   backdrop-filter: blur(8px);
   width: 100%;
   height: 100%;
