@@ -63,6 +63,7 @@ jobs:
     if: success()
     runs-on: macos-latest
     name: build / ios
+    timeout-minutes: 30
     steps:
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:
