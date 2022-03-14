@@ -7,34 +7,14 @@ import { Intercom } from '@capacitor-community/intercom';
 export default class TopBarComponent extends Component {
   @service router;
   @service intercom;
+  @service view;
 
   @tracked unreadConversationCount = 0;
 
-  preserveViewScrollPosition() {
-    const mainView = document.querySelector('main.hn.view');
-    const position = mainView && mainView.scrollTop;
-
-    if (position) {
-      localStorage.setItem(
-        'preserveredScrollPosition',
-        JSON.stringify({ route: this.router.currentRouteName, position })
-      );
-    }
-  }
-
-  preservePreviousRoute() {
-    const { name, params } = this.router.currentRoute;
-
-    localStorage.setItem(
-      'preservedPreviousRoute',
-      JSON.stringify({ name, params })
-    );
-  }
-
   @action
   toggleSettingsViewVisibility() {
-    this.preserveViewScrollPosition();
-    this.preservePreviousRoute();
+    this.view.preserveViewScrollPosition(this.router);
+    this.view.preservePreviousRoute(this.router);
 
     this.router.transitionTo('settings');
   }
