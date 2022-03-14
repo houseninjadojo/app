@@ -89,3 +89,7 @@
   filter: invert(32%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(95%) contrast(89%) !important;
   border: none !important;
 }
+
+.hn.btn.floating.disabled {
+  background: none !important;
+}

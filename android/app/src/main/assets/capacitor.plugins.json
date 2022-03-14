@@ -12,6 +12,10 @@
 		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
 	},
 	{
+		"pkg": "@capacitor/action-sheet",
+		"classpath": "com.capacitorjs.plugins.actionsheet.ActionSheetPlugin"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},
