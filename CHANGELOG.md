@@ -1,3 +1,10 @@
+## [1.0.25](https://github.com/houseninjadojo/app/compare/v1.0.24...v1.0.25) (2022-03-14)
+
+
+### Bug Fixes
+
+* close popover browser post logout ([#436](https://github.com/houseninjadojo/app/issues/436)) ([8010633](https://github.com/houseninjadojo/app/commit/8010633ed22de1243a9737b8f888be9d35d5ce45))
+
 ## [1.0.24](https://github.com/houseninjadojo/app/compare/v1.0.23...v1.0.24) (2022-03-07)
 
 
