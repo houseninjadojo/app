@@ -2,8 +2,12 @@
     {{#each @commonRequests as |request|}}
         <li class="common-request">
             <Primitive::Button {{on 'click' (fn this.openChatWithPrompt request.defaultHnChatMessage)}} @variant="plain">                
-                <Primitive::Image @src={{request.imgURI}} @alt={{request.caption}} @width="250" @height="130" />                
-                <p class="caption">{{request.caption}}</p>
+                <div class="content-container">
+                    <Primitive::Image @src={{request.imgURI}} @alt={{request.caption}} @width="250" @height="130" />
+                    <div class="caption-position">
+                        <p class="caption">{{request.caption}}</p>
+                    </div>
+                </div>
            </Primitive::Button>
         </li>
     {{/each}}
