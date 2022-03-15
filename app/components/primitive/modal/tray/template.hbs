@@ -6,9 +6,11 @@
                 <Primitive::Button {{on "click" this.goBack}} @size="sm" @variant="floating">                
                     {{if @backText @backText 'Cancel'}}
                 </Primitive::Button>
-                <Primitive::Button {{on "click" this.callSaveAction}} @size="sm" @variant="floating" @disabled={{@formIsInvalid}}>
-                    Save
-                </Primitive::Button>
+                {{#unless @hideRightAction}}
+                    <Primitive::Button {{on "click" this.callSaveAction}} @size="sm" @variant="floating" @disabled={{@formIsInvalid}}>
+                        Save
+                    </Primitive::Button>
+                {{/unless}}
             </div>
         </div>
         <div class="body {{if @lockBodyScroll 'lock-body-scroll'}}">
