@@ -72,9 +72,14 @@
 
 .hn.btn.outline.secondary {
   border-color: var(--blue-400);
-
-  /* box-shadow: var(--shadow-teal-1); */
+  box-shadow: var(--shadow-blue-1);
   color: var(--blue-400);
+}
+
+.hn.btn.outline.alert {
+  border-color: var(--red-400);
+  box-shadow: var(--shadow-red-1);
+  color: var(--red-400);
 }
 
 .hn.btn.solid.accent {
