@@ -1,16 +1,29 @@
-{{!-- 
+{{! 
     OPTIONS
     @size: sm, md, lg
     @variant: solid, outline, floating, plain
     @semantic: primary, accent, secondary
     @class: string
-    @disabled: true / false
+    @disabled: true / null
     @turnOffHapticFeedback: true / false (default)
- --}}
-<button 
-    class="hn btn {{@size}} {{@variant}} {{@semantic}} {{if @disabled 'disabled'}} {{@class}}" 
-    type={{if @type @type 'button'}} disabled={{@disabled}} {{on "click" this.handleClick}}
-    ...attributes
+ }}
+<button
+  class='hn btn
+    {{@size}}
+    {{@variant}}
+    {{@semantic}}
+    {{if this.isDisabled "disabled"}}
+    {{@class}}'
+  type={{if @type @type 'button'}}
+  {{! @TODO 
+        Should: disable property should set on initial page load
+        Actual: 
+            iOS: disabled attribute IS NOT setting on initial page load; toggles properly as disabled argument updates.
+            browser: disable attribute is setting on intial page load; toggles properly as disabled argument updates.        
+    }}
+  disabled={{if this.isDisabled true null}}
+  {{on 'click' this.handleClick}}
+  ...attributes
 >
-    {{yield}}
+  {{yield}}
 </button>
