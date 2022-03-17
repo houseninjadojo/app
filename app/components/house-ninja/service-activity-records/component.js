@@ -1,19 +1,14 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { Intercom } from '@capacitor-community/intercom';
+import { service } from '@ember/service';
 
 export default class ServiceActivityRecordsComponent extends Component {
-  get getActiveTabContent() {
-    return this.activeRecords.filter((r) => r.active)[0];
-  }
+  @service router;
 
   @action
-  selectRoute(routeName) {
-    console.log(routeName);
-  }
-
-  @action
-  async openChatModal() {
-    await Intercom.displayMessageComposer({ message: 'Help me with ' });
+  selectRoute(route) {
+    if (typeof route === 'object') {
+      this.router.transitionTo(`work-order`, route.id);
+    }
   }
 }
