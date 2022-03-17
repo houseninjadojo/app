@@ -53,4 +53,5 @@ Router.map(function () {
       this.route('edit', { path: '/edit/:group_id' });
     });
   });
+  this.route('work-order', { path: '/:work_order_id' });
 });
