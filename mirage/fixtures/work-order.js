@@ -1,4 +1,12 @@
 import faker from '@faker-js/faker';
+import { workOrderStatus } from 'houseninja/data/work-order-status';
+
+const getRandomProperty = (obj) => {
+  const keys = Object.keys(obj);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+
+  return workOrderStatus[randomKey];
+};
 
 export default [
   {
@@ -7,6 +15,7 @@ export default [
     vendor: 'CTWC',
     scheduledDate: '11/28/21',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -14,6 +23,7 @@ export default [
     vendor: '4Paws Plumbing',
     scheduledDate: '01/07/22',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -21,6 +31,7 @@ export default [
     vendor: '',
     scheduledDate: '09/22/21',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -28,6 +39,7 @@ export default [
     vendor: 'Wilder Tree & Lawn',
     scheduledDate: '01/05/22',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -35,6 +47,7 @@ export default [
     vendor: 'Wilder Tree & Lawn',
     scheduledDate: '10/29/21',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -42,6 +55,7 @@ export default [
     vendor: 'Cooke Electric',
     scheduledDate: '03/26/22',
     scheduledTime: '10:00AM',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -49,6 +63,7 @@ export default [
     vendor: 'Central Texas Windows',
     scheduledDate: '03/25/22',
     scheduledTime: '12:00PM - 5:00PM',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -56,6 +71,7 @@ export default [
     vendor: 'AirServ',
     scheduledDate: '10/22/21',
     scheduledTime: '',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -63,6 +79,7 @@ export default [
     vendor: 'Lake Travis Dryer Vent',
     scheduledDate: '03/22/22',
     scheduledTime: '10:00AM',
+    status: getRandomProperty(workOrderStatus),
   },
   {
     id: faker.random.uuid(),
@@ -70,5 +87,6 @@ export default [
     vendor: 'Fanin Professional Services',
     scheduledDate: '03/28/22',
     scheduledTime: '12:00PM',
+    status: getRandomProperty(workOrderStatus),
   },
 ];
