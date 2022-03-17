@@ -1,0 +1,11 @@
+<div class="hn work-order">
+    {{#if (eq this.contentType this.content.approvePayment)}}        
+        <View::WorkOrder::Content::ApprovePayment @model={{@model}} />
+    {{else if (eq this.contentType this.content.paymentFailed)}}        
+        <View::WorkOrder::Content::FailedPayment @model={{@model}} />
+    {{else if (eq this.contentType this.content.closed)}}        
+        <View::WorkOrder::Content::Closed @model={{@model}} />
+    {{else}}    
+        <View::WorkOrder::Content::Default @model={{@model}} />
+    {{/if}}    
+</div>

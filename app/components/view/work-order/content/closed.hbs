@@ -1,0 +1,16 @@
+<div class="actions">
+</div>
+<div class="work-order-details">
+    <p><span class="hn label">Status: </span>{{@model.status}}</p>
+    <p><span class="hn label">Description: </span>{{@model.description}}</p>
+    <p><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
+    <p><span class="hn label">Performed On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
+    <p><span class="hn label">Paid On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
+    <p><span class="hn label">Amount Paid: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+        View Invoice
+    </Primitive::Button>
+</div>
+<div class="work-order-container">
+    
+</div>
