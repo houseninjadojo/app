@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
-import { vault } from 'houseninja/utils/dataStubs';
+import { vault } from 'houseninja/data/document-stub';
 
 const DATE_FORMAT = 'MM/DD/YY';
 export default class WorkHistoryComponent extends Component {
