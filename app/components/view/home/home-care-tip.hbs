@@ -2,7 +2,7 @@
     <p class="heading">{{@homeCareTip.label}}</p>
     <p class="description">{{@homeCareTip.description}}</p>
     {{#if @homeCareTip.showButton}}
-        <Primitive::Button {{on "click" (fn this.openChatModal @homeCareTip.defaultHnChatMessage)}} @variant="solid" @size="md" @semantic="primary">        
+        <Primitive::Button {{on "click" (fn this.openChatModal @homeCareTip.defaultHnChatMessage)}} @variant="outline" @size="md" @semantic="primary">        
             Handle It For Me
         </Primitive::Button>
     {{/if}}

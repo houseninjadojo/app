@@ -33,7 +33,6 @@
 .hn.modal .modal-container.shelf,
 .hn.modal .modal-container.tray {
   height: 100%;
-  border-radius: 40px 40px 0 0;
   position: absolute;
   top: 0;
   bottom: 0;

@@ -38,7 +38,6 @@ Router.map(function () {
     this.route('security');
     this.route('property');
   });
-  this.route('contact-us');
   this.route('faq');
   this.route('vault', function () {
     this.route('index', { path: '/' });

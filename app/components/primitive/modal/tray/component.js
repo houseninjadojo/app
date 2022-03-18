@@ -22,7 +22,7 @@ export default class TrayComponent extends Component {
 
   @action
   async goBack() {
-    if (!this.args.formIsInvalid) {
+    if (this.args.formIsInvalid !== undefined && !this.args.formIsInvalid) {
       let result = await this.confirm();
       let choice = this.options[result.index].title;
 

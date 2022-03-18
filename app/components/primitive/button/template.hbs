@@ -1,4 +1,4 @@
-{{!-- 
+{{! 
     OPTIONS
     @size: sm, md, lg
     @variant: solid, outline, floating, plain
@@ -6,11 +6,17 @@
     @class: string
     @disabled: true / false
     @turnOffHapticFeedback: true / false (default)
- --}}
-<button 
-    class="hn btn {{@size}} {{@variant}} {{@semantic}} {{if @disabled 'disabled'}} {{@class}}" 
-    type={{if @type @type 'button'}} disabled={{@disabled}} {{on "click" this.handleClick}}
-    ...attributes
+ }}
+<button
+  class='hn btn
+    {{@size}}
+    {{@variant}}
+    {{@semantic}}
+    {{if @disabled "disabled"}}
+    {{@class}}'
+  type={{if @type @type 'button'}}
+  disabled={{@disabled}}
+  ...attributes
 >
-    {{yield}}
+  {{yield}}
 </button>
