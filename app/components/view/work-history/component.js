@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
-import { vault } from 'houseninja/utils/dataStubs';
-
 import moment from 'moment';
+import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { vault } from 'houseninja/utils/dataStubs';
 
 const DATE_FORMAT = 'MM/DD/YY';
 export default class WorkHistoryComponent extends Component {
@@ -20,17 +20,18 @@ export default class WorkHistoryComponent extends Component {
       description: w.vendor,
       // scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
+      status: w.status,
       ...w,
     };
   });
 
   pastWorkOrders = this.allWorkOrders
     .filter((w) => {
-      const today = moment().format(DATE_FORMAT);
-      const scheduleDateInMoment = moment(w.scheduledDate).format(DATE_FORMAT);
-      const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
-
-      return parseInt(differenceInDays) > 0;
+      const historicalWorkOrder =
+        w.status === workOrderStatus.invoicePaidByCustomer ||
+        w.status === workOrderStatus.closed;
+      console.log(historicalWorkOrder, w.status);
+      return historicalWorkOrder;
     })
     .sort((a, b) => {
       return (

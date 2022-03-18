@@ -17,7 +17,7 @@ export const workOrderStatus = {
   //   problemResolved: 'problem_resolved',
   //   vendorInvoiceReceived: 'vendor_invoice_received',
   invoiceSentToCustomer: 'invoice_sent_to_customer',
-  //   invoicePaidByCustomer: 'invoice_paid_by_customer',
+  invoicePaidByCustomer: 'invoice_paid_by_customer',
   paymentFailed: 'payment_failed',
   closed: 'closed',
 };
