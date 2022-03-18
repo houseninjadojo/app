@@ -2,9 +2,11 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{!-- {{on "click" (fn this.displayMessageComposer this.cancelMessage)}} --}}>
         Cancel Request
     </Primitive::Button>
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- {{on "click" (fn this.displayMessageComposer this.issueMessage)}} --}}>
-        I have an issue
-    </Primitive::Button>        
+    {{#if this.isScheduled}}
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- {{on "click" (fn this.displayMessageComposer this.issueMessage)}} --}}>
+            I have an issue
+        </Primitive::Button>
+    {{/if}}
 </div>
 <div class="work-order-details">
     <p><span class="hn label">Status: </span>{{@model.status}}</p>
