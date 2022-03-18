@@ -22,8 +22,8 @@ export default function () {
       'contact-us',
       'faq',
     ]),
-    this.use('slideOverUp', { duration: 500, easing: [100, 20] }),
-    this.reverse('slideOverDown', { duration: 300 })
+    this.use('toUp', { duration: 500, easing: [100, 20] }),
+    this.reverse('toDown', { duration: 300 })
   );
 
   this.transition(
