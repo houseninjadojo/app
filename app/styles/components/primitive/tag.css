@@ -1,0 +1,21 @@
+.hn.tag {
+  white-space: nowrap;
+  background-color: var(--black);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: var(--campton-strong);
+  font-size: 12px;
+  color: white;
+}
+
+.hn.tag.alert {
+  background-color: var(--red-400);
+}
+
+.hn.tag.accent {
+  background-color: var(--teal-600);
+}
+
+.hn.tag.warn {
+  background-color: var(--orange-400);
+}

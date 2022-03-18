@@ -17,6 +17,7 @@
 }
 
 .filled ul.record-list li .record .icon {
+  flex-shrink: 0;
   margin-right: 16px;
 }
 
@@ -24,7 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 1 100%;
+  width: 100%;
 }
 
 .filled ul.record-list li .record .name {
@@ -36,10 +37,24 @@
   white-space: normal;
 }
 
-.filled ul.record-list li .record .description {
+.filled ul.record-list li .record .hn.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.filled ul.record-list li .record .hn.row .description {
   font-size: 15px;
+  margin-right: 8px;
   color: var(--gray-600);
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filled ul.record-list li .record .hn.row .hn.tag {
+  margin-left: auto;
 }
 
 .empty p {

@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { getWorkOrderTag } from 'houseninja/utils/components/tag/work-order-status';
 
 const DATE_FORMAT = 'MM/DD/YY';
 
@@ -27,6 +28,7 @@ export default class HandleItComponent extends Component {
       scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
       status: w.status,
+      tag: w.status && getWorkOrderTag(w.status),
       ...w,
     };
   });

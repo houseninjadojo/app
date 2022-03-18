@@ -24,7 +24,7 @@ export const workOrderStatus = {
 
 export const workOrderStatusLabels = {
   //   [workOrderStatus.workRequestReceived]: '',
-  [workOrderStatus.workOrderInitiated]: '',
+  [workOrderStatus.workOrderInitiated]: 'Initiated',
   //   [workOrderStatus.vendorIdentified]: '',
   //   [workOrderStatus.schedulingInProgress]: '',
   //   [workOrderStatus.onsiteEstimateScheduled]: '',
@@ -32,7 +32,7 @@ export const workOrderStatusLabels = {
   //   [workOrderStatus.estimateSharedWithHomeowner]: '',
   //   [workOrderStatus.estimateApproved]: '',
   //   [workOrderStatus.estimateNotApproved]: '',
-  [workOrderStatus.workScheduled]: '',
+  [workOrderStatus.workScheduled]: 'Scheduled',
   //   [workOrderStatus.workInProgress]: '',
   //   [workOrderStatus.changeOrderReceived]: '',
   //   [workOrderStatus.workCompleted]: '',
@@ -41,8 +41,8 @@ export const workOrderStatusLabels = {
   //   [workOrderStatus.problemBeingAddressed]: '',
   //   [workOrderStatus.problemResolved]: '',
   //   [workOrderStatus.vendorInvoiceReceived]: '',
-  [workOrderStatus.invoiceSentToCustomer]: '',
-  //   [workOrderStatus.invoicePaidByCustomer]: '',
-  [workOrderStatus.paymentFailed]: '',
-  [workOrderStatus.closed]: '',
+  [workOrderStatus.invoiceSentToCustomer]: 'Approve Payment',
+  [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor',
+  [workOrderStatus.paymentFailed]: 'Failed Payment',
+  [workOrderStatus.closed]: 'Closed',
 };

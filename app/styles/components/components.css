@@ -11,6 +11,7 @@
 @import "./primitive/modal.css";
 @import "./primitive/embed.css";
 @import "./primitive/record-list.css";
+@import "./primitive/tag.css";
 @import "./view/view.css";
 @import "./view/account-settings.css";
 @import "./view/home.css";
