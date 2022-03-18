@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { vault } from 'houseninja/utils/dataStubs';
+import { vault } from 'houseninja/data/document-stub';
 
 export default class VaultDocumentIndexRoute extends Route {
   @service router;
