@@ -87,7 +87,8 @@
 
 .sign-up-module .view .content .hero img.view-logo {
   width: 40%;
-  margin-bottom: 16px;
+  max-width: 128px;
+  margin-bottom: 32px;
 }
 
 .sign-up-module .view .content .hero .welcome-hero {

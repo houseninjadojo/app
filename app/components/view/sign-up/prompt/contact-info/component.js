@@ -89,7 +89,7 @@ export default class ContactInfoComponent extends Component {
     }
     try {
       await user.save();
-      this.router.transitionTo('signup.plan-selection');
+      this.router.transitionTo('signup.payment-method');
     } catch (e) {
       this.errors = user.errors;
       debug(e);
