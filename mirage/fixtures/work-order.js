@@ -31,7 +31,7 @@ export default [
     vendor: '',
     scheduledDate: '09/22/21',
     scheduledTime: '',
-    status: getRandomProperty(workOrderStatus),
+    status: 'closed',
   },
   {
     id: faker.random.uuid(),
