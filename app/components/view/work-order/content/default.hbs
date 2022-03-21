@@ -2,8 +2,8 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
         Cancel Request
     </Primitive::Button>
-    {{#if this.isScheduled}}
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- {{on "click" (fn this.displayMessageComposer this.issueMessage)}} --}}>
+    {{#if @model.scheduledDate}}    
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
             I have an issue
         </Primitive::Button>
     {{/if}}
