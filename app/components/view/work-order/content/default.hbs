@@ -9,11 +9,11 @@
     {{/if}}
 </div>
 <div class="work-order-details">
-    <p><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
-    <p><span class="hn label">Description: </span>{{@model.description}}</p>
-    <p><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-    <p><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
-    <p><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
+    <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
+    <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+    <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
+    <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
+    <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
         View Invoice
     </Primitive::Button>
