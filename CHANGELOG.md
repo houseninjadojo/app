@@ -1,3 +1,10 @@
+## [1.0.29](https://github.com/houseninjadojo/app/compare/v1.0.28...v1.0.29) (2022-03-21)
+
+
+### Bug Fixes
+
+* **deps:** yarn.lock out of date ([17d6ba5](https://github.com/houseninjadojo/app/commit/17d6ba5d6a4263681b32a6803db7d6ad67c07505))
+
 ## [1.0.28](https://github.com/houseninjadojo/app/compare/v1.0.27...v1.0.28) (2022-03-18)
 
 
