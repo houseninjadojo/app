@@ -6,6 +6,6 @@
     {{else if (eq this.contentType this.content.closed)}}        
         <View::WorkOrder::Content::Closed @model={{@model}} />
     {{else}}    
-        <View::WorkOrder::Content::Default @model={{@model}} />
+        <View::WorkOrder::Content::Default @model={{@model}} @handleCancelRequest={{fn this.displayMessageComposer this.cancelMessage}}/>
     {{/if}}    
 </div>

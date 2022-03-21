@@ -1,5 +1,5 @@
 <div class="actions">        
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{!-- {{on "click" (fn this.displayMessageComposer this.cancelMessage)}} --}}>
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
         Cancel Request
     </Primitive::Button>
     {{#if this.isScheduled}}
