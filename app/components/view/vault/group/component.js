@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class VaultGroupComponent extends Component {
   @service router;
+  @service view;
   @service haptics;
 
   get getEmptyMessage() {
@@ -31,5 +32,7 @@ export default class VaultGroupComponent extends Component {
         this.router.transitionTo(`vault.document`, route.id);
       }
     }
+
+    this.view.preservePreviousRoute(this.router);
   }
 }

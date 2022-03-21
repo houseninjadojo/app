@@ -9,12 +9,9 @@ export default class TopBarDashboardContentComponent extends Component {
   @action
   selectRoute(route) {
     if (route === 'back') {
-      this.view.preserveViewScrollPosition(this.router);
-      this.view.preservePreviousRoute(this.router);
-
-      window.history.back();
-    } else {
       this.view.transitionToPreviousRoute();
+    } else {
+      this.router.transitionTo(route);
     }
   }
 }
