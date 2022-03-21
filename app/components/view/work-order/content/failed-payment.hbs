@@ -2,7 +2,7 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
     </Primitive::Button>        
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="alert" {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="alert" {{on "click" @selectRoute}}>
         Update Payment
     </Primitive::Button>
 </div>
