@@ -28,7 +28,6 @@ export default class HandleItComponent extends Component {
       scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
       status: w.status,
-      statusLabel: 
       tag: w.status && getWorkOrderTag(w.status),
       ...w,
     };

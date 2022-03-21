@@ -10,20 +10,24 @@ export const getWorkOrderTag = (status) => {
       return;
     case workOrderStatus.invoiceSentToCustomer:
       return {
-        label: workOrderStatusLabels[status],
+        label: getWorkOrderStatusLabel(status),
         type: 'accent',
       };
     case workOrderStatus.paymentFailed:
       return {
-        label: workOrderStatusLabels[status],
+        label: getWorkOrderStatusLabel(status),
         type: 'alert',
       };
     case workOrderStatus.workOrderInititated:
     case workOrderStatus.workScheduled:
     default:
       return {
-        label: workOrderStatusLabels[status],
+        label: getWorkOrderStatusLabel(status),
         // type: null,
       };
   }
+};
+
+export const getWorkOrderStatusLabel = (status) => {
+  return workOrderStatusLabels[status];
 };
