@@ -14,7 +14,7 @@ export default class TopBarDashboardContentComponent extends Component {
 
       window.history.back();
     } else {
-      this.router.transitionTo(route);
+      this.view.transitionToPreviousRoute();
     }
   }
 }

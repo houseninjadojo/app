@@ -1,4 +1,4 @@
 {{page-title "Settings - Contact Information"}}
-<Primitive::Modal::Tray @backRoute="settings" @onBack={{this.reset}} @saveAction={{this.saveAction}} @formIsInvalid={{this.formIsInvalid}}>
+<Primitive::Modal::Tray @onBack={{this.reset}} @saveAction={{this.saveAction}} @formIsInvalid={{this.formIsInvalid}}>
   <View::AccountSettings::Contact @fields={{this.fields}} @model={{this.contactInfo}} @validateForm={{this.validateForm}}/>
 </Primitive::Modal::Tray>

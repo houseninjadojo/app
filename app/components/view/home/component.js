@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class HomeContentComponent extends Component {
   @service router;
+  @service view;
   @service haptics;
 
   get user() {
@@ -38,8 +39,11 @@ export default class HomeContentComponent extends Component {
     return this.args.homeCareTips.objectAt(tipNumber);
   }
   @action
-  async selectRoute(routeName) {
+  async selectRoute(route) {
     this.haptics.giveFeedback();
-    this.router.transitionTo(routeName);
+    if (route === 'vault') {
+      this.view.preservePreviousRoute(this.router);
+    }
+    this.router.transitionTo(route);
   }
 }

@@ -1,12 +1,15 @@
 import Service from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { service } from '@ember/service';
 import { set } from '@ember/object';
 
 export default class ViewService extends Service {
+  @service router;
+
   @tracked history = {
     preserveredScrollPosition: null,
-    preservedPreviousRoute: null,
+    preservedPreviousRoute: [],
   };
 
   elSelector = 'main.hn.view';
@@ -27,8 +30,26 @@ export default class ViewService extends Service {
   @action
   preservePreviousRoute(router) {
     const { name, params } = router.currentRoute;
+    const newHistory = [
+      ...this.history.preservedPreviousRoute,
+      { name, params },
+    ];
+    set(this.history, 'preservedPreviousRoute', newHistory);
+  }
 
-    set(this.history, 'preservedPreviousRoute', { name, params });
+  @action
+  transitionToPreviousRoute() {
+    const previousRoute = this.history.preservedPreviousRoute.pop();
+    const { name, params } = previousRoute;
+
+    if (Object.keys(params).length && name) {
+      // @todo There's got to be a better way to pass the an >1 paramter values, but I can't figure it out.
+      this.router.transitionTo(name, Object.values(params)[0]);
+    } else if (name) {
+      this.router.transitionTo(name);
+    } else {
+      this.router.transitionTo('dashboard.home');
+    }
   }
 
   @action

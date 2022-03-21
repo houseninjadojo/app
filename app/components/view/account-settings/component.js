@@ -5,6 +5,8 @@ import { tracked } from '@glimmer/tracking';
 
 export default class AccountSettingsComponent extends Component {
   @service router;
+  @service view;
+
   @service current;
 
   @tracked userHasPromoCode = this.current.user.get('promoCode.code');
@@ -50,6 +52,7 @@ export default class AccountSettingsComponent extends Component {
 
   @action
   selectRoute(routeName) {
+    this.view.preservePreviousRoute(this.router);
     this.router.transitionTo(routeName);
   }
 }

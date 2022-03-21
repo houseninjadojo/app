@@ -7,6 +7,7 @@ import { toCamel } from 'houseninja/utils/string-helpers';
 
 export default class WorkOrderViewComponent extends Component {
   @service router;
+  @service view;
   @service intercom;
 
   cancelMessage = 'I would like to cancel this work order.';
@@ -38,6 +39,11 @@ export default class WorkOrderViewComponent extends Component {
   selectRoute(route) {
     if (typeof route === 'object') {
       this.router.transitionTo(`work-order`, route.id);
+    } else {
+      if (route === 'settings.payment') {
+        this.view.preservePreviousRoute(this.router);
+      }
+      this.router.transitionTo(route);
     }
   }
 
