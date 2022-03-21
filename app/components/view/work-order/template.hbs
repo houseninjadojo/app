@@ -1,8 +1,12 @@
 <div class="hn work-order">
     {{#if (eq this.contentType this.content.approvePayment)}}        
-        <View::WorkOrder::Content::ApprovePayment @model={{@model}} />
+        <View::WorkOrder::Content::ApprovePayment 
+        @model={{@model}} 
+        @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
     {{else if (eq this.contentType this.content.paymentFailed)}}        
-        <View::WorkOrder::Content::FailedPayment @model={{@model}} />
+        <View::WorkOrder::Content::FailedPayment 
+            @model={{@model}} 
+            @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
     {{else if (eq this.contentType this.content.closed)}}        
         <View::WorkOrder::Content::Closed @model={{@model}} />
     {{else}}    

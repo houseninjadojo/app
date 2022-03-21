@@ -1,10 +1,10 @@
 <div class="actions">                
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- {{on "click" (fn this.displayMessageComposer this.issueMessage)}} --}}>
-            I have an issue
-        </Primitive::Button>
-        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
-            Approve Payment
-        </Primitive::Button>        
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
+        I have an issue
+    </Primitive::Button>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+        Approve Payment
+    </Primitive::Button>        
 </div>
 <div class="work-order-details">
     <p><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
