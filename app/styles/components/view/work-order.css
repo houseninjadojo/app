@@ -23,8 +23,30 @@
   border-radius: 2px;
 }
 
-.hn.work-order .work-order-container img {
-  border-radius: 2px;
+.hn.work-order .payment-processing {
+  display: none;
+  background: rgb(0 0 0 / 40%);
   width: 100%;
-  background-color: var(--white);
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.hn.work-order .payment-processing.show,
+.hn.work-order .payment-processing.show .payment-confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hn.work-order .payment-processing.show .payment-confirmation {
+  background-color: white;
+  width: 200px;
+  width: 100px;
 }

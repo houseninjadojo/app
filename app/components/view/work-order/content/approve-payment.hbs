@@ -2,7 +2,7 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
     </Primitive::Button>
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" @handlePaymentApproval}}>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.handlePaymentApproval}}>
         Approve Payment
     </Primitive::Button>        
 </div>
@@ -22,6 +22,13 @@
         View Invoice
     </Primitive::Button>
 </div>
-<div class="work-order-container">
-    
+<div class="payment-processing {{if this.isProcessing 'show'}}">
+    {{#if this.paid}}
+        <div class="payment-confirmation">
+            PAID
+            <Primitive::Button @type="button" @size="md" @variant="floating" @semantic="secondary" {{on "click" this.gotIt}}>
+                Got It
+            </Primitive::Button>
+        </div>
+    {{/if}}
 </div>

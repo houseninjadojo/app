@@ -4,7 +4,6 @@ import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import { toCamel } from 'houseninja/utils/string-helpers';
-import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 
 export default class WorkOrderViewComponent extends Component {
   @service router;
@@ -20,16 +19,6 @@ export default class WorkOrderViewComponent extends Component {
     closed: 'Closed',
     default: 'Default',
   };
-
-  actionSheetOptions = [
-    {
-      title: 'Dismiss',
-      style: ActionSheetButtonStyle.Cancel,
-    },
-    {
-      title: 'I approve this payment',
-    },
-  ];
 
   get contentType() {
     const status = workOrderStatus[toCamel(this.args.model.status)];
@@ -61,24 +50,5 @@ export default class WorkOrderViewComponent extends Component {
   @action
   async displayMessageComposer(message) {
     await Intercom.displayMessageComposer({ message });
-  }
-  @action
-  async handlePaymentApproval() {
-    let result = await this.confirm();
-    let choice = this.actionSheetOptions[result.index].title;
-    let userApproves = choice === this.actionSheetOptions[1].title;
-
-    if (userApproves) {
-      console.log('Processing payment');
-    }
-  }
-
-  async confirm() {
-    const result = await ActionSheet.showActions({
-      title: 'Amount Due $999',
-      message: 'Do you approve this payment?',
-      options: this.actionSheetOptions,
-    });
-    return result;
   }
 }

@@ -2,8 +2,7 @@
     {{#if (eq this.contentType this.content.approvePayment)}}        
         <View::WorkOrder::Content::ApprovePayment 
         @model={{@model}} 
-        @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}
-        @handlePaymentApproval={{this.handlePaymentApproval}}/>
+        @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
     {{else if (eq this.contentType this.content.paymentFailed)}}        
         <View::WorkOrder::Content::FailedPayment 
             @model={{@model}} 
