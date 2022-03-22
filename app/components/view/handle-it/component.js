@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import moment from 'moment';
+import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { getWorkOrderTag } from 'houseninja/utils/components/work-order/work-order-status';
 
 const DATE_FORMAT = 'MM/DD/YY';
 
@@ -25,17 +27,18 @@ export default class HandleItComponent extends Component {
       description: w.vendor,
       scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
+      status: w.status,
+      tag: w.status && getWorkOrderTag(w.status),
       ...w,
     };
   });
 
   currentWorkOrders = this.allWorkOrders
     .filter((w) => {
-      const today = moment().format(DATE_FORMAT);
-      const scheduleDateInMoment = moment(w.scheduledDate).format(DATE_FORMAT);
-      const differenceInDays = moment(today).diff(scheduleDateInMoment, 'days');
-
-      return differenceInDays <= 0;
+      const activeWorkOrder =
+        w.status !== workOrderStatus.invoicePaidByCustomer &&
+        w.status !== workOrderStatus.closed;
+      return activeWorkOrder;
     })
     .sort((a, b) => {
       return (

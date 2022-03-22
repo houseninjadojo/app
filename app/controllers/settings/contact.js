@@ -9,6 +9,7 @@ import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 
 export default class SettingsContactController extends Controller {
   @service router;
+  @service view;
 
   @tracked formIsInvalid = true;
   @tracked contactInfo = {
@@ -54,7 +55,7 @@ export default class SettingsContactController extends Controller {
   ];
 
   @action
-  reset() {
+  resetForm() {
     this.contactInfo.firstName = this.model.firstName;
     this.contactInfo.lastName = this.model.lastName;
     this.contactInfo.phoneNumber = this.model.phoneNumber;
@@ -68,12 +69,13 @@ export default class SettingsContactController extends Controller {
     if (this.model.hasDirtyAttributes) {
       try {
         await this.model.save();
+        await this.resetForm();
+        this.view.transitionToPreviousRoute();
       } catch (e) {
         debug(e);
         Sentry.captureException(e);
       }
     }
-    this.router.transitionTo('settings.index');
   }
 
   @action

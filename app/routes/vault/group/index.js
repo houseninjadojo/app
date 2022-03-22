@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { getIconUri } from 'houseninja/utils/components/formatting';
-import { vault } from 'houseninja/utils/dataStubs';
+import { vault } from 'houseninja/data/document-stub';
 
 export default class VaultGroupIndexRoute extends Route {
   @service router;

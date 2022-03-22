@@ -8,18 +8,6 @@ export default class ShelfComponent extends Component {
 
   @action
   goBack() {
-    const previousRoute = this.view.history.preservedPreviousRoute;
-    const { name, params } = previousRoute;
-
-    if (Object.keys(params).length && name) {
-      // @todo There's got to be a better way to pass the an >1 paramter values, but I can't figure it out.
-      this.router.transitionTo(name, Object.values(params)[0]);
-      // localStorage.removeItem('preservedPreviousRoute');
-    } else if (name) {
-      this.router.transitionTo(name);
-      // localStorage.removeItem('preservedPreviousRoute');
-    } else {
-      this.router.transitionTo('dashboard.home');
-    }
+    this.view.transitionToPreviousRoute();
   }
 }

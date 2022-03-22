@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class VaultContentComponent extends Component {
   @service router;
+  @service view;
   @service haptics;
 
   @action
@@ -26,5 +27,6 @@ export default class VaultContentComponent extends Component {
         this.router.transitionTo(`vault.document`, route.id);
       }
     }
+    this.view.preservePreviousRoute(this.router);
   }
 }

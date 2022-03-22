@@ -1,4 +1,4 @@
 {{page-title "Settings - Payment Methods"}}
-<Primitive::Modal::Tray @backRoute="settings" @onBack={{this.resetForm}} @saveAction={{this.saveAction}}  @formIsInvalid={{this.formIsInvalid}}>
+<Primitive::Modal::Tray @onBack={{this.resetForm}} @saveAction={{this.saveAction}} @formIsInvalid={{this.formIsInvalid}}>
   <View::AccountSettings::Payment @model={{this.model}} @fields={{this.fields}} @validateForm={{this.validateForm}}/>
 </Primitive::Modal::Tray>

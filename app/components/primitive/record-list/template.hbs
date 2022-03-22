@@ -26,9 +26,14 @@
             <p class='name'>
               {{record.name}}
             </p>
-            <p class='description'>
-              {{record.description}}
-            </p>
+            <div class="hn row">
+              <p class='description'>
+                {{record.description}}
+              </p>
+              {{#if record.tag}}
+                <Primitive::Tag @label={{record.tag.label}} @type={{record.tag.type}}/>
+              {{/if}}
+            </div>
           </div>
         </Primitive::Button>
       </li>

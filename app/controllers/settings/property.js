@@ -8,6 +8,7 @@ import * as Sentry from '@sentry/ember';
 
 export default class SettingsPropertyController extends Controller {
   @service router;
+  @service view;
 
   @tracked formIsInvalid = true;
 
@@ -63,7 +64,7 @@ export default class SettingsPropertyController extends Controller {
   ];
 
   @action
-  reset() {
+  resetForm() {
     if (this.model) {
       this.propertyInfo.streetAddress1 = this.model.streetAddress1;
       this.propertyInfo.streetAddress2 = this.model.streetAddress2;
@@ -91,7 +92,8 @@ export default class SettingsPropertyController extends Controller {
     if (this.model.hasDirtyAttributes) {
       try {
         await this.model.save();
-        this.router.transitionTo('settings.index');
+        await this.resetForm();
+        this.view.transitionToPreviousRoute();
       } catch (e) {
         debug(e);
         Sentry.captureException(e);

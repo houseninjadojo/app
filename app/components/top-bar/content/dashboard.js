@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 
-export default class TopBarComponent extends Component {
+export default class TopBarDashboardContentComponent extends Component {
   @service router;
   @service intercom;
   @service view;

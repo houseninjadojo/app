@@ -1,23 +1,12 @@
-<div class="hn top-bar w-screen top-0 z-1 {{@class}}" {{did-insert this.getUnreadConversationCount}}>
+<div class="hn top-bar w-screen top-0 z-1 {{@class}}">
   <div class="action-container">
-    {{#if @userSignUpFlow }}      
-    {{else}}
-      <Primitive::Button {{on "click" this.toggleSettingsViewVisibility}} @variant="plain" @class="action">      
-        <img src="/assets/icons/hamboyga.svg" alt="hamburger menu"/>
-      </Primitive::Button>
-    {{/if}}
-    <img src="/assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>
-    {{#if @userSignUpFlow }}      
-    {{else}}
-      <Primitive::Button {{on "click" this.showIntercom}} @variant="plain" @class="action right">
-        {{#if (gt this.unreadConversationCount 0)}}
-          <div class="hn-notification-count">
-            <span>{{this.unreadConversationCount}}</span>
-          </div>
-        {{/if}}
-        <img src="/assets/icons/message.svg" alt="messener"/>      
-      </Primitive::Button>      
-    {{/if}}    
+    {{#if (eq @content 'dashboard')}}
+      <TopBar::Content::Dashboard />
+    {{else if (eq @content 'focused')}}
+      <TopBar::Content::Focused />
+    {{else if (eq @content 'logo-only')}}
+      <TopBar::Content::LogoOnly />
+    {{/if}}        
   </div>
   <Primitive::Loader::Global />
 </div>
