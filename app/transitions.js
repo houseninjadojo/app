@@ -41,4 +41,11 @@ export default function () {
     ]),
     this.use('crossFade', { duration: 150 })
   );
+
+  this.transition(
+    this.fromRoute(['work-order']),
+    this.toRoute(['settings']),
+    this.use('toUp', { duration: 500, easing: [100, 20] }),
+    this.reverse('toDown', { duration: 300 })
+  );
 }
