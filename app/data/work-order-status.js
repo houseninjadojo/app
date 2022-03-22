@@ -42,7 +42,8 @@ export const workOrderStatusLabels = {
   //   [workOrderStatus.problemResolved]: '',
   //   [workOrderStatus.vendorInvoiceReceived]: '',
   [workOrderStatus.invoiceSentToCustomer]: 'Approve Payment',
-  [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor',
+  // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor',
+  [workOrderStatus.invoicePaidByCustomer]: 'Closed',
   [workOrderStatus.paymentFailed]: 'Failed Payment',
   [workOrderStatus.closed]: 'Closed',
 };
