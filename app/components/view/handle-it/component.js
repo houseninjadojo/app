@@ -24,7 +24,7 @@ export default class HandleItComponent extends Component {
     return {
       id: w.id,
       name: w.description,
-      description: w.vendor,
+      description: w.scheduledDate && w.vendor,
       scheduledTime: w.scheduledTime,
       scheduledDate: w.scheduledDate,
       status: w.status,

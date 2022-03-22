@@ -13,7 +13,8 @@
         <View::WorkOrder::Content::Closed @model={{@model}} />
     {{else}}    
         <View::WorkOrder::Content::Default 
-            @model={{@model}} 
+            @model={{@model}}
+            @showVendor={{this.showVendor}} 
             @handleCancelRequest={{fn this.displayMessageComposer this.cancelMessage}} 
             @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
     {{/if}}    
