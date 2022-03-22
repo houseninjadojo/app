@@ -22,13 +22,19 @@
         View Invoice
     </Primitive::Button>
 </div>
-<div class="payment-processing {{if this.isProcessing 'show'}}">
+<div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">
     {{#if this.paid}}
         <div class="payment-confirmation">
-            PAID
-            <Primitive::Button @type="button" @size="md" @variant="floating" @semantic="secondary" {{on "click" this.gotIt}}>
+            <p class="hn center">Thank you for approving payment.</p>
+            <br/>
+            <p class="hn center">This job is complete and can now be found in your History tab.</p>
+            <br/>
+            <br/>
+            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" this.gotIt}}>
                 Got It
             </Primitive::Button>
         </div>
+    {{else}}
+        <p class="hn label strong">Processing Payment</p>
     {{/if}}
 </div>

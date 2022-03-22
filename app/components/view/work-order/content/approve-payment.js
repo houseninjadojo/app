@@ -58,7 +58,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     if (userApproves) {
       this.isProcessing = true;
       try {
-        const success = Math.random() < 0.5;
+        const success = Math.random() < 1;
 
         setTimeout(() => {
           if (success) {
