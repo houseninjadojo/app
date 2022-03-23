@@ -46,7 +46,6 @@ ul.common-request-list {
 .common-request-list li.common-request .content-container {
   position: relative;
   border-radius: 2px;
-  box-shadow: var(--shadow-gray-1);
   overflow: hidden;
 }
 
@@ -55,28 +54,17 @@ ul.common-request-list {
   overflow: hidden;
   object-fit: cover;
   aspect-ratio: 150 / 80;
+  margin-bottom: 4px;
 }
 
-.common-request-list .common-request .content-container .caption-position {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
 
-.common-request-list .common-request .content-container .caption-position .caption {
-  background-color: rgb(255 255 255 / 64%);
+.common-request-list .common-request .content-container .caption {
   width: 100%;
   height: max-content;
-  backdrop-filter: blur(8px);
   padding: 0 2px;
   font-size: 14px;
-  text-align: center;
-  color: var(--gray-950);
+  color: var(--blue-400);
+  text-align: left;
 }
 
 .section .body.home-care-tip-section {
