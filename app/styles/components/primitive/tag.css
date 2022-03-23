@@ -26,6 +26,12 @@
   color: var(--white);
 }
 
+.hn.tag.accent-outline {
+  background-color: var(--white);
+  border: 1px solid var(--teal-600);
+  color: var(--teal-600);
+}
+
 .hn.tag.warn {
   background-color: var(--orange-400);
   border: none;
