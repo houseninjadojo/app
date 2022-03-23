@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/houseninjadojo/app/compare/v1.0.29...v1.1.0) (2022-03-23)
+
+
+### Features
+
+* payment approval flow ([#463](https://github.com/houseninjadojo/app/issues/463)) ([fc96566](https://github.com/houseninjadojo/app/commit/fc965667860b3b092669fb0d19759b6cace884cd))
+
 ## [1.0.29](https://github.com/houseninjadojo/app/compare/v1.0.28...v1.0.29) (2022-03-21)
 
 
