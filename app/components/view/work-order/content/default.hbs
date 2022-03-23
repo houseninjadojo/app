@@ -1,0 +1,23 @@
+<div class="actions">        
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
+        Cancel Request
+    </Primitive::Button>
+    {{#if @model.scheduledDate}}    
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
+            I have an issue
+        </Primitive::Button>
+    {{/if}}
+</div>
+<div class="work-order-details">
+    <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
+    <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+    <p class="hn field"><span class="hn label">Vendor: </span>{{if @showVendor @model.vendor 'TBD'}}</p>
+    <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
+    <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+        View Invoice
+    </Primitive::Button>
+</div>
+<div class="work-order-container">
+    
+</div>

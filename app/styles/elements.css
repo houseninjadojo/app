@@ -9,6 +9,18 @@
   margin-bottom: 16px;
 }
 
+.hn.field {
+  margin-bottom: 8px;
+}
+
+.hn.field.highlight {
+  background-color: var(--blue-100);
+  margin-bottom: 8px;
+  border-radius: 2px;
+  padding: 4px 8px 0;
+  color: var(--blue-500);
+}
+
 .hn.label {
   font-family: var(--campton-strong);
   font-size: 17px;
@@ -24,6 +36,20 @@
 
 .hn .accent {
   color: var(--teal-500);
+}
+
+.hn.banner-message {
+  width: 100%;
+  background-color: var(--blue-100);
+  margin-bottom: 16px;
+  border-radius: 2px;
+  padding: 16px 12px;
+  color: var(--blue-500);
+}
+
+.hn.banner-message.alert {
+  background-color: var(--red-10);
+  color: var(--red-500);
 }
 
 .application .light a,

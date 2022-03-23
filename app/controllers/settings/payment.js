@@ -9,6 +9,7 @@ import Sentry from 'houseninja/utils/sentry';
 
 export default class SettingsPaymentController extends Controller {
   @service router;
+  @service view;
 
   @tracked formIsInvalid = true;
   @tracked paymentMethod = {
@@ -57,6 +58,7 @@ export default class SettingsPaymentController extends Controller {
 
   @action
   resetForm() {
+    this.fields.forEach((f) => (f.value = null));
     this.formIsInvalid = true;
   }
 
@@ -83,7 +85,8 @@ export default class SettingsPaymentController extends Controller {
     if (this.model.hasDirtyAttributes) {
       try {
         await this.model.save();
-        this.router.transitionTo('settings.index');
+        await this.resetForm();
+        this.view.transitionToPreviousRoute();
       } catch (e) {
         debug(e);
         Sentry.captureException(e);

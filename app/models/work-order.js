@@ -8,4 +8,6 @@ export default class WorkOrderModel extends Model {
 
   @attr('string') scheduledDate;
   @attr('string') scheduledTime;
+
+  @attr('string') status;
 }

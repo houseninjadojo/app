@@ -1,0 +1,61 @@
+.hn.work-order {
+  width: 100%;
+}
+
+.hn.work-order .actions {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.hn.work-order .actions .hn.btn:nth-of-type(1) {
+  margin-right: 4px;
+}
+
+.hn.work-order .actions .hn.btn:nth-of-type(2) {
+  margin-left: 4px;
+}
+
+.hn.work-order .work-order-details {
+  background-color: var(--white);
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.hn.work-order .payment-processing {
+  display: none;
+  background: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: var(--white);
+}
+
+.hn.work-order .payment-processing.show,
+.hn.work-order .payment-processing.show .payment-confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hn.work-order .payment-processing.show.paid {
+  position: fixed;
+  background: var(--grad-black-1000);
+}
+
+.hn.work-order .payment-processing.show .payment-confirmation {
+  width: 80%;
+}
+
+.hn.work-order .payment-processing.show .payment-confirmation .encouragement {
+  font-size: 24px;
+}

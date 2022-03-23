@@ -7,6 +7,7 @@ import Sentry from 'houseninja/utils/sentry';
 
 export default class SettingsSecurityController extends Controller {
   @service router;
+  @service view;
 
   @tracked passwords = {
     currentPassword: '',
@@ -44,7 +45,7 @@ export default class SettingsSecurityController extends Controller {
   }
 
   @action
-  reset() {
+  async reset() {
     this.passwords.currentPassword = null;
     this.passwords.newPassword = null;
     this.passwords.confirmPassword = null;
@@ -53,11 +54,12 @@ export default class SettingsSecurityController extends Controller {
 
   @action
   async saveAction() {
-    if (this.formIsInvalid && this.model.hasDirtyAttributes) {
+    if (!this.formIsInvalid && this.model && this.model.hasDirtyAttributes) {
       try {
         await this.model.save();
-        await this.model.reload(); // clear password if changed
-        this.router.transitionTo('settings.index');
+        await this.resetForm();
+        await this.model.reload();
+        this.view.transitionToPreviousRoute();
       } catch (e) {
         debug(e);
         Sentry.captureException(e);

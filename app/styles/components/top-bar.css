@@ -39,6 +39,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%);
 }
 
 .hn.top-bar .action-container .action img.prev {
