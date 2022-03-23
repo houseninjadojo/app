@@ -26,6 +26,14 @@ export const getWorkOrderTag = (status) => {
         type: 'alert',
       };
     case workOrderStatus.workScheduled:
+    case workOrderStatus.workInProgress:
+    case workOrderStatus.changeOrderReceived:
+    case workOrderStatus.workCompleted:
+    case workOrderStatus.customerConfirmedWork:
+    case workOrderStatus.problemReported:
+    case workOrderStatus.problemBeingAddressed:
+    case workOrderStatus.problemResolved:
+    case workOrderStatus.vendorInvoiceReceived:
       return {
         label: getWorkOrderStatusLabel(status),
         type: 'primary',
