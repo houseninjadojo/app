@@ -26,8 +26,19 @@ export default class WorkHistoryComponent extends Component {
       ...w,
     };
   });
+  pausedWorkOrders = this.allWorkOrders
+    .filter((w) => {
+      const historicalWorkOrder = w.status === workOrderStatus.paused;
+      return historicalWorkOrder;
+    })
+    .sort((a, b) => {
+      return (
+        moment(a.scheduledDate, DATE_FORMAT) <
+        moment(b.scheduledDate, DATE_FORMAT)
+      );
+    });
 
-  pastWorkOrders = this.allWorkOrders
+  inactiveWorkOrders = this.allWorkOrders
     .filter((w) => {
       const historicalWorkOrder =
         w.status === workOrderStatus.invoicePaidByCustomer ||
@@ -40,6 +51,8 @@ export default class WorkHistoryComponent extends Component {
         moment(b.scheduledDate, DATE_FORMAT)
       );
     });
+
+  pastWorkOrders = [...this.pausedWorkOrders, ...this.inactiveWorkOrders];
 
   @action
   openBrowser() {
