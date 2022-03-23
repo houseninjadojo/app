@@ -26,8 +26,12 @@ export default class HandleItComponent extends Component {
         id: w.id,
         name: w.description,
         description: w.scheduledDate && w.vendor,
-        scheduledDate: w.scheduledDate,
-        scheduledTime: w.scheduledDate && w.scheduledTime,
+        scheduledDate:
+          w.status !== workOrderStatus.paused ? w.scheduledDate : null,
+        scheduledTime:
+          w.status !== workOrderStatus.paused && w.scheduledDate
+            ? w.scheduledTime
+            : null,
         status: w.status,
         tag: w.status && getWorkOrderTag(w.status),
         ...w,
@@ -35,10 +39,10 @@ export default class HandleItComponent extends Component {
     })
     .filter((w) => {
       const activeWorkOrder =
+        w.status !== workOrderStatus.workRequestReceived &&
         w.status !== workOrderStatus.invoicePaidByCustomer &&
         w.status !== workOrderStatus.closed &&
-        w.status !== workOrderStatus.cancelled &&
-        w.status !== workOrderStatus.paused;
+        w.status !== workOrderStatus.cancelled;
       return activeWorkOrder;
     });
   failedPaymentWorkOrders = this.allWorkOrders
@@ -64,6 +68,7 @@ export default class HandleItComponent extends Component {
       (w) =>
         w.status !== workOrderStatus.paymentFailed &&
         w.status !== workOrderStatus.invoiceSentToCustomer &&
+        w.status !== workOrderStatus.paused &&
         w.scheduledDate
     )
     .sort((a, b) => {
@@ -74,13 +79,20 @@ export default class HandleItComponent extends Component {
       );
     });
 
-  nonBookedWorkOrders = this.allWorkOrders.filter((w) => !w.scheduledDate);
+  nonBookedWorkOrders = this.allWorkOrders.filter(
+    (w) => !w.scheduledDate && w.status !== workOrderStatus.paused
+  );
+
+  pausedWorkOrders = this.allWorkOrders.filter(
+    (w) => w.status === workOrderStatus.paused
+  );
 
   currentWorkOrders = [
-    ...this.failedPaymentWorkOrders,
     ...this.approvePaymentWorkOrders,
+    ...this.failedPaymentWorkOrders,
     ...this.bookedWorkOrders,
     ...this.nonBookedWorkOrders,
+    ...this.pausedWorkOrders,
   ];
 
   @action
