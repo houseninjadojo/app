@@ -1,21 +1,39 @@
 .hn.tag {
   white-space: nowrap;
-  background-color: var(--black);
+  border: 1px solid var(--gray-800);
   border-radius: 4px;
   padding: 2px 8px;
   font-family: var(--campton-strong);
   font-size: 12px;
-  color: white;
+  color: var(--gray-800);
+}
+
+.hn.tag.primary {
+  background-color: var(--black);
+  border: none;
+  color: var(--white);
 }
 
 .hn.tag.alert {
   background-color: var(--red-400);
+  border: none;
+  color: var(--white);
 }
 
 .hn.tag.accent {
   background-color: var(--teal-600);
+  border: none;
+  color: var(--white);
 }
 
 .hn.tag.warn {
   background-color: var(--orange-400);
+  border: none;
+  color: var(--white);
+}
+
+.hn.tag.disabled {
+  background-color: var(--gray-100);
+  border: none;
+  color: var(--gray-400);
 }
