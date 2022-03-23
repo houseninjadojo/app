@@ -20,6 +20,8 @@ export const workOrderStatus = {
   invoicePaidByCustomer: 'invoice_paid_by_customer',
   paymentFailed: 'payment_failed',
   closed: 'closed',
+  paused: 'paused',
+  cancelled: 'cancelled',
 };
 
 export const workOrderStatusLabels = {
@@ -42,8 +44,10 @@ export const workOrderStatusLabels = {
   //   [workOrderStatus.problemResolved]: '',
   //   [workOrderStatus.vendorInvoiceReceived]: '',
   [workOrderStatus.invoiceSentToCustomer]: 'Approve Payment',
-  // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor',
+  // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
   [workOrderStatus.invoicePaidByCustomer]: 'Closed',
   [workOrderStatus.paymentFailed]: 'Failed Payment',
   [workOrderStatus.closed]: 'Closed',
+  [workOrderStatus.paused]: 'Paused',
+  [workOrderStatus.cancelled]: 'Cancelled',
 };
