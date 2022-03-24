@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/houseninjadojo/app/compare/v1.1.0...v1.2.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* work order adjustments ([#470](https://github.com/houseninjadojo/app/issues/470)) ([ce0e82c](https://github.com/houseninjadojo/app/commit/ce0e82c1f8039206d983dbdb46ab69923d2d2226))
+
+
+### Features
+
+* logo loader ([#471](https://github.com/houseninjadojo/app/issues/471)) ([e1da169](https://github.com/houseninjadojo/app/commit/e1da169e73aa3c851035736878feee7ecc7c3fc5))
+
 # [1.1.0](https://github.com/houseninjadojo/app/compare/v1.0.29...v1.1.0) (2022-03-23)
 
 
