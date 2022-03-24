@@ -25,7 +25,10 @@ export default class HandleItComponent extends Component {
       return {
         id: w.id,
         name: w.description,
-        description: w.scheduledDate && w.vendor,
+        description:
+          w.status !== workOrderStatus.paused && w.scheduledDate
+            ? w.vendor
+            : null,
         scheduledDate:
           w.status !== workOrderStatus.paused ? w.scheduledDate : null,
         scheduledTime:
