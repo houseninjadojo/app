@@ -127,6 +127,7 @@
     "@capacitor/splash-screen": "^1.2.2",
     "@houseninja/capacitor-mixpanel": "^0.0.16",
     "capacitor-secure-storage-plugin": "^0.6.2",
+    "lottie-web": "^5.9.1",
     "moment": "^2.29.1"
   }
 }
