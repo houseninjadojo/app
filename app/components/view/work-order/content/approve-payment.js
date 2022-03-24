@@ -7,6 +7,7 @@ import { workOrderStatus } from 'houseninja/data/work-order-status';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
   @tracked isProcessing = false;
+  @tracked isDoneProcessing = false;
   @tracked paid = false;
 
   cancelMessage = 'I would like to cancel this work order.';
@@ -62,12 +63,15 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
         setTimeout(() => {
           if (success) {
-            this.paid = success;
+            this.isDoneProcessing = true;
+            setTimeout(() => {
+              this.paid = success;
+            }, 2250);
           } else {
             this.isProcessing = false;
             this.updateWorkOrderStatus(false);
           }
-        }, 1500);
+        }, 2500);
       } catch (e) {
         Sentry.captureException(e);
 
