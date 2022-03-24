@@ -34,7 +34,8 @@
                 Got It
             </Primitive::Button>
         </div>
-    {{else}}
+    {{else}}       
+        <Primitive::Loader::Logo @isDone={{this.isDoneProcessing}}/>
         <p class="hn label strong">Processing Payment</p>
     {{/if}}
 </div>

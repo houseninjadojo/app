@@ -39,3 +39,7 @@
     transform: translateX(100%) scaleX(0.3);
   }
 }
+
+.hn.logo-loader-container {
+  width: 140px;
+}
