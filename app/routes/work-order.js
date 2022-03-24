@@ -10,10 +10,10 @@ export default class WorkOrderRoute extends Route {
     const model = await this.store.findRecord('work-order', work_order_id, {
       backgroundReload: true,
     });
-    model.set(
-      'statusLabel',
-      model.status && getWorkOrderStatusLabel(model.status)
-    );
+    model.setProperties({
+      statusLabel: model.status && getWorkOrderStatusLabel(model.status),
+      vendor: model.scheduledDate && model.vendor,
+    });
     return model;
   }
 }

@@ -20,10 +20,6 @@ export default class WorkOrderViewComponent extends Component {
     default: 'Default',
   };
 
-  get showVendor() {
-    return this.args.scheduled && this.args.vendor;
-  }
-
   get contentType() {
     const status = workOrderStatus[toCamel(this.args.model.status)];
     switch (status) {

@@ -7,14 +7,12 @@
         <View::WorkOrder::Content::FailedPayment 
             @model={{@model}} 
             @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}
-            @selectRoute={{fn this.selectRoute 'settings.payment'}}
-            />
+            @selectRoute={{fn this.selectRoute 'settings.payment'}}/>
     {{else if (eq this.contentType this.content.closed)}}        
         <View::WorkOrder::Content::Closed @model={{@model}} />
     {{else}}    
         <View::WorkOrder::Content::Default 
-            @model={{@model}}
-            @showVendor={{this.showVendor}} 
+            @model={{@model}}            
             @handleCancelRequest={{fn this.displayMessageComposer this.cancelMessage}} 
             @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
     {{/if}}    
