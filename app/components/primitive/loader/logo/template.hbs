@@ -1,0 +1,7 @@
+ <div class="hn logo-loader-container">
+    {{#if @isDone}}
+        <div id="logo-loader-finished" {{did-insert (fn this.showLoader "logo-loader-finished")}} />
+    {{else}}            
+        <div id="logo-loader" {{did-insert (fn this.showLoader "logo-loader")}} />
+    {{/if}}
+</div>
