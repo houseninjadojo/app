@@ -16,6 +16,7 @@
     {{@class}}'
   type={{if @type @type 'button'}}
   disabled={{@disabled}}
+  {{on "click" this.handleClick}}
   ...attributes
 >
   {{yield}}
