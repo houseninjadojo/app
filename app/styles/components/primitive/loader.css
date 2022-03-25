@@ -1,10 +1,13 @@
 .hn-loader.global {
   width: 100%;
   height: 2px;
+  background-color: var(--teal-600);
+}
+
+.hn-loader.top-bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: var(--teal-600);
 }
 
 .hn-loader.global.hide {
@@ -51,5 +54,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24%;
+  padding: 0 20%;
 }
