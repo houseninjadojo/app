@@ -32,7 +32,7 @@ const server = {
 
 const plugins = {
   SplashScreen: {
-    launchShowDuration: 1000,
+    launchShowDuration: 1,
     launchAutoHide: false,
     backgroundColor: '#000000',
   },

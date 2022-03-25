@@ -36,8 +36,4 @@ export default class DashboardHomeRoute extends Route {
     });
   }
 
-  @action
-  loading() {
-    return true;
-  }
 }

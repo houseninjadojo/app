@@ -69,7 +69,6 @@ class ApplicationRoute extends Route {
   @action
   loading(transition) {
     this.loader.showGlobalLoadingIndicator(transition);
-    return true;
   }
 }
 
