@@ -37,10 +37,6 @@ class ApplicationRoute extends Route {
   async beforeModel() {
     await this.intercom.setup();
     await this.session.setup();
-    if (isNativePlatform()) {
-      SplashScreen.hide();
-    }
-
     await this.analytics.setup();
     await this.analytics.track('Ember App Started');
   }
