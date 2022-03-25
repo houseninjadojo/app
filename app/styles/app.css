@@ -53,7 +53,7 @@ body {
   right: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--white);
+  background: var(--black);
 }
 
 .ember-view {

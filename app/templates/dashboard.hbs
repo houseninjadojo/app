@@ -1,10 +1,4 @@
 {{page-title "Dashboard"}}
-<fragment {{did-insert this.toggleLoading}}>
-    {{#if this.isLoading}}
-        <Primitive::Loader::Splash/>
-    {{else}}
-        <TopBar @content="dashboard" />
-        <LiquidOutlet />
-        <NavBar />
-    {{/if}}
-</fragment>
+<TopBar @content="dashboard" />
+    <LiquidOutlet />
+<NavBar />
