@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-
+import { SplashScreen } from '@capacitor/splash-screen';
 export default class LoginOrSignupRoute extends Route {
   @service current;
   @service session;
@@ -16,5 +16,9 @@ export default class LoginOrSignupRoute extends Route {
 
   async model() {
     return this.current;
+  }
+
+  afterModel() {
+    SplashScreen.hide();
   }
 }
