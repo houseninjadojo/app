@@ -48,11 +48,21 @@
 }
 
 .hn.splash-loader {
+  background: url("/assets/splash/logo-placeholder.svg") center center no-repeat;
   background-color: var(--black);
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20%;
+  background-size: 200px auto;
+}
+
+.hn.splash-loader.loaded {
+  background: url("/assets/splash/logo-placeholder-after.svg") center center no-repeat;
+  background-size: 200px auto;
+}
+
+.hn.splash-loader video {
+  width: 200px;
 }

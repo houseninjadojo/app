@@ -1,5 +1,5 @@
- <div class="hn splash-loader">
-    <video playsinline autoplay>
-        <source src={{this.uri}} type="video/mp4">    
+ <div class="hn splash-loader {{if this.isFinished 'loaded'}}">
+    <video playsinline autoplay {{did-insert this.video}}>
+        <source src={{'/assets/splash/stacked-logo-splash.mp4'}} type="video/mp4">    
     </video>
  </div>

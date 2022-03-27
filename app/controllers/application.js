@@ -8,8 +8,6 @@ export default class ApplicationController extends Controller {
 
   @action
   toggleLoading() {
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 3000);
+    this.showLoader = false;
   }
 }
