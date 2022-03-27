@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/houseninjadojo/app/compare/v1.2.0...v1.2.1) (2022-03-27)
+
+
+### Bug Fixes
+
+* update to splash screen ([#474](https://github.com/houseninjadojo/app/issues/474)) ([3a271d9](https://github.com/houseninjadojo/app/commit/3a271d96abe9ccda2b533ebd6a06f696d8c642cd))
+
 # [1.2.0](https://github.com/houseninjadojo/app/compare/v1.1.0...v1.2.0) (2022-03-24)
 
 
