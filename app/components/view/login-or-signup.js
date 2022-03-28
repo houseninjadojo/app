@@ -17,4 +17,10 @@ export default class LoginOrSignupViewComponent extends Component {
   @action login() {
     this.router.transitionTo('login');
   }
+
+  @action show(e) {
+    setTimeout(() => {
+      e.classList.add('show');
+    }, 500);
+  }
 }
