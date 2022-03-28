@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/houseninjadojo/app/compare/v1.2.1...v1.2.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* style adjustments ([#479](https://github.com/houseninjadojo/app/issues/479)) ([accbf65](https://github.com/houseninjadojo/app/commit/accbf65ca6fd7348e12059eadc9f6f635cd1a6e6))
+
 ## [1.2.1](https://github.com/houseninjadojo/app/compare/v1.2.0...v1.2.1) (2022-03-27)
 
 
