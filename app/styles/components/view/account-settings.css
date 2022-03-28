@@ -21,13 +21,7 @@
 }
 
 .settings-menu .menu-item:not(:last-child) {
-  border-bottom: 1px solid var(--gray-100);
-}
-
-.settings-menu .menu-item button span.menu-item-label {
-  font-family: var(--campton-strong);
-
-  /* Hex Equivalent: var(--gray-100) */
+  border-bottom: 1px solid var(--gray-400);
 }
 
 .dark .settings-menu .menu-item button {
