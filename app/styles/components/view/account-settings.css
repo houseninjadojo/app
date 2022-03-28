@@ -1,14 +1,11 @@
 .settings-view {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background: none;
-  padding: 16px;
+  padding: 16px 16px 32px;
   overflow-y: auto;
-}
-
-.settings-view.dark .settings-menu {
-  /* Hex Equivalent: var(--gray-100) */
-  filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
 }
 
 .settings-menu .menu-item button {
@@ -21,11 +18,7 @@
 }
 
 .settings-menu .menu-item:not(:last-child) {
-  border-bottom: 1px solid var(--gray-400);
-}
-
-.dark .settings-menu .menu-item button {
-  filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
+  border-bottom: 1px solid var(--gray-800);
 }
 
 .settings-menu .menu-item button img.menu-item-icon {
@@ -33,7 +26,20 @@
   height: 21px;
 }
 
+.dark .settings-menu .menu-item button img.menu-item-icon {
+  filter: invert(99%) sepia(13%) saturate(253%) hue-rotate(200deg) brightness(117%) contrast(80%);
+}
+
 .hn.pw-match {
   color: var(--gray-600);
   text-decoration: line-through;
+}
+
+.settings-view .hn-referral-code {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: calc(100% - 32px);
 }
