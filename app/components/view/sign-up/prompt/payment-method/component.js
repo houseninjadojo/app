@@ -5,10 +5,7 @@ import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import {
-  formatCreditCardNumberElement,
-  formatCreditCardNumber,
-} from 'houseninja/utils/components/formatting';
+import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 
@@ -97,7 +94,7 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.plan-selection');
+    this.router.transitionTo('signup.contact-info');
   }
 
   @action showTermsAndConditionsComponent(isVisible) {
@@ -161,10 +158,6 @@ export default class PaymentMethodComponent extends Component {
   async savePaymentMethod() {
     const user = this.store.peekAll('user').get('firstObject');
     const subscription = this.store.peekAll('subscription').get('firstObject');
-
-    this.paymentMethod.cardNumber = formatCreditCardNumber(
-      this.paymentMethod.cardNumber
-    );
 
     let paymentMethod;
     try {
