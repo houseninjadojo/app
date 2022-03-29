@@ -184,7 +184,9 @@ export default class PaymentMethodComponent extends Component {
 
       this.router.transitionTo('signup.welcome');
     } catch (e) {
-      this.errors = paymentMethod.errors;
+      if (isPresent(paymentMethod)) {
+        this.errors = paymentMethod.errors;
+      }
       debug(e);
       Sentry.captureException(e);
     }
