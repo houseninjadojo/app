@@ -13,11 +13,11 @@ export default class SettingsPropertyController extends Controller {
   @tracked formIsInvalid = true;
 
   @tracked propertyInfo = {
-    streetAddress1: this.model && this.model.streetAddress1,
-    streetAddress2: this.model && this.model.streetAddress2,
-    city: this.model && this.model.city,
-    state: this.model && this.model.city,
-    zipcode: this.model && this.model.zipcode,
+    streetAddress1: this.model.streetAddress1,
+    streetAddress2: this.model.streetAddress2,
+    city: this.model.city,
+    state: this.model.city,
+    zipcode: this.model.zipcode,
   };
 
   @tracked fields = [
@@ -89,6 +89,8 @@ export default class SettingsPropertyController extends Controller {
 
   @action
   async saveAction() {
+    this.model.setProperties(this.propertyInfo);
+
     if (this.model.hasDirtyAttributes) {
       try {
         await this.model.save();
