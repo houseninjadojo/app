@@ -1,11 +1,15 @@
 import { trackCursorPosition } from './track-cursor-position';
 
-export function formatCreditCardNumber(inputEl) {
-  trackCursorPosition(inputEl, formatCardNumber, '-');
+export function formatCreditCardNumberElement(inputEl) {
+  trackCursorPosition(inputEl, formatCardNumberElement, '-');
 }
 
-function formatCardNumber(inputEl) {
-  const value = inputEl.value.replace(/\D/g, '');
+export function formatCreditCardNumber(num) {
+  return num.replace(/\D/g, '');
+}
+
+function formatCardNumberElement(inputEl) {
+  const value = formatCreditCardNumber(inputEl.value);
   let formattedValue;
   let maxLength;
   // american express, 15 digits
