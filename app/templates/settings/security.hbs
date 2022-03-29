@@ -1,4 +1,4 @@
 {{page-title "Settings - Security Settings"}}
-<Primitive::Modal::Tray @backRoute="settings" @onBack={{this.reset}} @saveAction={{this.saveAction}} @formIsInvalid={{this.formIsInvalid}}>
+<Primitive::Modal::Tray @onBack={{this.reset}} @saveAction={{this.saveAction}} @formIsInvalid={{this.formIsInvalid}}>
   <View::AccountSettings::Security @model={{this.model}} @passwords={{this.passwords}} @requirementsModel={{this.requirementsModel}} @validatePasswordRequirement={{this.validatePasswordRequirement}}/>
 </Primitive::Modal::Tray>

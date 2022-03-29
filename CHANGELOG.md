@@ -1,3 +1,43 @@
+## [1.2.2](https://github.com/houseninjadojo/app/compare/v1.2.1...v1.2.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* style adjustments ([#479](https://github.com/houseninjadojo/app/issues/479)) ([accbf65](https://github.com/houseninjadojo/app/commit/accbf65ca6fd7348e12059eadc9f6f635cd1a6e6))
+
+## [1.2.1](https://github.com/houseninjadojo/app/compare/v1.2.0...v1.2.1) (2022-03-27)
+
+
+### Bug Fixes
+
+* update to splash screen ([#474](https://github.com/houseninjadojo/app/issues/474)) ([3a271d9](https://github.com/houseninjadojo/app/commit/3a271d96abe9ccda2b533ebd6a06f696d8c642cd))
+
+# [1.2.0](https://github.com/houseninjadojo/app/compare/v1.1.0...v1.2.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* work order adjustments ([#470](https://github.com/houseninjadojo/app/issues/470)) ([ce0e82c](https://github.com/houseninjadojo/app/commit/ce0e82c1f8039206d983dbdb46ab69923d2d2226))
+
+
+### Features
+
+* logo loader ([#471](https://github.com/houseninjadojo/app/issues/471)) ([e1da169](https://github.com/houseninjadojo/app/commit/e1da169e73aa3c851035736878feee7ecc7c3fc5))
+
+# [1.1.0](https://github.com/houseninjadojo/app/compare/v1.0.29...v1.1.0) (2022-03-23)
+
+
+### Features
+
+* payment approval flow ([#463](https://github.com/houseninjadojo/app/issues/463)) ([fc96566](https://github.com/houseninjadojo/app/commit/fc965667860b3b092669fb0d19759b6cace884cd))
+
+## [1.0.29](https://github.com/houseninjadojo/app/compare/v1.0.28...v1.0.29) (2022-03-21)
+
+
+### Bug Fixes
+
+* **deps:** yarn.lock out of date ([17d6ba5](https://github.com/houseninjadojo/app/commit/17d6ba5d6a4263681b32a6803db7d6ad67c07505))
+
 ## [1.0.28](https://github.com/houseninjadojo/app/compare/v1.0.27...v1.0.28) (2022-03-18)
 
 

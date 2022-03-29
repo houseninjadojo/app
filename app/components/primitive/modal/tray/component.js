@@ -5,6 +5,7 @@ import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 
 export default class TrayComponent extends Component {
   @service router;
+  @service view;
 
   options = [
     {
@@ -29,18 +30,18 @@ export default class TrayComponent extends Component {
       switch (choice) {
         case this.options[0].title:
           this.callSaveAction();
-          this.router.transitionTo(this.args.backRoute);
+          this.view.transitionToPreviousRoute();
           this.args.onBack && this.args.onBack();
           break;
         case this.options[1].title:
           break;
         case this.options[2].title:
-          this.router.transitionTo(this.args.backRoute);
+          this.view.transitionToPreviousRoute();
           this.args.onBack && this.args.onBack();
           break;
       }
     } else {
-      this.router.transitionTo(this.args.backRoute);
+      this.view.transitionToPreviousRoute();
       this.args.onBack && this.args.onBack();
     }
   }

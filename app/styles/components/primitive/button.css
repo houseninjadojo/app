@@ -4,7 +4,7 @@
   font-size: 17px;
   width: 100%;
   border-radius: 1px;
-  padding: 0 16px;
+  padding: 3px 16px 0;
   outline: none;
   white-space: nowrap;
 }
@@ -72,9 +72,14 @@
 
 .hn.btn.outline.secondary {
   border-color: var(--blue-400);
-
-  /* box-shadow: var(--shadow-teal-1); */
+  box-shadow: var(--shadow-blue-1);
   color: var(--blue-400);
+}
+
+.hn.btn.outline.alert {
+  border-color: var(--red-400);
+  box-shadow: var(--shadow-red-1);
+  color: var(--red-400);
 }
 
 .hn.btn.solid.accent {
@@ -83,11 +88,17 @@
   color: var(--white);
 }
 
+.hn.btn.solid.alert {
+  background: var(--grad-red-400);
+  box-shadow: var(--shadow-red-1);
+  color: var(--white);
+}
+
 .hn.btn.disabled {
   background: var(--gray-400) !important;
   box-shadow: none !important;
-  filter: invert(32%) sepia(0%) saturate(0%) hue-rotate(108deg) brightness(95%) contrast(89%) !important;
   border: none !important;
+  color: var(--gray-200) !important;
 }
 
 .hn.btn.floating.disabled {

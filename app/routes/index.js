@@ -1,7 +1,6 @@
-import { Capacitor } from '@capacitor/core';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { SplashScreen } from '@capacitor/splash-screen';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class IndexRoute extends Route {
   @service session;
@@ -16,12 +15,11 @@ export default class IndexRoute extends Route {
     }
 
     // are we mobile or web?
-    if (Capacitor.isNativePlatform()) {
+    if (isNativePlatform()) {
       // we are NOT logged in
       // but we are on mobile
       // => go to login/signup page
       this.router.transitionTo('login-or-signup');
-      SplashScreen.hide();
     } else {
       // we are NOT logged in
       // we are NOT on mobile
