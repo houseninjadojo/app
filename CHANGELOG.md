@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/houseninjadojo/app/compare/v1.2.3...v1.3.0) (2022-03-29)
+
+
+### Features
+
+* **deploy:** ready production ([#480](https://github.com/houseninjadojo/app/issues/480)) ([4c9dd03](https://github.com/houseninjadojo/app/commit/4c9dd03e9b77bd3063779c3e94938f8cc18cd9cc))
+
 ## [1.2.3](https://github.com/houseninjadojo/app/compare/v1.2.2...v1.2.3) (2022-03-29)
 
 
