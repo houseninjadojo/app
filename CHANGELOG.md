@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/houseninjadojo/app/compare/v1.2.2...v1.2.3) (2022-03-29)
+
+
+### Bug Fixes
+
+* remove plan selection ([#459](https://github.com/houseninjadojo/app/issues/459)) ([3a842fe](https://github.com/houseninjadojo/app/commit/3a842fe7f1e58084cd9e086c3e0103938e5b55b1))
+
 ## [1.2.2](https://github.com/houseninjadojo/app/compare/v1.2.1...v1.2.2) (2022-03-28)
 
 
