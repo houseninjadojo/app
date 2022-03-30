@@ -1,9 +1,9 @@
 <div class="hn document-vault">    
     <div class="actions">
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- {{on "click" (fn this.selectRoute 'vault.group.new')}} --}}>
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" (fn this.selectRoute 'vault.group.new')}}>
             Add Category
         </Primitive::Button>
-        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{!-- {{on "click" (fn this.selectRoute 'vault.upload')}} --}}>
+        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{on "click" this.toggleUploadMenu}}>
             Upload
         </Primitive::Button>
     </div>
@@ -12,5 +12,6 @@
     </Primitive::Section>
     <Primitive::Section @label="Uncategorized Documents">
         <HouseNinja::DocumentVaultRecords @records={{@model.documents}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have no uncategorized documents." action="Upload Document"}} />
-    </Primitive::Section>    
+    </Primitive::Section>
+    <Primitive::Modal::Sheet @options={{this.uploadOptions}} @isVisible={{this.showUploadMenu}} @toggleUploadMenu={{this.toggleUploadMenu}}/>
 </div>

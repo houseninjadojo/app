@@ -1,0 +1,17 @@
+<div class="hn modal {{unless @isVisible 'hide'}}">
+    <Primitive::Button @variant="plain" {{on "click" (fn @toggleUploadMenu)}}>
+        <div class="hn overlay" />
+    </Primitive::Button>
+    <div class="hn modal-container sheet dark {{if @isVisible 'show'}}">        
+        <ul class="hn-menu">
+            {{#each @options as |option| }}
+                <li class="hn-sheet-menu-option">
+                    <Primitive::Button @variant="plain" {{on "click" (fn option.select option)}}>
+                        {{option.label}}
+                        <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                    </Primitive::Button>
+                </li>
+            {{/each}}
+        </ul>        
+    </div>
+</div>

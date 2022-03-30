@@ -4,10 +4,18 @@
   background: none;
   padding: 0;
   z-index: 100;
+  opacity: 1;
+  transition: opacity 5s ease-out;
 }
 
-.hn.modal .overlay {
-  background: rgb(255 255 255 / 25%);
+.hn.modal.hide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.hn.modal button .overlay {
+  background: rgb(0 0 0 / 25%);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -15,7 +23,7 @@
   right: 0;
 
   /* Note: backdrop-filter has minimal browser support */
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
 }
 
 .hn.modal .tray,
@@ -38,6 +46,54 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.hn.modal .modal-container.sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 16px 32px;
+  animation-name: slideOut;
+	animation-timing-function: ease-out;
+	animation-duration: .25s;
+}
+
+.hn.modal .modal-container.sheet.show {    
+	animation-name: slideIn;
+	animation-timing-function: ease-out;
+	animation-duration: .25s;
+}
+
+@keyframes slideOut {
+	0% {
+    transform: translateY(0);
+	}
+	100% {
+    transform: translateY(100vh);
+	}
+}
+
+@keyframes slideIn {
+	0% {
+    transform: translateY(100vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.hn.modal .modal-container.sheet .hn-sheet-menu-option {
+  width: 100%;
+  border-bottom: 1px solid var(--gray-800);
+  padding: 16px;
+}
+
+.hn.modal .modal-container.sheet .hn-sheet-menu-option button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
 }
 
 .hn.modal .modal-container.dark {
