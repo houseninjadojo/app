@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/houseninjadojo/app/compare/v1.3.0...v1.3.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* polishing, nudging, fixing ([#482](https://github.com/houseninjadojo/app/issues/482)) ([8034bdf](https://github.com/houseninjadojo/app/commit/8034bdf514812a782ac1272eafdfc38d1b7f81ff))
+
 # [1.3.0](https://github.com/houseninjadojo/app/compare/v1.2.3...v1.3.0) (2022-03-29)
 
 
