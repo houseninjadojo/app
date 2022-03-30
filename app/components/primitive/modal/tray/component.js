@@ -57,8 +57,10 @@ export default class TrayComponent extends Component {
   }
 
   @action
-  async callSaveAction() {
-    if (!this.args.formIsInvalid && this.args.saveAction) {
+  async handlePrimaryClick() {
+    if (this.args.primaryAction) {
+      this.args.primaryAction();
+    } else if (!this.args.formIsInvalid && this.args.saveAction) {
       await this.args.saveAction();
     }
   }

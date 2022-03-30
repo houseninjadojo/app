@@ -47,9 +47,13 @@
   align-items: center;
 }
 
+.hn.work-order .payment-processing.show .hn.logo-loader-container {
+  margin-bottom: 16px;
+}
+
 .hn.work-order .payment-processing.show.paid {
   position: fixed;
-  background: var(--grad-black-1000);
+  background: var(--black);
 }
 
 .hn.work-order .payment-processing.show .payment-confirmation {

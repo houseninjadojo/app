@@ -7,7 +7,7 @@
               @options={{field.options}}
               @label={{field.label}}
               @required={{true}}
-              @disabled={{field.disabled}}
+              @disabled={{true}}
               @value={{mut (get @model field.id)}}
             />
         {{else}}
@@ -19,7 +19,7 @@
               @description={{field.description}}
               @label={{field.label}}
               @type={{field.type}}
-              @disabled={{field.disabled}}
+              @disabled={{true}}
               @onInput={{@validateForm}}
             />
         {{/if}}

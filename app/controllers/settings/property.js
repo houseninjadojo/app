@@ -2,9 +2,8 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import * as Sentry from '@sentry/ember';
+import { Intercom } from '@capacitor-community/intercom';
 
 export default class SettingsPropertyController extends Controller {
   @service router;
@@ -13,11 +12,11 @@ export default class SettingsPropertyController extends Controller {
   @tracked formIsInvalid = true;
 
   @tracked propertyInfo = {
-    streetAddress1: this.model && this.model.streetAddress1,
-    streetAddress2: this.model && this.model.streetAddress2,
-    city: this.model && this.model.city,
-    state: this.model && this.model.city,
-    zipcode: this.model && this.model.zipcode,
+    streetAddress1: this.model.streetAddress1,
+    streetAddress2: this.model.streetAddress2,
+    city: this.model.city,
+    state: this.model.city,
+    zipcode: this.model.zipcode,
   };
 
   @tracked fields = [
@@ -88,16 +87,9 @@ export default class SettingsPropertyController extends Controller {
   }
 
   @action
-  async saveAction() {
-    if (this.model.hasDirtyAttributes) {
-      try {
-        await this.model.save();
-        await this.resetForm();
-        this.view.transitionToPreviousRoute();
-      } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
-      }
-    }
+  async showMessenger() {
+    await Intercom.displayMessageComposer({
+      message: 'Hello. I need to make a change to my property address.',
+    });
   }
 }
