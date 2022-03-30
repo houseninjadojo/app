@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { Camera, CameraResultType } from '@capacitor/camera';
 export default class VaultContentComponent extends Component {
   @service router;
   @service view;
@@ -9,32 +10,66 @@ export default class VaultContentComponent extends Component {
 
   @tracked showUploadMenu = false;
 
+  uploadMenuOptionType = {
+    camera: 'CAMERA',
+    photos: 'PHOTOS',
+    file: 'FILE',
+  };
+
   uploadOptions = [
     {
-      id: 'camera',
-      label: 'Take Photo',
+      id: this.uploadMenuOptionType.camera,
+      label: 'Take a Photo',
       select: this.selectUploadOption,
     },
     {
-      id: 'library',
-      label: 'Select from Photo Library',
+      id: this.uploadMenuOptionType.photos,
+      label: 'Select Photo from Library',
       select: this.selectUploadOption,
     },
     {
-      id: 'files',
-      label: 'Select from Files',
+      id: this.uploadMenuOptionType.files,
+      label: 'Upload a File',
       select: this.selectUploadOption,
     },
   ];
 
   @action
-  toggleUploadMenu(){
+  toggleUploadMenu() {
     this.showUploadMenu = !this.showUploadMenu;
   }
 
   @action
   selectUploadOption(option) {
-    console.log(option);
+    switch (option.id) {
+      case this.uploadMenuOptionType.camera:
+        this.getPhoto(this.uploadMenuOptionType.camera);
+        break;
+      case this.uploadMenuOptionType.photos:
+        this.getPhoto(this.uploadMenuOptionType.photos);
+        break;
+      case this.uploadMenuOptionType.files:
+        return;
+    }
+  }
+
+  async getPhoto(source) {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri,
+      source,
+    });
+
+    // image.webPath will contain a path that can be set as an image src.
+    // You can access the original file using image.path, which can be
+    // passed to the Filesystem API to read the raw data of the image,
+    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+    var imageUrl = image.webPath;
+    console.log('imageUrl', imageUrl);
+    // Can be set to the src of an image now
+    // imageElement.src = imageUrl;
+    this.toggleUploadMenu();
   }
 
   @action
