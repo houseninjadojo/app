@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import * as Sentry from '@sentry/ember';
+import { Intercom } from '@capacitor-community/intercom';
 
 export default class SettingsPropertyController extends Controller {
   @service router;
@@ -88,18 +89,9 @@ export default class SettingsPropertyController extends Controller {
   }
 
   @action
-  async saveAction() {
-    this.model.setProperties(this.propertyInfo);
-
-    if (this.model.hasDirtyAttributes) {
-      try {
-        await this.model.save();
-        await this.resetForm();
-        this.view.transitionToPreviousRoute();
-      } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
-      }
-    }
+  async showMessenger() {
+    await Intercom.displayMessageComposer({
+      message: 'Hello. I need to make a change to my property address.',
+    });
   }
 }
