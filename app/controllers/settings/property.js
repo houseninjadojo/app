@@ -2,9 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import * as Sentry from '@sentry/ember';
 import { Intercom } from '@capacitor-community/intercom';
 
 export default class SettingsPropertyController extends Controller {
