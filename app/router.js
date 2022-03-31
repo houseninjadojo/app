@@ -41,10 +41,10 @@ Router.map(function () {
   this.route('faq');
   this.route('vault', function () {
     this.route('index', { path: '/' });
-    this.route('upload');
     this.route('document', function () {
       this.route('index', { path: '/:doc_id' });
       this.route('edit', { path: '/edit/:doc_id' });
+      this.route('add');
     });
     this.route('group', function () {
       this.route('index', { path: '/:group_id' });
