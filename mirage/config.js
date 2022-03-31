@@ -42,6 +42,7 @@ export default function () {
   this.resource('subscription', { path: '/subscriptions' });
   this.resource('user', { path: '/users' });
   this.resource('work-order', { path: '/work-orders' });
+  this.resource('document-groups', { path: '/document-groups' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
