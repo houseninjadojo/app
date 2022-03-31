@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/houseninjadojo/app/compare/v1.3.1...v1.3.2) (2022-03-31)
+
+
+### Bug Fixes
+
+* sign up content and style adjustments ([#488](https://github.com/houseninjadojo/app/issues/488)) ([f730edb](https://github.com/houseninjadojo/app/commit/f730edbccff159da55ec67e73b485e05cf236408))
+
 ## [1.3.1](https://github.com/houseninjadojo/app/compare/v1.3.0...v1.3.1) (2022-03-30)
 
 
