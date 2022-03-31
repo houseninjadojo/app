@@ -10,7 +10,7 @@ const getRandomProperty = (obj) => {
 
 export default [
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Holiday Lights Installation',
     vendor: 'CTWC',
     scheduledDate: '11/28/21',
@@ -18,7 +18,7 @@ export default [
     status: getRandomProperty(workOrderStatus),
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Water heater servicing',
     vendor: '4Paws Plumbing',
     scheduledDate: '01/07/22',
@@ -26,7 +26,7 @@ export default [
     status: getRandomProperty(workOrderStatus),
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Semi-Annual Preventative Maintenance',
     vendor: '',
     scheduledDate: '09/22/21',
@@ -34,7 +34,7 @@ export default [
     status: workOrderStatus.closed,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Tree Trimming',
     vendor: 'Wilder Tree & Lawn',
     scheduledDate: '01/05/22',
@@ -42,7 +42,7 @@ export default [
     status: workOrderStatus.paymentFailed,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Fence Repair',
     vendor: 'Wilder Tree & Lawn',
     scheduledDate: '10/29/21',
@@ -50,7 +50,7 @@ export default [
     status: workOrderStatus.invoiceSentToCustomer,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Exterior light repair',
     vendor: 'Cooke Electric',
     // scheduledDate: '03/26/22',
@@ -59,7 +59,7 @@ export default [
     status: workOrderStatus.workOrderInitiated,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Window cleaning',
     vendor: 'Central Texas Windows',
     scheduledDate: '03/25/22',
@@ -68,7 +68,7 @@ export default [
     status: workOrderStatus.paused,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'HVAC Service',
     vendor: 'AirServ',
     // scheduledDate: '10/22/21',
@@ -76,7 +76,7 @@ export default [
     status: workOrderStatus.estimateNotApproved,
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Dryer vent cleaning',
     vendor: 'Lake Travis Dryer Vent',
     scheduledDate: '03/22/22',
@@ -84,7 +84,7 @@ export default [
     status: getRandomProperty(workOrderStatus),
   },
   {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     description: 'Power washing',
     vendor: 'Fanin Professional Services',
     scheduledDate: '03/28/22',
