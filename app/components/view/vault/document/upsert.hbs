@@ -1,0 +1,31 @@
+<Primitive::Modal::Tray @formIsInvalid={{true}} @primaryActionHeaderText="Upload">
+    <div class="vault">
+        <h1 class="hn view-title">Upload Document</h1>
+        {{#if this.imageUri}}
+            <img src={{this.imageUri}} alt="asdf" />
+        {{/if}}
+        {{#each this.fields as |field|}}
+            {{#if field.isSelect}}
+                <Primitive::Select
+                @options={{field.options}}
+                @label={{field.label}}
+                @required={{field.required}}
+                {{!-- @disabled={{true}} --}}
+                @value={{mut (get @model field.id)}}
+                />
+            {{else}}
+                <Primitive::Input
+                @id={{field.id}}
+                @required={{field.required}}
+                @placeholder={{field.placeholder}}
+                @value={{mut (get @model field.id)}}
+                @description={{field.description}}
+                @label={{field.label}}
+                @type={{field.type}}
+                {{!-- @disabled={{true}} --}}
+                @onInput={{@validateForm}}
+                />
+            {{/if}}
+        {{/each}}
+    </div>
+</Primitive::Modal::Tray>
