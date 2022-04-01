@@ -16,7 +16,7 @@
                 />
             {{/each}}
         </div>
-        {{#if @model.group.id}}
+        {{#if @model.id}}
             <div class="action">
                 <Primitive::Button @variant="solid" @semantic="alert" @size="md" {{on "click" this.delete}}>Delete Category</Primitive::Button>
             </div>
