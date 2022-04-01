@@ -1,5 +1,5 @@
 <div class="hn modal {{unless @isVisible 'hide'}}">
-    <Primitive::Button @variant="plain" {{on "click" (fn @toggleUploadMenu)}}>
+    <Primitive::Button @variant="plain" {{on "click" @toggleUploadMenu}}>
         <div class="hn overlay" />
     </Primitive::Button>
     <div class="hn modal-container sheet dark {{if @isVisible 'show'}}">        
