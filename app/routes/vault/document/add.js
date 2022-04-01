@@ -9,9 +9,7 @@ export default class VaultDocumentAddRoute extends Route {
 
   async beforeModel() {
     const groups = await this.store.findAll('document-group');
-    console.log(groups);
     this.groups = groups.map((g) => {
-      console.log(g.id);
       return {
         name: g.name,
         description: g.description,
