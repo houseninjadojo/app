@@ -10,7 +10,7 @@ export default class VaultDocumentComponent extends Component {
   openBrowser() {
     if (this.args.model) {
       Browser.open({
-        url: `${this.args.model.uri}`,
+        url: `${this.args.model.url}`,
         presentationStyle: 'popover',
       });
     }
