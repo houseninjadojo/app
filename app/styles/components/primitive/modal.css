@@ -55,32 +55,34 @@
   right: 0;
   padding: 16px 16px 32px;
   animation-name: slideOut;
-	animation-timing-function: ease-out;
-	animation-duration: .25s;
+  animation-timing-function: ease-out;
+  animation-duration: 0.25s;
 }
 
-.hn.modal .modal-container.sheet.show {    
-	animation-name: slideIn;
-	animation-timing-function: ease-out;
-	animation-duration: .25s;
+.hn.modal .modal-container.sheet.show {
+  animation-name: slideIn;
+  animation-timing-function: ease-out;
+  animation-duration: 0.25s;
 }
 
 @keyframes slideOut {
-	0% {
+  0% {
     transform: translateY(0);
-	}
-	100% {
+  }
+
+  100% {
     transform: translateY(100vh);
-	}
+  }
 }
 
 @keyframes slideIn {
-	0% {
+  0% {
     transform: translateY(100vh);
-	}
-	100% {
-		transform: translateY(0);
-	}
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .hn.modal .modal-container.sheet .hn-sheet-menu-option {

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
-import { action } from '@ember/object';
+// import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
