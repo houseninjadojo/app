@@ -2,11 +2,11 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { Camera, CameraResultType } from '@capacitor/camera';
 export default class VaultContentComponent extends Component {
+  @service camera;
   @service router;
-  @service view;
   @service haptics;
+  @service view;
 
   @tracked showUploadMenu = false;
 
@@ -20,17 +20,17 @@ export default class VaultContentComponent extends Component {
     {
       id: this.uploadMenuOptionType.camera,
       label: 'Take a Photo',
-      select: this.selectUploadOption,
+      select: this.handleUploadSelection,
     },
     {
       id: this.uploadMenuOptionType.photos,
       label: 'Select Photo from Library',
-      select: this.selectUploadOption,
+      select: this.handleUploadSelection,
     },
     {
       id: this.uploadMenuOptionType.files,
       label: 'Upload a File',
-      select: this.selectUploadOption,
+      select: this.handleUploadSelection,
     },
   ];
 
@@ -40,52 +40,40 @@ export default class VaultContentComponent extends Component {
   }
 
   @action
-  selectUploadOption(option) {
-    switch (option.id) {
-      case this.uploadMenuOptionType.camera:
-        this.getPhoto(this.uploadMenuOptionType.camera);
-        break;
-      case this.uploadMenuOptionType.photos:
-        this.getPhoto(this.uploadMenuOptionType.photos);
-        break;
-      case this.uploadMenuOptionType.files:
-        return;
+  async setCameraServiceImage(source) {
+    await this.camera.setCameraServiceImage(source);
+    if (this.camera.image) {
+      await this.toggleUploadMenu();
+      this.selectRoute('vault.document.add');
     }
   }
 
-  async getPhoto(source) {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-      source,
-    });
-
-    // image.webPath will contain a path that can be set as an image src.
-    // You can access the original file using image.path, which can be
-    // passed to the Filesystem API to read the raw data of the image,
-    // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-    var imageUrl = image.webPath;
-    console.log('imageUrl', imageUrl);
-    // Can be set to the src of an image now
-    // imageElement.src = imageUrl;
-    this.toggleUploadMenu();
+  @action
+  async handleUploadSelection(option) {
+    switch (option.id) {
+      case this.uploadMenuOptionType.camera:
+        this.setCameraServiceImage(this.uploadMenuOptionType.camera);
+        break;
+      case this.uploadMenuOptionType.photos:
+        this.setCameraServiceImage(this.uploadMenuOptionType.photos);
+        break;
+      case this.uploadMenuOptionType.files:
+        break;
+    }
   }
 
   @action
   selectRoute(route) {
     this.haptics.giveFeedback();
-    if (route === 'vault.group.new') {
+    if (route === 'vault.group.add') {
       this.router.transitionTo(route);
     }
-    if (route === 'vault.upload') {
+    if (route === 'vault.document.add') {
       this.router.transitionTo(route);
     }
     if (typeof route === 'object') {
       if (route.type === 'group') {
         this.router.transitionTo(`vault.group`, route.id);
-      } else {
-        this.router.transitionTo();
       }
       if (route.type !== 'group') {
         // view file
