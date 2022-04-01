@@ -39,7 +39,7 @@
   margin-bottom: 16px;
 }
 
-.hn.document-vault.document-container.upsert .thumbnail {  
+.hn.document-vault.document-container.upsert .thumbnail {
   border: 1px solid var(--gray-600);
   border-radius: 2px;
 }
