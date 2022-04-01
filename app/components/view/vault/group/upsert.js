@@ -51,6 +51,11 @@ export default class VaultGroupUpsertComponent extends Component {
   }
 
   @action
+  save() {
+    console.log('Saving...');
+  }
+
+  @action
   async confirm() {
     const result = await ActionSheet.showActions({
       title: 'You are about to delete this category.',

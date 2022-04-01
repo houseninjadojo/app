@@ -1,4 +1,4 @@
-<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.id "Add Category"}} @primaryActionHeaderText={{unless @model.id "Add"}}>
+<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.id "Add Category"}} @primaryActionHeaderText={{unless @model.id "Add"}} @saveAction={{this.save}}>
     <div class="hn document-vault group upsert">
         <h1 class="hn view-title">{{if @model.id 'Edit Category Details' 'Add Category'}}</h1>
         <div class="upsert-fields">

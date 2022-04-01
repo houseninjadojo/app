@@ -1,4 +1,4 @@
-<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.document.id "Upload"}} @primaryActionHeaderText={{unless @model.document.id "Upload"}}>
+<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.document.id "Upload"}} @primaryActionHeaderText={{unless @model.document.id "Upload"}} @saveAction={{this.save}}>
     <div class="hn document-vault document upsert">
         <h1 class="hn view-title">{{if @model.document.id 'Edit Document Details' 'Upload Document'}}</h1>
         <div class="upsert-fields">
