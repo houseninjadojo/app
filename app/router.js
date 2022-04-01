@@ -48,7 +48,7 @@ Router.map(function () {
     });
     this.route('group', function () {
       this.route('index', { path: '/:group_id' });
-      this.route('new');
+      this.route('add');
       this.route('edit', { path: '/edit/:group_id' });
     });
   });

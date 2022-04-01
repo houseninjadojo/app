@@ -4,6 +4,7 @@ export default class DocumentGroupModel extends Model {
   @belongsTo('user') user;
 
   @attr('string') name;
+  @attr('string') description;
   @attr('string') type;
   @attr('string') owner;
 
