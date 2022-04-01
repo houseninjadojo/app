@@ -54,18 +54,18 @@
   left: 0;
   right: 0;
   padding: 16px 16px 32px;
-  animation-name: slideOut;
+  animation-name: slide-out;
   animation-timing-function: ease-out;
   animation-duration: 0.25s;
 }
 
 .hn.modal .modal-container.sheet.show {
-  animation-name: slideIn;
+  animation-name: slide-in;
   animation-timing-function: ease-out;
   animation-duration: 0.25s;
 }
 
-@keyframes slideOut {
+@keyframes slide-out {
   0% {
     transform: translateY(0);
   }
@@ -75,7 +75,7 @@
   }
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
   0% {
     transform: translateY(100vh);
   }
