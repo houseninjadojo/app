@@ -35,7 +35,7 @@
   background-color: var(--white);
 }
 
-.hn.document-vault.document-container.upsert .upsert-fields {
+.hn.document-vault.document.upsert .upsert-fields, .hn.document-vault.document.upsert .action {  
   margin-bottom: 16px;
 }
 
