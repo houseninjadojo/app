@@ -42,7 +42,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@faker-js/faker": "^6.1.1",
     "@glimmer/component": "^1.0.4",
-    "@glimmer/tracking": "^1.0.4",
+    "@glimmer/tracking": "^1.1.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@sentry/capacitor": "^0.5.0",
