@@ -34,3 +34,12 @@
   width: 100%;
   background-color: var(--white);
 }
+
+.hn.document-vault.document-container.upsert .upsert-fields {
+  margin-bottom: 16px;
+}
+
+.hn.document-vault.document-container.upsert .thumbnail {  
+  border: 1px solid var(--gray-600);
+  border-radius: 2px;
+}

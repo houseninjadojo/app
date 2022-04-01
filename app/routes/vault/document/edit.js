@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-export default class VaultDocumentAddRoute extends Route {
+export default class VaultDocumentEditRoute extends Route {
   @service router;
   @service store;
 
@@ -20,10 +20,12 @@ export default class VaultDocumentAddRoute extends Route {
     });
   }
 
-  model() {
+  async model({ doc_id }) {
+    const document = await this.store.findRecord('document', doc_id);
+    console.log(document.url);
     const model = {
       groups: this.groups,
-      document: {},
+      document,
       media: null,
     };
     return model;

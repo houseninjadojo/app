@@ -2,20 +2,23 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 // import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
 export default class VaultDocumentUpsertComponent extends Component {
+  @service camera;
+  @service haptics;
   @service router;
   @service view;
-  @service haptics;
 
-  @tracked showUploadMenu = false;
-  @tracked imageUri;
+  @tracked media = this.camera.image;
+  @tracked mediaUrl =
+    this.args.model.document.url || (this.media && this.media.webPath);
 
   @tracked documentInfo = {
-    name: null,
-    description: null,
-    documentGroup: null,
+    name: this.args.model.document.name || this.mediaUrl,
+    description: this.args.model.document.description || null,
+    documentGroup: this.args.model.document.groupId || null,
   };
 
   @tracked fields = [
@@ -24,14 +27,14 @@ export default class VaultDocumentUpsertComponent extends Component {
       required: true,
       label: 'Name',
       placeholder: '',
-      value: this.args.model.document && this.args.model.document.name,
+      value: this.documentInfo.name,
     },
     {
       id: 'description',
       required: false,
       label: 'Description',
       placeholder: '(Optional)',
-      value: this.args.model.document && this.args.model.document.description,
+      value: this.documentInfo.description,
     },
     {
       isSelect: true,

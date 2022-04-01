@@ -1,31 +1,39 @@
-<Primitive::Modal::Tray @formIsInvalid={{true}} @primaryActionHeaderText="Upload">
-    <div class="vault">
-        <h1 class="hn view-title">Upload Document</h1>
-        {{#if this.imageUri}}
-            <img src={{this.imageUri}} alt="asdf" />
+<Primitive::Modal::Tray @formIsInvalid={{true}} @primaryActionText="Upload" @primaryActionHeaderText="Upload">
+    <div class="hn document-vault document upsert">
+        <h1 class="hn view-title">{{if @model.document.id 'Edit Document Details' 'Upload Document'}}</h1>
+        <div class="upsert-fields">
+            {{#each this.fields as |field|}}
+                {{#if field.isSelect}}
+                    <Primitive::Select
+                    @options={{field.options}}
+                    @label={{field.label}}
+                    @required={{field.required}}
+                    {{!-- @disabled={{true}} --}}
+                    @value={{mut (get @model.document field.id)}}
+                    />
+                {{else}}
+                    <Primitive::Input
+                    @id={{field.id}}
+                    @required={{field.required}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get @model.document field.id)}}
+                    @description={{field.description}}
+                    @label={{field.label}}
+                    @type={{field.type}}
+                    {{!-- @disabled={{true}} --}}
+                    @onInput={{@validateForm}}
+                    />
+                {{/if}}
+            {{/each}}
+        </div>        
+        {{#if this.mediaUrl}}
+            <div class="thumbnail">                        
+                <Primitive::Image
+                    @src={{this.mediaUrl}}
+                    @alt="preview"
+                    @width="500"
+                />
+            </div>
         {{/if}}
-        {{#each this.fields as |field|}}
-            {{#if field.isSelect}}
-                <Primitive::Select
-                @options={{field.options}}
-                @label={{field.label}}
-                @required={{field.required}}
-                {{!-- @disabled={{true}} --}}
-                @value={{mut (get @model field.id)}}
-                />
-            {{else}}
-                <Primitive::Input
-                @id={{field.id}}
-                @required={{field.required}}
-                @placeholder={{field.placeholder}}
-                @value={{mut (get @model field.id)}}
-                @description={{field.description}}
-                @label={{field.label}}
-                @type={{field.type}}
-                {{!-- @disabled={{true}} --}}
-                @onInput={{@validateForm}}
-                />
-            {{/if}}
-        {{/each}}
     </div>
 </Primitive::Modal::Tray>
