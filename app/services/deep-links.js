@@ -40,6 +40,13 @@ export default class DeepLinksService extends Service {
     this.branchErrorListener = null;
   }
 
+  // only web for now
+  setup() {
+    if (!isNativePlatform()) {
+      this.setupWebHandler();
+    }
+  }
+
   forwardRoute(url) {
     debug('url: ', url);
     let route = this.router.recognize(url);
@@ -103,8 +110,7 @@ export default class DeepLinksService extends Service {
       if (err) {
         Sentry.captureException(err);
       } else {
-        console.log(data);
-        this.analytics.track('Opened with Web Link', data);
+        this.analytics.track('Opened with Web Link', data.data_parsed);
         Sentry.addBreadcrumb({
           category: 'web-link',
           message: 'Branch web link',
