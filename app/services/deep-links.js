@@ -29,9 +29,6 @@ export default class DeepLinksService extends Service {
       this.setupRouteHandler();
       this.setupBranchHandlers();
     }
-    // } else {
-    //   this.setupWebHandler();
-    // }
   }
 
   stop() {
