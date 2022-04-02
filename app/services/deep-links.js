@@ -1,7 +1,6 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
-// import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 import BranchWeb from 'branch-sdk';
@@ -29,9 +28,10 @@ export default class DeepLinksService extends Service {
     if (isNativePlatform()) {
       this.setupRouteHandler();
       this.setupBranchHandlers();
-    } else {
-      this.setupWebHandler();
     }
+    // } else {
+    //   this.setupWebHandler();
+    // }
   }
 
   stop() {
@@ -66,16 +66,6 @@ export default class DeepLinksService extends Service {
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
       debug(`tried to open non-branch deep link: ${event.url}`);
-      // run(() => {
-      //   // co.houseninja.application://page => /page
-      //   let url = this.parseUrl(event.url);
-      //   this.analytics.track('Page Visit', {
-      //     deep_link: true,
-      //     page: url.raw,
-      //     name: url.name,
-      //   });
-      //   this.forwardRoute(url);
-      // });
     });
   }
 
