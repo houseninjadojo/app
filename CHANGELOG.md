@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/houseninjadojo/app/compare/v1.3.2...v1.4.0) (2022-04-02)
+
+
+### Features
+
+* branch.io deep links ([#493](https://github.com/houseninjadojo/app/issues/493)) ([4ad0e0f](https://github.com/houseninjadojo/app/commit/4ad0e0fd8ec3e49510f2c20dc746346052e021a8))
+
 ## [1.3.2](https://github.com/houseninjadojo/app/compare/v1.3.1...v1.3.2) (2022-03-31)
 
 
