@@ -1,8 +1,10 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { App as MobileApp } from '@capacitor/app';
-import { run } from '@ember/runloop';
+// import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
+import { BranchDeepLinks } from 'capacitor-branch-deep-links';
+import * as Sentry from '@sentry/ember';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -24,18 +26,21 @@ export default class DeepLinksService extends Service {
   start() {
     if (isNativePlatform()) {
       this.setupRouteHandler();
+      this.setupBranchHandlers();
     }
   }
 
   stop() {
     this.listener = null;
+    this.branchListener = null;
+    this.branchErrorListener = null;
   }
 
   forwardRoute(url) {
-    debug('url: ', url.raw);
-    let route = this.router.recognize(url.raw);
+    debug('url: ', url);
+    let route = this.router.recognize(url);
     debug('route: ' + route.name);
-    this.router.transitionTo(url.raw);
+    this.router.transitionTo(url);
   }
 
   parseUrl(url) {
@@ -56,16 +61,75 @@ export default class DeepLinksService extends Service {
 
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
-      run(() => {
-        // co.houseninja.application://page => /page
-        let url = this.parseUrl(event.url);
-        this.analytics.track('Page Visit', {
-          deep_link: true,
-          page: url.raw,
-          name: url.name,
-        });
-        this.forwardRoute(url);
-      });
+      debug(`tried to open non-branch deep link: ${event.url}`);
+      // run(() => {
+      //   // co.houseninja.application://page => /page
+      //   let url = this.parseUrl(event.url);
+      //   this.analytics.track('Page Visit', {
+      //     deep_link: true,
+      //     page: url.raw,
+      //     name: url.name,
+      //   });
+      //   this.forwardRoute(url);
+      // });
     });
+  }
+
+  /**
+   * Listen to incoming branch links forwarded on by their
+   * capacitor plugin.
+   *
+   * @see https://help.branch.io/developers-hub/docs/capacitor#initialize-branch
+   */
+  setupBranchHandlers() {
+    this.branchListener = BranchDeepLinks.addListener('init', (event) => {
+      const referringParams = event.referringParams;
+      this.analytics.track('Opened with Deep Link', referringParams);
+      Sentry.addBreadcrumb({
+        category: 'deep-link',
+        message: 'Branch deep link',
+        data: event,
+        level: 'info',
+      });
+      // Retrieve deeplink keys from 'referringParams' and evaluate the values to determine where to route the user
+      // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
+      const route = this.selectRouteFromBranchParams(referringParams);
+      this.forwardRoute(route);
+    });
+    this.branchErrorListener = BranchDeepLinks.addListener(
+      'initError',
+      (error) => {
+        Sentry.captureException(error);
+      }
+    );
+  }
+
+  /**
+   * @example {params}
+   * {
+   *   "~campaign": "asdf",
+   *   "~referring_link": "https://w.hnja.io/asdf",
+   *   "~id": 1038724433047185200,
+   *   "~tags": ["asdf"],
+   *   "$marketing_title": "asdf",
+   *   "$og_description": "",
+   *   "~marketing": true,
+   *   "~feature": "asdf",
+   *   "+match_guaranteed": true,
+   *   "+click_timestamp": 1648891154,
+   *   "~creation_source": 1,
+   *   "$deeplink_path": "/",
+   *   "~channel": "asdf",
+   *   "$one_time_use": false,
+   *   "$desktop_url": "https://app.houseninja.co",
+   *   "+clicked_branch_link": true,
+   *   "$og_title": "House Ninja",
+   *   "+is_first_session": false,
+   *   "$canonical_url": "https://app.houseninja.co"
+   * }
+   */
+  selectRouteFromBranchParams(params) {
+    const path = params.$deeplink_path;
+    return path;
   }
 }

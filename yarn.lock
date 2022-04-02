@@ -5296,6 +5296,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30001317:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001317.tgz#0548fb28fd5bc259a70b8c1ffdbe598037666a1b"
   integrity sha512-xIZLh8gBm4dqNX0gkzrBeyI86J2eCjWzYAs40q88smG844YIrN4tVQl/RhquHvKEKImWWFIVh1Lxe5n1G/N+GQ==
 
+capacitor-branch-deep-links@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.1.1.tgz#be73969a814aa0d188ed7fadcae137579e398147"
+  integrity sha512-52rAJGqFRKbkWC0XyunI+3MabGnbUEi8X09MywyNrOdRhu2Kw33aq354LhKW6SqwgkMcFxPHlXTsQd3yGJFD5w==
+
 capacitor-secure-storage-plugin@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.6.2.tgz#6044222607f0469d30ebf3cfd6a72723e1480d2b"

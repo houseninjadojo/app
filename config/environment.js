@@ -156,7 +156,8 @@ module.exports = function (environment) {
     ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
-    ENV.analytics.mixpanelToken = 'a114d73d1af6fc278d53462a5c096fe7';
+    // ENV.analytics.mixpanelToken = 'a114d73d1af6fc278d53462a5c096fe7';
+    ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
   }
 
   return ENV;
