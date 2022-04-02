@@ -143,7 +143,10 @@ export default class DeepLinksService extends Service {
    * }
    */
   selectRouteFromBranchParams(params) {
-    const path = params.$deeplink_path;
+    let path = '/';
+    if (params.$deeplink_path) {
+      path = params.$deeplink_path;
+    }
     return path;
   }
 }
