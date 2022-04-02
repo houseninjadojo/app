@@ -4,7 +4,9 @@ import { App as MobileApp } from '@capacitor/app';
 // import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { BranchDeepLinks } from 'capacitor-branch-deep-links';
+import BranchWeb from 'branch-sdk';
 import * as Sentry from '@sentry/ember';
+import ENV from 'houseninja/config/environment';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -27,6 +29,8 @@ export default class DeepLinksService extends Service {
     if (isNativePlatform()) {
       this.setupRouteHandler();
       this.setupBranchHandlers();
+    } else {
+      this.setupWebHandler();
     }
   }
 
@@ -102,6 +106,23 @@ export default class DeepLinksService extends Service {
         Sentry.captureException(error);
       }
     );
+  }
+
+  setupWebHandler() {
+    BranchWeb.init(ENV.branch.key, (err, data) => {
+      if (err) {
+        Sentry.captureException(err);
+      } else {
+        console.log(data);
+        this.analytics.track('Opened with Web Link', data);
+        Sentry.addBreadcrumb({
+          category: 'web-link',
+          message: 'Branch web link',
+          data,
+          level: 'info',
+        });
+      }
+    });
   }
 
   /**

@@ -50,6 +50,10 @@ module.exports = function (environment) {
       mixpanelToken: null,
     },
 
+    branch: {
+      key: 'key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI',
+    },
+
     'ember-cli-mirage': {
       enabled: true,
     },

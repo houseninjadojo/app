@@ -4451,6 +4451,13 @@ braces@^3.0.1, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+branch-sdk@^2.59.0:
+  version "2.59.0"
+  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.59.0.tgz#4737839454ffd8df5821c0b55f9a0172d3ecc844"
+  integrity sha512-k/WtdyJXq/08spl9F0CDkfZ1RkG9w5lihfG6Yxu7GQA8VoiNFEgwP0H58TXzMTo6cYzizBHDRdNqHSJ4GUxnqw==
+  dependencies:
+    request "^2.55.0"
+
 broccoli-amd-funnel@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/broccoli-amd-funnel/-/broccoli-amd-funnel-2.0.1.tgz#dbdbfd28841731342d538126567c25bea3f15310"
@@ -13296,7 +13303,7 @@ request-promise@^0.4.3:
     lodash "^3.10.0"
     request "^2.34"
 
-request@^2.34:
+request@^2.34, request@^2.55.0:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
