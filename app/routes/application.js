@@ -6,6 +6,7 @@ import { action } from '@ember/object';
 class ApplicationRoute extends Route {
   @service analytics;
   @service current;
+  @service deepLinks;
   @service intercom;
   @service session;
   @service router;
@@ -29,6 +30,7 @@ class ApplicationRoute extends Route {
     await this.session.setup();
     await this.analytics.setup();
     await this.analytics.track('Ember App Started');
+    this.deepLinks.setup();
   }
 
   async _trackPage() {

@@ -50,6 +50,7 @@
     "@sentry/ember": "^6.19.3",
     "@sentry/tracing": "^6.14.1",
     "autoprefixer": "^10.4.4",
+    "branch-sdk": "^2.59.0",
     "broccoli-asset-rev": "^3.0.0",
     "crypto-js": "^4.1.1",
     "ember-auto-import": "^2.4.1",
@@ -126,6 +127,7 @@
     "@capacitor/share": "^1.1.2",
     "@capacitor/splash-screen": "^1.2.2",
     "@houseninja/capacitor-mixpanel": "^0.0.16",
+    "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.6.2",
     "lottie-web": "^5.9.1",
     "moment": "^2.29.1"

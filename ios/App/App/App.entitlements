@@ -10,6 +10,14 @@
 		<string>applinks:houseninja.co</string>
 		<string>applinks:app.houseninja.co</string>
 		<string>applinks:application.houseninja.co</string>
+		<string>applinks:houseninja.app.link</string>
+		<string>applinks:houseninja-alternate.app.link</string>
+		<string>applinks:hnja.app</string>
+		<string>applinks:w.hnja.app</string>
+		<string>applinks:hnja.io</string>
+		<string>applinks:w.hnja.io</string>
+		<string>applinks:houseninja-alternate.test-app.link</string>
+		<string>applinks:houseninja.test.app.link</string>
 	</array>
 </dict>
 </plist>
