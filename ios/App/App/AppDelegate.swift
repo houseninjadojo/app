@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
 
-        Branch.setUseTestBranchKey(true) // todo: remove this before submitting to app store
-        Branch.getInstance().enableLogging()
+        if isSimulatorOrTestFlight() {
+          Branch.setUseTestBranchKey(true)
+          Branch.getInstance().enableLogging()
+        }
 
         // required for nativelink feature
         // @see https://help.branch.io/developers-hub/docs/ios-advanced-features#options-for-implementation
@@ -89,5 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         Branch.getInstance().handlePushNotification(userInfo)
+    }
+
+    private func isSimulatorOrTestFlight() -> Bool {
+        guard let path = Bundle.main.appStoreReceiptURL?.path else {
+            return false
+        }
+        return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
     }
 }
