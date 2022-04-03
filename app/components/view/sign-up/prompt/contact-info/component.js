@@ -7,11 +7,11 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
-import { task } from 'ember-concurrency';
 
 export default class ContactInfoComponent extends Component {
   @service current;
   @service router;
+  @service onboarding;
   @service store;
 
   @tracked errors = {
@@ -91,8 +91,10 @@ export default class ContactInfoComponent extends Component {
     try {
       await user.save();
       if (user.isCurrentlyOnboarding) {
-        this.rehydrateSignupStore.perform(user);
-        this.router.transitionTo(this.onboardingRoute(user.onboardingStep));
+        this.onboarding.rehydrateUser.perform(user);
+        this.router.transitionTo(
+          this.onboarding.routeFromStep(user.onboardingStep)
+        );
       } else {
         this.router.transitionTo('signup.payment-method');
       }
@@ -124,21 +126,5 @@ export default class ContactInfoComponent extends Component {
       'phoneIsValid',
       'emailIsValid',
     ]).isInvalid;
-  }
-
-  @task({ drop: true }) *rehydrateSignupStore(user) {
-    const includes = [
-      'payment_methods',
-      'promo_code',
-      'properties',
-      'subscription',
-    ];
-    yield this.store.findRecord('user', user.id, {
-      include: includes.join(','),
-    });
-  }
-
-  onboardingRoute(step) {
-    return `signup.${step}`;
   }
 }
