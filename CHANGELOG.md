@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/houseninjadojo/app/compare/v1.4.0...v1.4.1) (2022-04-03)
+
+
+### Bug Fixes
+
+* **branch:** toggle branch.io test key if testflight or simulator ([#496](https://github.com/houseninjadojo/app/issues/496)) ([11762cb](https://github.com/houseninjadojo/app/commit/11762cb353e8d095e46a329e118c20a401e74aec))
+
 # [1.4.0](https://github.com/houseninjadojo/app/compare/v1.3.2...v1.4.0) (2022-04-02)
 
 
