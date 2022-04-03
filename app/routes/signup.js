@@ -45,7 +45,6 @@ export default class SignupRoute extends Route {
         },
       });
     } catch (e) {
-      console.error(e);
       Sentry.captureException(e);
     }
     if (users.length == 1) {
