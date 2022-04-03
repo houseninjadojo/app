@@ -3,8 +3,8 @@ import faker from '@faker-js/faker';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import ENV from 'houseninja/config/environment';
 import getPlatform from 'houseninja/utils/get-platform';
-import { ALL as ContactTypes } from 'houseninja/data/enum/contact-type';
-import { ALL as OnboardingSteps } from 'houseninja/data/enum/onboarding-step';
+import { ALL as ContactTypes } from 'houseninja/data/enums/contact-type';
+import { ALL as OnboardingSteps } from 'houseninja/data/enums/onboarding-step';
 
 export default Factory.extend({
   promoCode: association(),

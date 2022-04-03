@@ -8,7 +8,7 @@ export default class SignupPaymentMethodRoute extends Route {
   @service store;
 
   model() {
-    this.generateSubscription.perform();
+    this.rehydrateOrGenerateSubscription.perform();
     return this.store.peekAll('credit-card').get('firstObject');
   }
 
@@ -26,5 +26,11 @@ export default class SignupPaymentMethodRoute extends Route {
     this.store.createRecord('subscription', {
       subscriptionPlan: plan,
     });
+  }
+
+  @task({ drop: true }) *rehydrateOrGenerateSubscription() {
+    if (this.store.peekAll('subscription').get('length') === 0) {
+      yield this.generateSubscription.perform();
+    }
   }
 }

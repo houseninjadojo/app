@@ -34,13 +34,33 @@ export default function () {
   this.resource('promo-code', { path: '/promo-codes' });
   this.get('/promo-codes', (schema, request) => {
     let code = request.queryParams['filter[code]'];
-    return schema.promoCodes.where({ code });
+    if (code) {
+      return schema.promoCodes.where({ code });
+    } else {
+      return schema.promoCodes.all();
+    }
   });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
   this.get('/subscription-plans');
   this.resource('subscription', { path: '/subscriptions' });
   this.resource('user', { path: '/users' });
+  this.get('/users', (schema, request) => {
+    let onboardingCode = request.queryParams['filter[onboardingCode]'];
+    if (onboardingCode) {
+      const users = schema.users.where({ onboardingCode });
+      const user = users.models.firstObject;
+      schema.properties.create({ user: user });
+      const paymentMethod = schema.creditCards.create({ user: user });
+      schema.subscriptions.create({
+        user: user,
+        paymentMethod: paymentMethod,
+      });
+      return users;
+    } else {
+      return schema.users.all();
+    }
+  });
   this.resource('work-order', { path: '/work-orders' });
 
   // Auth

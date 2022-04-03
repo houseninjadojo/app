@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { task } from 'ember-concurrency';
 
 export default class SignupRoute extends Route {
   @service session;
@@ -21,27 +22,30 @@ export default class SignupRoute extends Route {
     if (params.onboardingCode) {
       return await this.getUserFromOnboardingCode(params.onboardingCode);
     } else {
-      this.router.transitionTo('signup.service-area');
+      this.router.transitionTo('signup.index');
     }
   }
 
   async afterModel(user) {
-    if (isPresent(user) && user.isCurrentlyOnboarding()) {
+    if (isPresent(user) && user.isCurrentlyOnboarding) {
+      // load what we need to rehydrate signup
+      await this.rehydrateSignup.perform(user);
       this.router.transitionTo(this.onboardingRoute(user.onboardingStep));
     } else {
-      this.router.transitionTo('signup.service-area');
+      this.router.transitionTo('signup.index');
     }
   }
 
   async getUserFromOnboardingCode(onboardingCode) {
     let users = [];
     try {
-      users = await this.store.queryAll('user', {
+      users = await this.store.query('user', {
         filter: {
           onboardingCode: onboardingCode,
         },
       });
     } catch (e) {
+      console.error(e);
       Sentry.captureException(e);
     }
     if (users.length == 1) {
@@ -53,5 +57,17 @@ export default class SignupRoute extends Route {
 
   onboardingRoute(step) {
     return `signup.${step}`;
+  }
+
+  @task({ drop: true }) *rehydrateSignup(user) {
+    const includes = [
+      'payment_methods',
+      'promo_code',
+      'properties',
+      'subscription',
+    ];
+    yield this.store.findRecord('user', user.id, {
+      include: includes.join(','),
+    });
   }
 }
