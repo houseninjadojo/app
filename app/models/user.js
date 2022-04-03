@@ -1,4 +1,5 @@
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
+import { COMPLETED } from 'houseninja/data/enums/onboarding-step';
 
 export default class UserModel extends Model {
   @hasMany('document') documents;
@@ -32,5 +33,9 @@ export default class UserModel extends Model {
 
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  get isCurrentlyOnboarding() {
+    return this.onboardingStep !== COMPLETED;
   }
 }
