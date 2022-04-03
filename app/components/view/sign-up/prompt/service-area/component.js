@@ -8,10 +8,17 @@ import * as Sentry from '@sentry/ember';
 export default class ServiceAreaComponent extends Component {
   @service current;
   @service router;
+  @service onboarding;
   @service store;
 
   @tracked zipcode;
   @tracked formIsInvalid = true;
+
+  constructor() {
+    super(...arguments);
+    console.log(this.args.zipcode);
+    this.zipcode = this.args.zipcode;
+  }
 
   @action
   async checkServiceArea() {
@@ -22,6 +29,7 @@ export default class ServiceAreaComponent extends Component {
         },
       });
       if (serviceAreas.length > 0) {
+        this.onboarding.setZipcode(this.zipcode);
         this.router.transitionTo('signup.contact-info');
       } else {
         this.current.signup.zipcode = this.zipcode;

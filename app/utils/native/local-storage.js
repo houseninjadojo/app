@@ -1,5 +1,7 @@
 import { Storage } from '@capacitor/storage';
 import { run } from '@ember/runloop';
+import { serializeJSON, deserializeJSON } from 'houseninja/utils/serializers';
+import Sentry from 'houseninja/utils/sentry';
 
 export const GROUPNAME = 'houseninja';
 
@@ -24,14 +26,18 @@ export async function configure(options = { group: GROUPNAME }) {
  *
  * Get the value from storage of a given key.
  *
- * @param {Object} options
- * @param {String} options.key
+ * @param {String} key
  * @return {Promise<{ value: String }>}
  */
-export async function get(options) {
-  return await run(async () => {
-    return await Storage.get(options);
-  });
+export async function get(key) {
+  try {
+    return await run(async () => {
+      const { value } = await Storage.get({ key });
+      return deserializeJSON(value);
+    });
+  } catch (e) {
+    Sentry.captureException(e);
+  }
 }
 
 /**
@@ -44,10 +50,15 @@ export async function get(options) {
  * @param {String} options.value
  * @return {Promise<{ value: String }>}
  */
-export async function set(options) {
-  return await run(async () => {
-    return await Storage.get(options);
-  });
+export async function set(key, value) {
+  try {
+    return await run(async () => {
+      const payload = { key, value: serializeJSON(value) };
+      return await Storage.set(payload);
+    });
+  } catch (e) {
+    Sentry.captureException(e);
+  }
 }
 
 /**

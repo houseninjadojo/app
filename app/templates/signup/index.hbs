@@ -1,8 +1,10 @@
 {{page-title "Sign Up"}}
-<div class="position">    
+<div class="position">
     <View::SignUp::Breadcrumbs
         @breadcrumbs={{this.breadcrumbs}}
         @activeIndex={{0}}
     />
-    <View::SignUp::Prompt::ServiceArea />
+    <View::SignUp::Prompt::ServiceArea
+        @zipcode={{this.model}}
+    />
 </div>
