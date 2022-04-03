@@ -19,7 +19,7 @@
 //   },
 // ];
 
-import { WALKTHROUGH_BOOKING } from 'houseninja/data/enums/onboarding-step';
+import { SET_PASSWORD } from 'houseninja/data/enums/onboarding-step';
 import { CUSTOMER } from 'houseninja/data/enums/contact-type';
 
 export default [
@@ -30,7 +30,7 @@ export default [
     lastName: 'Zimmerman',
     phoneNumber: '925-451-4431',
     contactType: CUSTOMER,
-    onboardingStep: WALKTHROUGH_BOOKING,
+    onboardingStep: SET_PASSWORD,
     onboardingCode: 'asdf1234',
   },
 ];

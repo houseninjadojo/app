@@ -44,7 +44,11 @@ export default function () {
   this.get('/service-areas');
   this.get('/subscription-plans');
   this.resource('subscription', { path: '/subscriptions' });
+  this.resource('user', { path: '/users' });
+
   // we need to replicate looking up a user by their onboarding code
+  // uncomment this when you need this behavior
+  //
   // this.get('/users', (schema, request) => {
   //   let onboardingCode = request.queryParams['filter[onboardingCode]'];
   //   if (onboardingCode) {
@@ -61,7 +65,10 @@ export default function () {
   //     return schema.users.all();
   //   }
   // });
+
   // we need to replicate the signup restore or create logic of our backend
+  // uncomment when you need this behavior
+  //
   // this.post('/users', (schema, request) => {
   //   const attributes = JSON.parse(request.requestBody)?.data?.attributes;
   //   const users = schema.users.where({ email: attributes.email });
@@ -79,7 +86,7 @@ export default function () {
   //   return user;
   // });
   // this.resource('user', { path: '/users', except: ['index', 'create'] });
-  this.resource('user', { path: '/users' });
+
   this.resource('work-order', { path: '/work-orders' });
 
   // Auth
