@@ -34,11 +34,7 @@ export default function () {
   this.resource('promo-code', { path: '/promo-codes' });
   this.get('/promo-codes', (schema, request) => {
     let code = request.queryParams['filter[code]'];
-    if (code) {
-      return schema.promoCodes.where({ code });
-    } else {
-      return schema.promoCodes.all();
-    }
+    return schema.promoCodes.where({ code });
   });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
