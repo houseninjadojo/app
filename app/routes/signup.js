@@ -29,7 +29,7 @@ export default class SignupRoute extends Route {
   async afterModel(user) {
     if (isPresent(user) && user.isCurrentlyOnboarding) {
       // load what we need to rehydrate signup
-      await this.rehydrateSignup.perform(user);
+      await this.rehydrateSignupStore.perform(user);
       this.router.transitionTo(this.onboardingRoute(user.onboardingStep));
     } else {
       this.router.transitionTo('signup.index');
@@ -59,7 +59,7 @@ export default class SignupRoute extends Route {
     return `signup.${step}`;
   }
 
-  @task({ drop: true }) *rehydrateSignup(user) {
+  @task({ drop: true }) *rehydrateSignupStore(user) {
     const includes = [
       'payment_methods',
       'promo_code',
