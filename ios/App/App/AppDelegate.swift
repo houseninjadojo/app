@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         if isSimulatorOrTestFlight() {
-          print("Simulator or TestFlight")
           Branch.setUseTestBranchKey(true)
           Branch.getInstance().enableLogging()
         }
