@@ -126,6 +126,7 @@
     "@capacitor/push-notifications": "^1.0.9",
     "@capacitor/share": "^1.1.2",
     "@capacitor/splash-screen": "^1.2.2",
+    "@capacitor/storage": "^1.2.5",
     "@houseninja/capacitor-mixpanel": "^0.0.16",
     "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.6.2",
