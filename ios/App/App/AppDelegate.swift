@@ -2,6 +2,7 @@ import UIKit
 import Capacitor
 import Firebase
 import Intercom
+import Branch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -9,13 +10,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Clear keychain on first run in case of reinstallation
         if !UserDefaults.standard.bool(forKey: "FirstRun") {
             // Delete values from keychain here
             UserDefaults.standard.setValue("1strun", forKey: "FirstRun")
             UserDefaults.standard.synchronize()
         }
+
+        if isSimulatorOrTestFlight() {
+          Branch.setUseTestBranchKey(true)
+          Branch.getInstance().enableLogging()
+        }
+
+        // required for nativelink feature
+        // @see https://help.branch.io/developers-hub/docs/ios-advanced-features#options-for-implementation
+        Branch.getInstance().checkPasteboardOnInstall() // enable pasteboard check
+        Branch.getInstance().initSession(launchOptions: launchOptions)
 
         return true
     }
@@ -45,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         // Called when the app was launched with a url. Feel free to add additional processing here,
         // but if you want the App API to support tracking app url opens, make sure to keep this call
+        Branch.getInstance().application(app, open: url, options: options)
         return ApplicationDelegateProxy.shared.application(app, open: url, options: options)
     }
 
@@ -52,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the app was launched with an activity, including Universal Links.
         // Feel free to add additional processing here, but if you want the App API to support
         // tracking app url opens, make sure to keep this call
+        Branch.getInstance().continue(userActivity)
         return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
 
@@ -76,4 +89,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Branch.getInstance().handlePushNotification(userInfo)
+    }
+
+    private func isSimulatorOrTestFlight() -> Bool {
+        guard let path = Bundle.main.appStoreReceiptURL?.path else {
+            return false
+        }
+        return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
+    }
 }

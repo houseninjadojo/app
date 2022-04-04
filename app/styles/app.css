@@ -17,6 +17,11 @@
 }
 
 @font-face {
+  font-family: Campton-Book-Italic;
+  src: url("fonts/Campton-BookItalic.otf");
+}
+
+@font-face {
   font-family: Campton-Book;
   src: url("fonts/Campton-Book.otf");
 }

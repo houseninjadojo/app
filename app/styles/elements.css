@@ -27,15 +27,19 @@
 }
 
 .hn.center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .hn .strong {
-  font-family: var(--campton-strong);
+  font-family: var(--campton-strong) !important;
+}
+
+.hn .emphasis {
+  font-family: var(--campton-emphasis) !important;
 }
 
 .hn .accent {
-  color: var(--teal-500);
+  color: var(--teal-500) !important;
 }
 
 .hn.banner-message {
