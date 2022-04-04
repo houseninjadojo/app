@@ -2150,6 +2150,11 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@robingenz/capacitor-file-picker@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.0.tgz#10b342fb06c3bda867c6fd0b84c213922018f62b"
+  integrity sha512-PrwxhGUz0CWpMWFy+m7wT6LA3rpdHR+xlGSI+b/0j+6Lvt7O3N9ghkOBDpbzHd81HOdF9QSTx4v1JfmrNb9yrQ==
+
 "@semantic-release/changelog@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-6.0.1.tgz#8dd0334fd8c7d50cda747d2591e4f18f816b3c9c"

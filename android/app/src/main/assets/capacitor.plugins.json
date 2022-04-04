@@ -64,6 +64,10 @@
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
 	{
+		"pkg": "@robingenz/capacitor-file-picker",
+		"classpath": "dev.robingenz.capacitorjs.plugins.filepicker.FilePickerPlugin"
+	},
+	{
 		"pkg": "capacitor-secure-storage-plugin",
 		"classpath": "com.whitestein.securestorage.SecureStoragePlugin"
 	},
