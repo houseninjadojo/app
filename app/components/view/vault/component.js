@@ -75,14 +75,14 @@ export default class VaultContentComponent extends Component {
   }
 
   @action
-  selectRoute(route, param = null) {
-    this.haptics.giveFeedback();
+  selectRoute(route, param) {
     if (param) {
       this.router.transitionTo(route, param);
     } else if (!param) {
       this.router.transitionTo(route);
     }
     this.view.preservePreviousRoute(this.router);
+    this.haptics.giveFeedback();
   }
 
   @action
