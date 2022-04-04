@@ -5,7 +5,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 export default class CameraService extends Service {
   @tracked image = null;
 
-  clearCameraServiceImage() {
+  clear() {
     this.image = null;
   }
 
@@ -14,12 +14,16 @@ export default class CameraService extends Service {
   }
 
   async getImage(source) {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-      source,
-    });
-    return image;
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.Uri,
+        source,
+      });
+      return image;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
