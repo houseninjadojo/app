@@ -14,15 +14,15 @@ export default class VaultGroupIndexRoute extends Route {
     this.documents = documents
       .filter((d) => d.groupId === group_id)
       .map((d) => {
-        const { id, type, name, description, url, groupId } = d;
+        const { id, contentType, name, description, url, groupId } = d;
         return {
           id,
-          type,
+          contentType,
           name,
           description,
           url,
           groupId,
-          iconUri: getIconUri(d.type),
+          iconUri: getIconUri(d.contentType),
           ...d,
         };
       });

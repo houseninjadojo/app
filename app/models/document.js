@@ -7,7 +7,6 @@ export default class DocumentModel extends Model {
   @belongsTo('document-group') documentGroup;
 
   @attr('string') contentType;
-  @attr('string') type;
   @attr('string') filename;
   @attr('string') name;
   @attr('string') description;

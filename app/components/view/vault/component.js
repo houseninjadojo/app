@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { FilePicker } from '@robingenz/capacitor-file-picker';
 
 export default class VaultContentComponent extends Component {
   @service camera;
@@ -76,23 +75,22 @@ export default class VaultContentComponent extends Component {
   }
 
   @action
-  selectRoute(route) {
+  selectRoute(route, param = null) {
     this.haptics.giveFeedback();
-    if (route === 'vault.group.add') {
+    if (param) {
+      this.router.transitionTo(route, param);
+    } else if (!param) {
       this.router.transitionTo(route);
-    }
-    if (route === 'vault.document.add') {
-      this.router.transitionTo(route);
-    }
-    if (typeof route === 'object') {
-      if (route.type === 'group') {
-        this.router.transitionTo(`vault.group`, route.id);
-      }
-      if (route.type !== 'group') {
-        // view file
-        this.router.transitionTo(`vault.document`, route.id);
-      }
     }
     this.view.preservePreviousRoute(this.router);
+  }
+
+  @action
+  handleRecordClick(record) {
+    if (record.contentType) {
+      this.selectRoute('vault.document', record.id);
+    } else {
+      this.selectRoute('vault.group', record.id);
+    }
   }
 }

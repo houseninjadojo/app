@@ -5,7 +5,6 @@ export default class DocumentGroupModel extends Model {
 
   @attr('string') name;
   @attr('string') description;
-  @attr('string') type;
   @attr('string') owner;
 
   @attr('date') createdAt;

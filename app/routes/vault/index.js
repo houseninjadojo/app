@@ -20,22 +20,22 @@ export default class VaultIndexRoute extends Route {
         type,
         name,
         description,
-        iconUri: getIconUri(g.type),
+        iconUri: getIconUri('folder'),
       };
     });
 
     this.documents = documents
       .filter((d) => !d.groupId)
       .map((d) => {
-        const { id, type, name, description /* , url, groupId  */ } = d;
+        const { id, contentType, name, description /* , url, groupId  */ } = d;
         return {
           id,
-          type,
+          contentType,
           name,
           description,
           // url,
           // groupId,
-          iconUri: getIconUri(d.type),
+          iconUri: getIconUri(d.contentType),
           ...d,
         };
       });

@@ -8,10 +8,10 @@
         </Primitive::Button>
     </div>
     <Primitive::Section @label="Categories" @allowCollapse={{true}}>
-        <HouseNinja::DocumentVaultRecords @records={{@model.groups}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
+        <HouseNinja::DocumentVaultRecords @records={{@model.groups}} @onRecordClick={{this.handleRecordClick}} @ifEmpty={{hash message="You have not added any categories." action="Add Category"}} />
     </Primitive::Section>
     <Primitive::Section @label="Uncategorized Documents">
-        <HouseNinja::DocumentVaultRecords @records={{@model.documents}} @onRecordClick={{this.selectRoute}} @ifEmpty={{hash message="You have no uncategorized documents." action="Upload Document"}} />
+        <HouseNinja::DocumentVaultRecords @records={{@model.documents}} @onRecordClick={{this.handleRecordClick}} @ifEmpty={{hash message="You have no uncategorized documents." action="Upload Document"}} />
     </Primitive::Section>
     <Primitive::Modal::Sheet @options={{this.uploadOptions}} @isVisible={{this.showUploadMenu}} @toggleUploadMenu={{this.toggleUploadMenu}}/>
 </div>
