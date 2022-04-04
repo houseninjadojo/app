@@ -9,14 +9,14 @@
                     @label={{field.label}}
                     @required={{field.required}}
                     {{!-- @disabled={{true}} --}}
-                    @value={{mut (get @model.document field.id)}}
+                    @value={{mut (get this.documentInfo field.id)}}
                     />
                 {{else}}
                     <Primitive::Input
                     @id={{field.id}}
                     @required={{field.required}}
                     @placeholder={{field.placeholder}}
-                    @value={{mut (get @model.document field.id)}}
+                    @value={{mut (get this.documentInfo field.id)}}
                     @description={{field.description}}
                     @label={{field.label}}
                     @type={{field.type}}
@@ -31,10 +31,10 @@
                 <Primitive::Button @variant="solid" @semantic="alert" @size="md" {{on "click" this.delete}}>Delete Document</Primitive::Button>
             </div>
         {{/if}}
-        {{#if this.mediaUrl}}
+        {{#if this.documentUrl}}
             <div class="thumbnail">                        
                 <Primitive::Image
-                    @src={{this.mediaUrl}}
+                    @src={{this.documentUrl}}
                     @alt="preview"
                     @width="500"
                 />

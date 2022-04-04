@@ -4,24 +4,25 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { Capacitor } from '@capacitor/core';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
 export default class VaultDocumentUpsertComponent extends Component {
   @service camera;
+  @service file;
   @service haptics;
   @service router;
   @service view;
 
   @tracked formIsInvalid = true;
-  @tracked media = this.camera.image;
-  @tracked mediaUrl =
-    this.args.model.document.url || (this.media && this.media.webPath);
+  @tracked newDocument = this.camera.image ?? this.file.file;
+  @tracked documentUrl = this._getThumbnailUrl();
 
   @tracked documentInfo = {
-    name: this.args.model.document.name || this.mediaUrl,
-    description: this.args.model.document.description || null,
-    documentGroup: this.args.model.document.groupId || null,
+    name: this._getFilename(),
+    description: this.args.model.document.description ?? null,
+    documentGroup: this.args.model.document.groupId ?? null,
   };
 
   @tracked fields = [
@@ -78,9 +79,45 @@ export default class VaultDocumentUpsertComponent extends Component {
     const response = this.confirm();
   }
 
+  _getThumbnailUrl() {
+    let path = '';
+
+    if (this.file.file?.path) {
+      path = Capacitor.convertFileSrc(this.file.file.path);
+    } else {
+      path = this.camera.image?.webPath ?? this.args.model.document?.url;
+    }
+
+    return path;
+  }
+
+  _getFilename() {
+    let name = '';
+
+    if (this.file.file?.name) {
+      name = this.file.file.name;
+    } else if (this.camera.image) {
+      const webPath = this.camera.image.webPath;
+      const subStringSearch = '/tmp/';
+      const startingIndex =
+        webPath.indexOf(subStringSearch) + subStringSearch.length;
+
+      name = this.camera.image.webPath.substring(startingIndex, webPath.length);
+    } else {
+      name = this.args.model.document?.name;
+    }
+
+    return name;
+  }
+
   @action
   save() {
-    console.log('Saving...');
+    if (this.newDocument) {
+      console.log('Saving new document...');
+    } else {
+      console.log('Updating new document...');
+    }
+    this.resetForm();
   }
 
   @action
@@ -95,10 +132,13 @@ export default class VaultDocumentUpsertComponent extends Component {
 
   @action
   resetForm() {
-    this.documentInfo.name = this.args.model.document.name || this.mediaUrl;
+    this.documentInfo.name = this.args.model.document.name || this.documentUrl;
     this.documentInfo.description =
       this.args.model.document.description || null;
     this.documentInfo.documentGroup = this.args.model.document.groupId || null;
+
+    this.camera.image && this.camera.clear();
+    this.file.file && this.file.clear();
     this.formIsInvalid = true;
   }
 

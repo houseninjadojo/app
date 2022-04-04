@@ -2,8 +2,11 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { FilePicker } from '@robingenz/capacitor-file-picker';
+
 export default class VaultContentComponent extends Component {
   @service camera;
+  @service file;
   @service router;
   @service haptics;
   @service view;
@@ -24,12 +27,12 @@ export default class VaultContentComponent extends Component {
     },
     {
       id: this.uploadMenuOptionType.photos,
-      label: 'Select Photo from Library',
+      label: 'Select from Photo Library',
       select: this.handleUploadSelection,
     },
     {
       id: this.uploadMenuOptionType.files,
-      label: 'Upload a File',
+      label: 'Select from Files',
       select: this.handleUploadSelection,
     },
   ];
@@ -49,6 +52,15 @@ export default class VaultContentComponent extends Component {
   }
 
   @action
+  async getFileFromDevice() {
+    await this.file.setFileServiceFile();
+    if (this.file.file) {
+      await this.toggleUploadMenu();
+      this.selectRoute('vault.document.add');
+    }
+  }
+
+  @action
   async handleUploadSelection(option) {
     switch (option.id) {
       case this.uploadMenuOptionType.camera:
@@ -58,6 +70,7 @@ export default class VaultContentComponent extends Component {
         this.setCameraServiceImage(this.uploadMenuOptionType.photos);
         break;
       case this.uploadMenuOptionType.files:
+        this.getFileFromDevice();
         break;
     }
   }

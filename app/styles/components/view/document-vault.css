@@ -45,7 +45,8 @@
   margin-bottom: 16px;
 }
 
-.hn.document-vault.document-container.upsert .thumbnail {
+.hn.document-vault.document.upsert .thumbnail {
+  background-color: var(--white);
   border: 1px solid var(--gray-600);
   border-radius: 2px;
 }
