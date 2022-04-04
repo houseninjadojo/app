@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
+import { SERVICE_AREA } from 'houseninja/data/enums/onboarding-step';
 
 export default class SignupIndexRoute extends Route {
   @service router;
@@ -16,23 +17,28 @@ export default class SignupIndexRoute extends Route {
       const user = await this.onboarding.userFromOnboardingCode(
         params.onboardingCode
       );
-      this.rehydrateAndRedirect(user);
+      await this.rehydrateAndRedirect(user);
     }
-
     // actually return just the zipcode to `model`
     return await this.onboarding.getZipcode();
   }
 
-  rehydrateAndRedirect(user) {
+  deactivate() {
+    this.onboarding.completeStep(SERVICE_AREA);
+  }
+
+  async rehydrateAndRedirect(user) {
     if (isPresent(user) && user.isCurrentlyOnboarding) {
       // load what we need to rehydrate signup
-      this.onboarding.rehydrateUser.perform();
+      this.onboarding.rehydrateFromRemote.perform();
+      // save progress locally
+      await this.onboarding.dehydrate();
+      // resume next step
       this.router.transitionTo(
-        this.onboarding.routeFromStep(user.onboardingStep),
-        { queryParams: null }
+        this.onboarding.routeFromStep(user.onboardingStep)
       );
     } else {
-      this.router.transitionTo('signup.index', { queryParams: null });
+      this.router.transitionTo('signup.index');
     }
   }
 }

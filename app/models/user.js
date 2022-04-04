@@ -1,5 +1,6 @@
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 import { COMPLETED } from 'houseninja/data/enums/onboarding-step';
+import { isPresent, isEmpty } from '@ember/utils';
 
 export default class UserModel extends Model {
   @hasMany('document') documents;
@@ -35,7 +36,11 @@ export default class UserModel extends Model {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  get isCurrentlyOnboarding() {
-    return this.onboardingStep !== COMPLETED;
+  get shouldResumeOnboarding() {
+    return isPresent(this.onboardingStep) && this.onboardingStep !== COMPLETED;
+  }
+
+  get shouldContinueOnboarding() {
+    return isEmpty(this.onboardingStep);
   }
 }

@@ -6,7 +6,7 @@ export default class SignupRoute extends Route {
   @service session;
   // @service store;
   // @service router;
-  // @service onboarding;
+  @service onboarding;
 
   // queryParams = {
   //   onboardingCode: { refreshModel: false },
@@ -15,6 +15,7 @@ export default class SignupRoute extends Route {
   beforeModel() {
     // prohibit authorized users from returning to signup
     this.session.prohibitAuthentication('dashboard.home');
+    this.onboarding.rehydrate();
   }
 
   // async model(params) {

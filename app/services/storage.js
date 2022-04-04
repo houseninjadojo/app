@@ -3,6 +3,7 @@ import {
   configure as setupLocal,
   get as getLocalStorage,
   set as setLocalStorage,
+  clear as clearLocalStorage,
 } from 'houseninja/utils/native/local-storage';
 import {
   get as getSecureStorage,
@@ -20,6 +21,10 @@ export default class StorageService extends Service {
 
   async setLocal(key, value) {
     await setLocalStorage(key, value);
+  }
+
+  async clearLocal() {
+    await clearLocalStorage();
   }
 
   async getSecure(key) {

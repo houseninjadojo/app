@@ -4,15 +4,17 @@ import Service, { service } from '@ember/service';
 import Sentry from 'houseninja/utils/sentry';
 import { task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
+import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
+import { debug } from '@ember/debug';
 
 const CACHED_MODELS = [
-  'payment-method',
-  'promo-code',
+  'payment-methods',
+  'promo-codes',
   'properties',
-  'service-area',
-  'subscription',
-  'subscription-plan',
-  'user',
+  'service-areas',
+  'subscriptions',
+  'subscription-plans',
+  'users',
 ];
 
 export default class OnboardingService extends Service {
@@ -21,8 +23,23 @@ export default class OnboardingService extends Service {
 
   _currentStep = null;
 
-  completeStep(step) {
+  get nextStep() {
+    return nextOnboardingStep(this._currentStep);
+  }
+
+  async completeStep(step) {
+    console.log('completeStep', step);
     this._currentStep = step;
+    await this.storage.setLocal('current-step', this.nextStep);
+    const user = await this.localModel('user');
+    if (isPresent(user)) {
+      user.onboardingStep = this.nextStep;
+    }
+    await this.dehydrate();
+  }
+
+  cleanup() {
+    this.storage.clearLocal();
   }
 
   routeFromStep(step) {
@@ -42,7 +59,6 @@ export default class OnboardingService extends Service {
         },
       });
     } catch (e) {
-      console.error(e);
       Sentry.captureException(e);
     }
     if (users.length == 1) {
@@ -75,7 +91,11 @@ export default class OnboardingService extends Service {
   async rehydrateFromCache(modelType = 'user') {
     const cachedModel = await this.storage.getLocal(modelType);
     if (cachedModel) {
-      this.store.pushPayload(cachedModel);
+      try {
+        this.store.pushPayload(cachedModel);
+      } catch (e) {
+        debug(e);
+      }
     }
   }
 
@@ -95,12 +115,13 @@ export default class OnboardingService extends Service {
       }
     }).compact();
     records.forEach(async (record) => {
-      await this.storage.setLocal(record.type, record);
+      await this.storage.setLocal(record.data.type, record);
     });
   }
 
   async getZipcode() {
-    return await this.storage.getLocal('zipcode');
+    const zip = await this.storage.getLocal('zipcode');
+    return zip?.toString();
   }
 
   async setZipcode(zipcode) {

@@ -3,13 +3,19 @@ import { service } from '@ember/service';
 import * as Sentry from '@sentry/ember';
 import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
+import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
 
 export default class SignupPaymentMethodRoute extends Route {
   @service store;
+  @service onboarding;
 
   model() {
     this.rehydrateOrGenerateSubscription.perform();
     return this.store.peekAll('credit-card').get('firstObject');
+  }
+
+  deactivate() {
+    this.onboarding.completeStep(PAYMENT_METHOD);
   }
 
   @task *generateSubscription() {

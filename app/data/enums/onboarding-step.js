@@ -23,3 +23,32 @@ export const ALL = [
   WELCOME,
   COMPLETED,
 ];
+
+export function nextStep(currentStep) {
+  switch (currentStep) {
+    case AREA_NOTIFICATION:
+      return null;
+    case BOOKING_CONFIRMATION:
+      return COMPLETED;
+    case CONTACT_INFO:
+      return PAYMENT_METHOD;
+    case PAYMENT_METHOD:
+      return WELCOME;
+    case PLAN_SELECTION:
+      return PAYMENT_METHOD;
+    case PROPERTY_INFO:
+      return WALKTHROUGH_BOOKING;
+    case SERVICE_AREA:
+      return CONTACT_INFO;
+    case SET_PASSWORD:
+      return BOOKING_CONFIRMATION;
+    case WALKTHROUGH_BOOKING:
+      return SET_PASSWORD;
+    case WELCOME:
+      return PROPERTY_INFO;
+    case COMPLETED:
+      return null;
+    default:
+      return null;
+  }
+}

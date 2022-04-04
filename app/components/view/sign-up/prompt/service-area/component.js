@@ -16,8 +16,10 @@ export default class ServiceAreaComponent extends Component {
 
   constructor() {
     super(...arguments);
-    console.log(this.args.zipcode);
-    this.zipcode = this.args.zipcode;
+    if (this.validZipcode(this.args.zipcode)) {
+      this.zipcode = this.args.zipcode;
+      this.formIsInvalid = false;
+    }
   }
 
   @action
@@ -45,10 +47,14 @@ export default class ServiceAreaComponent extends Component {
   validateForm(e) {
     this.zipcode = e.target.value;
 
-    if (this.zipcode && this.zipcode.length >= 5) {
+    if (this.validZipcode(this.zipcode)) {
       this.formIsInvalid = false;
     } else {
       this.formIsInvalid = true;
     }
+  }
+
+  validZipcode(zipcode) {
+    return zipcode?.length >= 5;
   }
 }

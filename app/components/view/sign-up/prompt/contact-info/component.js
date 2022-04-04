@@ -90,7 +90,7 @@ export default class ContactInfoComponent extends Component {
     }
     try {
       await user.save();
-      if (user.isCurrentlyOnboarding) {
+      if (user.shouldResumeOnboarding) {
         this.onboarding.rehydrateUser.perform(user);
         this.router.transitionTo(
           this.onboarding.routeFromStep(user.onboardingStep)
