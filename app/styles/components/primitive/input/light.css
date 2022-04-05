@@ -29,8 +29,8 @@
     linear-gradient(135deg, var(--teal-500) 50%, transparent 50%),
     linear-gradient(to right, rgb(0 0 0 / 0%), rgb(0 0 0 / 0%));
   background-position:
-    calc(100% - 21px) calc(1em + 2px),
-    calc(100% - 16px) calc(1em + 2px),
+    calc(100% - 21px) calc(1em + 8px),
+    calc(100% - 16px) calc(1em + 8px),
     100% 0;
   background-size:
     5px 5px,
@@ -55,7 +55,7 @@
 
 .light .hn.hn-input-field .hn-input-container:focus-within {
   background: rgb(0 192 187 / 10%);
-  border: 1px solid var(--teal-500);
+  border-bottom: 1px solid var(--teal-500);
 }
 
 .light .hn.hn-input-field .hn-input-container:focus-within label {
@@ -65,7 +65,7 @@
 /* Warn */
 .light .hn.hn-input-field.warn .hn-input-container {
   background: #ffa31a0a !important;
-  border: 1px solid var(--orange-400) !important;
+  border-bottom: 1px solid var(--orange-400) !important;
 }
 
 .light .hn.hn-input-field.warn .hn-input-container label {
@@ -86,7 +86,7 @@
 /* Alert */
 .light .hn.hn-input-field.alert .hn-input-container {
   background: #c322400a !important;
-  border: 1px solid var(--red-400) !important;
+  border-bottom: 1px solid var(--red-400) !important;
 }
 
 .light .hn.hn-input-field.alert .hn-input-container label {
@@ -107,7 +107,7 @@
 /* Disabled */
 .light .hn.hn-input-field.disabled .hn-input-container {
   background: rgb(26 26 26 / 10%) !important;
-  border: none !important;
+  border-bottom: none !important;
 }
 
 .light .hn.hn-input-field.disabled .hn-input-container label {

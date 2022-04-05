@@ -8,7 +8,10 @@
 
 .hn.hn-input-field,
 .hn.hn-input-field .hn-input-container {
-  border-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .hn.hn-input-field .hn-input-container {
