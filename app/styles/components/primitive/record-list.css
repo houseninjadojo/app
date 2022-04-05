@@ -1,3 +1,8 @@
+ul.record-list li.record-loading {
+  width: 100%;
+  padding: 8px 4px;
+}
+
 .filled ul.record-list li .record {
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@ export default class LoaderService extends Service {
   @tracked isLoading = false;
 
   @action
-  showGlobalLoadingIndicator(transition) {
+  setApplicationLoader(transition) {
     let applicationRoute = getOwner(this).lookup('route:application');
 
     if (!applicationRoute) {
