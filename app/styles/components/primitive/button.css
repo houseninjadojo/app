@@ -89,7 +89,7 @@
 }
 
 .hn.btn.solid.alert {
-  background: var(--grad-red-400);
+  background: var(--red-400);
   box-shadow: var(--shadow-red-1);
   color: var(--white);
 }

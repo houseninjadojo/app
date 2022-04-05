@@ -1,0 +1,25 @@
+<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.id "Add Category"}} @primaryActionHeaderText={{unless @model.id "Add"}} @saveAction={{this.save}}>
+    <div class="hn document-vault group upsert">
+        <h1 class="hn view-title">{{if @model.id 'Edit Category Details' 'Add Category'}}</h1>
+        <div class="upsert-fields">
+            {{#each this.fields as |field|}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @required={{field.required}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get @model field.id)}}
+                    @description={{field.description}}
+                    @label={{field.label}}
+                    @type={{field.type}}
+                    {{!-- @disabled={{true}} --}}
+                    @onInput={{this.validateForm}}
+                />
+            {{/each}}
+        </div>
+        {{#if @model.id}}
+            <div class="action">
+                <Primitive::Button @variant="solid" @semantic="alert" @size="md" {{on "click" this.delete}}>Delete Category</Primitive::Button>
+            </div>
+        {{/if}}        
+    </div>
+</Primitive::Modal::Tray>

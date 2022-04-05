@@ -20,6 +20,9 @@ project(':capacitor-app').projectDir = new File('../node_modules/@capacitor/app/
 include ':capacitor-browser'
 project(':capacitor-browser').projectDir = new File('../node_modules/@capacitor/browser/android')
 
+include ':capacitor-camera'
+project(':capacitor-camera').projectDir = new File('../node_modules/@capacitor/camera/android')
+
 include ':capacitor-device'
 project(':capacitor-device').projectDir = new File('../node_modules/@capacitor/device/android')
 
@@ -46,6 +49,9 @@ project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capa
 
 include ':houseninja-capacitor-mixpanel'
 project(':houseninja-capacitor-mixpanel').projectDir = new File('../node_modules/@houseninja/capacitor-mixpanel/android')
+
+include ':robingenz-capacitor-file-picker'
+project(':robingenz-capacitor-file-picker').projectDir = new File('../node_modules/@robingenz/capacitor-file-picker/android')
 
 include ':capacitor-secure-storage-plugin'
 project(':capacitor-secure-storage-plugin').projectDir = new File('../node_modules/capacitor-secure-storage-plugin/android')

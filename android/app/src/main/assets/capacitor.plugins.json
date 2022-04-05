@@ -24,6 +24,10 @@
 		"classpath": "com.capacitorjs.plugins.browser.BrowserPlugin"
 	},
 	{
+		"pkg": "@capacitor/camera",
+		"classpath": "com.capacitorjs.plugins.camera.CameraPlugin"
+	},
+	{
 		"pkg": "@capacitor/device",
 		"classpath": "com.capacitorjs.plugins.device.DevicePlugin"
 	},
@@ -58,6 +62,10 @@
 	{
 		"pkg": "@houseninja/capacitor-mixpanel",
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
+	},
+	{
+		"pkg": "@robingenz/capacitor-file-picker",
+		"classpath": "dev.robingenz.capacitorjs.plugins.filepicker.FilePickerPlugin"
 	},
 	{
 		"pkg": "capacitor-secure-storage-plugin",

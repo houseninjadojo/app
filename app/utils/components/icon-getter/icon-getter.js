@@ -1,18 +1,18 @@
 export function getIconUri(type) {
   const PATH = '/assets/icons';
   switch (type) {
-    case 'group':
-      return `${PATH}/folder.svg`;
-    case 'pdf':
+    case 'application/pdf':
       return `${PATH}/pdf.svg`;
-    case 'png':
+    case 'image/png':
       return `${PATH}/image.svg`;
-    case 'jpg':
+    case 'image/jpg':
       return `${PATH}/image.svg`;
-    case 'heic':
+    case 'image/heic':
       return `${PATH}/image.svg`;
     case 'zip':
       return `${PATH}/zip.svg`;
+    case 'folder':
+      return `${PATH}/folder.svg`;
     default:
       return `${PATH}/`;
   }

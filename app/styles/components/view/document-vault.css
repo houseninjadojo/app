@@ -22,6 +22,11 @@
   align-items: center;
 }
 
+.hn.document-vault.document.upsert,
+.hn.document-vault.group.upsert {
+  padding: 16px;
+}
+
 .hn.document-vault.document .document-details {
   background-color: var(--white);
   padding: 16px;
@@ -33,4 +38,15 @@
   border-radius: 2px;
   width: 100%;
   background-color: var(--white);
+}
+
+.hn.document-vault.document.upsert .upsert-fields,
+.hn.document-vault.document.upsert .action {
+  margin-bottom: 16px;
+}
+
+.hn.document-vault.document.upsert .thumbnail {
+  background-color: var(--white);
+  border: 1px solid var(--gray-600);
+  border-radius: 2px;
 }

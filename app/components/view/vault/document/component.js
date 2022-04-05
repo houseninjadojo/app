@@ -10,7 +10,7 @@ export default class VaultDocumentComponent extends Component {
   openBrowser() {
     if (this.args.model) {
       Browser.open({
-        url: `${this.args.model.uri}`,
+        url: `${this.args.model.url}`,
         presentationStyle: 'popover',
       });
     }
@@ -29,7 +29,7 @@ export default class VaultDocumentComponent extends Component {
     }
     if (route === 'edit') {
       // edit document
-      this.router.transitionTo('vault.file.edit', this.args.model.id);
+      this.router.transitionTo('vault.document.edit', this.args.model.id);
     }
   }
 }

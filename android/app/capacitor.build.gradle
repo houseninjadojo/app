@@ -15,6 +15,7 @@ dependencies {
     implementation project(':capacitor-action-sheet')
     implementation project(':capacitor-app')
     implementation project(':capacitor-browser')
+    implementation project(':capacitor-camera')
     implementation project(':capacitor-device')
     implementation project(':capacitor-dialog')
     implementation project(':capacitor-haptics')
@@ -24,6 +25,7 @@ dependencies {
     implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
     implementation project(':houseninja-capacitor-mixpanel')
+    implementation project(':robingenz-capacitor-file-picker')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
 
