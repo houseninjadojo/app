@@ -42,14 +42,16 @@
 {{else}}
   <div class='empty'>
     <p>{{@ifEmpty.message}}</p>
-    <Primitive::Button
-      @type='button'
-      @size='sm'
-      @variant='outline'
-      @semantic='primary'
-      {{on "click" this.handleIfEmptyClick}}
-    >
-      {{@ifEmpty.action}}
-    </Primitive::Button>
+    {{#if this.showEmptyStateButton}}
+      <Primitive::Button
+        @type='button'
+        @size='sm'
+        @variant='outline'
+        @semantic='primary'
+        {{on "click" this.handleIfEmptyClick}}
+      >
+        {{@ifEmpty.actionText}}
+      </Primitive::Button>
+    {{/if}}
   </div>
 {{/each}}
