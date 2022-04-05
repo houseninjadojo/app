@@ -31,7 +31,7 @@ export default class ServiceAreaComponent extends Component {
         },
       });
       if (serviceAreas.length > 0) {
-        this.onboarding.setZipcode(this.zipcode);
+        this.onboarding.zipcode = this.zipcode;
         this.router.transitionTo('signup.contact-info');
       } else {
         this.current.signup.zipcode = this.zipcode;

@@ -1,7 +1,4 @@
 import Service, { service } from '@ember/service';
-// import { get as unstash } from 'houseninja/utils/secure-storage';
-// import { debug } from '@ember/debug';
-import Sentry from 'houseninja/utils/sentry';
 import { task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
 import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
@@ -21,17 +18,17 @@ export default class OnboardingService extends Service {
   @service storage;
   @service store;
 
-  _currentStep = null;
+  currentStep = null;
+  _zipcode = null;
 
   get nextStep() {
-    return nextOnboardingStep(this._currentStep);
+    return nextOnboardingStep(this.currentStep);
   }
 
   async completeStep(step) {
-    console.log('completeStep', step);
-    this._currentStep = step;
+    this.currentStep = step;
     await this.storage.setLocal('current-step', this.nextStep);
-    const user = await this.localModel('user');
+    const user = this.localModel('user');
     if (isPresent(user)) {
       user.onboardingStep = this.nextStep;
     }
@@ -46,37 +43,14 @@ export default class OnboardingService extends Service {
     return `signup.${step}`;
   }
 
-  async userFromOnboardingCode(onboardingCode) {
-    return await this.fetchUserFromOnboardingCode.perform(onboardingCode);
+  async userFromOnboardingCode(code) {
+    return await this.store.queryRecord('user', {
+      filter: { code },
+    });
   }
-
-  @task({ drop: true }) *fetchUserFromOnboardingCode(onboardingCode) {
-    let users = [];
-    try {
-      users = yield this.store.query('user', {
-        filter: {
-          onboardingCode: onboardingCode,
-        },
-      });
-    } catch (e) {
-      Sentry.captureException(e);
-    }
-    if (users.length == 1) {
-      return users.get('firstObject');
-    } else {
-      return null;
-    }
-  }
-
-  // @task({ drop: true }) *rehydrateUser() {
-  //   if (isEmpty(this.localUser())) {
-  //     yield this.rehydrateFromCache.perform();
-  //   }
-  //   yield this.rehydrateFromRemote.perform();
-  // }
 
   @task({ drop: true }) *rehydrateFromRemote() {
-    const user = this.localUser();
+    const user = this.localModel('user');
     const includes = [
       'payment_methods',
       'promo_code',
@@ -119,13 +93,12 @@ export default class OnboardingService extends Service {
     });
   }
 
-  async getZipcode() {
-    const zip = await this.storage.getLocal('zipcode');
-    return zip?.toString();
+  get zipcode() {
+    return this.storage.getLocal('zipcode').then((z) => z.toString());
   }
 
-  async setZipcode(zipcode) {
-    await this.storage.setLocal('zipcode', zipcode);
+  set zipcode(zip) {
+    this.storage.setLocal('zipcode', zip);
   }
 
   async fetchLocalModel(modelType) {
@@ -138,9 +111,5 @@ export default class OnboardingService extends Service {
 
   localModel(modelType) {
     return this.store.peekAll(modelType).get('firstObject');
-  }
-
-  localUser() {
-    return this.localModel('user');
   }
 }

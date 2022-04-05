@@ -7,6 +7,7 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -79,29 +80,24 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async saveContactInfo() {
-    let user;
-    if (isPresent(this.args.user)) {
-      user = this.args.user;
-      user.setProperties(this.contactInfo);
-    } else {
-      user = this.store.createRecord('user', {
-        ...this.contactInfo,
-      });
-    }
+    const user = this.store.createRecord('user', {
+      ...this.contactInfo,
+      onboardingStep: PAYMENT_METHOD,
+    });
     try {
       await user.save();
-      if (user.shouldResumeOnboarding) {
-        this.onboarding.rehydrateUser.perform(user);
-        this.router.transitionTo(
-          this.onboarding.routeFromStep(user.onboardingStep)
-        );
-      } else {
-        this.router.transitionTo('signup.payment-method');
-      }
     } catch (e) {
       this.errors = user.errors;
       debug(e);
       Sentry.captureException(e);
+    }
+    if (user.shouldResumeOnboarding) {
+      this.onboarding.rehydrateFromRemote.perform();
+      this.router.transitionTo(
+        this.onboarding.routeFromStep(user.onboardingStep)
+      );
+    } else {
+      this.router.transitionTo('signup.payment-method');
     }
   }
 

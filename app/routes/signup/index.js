@@ -20,7 +20,7 @@ export default class SignupIndexRoute extends Route {
       await this.rehydrateAndRedirect(user);
     }
     // actually return just the zipcode to `model`
-    return await this.onboarding.getZipcode();
+    return this.onboarding.zipcode;
   }
 
   deactivate() {
