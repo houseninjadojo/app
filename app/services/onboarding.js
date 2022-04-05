@@ -2,7 +2,7 @@ import Service, { service } from '@ember/service';
 import { task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
 import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
-import { debug } from '@ember/debug';
+import { captureException } from 'houseninja/utils/sentry';
 
 const CACHED_MODELS = [
   'payment-methods',
@@ -37,6 +37,7 @@ export default class OnboardingService extends Service {
 
   cleanup() {
     this.storage.clearLocal();
+    this.storage.setLocal('current-step', null);
   }
 
   routeFromStep(step) {
@@ -68,7 +69,7 @@ export default class OnboardingService extends Service {
       try {
         this.store.pushPayload(cachedModel);
       } catch (e) {
-        debug(e);
+        captureException(e);
       }
     }
   }
@@ -110,6 +111,6 @@ export default class OnboardingService extends Service {
   }
 
   localModel(modelType) {
-    return this.store.peekAll(modelType).get('firstObject');
+    return this.store.peekFirst(modelType);
   }
 }

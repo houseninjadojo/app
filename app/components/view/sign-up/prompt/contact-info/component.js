@@ -2,10 +2,9 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
 
@@ -80,6 +79,9 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async saveContactInfo() {
+    if (isPresent(this.args.user)) {
+      this.args.user.unloadRecord();
+    }
     const user = this.store.createRecord('user', {
       ...this.contactInfo,
       onboardingStep: PAYMENT_METHOD,
@@ -88,8 +90,7 @@ export default class ContactInfoComponent extends Component {
       await user.save();
     } catch (e) {
       this.errors = user.errors;
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
     }
     if (user.shouldResumeOnboarding) {
       this.onboarding.rehydrateFromRemote.perform();

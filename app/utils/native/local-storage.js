@@ -1,7 +1,7 @@
 import { Storage } from '@capacitor/storage';
 import { run } from '@ember/runloop';
 import { serializeJSON, deserializeJSON } from 'houseninja/utils/serializers';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 
 export const GROUPNAME = 'houseninja';
 
@@ -36,7 +36,7 @@ export async function get(key) {
       return deserializeJSON(value);
     });
   } catch (e) {
-    Sentry.captureException(e);
+    captureException(e);
   }
 }
 
@@ -57,7 +57,7 @@ export async function set(key, value) {
       return await Storage.set(payload);
     });
   } catch (e) {
-    Sentry.captureException(e);
+    captureException(e);
   }
 }
 

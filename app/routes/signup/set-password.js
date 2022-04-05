@@ -6,8 +6,8 @@ export default class SignupSetPasswordRoute extends Route {
   @service store;
   @service onboarding;
 
-  model() {
-    return this.store.peekAll('user').get('firstObject');
+  async model() {
+    return await this.onboarding.fetchLocalModel('user');
   }
 
   deactivate() {

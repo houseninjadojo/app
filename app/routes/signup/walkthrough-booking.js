@@ -4,7 +4,6 @@ import { WALKTHROUGH_BOOKING } from 'houseninja/data/enums/onboarding-step';
 import RSVP from 'rsvp';
 
 export default class SignupWalkthroughBookingRoute extends Route {
-  @service store;
   @service onboarding;
 
   model() {

@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import { captureException } from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 export default class ServiceAreaComponent extends Component {
   @service current;
@@ -24,22 +24,23 @@ export default class ServiceAreaComponent extends Component {
 
   @action
   async checkServiceArea() {
+    let serviceArea;
     try {
-      const serviceAreas = await this.store.query('service-area', {
+      serviceArea = await this.store.queryRecord('service-area', {
         filter: {
           zipcodes: [this.zipcode],
         },
       });
-      if (serviceAreas.length > 0) {
-        this.onboarding.zipcode = this.zipcode;
-        this.router.transitionTo('signup.contact-info');
-      } else {
-        this.current.signup.zipcode = this.zipcode;
-        this.router.transitionTo('signup.area-notification');
-      }
+      console.log(serviceArea);
     } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
+    }
+    if (isPresent(serviceArea)) {
+      this.onboarding.zipcode = this.zipcode;
+      this.router.transitionTo('signup.contact-info');
+    } else {
+      this.current.signup.zipcode = this.zipcode;
+      this.router.transitionTo('signup.area-notification');
     }
   }
 
