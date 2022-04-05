@@ -75,8 +75,19 @@ export default class VaultDocumentUpsertComponent extends Component {
   ];
 
   @action
-  delete() {
-    const response = this.confirm();
+  async delete() {
+    const response = await this.confirm();
+    const { index } = response;
+    const confirmed = this.options[index].title === this.options[1].title;
+
+    if (confirmed) {
+      try {
+        console.log('Deleting document...');
+        this.view.transitionToPreviousRoute();
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
 
   _getThumbnailUrl() {
