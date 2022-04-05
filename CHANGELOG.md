@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/houseninjadojo/app/compare/v1.4.1...v1.5.0) (2022-04-05)
+
+
+### Features
+
+* doc vault ([#489](https://github.com/houseninjadojo/app/issues/489)) ([d864365](https://github.com/houseninjadojo/app/commit/d8643655bc2003c3348edd8e5ac108d74c964712))
+
 ## [1.4.1](https://github.com/houseninjadojo/app/compare/v1.4.0...v1.4.1) (2022-04-03)
 
 
