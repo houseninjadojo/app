@@ -1,6 +1,25 @@
+{{#if this.isLoading}}
+    <ul class='record-list'>
+      <li class="record-loading">
+        <ContentLoader @width={{this.width}} @height={{this.height}} >
+          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
+        </ContentLoader>      
+      </li>
+      <li class="record-loading">
+        <ContentLoader @width={{this.width}} @height={{this.height}} >
+          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
+        </ContentLoader>
+      </li>
+      <li class="record-loading">
+        <ContentLoader @width={{this.width}} @height={{this.height}} >
+          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
+        </ContentLoader>
+      </li>
+    </ul>
+{{else}}
 {{#each @records as |record|}}
   <div class='filled'>
-    <ul class='record-list'>
+    <ul class='record-list'>    
       <li>
         <Primitive::Button {{on 'click' (fn this.handleClick record)}} @class="record" @variant="plain">        
           {{#if @showIcon}}
@@ -36,22 +55,23 @@
             </div>
           </div>
         </Primitive::Button>
-      </li>
+      </li>      
     </ul>
   </div>
-{{else}}
-  <div class='empty'>
-    <p>{{@ifEmpty.message}}</p>
-    {{#if this.showEmptyStateButton}}
-      <Primitive::Button
-        @type='button'
-        @size='sm'
-        @variant='outline'
-        @semantic='primary'
-        {{on "click" this.handleIfEmptyClick}}
-      >
-        {{@ifEmpty.actionText}}
-      </Primitive::Button>
-    {{/if}}
-  </div>
+{{else}}    
+    <div class='empty'>
+      <p>{{@ifEmpty.message}}</p>
+      {{#if this.showEmptyStateButton}}
+        <Primitive::Button
+          @type='button'
+          @size='sm'
+          @variant='outline'
+          @semantic='primary'
+          {{on "click" this.handleIfEmptyClick}}
+        >
+          {{@ifEmpty.actionText}}
+        </Primitive::Button>
+      {{/if}}
+    </div>
 {{/each}}
+{{/if}}

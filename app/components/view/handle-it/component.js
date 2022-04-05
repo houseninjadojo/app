@@ -21,7 +21,7 @@ export default class HandleItComponent extends Component {
   ];
 
   allWorkOrders = this.args.workOrders
-    .map((w) => {
+    ?.map((w) => {
       return {
         id: w.id,
         name: w.description,
@@ -40,7 +40,7 @@ export default class HandleItComponent extends Component {
         ...w,
       };
     })
-    .filter((w) => {
+    ?.filter((w) => {
       const activeWorkOrder =
         w.status !== workOrderStatus.workRequestReceived &&
         w.status !== workOrderStatus.invoicePaidByCustomer &&
@@ -49,8 +49,8 @@ export default class HandleItComponent extends Component {
       return activeWorkOrder;
     });
   failedPaymentWorkOrders = this.allWorkOrders
-    .filter((w) => w.status === workOrderStatus.paymentFailed)
-    .sort((a, b) => {
+    ?.filter((w) => w.status === workOrderStatus.paymentFailed)
+    ?.sort((a, b) => {
       return (
         moment(a.scheduledDate, DATE_FORMAT) <
         moment(b.scheduledDate, DATE_FORMAT)
@@ -58,8 +58,8 @@ export default class HandleItComponent extends Component {
     });
 
   approvePaymentWorkOrders = this.allWorkOrders
-    .filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
-    .sort((a, b) => {
+    ?.filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
+    ?.sort((a, b) => {
       return (
         moment(a.scheduledDate, DATE_FORMAT) <
         moment(b.scheduledDate, DATE_FORMAT)
@@ -67,14 +67,14 @@ export default class HandleItComponent extends Component {
     });
 
   bookedWorkOrders = this.allWorkOrders
-    .filter(
+    ?.filter(
       (w) =>
         w.status !== workOrderStatus.paymentFailed &&
         w.status !== workOrderStatus.invoiceSentToCustomer &&
         w.status !== workOrderStatus.paused &&
         w.scheduledDate
     )
-    .sort((a, b) => {
+    ?.sort((a, b) => {
       return (
         moment(a.scheduledDate, DATE_FORMAT) <
           moment(b.scheduledDate, DATE_FORMAT) ||
@@ -82,20 +82,20 @@ export default class HandleItComponent extends Component {
       );
     });
 
-  nonBookedWorkOrders = this.allWorkOrders.filter(
+  nonBookedWorkOrders = this.allWorkOrders?.filter(
     (w) => !w.scheduledDate && w.status !== workOrderStatus.paused
   );
 
-  pausedWorkOrders = this.allWorkOrders.filter(
+  pausedWorkOrders = this.allWorkOrders?.filter(
     (w) => w.status === workOrderStatus.paused
   );
 
   currentWorkOrders = [
-    ...this.approvePaymentWorkOrders,
-    ...this.failedPaymentWorkOrders,
-    ...this.bookedWorkOrders,
-    ...this.nonBookedWorkOrders,
-    ...this.pausedWorkOrders,
+    ...(this.approvePaymentWorkOrders ?? []),
+    ...(this.failedPaymentWorkOrders ?? []),
+    ...(this.bookedWorkOrders ?? []),
+    ...(this.nonBookedWorkOrders ?? []),
+    ...(this.pausedWorkOrders ?? []),
   ];
 
   @action
