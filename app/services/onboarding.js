@@ -3,15 +3,16 @@ import { task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
 import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { captureException } from 'houseninja/utils/sentry';
+import { pluralize } from 'ember-inflector';
 
 const CACHED_MODELS = [
-  'payment-methods',
-  'promo-codes',
-  'properties',
-  'service-areas',
-  'subscriptions',
-  'subscription-plans',
-  'users',
+  'payment-method',
+  'promo-code',
+  'property',
+  'service-area',
+  'subscription',
+  'subscription-plan',
+  'user',
 ];
 
 export default class OnboardingService extends Service {
@@ -44,9 +45,9 @@ export default class OnboardingService extends Service {
     return `signup.${step}`;
   }
 
-  async userFromOnboardingCode(code) {
+  async userFromOnboardingCode(onboardingCode) {
     return await this.store.queryRecord('user', {
-      filter: { code },
+      filter: { onboardingCode },
     });
   }
 
@@ -75,27 +76,31 @@ export default class OnboardingService extends Service {
   }
 
   async rehydrate() {
-    CACHED_MODELS.forEach(async (model) => {
-      await this.rehydrateFromCache(model);
+    CACHED_MODELS.forEach(async (modelName) => {
+      const modelType = pluralize(modelName);
+      await this.rehydrateFromCache(modelType);
     });
   }
 
   async dehydrate() {
     const records = CACHED_MODELS.map((model) => {
       const record = this.localModel(model);
+      console.log(model);
+      console.log(this.store.peekAll(model));
       if (isPresent(record)) {
         return record.serialize({ includeId: true });
       } else {
         return null;
       }
     }).compact();
+    console.log(records);
     records.forEach(async (record) => {
       await this.storage.setLocal(record.data.type, record);
     });
   }
 
   get zipcode() {
-    return this.storage.getLocal('zipcode').then((z) => z.toString());
+    return this.storage.getLocal('zipcode').then((z) => z?.toString());
   }
 
   set zipcode(zip) {
@@ -111,6 +116,7 @@ export default class OnboardingService extends Service {
   }
 
   localModel(modelType) {
-    return this.store.peekFirst(modelType);
+    // return this.store.peekFirst(modelType);
+    return this.store.peekAll(modelType).get('firstObject');
   }
 }

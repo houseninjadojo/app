@@ -29,6 +29,9 @@ const Sentry = isNativePlatform() ? SentryCapacitor : SentryEmber;
 export default Sentry;
 
 export function captureException(ex) {
+  if (config.environment === 'development') {
+    console.error(ex);
+  }
   debug(ex);
   Sentry.captureException(ex);
 }

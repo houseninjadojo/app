@@ -50,7 +50,7 @@ export default function () {
     if (onboardingCode) {
       const users = schema.users.where({ onboardingCode });
       const user = users.models?.firstObject;
-      schema.properties.create({ user: user });
+      // schema.properties.create({ user: user });
       const paymentMethod = schema.creditCards.create({ user: user });
       schema.subscriptions.create({
         user: user,

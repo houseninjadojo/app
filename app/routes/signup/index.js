@@ -2,10 +2,12 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import { SERVICE_AREA } from 'houseninja/data/enums/onboarding-step';
+import { next } from '@ember/runloop';
 
 export default class SignupIndexRoute extends Route {
   @service router;
   @service onboarding;
+  @service store;
 
   queryParams = {
     onboardingCode: { refreshModel: false },
@@ -28,11 +30,11 @@ export default class SignupIndexRoute extends Route {
   }
 
   async rehydrateAndRedirect(user) {
-    if (isPresent(user) && user.isCurrentlyOnboarding) {
+    if (isPresent(user) && user.shouldResumeOnboarding) {
       // load what we need to rehydrate signup
-      this.onboarding.rehydrateFromRemote.perform();
+      await this.onboarding.rehydrateFromRemote.perform();
       // save progress locally
-      await this.onboarding.dehydrate();
+      next(this.onboarding, 'dehydrate');
       // resume next step
       this.router.transitionTo(
         this.onboarding.routeFromStep(user.onboardingStep)
