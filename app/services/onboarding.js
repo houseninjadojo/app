@@ -20,7 +20,6 @@ export default class OnboardingService extends Service {
   @service store;
 
   currentStep = null;
-  _zipcode = null;
 
   get nextStep() {
     return nextOnboardingStep(this.currentStep);
@@ -85,15 +84,12 @@ export default class OnboardingService extends Service {
   async dehydrate() {
     const records = CACHED_MODELS.map((model) => {
       const record = this.localModel(model);
-      console.log(model);
-      console.log(this.store.peekAll(model));
       if (isPresent(record)) {
         return record.serialize({ includeId: true });
       } else {
         return null;
       }
     }).compact();
-    console.log(records);
     records.forEach(async (record) => {
       await this.storage.setLocal(record.data.type, record);
     });
@@ -116,7 +112,8 @@ export default class OnboardingService extends Service {
   }
 
   localModel(modelType) {
-    // return this.store.peekFirst(modelType);
+    // im not sure why, but `this.store.peekFirst(modelType);` does not work
+    // while this does.
     return this.store.peekAll(modelType).get('firstObject');
   }
 }
