@@ -14,13 +14,14 @@
   transition: opacity 0.5s ease-out;
 }
 
-.hn.modal button .overlay {
-  background: rgb(0 0 0 / 25%);
-  position: fixed;
+.hn.modal .overlay {
+  background: rgb(0 0 0 / 80%);
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 101;
 
   /* Note: backdrop-filter has minimal browser support */
   backdrop-filter: blur(2px);
@@ -138,4 +139,37 @@
 .hn.modal .modal-container .footer button.btn {
   height: 64px;
   border-radius: 0;
+}
+
+.hn.modal .modal-container.dialog {
+  background: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  padding: 16px;
+}
+
+.hn.modal .modal-container.dialog .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  height: max-content;
+  border-radius: 2px;
+  padding: 32px;
+  z-index: 101;
+
+  /* animation-name: slide-out;
+  animation-timing-function: ease-out;
+  animation-duration: 0.25s; */
+}
+
+.hn.modal .modal-container.dialog img {
+  width: 24px;
 }
