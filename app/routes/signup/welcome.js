@@ -9,9 +9,10 @@ export default class SignupWelcomeRoute extends Route {
   activate() {
     // this is a workaround for "disabling" the back button
     // notes:
-    //  - this does not work if the first page loaded is "WELCOME" (this one)
+    //  - this does not work when resuming a login navigates diretly to this page (WELCOME)
     //  - it needs at least one more page to have been navigated through (i.e. starting
     //    from the first page, or clicking next and then back)
+    //  - adding more calls to "pushState" does not fix the above issue
     //  - i make no claims to its stability, this is walking the line of prohibited browser
     //    behavior and any browser may break this at any time
     //
