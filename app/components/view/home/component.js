@@ -35,8 +35,8 @@ export default class HomeContentComponent extends Component {
   }
 
   get randomHomeCareTip() {
-    let tipNumber = Math.floor(Math.random() * this.args.homeCareTips.length);
-    return this.args.homeCareTips.objectAt(tipNumber);
+    let tipNumber = Math.floor(Math.random() * this.args.homeCareTips?.length);
+    return this.args.homeCareTips?.objectAt(tipNumber);
   }
   @action
   async selectRoute(route) {

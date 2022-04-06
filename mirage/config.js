@@ -84,6 +84,8 @@ export default function () {
   // this.resource('user', { path: '/users', except: ['index', 'create'] });
 
   this.resource('work-order', { path: '/work-orders' });
+  this.resource('document-groups', { path: '/document-groups' });
+  this.resource('documents', { path: '/documents' });
 
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);

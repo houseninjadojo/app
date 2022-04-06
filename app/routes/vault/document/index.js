@@ -1,17 +1,14 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { vault } from 'houseninja/data/document-stub';
 
 export default class VaultDocumentIndexRoute extends Route {
   @service router;
+  @service store;
 
-  model(params) {
-    const model = vault.documentStub.filter((d) => d.id === params.doc_id)[0];
-    const group = vault.groupStub.filter((g) => {
-      return g.id === model.groupId;
-    })[0];
-
-    if (group) {
+  async model({ doc_id }) {
+    const model = await this.store.findRecord('document', doc_id);
+    if (model.groupId) {
+      let group = await this.store.findRecord('document-group', model.groupId);
       model['groupName'] = group.name;
     }
 

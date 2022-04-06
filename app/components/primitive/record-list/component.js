@@ -1,9 +1,20 @@
 import Component from '@glimmer/component';
-import { service } from '@ember/service';
 import { action } from '@ember/object';
-
-export default class VaultContentComponent extends Component {
+import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+export default class RecordListComponent extends Component {
+  @service loader;
   @service router;
+
+  @tracked showEmptyStateButton =
+    (this.args.onIfEmptyButtonClick && this.args.ifEmpty?.actionText) ?? false;
+
+  width = 1000;
+  height = 100;
+
+  get isLoading() {
+    return this.loader.isLoading;
+  }
 
   @action
   handleClick(record) {
@@ -14,7 +25,7 @@ export default class VaultContentComponent extends Component {
 
   @action
   handleIfEmptyClick() {
-    if (this.args.onIfEmptyButtonClick) {
+    if (this.showEmptyStateButton) {
       this.args.onIfEmptyButtonClick();
     }
   }

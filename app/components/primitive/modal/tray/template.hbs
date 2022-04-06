@@ -8,7 +8,7 @@
                 </Primitive::Button>
                 {{#unless @hideRightAction}}
                     <Primitive::Button @size="sm" @variant="floating" @disabled={{@formIsInvalid}} {{on "click" this.handlePrimaryClick}}>
-                        Save
+                        {{if @primaryActionHeaderText @primaryActionHeaderText 'Save'}}
                     </Primitive::Button>
                 {{/unless}}
             </div>

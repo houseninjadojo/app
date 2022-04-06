@@ -1,6 +1,6 @@
 <div class="hn document-vault document">
     <div class="actions">        
-        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{on "click" (fn this.selectRoute 'edit')}}>
             Edit
         </Primitive::Button>
     </div>
@@ -12,7 +12,7 @@
     <div class="document-container">
         <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
             <Primitive::Image
-              @src={{@model.uri}}
+              @src={{@model.url}}
               @alt={{@model.name}}
               @width="500"
             />

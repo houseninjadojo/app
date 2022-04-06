@@ -4,4 +4,5 @@ export default Model.extend({
   invoice: belongsTo('invoice'),
   property: belongsTo('property'),
   user: belongsTo('user'),
+  documentGroup: belongsTo('document-group'),
 });

@@ -6,6 +6,7 @@ export default class ServiceActivityRecordsComponent extends Component {
   @service router;
   @service view;
   @service haptics;
+  @service intercom;
 
   @action
   selectRoute(route) {
@@ -15,5 +16,10 @@ export default class ServiceActivityRecordsComponent extends Component {
       this.view.preservePreviousRoute(this.router);
       this.router.transitionTo(`work-order`, route.id);
     }
+  }
+
+  @action
+  openChatModal() {
+    this.intercom.show();
   }
 }
