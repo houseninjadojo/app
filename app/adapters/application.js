@@ -3,8 +3,6 @@ import { service } from '@ember/service';
 // eslint-disable-next-line ember/no-computed-properties-in-native-classes
 import { computed } from '@ember/object';
 import ENV from 'houseninja/config/environment';
-// import { underscore } from '@ember/string';
-// import { pluralize } from 'ember-inflector';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   @service session;
@@ -21,16 +19,4 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     }
     return headers;
   }
-
-  // handleResponse(status) {
-  //   if (status === 401 && this.session.isAuthenticated) {
-  //     this.session.invalidate();
-  //   }
-  //   return super.handleResponse(...arguments);
-  // }
-
-  // pathForType(modelName) {
-  //   let pluralized = pluralize(modelName);
-  //   return underscore(pluralized);
-  // }
 }

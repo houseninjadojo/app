@@ -1,13 +1,24 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import {
+  PROPERTY_INFO,
+  WALKTHROUGH_BOOKING,
+} from 'houseninja/data/enums/onboarding-step';
 
 export default class SignupPropertyInfoRoute extends Route {
-  @service store;
+  @service onboarding;
+
+  beforeModel() {
+    if (this.onboarding.currentStep === WALKTHROUGH_BOOKING) {
+      this.transitionTo('signup.walkthrough-booking');
+    }
+  }
 
   model() {
-    this.store.findAll('service-area', {
-      backgroundReload: true,
-    });
-    return this.store.peekAll('property').get('firstObject');
+    return this.onboarding.fetchLocalModel('property');
+  }
+
+  deactivate() {
+    this.onboarding.completeStep(PROPERTY_INFO);
   }
 }

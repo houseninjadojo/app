@@ -2,9 +2,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 
 export default class PropertyInfoComponent extends Component {
@@ -92,20 +91,19 @@ export default class PropertyInfoComponent extends Component {
   async savePropertyInfo() {
     let property;
     try {
-      let serviceArea = this.store.peekAll('service-area').get('firstObject');
-      let user = this.store.peekAll('user').get('firstObject');
+      let user = this.store.peekFirst('user');
       if (isPresent(this.args.property)) {
         property = this.args.property;
         property.setProperties({
-          serviceArea,
+          // serviceArea,
           user,
           ...this.propertyInfo,
           default: true,
           selected: true,
         });
       } else {
-        property = await this.store.createRecord('property', {
-          serviceArea,
+        property = this.store.createRecord('property', {
+          // serviceArea,
           user,
           ...this.propertyInfo,
           default: true,
@@ -115,9 +113,8 @@ export default class PropertyInfoComponent extends Component {
       await property.save();
       this.router.transitionTo('signup.walkthrough-booking');
     } catch (e) {
-      this.errors = property.errors;
-      debug(e);
-      Sentry.captureException(e);
+      this.errors = property?.errors;
+      captureException(e);
     }
   }
 

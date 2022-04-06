@@ -2,34 +2,45 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import { captureException } from 'houseninja/utils/sentry';
+import { isPresent } from '@ember/utils';
 
 export default class ServiceAreaComponent extends Component {
   @service current;
   @service router;
+  @service onboarding;
   @service store;
 
   @tracked zipcode;
   @tracked formIsInvalid = true;
 
+  constructor() {
+    super(...arguments);
+    if (this.validZipcode(this.args.zipcode)) {
+      this.zipcode = this.args.zipcode;
+      this.formIsInvalid = false;
+    }
+  }
+
   @action
   async checkServiceArea() {
+    let serviceArea;
     try {
-      const serviceAreas = await this.store.query('service-area', {
+      serviceArea = await this.store.queryRecord('service-area', {
         filter: {
           zipcodes: [this.zipcode],
         },
       });
-      if (serviceAreas.length > 0) {
-        this.router.transitionTo('signup.contact-info');
-      } else {
-        this.current.signup.zipcode = this.zipcode;
-        this.router.transitionTo('signup.area-notification');
-      }
+      console.log(serviceArea);
     } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
+    }
+    if (isPresent(serviceArea)) {
+      this.onboarding.zipcode = this.zipcode;
+      this.router.transitionTo('signup.contact-info');
+    } else {
+      this.current.signup.zipcode = this.zipcode;
+      this.router.transitionTo('signup.area-notification');
     }
   }
 
@@ -37,10 +48,14 @@ export default class ServiceAreaComponent extends Component {
   validateForm(e) {
     this.zipcode = e.target.value;
 
-    if (this.zipcode && this.zipcode.length >= 5) {
+    if (this.validZipcode(this.zipcode)) {
       this.formIsInvalid = false;
     } else {
       this.formIsInvalid = true;
     }
+  }
+
+  validZipcode(zipcode) {
+    return zipcode?.length >= 5;
   }
 }

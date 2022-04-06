@@ -1,4 +1,6 @@
 import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
+import { COMPLETED } from 'houseninja/data/enums/onboarding-step';
+import { isPresent, isEmpty } from '@ember/utils';
 
 export default class UserModel extends Model {
   @hasMany('document') documents;
@@ -26,7 +28,19 @@ export default class UserModel extends Model {
   // @see https://developers.intercom.com/installing-intercom/docs/cordova-phonegap-identity-verification
   @attr('string') intercomHash;
 
+  @attr('string') contactType;
+  @attr('string') onboardingStep;
+  @attr('string') onboardingCode;
+
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  get shouldResumeOnboarding() {
+    return isPresent(this.onboardingStep) && this.onboardingStep !== COMPLETED;
+  }
+
+  get shouldContinueOnboarding() {
+    return isEmpty(this.onboardingStep);
   }
 }

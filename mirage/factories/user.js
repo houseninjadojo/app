@@ -3,6 +3,8 @@ import faker from '@faker-js/faker';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import ENV from 'houseninja/config/environment';
 import getPlatform from 'houseninja/utils/get-platform';
+import { ALL as ContactTypes } from 'houseninja/data/enums/contact-type';
+import { ALL as OnboardingSteps } from 'houseninja/data/enums/onboarding-step';
 
 export default Factory.extend({
   promoCode: association(),
@@ -31,6 +33,18 @@ export default Factory.extend({
     // compute the hash
     let hash = hmacSHA256(this.id, secret);
     return hash.toString();
+  },
+
+  contactType() {
+    return faker.random.arrayElement(ContactTypes);
+  },
+
+  onboardingStep() {
+    return faker.random.arrayElement(OnboardingSteps);
+  },
+
+  onboardingCode() {
+    return faker.random.alphaNumeric(12);
   },
 
   afterCreate(user, server) {

@@ -2,15 +2,16 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
 
 export default class ContactInfoComponent extends Component {
   @service current;
   @service router;
+  @service onboarding;
   @service store;
 
   @tracked errors = {
@@ -78,22 +79,26 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async saveContactInfo() {
-    let user;
     if (isPresent(this.args.user)) {
-      user = this.args.user;
-      user.setProperties(this.contactInfo);
-    } else {
-      user = this.store.createRecord('user', {
-        ...this.contactInfo,
-      });
+      this.args.user.unloadRecord();
     }
+    const user = this.store.createRecord('user', {
+      ...this.contactInfo,
+      onboardingStep: PAYMENT_METHOD,
+    });
     try {
       await user.save();
-      this.router.transitionTo('signup.payment-method');
     } catch (e) {
       this.errors = user.errors;
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
+    }
+    if (user.shouldResumeOnboarding) {
+      this.onboarding.rehydrateFromRemote.perform();
+      this.router.transitionTo(
+        this.onboarding.routeFromStep(user.onboardingStep)
+      );
+    } else {
+      this.router.transitionTo('signup.payment-method');
     }
   }
 

@@ -1,30 +1,40 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import * as Sentry from '@sentry/ember';
-import { debug } from '@ember/debug';
+import { captureException } from 'houseninja/utils/sentry';
 import { task } from 'ember-concurrency';
+import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
+import { isEmpty } from '@ember/utils';
 
 export default class SignupPaymentMethodRoute extends Route {
   @service store;
+  @service onboarding;
 
-  model() {
-    this.generateSubscription.perform();
-    return this.store.peekAll('credit-card').get('firstObject');
+  async model() {
+    this.rehydrateOrGenerateSubscription.perform();
+    return this.onboarding.fetchLocalModel('credit-card');
+  }
+
+  deactivate() {
+    this.onboarding.completeStep(PAYMENT_METHOD);
   }
 
   @task *generateSubscription() {
-    let subscriptionPlans = this.store.peekAll('subscription-plan');
-    if (subscriptionPlans.length === 0) {
+    let subscriptionPlan = this.onboarding.fetchLocalModel('subscription-plan');
+    if (isEmpty(subscriptionPlan)) {
       try {
-        subscriptionPlans = yield this.store.findAll('subscription-plan');
+        subscriptionPlan = yield this.store.findFirst('subscription-plan');
       } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
+        captureException(e);
       }
     }
-    let plan = subscriptionPlans.get('firstObject');
     this.store.createRecord('subscription', {
-      subscriptionPlan: plan,
+      subscriptionPlan,
     });
+  }
+
+  @task({ drop: true }) *rehydrateOrGenerateSubscription() {
+    if (this.store.peekAll('subscription').get('length') === 0) {
+      yield this.generateSubscription.perform();
+    }
   }
 }

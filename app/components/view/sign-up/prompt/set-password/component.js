@@ -13,6 +13,7 @@ import { isPresent } from '@ember/utils';
 export default class SetPasswordComponent extends Component {
   @service current;
   @service router;
+  @service onboarding;
   @service store;
 
   @tracked passwords = {
@@ -82,6 +83,7 @@ export default class SetPasswordComponent extends Component {
       user.password = this.passwords.password;
       try {
         await user.save();
+        await this.onboarding.cleanup();
         this.router.transitionTo('signup.booking-confirmation');
       } catch (e) {
         this.errors = user.errors;

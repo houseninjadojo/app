@@ -2,6 +2,7 @@ import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
 import config from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { debug } from '@ember/debug';
 
 const sentryOptions = config['@sentry/ember'].sentry;
 
@@ -26,3 +27,11 @@ export function init() {
 const Sentry = isNativePlatform() ? SentryCapacitor : SentryEmber;
 
 export default Sentry;
+
+export function captureException(ex) {
+  if (config.environment === 'development') {
+    console.error(ex);
+  }
+  debug(ex);
+  Sentry.captureException(ex);
+}

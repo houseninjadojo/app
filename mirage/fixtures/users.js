@@ -19,4 +19,18 @@
 //   },
 // ];
 
-export default [];
+import { WELCOME } from 'houseninja/data/enums/onboarding-step';
+import { CUSTOMER } from 'houseninja/data/enums/contact-type';
+
+export default [
+  {
+    id: '01ce0d37-cf98-4f3d-9810-2f5781085d5f',
+    email: 'miles@houseninja.co',
+    firstName: 'Miles',
+    lastName: 'Zimmerman',
+    phoneNumber: '925-451-4431',
+    contactType: CUSTOMER,
+    onboardingStep: WELCOME,
+    onboardingCode: 'asdf1234',
+  },
+];

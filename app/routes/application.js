@@ -11,6 +11,7 @@ class ApplicationRoute extends Route {
   @service session;
   @service router;
   @service loader;
+  @service storage;
 
   @service('ember-user-activity@user-activity') userActivity;
 
@@ -26,6 +27,7 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel() {
+    await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
     await this.analytics.setup();
