@@ -26,7 +26,7 @@ def capacitor_pods
   pod 'CapacitorSplashScreen', :path => '../../node_modules/@capacitor/splash-screen'
   pod 'CapacitorStorage', :path => '../../node_modules/@capacitor/storage'
   pod 'HouseninjaCapacitorMixpanel', :path => '../../node_modules/@houseninja/capacitor-mixpanel'
-  pod 'RobingenzCapacitorFilePicker', :path => '../../node_modules/@robingenz/capacitor-file-picker'    
+  pod 'RobingenzCapacitorFilePicker', :path => '../../node_modules/@robingenz/capacitor-file-picker'
   pod 'CapacitorBranchDeepLinks', :path => '../../node_modules/capacitor-branch-deep-links'
   pod 'CapacitorSecureStoragePlugin', :path => '../../node_modules/capacitor-secure-storage-plugin'
   pod 'SentryCapacitor', :path => '../../node_modules/@sentry/capacitor'

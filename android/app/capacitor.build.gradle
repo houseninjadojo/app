@@ -24,8 +24,10 @@ dependencies {
     implementation project(':capacitor-push-notifications')
     implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
+    implementation project(':capacitor-storage')
     implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':robingenz-capacitor-file-picker')
+    implementation project(':capacitor-branch-deep-links')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
 
