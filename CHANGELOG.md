@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/houseninjadojo/app/compare/v1.5.0...v1.6.0) (2022-04-06)
+
+
+### Features
+
+* **signup:** resume signing up with a url or credentials (HOU-131) ([#498](https://github.com/houseninjadojo/app/issues/498)) ([336b6fe](https://github.com/houseninjadojo/app/commit/336b6fe34664b714e68054c118945a0039dc56e8))
+
 # [1.5.0](https://github.com/houseninjadojo/app/compare/v1.4.1...v1.5.0) (2022-04-05)
 
 
