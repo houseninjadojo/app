@@ -38,9 +38,9 @@
   font-family: var(--campton-emphasis) !important;
 }
 
-/* .hn .accent:not(button) {
-  color: var(--teal-500) !important;
-} */
+.hn .accent:not(button) {
+  color: var(--teal-500);
+}
 
 .hn.banner-message {
   width: 100%;
