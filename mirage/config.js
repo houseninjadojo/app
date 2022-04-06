@@ -45,22 +45,22 @@ export default function () {
   // we need to replicate looking up a user by their onboarding code
   // uncomment this when you need this behavior
   //
-  this.get('/users', (schema, request) => {
-    let onboardingCode = request.queryParams['filter[onboardingCode]'];
-    if (onboardingCode) {
-      const users = schema.users.where({ onboardingCode });
-      const user = users.models?.firstObject;
-      // schema.properties.create({ user: user });
-      const paymentMethod = schema.creditCards.create({ user: user });
-      schema.subscriptions.create({
-        user: user,
-        paymentMethod: paymentMethod,
-      });
-      return users;
-    } else {
-      return schema.users.all();
-    }
-  });
+  // this.get('/users', (schema, request) => {
+  //   let onboardingCode = request.queryParams['filter[onboardingCode]'];
+  //   if (onboardingCode) {
+  //     const users = schema.users.where({ onboardingCode });
+  //     const user = users.models?.firstObject;
+  //     // schema.properties.create({ user: user });
+  //     const paymentMethod = schema.creditCards.create({ user: user });
+  //     schema.subscriptions.create({
+  //       user: user,
+  //       paymentMethod: paymentMethod,
+  //     });
+  //     return users;
+  //   } else {
+  //     return schema.users.all();
+  //   }
+  // });
 
   // we need to replicate the signup restore or create logic of our backend
   // uncomment when you need this behavior
