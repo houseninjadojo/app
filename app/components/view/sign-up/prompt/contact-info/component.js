@@ -91,6 +91,7 @@ export default class ContactInfoComponent extends Component {
     } catch (e) {
       this.errors = user.errors;
       captureException(e);
+      return;
     }
     if (user.shouldResumeOnboarding) {
       this.onboarding.rehydrateFromRemote.perform();

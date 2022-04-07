@@ -15,6 +15,7 @@ export default class PaymentMethodComponent extends Component {
   @service current;
   @service router;
   @service store;
+  @service onboarding;
 
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
@@ -156,8 +157,8 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   async savePaymentMethod() {
-    const user = this.store.peekAll('user').get('firstObject');
-    const subscription = this.store.peekAll('subscription').get('firstObject');
+    const user = await this.onboarding.fetchLocalModel('user');
+    const subscription = await this.onboarding.fetchLocalModel('user');
 
     let paymentMethod;
     try {
