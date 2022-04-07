@@ -10,7 +10,8 @@ export default class SignupPaymentMethodRoute extends Route {
   @service onboarding;
 
   async model() {
-    this.rehydrateOrGenerateSubscription.perform();
+    this.generateSubscription.perform();
+    // this.rehydrateOrGenerateSubscription.perform();
     return this.onboarding.fetchLocalModel('credit-card');
   }
 
@@ -19,14 +20,7 @@ export default class SignupPaymentMethodRoute extends Route {
   }
 
   @task *generateSubscription() {
-    let subscriptionPlan = this.onboarding.fetchLocalModel('subscription-plan');
-    if (isEmpty(subscriptionPlan)) {
-      try {
-        subscriptionPlan = yield this.store.findFirst('subscription-plan');
-      } catch (e) {
-        captureException(e);
-      }
-    }
+    const subscriptionPlan = yield this.fetchSubscriptionPlan.perform();
     this.store.createRecord('subscription', {
       subscriptionPlan,
     });
@@ -36,5 +30,17 @@ export default class SignupPaymentMethodRoute extends Route {
     if (isEmpty(this.store.peekFirst('subscription')?.id)) {
       yield this.generateSubscription.perform();
     }
+  }
+
+  @task({ drop: true }) *fetchSubscriptionPlan() {
+    let subscriptionPlan = this.onboarding.fetchLocalModel('subscription-plan');
+    if (isEmpty(subscriptionPlan)) {
+      try {
+        subscriptionPlan = yield this.store.findFirst('subscription-plan');
+      } catch (e) {
+        captureException(e);
+      }
+    }
+    return subscriptionPlan;
   }
 }
