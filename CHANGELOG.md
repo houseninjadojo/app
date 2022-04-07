@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/houseninjadojo/app/compare/v1.6.1...v1.6.2) (2022-04-07)
+
+
+### Bug Fixes
+
+* **signup:** be sure to move forward if contact info fails ([#510](https://github.com/houseninjadojo/app/issues/510)) ([2b7d334](https://github.com/houseninjadojo/app/commit/2b7d3347efe0353ed4c6c8c76f6606b8a056fc3c))
+
 ## [1.6.1](https://github.com/houseninjadojo/app/compare/v1.6.0...v1.6.1) (2022-04-07)
 
 
