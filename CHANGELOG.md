@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/houseninjadojo/app/compare/v1.6.2...v1.6.3) (2022-04-07)
+
+
+### Bug Fixes
+
+* **signup:** fix bug looking up wrong subscription payload ([#511](https://github.com/houseninjadojo/app/issues/511)) ([cb547b5](https://github.com/houseninjadojo/app/commit/cb547b5e168b5fef74ec613b04d610178259f8f4))
+
 ## [1.6.2](https://github.com/houseninjadojo/app/compare/v1.6.1...v1.6.2) (2022-04-07)
 
 
