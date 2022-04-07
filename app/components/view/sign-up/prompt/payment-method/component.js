@@ -158,13 +158,10 @@ export default class PaymentMethodComponent extends Component {
   @action
   async savePaymentMethod() {
     const user = await this.onboarding.fetchLocalModel('user');
-    const subscription = await this.onboarding.fetchLocalModel('subscription');
+    const subscription = await this.findOrCreateSubscription();
 
     let paymentMethod;
     try {
-      subscription.user = user;
-      subscription.promoCode = this.promoCode;
-
       if (isPresent(this.args.paymentMethod)) {
         paymentMethod = this.args.paymentMethod;
         paymentMethod.setProperties({
@@ -191,5 +188,28 @@ export default class PaymentMethodComponent extends Component {
       debug(e);
       Sentry.captureException(e);
     }
+  }
+
+  async findOrCreateSubscription() {
+    const user = await this.onboarding.fetchLocalModel('user');
+    const subscriptionPlan = await this.onboarding.fetchLocalModel(
+      'subscription-plan'
+    );
+    const promoCode = this.promoCode;
+    let subscription = await this.onboarding.fetchLocalModel('subscription');
+    if (isPresent(subscription)) {
+      subscription.setProperties({
+        promoCode,
+        subscriptionPlan,
+        user,
+      });
+    } else {
+      subscription = this.store.createRecord('subscription', {
+        promoCode,
+        subscriptionPlan,
+        user,
+      });
+    }
+    return subscription;
   }
 }
