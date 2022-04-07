@@ -6,7 +6,10 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
-import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
+import {
+  PAYMENT_METHOD,
+  CONTACT_INFO,
+} from 'houseninja/data/enums/onboarding-step';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -95,9 +98,11 @@ export default class ContactInfoComponent extends Component {
     }
     if (user.shouldResumeOnboarding) {
       this.onboarding.rehydrateFromRemote.perform();
-      this.router.transitionTo(
-        this.onboarding.routeFromStep(user.onboardingStep)
-      );
+      let route = this.onboarding.routeFromStep(user.onboardingStep);
+      if (user.onboardingStep === CONTACT_INFO) {
+        route = 'signup.payment-method';
+      }
+      this.router.transitionTo(route);
     } else {
       this.router.transitionTo('signup.payment-method');
     }
