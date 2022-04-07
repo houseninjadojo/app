@@ -4,6 +4,7 @@
         {{#each this.fields as |field|}}
             {{#if field.isSelect}}
             <Primitive::Select
+                @id={{field.id}}
                 @options={{field.options}}
                 @label={{field.label}}
                 @required={{true}}

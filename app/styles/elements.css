@@ -38,9 +38,9 @@
   font-family: var(--campton-emphasis) !important;
 }
 
-/* .hn .accent:not(button) {
-  color: var(--teal-500) !important;
-} */
+.hn .accent:not(button) {
+  color: var(--teal-500);
+}
 
 .hn.banner-message {
   width: 100%;
@@ -54,6 +54,11 @@
 .hn.banner-message.alert {
   background-color: var(--red-10);
   color: var(--red-500);
+}
+
+.hn.banner-message.warn {
+  background-color: var(--orange-100);
+  color: var(--orange-500);
 }
 
 .application .light a,
