@@ -33,7 +33,7 @@ export default class SignupPaymentMethodRoute extends Route {
   }
 
   @task({ drop: true }) *rehydrateOrGenerateSubscription() {
-    if (this.store.peekAll('subscription').get('length') === 0) {
+    if (isEmpty(this.store.peekFirst('subscription')?.id)) {
       yield this.generateSubscription.perform();
     }
   }
