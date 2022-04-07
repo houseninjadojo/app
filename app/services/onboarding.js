@@ -61,6 +61,7 @@ export default class OnboardingService extends Service {
     yield this.store.findRecord('user', user.id, {
       include: includes.join(','),
     });
+    this.currentStep = user.onboardingStep;
   }
 
   async rehydrateFromCache(modelType = 'user') {
