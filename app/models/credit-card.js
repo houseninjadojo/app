@@ -12,7 +12,7 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('string') zipcode;
 
   get obfuscated() {
-    const brand = isPresent(this.brand) ? this.brand.toUpperCase() : 'Card';
+    const brand = isPresent(this.brand) ? this.brand.toUpperCase() : null;
     return {
       brand,
       country: '',

@@ -13,6 +13,11 @@
     </p>
 </div>
 <div class="work-order-details">
+    <div class="hn banner-message warn">
+        <p>
+            Your <span class="hn {{if @model.cardBrand 'strong'}}">{{if @model.cardBrand @model.cardBrand 'card'}}</span> ending in <span class="hn strong">{{@model.lastFour}}</span> will automatically be charged in 5 days.
+        </p>
+    </div>
     <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
     <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
     <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
