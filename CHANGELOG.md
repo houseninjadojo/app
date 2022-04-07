@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/houseninjadojo/app/compare/v1.6.0...v1.6.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* **signup:** fix two bugs in signup ([#509](https://github.com/houseninjadojo/app/issues/509)) ([85b77af](https://github.com/houseninjadojo/app/commit/85b77af02594f163e1d326ef87abe2d68896a401))
+
 # [1.6.0](https://github.com/houseninjadojo/app/compare/v1.5.0...v1.6.0) (2022-04-06)
 
 
