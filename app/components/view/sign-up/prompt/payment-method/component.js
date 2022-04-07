@@ -158,7 +158,7 @@ export default class PaymentMethodComponent extends Component {
   @action
   async savePaymentMethod() {
     const user = await this.onboarding.fetchLocalModel('user');
-    const subscription = await this.onboarding.fetchLocalModel('user');
+    const subscription = await this.onboarding.fetchLocalModel('subscription');
 
     let paymentMethod;
     try {
