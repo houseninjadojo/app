@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/houseninjadojo/app/compare/v1.6.4...v1.6.5) (2022-04-07)
+
+
+### Bug Fixes
+
+* **signup:** always generate subscription + plan on payment-method model ([#512](https://github.com/houseninjadojo/app/issues/512)) ([5ab9eae](https://github.com/houseninjadojo/app/commit/5ab9eaef0ad87b9076ef13a4dd8fc3f15b012fae))
+
 ## [1.6.4](https://github.com/houseninjadojo/app/compare/v1.6.3...v1.6.4) (2022-04-07)
 
 
