@@ -24,6 +24,8 @@ export default class DeepLinksService extends Service {
   @service analytics;
 
   listener = null;
+  branchListener = null;
+  branchErrorListener = null;
 
   start() {
     if (isNativePlatform()) {
@@ -33,9 +35,10 @@ export default class DeepLinksService extends Service {
   }
 
   stop() {
-    this.listener = null;
-    this.branchListener = null;
-    this.branchErrorListener = null;
+    // MobileApp.removeAllListeners();
+    this.listener?.remove();
+    this.branchListener?.remove();
+    this.branchErrorListener?.remove();
   }
 
   // only web for now
@@ -43,6 +46,14 @@ export default class DeepLinksService extends Service {
     if (!isNativePlatform()) {
       this.setupWebHandler();
     }
+  }
+
+  // on destroy
+  willDestroy() {
+    // MobileApp.removeAllListeners();
+    this.listener?.remove();
+    this.branchListener?.remove();
+    this.branchErrorListener?.remove();
   }
 
   forwardRoute(url) {
@@ -107,6 +118,24 @@ export default class DeepLinksService extends Service {
         captureException(error);
       }
     );
+  }
+
+  handleBranchLink(event) {
+    if (this.isNonBranchLink(event)) {
+      return;
+    }
+    const referringParams = event.referringParams;
+    this.analytics.track('Opened with Deep Link', referringParams);
+    Sentry.addBreadcrumb({
+      category: 'deep-link',
+      message: 'Branch deep link',
+      data: event,
+      level: 'info',
+    });
+    // Retrieve deeplink keys from 'referringParams' and evaluate the values to determine where to route the user
+    // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
+    const route = this.selectRouteFromBranchParams(referringParams);
+    this.forwardRoute({ raw: route });
   }
 
   setupWebHandler() {
