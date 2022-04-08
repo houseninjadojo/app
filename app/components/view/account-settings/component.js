@@ -23,7 +23,7 @@ export default class AccountSettingsComponent extends Component {
     },
     {
       label: 'Document Vault',
-      name: 'vault',
+      name: NATIVE_MOBILE_ROUTE.VAULT.INDEX,
     },
     {
       label: 'Contact Information',
@@ -43,7 +43,7 @@ export default class AccountSettingsComponent extends Component {
     },
     {
       label: 'FAQ',
-      name: 'faq',
+      name: NATIVE_MOBILE_ROUTE.FAQ,
     },
     {
       label: 'Logout',

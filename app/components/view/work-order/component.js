@@ -41,7 +41,7 @@ export default class WorkOrderViewComponent extends Component {
   @action
   selectRoute(route) {
     if (typeof route === 'object') {
-      this.router.transitionTo(`work-order`, route.id);
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDER, route.id);
     } else {
       if (route === this.paymentRoute) {
         this.view.preservePreviousRoute(this.router);

@@ -30,19 +30,19 @@ export const NATIVE_MOBILE_ROUTE = {
     SECURITY: 'settings.security',
     PROPERTY: 'settings.property',
   },
-  faq: 'faq',
-  vault: {
-    index: 'vault',
-    document: {
-      index: 'vault.document.index',
-      add: 'vault.document.add',
-      edit: 'vault.document.edit',
+  FAQ: 'faq',
+  VAULT: {
+    INDEX: 'vault',
+    DOCUMENT: {
+      INDEX: 'vault.document.index',
+      ADD: 'vault.document.add',
+      EDIT: 'vault.document.edit',
     },
-    group: {
-      index: 'vault.group.index',
-      add: 'vault.group.add',
-      edit: 'vault.group.edit',
+    GROUP: {
+      INDEX: 'vault.group.index',
+      ADD: 'vault.group.add',
+      EDIT: 'vault.group.edit',
     },
   },
-  workOrder: 'work-order',
+  WORK_ORDER: 'work-order',
 };

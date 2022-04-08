@@ -13,7 +13,7 @@ export default function () {
       NATIVE_MOBILE_ROUTE.SETTINGS.INDEX,
       NATIVE_MOBILE_ROUTE.DASHBOARD.INDEX,
     ]),
-    this.toRoute('vault'),
+    this.toRoute(NATIVE_MOBILE_ROUTE.VAULT.INDEX),
     this.use('toLeft', { duration: 500, easing: [100, 20] }),
     this.reverse('toRight', { duration: 300 })
   );
@@ -24,8 +24,7 @@ export default function () {
       NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT,
       NATIVE_MOBILE_ROUTE.SETTINGS.SECURITY,
       NATIVE_MOBILE_ROUTE.SETTINGS.PROPERTY,
-      'contact-us',
-      'faq',
+      NATIVE_MOBILE_ROUTE.FAQ,
     ]),
     this.use('toUp', { duration: 500, easing: [100, 20] }),
     this.reverse('toDown', { duration: 300 })
@@ -48,7 +47,7 @@ export default function () {
   );
 
   this.transition(
-    this.fromRoute(['work-order']),
+    this.fromRoute([NATIVE_MOBILE_ROUTE.WORK_ORDER]),
     this.toRoute([NATIVE_MOBILE_ROUTE.SETTINGS.INDEX]),
     this.use('toUp', { duration: 500, easing: [100, 20] }),
     this.reverse('toDown', { duration: 300 })

@@ -13,7 +13,7 @@
     <Primitive::Section @label="Home Care Tip" @bodyClass='home-care-tip-section'>
         <View::Home::HomeCareTip @homeCareTip={{this.randomHomeCareTip}}/>
     </Primitive::Section>
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" (fn this.selectRoute 'vault')}}>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" (fn this.selectRoute this.documentVaultRoute)}}>
         Document Vault
     </Primitive::Button>
 </div>
