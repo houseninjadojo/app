@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class LogoutRoute extends Route {
   @service analytics;
@@ -17,7 +18,10 @@ export default class LogoutRoute extends Route {
       showDuration: 1000,
       autoHide: false,
     });
-    this.session.requireAuthentication(transition, 'login-or-signup');
+    this.session.requireAuthentication(
+      transition,
+      NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
+    );
     await this.analytics.track('Logout');
     await this.session.invalidate();
     await this.analytics.reset();

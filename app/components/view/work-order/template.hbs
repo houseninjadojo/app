@@ -7,7 +7,7 @@
         <View::WorkOrder::Content::FailedPayment 
             @model={{@model}} 
             @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}
-            @selectRoute={{fn this.selectRoute 'settings.payment'}}/>
+            @selectRoute={{fn this.selectRoute this.paymentRoute}}/>
     {{else if (eq this.contentType this.content.closed)}}        
         <View::WorkOrder::Content::Closed @model={{@model}} />
     {{else}}    

@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import SecureStorage from 'houseninja/utils/secure-storage';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class LoginCallbackRoute extends Route {
   @service session;
@@ -28,7 +29,7 @@ export default class LoginCallbackRoute extends Route {
         params.state
       );
       await SecureStorage.clear('login');
-      this.router.transitionTo('dashboard.home');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
     }
   }
 

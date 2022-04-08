@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import { set } from '@ember/object';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class ViewService extends Service {
   @service router;
@@ -48,7 +49,7 @@ export default class ViewService extends Service {
     } else if (name) {
       this.router.transitionTo(name);
     } else {
-      this.router.transitionTo('dashboard.home');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
     }
   }
 

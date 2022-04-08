@@ -2,10 +2,15 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Intercom } from '@capacitor-community/intercom';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class NavBarComponent extends Component {
   @service analytics;
   @service router;
+
+  dashboardHomeRoute = NATIVE_MOBILE_ROUTE.DASHBOARD.HOME;
+  dashboardHandleItRoute = NATIVE_MOBILE_ROUTE.DASHBOARD.HANDLE_IT;
+  dashboardHistoryRoute = NATIVE_MOBILE_ROUTE.DASHBOARD.HISTORY;
 
   /**
    * The current route selection

@@ -1,0 +1,48 @@
+export const SIGNUP_ROUTE = {
+  INDEX: 'signup',
+  AREA_NOTIFICATION: 'signup.area-notification',
+  PLAN_SELECTION: 'signup.plan-selection',
+  CONTACT_INFO: 'signup.contact-info',
+  PAYMENT_METHOD: 'signup.payment-method',
+  SET_PASSWORD: 'signup.set-password',
+  WELCOME: 'signup.welcome',
+  PROPERTY_INFO: 'signup.property-info',
+  WALKTHROUGH_BOOKING: 'signup.walkthrough-booking',
+  BOOKING_CONFIRMATION: 'signup.booking-confirmation',
+};
+
+export const NATIVE_MOBILE_ROUTE = {
+  DASHBOARD: {
+    INDEX: 'dashboard',
+    HOME: 'dashboard.home',
+    HISTORY: 'dashboard.work-history',
+    HANDLE_IT: 'dashboard.handle-it',
+  },
+  AUTH: {
+    LOGIN_OR_SIGNUP: 'login-or-signup',
+    LOGIN: 'login',
+    LOGOUT: 'logout',
+  },
+  SETTINGS: {
+    INDEX: 'settings',
+    CONTACT: 'settings.contact',
+    PAYMENT: 'settings.payment',
+    SECURITY: 'settings.security',
+    PROPERTY: 'settings.property',
+  },
+  FAQ: 'faq',
+  VAULT: {
+    INDEX: 'vault',
+    DOCUMENT: {
+      INDEX: 'vault.document.index',
+      ADD: 'vault.document.add',
+      EDIT: 'vault.document.edit',
+    },
+    GROUP: {
+      INDEX: 'vault.group.index',
+      ADD: 'vault.group.add',
+      EDIT: 'vault.group.edit',
+    },
+  },
+  WORK_ORDER: 'work-order',
+};

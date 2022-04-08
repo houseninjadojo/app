@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import { SERVICE_AREA } from 'houseninja/data/enums/onboarding-step';
 import { next } from '@ember/runloop';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class SignupIndexRoute extends Route {
   @service router;
@@ -40,7 +41,7 @@ export default class SignupIndexRoute extends Route {
         this.onboarding.routeFromStep(user.onboardingStep)
       );
     } else {
-      this.router.transitionTo('signup.index');
+      this.router.transitionTo(SIGNUP_ROUTE.INDEX);
     }
   }
 }

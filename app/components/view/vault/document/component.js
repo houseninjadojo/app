@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultDocumentComponent extends Component {
   @service router;
@@ -22,14 +23,20 @@ export default class VaultDocumentComponent extends Component {
       // transition back
       const belongsToGroup = this.args.model.groupId;
       if (belongsToGroup) {
-        this.router.transitionTo('vault.group', this.args.model.groupId);
+        this.router.transitionTo(
+          NATIVE_MOBILE_ROUTE.VAULT.GROUP.INDEX,
+          this.args.model.groupId
+        );
       } else {
-        this.router.transitionTo('vault');
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
       }
     }
     if (route === 'edit') {
       // edit document
-      this.router.transitionTo('vault.document.edit', this.args.model.id);
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.EDIT,
+        this.args.model.id
+      );
     }
   }
 }

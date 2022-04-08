@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WalkthroughBookingComponent extends Component {
   @service router;
@@ -22,7 +23,7 @@ export default class WalkthroughBookingComponent extends Component {
 
   @action
   async saveWalkthroughBooking() {
-    this.router.transitionTo('signup.set-password');
+    this.router.transitionTo(SIGNUP_ROUTE.SET_PASSWORD);
   }
 
   receiveWindowMessage(event) {
@@ -35,7 +36,7 @@ export default class WalkthroughBookingComponent extends Component {
   }
 
   onMeetingBooked() {
-    this.router.transitionTo('signup.set-password');
+    this.router.transitionTo(SIGNUP_ROUTE.SET_PASSWORD);
   }
 
   get calendarParams() {
