@@ -9,6 +9,7 @@ import {
 } from 'houseninja/utils/components/input-validation';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class SetPasswordComponent extends Component {
   @service current;
@@ -84,7 +85,7 @@ export default class SetPasswordComponent extends Component {
       try {
         await user.save();
         await this.onboarding.cleanup();
-        this.router.transitionTo('signup.booking-confirmation');
+        this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
       } catch (e) {
         this.errors = user.errors;
         debug(e);

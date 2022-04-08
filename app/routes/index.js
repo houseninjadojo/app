@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class IndexRoute extends Route {
   @service session;
@@ -24,7 +25,7 @@ export default class IndexRoute extends Route {
       // we are NOT logged in
       // we are NOT on mobile
       // => go to signup page
-      this.router.transitionTo('signup');
+      this.router.transitionTo(SIGNUP_ROUTE.INDEX);
     }
   }
 }

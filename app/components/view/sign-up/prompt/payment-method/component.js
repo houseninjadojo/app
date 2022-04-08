@@ -8,6 +8,7 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 const DEBOUNCE_MS = 250;
 
@@ -95,7 +96,7 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.contact-info');
+    this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
   }
 
   @action showTermsAndConditionsComponent(isVisible) {
@@ -180,7 +181,7 @@ export default class PaymentMethodComponent extends Component {
       await paymentMethod.save();
       await subscription.save();
 
-      this.router.transitionTo('signup.welcome');
+      this.router.transitionTo(SIGNUP_ROUTE.WELCOME);
     } catch (e) {
       if (isPresent(paymentMethod)) {
         this.errors = paymentMethod.errors;

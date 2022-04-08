@@ -10,6 +10,7 @@ import {
   PAYMENT_METHOD,
   CONTACT_INFO,
 } from 'houseninja/data/enums/onboarding-step';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -100,17 +101,17 @@ export default class ContactInfoComponent extends Component {
       this.onboarding.rehydrateFromRemote.perform();
       let route = this.onboarding.routeFromStep(user.onboardingStep);
       if (user.onboardingStep === CONTACT_INFO) {
-        route = 'signup.payment-method';
+        route = SIGNUP_ROUTE.PAYMENT_METHOD;
       }
       this.router.transitionTo(route);
     } else {
-      this.router.transitionTo('signup.payment-method');
+      this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
     }
   }
 
   @action
   goBack() {
-    this.router.transitionTo('signup.service-area');
+    this.router.transitionTo(SIGNUP_ROUTE.INDEX);
   }
 
   @action

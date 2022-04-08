@@ -1,8 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-// import { debug } from '@ember/debug';
-// import * as Sentry from '@sentry/ember';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class PlanSelectionComponent extends Component {
   @service current;
@@ -18,11 +17,11 @@ export default class PlanSelectionComponent extends Component {
 
     this.current.signup.subscription = subscription;
 
-    this.router.transitionTo('signup.payment-method');
+    this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
   }
 
   @action
   goBack() {
-    this.router.transitionTo('signup.contact-info');
+    this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
   }
 }

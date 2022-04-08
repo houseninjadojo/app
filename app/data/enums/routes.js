@@ -1,14 +1,14 @@
 export const SIGNUP_ROUTE = {
-  index: 'signup',
-  areaNotification: 'signup.area-notification',
-  planSelection: 'signup.plan-selection',
-  contactInfo: 'signup.contact-info',
-  paymentMethod: 'signup.payment-method',
-  setPassword: 'signup.set-password',
-  welcome: 'signup.welcome',
-  propertyInfo: 'signup.property-info',
-  walkthrough: 'signup.walkthrough-booking',
-  confirmation: 'signup.booking-confirmation',
+  INDEX: 'signup',
+  AREA_NOTIFICATION: 'signup.area-notification',
+  PLAN_SELECTION: 'signup.plan-selection',
+  CONTACT_INFO: 'signup.contact-info',
+  PAYMENT_METHOD: 'signup.payment-method',
+  SET_PASSWORD: 'signup.set-password',
+  WELCOME: 'signup.welcome',
+  PROPERTY_INFO: 'signup.property-info',
+  WALKTHROUGH_BOOKING: 'signup.walkthrough-booking',
+  BOOKING_CONFIRMATION: 'signup.booking-confirmation',
 };
 
 export const NATIVE_MOBILE_ROUTE = {
