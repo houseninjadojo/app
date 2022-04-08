@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+
 export default class VaultContentComponent extends Component {
   @service camera;
   @service file;
@@ -10,6 +12,8 @@ export default class VaultContentComponent extends Component {
   @service view;
 
   @tracked showUploadMenu = false;
+
+  vaultGroupAddRoute = NATIVE_MOBILE_ROUTE.VAULT.GROUP.ADD;
 
   uploadMenuOptionType = {
     camera: 'CAMERA',
@@ -45,7 +49,7 @@ export default class VaultContentComponent extends Component {
     await this.camera.setCameraServiceImage(source);
     if (this.camera.image) {
       await this.toggleUploadMenu();
-      this.selectRoute('vault.document.add');
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.ADD);
     }
   }
 
@@ -54,7 +58,7 @@ export default class VaultContentComponent extends Component {
     await this.file.setFileServiceFile();
     if (this.file.file) {
       await this.toggleUploadMenu();
-      this.selectRoute('vault.document.add');
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.ADD);
     }
   }
 
@@ -87,9 +91,9 @@ export default class VaultContentComponent extends Component {
   @action
   handleRecordClick(record) {
     if (record.contentType) {
-      this.selectRoute('vault.document', record.id);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX, record.id);
     } else {
-      this.selectRoute('vault.group', record.id);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.GROUP.INDEX, record.id);
     }
   }
 }

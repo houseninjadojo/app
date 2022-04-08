@@ -5,6 +5,7 @@ import { Browser } from '@capacitor/browser';
 import { getOwner } from '@ember/application';
 import SecureStorage from 'houseninja/utils/secure-storage';
 import { debug } from '@ember/debug';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class LoginRoute extends Route {
   @service session;
@@ -12,7 +13,7 @@ export default class LoginRoute extends Route {
   @service analytics;
 
   async beforeModel() {
-    this.session.prohibitAuthentication('dashboard.home');
+    this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
 
     const pkce = getOwner(this).lookup('authenticator:pkce');
     const { state: loginState } = await this.loginState();
@@ -34,7 +35,7 @@ export default class LoginRoute extends Route {
 
     // we are logged in
     if (this.session.isAuthenticated) {
-      this.router.transitionTo('dashboard.home');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
     }
   }
 
@@ -53,7 +54,7 @@ export default class LoginRoute extends Route {
       Browser.addListener('browserFinished', () => {
         debug(`Popover browser closed.`);
         debug(`Transitioning to /login-or-signup`);
-        this.router.transitionTo('login-or-signup');
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
         Browser.removeAllListeners();
       });
       return await Browser.open({ url, presentationStyle: 'popover' });

@@ -1,11 +1,14 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class HomeContentComponent extends Component {
   @service router;
   @service view;
   @service haptics;
+
+  documentVaultRoute = NATIVE_MOBILE_ROUTE.VAULT.INDEX;
 
   get user() {
     return this.args.user;
@@ -41,7 +44,7 @@ export default class HomeContentComponent extends Component {
   @action
   async selectRoute(route) {
     this.haptics.giveFeedback();
-    if (route === 'vault') {
+    if (route === this.documentVaultRoute) {
       this.view.preservePreviousRoute(this.router);
     }
     this.router.transitionTo(route);

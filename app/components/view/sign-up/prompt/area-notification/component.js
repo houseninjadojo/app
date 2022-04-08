@@ -30,9 +30,4 @@ export default class AreaNotificationComponent extends Component {
       return false;
     }
   }
-
-  @action
-  goBack() {
-    this.router.transitionTo('signup.contact-info');
-  }
 }

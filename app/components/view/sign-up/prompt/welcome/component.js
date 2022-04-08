@@ -1,13 +1,14 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WelcomeComponent extends Component {
   @service router;
 
   @action
   nextStep() {
-    this.router.transitionTo('signup.property-info');
+    this.router.transitionTo(SIGNUP_ROUTE.PROPERTY_INFO);
   }
 
   @action

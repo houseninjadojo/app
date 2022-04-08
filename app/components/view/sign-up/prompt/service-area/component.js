@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class ServiceAreaComponent extends Component {
   @service current;
@@ -37,10 +38,10 @@ export default class ServiceAreaComponent extends Component {
     }
     if (isPresent(serviceArea)) {
       this.onboarding.zipcode = this.zipcode;
-      this.router.transitionTo('signup.contact-info');
+      this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
     } else {
       this.current.signup.zipcode = this.zipcode;
-      this.router.transitionTo('signup.area-notification');
+      this.router.transitionTo(SIGNUP_ROUTE.AREA_NOTIFICATION);
     }
   }
 

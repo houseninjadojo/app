@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class PropertyInfoComponent extends Component {
   @service current;
@@ -111,7 +112,7 @@ export default class PropertyInfoComponent extends Component {
         });
       }
       await property.save();
-      this.router.transitionTo('signup.walkthrough-booking');
+      this.router.transitionTo(SIGNUP_ROUTE.WALKTHROUGH_BOOKING);
     } catch (e) {
       this.errors = property?.errors;
       captureException(e);
@@ -120,7 +121,7 @@ export default class PropertyInfoComponent extends Component {
 
   @action
   goBack() {
-    this.router.transitionTo('signup.welcome');
+    this.router.transitionTo(SIGNUP_ROUTE.WELCOME);
   }
 
   @action
