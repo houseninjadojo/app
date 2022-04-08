@@ -19,7 +19,7 @@ export default class AccountSettingsComponent extends Component {
   menuItems = [
     {
       label: 'Home',
-      name: 'dashboard.home',
+      name: NATIVE_MOBILE_ROUTE.DASHBOARD.HOME,
     },
     {
       label: 'Document Vault',

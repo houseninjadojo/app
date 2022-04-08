@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import {
+  SIGNUP_ROUTE,
+  NATIVE_MOBILE_ROUTE,
+} from 'houseninja/data/enums/routes';
 
 export default class IndexRoute extends Route {
   @service session;
@@ -11,7 +14,7 @@ export default class IndexRoute extends Route {
     // we are logged in
     // => go to dashboard.home
     if (this.session.isAuthenticated) {
-      this.router.transitionTo('dashboard.home');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
       return;
     }
 

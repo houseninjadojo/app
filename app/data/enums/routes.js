@@ -12,11 +12,11 @@ export const SIGNUP_ROUTE = {
 };
 
 export const NATIVE_MOBILE_ROUTE = {
-  dashboard: {
-    index: 'dashboard',
-    home: 'dashboard.home',
-    history: 'dashboard.work-history',
-    handleIt: 'dashboard.handle-it',
+  DASHBOARD: {
+    INDEX: 'dashboard',
+    HOME: 'dashboard.home',
+    HISTORY: 'dashboard.work-history',
+    HANDLE_IT: 'dashboard.handle-it',
   },
   auth: {
     loginOrSignup: 'login-or-signup',
