@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 
 export default class FaqController extends Controller {
-  @service view
+  @service view;
 
   @action
   selectRoute() {
