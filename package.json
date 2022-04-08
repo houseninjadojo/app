@@ -133,7 +133,7 @@
     "@robingenz/capacitor-file-picker": "^0.3.0",
     "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.6.2",
-    "lottie-web": "^5.9.1",
+    "lottie-web": "^5.9.2",
     "moment": "^2.29.2"
   }
 }
