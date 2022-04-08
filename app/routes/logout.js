@@ -12,16 +12,19 @@ export default class LogoutRoute extends Route {
   @service session;
 
   async beforeModel(transition) {
-    SplashScreen.show({
-      fadeInDuration: 0,
-      fadeOutDuration: 1000,
-      showDuration: 1000,
-      autoHide: false,
-    });
+    if (isNativePlatform()) {
+      SplashScreen.show({
+        fadeInDuration: 0,
+        fadeOutDuration: 1000,
+        showDuration: 1000,
+        autoHide: false,
+      });
+    }
     this.session.requireAuthentication(
       transition,
       NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
     );
+
     await this.analytics.track('Logout');
     await this.session.invalidate();
     await this.analytics.reset();
