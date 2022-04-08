@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/houseninjadojo/app/compare/v1.6.5...v1.6.6) (2022-04-08)
+
+
+### Bug Fixes
+
+* **login:** handle non-branch deep links correctly ([#518](https://github.com/houseninjadojo/app/issues/518)) ([4f7777e](https://github.com/houseninjadojo/app/commit/4f7777e330e4a397d3e025e83dc5f815f6e0ae81))
+
 ## [1.6.5](https://github.com/houseninjadojo/app/compare/v1.6.4...v1.6.5) (2022-04-07)
 
 
