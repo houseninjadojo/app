@@ -47,7 +47,7 @@ export default class AccountSettingsComponent extends Component {
     },
     {
       label: 'Logout',
-      name: 'logout',
+      name: NATIVE_MOBILE_ROUTE.AUTH.LOGOUT,
     },
   ];
 

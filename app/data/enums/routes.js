@@ -18,10 +18,10 @@ export const NATIVE_MOBILE_ROUTE = {
     HISTORY: 'dashboard.work-history',
     HANDLE_IT: 'dashboard.handle-it',
   },
-  auth: {
-    loginOrSignup: 'login-or-signup',
-    login: 'login',
-    logout: 'logout',
+  AUTH: {
+    LOGIN_OR_SIGNUP: 'login-or-signup',
+    LOGIN: 'login',
+    LOGOUT: 'logout',
   },
   SETTINGS: {
     INDEX: 'settings',

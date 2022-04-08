@@ -23,7 +23,7 @@ export default class IndexRoute extends Route {
       // we are NOT logged in
       // but we are on mobile
       // => go to login/signup page
-      this.router.transitionTo('login-or-signup');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
     } else {
       // we are NOT logged in
       // we are NOT on mobile

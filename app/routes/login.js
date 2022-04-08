@@ -54,7 +54,7 @@ export default class LoginRoute extends Route {
       Browser.addListener('browserFinished', () => {
         debug(`Popover browser closed.`);
         debug(`Transitioning to /login-or-signup`);
-        this.router.transitionTo('login-or-signup');
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
         Browser.removeAllListeners();
       });
       return await Browser.open({ url, presentationStyle: 'popover' });
