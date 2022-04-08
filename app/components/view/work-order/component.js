@@ -4,11 +4,14 @@ import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import { toCamel } from 'houseninja/utils/string-helpers';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderViewComponent extends Component {
   @service router;
   @service view;
   @service intercom;
+
+  paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
 
   cancelMessage = 'I would like to cancel this work order.';
   issueMessage = 'I have an issue with my work order.';
@@ -40,7 +43,7 @@ export default class WorkOrderViewComponent extends Component {
     if (typeof route === 'object') {
       this.router.transitionTo(`work-order`, route.id);
     } else {
-      if (route === 'settings.payment') {
+      if (route === this.paymentRoute) {
         this.view.preservePreviousRoute(this.router);
       }
       this.router.transitionTo(route);

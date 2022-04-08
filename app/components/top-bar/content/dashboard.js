@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class TopBarDashboardContentComponent extends Component {
   @service router;
@@ -16,7 +17,7 @@ export default class TopBarDashboardContentComponent extends Component {
     this.view.preserveViewScrollPosition(this.router);
     this.view.preservePreviousRoute(this.router);
 
-    this.router.transitionTo('settings');
+    this.router.transitionTo(NATIVE_MOBILE_ROUTE.SETTINGS.INDEX);
   }
 
   @action
