@@ -2,8 +2,6 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import RSVP from 'rsvp';
-import { SplashScreen } from '@capacitor/splash-screen';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class DashboardRoute extends Route {
   @service current;
@@ -34,11 +32,5 @@ export default class DashboardRoute extends Route {
         backgroundReload: true,
       }),
     });
-  }
-
-  afterModel() {
-    if (isNativePlatform()) {
-      SplashScreen.hide();
-    }
   }
 }

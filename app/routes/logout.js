@@ -4,6 +4,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Browser } from '@capacitor/browser';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { captureException } from '@sentry/capacitor';
 
 export default class LogoutRoute extends Route {
   @service analytics;
@@ -38,9 +39,10 @@ export default class LogoutRoute extends Route {
       try {
         Browser.removeAllListeners();
         await Browser.close();
-        return SplashScreen.hide();
-      } catch {
-        return SplashScreen.hide();
+      } catch (e) {
+        captureException(e);
+      } finally {
+        await SplashScreen.hide();
       }
     }
   }
