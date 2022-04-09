@@ -1,3 +1,10 @@
+## [1.6.7](https://github.com/houseninjadojo/app/compare/v1.6.6...v1.6.7) (2022-04-09)
+
+
+### Bug Fixes
+
+* **splash-screen:** invoke .hide() in application afterModel hook ([#527](https://github.com/houseninjadojo/app/issues/527)) ([13b8fe6](https://github.com/houseninjadojo/app/commit/13b8fe66182c46bcaaecc89973697661b9d0ff31))
+
 ## [1.6.6](https://github.com/houseninjadojo/app/compare/v1.6.5...v1.6.6) (2022-04-08)
 
 
