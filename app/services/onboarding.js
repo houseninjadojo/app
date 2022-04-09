@@ -31,6 +31,7 @@ export default class OnboardingService extends Service {
     const user = this.localModel('user');
     if (isPresent(user)) {
       user.onboardingStep = this.nextStep;
+      user.save();
     }
     await this.dehydrate();
   }
