@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/houseninjadojo/app/compare/v1.6.7...v1.6.8) (2022-04-09)
+
+
+### Bug Fixes
+
+* **signup:** patch user API when step changes ([#528](https://github.com/houseninjadojo/app/issues/528)) ([0c89667](https://github.com/houseninjadojo/app/commit/0c89667c39a98f6d8cd0697f492d4c6254ce7024))
+
 ## [1.6.7](https://github.com/houseninjadojo/app/compare/v1.6.6...v1.6.7) (2022-04-09)
 
 
