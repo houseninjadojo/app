@@ -7,6 +7,8 @@ export default class DocumentModel extends Model {
   @belongsTo('user') user;
   @belongsTo('document-group') documentGroup;
 
+  @attr('array') tags;
+
   @attr('string') contentType;
   @attr('string') filename;
   @attr('string') name;
@@ -22,5 +24,13 @@ export default class DocumentModel extends Model {
 
   get group() {
     return this.documentGroup;
+  }
+
+  get isWalkthroughReport() {
+    return this.tags.includes('system:walkthrough-report');
+  }
+
+  get isPMReport() {
+    return this.tags.includes('system:preventative-maintenance-report');
   }
 }

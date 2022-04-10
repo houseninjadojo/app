@@ -1,17 +1,27 @@
 import Component from '@glimmer/component';
+import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
-import { vault } from 'houseninja/data/document-stub';
+import { isPresent } from '@ember/utils';
 
 export default class PreventativeMaintenanceThumbnailComponent extends Component {
-  @action
-  openBrowser() {
-    const doc = vault.documentStub.filter((d) => d.isPMCalendar)[0];
-    const uri = (doc && doc.uri) || null;
+  @service store;
 
-    if (uri) {
+  async prevantativeMaintenanceReport() {
+    return await this.store.queryRecord('document', {
+      filter: {
+        tags: ['system:preventative-maintenance-report'],
+      },
+    });
+  }
+
+  @action
+  async openBrowser() {
+    const doc = await this.prevantativeMaintenanceReport();
+
+    if (isPresent(doc) && isPresent(doc.url)) {
       Browser.open({
-        url: uri,
+        url: doc.url,
         presentationStyle: 'popover',
       });
     }

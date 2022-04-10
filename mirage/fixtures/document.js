@@ -9,7 +9,8 @@ export default [
     contentType: 'image/png',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/insurance.png',
     iconUri: '',
-    groupId: documentGroup.insurance,
+    documentGroupId: documentGroup.insurance,
+    tags: [],
   },
   {
     id: faker.datatype.uuid(),
@@ -18,7 +19,8 @@ export default [
     contentType: 'application/pdf',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/inspection.pdf',
     iconUri: '',
-    groupId: documentGroup.inspection,
+    documentGroupId: documentGroup.inspection,
+    tags: [],
   },
   {
     id: faker.datatype.uuid(),
@@ -27,7 +29,8 @@ export default [
     contentType: 'image/jpg',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/warranty.jpg',
     iconUri: '',
-    groupId: documentGroup.warranty,
+    documentGroupId: documentGroup.warranty,
+    tags: [],
   },
   {
     id: faker.datatype.uuid(),
@@ -36,7 +39,8 @@ export default [
     contentType: 'application/pdf',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/manual.pdf',
     iconUri: '',
-    groupId: documentGroup.manual,
+    documentGroupId: documentGroup.manual,
+    tags: [],
   },
   {
     id: faker.datatype.uuid(),
@@ -45,7 +49,8 @@ export default [
     contentType: 'image/jpg',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/paint-colors.jpg',
     iconUri: '',
-    groupId: null,
+    documentGroupId: null,
+    tags: [],
   },
   {
     id: faker.datatype.uuid(),
@@ -54,8 +59,8 @@ export default [
     contentType: 'application/pdf',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Walkthrough.pdf',
     iconUri: '',
-    groupId: null,
-    isWalkthroughReport: true,
+    documentGroupId: null,
+    tags: ['system:walkthrough-report'],
   },
   {
     id: faker.datatype.uuid(),
@@ -64,7 +69,7 @@ export default [
     contentType: 'application/pdf',
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Preventative+Maintenance+Calendar.pdf',
     iconUri: '',
-    groupId: null,
-    isPMCalendar: true,
+    documentGroupId: null,
+    tags: ['system:preventative-maintenance-report'],
   },
 ];
