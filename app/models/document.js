@@ -1,4 +1,5 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
+import { getIconUri } from 'houseninja/utils/components/formatting';
 
 export default class DocumentModel extends Model {
   @belongsTo('invoice') invoice;
@@ -15,4 +16,8 @@ export default class DocumentModel extends Model {
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
+
+  get iconUri() {
+    return getIconUri(this.contentType);
+  }
 }

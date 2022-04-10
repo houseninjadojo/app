@@ -13,16 +13,17 @@ export default class VaultIndexRoute extends Route {
     const groups = await this.store.findAll('document-group');
     const documents = await this.store.findAll('document');
 
-    this.groups = groups.map((g) => {
-      const { id, type, name, description } = g;
-      return {
-        id,
-        type,
-        name,
-        description,
-        iconUri: getIconUri('folder'),
-      };
-    });
+    this.groups = groups;
+    // this.groups = groups.map((g) => {
+    //   const { id, type, name, description } = g;
+    //   return {
+    //     id,
+    //     type,
+    //     name,
+    //     description,
+    //     iconUri: getIconUri('folder'),
+    //   };
+    // });
 
     this.documents = documents
       .filter((d) => !d.groupId)
