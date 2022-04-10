@@ -89,6 +89,6 @@ export default [
     url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Preventative+Maintenance+Calendar.pdf',
     iconUri: '',
     documentGroupId: null,
-    tags: ['system:preventative-maintenance-report'],
+    tags: ['system:preventative-maintenance-plan'],
   },
 ];

@@ -6,7 +6,6 @@ export default class VaultDocumentGroupAddRoute extends Route {
   @service store;
 
   model() {
-    const model = {};
-    return model;
+    // return this.store.createRecord('document-group');
   }
 }

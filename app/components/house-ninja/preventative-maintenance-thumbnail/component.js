@@ -10,7 +10,7 @@ export default class PreventativeMaintenanceThumbnailComponent extends Component
   async prevantativeMaintenanceReport() {
     return await this.store.queryRecord('document', {
       filter: {
-        tags: ['system:preventative-maintenance-report'],
+        tags: ['system:preventative-maintenance-plan'],
       },
     });
   }

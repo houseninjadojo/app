@@ -31,6 +31,6 @@ export default class DocumentModel extends Model {
   }
 
   get isPMReport() {
-    return this.tags.includes('system:preventative-maintenance-report');
+    return this.tags.includes('system:preventative-maintenance-plan');
   }
 }
