@@ -87,6 +87,15 @@ export default function () {
   this.resource('document-groups', { path: '/document-groups' });
   this.resource('documents', { path: '/documents' });
 
+  this.get('/documents', (schema, request) => {
+    const tags = request.queryParams['filter[tags]'];
+    if (tags) {
+      return schema.documents.where({ tags });
+    } else {
+      return schema.documents.all();
+    }
+  });
+
   // Auth
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
   this.passthrough(`https://${ENV.auth.domain}/oauth/token`);
