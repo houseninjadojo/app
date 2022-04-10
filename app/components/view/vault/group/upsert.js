@@ -10,6 +10,7 @@ import { captureException } from 'houseninja/utils/sentry';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultGroupUpsertComponent extends Component {
+  @service current;
   @service haptics;
   @service router;
   @service store;
@@ -84,6 +85,7 @@ export default class VaultGroupUpsertComponent extends Component {
       this.args.model.save();
     } else {
       let group = this.store.createRecord('document-group', {
+        user: this.current.user,
         name: this.groupInfo.name,
         description: this.groupInfo.description,
       });
