@@ -21,11 +21,11 @@ export default class VaultDocumentComponent extends Component {
   selectRoute(route) {
     if (route === 'back') {
       // transition back
-      const belongsToGroup = this.args.model.groupId;
+      const belongsToGroup = this.args.model.group.id;
       if (belongsToGroup) {
         this.router.transitionTo(
           NATIVE_MOBILE_ROUTE.VAULT.GROUP.INDEX,
-          this.args.model.groupId
+          this.args.model.group.id
         );
       } else {
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);

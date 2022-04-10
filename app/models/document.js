@@ -12,12 +12,15 @@ export default class DocumentModel extends Model {
   @attr('string') name;
   @attr('string') description;
   @attr('string') url;
-  @attr('string') groupId;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
 
   get iconUri() {
     return getIconUri(this.contentType);
+  }
+
+  get group() {
+    return this.documentGroup;
   }
 }
