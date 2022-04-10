@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/houseninjadojo/app/compare/v1.6.8...v1.7.0) (2022-04-10)
+
+
+### Features
+
+* connect documents and document groups ([#529](https://github.com/houseninjadojo/app/issues/529)) ([7fcb902](https://github.com/houseninjadojo/app/commit/7fcb9022a08340e90880f0d13db66f11e402b358))
+
 ## [1.6.8](https://github.com/houseninjadojo/app/compare/v1.6.7...v1.6.8) (2022-04-09)
 
 
