@@ -20,7 +20,7 @@ export default class PreventativeMaintenanceThumbnailComponent extends Component
     const doc = await this.prevantativeMaintenanceReport();
 
     if (isPresent(doc) && isPresent(doc.url)) {
-      Browser.open({
+      await Browser.open({
         url: doc.url,
         presentationStyle: 'popover',
       });

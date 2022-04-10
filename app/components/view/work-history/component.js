@@ -59,7 +59,7 @@ export default class WorkHistoryComponent extends Component {
     const doc = await this.walkthroughReport();
 
     if (isPresent(doc) && isPresent(doc.url)) {
-      Browser.open({
+      await Browser.open({
         url: doc.url,
         presentationStyle: 'popover',
       });
