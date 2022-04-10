@@ -4,17 +4,23 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { debug } from '@ember/debug';
+import { isPresent } from '@ember/utils';
+import { captureException } from 'houseninja/utils/sentry';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultGroupUpsertComponent extends Component {
+  @service current;
   @service haptics;
   @service router;
+  @service store;
   @service view;
 
   @tracked formIsInvalid = true;
 
   @tracked groupInfo = {
-    name: this.args.model.name,
-    description: this.args.model.description,
+    name: this.args.model?.name,
+    description: this.args.model?.description,
   };
 
   @tracked fields = [
@@ -50,21 +56,43 @@ export default class VaultGroupUpsertComponent extends Component {
     const response = await this.confirm();
     const { index } = response;
     const confirmed = this.options[index].title === this.options[1].title;
+    const group = this.args?.model;
 
     if (confirmed) {
       try {
-        console.log('Deleting group...');
-        console.log('Update all associated documents groupId to null or empty');
-        this.view.transitionToPreviousRoute();
+        debug('Deleting group...');
+        debug('Update all associated documents groupId to null or empty');
+
+        await group.destroyRecord();
+
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
       } catch (e) {
-        console.log(e);
+        captureException(e);
       }
     }
   }
 
   @action
   save() {
-    console.log('Saving...');
+    if (this.formIsInvalid) {
+      this.haptics.impact({ style: 'heavy' });
+      return;
+    }
+
+    if (isPresent(this.args.model)) {
+      this.args.model.name = this.groupInfo.name;
+      this.args.model.description = this.groupInfo.description;
+      this.args.model.save();
+    } else {
+      let group = this.store.createRecord('document-group', {
+        user: this.current.user,
+        name: this.groupInfo.name,
+        description: this.groupInfo.description,
+      });
+      group.save();
+    }
+
+    this.view.transitionToPreviousRoute();
   }
 
   @action
@@ -81,8 +109,8 @@ export default class VaultGroupUpsertComponent extends Component {
   resetForm() {
     this.groupInfo.name = this.args.model.name;
     this.groupInfo.description = this.args.model.description;
-    this.groupInfo.documentGroup = this.args.model.document.groupId;
-    this.args.model.reload();
+    this.groupInfo.documentGroup = this.args.model.document.group.id;
+    this.args.model?.rollbackAttributes();
     this.formIsInvalid = true;
   }
 

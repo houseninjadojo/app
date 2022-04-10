@@ -1,47 +1,49 @@
-import faker from '@faker-js/faker';
+// import faker from '@faker-js/faker';
+import { documentIds, documentGroupIds } from './document';
 
-export const documentGroup = {
-  insurance: faker.datatype.uuid(),
-  warranty: faker.datatype.uuid(),
-  inspection: faker.datatype.uuid(),
-  manual: faker.datatype.uuid(),
-  unnamed: faker.datatype.uuid(),
+export const insurance = {
+  id: documentGroupIds.insurance,
+  name: 'Insurance',
+  description: 'Home insurance documents',
+  iconUri: '',
+  owner: '',
+  documentIds: [documentIds.homeInsurance],
 };
 
-export default [
-  {
-    id: documentGroup.insurance,
-    name: 'Insurance',
-    description: 'Home insurance documents',
-    iconUri: '',
-    owner: '',
-  },
-  {
-    id: documentGroup.warranty,
-    name: 'Home Warranty',
-    description: 'Home warranty documents',
-    iconUri: '',
-    owner: '',
-  },
-  {
-    id: documentGroup.inspection,
-    name: 'Home Inspection Reports',
-    description: 'Home inspections',
-    iconUri: '',
-    owner: '',
-  },
-  {
-    id: documentGroup.manual,
-    name: 'Manuals',
-    description: 'Appliance manuals',
-    iconUri: '',
-    owner: '',
-  },
-  {
-    id: documentGroup.unnamed,
-    name: 'Unnamed Category',
-    // description: '',
-    iconUri: '',
-    owner: '',
-  },
-];
+export const warranty = {
+  id: documentGroupIds.warranty,
+  name: 'Home Warranty',
+  description: 'Home warranty documents',
+  iconUri: '',
+  owner: '',
+  documentIds: [documentIds.homeWarranty],
+};
+
+export const inspection = {
+  id: documentGroupIds.inspection,
+  name: 'Home Inspection Reports',
+  description: 'Home inspections',
+  iconUri: '',
+  owner: '',
+  documentIds: [documentIds.homeInspection],
+};
+
+export const manual = {
+  id: documentGroupIds.manual,
+  name: 'Manuals',
+  description: 'Appliance manuals',
+  iconUri: '',
+  owner: '',
+  documentIds: [documentIds.majorHomeAppliancesManual],
+};
+
+export const unnamed = {
+  id: documentGroupIds.unnamed,
+  name: 'Unnamed Category',
+  // description: '',
+  iconUri: '',
+  owner: '',
+  documentIds: [],
+};
+
+export default [insurance, warranty, inspection, manual, unnamed];

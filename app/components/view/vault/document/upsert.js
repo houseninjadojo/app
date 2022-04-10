@@ -22,7 +22,7 @@ export default class VaultDocumentUpsertComponent extends Component {
   @tracked documentInfo = {
     name: this._getFilename(),
     description: this.args.model.document.description ?? null,
-    documentGroup: this.args.model.document.groupId ?? null,
+    documentGroup: this.args.model.document.group.id ?? null,
   };
 
   @tracked fields = [
@@ -54,12 +54,12 @@ export default class VaultDocumentUpsertComponent extends Component {
             label: g.name,
             selected:
               this.args.model.document &&
-              this.args.model.document.groupId &&
-              g.id === this.args.model.document.groupId,
+              this.args.model.document.group.id &&
+              g.id === this.args.model.document.group.id,
           };
         }),
       ],
-      value: this.args.model.document && this.args.model.document.groupId,
+      value: this.args.model.document && this.args.model.document.group.id,
     },
   ];
 
@@ -146,7 +146,7 @@ export default class VaultDocumentUpsertComponent extends Component {
     this.documentInfo.name = this.args.model.document.name || this.documentUrl;
     this.documentInfo.description =
       this.args.model.document.description || null;
-    this.documentInfo.documentGroup = this.args.model.document.groupId || null;
+    this.documentInfo.documentGroup = this.args.model.document.group.id || null;
 
     this.camera.image && this.camera.clear();
     this.file.file && this.file.clear();

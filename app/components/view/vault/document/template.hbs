@@ -1,5 +1,5 @@
 <div class="hn document-vault document">
-    <div class="actions">        
+    <div class="actions">
         <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{on "click" (fn this.selectRoute 'edit')}}>
             Edit
         </Primitive::Button>
@@ -7,7 +7,7 @@
     <div class="document-details">
         <p class="hn field"><span class="hn label">Name: </span>{{@model.name}}</p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
-        <p class="hn field"><span class="hn label">Category: </span>{{if @model.groupName @model.groupName 'Uncategorized'}}</p>
+        <p class="hn field"><span class="hn label">Category: </span>{{if @model.group.name @model.group.name 'Uncategorized'}}</p>
     </div>
     <div class="document-container">
         <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">

@@ -4,6 +4,7 @@ import { isPresent, isEmpty } from '@ember/utils';
 
 export default class UserModel extends Model {
   @hasMany('document') documents;
+  @hasMany('document-group') documentGroups;
   @hasMany('device') devices;
   @hasMany('invoice') invoices;
   @hasMany('payment-method', { polymorphic: true }) paymentMethods;
