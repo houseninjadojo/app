@@ -7,7 +7,7 @@ export default class VaultDocumentIndexRoute extends Route {
 
   async model({ doc_id }) {
     return await this.store.findRecord('document', doc_id, {
-      include: 'document-group',
+      include: 'document-groups',
     });
   }
 }
