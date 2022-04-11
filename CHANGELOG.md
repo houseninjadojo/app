@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/houseninjadojo/app/compare/v1.7.0...v1.7.1) (2022-04-11)
+
+
+### Bug Fixes
+
+* **vault:** document-group -> document-groups (HOU-162) ([#530](https://github.com/houseninjadojo/app/issues/530)) ([67d7eed](https://github.com/houseninjadojo/app/commit/67d7eed1ad80d2311ca6b1c26813c517edd74e7c))
+
 # [1.7.0](https://github.com/houseninjadojo/app/compare/v1.6.8...v1.7.0) (2022-04-10)
 
 
