@@ -1,6 +1,22 @@
 import ENV from 'houseninja/config/environment';
+import {
+  discoverEmberDataModels,
+  applyEmberDataSerializers,
+} from 'ember-cli-mirage';
+import { createServer } from 'miragejs';
 
-export default function () {
+export default function (config) {
+  let finalConfig = {
+    ...config,
+    models: { ...discoverEmberDataModels(), ...config.models },
+    serializers: applyEmberDataSerializers(config.serializers),
+    routes,
+  };
+
+  return createServer(finalConfig);
+}
+
+function routes() {
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
