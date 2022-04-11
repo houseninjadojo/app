@@ -54,6 +54,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 101;
   padding: 16px 16px 32px;
   animation-name: slide-out;
   animation-timing-function: ease-out;
