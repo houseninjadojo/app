@@ -122,11 +122,15 @@ export default class VaultDocumentUpsertComponent extends Component {
   }
 
   @action
-  save() {
+  async save() {
     if (this.newDocument) {
       console.log('Saving new document...');
     } else {
-      console.log('Updating new document...');
+      // @todo the select value field is not updating
+      await this.args.model.document?.save();
+      this.router.transitionTo('vault.document.index', {
+        doc_id: this.args.model.document.id,
+      });
     }
     this.resetForm();
   }
