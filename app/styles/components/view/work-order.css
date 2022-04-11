@@ -23,6 +23,14 @@
   border-radius: 2px;
 }
 
+.hn.work-order .work-order-details ul {
+  margin-bottom: 32px;
+}
+
+.hn.work-order .work-order-details ul li {
+  margin-bottom: 8px;
+}
+
 .hn.work-order .payment-processing {
   display: none;
   background: rgb(0 0 0 / 60%);

@@ -1,3 +1,17 @@
+## [1.7.3](https://github.com/houseninjadojo/app/compare/v1.7.2...v1.7.3) (2022-04-11)
+
+
+### Bug Fixes
+
+* ux touches ([#536](https://github.com/houseninjadojo/app/issues/536)) ([fc7250a](https://github.com/houseninjadojo/app/commit/fc7250aee155d4cc95ba9467f20faa02533240e3))
+
+## [1.7.2](https://github.com/houseninjadojo/app/compare/v1.7.1...v1.7.2) (2022-04-11)
+
+
+### Bug Fixes
+
+* **documents:** fix include for document group ([#535](https://github.com/houseninjadojo/app/issues/535)) ([6ccf139](https://github.com/houseninjadojo/app/commit/6ccf1394bbb5a59098712fd8cd257e90a4910932))
+
 ## [1.7.1](https://github.com/houseninjadojo/app/compare/v1.7.0...v1.7.1) (2022-04-11)
 
 
