@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/houseninjadojo/app/compare/v1.7.2...v1.7.3) (2022-04-11)
+
+
+### Bug Fixes
+
+* ux touches ([#536](https://github.com/houseninjadojo/app/issues/536)) ([fc7250a](https://github.com/houseninjadojo/app/commit/fc7250aee155d4cc95ba9467f20faa02533240e3))
+
 ## [1.7.2](https://github.com/houseninjadojo/app/compare/v1.7.1...v1.7.2) (2022-04-11)
 
 
