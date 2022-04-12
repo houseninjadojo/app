@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/houseninjadojo/app/compare/v1.7.6...v1.7.7) (2022-04-12)
+
+
+### Bug Fixes
+
+* **routes:** update document routes as leaves from node ([#540](https://github.com/houseninjadojo/app/issues/540)) ([2cb13ef](https://github.com/houseninjadojo/app/commit/2cb13efe4529d07299ac6012abfa58e88806f126))
+
 ## [1.7.6](https://github.com/houseninjadojo/app/compare/v1.7.5...v1.7.6) (2022-04-12)
 
 
