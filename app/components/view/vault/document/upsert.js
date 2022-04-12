@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { Capacitor } from '@capacitor/core';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
@@ -21,7 +22,7 @@ export default class VaultDocumentUpsertComponent extends Component {
 
   @tracked documentInfo = {
     name: this._getFilename(),
-    description: this.args.model.document.description ?? null,
+    description: this.args.model.document.get('description') ?? null,
     documentGroup: this.args.model.document.get('group.id') ?? null,
   };
 
@@ -137,11 +138,13 @@ export default class VaultDocumentUpsertComponent extends Component {
       this.args.model.document.setProperties({
         documentGroup: this.selectedDocumentGroup,
         description: this.documentInfo.description,
+        name: this.documentInfo.name,
       });
       await this.args.model.document?.save();
-      this.router.transitionTo('vault.document.index', {
-        doc_id: this.args.model.document.id,
-      });
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX,
+        this.document.id
+      );
     }
     this.resetForm();
   }

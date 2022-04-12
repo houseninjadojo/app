@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import RSVP from 'rsvp';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultDocumentEditRoute extends Route {
   @service router;
@@ -10,10 +11,10 @@ export default class VaultDocumentEditRoute extends Route {
 
   groups = [];
 
-  async model({ doc_id }) {
+  model({ document_id }) {
     return RSVP.hash({
       groups: this.store.findAll('document-group'),
-      document: this.store.findRecord('document', doc_id, {
+      document: this.store.findRecord('document', document_id, {
         include: 'document_group',
       }),
       media: null,
@@ -25,7 +26,7 @@ export default class VaultDocumentEditRoute extends Route {
     console.error(error);
     if (isPresent(error.errors.findBy('status', '404'))) {
       transition.abort();
-      this.router.transitionTo('vault.index');
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
     }
   }
 }

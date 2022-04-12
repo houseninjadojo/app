@@ -42,14 +42,14 @@ Router.map(function () {
   this.route('vault', function () {
     this.route('index', { path: '/' });
     this.route('document', function () {
-      this.route('index', { path: '/:doc_id' });
-      this.route('edit', { path: '/edit/:doc_id' });
+      this.route('index', { path: '/:document_id' });
+      this.route('edit', { path: '/:document_id/edit' });
       this.route('add');
     });
     this.route('group', function () {
       this.route('index', { path: '/:group_id' });
       this.route('add');
-      this.route('edit', { path: '/edit/:group_id' });
+      this.route('edit', { path: '/:group_id/edit' });
     });
   });
   this.route('work-order', { path: '/:work_order_id' });

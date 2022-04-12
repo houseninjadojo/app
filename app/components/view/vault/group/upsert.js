@@ -109,7 +109,6 @@ export default class VaultGroupUpsertComponent extends Component {
   resetForm() {
     this.groupInfo.name = this.args.model.name;
     this.groupInfo.description = this.args.model.description;
-    this.groupInfo.documentGroup = this.args.model.document.group.id;
     this.args.model?.rollbackAttributes();
     this.formIsInvalid = true;
   }
