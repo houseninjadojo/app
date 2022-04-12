@@ -9,11 +9,11 @@ export default class DocumentModel extends Model {
 
   @attr('array') tags;
 
-  @attr('string') contentType;
-  @attr('string') filename;
+  @attr('read-only') contentType;
+  @attr('read-only') filename;
+  @attr('read-only') url;
   @attr('string') name;
   @attr('string') description;
-  @attr('string') url;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
