@@ -1,14 +1,18 @@
 import Route from '@ember/routing/route';
-import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class VaultDocumentGroupEditRoute extends Route {
+export default class VaultGroupsShowRoute extends Route {
   @service router;
   @service store;
 
+  documents = [];
+
   async model({ group_id }) {
-    return await this.store.findRecord('document-group', group_id);
+    return await this.store.findRecord('document-group', group_id, {
+      include: 'documents',
+    });
   }
 
   @action

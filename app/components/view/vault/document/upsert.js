@@ -142,7 +142,7 @@ export default class VaultDocumentUpsertComponent extends Component {
       });
       await this.args.model.document?.save();
       this.router.transitionTo(
-        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX,
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.SHOW,
         this.document.id
       );
     }

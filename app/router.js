@@ -41,15 +41,19 @@ Router.map(function () {
   this.route('faq');
   this.route('vault', function () {
     this.route('index', { path: '/' });
-    this.route('document', function () {
-      this.route('index', { path: '/:document_id' });
-      this.route('edit', { path: '/:document_id/edit' });
-      this.route('add');
+    this.route('documents', function () {
+      this.route('index');
+      this.route('new');
+      this.route('show', { path: '/:document_id' }, function () {
+        this.route('edit');
+      });
     });
-    this.route('group', function () {
-      this.route('index', { path: '/:group_id' });
-      this.route('add');
-      this.route('edit', { path: '/:group_id/edit' });
+    this.route('groups', function () {
+      this.route('index');
+      this.route('new');
+      this.route('show', { path: '/:group_id' }, function () {
+        this.route('edit');
+      });
     });
   });
   this.route('work-order', { path: '/:work_order_id' });

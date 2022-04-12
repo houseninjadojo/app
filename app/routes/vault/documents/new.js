@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import RSVP from 'rsvp';
 
-export default class VaultDocumentAddRoute extends Route {
+export default class VaultDocumentsNewRoute extends Route {
   @service router;
   @service store;
 

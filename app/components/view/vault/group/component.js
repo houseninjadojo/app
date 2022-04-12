@@ -22,7 +22,7 @@ export default class VaultGroupComponent extends Component {
     if (route === 'edit') {
       // edit group
       this.router.transitionTo(
-        NATIVE_MOBILE_ROUTE.VAULT.GROUP.EDIT,
+        NATIVE_MOBILE_ROUTE.VAULT.GROUPS.EDIT,
         this.args.model.id
       );
     }
@@ -30,7 +30,7 @@ export default class VaultGroupComponent extends Component {
       if (route.contentType) {
         // view document
         this.router.transitionTo(
-          NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX,
+          NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.SHOW,
           route.id
         );
       }

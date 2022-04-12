@@ -4,7 +4,7 @@ import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class VaultDocumentIndexRoute extends Route {
+export default class VaultDocumentsShowRoute extends Route {
   @service router;
   @service store;
 

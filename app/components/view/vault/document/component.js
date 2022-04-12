@@ -24,7 +24,7 @@ export default class VaultDocumentComponent extends Component {
       const belongsToGroup = this.args.model.group.id;
       if (belongsToGroup) {
         this.router.transitionTo(
-          NATIVE_MOBILE_ROUTE.VAULT.GROUP.INDEX,
+          NATIVE_MOBILE_ROUTE.VAULT.GROUPS.SHOW,
           this.args.model.group.id
         );
       } else {
@@ -34,7 +34,7 @@ export default class VaultDocumentComponent extends Component {
     if (route === 'edit') {
       // edit document
       this.router.transitionTo(
-        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.EDIT,
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.EDIT,
         this.args.model.id
       );
     }
