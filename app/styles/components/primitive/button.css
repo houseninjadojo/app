@@ -88,6 +88,12 @@
   color: var(--white);
 }
 
+.hn.btn.solid.secondary {
+  background: var(--blue-400);
+  box-shadow: var(--blue-teal-1);
+  color: var(--white);
+}
+
 .hn.btn.solid.alert {
   background: var(--red-400);
   box-shadow: var(--shadow-red-1);

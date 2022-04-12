@@ -2,30 +2,28 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
     </Primitive::Button>
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.handlePaymentApproval}}>
-        Approve Payment
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}}>
+        View Invoice
     </Primitive::Button>        
 </div>
+<hr/>
 <div class="hn banner-message">
     <p>
         The service provider informed us that they’ve completed their work. <br/><br/>
-        Please visually confirm the work and approve payment or contact us about any issues.
-    </p>
+        Please visually confirm the work and approve payment or contact us about any issues. <br/><br/>
+        Your <span class="hn {{if @model.cardBrand 'strong'}}">{{if @model.cardBrand @model.cardBrand 'card'}}</span> ending in <span class="hn strong">{{@model.lastFour}}</span> will automatically be charged in 5 days. <br/><br/>
+    </p>    
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="secondary" @disabled={{this.isProcessing}} {{on "click" this.handlePaymentApproval}}>
+        Approve Payment
+    </Primitive::Button>
 </div>
-<div class="work-order-details">
-    <div class="hn banner-message warn">
-        <p>
-            Your <span class="hn {{if @model.cardBrand 'strong'}}">{{if @model.cardBrand @model.cardBrand 'card'}}</span> ending in <span class="hn strong">{{@model.lastFour}}</span> will automatically be charged in 5 days.
-        </p>
-    </div>
+<div class="work-order-details">    
     <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
     <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
     <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
     <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
     <p class="hn field"><span class="hn label">Performed On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
-        View Invoice
-    </Primitive::Button>
+    <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
 </div>
 <div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">
     {{#if this.paid}}
