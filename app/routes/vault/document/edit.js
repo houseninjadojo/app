@@ -23,8 +23,7 @@ export default class VaultDocumentEditRoute extends Route {
 
   @action
   error(error, transition) {
-    console.error(error);
-    if (isPresent(error.errors.findBy('status', '404'))) {
+    if (isPresent(error.errors?.findBy('status', '404'))) {
       transition.abort();
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
     }
