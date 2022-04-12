@@ -30,7 +30,7 @@ export const workOrderStatusLabels = {
   [workOrderStatus.vendorIdentified]: 'Initiated',
   [workOrderStatus.schedulingInProgress]: 'Initiated',
   [workOrderStatus.onsiteEstimateScheduled]: 'Initiated',
-  [workOrderStatus.estimateSharedWithHomeowner]: 'Initiated',
+  [workOrderStatus.estimateSharedWithHomeowner]: 'Approve Estimate',
   [workOrderStatus.estimateApproved]: 'Initiated',
   [workOrderStatus.estimateNotApproved]: 'Initiated',
   [workOrderStatus.workScheduled]: 'Scheduled',

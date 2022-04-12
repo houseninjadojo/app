@@ -4,10 +4,15 @@
     {{else}}
         {{#if (eq this.contentType this.content.approvePayment)}}        
             <View::WorkOrder::Content::ApprovePayment 
-            @model={{@model}} 
-            @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
+                @model={{@model}} 
+                @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}/>
         {{else if (eq this.contentType this.content.paymentFailed)}}        
             <View::WorkOrder::Content::FailedPayment 
+                @model={{@model}} 
+                @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}
+                @selectRoute={{fn this.selectRoute this.paymentRoute}}/>
+        {{else if (eq this.contentType this.content.approveEstimate)}}        
+            <View::WorkOrder::Content::ApproveEstimate 
                 @model={{@model}} 
                 @handleReportAnIssue={{fn this.displayMessageComposer this.issueMessage}}
                 @selectRoute={{fn this.selectRoute this.paymentRoute}}/>
