@@ -19,6 +19,9 @@ export default class VaultDocumentIndexRoute extends Route {
     if (isPresent(error.errors.findBy('status', '404'))) {
       transition.abort();
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
+    } else {
+      // Let the route above this handle the error.
+      return true;
     }
   }
 }
