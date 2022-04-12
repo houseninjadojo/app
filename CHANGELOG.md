@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/houseninjadojo/app/compare/v1.7.4...v1.7.5) (2022-04-12)
+
+
+### Bug Fixes
+
+* **document:** mark filename, url, contentType as read-only ([#538](https://github.com/houseninjadojo/app/issues/538)) ([18a5873](https://github.com/houseninjadojo/app/commit/18a58737d7e9fa342864d903681bd93f0136e768))
+
 ## [1.7.4](https://github.com/houseninjadojo/app/compare/v1.7.3...v1.7.4) (2022-04-12)
 
 
