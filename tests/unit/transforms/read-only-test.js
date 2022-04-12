@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'houseninja/tests/helpers';
+import { setupTest } from 'ember-qunit';
 
 module('Unit | Transform | read only', function (hooks) {
   setupTest(hooks);
