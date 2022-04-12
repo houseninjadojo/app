@@ -1,15 +1,33 @@
 <div class="hn hn-input-field {{if @warn 'warn' ''}}{{if @disabled 'disabled' ''}}">
     <div class="hn-input-container">
-        {{#if @hideLabel}}                    
+        {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
-            <select class="hn hn-select {{if @warn 'warn' ''}}" name={{@id}} id={{@id}} placeholder="Select" required={{@required}} disabled={{@disabled}}>
+            <select
+              class="hn hn-select {{if @warn 'warn' ''}}"
+              name={{@id}}
+              id={{@id}}
+              placeholder="Select"
+              required={{@required}}
+              disabled={{@disabled}}
+              value={{@value}}
+              {{on 'change' @onChange}}
+            >
                 {{#each @options as |o|}}
                     <option value={{o.value}} selected={{o.selected}}>{{o.label}}</option>
                 {{/each}}
             </select>
         {{else}}
             <label class="hn-input-label" for={{@id}}>{{@label}}</label>
-            <select class="hn hn-select {{if @warn 'warn' ''}}" name={{@id}} id={{@id}} placeholder="Select" required={{@required}} disabled={{@disabled}}>
+            <select
+              class="hn hn-select {{if @warn 'warn' ''}}"
+              name={{@id}}
+              id={{@id}}
+              placeholder="Select"
+              required={{@required}}
+              disabled={{@disabled}}
+              value={{@value}}
+              {{on 'change' @onChange}}
+            >
                 {{#each @options as |o|}}
                     <option value={{o.value}} selected={{o.selected}}>{{o.label}}</option>
                 {{/each}}

@@ -10,16 +10,19 @@ export default class VaultDocumentEditRoute extends Route {
 
   groups = [];
 
-  model({ doc_id }) {
+  async model({ doc_id }) {
     return RSVP.hash({
       groups: this.store.findAll('document-group'),
-      document: this.store.findRecord('document', doc_id),
+      document: this.store.findRecord('document', doc_id, {
+        include: 'document_group',
+      }),
       media: null,
     });
   }
 
   @action
   error(error, transition) {
+    console.error(error);
     if (isPresent(error.errors.findBy('status', '404'))) {
       transition.abort();
       this.router.transitionTo('vault.index');

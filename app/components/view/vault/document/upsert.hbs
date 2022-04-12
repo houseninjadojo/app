@@ -11,6 +11,7 @@
                     @required={{field.required}}
                     {{!-- @disabled={{true}} --}}
                     @value={{mut (get this.documentInfo field.id)}}
+                    @onChange={{this.validateForm}}
                     />
                 {{else}}
                     <Primitive::Input
@@ -33,7 +34,7 @@
             </div>
         {{/if}}
         {{#if this.documentUrl}}
-            <div class="thumbnail">                        
+            <div class="thumbnail">
                 <Primitive::Image
                     @src={{this.documentUrl}}
                     @alt="preview"
