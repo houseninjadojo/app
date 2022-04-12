@@ -34,14 +34,14 @@ export const NATIVE_MOBILE_ROUTE = {
   VAULT: {
     INDEX: 'vault',
     DOCUMENTS: {
-      SHOW: 'vault.documents.show',
-      NEW: 'vault.document.new',
-      EDIT: 'vault.document.edit',
+      SHOW: 'vault.documents.document',
+      NEW: 'vault.documents.new',
+      EDIT: 'vault.documents.document.edit',
     },
     GROUPS: {
-      SHOW: 'vault.groups.show',
+      SHOW: 'vault.groups.group',
       NEW: 'vault.groups.new',
-      EDIT: 'vault.groups.edit',
+      EDIT: 'vault.groups.group.edit',
     },
   },
   WORK_ORDER: 'work-order',

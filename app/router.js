@@ -44,14 +44,14 @@ Router.map(function () {
     this.route('documents', function () {
       this.route('index');
       this.route('new');
-      this.route('show', { path: '/:document_id' }, function () {
+      this.route('document', { path: '/:document_id' }, function () {
         this.route('edit');
       });
     });
     this.route('groups', function () {
       this.route('index');
       this.route('new');
-      this.route('show', { path: '/:group_id' }, function () {
+      this.route('group', { path: '/:group_id' }, function () {
         this.route('edit');
       });
     });
