@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/houseninjadojo/app/compare/v1.7.3...v1.7.4) (2022-04-12)
+
+
+### Bug Fixes
+
+* **vault:** enable editing a document ([#531](https://github.com/houseninjadojo/app/issues/531)) ([4458681](https://github.com/houseninjadojo/app/commit/445868132b80ef6b5f07f30105616c7fa9d3873f))
+
 ## [1.7.3](https://github.com/houseninjadojo/app/compare/v1.7.2...v1.7.3) (2022-04-11)
 
 
