@@ -13,7 +13,7 @@ export default class VaultContentComponent extends Component {
 
   @tracked showUploadMenu = false;
 
-  vaultGroupAddRoute = NATIVE_MOBILE_ROUTE.VAULT.GROUP.ADD;
+  vaultGroupAddRoute = NATIVE_MOBILE_ROUTE.VAULT.GROUPS.NEW;
 
   uploadMenuOptionType = {
     camera: 'CAMERA',
@@ -49,7 +49,7 @@ export default class VaultContentComponent extends Component {
     await this.camera.setCameraServiceImage(source);
     if (this.camera.image) {
       await this.toggleUploadMenu();
-      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.ADD);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.NEW);
     }
   }
 
@@ -58,7 +58,7 @@ export default class VaultContentComponent extends Component {
     await this.file.setFileServiceFile();
     if (this.file.file) {
       await this.toggleUploadMenu();
-      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.ADD);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.NEW);
     }
   }
 
@@ -91,9 +91,9 @@ export default class VaultContentComponent extends Component {
   @action
   handleRecordClick(record) {
     if (record.contentType) {
-      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX, record.id);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.SHOW, record.id);
     } else {
-      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.GROUP.INDEX, record.id);
+      this.selectRoute(NATIVE_MOBILE_ROUTE.VAULT.GROUPS.SHOW, record.id);
     }
   }
 }

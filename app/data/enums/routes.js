@@ -33,15 +33,15 @@ export const NATIVE_MOBILE_ROUTE = {
   FAQ: 'faq',
   VAULT: {
     INDEX: 'vault',
-    DOCUMENT: {
-      INDEX: 'vault.document.index',
-      ADD: 'vault.document.add',
-      EDIT: 'vault.document.edit',
+    DOCUMENTS: {
+      SHOW: 'vault.documents.document',
+      NEW: 'vault.documents.new',
+      EDIT: 'vault.documents.document.edit',
     },
-    GROUP: {
-      INDEX: 'vault.group.index',
-      ADD: 'vault.group.add',
-      EDIT: 'vault.group.edit',
+    GROUPS: {
+      SHOW: 'vault.groups.group',
+      NEW: 'vault.groups.new',
+      EDIT: 'vault.groups.group.edit',
     },
   },
   WORK_ORDER: 'work-order',
