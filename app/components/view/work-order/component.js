@@ -7,9 +7,10 @@ import { toCamel } from 'houseninja/utils/string-helpers';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderViewComponent extends Component {
+  @service loader;
+  @service intercom;
   @service router;
   @service view;
-  @service intercom;
 
   paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
 
@@ -23,8 +24,12 @@ export default class WorkOrderViewComponent extends Component {
     default: 'Default',
   };
 
+  get isLoading() {
+    return this.loader.isLoading;
+  }
+
   get contentType() {
-    const status = workOrderStatus[toCamel(this.args.model.status)];
+    const status = workOrderStatus[toCamel(this.args.model?.status)];
     switch (status) {
       case workOrderStatus.invoiceSentToCustomer:
         return this.content.approvePayment;
