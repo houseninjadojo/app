@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { Capacitor } from '@capacitor/core';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
@@ -21,8 +22,8 @@ export default class VaultDocumentUpsertComponent extends Component {
 
   @tracked documentInfo = {
     name: this._getFilename(),
-    description: this.args.model.document.description ?? null,
-    documentGroup: this.args.model.document.group.id ?? null,
+    description: this.args.model.document.get('description') ?? null,
+    documentGroup: this.args.model.document.get('group.id') ?? null,
   };
 
   @tracked fields = [
@@ -42,7 +43,7 @@ export default class VaultDocumentUpsertComponent extends Component {
     },
     {
       isSelect: true,
-      id: 'document-group',
+      id: 'documentGroup',
       required: false,
       label: 'Category',
       placeholder: '',
@@ -53,13 +54,13 @@ export default class VaultDocumentUpsertComponent extends Component {
             value: g.id,
             label: g.name,
             selected:
-              this.args.model.document &&
-              this.args.model.document.group.id &&
-              g.id === this.args.model.document.group.id,
+              this.args.model.document.get('group') &&
+              this.args.model.document.get('group.id') &&
+              g.id === this.args.model.document.get('group.id'),
           };
         }),
       ],
-      value: this.args.model.document && this.args.model.document.group.id,
+      value: this.args.model.document.get('group.id'),
     },
   ];
 
@@ -121,12 +122,29 @@ export default class VaultDocumentUpsertComponent extends Component {
     return name;
   }
 
+  get document() {
+    return this.args.model.document;
+  }
+
+  get selectedDocumentGroup() {
+    return this.args.model.groups.findBy('id', this.documentInfo.documentGroup);
+  }
+
   @action
-  save() {
+  async save() {
     if (this.newDocument) {
       console.log('Saving new document...');
     } else {
-      console.log('Updating new document...');
+      this.args.model.document.setProperties({
+        documentGroup: this.selectedDocumentGroup,
+        description: this.documentInfo.description,
+        name: this.documentInfo.name,
+      });
+      await this.args.model.document?.save();
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENT.INDEX,
+        this.document.id
+      );
     }
     this.resetForm();
   }
@@ -146,7 +164,8 @@ export default class VaultDocumentUpsertComponent extends Component {
     this.documentInfo.name = this.args.model.document.name || this.documentUrl;
     this.documentInfo.description =
       this.args.model.document.description || null;
-    this.documentInfo.documentGroup = this.args.model.document.group.id || null;
+    this.documentInfo.documentGroup =
+      this.args.model.document.get('group.id') || null;
 
     this.camera.image && this.camera.clear();
     this.file.file && this.file.clear();
