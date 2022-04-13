@@ -19,13 +19,13 @@ class ApplicationRoute extends Route {
 
   constructor() {
     super(...arguments);
-    this.router.on('routeDidChange', async () => {
-      await this._trackPage();
-    });
+    // this.router.on('routeDidChange', async () => {
+    //   await this._trackPage();
+    // });
 
-    this.userActivity.on('touchstart', this, async (event) => {
-      await this._trackClick(event);
-    });
+    // this.userActivity.on('touchstart', this, async (event) => {
+    //   await this._trackClick(event);
+    // });
   }
 
   async beforeModel() {

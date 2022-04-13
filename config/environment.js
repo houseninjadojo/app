@@ -54,6 +54,10 @@ module.exports = function (environment) {
       key: 'key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI',
     },
 
+    'ember-active-storage': {
+      url: 'https://sandbox.api.houseninja.co/rails/active_storage/direct_uploads',
+    },
+
     'ember-cli-mirage': {
       enabled: true,
     },
@@ -147,6 +151,9 @@ module.exports = function (environment) {
     ENV.auth.audience = 'https://api.houseninja.co/';
     ENV.auth.connection = 'houseninja';
     ENV.auth.domain = 'auth.houseninja.co';
+
+    // Active Storage
+    ENV['ember-active-storage'] = 'https://api.houseninja.co/rails/active_storage/direct_uploads';
 
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};

@@ -21,4 +21,10 @@ export default class SessionService extends BaseSessionService {
     await super.setup();
     this.current.loadIdentifyAndTrack.perform();
   }
+
+  get authenticatedHeaders() {
+    return {
+      Authorization: `Bearer ${this.data.authenticated.access_token}`,
+    };
+  }
 }

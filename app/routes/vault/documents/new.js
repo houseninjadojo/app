@@ -11,7 +11,7 @@ export default class VaultDocumentsNewRoute extends Route {
   model() {
     return RSVP.hash({
       groups: this.store.findAll('document-group'),
-      document: {},
+      document: this.store.createRecord('document'),
       media: null,
     });
   }
