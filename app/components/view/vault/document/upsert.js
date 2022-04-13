@@ -15,6 +15,7 @@ import base64ToBlob from 'houseninja/utils/base64-to-blob';
 export default class VaultDocumentUpsertComponent extends Component {
   @service activeStorage;
   @service camera;
+  @service current;
   @service file;
   @service haptics;
   @service router;
@@ -146,18 +147,29 @@ export default class VaultDocumentUpsertComponent extends Component {
       });
       const blob = base64ToBlob(
         contents.data,
-        `image/${this.newDocument.type}`
+        `image/${this.newDocument.format}`
       );
-      const uploadedBlob = await this.activeStorage.upload(blob, {
+      const file = new File([blob], this.documentInfo.name, {
+        type: `image/${this.newDocument.format}`,
+      });
+      const uploadedFile = await this.activeStorage.upload(file, {
         onProgress: (progress /*, event */) => {
           this.uploadProgress = progress;
         },
       });
-      // @todo figure out how to do this correctly
       this.args.model.document.setProperties({
-        asset: uploadedBlob.signedId,
+        name: this.documentInfo.name,
+        description: this.documentInfo.description,
+        asset: uploadedFile.signedId,
+        documentGroup: this.selectedDocumentGroup,
+        user: this.current.user,
       });
       await this.args.model.document?.save();
+      await this.args.model.document?.reload();
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.SHOW,
+        this.document.id
+      );
     } else {
       this.args.model.document.setProperties({
         documentGroup: this.selectedDocumentGroup,

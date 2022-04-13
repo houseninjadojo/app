@@ -23,6 +23,7 @@ const server = {
   cleartext: false,
   url: 'http://localhost:4200',
   allowNavigation: [
+    // 'localhost:3000',
     'auth.houseninja.co',
     'sandbox.auth.houseninja.co',
     'houseninja.co',
