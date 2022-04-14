@@ -138,7 +138,10 @@ export default class VaultDocumentUpsertComponent extends Component {
   }
 
   get selectedDocumentGroup() {
-    return this.args.model.groups.findBy('id', this.documentInfo.documentGroup);
+    return (
+      this.args.model.groups.findBy('id', this.documentInfo.documentGroup) ??
+      null
+    );
   }
 
   @action
