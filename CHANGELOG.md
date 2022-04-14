@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/houseninjadojo/app/compare/v1.7.12...v1.7.13) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** track upload progress ([#556](https://github.com/houseninjadojo/app/issues/556)) ([61af5e1](https://github.com/houseninjadojo/app/commit/61af5e1ac6a28edc55d9242d1319ec4855720581))
+
 ## [1.7.12](https://github.com/houseninjadojo/app/compare/v1.7.11...v1.7.12) (2022-04-14)
 
 
