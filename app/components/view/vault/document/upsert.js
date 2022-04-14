@@ -93,11 +93,8 @@ export default class VaultDocumentUpsertComponent extends Component {
 
     if (confirmed) {
       try {
-        debug('Deleting group...');
-        debug('Update all associated documents groupId to null or empty');
-
+        debug('Deleting document...');
         await document.destroyRecord();
-
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
       } catch (e) {
         captureException(e);
