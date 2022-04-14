@@ -1,3 +1,10 @@
+## [1.7.10](https://github.com/houseninjadojo/app/compare/v1.7.9...v1.7.10) (2022-04-14)
+
+
+### Bug Fixes
+
+* **config:** fix activestorage url ([#552](https://github.com/houseninjadojo/app/issues/552)) ([d45b253](https://github.com/houseninjadojo/app/commit/d45b25372420f7d527f6ac7802ce24497e1809a1))
+
 ## [1.7.9](https://github.com/houseninjadojo/app/compare/v1.7.8...v1.7.9) (2022-04-14)
 
 
