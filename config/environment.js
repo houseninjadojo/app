@@ -25,6 +25,7 @@ module.exports = function (environment) {
     },
 
     apiHost: 'https://api.dev.houseninja.co',
+    // apiHost: 'http://localhost:3000',
     appHost: 'http://localhost:4200',
     appScheme: 'co.houseninja.application',
 
@@ -52,6 +53,10 @@ module.exports = function (environment) {
 
     branch: {
       key: 'key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI',
+    },
+
+    'ember-active-storage': {
+      url: 'http://localhost:3000/rails/active_storage/direct_uploads',
     },
 
     'ember-cli-mirage': {
@@ -124,6 +129,9 @@ module.exports = function (environment) {
     ENV.auth.connection = 'development';
     ENV.auth.domain = 'sandbox.auth.houseninja.co';
 
+    // Active Storage
+    ENV['ember-active-storage'] = 'https://sandbox.api.houseninja.co/rails/active_storage/direct_uploads';
+
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};
 
@@ -147,6 +155,9 @@ module.exports = function (environment) {
     ENV.auth.audience = 'https://api.houseninja.co/';
     ENV.auth.connection = 'houseninja';
     ENV.auth.domain = 'auth.houseninja.co';
+
+    // Active Storage
+    ENV['ember-active-storage'] = 'https://api.houseninja.co/rails/active_storage/direct_uploads';
 
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};
