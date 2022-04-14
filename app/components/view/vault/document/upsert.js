@@ -162,7 +162,7 @@ export default class VaultDocumentUpsertComponent extends Component {
         },
       });
       this.args.model.document.setProperties({
-        name: this.documentInfo.name,
+        name: this._getFilename(),
         description: this.documentInfo.description,
         asset: uploadedFile.signedId,
         documentGroup: this.selectedDocumentGroup,
