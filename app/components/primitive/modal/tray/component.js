@@ -2,10 +2,13 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { tracked } from '@glimmer/tracking';
 
 export default class TrayComponent extends Component {
   @service router;
   @service view;
+
+  @tracked isLoading = false;
 
   options = [
     {
@@ -58,10 +61,12 @@ export default class TrayComponent extends Component {
 
   @action
   async handlePrimaryClick() {
+    this.isLoading = true;
     if (this.args.primaryAction) {
       this.args.primaryAction();
     } else if (!this.args.formIsInvalid && this.args.saveAction) {
       await this.args.saveAction();
     }
+    this.isLoading = false;
   }
 }
