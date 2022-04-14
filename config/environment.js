@@ -130,7 +130,7 @@ module.exports = function (environment) {
     ENV.auth.domain = 'sandbox.auth.houseninja.co';
 
     // Active Storage
-    ENV['ember-active-storage'] = 'https://sandbox.api.houseninja.co/rails/active_storage/direct_uploads';
+    ENV['ember-active-storage'].url = 'https://sandbox.api.houseninja.co/rails/active_storage/direct_uploads';
 
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};
@@ -157,7 +157,7 @@ module.exports = function (environment) {
     ENV.auth.domain = 'auth.houseninja.co';
 
     // Active Storage
-    ENV['ember-active-storage'] = 'https://api.houseninja.co/rails/active_storage/direct_uploads';
+    ENV['ember-active-storage'].url = 'https://api.houseninja.co/rails/active_storage/direct_uploads';
 
     // Intercom
     ENV.intercom.identityVerificationSecrets = {};
