@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import confetti from 'canvas-confetti';
 
 export default class WelcomeComponent extends Component {
   @service router;
@@ -30,14 +31,14 @@ export default class WelcomeComponent extends Component {
 
       var particleCount = 50 * (timeLeft / duration);
       // since particles fall down, start a bit higher than random
-      window.confetti(
+      confetti(
         Object.assign({}, defaults, {
           particleCount,
           origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
           colors: ['#008581'],
         })
       );
-      window.confetti(
+      confetti(
         Object.assign({}, defaults, {
           particleCount,
           origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },

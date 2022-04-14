@@ -135,4 +135,7 @@ function routes() {
       return false;
     }
   });
+
+  // Branch
+  this.passthrough('https://api2.branch.io');
 }
