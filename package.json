@@ -53,6 +53,7 @@
     "autoprefixer": "^10.4.4",
     "branch-sdk": "^2.59.0",
     "broccoli-asset-rev": "^3.0.0",
+    "canvas-confetti": "^1.5.1",
     "crypto-js": "^4.1.1",
     "ember-auto-import": "^2.4.1",
     "ember-cli": "~4.3.0",
