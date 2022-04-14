@@ -1,3 +1,10 @@
+## [1.7.11](https://github.com/houseninjadojo/app/compare/v1.7.10...v1.7.11) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** properly show/hide categorized documents ([#553](https://github.com/houseninjadojo/app/issues/553)) ([3844b94](https://github.com/houseninjadojo/app/commit/3844b94f8bcece1ff5f9d6756e50218f873c5a0f))
+
 ## [1.7.10](https://github.com/houseninjadojo/app/compare/v1.7.9...v1.7.10) (2022-04-14)
 
 
