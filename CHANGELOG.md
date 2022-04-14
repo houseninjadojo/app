@@ -1,3 +1,10 @@
+## [1.7.12](https://github.com/houseninjadojo/app/compare/v1.7.11...v1.7.12) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** use user set name on document upload ([#555](https://github.com/houseninjadojo/app/issues/555)) ([1a4f85e](https://github.com/houseninjadojo/app/commit/1a4f85e300c9c34e884335ad1791d095bf52042b))
+
 ## [1.7.11](https://github.com/houseninjadojo/app/compare/v1.7.10...v1.7.11) (2022-04-14)
 
 
