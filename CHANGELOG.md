@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/houseninjadojo/app/compare/v1.7.8...v1.7.9) (2022-04-14)
+
+
+### Bug Fixes
+
+* **documents:** use path filename on upload ([#551](https://github.com/houseninjadojo/app/issues/551)) ([45a9e1e](https://github.com/houseninjadojo/app/commit/45a9e1e6322347530e8ef8c4c04261801d15ad95))
+
 ## [1.7.8](https://github.com/houseninjadojo/app/compare/v1.7.7...v1.7.8) (2022-04-14)
 
 
