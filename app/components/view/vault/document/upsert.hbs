@@ -1,46 +1,64 @@
-<Primitive::Modal::Tray @onBack={{this.resetForm}} @formIsInvalid={{this.formIsInvalid}} @primaryActionText={{unless @model.document.id "Upload"}} @primaryActionHeaderText={{unless @model.document.id "Upload"}} @saveAction={{this.save}}>
+<Primitive::Modal::Tray
+  @onBack={{this.resetForm}}
+  @formIsInvalid={{this.formIsInvalid}}
+  @primaryActionText={{unless @model.document.id "Upload"}}
+  @primaryActionHeaderText={{unless @model.document.id "Upload"}}
+  @saveAction={{this.save}}
+>
     <div class="hn document-vault document upsert">
         <h1 class="hn view-title">{{if @model.document.id 'Edit Document Details' 'Upload Document'}}</h1>
         <div class="upsert-fields">
             {{#each this.fields as |field|}}
                 {{#if field.isSelect}}
                     <Primitive::Select
-                    @id={{field.id}}
-                    @options={{field.options}}
-                    @label={{field.label}}
-                    @required={{field.required}}
-                    {{!-- @disabled={{true}} --}}
-                    @value={{mut (get this.documentInfo field.id)}}
-                    @onChange={{this.validateForm}}
+                      @id={{field.id}}
+                      @options={{field.options}}
+                      @label={{field.label}}
+                      @required={{field.required}}
+                      {{!-- @disabled={{true}} --}}
+                      @value={{mut (get this.documentInfo field.id)}}
+                      @onChange={{this.validateForm}}
                     />
                 {{else}}
                     <Primitive::Input
-                    @id={{field.id}}
-                    @required={{field.required}}
-                    @placeholder={{field.placeholder}}
-                    @value={{mut (get this.documentInfo field.id)}}
-                    @description={{field.description}}
-                    @label={{field.label}}
-                    @type={{field.type}}
-                    {{!-- @disabled={{true}} --}}
-                    @onInput={{this.validateForm}}
+                      @id={{field.id}}
+                      @required={{field.required}}
+                      @placeholder={{field.placeholder}}
+                      @value={{mut (get this.documentInfo field.id)}}
+                      @description={{field.description}}
+                      @label={{field.label}}
+                      @type={{field.type}}
+                      {{!-- @disabled={{true}} --}}
+                      @onInput={{this.validateForm}}
                     />
                 {{/if}}
             {{/each}}
         </div>
         {{#if @model.document.id}}
             <div class="action">
-                <Primitive::Button @variant="solid" @semantic="alert" @size="md" {{on "click" this.delete}}>Delete Document</Primitive::Button>
+                <Primitive::Button
+                  @variant="solid"
+                  @semantic="alert"
+                  @size="md" {{on "click" this.delete}}
+                >
+                    Delete Document
+                </Primitive::Button>
             </div>
         {{/if}}
         {{#if this.documentUrl}}
             <div class="thumbnail">
                 <Primitive::Image
-                    @src={{this.documentUrl}}
-                    @alt="preview"
-                    @width="500"
+                  @src={{this.documentUrl}}
+                  @alt="preview"
+                  @width="500"
                 />
             </div>
         {{/if}}
     </div>
 </Primitive::Modal::Tray>
+
+{{#if this.isUploading}}
+    <Primitive::Modal::Dialog>
+        Uploading: {{this.uploadProgress}}%
+    </Primitive::Modal::Dialog>
+{{/if}}

@@ -27,6 +27,7 @@ export default class VaultDocumentUpsertComponent extends Component {
   @tracked newDocument = this.camera.image ?? this.file.file;
   @tracked documentUrl = this._getThumbnailUrl();
 
+  @tracked isUploading = false;
   @tracked uploadProgress = 0;
 
   @tracked documentInfo = {
@@ -148,6 +149,7 @@ export default class VaultDocumentUpsertComponent extends Component {
   async save() {
     // @todo put all of this in try/catch blocks
     if (this.newDocument) {
+      this.isUploading = true;
       debug('Saving new document...');
       const contents = await Filesystem.readFile({
         path: this.newDocument.path,

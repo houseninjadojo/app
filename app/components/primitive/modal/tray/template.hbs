@@ -3,7 +3,7 @@
     <div class="modal-container tray dark">
         <div class="head">
             <div class="actions">
-                <Primitive::Button @size="sm" @variant="floating" {{on "click" this.goBack}}>                
+                <Primitive::Button @size="sm" @variant="floating" {{on "click" this.goBack}}>
                     {{if @backText @backText 'Cancel'}}
                 </Primitive::Button>
                 {{#unless @hideRightAction}}
@@ -16,7 +16,7 @@
         <div class="body {{if @lockBodyScroll 'lock-body-scroll'}}">
             {{yield}}
         </div>
-        {{#unless @hideFooter}}        
+        {{#unless @hideFooter}}
             <div class="footer">
                 <Primitive::Button
                   @type="button"
@@ -26,7 +26,11 @@
                   @disabled={{@formIsInvalid}}
                   {{on 'click' this.handlePrimaryClick}}
                 >
-                    {{if @primaryActionText @primaryActionText 'Save'}}
+                    {{#if this.isLoading}}
+                        <Primitive::Loader::Spinner />
+                    {{else}}
+                        {{if @primaryActionText @primaryActionText 'Save'}}
+                    {{/if}}
                 </Primitive::Button>
             </div>
         {{/unless}}
