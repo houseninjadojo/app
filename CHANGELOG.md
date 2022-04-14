@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/houseninjadojo/app/compare/v1.7.7...v1.7.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** enable uploading and deleting documents ([#550](https://github.com/houseninjadojo/app/issues/550)) ([b62a410](https://github.com/houseninjadojo/app/commit/b62a4100529d08faf8029fc6d04dfbf6e93369df))
+
 ## [1.7.7](https://github.com/houseninjadojo/app/compare/v1.7.6...v1.7.7) (2022-04-12)
 
 
