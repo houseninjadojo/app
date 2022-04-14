@@ -9,6 +9,8 @@ import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import { isPresent } from '@ember/utils';
 import { Filesystem } from '@capacitor/filesystem';
 import base64ToBlob from 'houseninja/utils/base64-to-blob';
+import { debug } from '@ember/debug';
+import { captureException } from 'houseninja/utils/sentry';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
@@ -87,13 +89,18 @@ export default class VaultDocumentUpsertComponent extends Component {
     const response = await this.confirm();
     const { index } = response;
     const confirmed = this.options[index].title === this.options[1].title;
+    const { document } = this.args.model;
 
     if (confirmed) {
       try {
-        console.log('Deleting document...');
-        this.view.transitionToPreviousRoute();
+        debug('Deleting group...');
+        debug('Update all associated documents groupId to null or empty');
+
+        await document.destroyRecord();
+
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
       } catch (e) {
-        console.log(e);
+        captureException(e);
       }
     }
   }
@@ -141,7 +148,7 @@ export default class VaultDocumentUpsertComponent extends Component {
   async save() {
     // @todo put all of this in try/catch blocks
     if (this.newDocument) {
-      console.log('Saving new document...');
+      debug('Saving new document...');
       const contents = await Filesystem.readFile({
         path: this.newDocument.path,
       });
