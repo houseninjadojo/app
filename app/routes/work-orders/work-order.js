@@ -21,9 +21,7 @@ export default class WorkOrderRoute extends Route {
       );
     }
 
-    const model = await this.store.findRecord('work-order', work_order_id, {
-      backgroundReload: true,
-    });
+    const model = await this.store.findRecord('work-order', work_order_id);
 
     model.setProperties({
       statusLabel: model.status && getWorkOrderStatusLabel(model.status),
@@ -31,6 +29,7 @@ export default class WorkOrderRoute extends Route {
       lastFour: paymentMethod.obfuscated.lastFour,
       cardBrand: paymentMethod.obfuscated.brand,
     });
+
     return model;
   }
 }

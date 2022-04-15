@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
-import { toCamel } from 'houseninja/utils/string-helpers';
+import { camelize } from '@ember/string';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderViewComponent extends Component {
@@ -17,14 +17,15 @@ export default class WorkOrderViewComponent extends Component {
   issueMessage = 'I have an issue with my work order.';
 
   content = {
-    approvePayment: 'ApprovePayment',
-    paymentFailed: 'FailedPayment',
-    closed: 'Closed',
-    default: 'Default',
+    approvePayment: 'approve-payment',
+    paymentFailed: 'failed-payment',
+    closed: 'closed',
+    default: 'default',
   };
 
   get contentType() {
-    const status = workOrderStatus[toCamel(this.args.model.status)];
+    const modelStatus = this.args.model?.get('status') ?? '';
+    const status = workOrderStatus[camelize(modelStatus)];
     switch (status) {
       case workOrderStatus.invoiceSentToCustomer:
         return this.content.approvePayment;
@@ -41,7 +42,7 @@ export default class WorkOrderViewComponent extends Component {
   @action
   selectRoute(route) {
     if (typeof route === 'object') {
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDER, route.id);
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
     } else {
       if (route === this.paymentRoute) {
         this.view.preservePreviousRoute(this.router);
