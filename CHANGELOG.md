@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/houseninjadojo/app/compare/v1.8.0...v1.8.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* **vault:** use logo spinner for upload progress ([#559](https://github.com/houseninjadojo/app/issues/559)) ([6051f3e](https://github.com/houseninjadojo/app/commit/6051f3e46d4d5317bd41db2dd90ad4dcfc92c763))
+
 # [1.8.0](https://github.com/houseninjadojo/app/compare/v1.7.14...v1.8.0) (2022-04-15)
 
 
