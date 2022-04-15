@@ -1,3 +1,10 @@
+## [1.7.14](https://github.com/houseninjadojo/app/compare/v1.7.13...v1.7.14) (2022-04-15)
+
+
+### Bug Fixes
+
+* **work-orders:** view work orders ([#558](https://github.com/houseninjadojo/app/issues/558)) ([96b7b4f](https://github.com/houseninjadojo/app/commit/96b7b4f1c3fe7b8f083da4ff97ca2492b58f729c))
+
 ## [1.7.13](https://github.com/houseninjadojo/app/compare/v1.7.12...v1.7.13) (2022-04-14)
 
 
