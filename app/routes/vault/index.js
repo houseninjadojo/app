@@ -12,7 +12,11 @@ export default class VaultIndexRoute extends Route {
   model() {
     return RSVP.hash({
       groups: this.store.findAll('document-group'),
-      documents: this.store.findAll('document'),
+      documents: this.store.query('document', {
+        filter: {
+          document_group_id: 'uncategorized',
+        },
+      }),
     });
   }
 }

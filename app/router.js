@@ -56,5 +56,8 @@ Router.map(function () {
       });
     });
   });
-  this.route('work-order', { path: '/:work_order_id' });
+  this.route('work-orders', function () {
+    this.route('index');
+    this.route('work-order', { path: '/:work_order_id' });
+  });
 });

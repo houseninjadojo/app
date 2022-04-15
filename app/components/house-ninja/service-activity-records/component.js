@@ -15,7 +15,7 @@ export default class ServiceActivityRecordsComponent extends Component {
 
     if (typeof route === 'object') {
       this.view.preservePreviousRoute(this.router);
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDER, route.id);
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
     }
   }
 

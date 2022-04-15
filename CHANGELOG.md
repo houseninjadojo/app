@@ -1,3 +1,52 @@
+## [1.7.14](https://github.com/houseninjadojo/app/compare/v1.7.13...v1.7.14) (2022-04-15)
+
+
+### Bug Fixes
+
+* **work-orders:** view work orders ([#558](https://github.com/houseninjadojo/app/issues/558)) ([96b7b4f](https://github.com/houseninjadojo/app/commit/96b7b4f1c3fe7b8f083da4ff97ca2492b58f729c))
+
+## [1.7.13](https://github.com/houseninjadojo/app/compare/v1.7.12...v1.7.13) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** track upload progress ([#556](https://github.com/houseninjadojo/app/issues/556)) ([61af5e1](https://github.com/houseninjadojo/app/commit/61af5e1ac6a28edc55d9242d1319ec4855720581))
+
+## [1.7.12](https://github.com/houseninjadojo/app/compare/v1.7.11...v1.7.12) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** use user set name on document upload ([#555](https://github.com/houseninjadojo/app/issues/555)) ([1a4f85e](https://github.com/houseninjadojo/app/commit/1a4f85e300c9c34e884335ad1791d095bf52042b))
+
+## [1.7.11](https://github.com/houseninjadojo/app/compare/v1.7.10...v1.7.11) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** properly show/hide categorized documents ([#553](https://github.com/houseninjadojo/app/issues/553)) ([3844b94](https://github.com/houseninjadojo/app/commit/3844b94f8bcece1ff5f9d6756e50218f873c5a0f))
+
+## [1.7.10](https://github.com/houseninjadojo/app/compare/v1.7.9...v1.7.10) (2022-04-14)
+
+
+### Bug Fixes
+
+* **config:** fix activestorage url ([#552](https://github.com/houseninjadojo/app/issues/552)) ([d45b253](https://github.com/houseninjadojo/app/commit/d45b25372420f7d527f6ac7802ce24497e1809a1))
+
+## [1.7.9](https://github.com/houseninjadojo/app/compare/v1.7.8...v1.7.9) (2022-04-14)
+
+
+### Bug Fixes
+
+* **documents:** use path filename on upload ([#551](https://github.com/houseninjadojo/app/issues/551)) ([45a9e1e](https://github.com/houseninjadojo/app/commit/45a9e1e6322347530e8ef8c4c04261801d15ad95))
+
+## [1.7.8](https://github.com/houseninjadojo/app/compare/v1.7.7...v1.7.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* **vault:** enable uploading and deleting documents ([#550](https://github.com/houseninjadojo/app/issues/550)) ([b62a410](https://github.com/houseninjadojo/app/commit/b62a4100529d08faf8029fc6d04dfbf6e93369df))
+
 ## [1.7.7](https://github.com/houseninjadojo/app/compare/v1.7.6...v1.7.7) (2022-04-12)
 
 

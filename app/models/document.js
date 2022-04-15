@@ -18,6 +18,8 @@ export default class DocumentModel extends Model {
   @attr('date') createdAt;
   @attr('date') updatedAt;
 
+  @attr('write-only') asset;
+
   get iconUri() {
     return getIconUri(this.contentType);
   }

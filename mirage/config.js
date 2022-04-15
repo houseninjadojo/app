@@ -116,4 +116,23 @@ function routes() {
   this.passthrough(`https://${ENV.auth.domain}/authorize`);
   this.passthrough(`https://${ENV.auth.domain}/oauth/token`);
   this.passthrough(`https://${ENV.auth.domain}/userinfo`);
+
+  // Uploads
+  this.passthrough(
+    'https://sandbox.api.houseninja.co/rails/active_storage/direct_uploads'
+  );
+  this.passthrough(
+    'https://api.houseninja.co/rails/active_storage/direct_uploads'
+  );
+
+  // Filesystem
+  this.passthrough(`co.houseninja.application://localhost`);
+  this.passthrough(`file:///`);
+  this.passthrough((request) => {
+    if (request.url.startsWith('co.houseninja.application://')) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 }

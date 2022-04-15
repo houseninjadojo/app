@@ -6,11 +6,18 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { Capacitor } from '@capacitor/core';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { isPresent } from '@ember/utils';
+import { Filesystem } from '@capacitor/filesystem';
+import base64ToBlob from 'houseninja/utils/base64-to-blob';
+import { debug } from '@ember/debug';
+import { captureException } from 'houseninja/utils/sentry';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 
 export default class VaultDocumentUpsertComponent extends Component {
+  @service activeStorage;
   @service camera;
+  @service current;
   @service file;
   @service haptics;
   @service router;
@@ -20,10 +27,13 @@ export default class VaultDocumentUpsertComponent extends Component {
   @tracked newDocument = this.camera.image ?? this.file.file;
   @tracked documentUrl = this._getThumbnailUrl();
 
+  @tracked isUploading = false;
+  @tracked uploadProgress = 0;
+
   @tracked documentInfo = {
     name: this._getFilename(),
-    description: this.args.model.document.get('description') ?? null,
-    documentGroup: this.args.model.document.get('group.id') ?? null,
+    description: this.args.model.document?.get('description') ?? null,
+    documentGroup: this.args.model.document?.get('group.id') ?? null,
   };
 
   @tracked fields = [
@@ -54,13 +64,13 @@ export default class VaultDocumentUpsertComponent extends Component {
             value: g.id,
             label: g.name,
             selected:
-              this.args.model.document.get('group') &&
-              this.args.model.document.get('group.id') &&
-              g.id === this.args.model.document.get('group.id'),
+              this.args.model.document?.get('group') &&
+              this.args.model.document?.get('group.id') &&
+              g.id === this.args.model.document?.get('group.id'),
           };
         }),
       ],
-      value: this.args.model.document.get('group.id'),
+      value: this.args.model.document?.get('group.id'),
     },
   ];
 
@@ -80,13 +90,15 @@ export default class VaultDocumentUpsertComponent extends Component {
     const response = await this.confirm();
     const { index } = response;
     const confirmed = this.options[index].title === this.options[1].title;
+    const { document } = this.args.model;
 
     if (confirmed) {
       try {
-        console.log('Deleting document...');
-        this.view.transitionToPreviousRoute();
+        debug('Deleting document...');
+        await document.destroyRecord();
+        this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
       } catch (e) {
-        console.log(e);
+        captureException(e);
       }
     }
   }
@@ -127,13 +139,46 @@ export default class VaultDocumentUpsertComponent extends Component {
   }
 
   get selectedDocumentGroup() {
-    return this.args.model.groups.findBy('id', this.documentInfo.documentGroup);
+    return (
+      this.args.model.groups.findBy('id', this.documentInfo.documentGroup) ??
+      null
+    );
   }
 
   @action
   async save() {
+    // @todo put all of this in try/catch blocks
     if (this.newDocument) {
-      console.log('Saving new document...');
+      this.isUploading = true;
+      debug('Saving new document...');
+      const contents = await Filesystem.readFile({
+        path: this.newDocument.path,
+      });
+      const blob = base64ToBlob(
+        contents.data,
+        `image/${this.newDocument.format}`
+      );
+      const file = new File([blob], this.documentInfo.name, {
+        type: `image/${this.newDocument.format}`,
+      });
+      const uploadedFile = await this.activeStorage.upload(file, {
+        onProgress: (progress /*, event */) => {
+          this.uploadProgress = progress;
+        },
+      });
+      this.args.model.document.setProperties({
+        name: this.documentInfo.name,
+        description: this.documentInfo.description,
+        asset: uploadedFile.signedId,
+        documentGroup: this.selectedDocumentGroup,
+        user: this.current.user,
+      });
+      await this.args.model.document?.save();
+      await this.args.model.document?.reload();
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.SHOW,
+        this.document.id
+      );
     } else {
       this.args.model.document.setProperties({
         documentGroup: this.selectedDocumentGroup,
@@ -161,15 +206,19 @@ export default class VaultDocumentUpsertComponent extends Component {
 
   @action
   resetForm() {
-    this.documentInfo.name = this.args.model.document.name || this.documentUrl;
+    this.documentInfo.name = this.args.model.document?.name || this.documentUrl;
     this.documentInfo.description =
-      this.args.model.document.description || null;
+      this.args.model.document?.description || null;
     this.documentInfo.documentGroup =
-      this.args.model.document.get('group.id') || null;
+      this.args.model.document?.get('group.id') || null;
 
     this.camera.image && this.camera.clear();
     this.file.file && this.file.clear();
     this.formIsInvalid = true;
+
+    if (isPresent(this.document) && this.document.isNew) {
+      this.document.unloadRecord();
+    }
   }
 
   @action

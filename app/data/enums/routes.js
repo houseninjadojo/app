@@ -44,5 +44,7 @@ export const NATIVE_MOBILE_ROUTE = {
       EDIT: 'vault.groups.group.edit',
     },
   },
-  WORK_ORDER: 'work-order',
+  WORK_ORDERS: {
+    SHOW: 'work-orders.work-order',
+  },
 };
