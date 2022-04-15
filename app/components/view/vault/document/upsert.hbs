@@ -58,7 +58,10 @@
 </Primitive::Modal::Tray>
 
 {{#if this.isUploading}}
-    <Primitive::Modal::Dialog>
-        Uploading: {{this.uploadProgress}}%
-    </Primitive::Modal::Dialog>
+  <div class="hn work-order">
+    <div class="payment-processing show">
+        <Primitive::Loader::Logo @isDone={{(eq this.uploadProgress 100)}}/>
+        <p class="hn label strong">Uploading: {{this.uploadProgress}}%</p>
+    </div>
+  </div>
 {{/if}}
