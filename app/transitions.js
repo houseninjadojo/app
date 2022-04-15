@@ -47,7 +47,7 @@ export default function () {
   );
 
   this.transition(
-    this.fromRoute([NATIVE_MOBILE_ROUTE.WORK_ORDER]),
+    this.fromRoute([NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW]),
     this.toRoute([NATIVE_MOBILE_ROUTE.SETTINGS.INDEX]),
     this.use('toUp', { duration: 500, easing: [100, 20] }),
     this.reverse('toDown', { duration: 300 })
