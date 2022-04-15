@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/houseninjadojo/app/compare/v1.7.14...v1.8.0) (2022-04-15)
+
+
+### Features
+
+* work order mgmt layout update w/ estimate approval ([#546](https://github.com/houseninjadojo/app/issues/546)) ([c938f1a](https://github.com/houseninjadojo/app/commit/c938f1a3b6c486b65ce32fe19d064a15994e2683))
+
 ## [1.7.14](https://github.com/houseninjadojo/app/compare/v1.7.13...v1.7.14) (2022-04-15)
 
 
