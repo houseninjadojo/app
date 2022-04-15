@@ -7,9 +7,10 @@ import { camelize } from '@ember/string';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderViewComponent extends Component {
+  @service loader;
+  @service intercom;
   @service router;
   @service view;
-  @service intercom;
 
   paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
 
@@ -19,18 +20,25 @@ export default class WorkOrderViewComponent extends Component {
   content = {
     approvePayment: 'approve-payment',
     paymentFailed: 'failed-payment',
+    approveEstimate: 'approve-estimate',
     closed: 'closed',
     default: 'default',
   };
 
+  get isLoading() {
+    return this.loader.isLoading;
+  }
+
   get contentType() {
-    const modelStatus = this.args.model?.get('status') ?? '';
+    const modelStatus = this.args.model?.status ?? '';
     const status = workOrderStatus[camelize(modelStatus)];
     switch (status) {
       case workOrderStatus.invoiceSentToCustomer:
         return this.content.approvePayment;
       case workOrderStatus.paymentFailed:
         return this.content.paymentFailed;
+      case workOrderStatus.estimateSharedWithHomeowner:
+        return this.content.approveEstimate;
       case workOrderStatus.invoicePaidByCustomer:
       case workOrderStatus.closed:
         return this.content.closed;

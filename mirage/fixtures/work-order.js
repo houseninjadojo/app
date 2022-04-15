@@ -56,7 +56,7 @@ export default [
     // scheduledDate: '03/26/22',
     // scheduledTime: '10:00AM',
     // status: getRandomProperty(workOrderStatus),
-    status: workOrderStatus.workOrderInitiated,
+    status: workOrderStatus.estimateSharedWithHomeowner,
   },
   {
     id: faker.datatype.uuid(),

@@ -1,8 +1,12 @@
 <div class="hn work-order">
-    {{component (concat "view/work-order/content" "/" this.contentType)
-        model=@model
-        handleCancelRequest=(fn this.displayMessageComposer this.cancelMessage)
-        handleReportAnIssue=(fn this.displayMessageComposer this.issueMessage)
-        selectRoute=(fn this.selectRoute this.paymentRoute)
-    }}
+    {{#if this.isLoading}}
+        <View::WorkOrder::Content::Loading />
+    {{else}}
+        {{component (concat "view/work-order/content" "/" this.contentType)
+          model=@model
+          handleCancelRequest=(fn this.displayMessageComposer this.cancelMessage)
+          handleReportAnIssue=(fn this.displayMessageComposer this.issueMessage)
+          selectRoute=(fn this.selectRoute this.paymentRoute)
+        }}
+    {{/if}}
 </div>
