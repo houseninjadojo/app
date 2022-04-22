@@ -12,6 +12,10 @@
 		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
 	},
 	{
+		"pkg": "@capacitor-community/photoviewer",
+		"classpath": "com.getcapacitor.community.media.photoviewer.PhotoViewerPlugin"
+	},
+	{
 		"pkg": "@capacitor/action-sheet",
 		"classpath": "com.capacitorjs.plugins.actionsheet.ActionSheetPlugin"
 	},
