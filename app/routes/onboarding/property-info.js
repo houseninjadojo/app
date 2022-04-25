@@ -6,7 +6,7 @@ import {
 } from 'houseninja/data/enums/onboarding-step';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class SignupPropertyInfoRoute extends Route {
+export default class OnboardingPropertyInfoRoute extends Route {
   @service onboarding;
 
   beforeModel() {

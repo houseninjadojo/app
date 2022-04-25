@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { SET_PASSWORD } from 'houseninja/data/enums/onboarding-step';
 
-export default class SignupSetPasswordRoute extends Route {
+export default class OnboardingSetPasswordRoute extends Route {
   @service store;
   @service onboarding;
 

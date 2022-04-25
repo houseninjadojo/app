@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 import { WALKTHROUGH_BOOKING } from 'houseninja/data/enums/onboarding-step';
 import RSVP from 'rsvp';
 
-export default class SignupWalkthroughBookingRoute extends Route {
+export default class OnboardingWalkthroughBookingRoute extends Route {
   @service onboarding;
 
   model() {
