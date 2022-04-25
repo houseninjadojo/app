@@ -23,6 +23,14 @@ export const NATIVE_MOBILE_ROUTE = {
     LOGIN: 'login',
     LOGOUT: 'logout',
   },
+  ONBOARDING: {
+    CONTACT_INFO: 'onboarding.contact-info',
+    SET_PASSWORD: 'onboarding.set-password',
+    WELCOME: 'onboarding.welcome',
+    PROPERTY_INFO: 'onboarding.property-info',
+    WALKTHROUGH_BOOKING: 'onboarding.walkthrough-booking',
+    BOOKING_CONFIRMATION: 'onboarding.booking-confirmation',
+  },
   SETTINGS: {
     INDEX: 'settings',
     CONTACT: 'settings.contact',
