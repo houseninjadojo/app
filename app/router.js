@@ -35,6 +35,7 @@ Router.map(function () {
   this.route('onboarding', function () {
     this.route('contact-info');
     this.route('set-password');
+    this.route('welcome');
     this.route('property-info');
     this.route('walkthrough-booking');
     this.route('booking-confirmation');
