@@ -1,6 +1,10 @@
 <div class="content">
-    <div class="prompt">
-        <p class="primary">Contact Information</p>
+    <div class="prompt">        
+        {{#if @isOnboarding}}
+            <p>To set your password, enter in the details used during the sign up process.</p>        
+        {{else}}
+            <p class="primary">Contact Information</p>
+        {{/if}}
         {{#each this.fields as |field|}}
             <Primitive::Input
                 @id={{field.id}}
