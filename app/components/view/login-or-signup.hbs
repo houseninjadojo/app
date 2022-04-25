@@ -1,7 +1,12 @@
 <div class="hn login-or-signup">
     <img src="/assets/splash/logo-placeholder-after.svg" class="hn-logo" alt="house ninja"/>
     <div class="actions" {{did-insert this.show}}>
-        <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" {{on "click" this.login}}>Login</Primitive::Button>
+        <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" {{on "click" this.login}}>Login</Primitive::Button>        
+        <button class="hn onboarding-button mt-4" {{on "click" this.onboardUser}}>
+            I’m a member but don’t have a password
+        </button>
+    </div>
+    <div class="hn sign-up-container" {{did-insert this.show}}>
         <Primitive::Button @type="button" @size="lg" @variant="floating" {{on "click" this.openSignUpViewInSystemBrowser}}>Sign Up</Primitive::Button>
     </div>
 </div>
