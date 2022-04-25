@@ -32,6 +32,13 @@ Router.map(function () {
     this.route('walkthrough-booking');
     this.route('booking-confirmation');
   });
+  this.route('onboarding', function () {
+    this.route('contact-info');
+    this.route('set-password');
+    this.route('property-info');
+    this.route('walkthrough-booking');
+    this.route('booking-confirmation');
+  });
   this.route('settings', function () {
     this.route('contact');
     this.route('payment');
