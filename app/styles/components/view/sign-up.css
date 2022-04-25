@@ -35,9 +35,6 @@
 }
 
 .sign-up-module .action .hn.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: initial;
   max-width: 50%;
 }
