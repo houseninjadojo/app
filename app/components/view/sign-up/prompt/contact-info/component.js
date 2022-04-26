@@ -98,7 +98,7 @@ export default class ContactInfoComponent extends Component {
     });
 
     if (user) {
-      this.router.transitionTo(`onboarding.${this.user.onboardingStep}`);
+      this.router.transitionTo(`onboarding.${user.onboardingStep}`);
     }
   }
 
