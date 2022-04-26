@@ -84,11 +84,21 @@ export default class ContactInfoComponent extends Component {
   @action
   async handlePrimaryClick() {
     if (this.args.isOnboarding) {
-      console.log('Find user by credentials');
-      console.log('Check onboarding step');
-      console.log('Transition to onboarding step');
+      this.onboardUser();
     } else {
       this.saveContactInfo();
+    }
+  }
+
+  @action
+  async onboardUser() {
+    const { email } = this.contactInfo;
+    const user = await this.store.queryRecord('user', {
+      filter: { email },
+    });
+
+    if (user) {
+      this.router.transitionTo(`onboarding.${this.user.onboardingStep}`);
     }
   }
 
