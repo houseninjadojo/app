@@ -1,7 +1,7 @@
 <div class="content">
     <div class="prompt">        
         {{#if @isOnboarding}}
-            <p class="primary">To resume the account onboarding process, enter in the details used during the sign up process.</p>        
+            <p class="primary mb-4">To resume the account onboarding process, enter in the details used during the sign up process.</p>        
         {{else}}
             <p class="primary">Contact Information</p>
         {{/if}}
@@ -25,7 +25,7 @@
             @variant='solid'
             @semantic='primary'
             @disabled={{this.formIsInvalid}}
-            {{on 'click' this.saveContactInfo}}
+            {{on 'click' this.handlePrimaryClick}}
         >
             Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>

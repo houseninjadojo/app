@@ -82,6 +82,17 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
+  async handlePrimaryClick() {
+    if (this.args.isOnboarding) {
+      console.log('Find user by credentials');
+      console.log('Check onboarding step');
+      console.log('Transition to onboarding step');
+    } else {
+      this.saveContactInfo();
+    }
+  }
+
+  @action
   async saveContactInfo() {
     if (isPresent(this.args.user)) {
       this.args.user.unloadRecord();
