@@ -83,7 +83,7 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async handlePrimaryClick() {
-    if (this.args.isOnboarding) {
+    if (this.args.isOnboardingInApp) {
       this.onboardUser();
     } else {
       this.saveContactInfo();
@@ -98,7 +98,13 @@ export default class ContactInfoComponent extends Component {
     });
 
     if (user) {
-      this.router.transitionTo(`onboarding.${user.onboardingStep}`);
+      // 1. Send user.onboardingCode to user.email or user.phoneNumber
+      // 2. Instruct user to find the code in their email or text messages
+      // 3. Instruct user to input the code
+      // 4a. If code is CORRECT
+      //    this.router.transitionTo(`onboarding.${user.onboardingStep}`, user.id);
+      // 4b. If code is INCORRECT
+      //    Notify the user the code is incorrect
     }
   }
 
