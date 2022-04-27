@@ -82,29 +82,19 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
-  async handlePrimaryClick() {
-    if (this.args.isOnboardingInApp) {
-      this.onboardUser();
+  async onboardUser(user) {
+    if (this.args.isOnboardingViaNativeApp) {
+      // 1. Send OTP
+      // 2. Confirm OTP
+      // 3. Transition to set-password
+      this.router.transitionTo('onboarding.set-password', user.id);
     } else {
-      this.saveContactInfo();
-    }
-  }
-
-  @action
-  async onboardUser() {
-    const { email } = this.contactInfo;
-    const user = await this.store.queryRecord('user', {
-      filter: { email },
-    });
-
-    if (user) {
-      // 1. Send user.onboardingCode to user.email or user.phoneNumber
-      // 2. Instruct user to find the code in their email or text messages
-      // 3. Instruct user to input the code
-      // 4a. If code is CORRECT
-      //    this.router.transitionTo(`onboarding.${user.onboardingStep}`, user.id);
-      // 4b. If code is INCORRECT
-      //    Notify the user the code is incorrect
+      this.onboarding.rehydrateFromRemote.perform();
+      let route = this.onboarding.routeFromStep(user.onboardingStep);
+      if (user.onboardingStep === CONTACT_INFO) {
+        route = SIGNUP_ROUTE.PAYMENT_METHOD;
+      }
+      this.router.transitionTo(route);
     }
   }
 
@@ -125,15 +115,15 @@ export default class ContactInfoComponent extends Component {
       return;
     }
     if (user.shouldResumeOnboarding) {
-      this.onboarding.rehydrateFromRemote.perform();
-      let route = this.onboarding.routeFromStep(user.onboardingStep);
-      if (user.onboardingStep === CONTACT_INFO) {
-        route = SIGNUP_ROUTE.PAYMENT_METHOD;
-      }
-      this.router.transitionTo(route);
+      this.onboardUser(user);
     } else {
       this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
     }
+  }
+
+  @action
+  async handlePrimaryClick() {
+    this.saveContactInfo();
   }
 
   @action
