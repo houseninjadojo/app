@@ -34,7 +34,7 @@ export default class ContactInfoComponent extends Component {
 
   @tracked formIsInvalid = true;
 
-  @tracked fields = [
+  userNameFields = [
     {
       id: 'firstName',
       required: true,
@@ -49,12 +49,18 @@ export default class ContactInfoComponent extends Component {
       placeholder: '',
       value: null,
     },
+  ];
+
+  @tracked fields = [
+    ...(!this.args.isOnboardingViaNativeApp ? this.userNameFields : []),
     {
       type: 'tel',
       id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      description: 'We only use your phone number to contact you.',
+      description: !this.args.isOnboardingViaNativeApp
+        ? 'We only use your phone number to contact you.'
+        : '',
       value: null,
     },
     {
