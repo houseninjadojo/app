@@ -7,6 +7,7 @@
   height: 100%;
   background: var(--black);
   padding: 16px;
+  color: var(--white);
 }
 
 .login-or-signup .hn-logo {
@@ -29,6 +30,8 @@
 }
 
 button.hn.onboarding-button {
+  width: 100%;
+  height: var(--btn-lg);
   background: none;
   border: 1px solid var(--white);
   border-radius: 2px;

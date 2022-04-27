@@ -45,6 +45,14 @@
   color: var(--blue-400);
 }
 
+.hn.btn.floating.white {
+  color: var(--white);
+}
+
+.hn.btn.floating.black {
+  color: var(--black);
+}
+
 .hn.btn.solid.primary {
   background: var(--grad-black-1000);
   box-shadow: var(--shadow-gray-1);
