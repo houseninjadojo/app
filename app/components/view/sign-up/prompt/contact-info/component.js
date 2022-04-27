@@ -34,7 +34,7 @@ export default class ContactInfoComponent extends Component {
 
   @tracked formIsInvalid = true;
 
-  userNameFields = [
+  signupFields = [
     {
       id: 'firstName',
       required: true,
@@ -49,10 +49,6 @@ export default class ContactInfoComponent extends Component {
       placeholder: '',
       value: null,
     },
-  ];
-
-  @tracked fields = [
-    ...(!this.args.isOnboardingViaNativeApp ? this.userNameFields : []),
     {
       type: 'tel',
       id: 'phoneNumber',
@@ -63,6 +59,10 @@ export default class ContactInfoComponent extends Component {
         : '',
       value: null,
     },
+  ];
+
+  @tracked fields = [
+    ...(!this.args.isOnboardingViaNativeApp ? this.signupFields : []),
     {
       type: 'email',
       id: 'email',
@@ -150,7 +150,7 @@ export default class ContactInfoComponent extends Component {
     }
 
     this.formIsInvalid = inputValidation(this.fields, [
-      'phoneIsValid',
+      ...(!this.args.isOnboardingViaNativeApp ? ['phoneIsValid'] : []),
       'emailIsValid',
     ]).isInvalid;
   }
