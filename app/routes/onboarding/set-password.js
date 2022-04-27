@@ -4,7 +4,7 @@ export default class OnboardingSetPasswordRoute extends Route {
   @service store;
   @service onboarding;
 
-  async model({ userId }) {
-    return await this.store.findRecord('user', userId);
+  async model({ user_id }) {
+    return await this.store.findRecord('user', user_id);
   }
 }
