@@ -1,53 +1,88 @@
 <div class="content">
-    <div class="hero mb-4">
-        {{#if @isOnboardingViaNativeApp}}
-            <p class="hn strong mb-4">Set Your Account Password</p>                    
-            <br/>
-            <br/>
-        {{else}}
-            <p class="hn strong mb-4">One last step!</p>
-            <p class="mb-4">To access the iOS app where you'll be able to easily and conveniently manage your home, you'll need to choose a password.</p>        
-            <br/>
-            <br/>
-        {{/if}}
-        <div class="password-reqs">
-            <p class="hn label">Password Requirements</p>
-            <ul>
-                <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{this.requirementsModel.passwordsMatch}} />
-                <View::AccountSettings::Security::PasswordReq @requirement="At least 8 characters long" @reqPassed={{this.requirementsModel.atLeastThisLong}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{this.requirementsModel.hasLowercase}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{this.requirementsModel.hasUppercase}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{this.requirementsModel.hasNumber}}/>
-                <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{this.requirementsModel.hasSymbol}}/>
-            </ul>
-        </div>
+    {{#unless this.passwordHasBeenSet}}
+        <div class="hero mb-4">
+            {{#if @isOnboardingViaNativeApp}}
+                <p class="hn strong mb-4">Set Your Account Password</p>                    
+                <br/>            
+            {{else}}
+                <p class="hn strong mb-4">One last step!</p>
+                <p class="mb-4">To access the iOS app where you'll be able to easily and conveniently manage your home, you'll need to choose a password.</p>        
+                <br/>            
+            {{/if}}
+            <div class="password-reqs">
+                <p class="hn label">Password Requirements</p>
+                <ul>
+                    <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{this.requirementsModel.passwordsMatch}} />
+                    <View::AccountSettings::Security::PasswordReq @requirement="At least 8 characters long" @reqPassed={{this.requirementsModel.atLeastThisLong}}/>
+                    <View::AccountSettings::Security::PasswordReq @requirement="Contains lowercase" @reqPassed={{this.requirementsModel.hasLowercase}}/>
+                    <View::AccountSettings::Security::PasswordReq @requirement="Contains uppercase" @reqPassed={{this.requirementsModel.hasUppercase}}/>
+                    <View::AccountSettings::Security::PasswordReq @requirement="Contains a number" @reqPassed={{this.requirementsModel.hasNumber}}/>
+                    <View::AccountSettings::Security::PasswordReq @requirement="Contains one of these symbols: ! $ & . # @" @reqPassed={{this.requirementsModel.hasSymbol}}/>
+                </ul>
+            </div>
 
-    </div>
-    <div class="prompt">
-        {{#each this.fields as |field|}}
-            <Primitive::Input
-                @id={{field.id}}
-                @required={{field.required}}
-                @placeholder={{field.placeholder}}
-                @value={{mut (get this.passwords field.id)}}
-                @description={{field.description}}
-                @label={{field.label}}
-                @type={{field.type}}
-                @disabled={{field.disabled}}
-                @onInput={{this.validateForm}}
-                @errors={{(get this.errors field.id)}}
-            />
-        {{/each}}
-    </div>
-    <div class="action single">
-        <Primitive::Button
-            @size='lg'
-            @variant='solid'
-            @semantic='primary'
-            @disabled={{this.formIsInvalid}}
-            {{on 'click' this.savePassword}}
-        >
-            Set Password
-        </Primitive::Button>
-    </div>
+        </div>
+        <div class="prompt">
+            {{#each this.fields as |field|}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @required={{field.required}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get this.passwords field.id)}}
+                    @description={{field.description}}
+                    @label={{field.label}}
+                    @type={{field.type}}
+                    @disabled={{field.disabled}}
+                    @onInput={{this.validateForm}}
+                    @errors={{(get this.errors field.id)}}
+                />
+            {{/each}}
+        </div>
+        <div class="action single">
+            <Primitive::Button
+                @size='lg'
+                @variant='solid'
+                @semantic='primary'
+                @disabled={{this.formIsInvalid}}
+                {{on 'click' this.savePassword}}
+            >
+                Set Password
+            </Primitive::Button>
+        </div>
+    {{else}}
+        <div class="hero mb-4">                
+            <p class="hn strong mb-4">Password Successfully Set</p>                    
+            <br/>                                            
+            {{#unless this.bookWalkthrough}}
+                <p>
+                    Let's get you logged in.
+                </p>
+            {{else}}
+                <p>
+                    Looks like we also need to book your walkthrough. Let's take care of that.
+                </p>
+            {{/unless}}
+        </div>        
+        <div class="action single">
+            {{#unless this.bookWalkthrough}}
+                <Primitive::Button
+                    @size='lg'
+                    @variant='solid'
+                    @semantic='primary'                    
+                    {{on 'click' this.login}}
+                >
+                    Login
+                </Primitive::Button>                
+            {{else}}
+                <Primitive::Button
+                    @size='lg'
+                    @variant='solid'
+                    @semantic='primary'                    
+                    {{!-- {{on 'click' this.handlePrimaryClick}} --}}
+                >
+                    Book Walkthrough <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+                </Primitive::Button>
+            {{/unless}}
+        </div>
+    {{/unless}}
 </div>

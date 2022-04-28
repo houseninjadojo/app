@@ -34,6 +34,7 @@
   flex-direction: column;
 }
 
+.onboarding .action .hn.btn,
 .sign-up-module .action .hn.btn {
   width: initial;
   max-width: 50%;
@@ -43,6 +44,7 @@
   width: 100%;
 }
 
+.onboarding .action.single .hn.btn,
 .sign-up-module .action.single .hn.btn {
   width: 100%;
   max-width: 100%;
