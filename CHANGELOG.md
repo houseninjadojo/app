@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/houseninjadojo/app/compare/v1.8.1...v1.9.0) (2022-04-28)
+
+
+### Features
+
+* in-app resume onboarding flow ([#573](https://github.com/houseninjadojo/app/issues/573)) ([15f2fcf](https://github.com/houseninjadojo/app/commit/15f2fcfc35e26f0985bc1e67c7aea6bac8e33079))
+
 ## [1.8.1](https://github.com/houseninjadojo/app/compare/v1.8.0...v1.8.1) (2022-04-15)
 
 
