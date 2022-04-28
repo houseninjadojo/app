@@ -32,7 +32,7 @@
     "@babel/plugin-proposal-decorators": "^7.17.9",
     "@capacitor/android": "^3.4.3",
     "@capacitor/cli": "^3.4.3",
-    "@capacitor/core": "^3.4.3",
+    "@capacitor/core": "^3.5.0",
     "@capacitor/ios": "^3.4.3",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
