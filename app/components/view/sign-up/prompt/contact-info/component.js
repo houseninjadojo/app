@@ -34,7 +34,7 @@ export default class ContactInfoComponent extends Component {
 
   @tracked formIsInvalid = true;
 
-  @tracked fields = [
+  signupFields = [
     {
       id: 'firstName',
       required: true,
@@ -54,9 +54,15 @@ export default class ContactInfoComponent extends Component {
       id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      description: 'We only use your phone number to contact you.',
+      description: !this.args.isOnboardingViaNativeApp
+        ? 'We only use your phone number to contact you.'
+        : '',
       value: null,
     },
+  ];
+
+  @tracked fields = [
+    ...(!this.args.isOnboardingViaNativeApp ? this.signupFields : []),
     {
       type: 'email',
       id: 'email',
@@ -82,6 +88,23 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
+  async onboardUser(user) {
+    if (this.args.isOnboardingViaNativeApp) {
+      // 1. Send OTP
+      // 2. Confirm OTP
+      // 3. Transition to set-password
+      this.router.transitionTo('onboarding.set-password', user.id);
+    } else {
+      this.onboarding.rehydrateFromRemote.perform();
+      let route = this.onboarding.routeFromStep(user.onboardingStep);
+      if (user.onboardingStep === CONTACT_INFO) {
+        route = SIGNUP_ROUTE.PAYMENT_METHOD;
+      }
+      this.router.transitionTo(route);
+    }
+  }
+
+  @action
   async saveContactInfo() {
     if (isPresent(this.args.user)) {
       this.args.user.unloadRecord();
@@ -98,15 +121,15 @@ export default class ContactInfoComponent extends Component {
       return;
     }
     if (user.shouldResumeOnboarding) {
-      this.onboarding.rehydrateFromRemote.perform();
-      let route = this.onboarding.routeFromStep(user.onboardingStep);
-      if (user.onboardingStep === CONTACT_INFO) {
-        route = SIGNUP_ROUTE.PAYMENT_METHOD;
-      }
-      this.router.transitionTo(route);
+      this.onboardUser(user);
     } else {
       this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
     }
+  }
+
+  @action
+  async handlePrimaryClick() {
+    this.saveContactInfo();
   }
 
   @action
@@ -127,7 +150,7 @@ export default class ContactInfoComponent extends Component {
     }
 
     this.formIsInvalid = inputValidation(this.fields, [
-      'phoneIsValid',
+      ...(!this.args.isOnboardingViaNativeApp ? ['phoneIsValid'] : []),
       'emailIsValid',
     ]).isInvalid;
   }

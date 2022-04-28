@@ -1,12 +1,15 @@
 /* Default */
 .hn.btn {
-  font-family: var(--campton-default);
-  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border-radius: 1px;
   padding: 3px 16px 0;
   outline: none;
   white-space: nowrap;
+  font-family: var(--campton-default);
+  font-size: 17px;
 }
 
 .hn.btn.plain {
@@ -40,6 +43,14 @@
   background: none;
   border: none;
   color: var(--blue-400);
+}
+
+.hn.btn.floating.white {
+  color: var(--white);
+}
+
+.hn.btn.floating.black {
+  color: var(--black);
 }
 
 .hn.btn.solid.primary {

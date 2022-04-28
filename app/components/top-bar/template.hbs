@@ -3,7 +3,7 @@
     {{#if (eq @content 'dashboard')}}
       <TopBar::Content::Dashboard />
     {{else if (eq @content 'focused')}}
-      <TopBar::Content::Focused />
+      <TopBar::Content::Focused @hideHome={{@hideHome}}/>
     {{else if (eq @content 'logo-only')}}
       <TopBar::Content::LogoOnly />
     {{/if}}        

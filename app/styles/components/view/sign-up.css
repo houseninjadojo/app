@@ -34,10 +34,8 @@
   flex-direction: column;
 }
 
+.onboarding .action .hn.btn,
 .sign-up-module .action .hn.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: initial;
   max-width: 50%;
 }
@@ -46,11 +44,13 @@
   width: 100%;
 }
 
+.onboarding .action.single .hn.btn,
 .sign-up-module .action.single .hn.btn {
   width: 100%;
   max-width: 100%;
 }
 
+.onboarding .content,
 .sign-up-module .view .content {
   display: flex;
   flex-direction: column;
@@ -61,16 +61,19 @@
   background-color: var(--white);
 }
 
+.onboarding .content ul,
 .sign-up-module .view .content ul {
   list-style-type: disc;
   list-style-position: inside;
 }
 
+.onboarding .content ol,
 .sign-up-module .view .content ol {
   list-style-type: decimal;
   list-style-position: inside;
 }
 
+.onboarding .content .hero,
 .sign-up-module .view .content .hero {
   display: flex;
   flex-direction: column;
@@ -79,22 +82,26 @@
   width: 100%;
 }
 
+.onboarding .content .hero img,
 .sign-up-module .view .content .hero img {
   align-self: center;
   width: 100%;
   margin-bottom: 0;
 }
 
+.onboarding .content .hero img.view-logo,
 .sign-up-module .view .content .hero img.view-logo {
   width: 40%;
   max-width: 128px;
   margin-bottom: 32px;
 }
 
+.onboarding .content .hero .welcome-hero,
 .sign-up-module .view .content .hero .welcome-hero {
   position: relative;
 }
 
+.onboarding .content .hero .welcome-hero h1,
 .sign-up-module .view .content .hero .welcome-hero h1 {
   display: flex;
   justify-content: center;
@@ -107,24 +114,32 @@
   font-size: 42px;
 }
 
+.onboarding .content .hero img.view-hero,
 .sign-up-module .view .content .hero img.view-hero {
   margin-bottom: 16px;
 }
 
+.onboarding .content .hero p,
 .sign-up-module .view .content .hero p {
   font-size: 20px;
   text-align: center;
+}
+
+.onboarding .content .hero .welcome-hero p {
+  text-align: left;
+}
+
+.onboarding .content .hero .password-reqs p,
+.sign-up-module .view .content .hero .password-reqs p {
+  font-size: 17px;
+  text-align: left;
 }
 
 .sign-up-module .view .content .hero .welcome-hero p {
   text-align: left;
 }
 
-.sign-up-module .view .content .hero .password-reqs p {
-  font-size: 17px;
-  text-align: left;
-}
-
+.onboarding .content .prompt,
 .sign-up-module .view .content .prompt {
   display: flex;
   flex-direction: column;
@@ -133,12 +148,14 @@
   margin-bottom: 16px;
 }
 
+.onboarding .content .prompt .primary,
 .sign-up-module .view .content .prompt .primary {
   font-family: var(--campton-strong);
   font-size: 20px;
   text-align: center;
 }
 
+.onboarding .content .prompt .inputs,
 .sign-up-module .view .content .prompt .inputs {
   display: flex;
   flex-direction: column;
@@ -146,6 +163,7 @@
   align-items: center;
 }
 
+.onboarding .content .prompt .hn.hn.hn-input-field,
 .sign-up-module .view .content .prompt .hn.hn-input-field {
   max-width: 500px;
 }
@@ -180,6 +198,7 @@
   margin-right: 8px;
 }
 
+.onboarding .content .action,
 .sign-up-module .view .content .action {
   width: 100%;
   display: flex;
@@ -191,6 +210,7 @@
   flex-direction: column;
 }
 
+.onboarding .content .action.single,
 .sign-up-module .view .content .action.single {
   justify-content: center;
 }

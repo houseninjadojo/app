@@ -7,6 +7,7 @@
   height: 100%;
   background: var(--black);
   padding: 16px;
+  color: var(--white);
 }
 
 .login-or-signup .hn-logo {
@@ -24,6 +25,27 @@
 }
 
 .login-or-signup .actions.show {
-  max-height: 110px;
-  transition: max-height 0.25s ease-out;
+  max-height: 400px;
+  transition: max-height 1.5s ease-out;
+}
+
+button.hn.onboarding-button {
+  width: 100%;
+  height: var(--btn-lg);
+  background: none;
+  border: 1px solid var(--white);
+  border-radius: 2px;
+  padding: 8px 16px;
+  color: var(--white);
+}
+
+.login-or-signup .sign-up-container {
+  position: absolute;
+  bottom: 24px;
+  opacity: 0;
+}
+
+.login-or-signup .sign-up-container.show {
+  opacity: 1;
+  transition: opacity 0.25s east-out;
 }

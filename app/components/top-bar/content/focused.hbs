@@ -2,7 +2,9 @@
     <img src="/assets/icons/left-arrow.svg" alt="back"/>
 </Primitive::Button>
 {{!-- <img src="/assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>     --}}
-<Primitive::Button {{on "click" (fn this.selectRoute this.dashboardHomeRoute)}} @variant="plain" @class="action right">    
-    <img src="/assets/icons/property-filled.svg" alt="home"/>      
-</Primitive::Button>      
+{{#unless @hideHome}}
+    <Primitive::Button {{on "click" (fn this.selectRoute this.dashboardHomeRoute)}} @variant="plain" @class="action right">    
+        <img src="/assets/icons/property-filled.svg" alt="home"/>      
+    </Primitive::Button>      
+{{/unless}}
     

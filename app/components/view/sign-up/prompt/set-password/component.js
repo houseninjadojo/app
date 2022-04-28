@@ -9,13 +9,19 @@ import {
 } from 'houseninja/utils/components/input-validation';
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
-import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import {
+  NATIVE_MOBILE_ROUTE,
+  SIGNUP_ROUTE,
+} from 'houseninja/data/enums/routes';
 
 export default class SetPasswordComponent extends Component {
   @service current;
   @service router;
   @service onboarding;
   @service store;
+
+  @tracked passwordHasBeenSet = false;
+  @tracked bookWalkthrough = false;
 
   @tracked passwords = {
     password: '',
@@ -84,13 +90,27 @@ export default class SetPasswordComponent extends Component {
       user.password = this.passwords.password;
       try {
         await user.save();
-        await this.onboarding.cleanup();
-        this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
+
+        if (this.args.isOnboardingViaNativeApp) {
+          // 1. Check if walkthrough was booked
+          this.passwordHasBeenSet = true;
+          // 2. Feedback: "Password successfully set."
+          // 3. Inform user if walkthrough needs to be booked
+          // 4. Offer buttons to login or book walkthrough
+        } else {
+          await this.onboarding.cleanup();
+          this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
+        }
       } catch (e) {
         this.errors = user.errors;
         debug(e);
         Sentry.captureException(e);
       }
     }
+  }
+
+  @action
+  login() {
+    this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN);
   }
 }

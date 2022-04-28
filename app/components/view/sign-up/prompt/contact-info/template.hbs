@@ -1,6 +1,10 @@
 <div class="content">
-    <div class="prompt">
-        <p class="primary">Contact Information</p>
+    <div class="prompt">        
+        {{#if @isOnboardingViaNativeApp}}
+            <p class="primary mb-4">To access your account, enter the email address used during the sign-up process.</p>        
+        {{else}}
+            <p class="primary">Contact Information</p>
+        {{/if}}
         {{#each this.fields as |field|}}
             <Primitive::Input
                 @id={{field.id}}
@@ -21,7 +25,7 @@
             @variant='solid'
             @semantic='primary'
             @disabled={{this.formIsInvalid}}
-            {{on 'click' this.saveContactInfo}}
+            {{on 'click' this.handlePrimaryClick}}
         >
             Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
         </Primitive::Button>
