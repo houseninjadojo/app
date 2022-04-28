@@ -48,7 +48,7 @@
     "@semantic-release/git": "^10.0.1",
     "@sentry/capacitor": "^0.6.0",
     "@sentry/cli": "^1.74.3",
-    "@sentry/ember": "^6.19.6",
+    "@sentry/ember": "^6.19.7",
     "@sentry/tracing": "^6.14.1",
     "autoprefixer": "^10.4.5",
     "branch-sdk": "^2.59.0",
