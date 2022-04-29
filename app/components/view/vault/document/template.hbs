@@ -5,15 +5,15 @@
         </Primitive::Button>
     </div>
     <div class="document-details">
-        <p class="hn field"><span class="hn label">Name: </span>{{@model.name}}</p>
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
-        <p class="hn field"><span class="hn label">Category: </span>{{if @model.group.name @model.group.name 'Uncategorized'}}</p>
+        <p class="hn field"><span class="hn label">Name: </span>{{this.document.record.name}}</p>
+        <p class="hn field"><span class="hn label">Description: </span>{{this.document.record.description}}</p>
+        <p class="hn field"><span class="hn label">Category: </span>{{if this.document.record.group.name this.document.record.group.name 'Uncategorized'}}</p>
     </div>
     <div class="document-container">
         <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
             <Primitive::Image
-              @src={{@model.url}}
-              @alt={{@model.name}}
+              @src={{this.document.record.url}}
+              @alt={{this.document.record.name}}
               @width="500"
             />
         </Primitive::Button>

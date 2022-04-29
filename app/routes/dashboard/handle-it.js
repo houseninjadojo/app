@@ -4,7 +4,7 @@ import { service } from '@ember/service';
 export default class DashboardHandleItRoute extends Route {
   @service store;
 
-  async model() {
+  model() {
     // // @todo replace wtih actual query
     // let query = {
     //   status: 'open',
@@ -12,7 +12,8 @@ export default class DashboardHandleItRoute extends Route {
     // return await this.store.query('work-order', {
     //   filter: query,
     // });
-    return await this.store.findAll('work-order', {
+
+    return this.store.findAll('work-order', {
       backgroundReload: true,
     });
   }

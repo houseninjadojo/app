@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { findAll } from 'ember-data-resources';
 
 export default class VaultContentComponent extends Component {
   @service camera;
@@ -12,6 +13,9 @@ export default class VaultContentComponent extends Component {
   @service view;
 
   @tracked showUploadMenu = false;
+
+  documents = findAll(this, 'document');
+  documentGroups = findAll(this, 'document-group');
 
   vaultGroupAddRoute = NATIVE_MOBILE_ROUTE.VAULT.GROUPS.NEW;
 

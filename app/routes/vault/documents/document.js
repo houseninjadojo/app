@@ -8,10 +8,11 @@ export default class VaultDocumentsShowRoute extends Route {
   @service router;
   @service store;
 
-  async model({ document_id }) {
-    return await this.store.findRecord('document', document_id, {
-      include: 'document_group',
-    });
+  model({ document_id }) {
+    return { documentId: document_id };
+    // return await this.store.findRecord('document', document_id, {
+    //   include: 'document_group',
+    // });
   }
 
   @action

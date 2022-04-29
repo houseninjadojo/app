@@ -3,15 +3,21 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { findRecord } from 'ember-data-resources';
+import { tracked } from '@glimmer/tracking';
 
 export default class VaultDocumentComponent extends Component {
   @service router;
 
+  @tracked id = this.args.model.documentId;
+
+  document = findRecord(this, 'document', () => this.id);
+
   @action
   openBrowser() {
-    if (this.args.model) {
+    if (this.document) {
       Browser.open({
-        url: `${this.args.model.url}`,
+        url: `${this.document.record.url}`,
         presentationStyle: 'popover',
       });
     }
@@ -21,11 +27,11 @@ export default class VaultDocumentComponent extends Component {
   selectRoute(route) {
     if (route === 'back') {
       // transition back
-      const belongsToGroup = this.args.model.group.id;
+      const belongsToGroup = this.document.record.group.id;
       if (belongsToGroup) {
         this.router.transitionTo(
           NATIVE_MOBILE_ROUTE.VAULT.GROUPS.SHOW,
-          this.args.model.group.id
+          this.document.record.group.id
         );
       } else {
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.VAULT.INDEX);
@@ -35,7 +41,7 @@ export default class VaultDocumentComponent extends Component {
       // edit document
       this.router.transitionTo(
         NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.EDIT,
-        this.args.model.id
+        this.document.record.id
       );
     }
   }

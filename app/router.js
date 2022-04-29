@@ -21,6 +21,8 @@ Router.map(function () {
     this.route('callback');
   });
   this.route('logout');
+  // signup is distinct from onboarding
+  // signup is for new customers who have no previous history with us
   this.route('signup', function () {
     this.route('area-notification');
     this.route('plan-selection');
@@ -32,6 +34,8 @@ Router.map(function () {
     this.route('walkthrough-booking');
     this.route('booking-confirmation');
   });
+  // onboarding is distinct from signup
+  // onboarding is for customers who exist, but do not have an auth0 account yet
   this.route('onboarding', function () {
     this.route('contact-info');
     this.route('set-password', { path: 'onboarding/set-password/:user_id' });
