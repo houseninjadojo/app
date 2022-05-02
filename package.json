@@ -50,7 +50,7 @@
     "@sentry/cli": "^1.74.3",
     "@sentry/ember": "^6.19.7",
     "@sentry/tracing": "^6.14.1",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.6",
     "branch-sdk": "^2.59.0",
     "broccoli-asset-rev": "^3.0.0",
     "canvas-confetti": "^1.5.1",
