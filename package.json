@@ -100,7 +100,7 @@
     "postcss": "^8.4.8",
     "postcss-import": "^14.1.0",
     "prettier": "^2.6.2",
-    "qunit": "^2.18.2",
+    "qunit": "^2.19.0",
     "qunit-dom": "^2.0.0",
     "semantic-release": "^19.0.2",
     "stylelint": "^14.8.0",
