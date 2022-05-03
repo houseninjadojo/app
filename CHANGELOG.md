@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/houseninjadojo/app/compare/v1.9.0...v1.9.1) (2022-05-03)
+
+
+### Reverts
+
+* Revert "refactor(events): explicit event handler destruction (#519)" (#601) ([bfe2600](https://github.com/houseninjadojo/app/commit/bfe260073066d3b71e5348cf97a1610089babf04)), closes [#519](https://github.com/houseninjadojo/app/issues/519) [#601](https://github.com/houseninjadojo/app/issues/601)
+
 # [1.9.0](https://github.com/houseninjadojo/app/compare/v1.8.1...v1.9.0) (2022-04-28)
 
 
