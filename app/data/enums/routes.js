@@ -24,6 +24,7 @@ export const NATIVE_MOBILE_ROUTE = {
     LOGOUT: 'logout',
   },
   ONBOARDING: {
+    INDEX: 'onboarding',
     CONTACT_INFO: 'onboarding.contact-info',
     SET_PASSWORD: 'onboarding.set-password',
     WELCOME: 'onboarding.welcome',
