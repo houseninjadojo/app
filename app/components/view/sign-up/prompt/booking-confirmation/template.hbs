@@ -19,16 +19,26 @@
 
     <p class='hn sign-off center mt-4 mb-4'>We look forward to taking care of your home!</p>
     ❤️
+    <br/><br/>
     {{#if this.showLoginButton}}
-      <p class="hn strong mt-4">Login now and start exploring</p>            
+      <p class="hn strong">Login now and start exploring</p>            
       <Primitive::Button
           @size='lg'
           @variant='solid'
           @semantic='primary'                    
-          {{on 'click' this.login}}
+          {{on 'click' (fn this.selectRoute 'login')}}
       >
           Login
       </Primitive::Button>
+    {{else if this.showBackToDashboardButton}}      
+      <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'                    
+            {{on 'click' (fn this.selectRoute 'dashboard.home')}}
+        >
+            Back to my Dashboard
+        </Primitive::Button>        
     {{else}}
     {{! 
       <p class="hn strong">Download the House Ninja app where you can easily and conveniently:</p>            

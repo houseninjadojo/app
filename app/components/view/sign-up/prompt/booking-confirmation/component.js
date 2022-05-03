@@ -1,17 +1,25 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class BookingConfirmationComponent extends Component {
   @service router;
   @service session;
+  @service view;
 
   get showLoginButton() {
     return this.args.isOnboardingViaNativeApp && !this.session.isAuthenticated;
   }
+
+  get showBackToDashboardButton() {
+    return this.args.isOnboardingViaNativeApp && this.session.isAuthenticated;
+  }
+
   @action
-  login() {
-    this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN);
+  selectRoute(route) {
+    if (this.args.isOnboardingViaNativeApp) {
+      this.view.history.preservedPreviousRoute.pop();
+    }
+    this.router.transitionTo(route);
   }
 }
