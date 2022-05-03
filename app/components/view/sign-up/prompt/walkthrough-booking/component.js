@@ -1,7 +1,10 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import {
+  SIGNUP_ROUTE,
+  NATIVE_MOBILE_ROUTE,
+} from 'houseninja/data/enums/routes';
 
 export default class WalkthroughBookingComponent extends Component {
   @service router;
@@ -21,11 +24,6 @@ export default class WalkthroughBookingComponent extends Component {
     this._injectScript();
   }
 
-  @action
-  async saveWalkthroughBooking() {
-    this.router.transitionTo(SIGNUP_ROUTE.SET_PASSWORD);
-  }
-
   receiveWindowMessage(event) {
     if (this._isHubspotUrl(event.origin)) {
       if (event.data.meetingBookSucceeded || event.data.meetingCreated) {
@@ -36,7 +34,13 @@ export default class WalkthroughBookingComponent extends Component {
   }
 
   onMeetingBooked() {
-    this.router.transitionTo(SIGNUP_ROUTE.SET_PASSWORD);
+    if (this.args.isOnboardingViaNativeApp) {
+      this.router.transitionTo(
+        NATIVE_MOBILE_ROUTE.ONBOARDING.BOOKING_CONFIRMATION
+      );
+    } else {
+      this.router.transitionTo(SIGNUP_ROUTE.SET_PASSWORD);
+    }
   }
 
   get calendarParams() {
