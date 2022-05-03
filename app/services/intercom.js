@@ -8,7 +8,6 @@ import { task } from 'ember-concurrency';
 export default class IntercomService extends Service {
   @service current;
 
-  listener = null;
   unreadConversationCount = '';
   isOpen = false;
 
@@ -37,15 +36,10 @@ export default class IntercomService extends Service {
     }
   }
 
-  setupListeners() {
-    this.listener = Intercom.addListener(
-      'onUnreadCountChange',
-      this._onUnreadCountChange.bind(this)
-    );
-  }
-
-  _onUnreadCountChange({ value }) {
-    this.unreadConversationCount = value;
+  async setupListeners() {
+    await Intercom.addListener('onUnreadCountChange', ({ value }) => {
+      this.unreadConversationCount = value;
+    });
   }
 
   show() {
@@ -71,9 +65,5 @@ export default class IntercomService extends Service {
       this._hide.perform();
     }
     Intercom.logout();
-  }
-
-  willDestroy() {
-    this.listener?.remove();
   }
 }

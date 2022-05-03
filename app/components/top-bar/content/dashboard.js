@@ -12,8 +12,6 @@ export default class TopBarDashboardContentComponent extends Component {
 
   @tracked unreadConversationCount = 0;
 
-  listener = null;
-
   @action
   toggleSettingsViewVisibility() {
     this.view.preserveViewScrollPosition(this.router);
@@ -27,23 +25,13 @@ export default class TopBarDashboardContentComponent extends Component {
     const unreadConversationObject = await Intercom.unreadConversationCount();
     this.unreadConversationCount = unreadConversationObject.value || 0;
 
-    this.listener = Intercom.addListener(
-      'onUnreadCountChange',
-      this.onUnreadCountChange.bind(this)
-    );
-  }
-
-  onUnreadCountChange({ value }) {
-    this.unreadConversationCount = value;
+    await Intercom.addListener('onUnreadCountChange', ({ value }) => {
+      this.unreadConversationCount = value;
+    });
   }
 
   @action
   showIntercom() {
     this.intercom.show();
-  }
-
-  willDestroy() {
-    super.willDestroy();
-    this.listener?.remove();
   }
 }
