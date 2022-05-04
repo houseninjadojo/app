@@ -45,7 +45,7 @@
   padding: 16px 12px;
 }
 
-.hn.hn-input-field .hn-input-container .hn-input.label-hidden {
+.hn.hn-input-field.label-hidden .hn-input-container .hn-input {
   text-align: center;
 }
 
@@ -59,4 +59,8 @@
 .hn.hn-input-field .hn-input-description {
   margin-left: 8px;
   font-size: 14px;
+}
+
+.hn.hn-input-field.label-hidden .hn-input-description {
+  text-align: center;
 }
