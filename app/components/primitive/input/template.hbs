@@ -1,9 +1,9 @@
-<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}}">
+<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}} {{if @hideLabel 'label-hidden'}}">
     <div class="hn-input-container">
         {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
             <Input
-              class="hn-input label-hidden"
+              class="hn-input"
               id={{@id}}
               @type={{if @type @type "text"}}
               pattern={{if @pattern @pattern}}

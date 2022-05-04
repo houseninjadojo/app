@@ -61,6 +61,8 @@ export default class ContactInfoComponent extends Component {
     },
   ];
 
+  howDidYouHearAboutUsLabel = 'howDidYouHearAboutUs';
+
   @tracked fields = [
     ...(!this.args.isOnboardingViaNativeApp ? this.signupFields : []),
     {
@@ -71,6 +73,17 @@ export default class ContactInfoComponent extends Component {
       placeholder: '',
       value: null,
     },
+    ...(!this.args.isOnboardingViaNativeApp
+      ? [
+          {
+            id: this.howDidYouHearAboutUsLabel,
+            required: false,
+            hideLabel: true,
+            value: null,
+            placeholder: '(Optional)',
+          },
+        ]
+      : []),
   ];
 
   constructor() {

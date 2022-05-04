@@ -6,17 +6,21 @@
             <p class="primary">Contact Information</p>
         {{/if}}
         {{#each this.fields as |field|}}
-            <Primitive::Input
-                @id={{field.id}}
-                @placeholder={{field.placeholder}}
-                @label={{field.label}}
-                @description={{field.description}}
-                @required={{field.required}}
-                @type={{field.type}}
-                @value={{mut (get this.contactInfo field.id)}}
-                @onInput={{this.validateForm}}
-                @errors={{(get this.errors field.id)}}
-            />
+            {{#if (eq field.id this.howDidYouHearAboutUsLabel)}}
+                <p class="mt-4">How did you hear about us?</p>
+            {{/if}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @placeholder={{field.placeholder}}
+                    @label={{field.label}}
+                    @hideLabel={{field.hideLabel}}
+                    @description={{field.description}}
+                    @required={{field.required}}
+                    @type={{field.type}}
+                    @value={{mut (get this.contactInfo field.id)}}
+                    @onInput={{this.validateForm}}
+                    @errors={{(get this.errors field.id)}}
+                />
         {{/each}}
     </div>
     <div class="action single">
