@@ -133,7 +133,7 @@
     "@capacitor/share": "^1.1.2",
     "@capacitor/splash-screen": "^1.2.2",
     "@capacitor/storage": "^1.2.5",
-    "@houseninja/capacitor-mixpanel": "^0.0.16",
+    "@houseninja/capacitor-mixpanel": "^0.1.0",
     "@robingenz/capacitor-file-picker": "^0.3.0",
     "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.6.2",
