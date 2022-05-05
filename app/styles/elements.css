@@ -51,6 +51,11 @@
   color: var(--blue-500);
 }
 
+.hn.banner-message.primary {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 .hn.banner-message.alert {
   background-color: var(--red-10);
   color: var(--red-500);

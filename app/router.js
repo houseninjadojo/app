@@ -37,9 +37,7 @@ Router.map(function () {
     this.route('set-password', { path: 'onboarding/set-password/:user_id' });
     this.route('welcome');
     this.route('property-info', { path: 'onboarding/property-info/:user_id' });
-    this.route('walkthrough-booking', {
-      path: 'onboarding/walkthrough-booking/:user_id',
-    });
+    this.route('walkthrough-booking');
     this.route('booking-confirmation');
   });
   this.route('settings', function () {

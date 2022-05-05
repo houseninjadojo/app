@@ -9,6 +9,7 @@ export default class HomeContentComponent extends Component {
   @service haptics;
 
   documentVaultRoute = NATIVE_MOBILE_ROUTE.VAULT.INDEX;
+  walkthroughBookingRoute = NATIVE_MOBILE_ROUTE.ONBOARDING.WALKTHROUGH_BOOKING;
 
   get user() {
     return this.args.user;
@@ -45,6 +46,8 @@ export default class HomeContentComponent extends Component {
   async selectRoute(route) {
     this.haptics.giveFeedback();
     if (route === this.documentVaultRoute) {
+      this.view.preservePreviousRoute(this.router);
+    } else if (route === this.walkthroughBookingRoute) {
       this.view.preservePreviousRoute(this.router);
     }
     this.router.transitionTo(route);

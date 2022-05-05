@@ -13,7 +13,10 @@ export default function () {
       NATIVE_MOBILE_ROUTE.SETTINGS.INDEX,
       NATIVE_MOBILE_ROUTE.DASHBOARD.INDEX,
     ]),
-    this.toRoute(NATIVE_MOBILE_ROUTE.VAULT.INDEX),
+    this.toRoute([
+      NATIVE_MOBILE_ROUTE.VAULT.INDEX,
+      NATIVE_MOBILE_ROUTE.ONBOARDING.INDEX,
+    ]),
     this.use('toLeft', { duration: 500, easing: [100, 20] }),
     this.reverse('toRight', { duration: 300 })
   );
