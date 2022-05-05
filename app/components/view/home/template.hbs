@@ -8,14 +8,13 @@
     </div>
     <hr class="hn line" />
     {{#if @shouldBookWalkthrough}}
-        <div class="hn banner-message">
+        <div class="hn banner-message primary">
+            <p class="hn strong center">Book Your First Walkthrough</p>
             <p>
-                <span class="hn strong">Book Your First Walkthrough</span>
-                <br/><br/>
                 Before we can help you manage your home, we first need to get to know your property during an in-person walkthrough. Our experienced House Ninjas use a detailed 88-point checklist to evaluate your home and identify any issues you may want to fix or take care of preventatively. 
             </p>
             <br/>    
-            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="secondary" {{on "click" (fn this.selectRoute this.walkthroughBookingRoute)}}>
+            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" (fn this.selectRoute this.walkthroughBookingRoute)}}>
                 Book It
             </Primitive::Button>
         </div>
