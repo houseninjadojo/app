@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/houseninjadojo/app/compare/v1.9.1...v1.10.0) (2022-05-05)
+
+
+### Features
+
+* book walkthrough nudge when missing from customer ([#599](https://github.com/houseninjadojo/app/issues/599)) ([8fc83f2](https://github.com/houseninjadojo/app/commit/8fc83f2bbe612b808872c863cc457d361b896e09))
+
 ## [1.9.1](https://github.com/houseninjadojo/app/compare/v1.9.0...v1.9.1) (2022-05-03)
 
 
