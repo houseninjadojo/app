@@ -12,9 +12,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked errors = {
-    cvc: [],
-  };
+  @tracked cvcError = [];
+
   actionSheetOptions = [
     {
       title: 'Dismiss',
@@ -94,17 +93,18 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   async validateCVC() {
     if (this.cvc) {
+      const that = this;
       let isValid = await new Promise(function (resolve) {
-        setTimeout(() => resolve(true), 1000);
+        setTimeout(() => resolve(that.cvc === '123'), 1000);
       });
       if (isValid) {
-        this.errors.cvc = [];
+        this.cvcError = [];
         this._handlePaymentApproval(true);
       } else {
-        this.errors.cvc = [{ message: 'Invalid CVC code' }];
+        this.cvcError = [{ message: 'Invalid CVC code' }];
       }
     } else {
-      this.errors.cvc = [
+      this.cvcError = [
         { message: 'Please enter the CVC number associated with this card.' },
       ];
     }

@@ -30,20 +30,20 @@
 {{#if this.showWebDialog}}
     <Primitive::Modal::Dialog @toggleModal={{this.toggleModal}}>
         <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-        <div class="mb-4">
-            <p class="hn center mb-8">Do you approve the payment of $999?</p>
-            <p class="hn strong center">Enter the CVC number for the <span class="hn strong">VISA</span> ending in <span class="hn strong">1234</span></p>            
+        <div class="mb-8">
+            <p class="hn center">Do you approve the payment of $999?</p>            
             <Primitive::Input
                 @id="CVC"
                 @type="number"
                 @required={{true}}          
                 @value={{this.cvc}}          
                 @label="CVC"
-                @errors={{(get this.errors 'cvc')}}                          
-            />            
+                @errors={{this.cvcError}}                          
+            />
+            <p class="hn center">Enter the CVC number for your <span class="hn strong">VISA</span> card ending in <span class="hn strong">1234</span></p>            
         </div>
-        <div class="actions">    
-            <Primitive::Button {{on "click" this.toggleModal}} @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}}>
+        <div class="actions ">    
+            <Primitive::Button {{on "click" this.toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}}>
                 Dismiss
             </Primitive::Button>
             <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}}>
@@ -55,7 +55,7 @@
 <div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">
     {{#if this.paid}}
         <div class="payment-confirmation">
-            <p class="hn center">Thank you for approving payment.</p>
+            <p class="hn center strong">Thank you for approving payment.</p>
             <br/>
             {{#if this.isNativePlatform}}
                 <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>
@@ -65,9 +65,9 @@
                     Got It
                 </Primitive::Button>
             {{else}}
-                <p class="hn center">Please feel free to close this tab.</p>
+                <p class="hn center">This job has been marked as complete and can now be found in your History tab of your iOS app.</p>
                 <br/>
-                <br/>
+                <p class="hn center">Please feel free to close this browser tab.</p>                                
             {{/if}}
         </div>
     {{else}}       
