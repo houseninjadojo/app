@@ -32,7 +32,6 @@ export default class ServiceAreaComponent extends Component {
           zipcodes: [this.zipcode],
         },
       });
-      console.log(serviceArea);
     } catch (e) {
       captureException(e);
     }
