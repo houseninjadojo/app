@@ -4,21 +4,15 @@ import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import Sentry from 'houseninja/utils/sentry';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+  @tracked cvc = null;
+  @tracked showWebDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-
-  cancelMessage = 'I would like to cancel this work order.';
-  issueMessage = 'I have an issue with my work order.';
-
-  content = {
-    approvePayment: 'ApprovePayment',
-    paymentFailed: 'FailedPayment',
-    closed: 'Closed',
-    default: 'Default',
-  };
+  @tracked cvcError = [];
 
   actionSheetOptions = [
     {
@@ -30,13 +24,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     },
   ];
 
-  async confirm() {
-    const result = await ActionSheet.showActions({
-      title: 'Amount Due $999',
-      message: 'Do you approve this payment?',
-      options: this.actionSheetOptions,
-    });
-    return result;
+  get isNativePlatform() {
+    return isNativePlatform();
   }
 
   async updateWorkOrderStatus(success) {
@@ -50,36 +39,83 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     }
   }
 
-  @action
-  async handlePaymentApproval() {
-    const result = await this.confirm();
+  async _nativeConfirmation() {
+    const result = await ActionSheet.showActions({
+      title: 'Amount Due $999',
+      message: 'Do you approve this payment?',
+      options: this.actionSheetOptions,
+    });
+
     const choice = this.actionSheetOptions[result.index].title;
-    const userApproves = choice === this.actionSheetOptions[1].title;
+    const confirmed = choice === this.actionSheetOptions[1].title;
+    if (confirmed) {
+      this._handlePaymentApproval();
+    }
+  }
 
-    if (userApproves) {
-      this.isProcessing = true;
-      try {
-        const success = Math.random() < 1;
+  _webConfirmation() {
+    this.toggleModal();
+  }
 
-        setTimeout(() => {
-          if (success) {
-            this.isDoneProcessing = true;
-            setTimeout(() => {
-              this.paid = success;
-            }, 2250);
-          } else {
-            this.isProcessing = false;
-            this.updateWorkOrderStatus(false);
-          }
-        }, 2500);
-      } catch (e) {
-        Sentry.captureException(e);
+  async _handlePaymentApproval(isWeb = false) {
+    this.isProcessing = true;
+    try {
+      const success = Math.random() < 1;
 
-        setTimeout(() => {
+      setTimeout(() => {
+        if (success) {
+          this.isDoneProcessing = true;
+
+          setTimeout(() => {
+            this.paid = success;
+            isWeb && this.toggleModal();
+          }, 2250);
+        } else {
           this.isProcessing = false;
           this.updateWorkOrderStatus(false);
-        }, 3000);
+        }
+      }, 2500);
+    } catch (e) {
+      Sentry.captureException(e);
+
+      setTimeout(() => {
+        this.isProcessing = false;
+        this.updateWorkOrderStatus(false);
+      }, 3000);
+    }
+  }
+
+  @action
+  toggleModal() {
+    this.showWebDialog = !this.showWebDialog;
+  }
+
+  @action
+  async validateCVC() {
+    if (this.cvc) {
+      const that = this;
+      let isValid = await new Promise(function (resolve) {
+        setTimeout(() => resolve(that.cvc === '123'), 1000);
+      });
+      if (isValid) {
+        this.cvcError = [];
+        this._handlePaymentApproval(true);
+      } else {
+        this.cvcError = [{ message: 'Invalid CVC code' }];
       }
+    } else {
+      this.cvcError = [
+        { message: 'Please enter the CVC number associated with this card.' },
+      ];
+    }
+  }
+
+  @action
+  async confirm() {
+    if (isNativePlatform()) {
+      this._nativeConfirmation();
+    } else {
+      this._webConfirmation();
     }
   }
 
@@ -87,5 +123,10 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   gotIt() {
     this.isProcessing = false;
     this.updateWorkOrderStatus(true);
+  }
+
+  @action
+  closeWindow() {
+    window.close();
   }
 }

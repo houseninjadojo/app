@@ -11,6 +11,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('p', function () {
+    this.route('index');
+    this.route('approve-payment', { path: '/:auth_code' });
+  });
   this.route('dashboard', function () {
     this.route('home');
     this.route('work-history');

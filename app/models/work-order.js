@@ -10,4 +10,6 @@ export default class WorkOrderModel extends Model {
   @attr('string') scheduledTime;
 
   @attr('string') status;
+
+  @attr('string') authCode;
 }
