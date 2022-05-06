@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/houseninjadojo/app/compare/v1.10.0...v1.11.0) (2022-05-06)
+
+
+### Features
+
+* one off web payment approval ([#611](https://github.com/houseninjadojo/app/issues/611)) ([cd2d124](https://github.com/houseninjadojo/app/commit/cd2d1242f6c62b40ad480a3b3ccf3287bff8b62f))
+
 # [1.10.0](https://github.com/houseninjadojo/app/compare/v1.9.1...v1.10.0) (2022-05-05)
 
 
