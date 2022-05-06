@@ -1,3 +1,4 @@
+{{#if this.isNativePlatform}}
 <div class="actions">                
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
@@ -7,13 +8,14 @@
     </Primitive::Button>        
 </div>
 <hr/>
+{{/if}}
 <div class="hn banner-message">
     <p>
         The service provider informed us that they’ve completed their work. <br/><br/>
         Please visually confirm the work and approve payment or contact us about any issues. <br/><br/>
         Your <span class="hn {{if @model.cardBrand 'strong'}}">{{if @model.cardBrand @model.cardBrand 'card'}}</span> ending in <span class="hn strong">{{@model.lastFour}}</span> will automatically be charged in 5 days. <br/><br/>
     </p>    
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="secondary" @disabled={{this.isProcessing}} {{on "click" this.handlePaymentApproval}}>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="secondary" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Payment
     </Primitive::Button>
 </div>
@@ -25,17 +27,48 @@
     <p class="hn field"><span class="hn label">Performed On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
     <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
 </div>
+{{#if this.showWebDialog}}
+    <Primitive::Modal::Dialog @toggleModal={{this.toggleModal}}>
+        <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+        <div class="mb-4">
+            <p class="hn center mb-8">Do you approve the payment of $999?</p>
+            <p class="hn strong center">Enter the CVC number for the <span class="hn strong">VISA</span> ending in <span class="hn strong">1234</span></p>            
+            <Primitive::Input
+                @id="CVC"
+                @type="number"
+                @required={{true}}          
+                @value={{this.cvc}}          
+                @label="CVC"
+                @errors={{(get this.errors 'cvc')}}                          
+            />            
+        </div>
+        <div class="actions">    
+            <Primitive::Button {{on "click" this.toggleModal}} @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}}>
+                Dismiss
+            </Primitive::Button>
+            <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}}>
+                I approve this payment
+            </Primitive::Button>
+        </div>        
+    </Primitive::Modal::Dialog>
+{{/if}}
 <div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">
     {{#if this.paid}}
         <div class="payment-confirmation">
             <p class="hn center">Thank you for approving payment.</p>
             <br/>
-            <p class="hn center">This job is complete and can now be found in your History tab.</p>
-            <br/>
-            <br/>
-            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" this.gotIt}}>
-                Got It
-            </Primitive::Button>
+            {{#if this.isNativePlatform}}
+                <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>
+                <br/>
+                <br/>
+                <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" this.gotIt}}>
+                    Got It
+                </Primitive::Button>
+            {{else}}
+                <p class="hn center">Please feel free to close this tab.</p>
+                <br/>
+                <br/>
+            {{/if}}
         </div>
     {{else}}       
         <Primitive::Loader::Logo @isDone={{this.isDoneProcessing}}/>
