@@ -28,3 +28,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.view .position {
+  display: flex;
+  justify-content: center;
+}
+
+.view .constraint {
+  max-width: 600px;
+}
