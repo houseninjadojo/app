@@ -1091,8 +1091,9 @@
     "@capacitor/ios" "^3.0.0"
 
 "@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
-  version "5.0.1"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/bf02726ba3fe1989356cc32d3c92448d3af5f511"
+  version "3.0.2"
+  uid cfa119bb01865977f532a6b28f72e6e8e7394d62
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/cfa119bb01865977f532a6b28f72e6e8e7394d62"
 
 "@capacitor/action-sheet@^1.0.8":
   version "1.0.8"
