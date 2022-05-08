@@ -3,7 +3,7 @@ import faker from '@faker-js/faker';
 
 export default PaymentMethod.extend({
   brand() {
-    return faker.random.arrayElement(['visa', 'mastercard']);
+    return faker.helpers.arrayElement(['visa', 'mastercard']);
   },
 
   country() {

@@ -36,11 +36,11 @@ export default Factory.extend({
   },
 
   contactType() {
-    return faker.random.arrayElement(ContactTypes);
+    return faker.helpers.arrayElement(ContactTypes);
   },
 
   onboardingStep() {
-    return faker.random.arrayElement(OnboardingSteps);
+    return faker.helpers.arrayElement(OnboardingSteps);
   },
 
   onboardingCode() {
