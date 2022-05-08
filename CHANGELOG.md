@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/houseninjadojo/app/compare/v1.11.1...v1.11.2) (2022-05-08)
+
+
+### Bug Fixes
+
+* intercom build issues, deprecation warnings, and claimed some dependencies for upgrade ([#613](https://github.com/houseninjadojo/app/issues/613)) ([96392dd](https://github.com/houseninjadojo/app/commit/96392ddb91e1811a40a1003e2680bbeaa9bf6993))
+
 ## [1.11.1](https://github.com/houseninjadojo/app/compare/v1.11.0...v1.11.1) (2022-05-08)
 
 
