@@ -118,7 +118,7 @@
   "dependencies": {
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor-community/http": "^1.4.1",
-    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#bump-intercom-12-2-1",
+    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom",
     "@capacitor/action-sheet": "^1.0.8",
     "@capacitor/app": "^1.1.1",
     "@capacitor/browser": "^1.0.7",

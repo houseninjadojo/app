@@ -1090,9 +1090,9 @@
     "@capacitor/filesystem" "^1.0.0"
     "@capacitor/ios" "^3.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#bump-intercom-12-2-1":
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
   version "3.0.2"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/ce98963f414a2822ec0bd06f0a5836e650cee3aa"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/0bf65b95762d3910472200eeffa75d13719209cb"
 
 "@capacitor/action-sheet@^1.0.8":
   version "1.0.8"
