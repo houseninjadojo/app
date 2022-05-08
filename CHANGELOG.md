@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/houseninjadojo/app/compare/v1.11.0...v1.11.1) (2022-05-08)
+
+
+### Bug Fixes
+
+* **branch:** enable skadnetwork for inter-app attribution in ios ([#612](https://github.com/houseninjadojo/app/issues/612)) ([322be3a](https://github.com/houseninjadojo/app/commit/322be3a20a9f1c75f2e1f568678b12443ae62916))
+
 # [1.11.0](https://github.com/houseninjadojo/app/compare/v1.10.0...v1.11.0) (2022-05-06)
 
 
