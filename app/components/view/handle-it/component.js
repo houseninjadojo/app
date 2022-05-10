@@ -12,7 +12,7 @@ export default class HandleItComponent extends Component {
 
   tabs = [
     {
-      label: 'Open Work Orders',
+      label: 'Open Service Requests',
       active: true,
       query: {
         status: 'open',
