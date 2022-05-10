@@ -22,9 +22,11 @@
     <Primitive::Section @label="Common Requests" @subLabel="Here’s What Your Neighbors Are Doing">
         <View::Home::CommonRequests @commonRequests={{@commonRequests}}/>
     </Primitive::Section>
-    <Primitive::Section @label="Home Care Tip" @bodyClass='home-care-tip-section'>
-        <View::Home::HomeCareTip @homeCareTip={{this.randomHomeCareTip}}/>
-    </Primitive::Section>
+    {{#if this.weeklyHomeCareTip}}
+        <Primitive::Section @label="Home Care Tip" @bodyClass='home-care-tip-section'>
+            <View::Home::HomeCareTip @homeCareTip={{this.weeklyHomeCareTip}}/>
+        </Primitive::Section>
+    {{/if}}
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" (fn this.selectRoute this.documentVaultRoute)}}>
         Document Vault
     </Primitive::Button>
