@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/houseninjadojo/app/compare/v1.11.2...v1.11.3) (2022-05-10)
+
+
+### Bug Fixes
+
+* work order ui adjustments ([#617](https://github.com/houseninjadojo/app/issues/617)) ([78fce18](https://github.com/houseninjadojo/app/commit/78fce184ed08adb136fb728dd2e6ed797bddc23c))
+
 ## [1.11.2](https://github.com/houseninjadojo/app/compare/v1.11.1...v1.11.2) (2022-05-08)
 
 
