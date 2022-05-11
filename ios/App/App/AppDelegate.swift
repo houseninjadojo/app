@@ -3,6 +3,7 @@ import Capacitor
 import Firebase
 import Intercom
 import Branch
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Clear keychain on first run in case of reinstallation
-        if !UserDefaults.standard.bool(forKey: "FirstRun") {
+        if !UserDefaults.standard.bool(forKey: "FirstRun") == false {
+            var keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: "cap_sec")
+            keychainwrapper.removeAllKeys()
             // Delete values from keychain here
-            UserDefaults.standard.setValue("1strun", forKey: "FirstRun")
+            UserDefaults.standard.set(true, forKey: "FirstRun")
             UserDefaults.standard.synchronize()
         }
 
