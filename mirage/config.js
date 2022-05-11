@@ -46,6 +46,7 @@ function routes() {
   this.get('/home-care-tips');
   this.resource('invoice', { path: '/invoices' });
   this.resource('credit-card', { path: '/payment-methods' });
+  this.resource('line-item', { path: '/line-items' });
   this.resource('payment', { path: '/payments' });
   this.resource('promo-code', { path: '/promo-codes' });
   this.get('/promo-codes', (schema, request) => {
