@@ -1,7 +1,12 @@
-<div>
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" this.openBrowser}}>
-        View Walkthrough Report
-    </Primitive::Button>
+<div class="hn work-history">
+    <div class="hn walkthrough-button mb-4">
+        <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
+            <div class="overlay">                
+                <span class="sig">View Walkthrough Report</span>
+            </div>
+            <img src={{"/assets/images/minh-pham-OtXADkUh3-I-unsplash.jpg"}} alt="walkthrough-report" />
+        </Primitive::Button>
+    </div>
     <Primitive::Section @label="Service History" @allowCollapse={{true}}>
         <HouseNinja::ServiceActivityRecords @workOrders={{this.pastWorkOrders}} />
     </Primitive::Section>
