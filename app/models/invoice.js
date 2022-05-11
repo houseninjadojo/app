@@ -1,4 +1,4 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class InvoiceModel extends Model {
   @belongsTo('document') document;
@@ -6,6 +6,7 @@ export default class InvoiceModel extends Model {
   @belongsTo('promo-code') promoCode;
   @belongsTo('subscription') subscription;
   @belongsTo('user') user;
+  @hasMany('line-item') lineItems;
 
   @attr('string') description;
   @attr('string') status;

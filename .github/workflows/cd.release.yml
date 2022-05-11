@@ -15,6 +15,7 @@ jobs:
   semantic-release:
     name: generate github release
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
         with:
