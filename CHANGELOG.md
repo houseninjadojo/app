@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/houseninjadojo/app/compare/v1.11.3...v1.12.0) (2022-05-11)
+
+
+### Features
+
+* invoice line-items ([#620](https://github.com/houseninjadojo/app/issues/620)) ([a4d437d](https://github.com/houseninjadojo/app/commit/a4d437d2296e5beea9dcb8899520bf150bea9141))
+
 ## [1.11.3](https://github.com/houseninjadojo/app/compare/v1.11.2...v1.11.3) (2022-05-10)
 
 
