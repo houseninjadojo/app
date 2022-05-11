@@ -1,22 +1,10 @@
 import Component from '@glimmer/component';
-import { service } from '@ember/service';
-import { action } from '@ember/object';
-import { Browser } from '@capacitor/browser';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import { getWorkOrderTag } from 'houseninja/utils/components/work-order/work-order-status';
-import { isPresent } from '@ember/utils';
 
 const DATE_FORMAT = 'MM/DD/YY';
 export default class WorkHistoryComponent extends Component {
-  @service store;
-
-  tabs = [
-    // {
-    //   label: 'Open Work Orders',
-    //   active: true,
-    // },
-  ];
   allWorkOrders = this.args.workOrders.map((w) => {
     return {
       id: w.id,
@@ -45,24 +33,4 @@ export default class WorkHistoryComponent extends Component {
     });
 
   pastWorkOrders = [...this.inactiveWorkOrders];
-
-  async walkthroughReport() {
-    return await this.store.queryRecord('document', {
-      filter: {
-        tags: ['system:walkthrough-report'],
-      },
-    });
-  }
-
-  @action
-  async openBrowser() {
-    const doc = await this.walkthroughReport();
-
-    if (isPresent(doc) && isPresent(doc.url)) {
-      await Browser.open({
-        url: doc.url,
-        presentationStyle: 'popover',
-      });
-    }
-  }
 }
