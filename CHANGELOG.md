@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/houseninjadojo/app/compare/v1.12.1...v1.12.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* **ios:** clear keychain if app was deleted ([#625](https://github.com/houseninjadojo/app/issues/625)) ([76fdc10](https://github.com/houseninjadojo/app/commit/76fdc10c9879c33c70c3d26c3726d26f0b74b22b))
+
 ## [1.12.1](https://github.com/houseninjadojo/app/compare/v1.12.0...v1.12.1) (2022-05-11)
 
 
