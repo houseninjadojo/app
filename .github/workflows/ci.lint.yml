@@ -9,6 +9,7 @@ on:
 jobs:
   hbs:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -19,6 +20,7 @@ jobs:
       - run: yarn lint:hbs
   js:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -29,6 +31,7 @@ jobs:
       - run: yarn lint:js
   css:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
