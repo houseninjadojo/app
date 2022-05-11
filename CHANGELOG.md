@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/houseninjadojo/app/compare/v1.12.0...v1.12.1) (2022-05-11)
+
+
+### Bug Fixes
+
+* view walkthrough button redesign ([#624](https://github.com/houseninjadojo/app/issues/624)) ([b8d1a9b](https://github.com/houseninjadojo/app/commit/b8d1a9b7ccfdd449dbd9b4091be14c2d42addb4d))
+
 # [1.12.0](https://github.com/houseninjadojo/app/compare/v1.11.3...v1.12.0) (2022-05-11)
 
 
