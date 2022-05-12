@@ -21,7 +21,6 @@ export default class SetPasswordComponent extends Component {
   @service store;
 
   @tracked passwordHasBeenSet = false;
-  @tracked bookWalkthrough = false;
 
   @tracked passwords = {
     password: '',
@@ -92,11 +91,7 @@ export default class SetPasswordComponent extends Component {
         await user.save();
 
         if (this.args.isOnboardingViaNativeApp) {
-          // 1. Check if walkthrough was booked
           this.passwordHasBeenSet = true;
-          // 2. Feedback: "Password successfully set."
-          // 3. Inform user if walkthrough needs to be booked
-          // 4. Offer buttons to login or book walkthrough
         } else {
           await this.onboarding.cleanup();
           this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
