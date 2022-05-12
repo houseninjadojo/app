@@ -31,7 +31,10 @@
             @disabled={{this.formIsInvalid}}
             {{on 'click' this.handlePrimaryClick}}
         >
-            Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            {{if @isOnboardingViaNativeApp "Submit" "Next"}}
+            {{#unless @isOnboardingViaNativeApp}}
+                <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            {{/unless}}
         </Primitive::Button>
     </div>
 </div>
