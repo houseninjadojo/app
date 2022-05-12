@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/houseninjadojo/app/compare/v1.12.2...v1.12.3) (2022-05-12)
+
+
+### Bug Fixes
+
+* new customer password setting ([#626](https://github.com/houseninjadojo/app/issues/626)) ([16c8fc4](https://github.com/houseninjadojo/app/commit/16c8fc4c7658da657bacd8090a54a2f0f5f317d6))
+
 ## [1.12.2](https://github.com/houseninjadojo/app/compare/v1.12.1...v1.12.2) (2022-05-11)
 
 
