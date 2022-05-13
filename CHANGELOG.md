@@ -1,3 +1,10 @@
+## [1.12.6](https://github.com/houseninjadojo/app/compare/v1.12.5...v1.12.6) (2022-05-13)
+
+
+### Bug Fixes
+
+* **ios:** fix keychain clear boolean check ([#632](https://github.com/houseninjadojo/app/issues/632)) ([7127a44](https://github.com/houseninjadojo/app/commit/7127a44a7cf98c994e6bab7755920fc053c961dd))
+
 ## [1.12.5](https://github.com/houseninjadojo/app/compare/v1.12.4...v1.12.5) (2022-05-13)
 
 
