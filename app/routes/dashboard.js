@@ -31,14 +31,7 @@ export default class DashboardRoute extends Route {
     }
 
     return RSVP.hash({
-      user: this.current.user || user,
       property: this.current.property || property,
-      commonRequests: this.store.findAll('common-request', {
-        backgroundReload: true,
-      }),
-      homeCareTips: this.store.findAll('home-care-tip', {
-        backgroundReload: true,
-      }),
     });
   }
 }
