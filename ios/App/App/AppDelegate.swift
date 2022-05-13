@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Clear keychain on first run in case of reinstallation
         if !UserDefaults.standard.bool(forKey: "FirstRun") == false {
-            var keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: "cap_sec")
-            keychainwrapper.removeAllKeys()
+            clearKeychain()
             // Delete values from keychain here
             UserDefaults.standard.set(true, forKey: "FirstRun")
             UserDefaults.standard.synchronize()
@@ -101,5 +100,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
+    }
+
+    private func clearKeychain() -> Bool {
+        let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: "cap_sec")
+        let keys = keychainwrapper.allKeys();
+        // cleanup standard keychain wrapper keys
+        for key in keys {
+            let hasValueStandard = KeychainWrapper.standard.hasValue(forKey: key)
+            if (hasValueStandard) {
+                KeychainWrapper.standard.removeObject(forKey: key)
+            }
+        }
+        return keychainwrapper.removeAllKeys()
     }
 }
