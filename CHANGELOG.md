@@ -1,3 +1,10 @@
+## [1.12.5](https://github.com/houseninjadojo/app/compare/v1.12.4...v1.12.5) (2022-05-13)
+
+
+### Bug Fixes
+
+* **auth:** do not destructure user_id ([#630](https://github.com/houseninjadojo/app/issues/630)) ([f7e34c9](https://github.com/houseninjadojo/app/commit/f7e34c9e463d2f8255f42414a5ce95176a505c0d))
+
 ## [1.12.4](https://github.com/houseninjadojo/app/compare/v1.12.3...v1.12.4) (2022-05-13)
 
 
