@@ -1,3 +1,10 @@
+## [1.12.7](https://github.com/houseninjadojo/app/compare/v1.12.6...v1.12.7) (2022-05-13)
+
+
+### Bug Fixes
+
+* dashboard routes model clean up ([#633](https://github.com/houseninjadojo/app/issues/633)) ([e271702](https://github.com/houseninjadojo/app/commit/e271702e409b6373fc93225eb264803b1a4162fb))
+
 ## [1.12.6](https://github.com/houseninjadojo/app/compare/v1.12.5...v1.12.6) (2022-05-13)
 
 
