@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/houseninjadojo/app/compare/v1.12.3...v1.12.4) (2022-05-13)
+
+
+### Bug Fixes
+
+* **auth:** require authentication for dashboard and vault access ([#629](https://github.com/houseninjadojo/app/issues/629)) ([a5c0d0c](https://github.com/houseninjadojo/app/commit/a5c0d0cd79f580da2bc6eeb47847cf805c05e531))
+
 ## [1.12.3](https://github.com/houseninjadojo/app/compare/v1.12.2...v1.12.3) (2022-05-12)
 
 
