@@ -26,4 +26,20 @@ export default class CreditCardModel extends PaymentMethod {
         : '',
     };
   }
+
+  get lastFour() {
+    if (isPresent(this.cardNumber)) {
+      return this.cardNumber.substring(this.cardNumber.length - 4);
+    } else {
+      return '';
+    }
+  }
+
+  get cardBrand() {
+    if (isPresent(this.brand)) {
+      return this.brand.toUpperCase();
+    } else {
+      return '';
+    }
+  }
 }

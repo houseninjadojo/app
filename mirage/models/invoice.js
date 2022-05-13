@@ -6,5 +6,6 @@ export default Model.extend({
   promoCode: belongsTo('promo-code'),
   subscription: belongsTo('subscription'),
   user: belongsTo('user'),
+  workOrder: belongsTo('work-order'),
   lineItems: hasMany('line-item'),
 });

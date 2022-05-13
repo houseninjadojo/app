@@ -6,6 +6,7 @@ export default class InvoiceModel extends Model {
   @belongsTo('promo-code') promoCode;
   @belongsTo('subscription') subscription;
   @belongsTo('user') user;
+  @belongsTo('work-order') workOrder;
   @hasMany('line-item') lineItems;
 
   @attr('string') description;
@@ -14,6 +15,8 @@ export default class InvoiceModel extends Model {
 
   @attr('date') periodStart;
   @attr('date') periodEnd;
+
+  @attr('date') paymentAttemptedAt;
 
   @attr('date') createdAt;
   @attr('date') updatedAt;

@@ -16,6 +16,10 @@ export default function (config) {
   return createServer(finalConfig);
 }
 
+const INVOICE_ACCESS_TOKEN =
+  'BAh7CEkiCGdpZAY6BkVUSSJDZ2lkOi8vaG91c2UtbmluamEvSW52b2ljZS9kOGZiY2UwNS1lNDJkLTRiOGQtODVlYi1hNzJmNGIyMTY5NzEGOwBUSSIMcHVycG9zZQY7AFRJIgxkZWZhdWx0BjsAVEkiD2V4cGlyZXNfYXQGOwBUSSIdMjAyMi0wNi0xM1QwMTo1Mjo0NS4wMTBaBjsAVA==--b68ed54fd83f0c4b3a946cd121918498ab8f15c8';
+// 'eZAGjnH91fpQJ6jg0/pmwt2VegG1DuLsSmloZgcb3tlmTlkuN86Qu4hLaKuMXKtBHckIX+kmcKF/45iKwB1zIUPsfqkJFi1DJvHDvfEBSs0aOnVn5LMBHtFYspfAqQJrmTfHRreTvjKw/Do9jvxj0D2M5a/jq6KP1OToOKZ2fsROJM42TuR2RndRMFgbfAlzTfagFYrsTgX3QbDuashYkAEVb8lAmE9jP/QchPJ5IDacf77aIFxmd0bmmzKtulUyiptKGDwEfFNrmGs9eTtS8eqgxe1COTM=--rTmMzbCLQ8A80GDG--fxrcgmX7B3incGIFfgMLPg==';
+
 function routes() {
   // These comments are here to help you get started. Feel free to delete them.
 
@@ -44,7 +48,24 @@ function routes() {
   this.get('/common-requests');
   this.resource('device', { path: '/devices' });
   this.get('/home-care-tips');
+
   this.resource('invoice', { path: '/invoices' });
+  this.get('/invoices/:id', (schema, request) => {
+    request.queryParams = request.queryParams || {};
+    const invoiceId = request.params.id;
+    if (invoiceId === INVOICE_ACCESS_TOKEN) {
+      if (!request.queryParams.include) {
+        request.queryParams.include = [
+          'work_order',
+          'work_order.property',
+          'work_order.property.user',
+          'work_order.property.user.credit_cards',
+        ];
+      }
+      return schema.invoices.create();
+    }
+  });
+
   this.resource('credit-card', { path: '/payment-methods' });
   this.resource('line-item', { path: '/line-items' });
   this.resource('payment', { path: '/payments' });
@@ -101,8 +122,8 @@ function routes() {
   // this.resource('user', { path: '/users', except: ['index', 'create'] });
 
   this.resource('work-order', { path: '/work-orders' });
-  this.resource('document-groups', { path: '/document-groups' });
-  this.resource('documents', { path: '/documents' });
+  this.resource('document-group', { path: '/document-groups' });
+  this.resource('document', { path: '/documents' });
 
   this.get('/documents', (schema, request) => {
     const tags = request.queryParams['filter[tags]'];
@@ -110,6 +131,29 @@ function routes() {
       return schema.documents.where({ tags });
     } else {
       return schema.documents.all();
+    }
+  });
+
+  // resource verification
+  this.post('/resource-verification', (schema, request) => {
+    const data = JSON.parse(request.requestBody)?.data || {};
+    const { resourceName, recordId, attribute, value } = data;
+    const resource = schema[resourceName].find(recordId);
+    const result = resource.attrs[attribute] === value;
+    if (result === true) {
+      return schema.resourceVerifications.create({
+        resourceName,
+        recordId,
+        attribute,
+        value,
+        result,
+      });
+    } else {
+      return new Response(
+        422,
+        {},
+        { errors: ['resource verification failed'] }
+      );
     }
   });
 

@@ -2,11 +2,10 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
-import Sentry from 'houseninja/utils/sentry';
-import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
-export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+export default class ApprovePaymentComponent extends Component {
   @tracked cvc = null;
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -28,17 +27,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return isNativePlatform();
   }
 
-  async updateWorkOrderStatus(success) {
-    try {
-      this.args.model.status = success
-        ? workOrderStatus.invoicePaidByCustomer
-        : workOrderStatus.paymentFailed;
-      await this.args.model.save();
-    } catch (e) {
-      Sentry.captureException(e);
-    }
-  }
-
   async _nativeConfirmation() {
     const result = await ActionSheet.showActions({
       title: 'Amount Due $999',
@@ -57,31 +45,24 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.toggleModal();
   }
 
-  async _handlePaymentApproval(isWeb = false) {
+  async approvePayment(isWeb = false) {
     this.isProcessing = true;
+    const invoice = this.args.model.invoice;
+    invoice.paymentAttemptedAt = new Date();
     try {
-      const success = Math.random() < 1;
-
-      setTimeout(() => {
-        if (success) {
-          this.isDoneProcessing = true;
-
-          setTimeout(() => {
-            this.paid = success;
-            isWeb && this.toggleModal();
-          }, 2250);
-        } else {
-          this.isProcessing = false;
-          this.updateWorkOrderStatus(false);
-        }
-      }, 2500);
+      await invoice.save();
+      this.isDoneProcessing = true;
+      this.paid = true;
+      isWeb && this.toggleModal();
     } catch (e) {
-      Sentry.captureException(e);
-
-      setTimeout(() => {
-        this.isProcessing = false;
-        this.updateWorkOrderStatus(false);
-      }, 3000);
+      this.isProcessing = false;
+      this.cvcError = [
+        {
+          message:
+            'There was an error approving your payment. Please try again in a few minutes.',
+        },
+      ];
+      captureException(e);
     }
   }
 
@@ -93,13 +74,10 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   async validateCVC() {
     if (this.cvc) {
-      const that = this;
-      let isValid = await new Promise(function (resolve) {
-        setTimeout(() => resolve(that.cvc === '123'), 1000);
-      });
+      const isValid = await this.cvcResourseVerification();
       if (isValid) {
         this.cvcError = [];
-        this._handlePaymentApproval(true);
+        this.approvePayment(true);
       } else {
         this.cvcError = [{ message: 'Invalid CVC code' }];
       }
@@ -128,5 +106,21 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   closeWindow() {
     window.close();
+  }
+
+  async cvcResourseVerification() {
+    try {
+      const verification = await this.store
+        .createRecord('resource-verification', {
+          resourceName: 'credit-card',
+          recordId: this.args.model.paymentMethod.id,
+          attribute: 'cvv',
+          value: this.cvc,
+        })
+        .save();
+      return verification.result;
+    } catch {
+      return false;
+    }
   }
 }
