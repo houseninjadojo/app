@@ -115,7 +115,8 @@ export default class ApprovePaymentComponent extends Component {
           resourceName: 'credit-card',
           recordId: this.args.model.paymentMethod.id,
           attribute: 'cvv',
-          value: this.cvc,
+          // value: this.cvc,
+          vgsValue: this.cvc,
         })
         .save();
       return verification.result;

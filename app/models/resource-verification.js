@@ -5,5 +5,6 @@ export default class ResourceVerificationModel extends Model {
   @attr('string') recordId;
   @attr('string') attribute;
   @attr('string') value;
+  @attr('string') vgsValue;
   @attr('read-only') result;
 }

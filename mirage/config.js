@@ -137,9 +137,10 @@ function routes() {
   // resource verification
   this.post('/resource-verification', (schema, request) => {
     const data = JSON.parse(request.requestBody)?.data || {};
-    const { resourceName, recordId, attribute, value } = data;
+    const { resourceName, recordId, attribute, value, vgsValue } = data;
     const resource = schema[resourceName].find(recordId);
-    const result = resource.attrs[attribute] === value;
+    const val = value || vgsValue;
+    const result = resource.attrs[attribute] === val;
     if (result === true) {
       return schema.resourceVerifications.create({
         resourceName,
