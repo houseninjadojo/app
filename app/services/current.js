@@ -29,7 +29,7 @@ export default class CurrentService extends Service {
     if (!this.session.isAuthenticated) {
       return;
     }
-    const { user_id } = this.session.data.authenticated.userinfo;
+    const userId = this.session?.data?.authenticated?.userinfo?.user_id;
     const includes = [
       'invoices',
       'payments',
@@ -38,7 +38,7 @@ export default class CurrentService extends Service {
       'properties',
       'properties.work_orders',
     ];
-    this.user = yield this.store.findRecord('user', user_id, {
+    this.user = yield this.store.findRecord('user', userId, {
       include: includes.join(','),
     });
     this.paymentMethod = this.user.get('paymentMethods.firstObject');
