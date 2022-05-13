@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Clear keychain on first run in case of reinstallation
-        if !UserDefaults.standard.bool(forKey: "FirstRun") == false {
+        if UserDefaults.standard.bool(forKey: "FirstRun") == false {
             clearKeychain()
             // Delete values from keychain here
             UserDefaults.standard.set(true, forKey: "FirstRun")
