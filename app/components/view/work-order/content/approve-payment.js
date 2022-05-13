@@ -47,10 +47,13 @@ export default class ApprovePaymentComponent extends Component {
 
   async approvePayment(isWeb = false) {
     this.isProcessing = true;
-    const invoice = this.args.model.invoice;
-    invoice.paymentAttemptedAt = new Date();
+
+    const payment = this.store.createRecord('payment', {
+      invoice: this.args.model.invoice,
+    });
+
     try {
-      await invoice.save();
+      await payment.save(); // this will be long running (probably)
       this.isDoneProcessing = true;
       this.paid = true;
       isWeb && this.toggleModal();
