@@ -20,7 +20,7 @@
   padding: 8px 20px;
   border-radius: 2px;
   color: var(--white);
-  box-shadow: var(--shadow-teal-1);
+  box-shadow: var(--shadow-gray-1);
 }
 
 .hn.work-history .hn.walkthrough-button img {
