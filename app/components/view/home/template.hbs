@@ -19,9 +19,11 @@
             </Primitive::Button>
         </div>
     {{/if}}
-    <Primitive::Section @label="Common Requests" @subLabel="Here’s What Your Neighbors Are Doing">
-        <View::Home::CommonRequests @commonRequests={{@commonRequests}}/>
-    </Primitive::Section>
+    {{#if @commonRequests}}
+        <Primitive::Section @label="Common Requests" @subLabel="Here’s What Your Neighbors Are Doing">
+            <View::Home::CommonRequests @commonRequests={{@commonRequests}}/>
+        </Primitive::Section>
+    {{/if}}
     {{#if this.weeklyHomeCareTip}}
         <Primitive::Section @label="Home Care Tip" @bodyClass='home-care-tip-section'>
             <View::Home::HomeCareTip @homeCareTip={{this.weeklyHomeCareTip}}/>
