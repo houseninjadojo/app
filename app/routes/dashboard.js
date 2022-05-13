@@ -2,11 +2,19 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import RSVP from 'rsvp';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class DashboardRoute extends Route {
   @service current;
   @service session;
   @service store;
+
+  beforeModel(transition) {
+    this.session.requireAuthentication(
+      transition,
+      NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
+    );
+  }
 
   async model() {
     const { user_id } = this.session.data.authenticated.userinfo;
