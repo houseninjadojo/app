@@ -59,15 +59,27 @@
   color: var(--white);
 }
 
-.hn.btn.hn.btn.solid.primary .icon,
-.hn.btn.hn.btn.outline.primary .icon {
+.hn.btn.hn.btn.solid .icon,
+.hn.btn.hn.btn.outline .icon {
   height: 24px;
   margin-left: 16px;
   margin-bottom: 2px;
 }
 
-.hn.btn.hn.btn.solid.primary .icon {
-  filter: invert(93%) sepia(100%) saturate(28%) hue-rotate(54deg) brightness(106%) contrast(109%);
+.hn.btn.hn.btn.solid .icon {
+  filter: brightness(0) invert(1);
+}
+
+.hn.btn.hn.btn.outline.primary .icon {
+  filter: invert(19%) sepia(0%) saturate(4%) hue-rotate(233deg) brightness(89%) contrast(91%);
+}
+
+.hn.btn.hn.btn.outline.accent .icon {
+  filter: invert(69%) sepia(47%) saturate(3993%) hue-rotate(133deg) brightness(89%) contrast(102%);
+}
+
+.hn.btn.hn.btn.outline.secondary .icon {
+  filter: invert(39%) sepia(75%) saturate(1945%) hue-rotate(182deg) brightness(90%) contrast(104%);
 }
 
 .hn.btn.outline.primary {
