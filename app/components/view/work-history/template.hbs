@@ -1,7 +1,5 @@
-<div>
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" this.openBrowser}}>
-        View Walkthrough Report
-    </Primitive::Button>
+<div class="hn work-history">    
+    <HouseNinja::ViewWalkthroughButton />
     <Primitive::Section @label="Service History" @allowCollapse={{true}}>
         <HouseNinja::ServiceActivityRecords @workOrders={{this.pastWorkOrders}} />
     </Primitive::Section>

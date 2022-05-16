@@ -5,7 +5,7 @@
         <button class="hn onboarding-button mt-8" type="button" {{on "click" this.onboardUser}}>
             Set Up My Account
         </button>
-        <p class="hn center mt-2">Set up your account if logging in for the first time.</p>
+        <p class="hn center mt-2">Set up your account if logging<br/>in for the first time.</p>
     </div>
     <div class="hn sign-up-container" {{did-insert this.show}}>
         <Primitive::Button @type="button" @size="lg" @variant="floating" @semantic="white" {{on "click" this.openSignUpViewInSystemBrowser}}>Sign Up</Primitive::Button>

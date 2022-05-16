@@ -4,7 +4,7 @@ import { isBlank } from '@ember/utils';
 import RSVP from 'rsvp';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class DashboardRoute extends Route {
+export default class DashboarHomeRoute extends Route {
   @service current;
   @service session;
   @service store;
@@ -17,12 +17,12 @@ export default class DashboardRoute extends Route {
   }
 
   async model() {
-    const userId = this.session?.data?.authenticated?.userinfo?.user_id;
+    const { user_id } = this.session.data.authenticated.userinfo;
     let user = null;
     let property = null;
 
     if (isBlank(this.current.user)) {
-      user = await this.store.findRecord('user', userId, {
+      user = await this.store.findRecord('user', user_id, {
         include: 'properties',
       });
       property = user.get('properties.firstObject');
@@ -31,7 +31,14 @@ export default class DashboardRoute extends Route {
     }
 
     return RSVP.hash({
+      user: this.current.user || user,
       property: this.current.property || property,
+      commonRequests: this.store.findAll('common-request', {
+        backgroundReload: true,
+      }),
+      homeCareTips: this.store.findAll('home-care-tip', {
+        backgroundReload: true,
+      }),
     });
   }
 }

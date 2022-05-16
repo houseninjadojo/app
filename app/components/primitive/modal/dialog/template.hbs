@@ -2,7 +2,7 @@
     {{#if @disableClose}}      
       <div class="hn overlay" />
     {{else}}
-      <Primitive::Button @variant="plain" {{on "click" @toggleModal}}>
+      <Primitive::Button @variant="plain" {{on "click" this.toggleModal}}>
           <div class="hn overlay" />
       </Primitive::Button>
     {{/if}}

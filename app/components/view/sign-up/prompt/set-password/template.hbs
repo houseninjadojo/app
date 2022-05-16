@@ -3,37 +3,19 @@
         <div class="hero mb-4">                
             <p class="hn strong mb-4">Password Successfully Set</p>                    
             <br/>                                            
-            {{#if this.bookWalkthrough}}
-                <p>
-                    Looks like we also need to book your walkthrough. Let's take care of that.
-                </p>
-            {{else}}
-                <p>
-                    Let's get you logged in.
-                </p>                
-            {{/if}}
+            <p>
+                Let's get you logged in.
+            </p>
         </div>        
         <div class="action single">
-            {{#if this.bookWalkthrough}}
             <Primitive::Button
                 @size='lg'
                 @variant='solid'
                 @semantic='primary'                    
-                {{!-- {{on 'click' this.handlePrimaryClick}} --}}
+                {{on 'click' this.login}}
             >
-                Book Walkthrough <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+                Login
             </Primitive::Button>
-                                
-            {{else}}
-                <Primitive::Button
-                    @size='lg'
-                    @variant='solid'
-                    @semantic='primary'                    
-                    {{on 'click' this.login}}
-                >
-                    Login
-                </Primitive::Button>
-            {{/if}}
         </div>
     {{else}}
     <div class="hero mb-4">

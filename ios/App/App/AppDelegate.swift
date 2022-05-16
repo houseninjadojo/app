@@ -3,6 +3,7 @@ import Capacitor
 import Firebase
 import Intercom
 import Branch
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,9 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Clear keychain on first run in case of reinstallation
-        if !UserDefaults.standard.bool(forKey: "FirstRun") {
+        if UserDefaults.standard.bool(forKey: "FirstRun") == false {
+            clearKeychain()
             // Delete values from keychain here
-            UserDefaults.standard.setValue("1strun", forKey: "FirstRun")
+            UserDefaults.standard.set(true, forKey: "FirstRun")
             UserDefaults.standard.synchronize()
         }
 
@@ -98,5 +100,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
+    }
+
+    private func clearKeychain() -> Bool {
+        let keychainwrapper: KeychainWrapper = KeychainWrapper.init(serviceName: "cap_sec")
+        let keys = keychainwrapper.allKeys();
+        // cleanup standard keychain wrapper keys
+        for key in keys {
+            let hasValueStandard = KeychainWrapper.standard.hasValue(forKey: key)
+            if (hasValueStandard) {
+                KeychainWrapper.standard.removeObject(forKey: key)
+            }
+        }
+        return keychainwrapper.removeAllKeys()
     }
 }

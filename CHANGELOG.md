@@ -1,3 +1,52 @@
+## [1.12.7](https://github.com/houseninjadojo/app/compare/v1.12.6...v1.12.7) (2022-05-13)
+
+
+### Bug Fixes
+
+* dashboard routes model clean up ([#633](https://github.com/houseninjadojo/app/issues/633)) ([e271702](https://github.com/houseninjadojo/app/commit/e271702e409b6373fc93225eb264803b1a4162fb))
+
+## [1.12.6](https://github.com/houseninjadojo/app/compare/v1.12.5...v1.12.6) (2022-05-13)
+
+
+### Bug Fixes
+
+* **ios:** fix keychain clear boolean check ([#632](https://github.com/houseninjadojo/app/issues/632)) ([7127a44](https://github.com/houseninjadojo/app/commit/7127a44a7cf98c994e6bab7755920fc053c961dd))
+
+## [1.12.5](https://github.com/houseninjadojo/app/compare/v1.12.4...v1.12.5) (2022-05-13)
+
+
+### Bug Fixes
+
+* **auth:** do not destructure user_id ([#630](https://github.com/houseninjadojo/app/issues/630)) ([f7e34c9](https://github.com/houseninjadojo/app/commit/f7e34c9e463d2f8255f42414a5ce95176a505c0d))
+
+## [1.12.4](https://github.com/houseninjadojo/app/compare/v1.12.3...v1.12.4) (2022-05-13)
+
+
+### Bug Fixes
+
+* **auth:** require authentication for dashboard and vault access ([#629](https://github.com/houseninjadojo/app/issues/629)) ([a5c0d0c](https://github.com/houseninjadojo/app/commit/a5c0d0cd79f580da2bc6eeb47847cf805c05e531))
+
+## [1.12.3](https://github.com/houseninjadojo/app/compare/v1.12.2...v1.12.3) (2022-05-12)
+
+
+### Bug Fixes
+
+* new customer password setting ([#626](https://github.com/houseninjadojo/app/issues/626)) ([16c8fc4](https://github.com/houseninjadojo/app/commit/16c8fc4c7658da657bacd8090a54a2f0f5f317d6))
+
+## [1.12.2](https://github.com/houseninjadojo/app/compare/v1.12.1...v1.12.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* **ios:** clear keychain if app was deleted ([#625](https://github.com/houseninjadojo/app/issues/625)) ([76fdc10](https://github.com/houseninjadojo/app/commit/76fdc10c9879c33c70c3d26c3726d26f0b74b22b))
+
+## [1.12.1](https://github.com/houseninjadojo/app/compare/v1.12.0...v1.12.1) (2022-05-11)
+
+
+### Bug Fixes
+
+* view walkthrough button redesign ([#624](https://github.com/houseninjadojo/app/issues/624)) ([b8d1a9b](https://github.com/houseninjadojo/app/commit/b8d1a9b7ccfdd449dbd9b4091be14c2d42addb4d))
+
 # [1.12.0](https://github.com/houseninjadojo/app/compare/v1.11.3...v1.12.0) (2022-05-11)
 
 

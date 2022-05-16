@@ -103,10 +103,7 @@ export default class ContactInfoComponent extends Component {
   @action
   async onboardUser(user) {
     if (this.args.isOnboardingViaNativeApp) {
-      // 1. Send OTP
-      // 2. Confirm OTP
-      // 3. Transition to set-password
-      this.router.transitionTo('onboarding.set-password', user.id);
+      this.args.toggleModal && this.args.toggleModal();
     } else {
       this.onboarding.rehydrateFromRemote.perform();
       let route = this.onboarding.routeFromStep(user.onboardingStep);
@@ -166,5 +163,10 @@ export default class ContactInfoComponent extends Component {
       ...(!this.args.isOnboardingViaNativeApp ? ['phoneIsValid'] : []),
       'emailIsValid',
     ]).isInvalid;
+  }
+
+  @action
+  toggleModal() {
+    this.showDialog = !this.showDialog;
   }
 }
