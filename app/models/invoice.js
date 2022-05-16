@@ -12,6 +12,7 @@ export default class InvoiceModel extends Model {
   @attr('string') description;
   @attr('string') status;
   @attr('string') total;
+  @attr('string') formattedTotal;
 
   @attr('date') periodStart;
   @attr('date') periodEnd;

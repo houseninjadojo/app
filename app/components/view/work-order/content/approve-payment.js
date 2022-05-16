@@ -29,7 +29,7 @@ export default class ApprovePaymentComponent extends Component {
 
   async _nativeConfirmation() {
     const result = await ActionSheet.showActions({
-      title: 'Amount Due $999',
+      title: `Amount Due ${this.args.model.workOrder.formattedTotal}`,
       message: 'Do you approve this payment?',
       options: this.actionSheetOptions,
     });
