@@ -1,69 +1,75 @@
 <div class="content">
-    <div class="prompt">
-        <p class="primary">Payment Method</p>
-        <p>Join today for just $29/mo</p>
-        <p class="hn emphasis">If you have a promo code, please enter it below.</p>
-        {{#each this.fields as |field|}}
-            <Primitive::Input
-                @id={{field.id}}
-                @label={{field.label}}
-                @required={{field.required}}
-                @type={{field.type}}
-                @placeholder={{field.placeholder}}
-                @value={{mut (get this.paymentMethod field.id)}}
-                @onInput={{this.validateForm}}
-                @maxLength={{field.maxLength}}
-                @errors={{(get this.errors field.id)}}
-            />
-        {{/each}}
-        <Primitive::Input
-            @id={{'promo-code'}}
-            @warn={{if this.promoCodeInput this.promoCodeAlert}}
-            @description={{this.promoCodeDescription}}
-            @placeholder={{'Promo Code (optional)'}}
-            @label={{'Promo Code'}}
-            @value={{mut this.promoCodeInput}}
-            @onInput={{(perform this.checkPromoCode)}}
-        />
-        <div class='terms'>
-            <Primitive::Button
-            @size='lg' @variant='secondary'
-            @semantic='outline'
-            {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
-        >
-            {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
-        </Primitive::Button>
-            <div class='agreement'>
-                <Input
-                    @type="checkbox"
-                    @checked={{mut this.agreedToTermsAndConditions}}
-                    id="terms-agree"
-                    name="terms"
-                    disabled={{true}}
-                />
-                <span for="terms">I have read and agree to House Ninja Inc’s limited warranty.</span>
-            </div>
-
+    <Primitive::Section>
+        <div class="hero">
+            <p class="primary hn strong">Payment Method</p>
+            <p>Join today for just $29/mo</p>
+            <p class="hn emphasis">If you have a promo code, please enter it below.</p>
         </div>
-    </div>
-    <div class="action">
-        <Primitive::Button
-            @size='lg' @variant='outline'
-            @semantic='primary'
-            {{on 'click' this.goBack}}
-        >
-            Previous
-        </Primitive::Button>
-        <Primitive::Button
-            @size='lg'
-            @variant='solid'
-            @semantic='primary'
-            @disabled={{this.shallNotPass}}
-            {{on 'click' this.savePaymentMethod}}
-        >
-            Join
-        </Primitive::Button>
-    </div>
+    </Primitive::Section>
+    <Primitive::Section>
+        <div class="prompt">            
+            {{#each this.fields as |field|}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @label={{field.label}}
+                    @required={{field.required}}
+                    @type={{field.type}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get this.paymentMethod field.id)}}
+                    @onInput={{this.validateForm}}
+                    @maxLength={{field.maxLength}}
+                    @errors={{(get this.errors field.id)}}
+                />
+            {{/each}}
+            <Primitive::Input
+                @id={{'promo-code'}}
+                @warn={{if this.promoCodeInput this.promoCodeAlert}}
+                @description={{this.promoCodeDescription}}
+                @placeholder={{'Promo Code (optional)'}}
+                @label={{'Promo Code'}}
+                @value={{mut this.promoCodeInput}}
+                @onInput={{(perform this.checkPromoCode)}}
+            />
+            <div class='terms'>
+                <Primitive::Button
+                @size='lg' @variant='secondary'
+                @semantic='outline'
+                {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
+            >
+                {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
+            </Primitive::Button>
+                <div class='agreement'>
+                    <Input
+                        @type="checkbox"
+                        @checked={{mut this.agreedToTermsAndConditions}}
+                        id="terms-agree"
+                        name="terms"
+                        disabled={{true}}
+                    />
+                    <span for="terms">I have read and agree to House Ninja Inc’s limited warranty.</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="action">
+            <Primitive::Button
+                @size='lg' @variant='outline'
+                @semantic='primary'
+                {{on 'click' this.goBack}}
+            >
+                Previous
+            </Primitive::Button>
+            <Primitive::Button
+                @size='lg'
+                @variant='solid'
+                @semantic='primary'
+                @disabled={{this.shallNotPass}}
+                {{on 'click' this.savePaymentMethod}}
+            >
+                Join
+            </Primitive::Button>
+        </div>
+    </Primitive::Section>
     {{#if this.showTermsAndConditions}}
         <HouseNinja::TermsAndConditionsAgreement @agreesToTermsAndConditions={{this.agreesToTermsAndConditions}} @handleAgreement={{this.handleAgreement}} />
     {{/if}}

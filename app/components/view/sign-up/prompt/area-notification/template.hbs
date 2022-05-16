@@ -1,36 +1,39 @@
 <div class="content">
-    <div class="hero">        
-        <img src="/assets/images/iStock-1354840767.jpg" class="view-hero crop-h-70" alt="generic map"/>
-        {{#if this.userSubmittedEmail}}
-            <p>We’ll let you know when we’re in the neighborhood!</p>
-            <br/>
-            {{!-- <p>In the meantime, you can set up a House Ninja account that you can use to manage your home.</p> --}}
-        {{else}}
-            <p>We don’t cover this area at the moment, but we’ll let you know as soon as we do!</p>
-        {{/if}}
-    </div>
-    {{#if this.userSubmittedEmail}}
-    {{else}}
-    <div class="prompt">
-        <p class="primary">What email address should we notify?</p>
-        <Primitive::Input
-            @label='Email'
-            @placeholder='Email'
-            @hideLabel={{true}}
-            @required={{true}}
-            @type={{'email'}}
-            @value={{mut this.email}}
-        />
-    </div>
-        <div class="action single">
-            <Primitive::Button
-                @size='lg'
-                @variant='solid'
-                @semantic='primary'
-                {{on 'click' this.saveUserEmail}}
-            >
-                Notify Me
-            </Primitive::Button>
+    <Primitive::Section>
+        <div class="hero">        
+            <img src="/assets/images/iStock-1354840767.jpg" class="view-hero crop-h-70" alt="generic map"/>
+            {{#if this.userSubmittedEmail}}
+                <p>We’ll let you know when we’re in the neighborhood!</p>
+                <br/>
+                {{!-- <p>In the meantime, you can set up a House Ninja account that you can use to manage your home.</p> --}}
+            {{else}}
+                <p>We don’t cover this area at the moment, but we’ll let you know as soon as we do!</p>
+            {{/if}}
         </div>
-    {{/if}}
+    </Primitive::Section>
+    {{#unless this.userSubmittedEmail}}    
+        <Primitive::Section>
+            <div class="prompt">
+                <p class="primary">What email address should we notify?</p>
+                <Primitive::Input
+                    @label='Email'
+                    @placeholder='Email'
+                    @hideLabel={{true}}
+                    @required={{true}}
+                    @type={{'email'}}
+                    @value={{mut this.email}}
+                />
+            </div>
+            <div class="action single">
+                <Primitive::Button
+                    @size='lg'
+                    @variant='solid'
+                    @semantic='primary'
+                    {{on 'click' this.saveUserEmail}}
+                >
+                    Notify Me
+                </Primitive::Button>
+            </div>
+        </Primitive::Section>
+    {{/unless}}
 </div>
