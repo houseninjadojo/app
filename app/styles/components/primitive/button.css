@@ -135,6 +135,10 @@
 }
 
 @media (hover: hover) {
+  .hn.btn {
+    cursor: pointer;
+  }
+  
   .hn.btn.solid:hover {
     opacity: 0.5;
   }
