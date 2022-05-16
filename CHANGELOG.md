@@ -1,3 +1,10 @@
+## [1.12.8](https://github.com/houseninjadojo/app/compare/v1.12.7...v1.12.8) (2022-05-16)
+
+
+### Bug Fixes
+
+* primitive button styles ([#640](https://github.com/houseninjadojo/app/issues/640)) ([598c961](https://github.com/houseninjadojo/app/commit/598c96131518e2e171f704bc01d1ab543d90f041))
+
 ## [1.12.7](https://github.com/houseninjadojo/app/compare/v1.12.6...v1.12.7) (2022-05-13)
 
 
