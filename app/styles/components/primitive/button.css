@@ -133,3 +133,30 @@
 .hn.btn.floating.disabled {
   background: none !important;
 }
+
+@media (hover: hover) {
+  .hn.btn.solid:hover {
+    opacity: 0.5;
+  }
+  
+  .hn.btn.hn.btn.outline:hover {
+    color: white;
+  }
+  
+  .hn.btn.hn.btn.outline:hover .icon {
+    filter: brightness(0) invert(1);
+  }
+  
+  .hn.btn.hn.btn.outline.primary:hover {
+    background-color: var(--black);
+  }
+  
+  .hn.btn.hn.btn.outline.accent:hover {
+    background-color: var(--teal-500);
+  }
+  
+  .hn.btn.hn.btn.outline.secondary:hover {
+    background-color: var(--blue-400);
+  }
+}
+
