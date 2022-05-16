@@ -5,6 +5,7 @@ import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultIndexRoute extends Route {
   @service router;
+  @service session;
   @service store;
 
   groups = [];
