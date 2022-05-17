@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
-import moment from 'moment';
 import {
   getWorkOrderTag,
   isHistoricalWorkOrder,
+  newestToOldest,
 } from 'houseninja/utils/components/work-order/work-order-status';
 
 const DATE_FORMAT = 'MM/DD/YY';
@@ -25,10 +25,7 @@ export default class WorkHistoryComponent extends Component {
     })
 
     .sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
+      return newestToOldest(a, b);
     });
 
   displayedWorkOrders = [...this.inactiveWorkOrders];

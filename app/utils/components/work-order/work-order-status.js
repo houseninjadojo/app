@@ -2,6 +2,7 @@ import {
   workOrderStatus,
   workOrderStatusLabels,
 } from 'houseninja/data/work-order-status';
+import moment from 'moment';
 
 export const getWorkOrderTag = (status) => {
   switch (status) {
@@ -123,4 +124,12 @@ export const isHistoricalWorkOrder = (status) => {
     // case workOrderStatus.cancelled:
     // case workOrderStatus.referred:
   }
+};
+
+export const newestToOldest = (a, b) => {
+  const DATE_FORMAT = 'MM/DD/YY';
+
+  return (
+    moment(a.scheduledDate, DATE_FORMAT) < moment(b.scheduledDate, DATE_FORMAT)
+  );
 };

@@ -1,14 +1,12 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import {
   getWorkOrderTag,
   isActiveWorkOrder,
+  newestToOldest,
 } from 'houseninja/utils/components/work-order/work-order-status';
-
-const DATE_FORMAT = 'MM/DD/YY';
 
 export default class HandleItComponent extends Component {
   @service router;
@@ -50,22 +48,16 @@ export default class HandleItComponent extends Component {
   failedPaymentWorkOrders = this.activeWorkOrders
     ?.filter((w) => w.status === workOrderStatus.paymentFailed)
     ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
+      return newestToOldest(a, b);
     });
 
   approvePaymentWorkOrders = this.activeWorkOrders
     ?.filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
     ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
+      return newestToOldest(a, b);
     });
 
-  bookedWorkOrders = this.activeWorkOrders
+  remainingBookedWorkOrders = this.activeWorkOrders
     ?.filter(
       (w) =>
         w.status !== workOrderStatus.paymentFailed &&
@@ -74,10 +66,7 @@ export default class HandleItComponent extends Component {
         w.scheduledDate
     )
     ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
+      return newestToOldest(a, b);
     });
 
   nonBookedWorkOrders = this.activeWorkOrders?.filter(
@@ -91,7 +80,7 @@ export default class HandleItComponent extends Component {
   displayedWorkOrders = [
     ...(this.approvePaymentWorkOrders ?? []),
     ...(this.failedPaymentWorkOrders ?? []),
-    ...(this.bookedWorkOrders ?? []),
+    ...(this.remainingBookedWorkOrders ?? []),
     ...(this.nonBookedWorkOrders ?? []),
     ...(this.pausedWorkOrders ?? []),
   ];
