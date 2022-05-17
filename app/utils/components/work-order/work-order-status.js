@@ -54,6 +54,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.schedulingInProgress:
     case workOrderStatus.vendorIdentified:
     case workOrderStatus.workOrderInititated:
+    case workOrderStatus.workRequestReceived:
     default:
       return {
         label: getWorkOrderStatusLabel(status),
@@ -132,4 +133,53 @@ export const newestToOldest = (a, b) => {
   return (
     moment(a.scheduledDate, DATE_FORMAT) < moment(b.scheduledDate, DATE_FORMAT)
   );
+};
+
+export const WORK_ORDER_FILTER = {
+  APPROVE_PAYMENT: 'approve payment',
+  FAILED_PAYMENT: 'failed payment',
+  BOOKED_NOT_APPROVE_AND_NOT_FAILED: 'booked',
+  NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED: 'not booked',
+  PAUSED: 'paused',
+};
+
+export const filterWorkOrdersFor = (filter, workOrders) => {
+  let filteredWorkOrders = [];
+  switch (filter) {
+    case WORK_ORDER_FILTER.APPROVE_PAYMENT:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return w.status === workOrderStatus.invoiceSentToCustomer;
+      });
+      break;
+    case WORK_ORDER_FILTER.FAILED_PAYMENT:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return w.status === workOrderStatus.paymentFailed;
+      });
+      break;
+    case WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED:
+      filteredWorkOrders = workOrders.filter(
+        (w) =>
+          w.scheduledDate &&
+          w.status !== workOrderStatus.paymentFailed &&
+          w.status !== workOrderStatus.invoiceSentToCustomer &&
+          w.status !== workOrderStatus.paused
+      );
+      break;
+    case WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return (
+          !w.scheduledDate &&
+          w.status !== workOrderStatus.paymentFailed &&
+          w.status !== workOrderStatus.invoiceSentToCustomer &&
+          w.status !== workOrderStatus.paused
+        );
+      });
+      break;
+    case WORK_ORDER_FILTER.PAUSED:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return w.status === workOrderStatus.paused;
+      });
+      break;
+  }
+  return filteredWorkOrders;
 };

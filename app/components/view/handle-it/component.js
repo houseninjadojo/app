@@ -6,6 +6,8 @@ import {
   getWorkOrderTag,
   isActiveWorkOrder,
   newestToOldest,
+  filterWorkOrdersFor,
+  WORK_ORDER_FILTER,
 } from 'houseninja/utils/components/work-order/work-order-status';
 
 export default class HandleItComponent extends Component {
@@ -45,37 +47,40 @@ export default class HandleItComponent extends Component {
       };
     });
 
-  failedPaymentWorkOrders = this.activeWorkOrders
-    ?.filter((w) => w.status === workOrderStatus.paymentFailed)
-    ?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+  failedPaymentWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.FAILED_PAYMENT,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  approvePaymentWorkOrders = this.activeWorkOrders
-    ?.filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
-    ?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+  approvePaymentWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.APPROVE_PAYMENT,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  remainingBookedWorkOrders = this.activeWorkOrders
-    ?.filter(
-      (w) =>
-        w.status !== workOrderStatus.paymentFailed &&
-        w.status !== workOrderStatus.invoiceSentToCustomer &&
-        w.status !== workOrderStatus.paused &&
-        w.scheduledDate
-    )
-    ?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+  remainingBookedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  nonBookedWorkOrders = this.activeWorkOrders?.filter(
-    (w) => !w.scheduledDate && w.status !== workOrderStatus.paused
-  );
+  nonBookedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  pausedWorkOrders = this.activeWorkOrders?.filter(
-    (w) => w.status === workOrderStatus.paused
-  );
+  pausedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.PAUSED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
   displayedWorkOrders = [
     ...(this.approvePaymentWorkOrders ?? []),

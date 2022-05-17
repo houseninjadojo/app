@@ -5,7 +5,6 @@ import {
   newestToOldest,
 } from 'houseninja/utils/components/work-order/work-order-status';
 
-const DATE_FORMAT = 'MM/DD/YY';
 export default class WorkHistoryComponent extends Component {
   inactiveWorkOrders = this.args.workOrders
     ?.filter((w) => {
