@@ -30,6 +30,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.customerConfirmedWork:
     case workOrderStatus.problemReported:
     case workOrderStatus.workCompleted:
+      // case workOrderStatus.referred:
       return {
         label: getWorkOrderStatusLabel(status),
         type: 'accent-outline',
@@ -62,4 +63,64 @@ export const getWorkOrderTag = (status) => {
 
 export const getWorkOrderStatusLabel = (status) => {
   return workOrderStatusLabels[status];
+};
+
+export const isActiveWorkOrder = (status) => {
+  switch (status) {
+    case workOrderStatus.workRequestReceived:
+    case workOrderStatus.workOrderInitiated:
+    case workOrderStatus.vendorIdentified:
+    case workOrderStatus.schedulingInProgress:
+    case workOrderStatus.onsiteEstimateScheduled:
+    case workOrderStatus.estimateSharedWithHomeowner:
+    case workOrderStatus.estimateApproved:
+    case workOrderStatus.estimateNotApproved:
+    case workOrderStatus.workScheduled:
+    case workOrderStatus.workInProgress:
+    case workOrderStatus.changeOrderReceived:
+    case workOrderStatus.workCompleted:
+    case workOrderStatus.customerConfirmedWork:
+    case workOrderStatus.problemReported:
+    case workOrderStatus.problemBeingAddressed:
+    case workOrderStatus.problemResolved:
+    case workOrderStatus.vendorInvoiceReceived:
+    case workOrderStatus.invoiceSentToCustomer:
+    case workOrderStatus.invoicePaidByCustomer:
+    case workOrderStatus.paymentFailed:
+    case workOrderStatus.paused:
+      return true;
+    // case workOrderStatus.closed:
+    // case workOrderStatus.cancelled:
+    // case workOrderStatus.referred:
+  }
+};
+
+export const isHistoricalWorkOrder = (status) => {
+  switch (status) {
+    // case workOrderStatus.workRequestReceived:
+    // case workOrderStatus.workOrderInitiated:
+    // case workOrderStatus.vendorIdentified:
+    // case workOrderStatus.schedulingInProgress:
+    // case workOrderStatus.onsiteEstimateScheduled:
+    // case workOrderStatus.estimateSharedWithHomeowner:
+    // case workOrderStatus.estimateApproved:
+    // case workOrderStatus.estimateNotApproved:
+    // case workOrderStatus.workScheduled:
+    // case workOrderStatus.workInProgress:
+    // case workOrderStatus.changeOrderReceived:
+    // case workOrderStatus.workCompleted:
+    // case workOrderStatus.customerConfirmedWork:
+    // case workOrderStatus.problemReported:
+    // case workOrderStatus.problemBeingAddressed:
+    // case workOrderStatus.problemResolved:
+    // case workOrderStatus.vendorInvoiceReceived:
+    // case workOrderStatus.invoiceSentToCustomer:
+    // case workOrderStatus.paymentFailed:
+    case workOrderStatus.invoicePaidByCustomer:
+    case workOrderStatus.closed:
+      return true;
+    // case workOrderStatus.paused:
+    // case workOrderStatus.cancelled:
+    // case workOrderStatus.referred:
+  }
 };

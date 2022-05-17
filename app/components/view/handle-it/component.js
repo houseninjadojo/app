@@ -3,7 +3,10 @@ import { service } from '@ember/service';
 import { action } from '@ember/object';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
-import { getWorkOrderTag } from 'houseninja/utils/components/work-order/work-order-status';
+import {
+  getWorkOrderTag,
+  isActiveWorkOrder,
+} from 'houseninja/utils/components/work-order/work-order-status';
 
 const DATE_FORMAT = 'MM/DD/YY';
 
@@ -20,7 +23,10 @@ export default class HandleItComponent extends Component {
     },
   ];
 
-  allWorkOrders = this.args.workOrders
+  activeWorkOrders = this.args.workOrders
+    ?.filter((w) => {
+      return isActiveWorkOrder(w.status);
+    })
     ?.map((w) => {
       return {
         id: w.id,
@@ -39,16 +45,9 @@ export default class HandleItComponent extends Component {
         tag: w.status && getWorkOrderTag(w.status),
         ...w,
       };
-    })
-    ?.filter((w) => {
-      const activeWorkOrder =
-        w.status !== workOrderStatus.workRequestReceived &&
-        w.status !== workOrderStatus.invoicePaidByCustomer &&
-        w.status !== workOrderStatus.closed &&
-        w.status !== workOrderStatus.cancelled;
-      return activeWorkOrder;
     });
-  failedPaymentWorkOrders = this.allWorkOrders
+
+  failedPaymentWorkOrders = this.activeWorkOrders
     ?.filter((w) => w.status === workOrderStatus.paymentFailed)
     ?.sort((a, b) => {
       return (
@@ -57,7 +56,7 @@ export default class HandleItComponent extends Component {
       );
     });
 
-  approvePaymentWorkOrders = this.allWorkOrders
+  approvePaymentWorkOrders = this.activeWorkOrders
     ?.filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
     ?.sort((a, b) => {
       return (
@@ -66,7 +65,7 @@ export default class HandleItComponent extends Component {
       );
     });
 
-  bookedWorkOrders = this.allWorkOrders
+  bookedWorkOrders = this.activeWorkOrders
     ?.filter(
       (w) =>
         w.status !== workOrderStatus.paymentFailed &&
@@ -77,20 +76,19 @@ export default class HandleItComponent extends Component {
     ?.sort((a, b) => {
       return (
         moment(a.scheduledDate, DATE_FORMAT) <
-          moment(b.scheduledDate, DATE_FORMAT) ||
-        (a.scheduledDate && !b.scheduledDate)
+        moment(b.scheduledDate, DATE_FORMAT)
       );
     });
 
-  nonBookedWorkOrders = this.allWorkOrders?.filter(
+  nonBookedWorkOrders = this.activeWorkOrders?.filter(
     (w) => !w.scheduledDate && w.status !== workOrderStatus.paused
   );
 
-  pausedWorkOrders = this.allWorkOrders?.filter(
+  pausedWorkOrders = this.activeWorkOrders?.filter(
     (w) => w.status === workOrderStatus.paused
   );
 
-  currentWorkOrders = [
+  displayedWorkOrders = [
     ...(this.approvePaymentWorkOrders ?? []),
     ...(this.failedPaymentWorkOrders ?? []),
     ...(this.bookedWorkOrders ?? []),
