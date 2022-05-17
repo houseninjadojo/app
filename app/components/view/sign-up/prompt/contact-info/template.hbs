@@ -1,40 +1,47 @@
 <div class="content">
-    <div class="prompt">        
-        {{#if @isOnboardingViaNativeApp}}
-            <p class="primary mb-4">To access your account, enter the email address used during the sign-up process.</p>        
-        {{else}}
-            <p class="primary">Contact Information</p>
-        {{/if}}
-        {{#each this.fields as |field|}}
-            {{#if (eq field.id this.howDidYouHearAboutUsLabel)}}
-                <p class="mt-4">How did you hear about us?</p>
-            {{/if}}
-                <Primitive::Input
-                    @id={{field.id}}
-                    @placeholder={{field.placeholder}}
-                    @label={{field.label}}
-                    @hideLabel={{field.hideLabel}}
-                    @description={{field.description}}
-                    @required={{field.required}}
-                    @type={{field.type}}
-                    @value={{mut (get this.contactInfo field.id)}}
-                    @onInput={{this.validateForm}}
-                    @errors={{(get this.errors field.id)}}
-                />
-        {{/each}}
-    </div>
-    <div class="action single">
-        <Primitive::Button
-            @size='lg'
-            @variant='solid'
-            @semantic='primary'
-            @disabled={{this.formIsInvalid}}
-            {{on 'click' this.handlePrimaryClick}}
-        >
-            {{if @isOnboardingViaNativeApp "Submit" "Next"}}
-            {{#unless @isOnboardingViaNativeApp}}
-                <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
-            {{/unless}}
-        </Primitive::Button>
-    </div>
+    <Primitive::Section>
+        <div class="hero">
+            {{#if @isOnboardingViaNativeApp}}
+                    <p class="primary mb-4">To access your account, enter the email address used during the sign-up process.</p>        
+            {{else}}
+                <p class="primary hn strong">Contact Information</p>
+                <p>Let’s start by creating your account. We only use your contact information to help you manage your home.</p>
+            {{/if}}        
+        </div>
+    </Primitive::Section>
+    <Primitive::Section>
+        <div class="prompt">                    
+            {{#each this.fields as |field|}}
+                {{#if (eq field.id this.howDidYouHearAboutUsLabel)}}
+                    <p class="mt-4">How did you hear about us?</p>
+                {{/if}}
+                    <Primitive::Input
+                        @id={{field.id}}
+                        @placeholder={{field.placeholder}}
+                        @label={{field.label}}
+                        @hideLabel={{field.hideLabel}}
+                        @description={{field.description}}
+                        @required={{field.required}}
+                        @type={{field.type}}
+                        @value={{mut (get this.contactInfo field.id)}}
+                        @onInput={{this.validateForm}}
+                        @errors={{(get this.errors field.id)}}
+                    />
+            {{/each}}
+        </div>        
+        <div class="action single">
+            <Primitive::Button
+                @size='lg'
+                @variant='solid'
+                @semantic='primary'
+                @disabled={{this.formIsInvalid}}
+                {{on 'click' this.handlePrimaryClick}}
+            >
+                {{if @isOnboardingViaNativeApp "Submit" "Next"}}
+                {{#unless @isOnboardingViaNativeApp}}
+                    <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+                {{/unless}}
+            </Primitive::Button>
+        </div>
+    </Primitive::Section>
 </div>

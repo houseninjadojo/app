@@ -3,7 +3,6 @@
 }
 
 .sign-up-module .view {
-  background-color: var(--white);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -17,7 +16,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #eaeaea;
+  background-color: var(--gray-25);
 }
 
 .sign-up-module .view .wrapper .constraint {
@@ -57,8 +56,6 @@
   align-items: center;
   height: 100%;
   overflow-y: auto;
-  padding: 32px 16px;
-  background-color: var(--white);
 }
 
 .onboarding .content ul,
@@ -80,6 +77,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  background-color: var(--white);
 }
 
 .onboarding .content .hero img,
@@ -172,7 +170,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: var(--gray-25);
+  background-color: var(--gray-50);
+  border-radius: 2px;
   padding: 16px;
   align-items: center;
 }
@@ -221,7 +220,7 @@
   align-items: center;
   width: 100%;
   font-size: 16px;
-  background-color: var(--white);
+  border-radius: 2px;
   padding: 16px 24px;
 }
 
@@ -329,24 +328,12 @@
     /* height: 80%; */
     min-width: 600px;
     height: unset;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding: 32px;
-  }
-
-  .sign-up-module .view .content.confirmed-booking {
-    border-radius: 8px;
   }
 
   .sign-up-module .view .content.landscape {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-  }
-
-  .hn.breadcrumbs {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
   }
 
   .sign-up-module .view .wrapper .constraint .position {
@@ -380,7 +367,6 @@
 
 .sign-up-module .view .content.confirmed-booking .prompt {
   font-size: 17px;
-  max-width: 600px;
 }
 
 .sign-up-module .view .content.confirmed-booking .prompt .sign-off {

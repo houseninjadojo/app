@@ -1,62 +1,64 @@
 <div class='content confirmed-booking'>
-  <div class='hero'>
-    <h1 class="mb-4">Your Walkthrough is Booked!</h1>
-    <img
-      src='/assets/images/hn-holding-clipboard.jpeg'
-      class='view-hero'
-      alt='house ninja with clipboard'
-    />
-  </div>
-  <div class='prompt'>
-    <p class='hn label center mt-8 mb-8'>We’re excited to meet you!</p>
-    <p class='mb-4'>Your House Ninja team will send you an email to confirm your
-      walkthrough and let you know what to expect.
-    </p>
-    <p class='mb-4'>In the meantime, please call or text us at
-      <span class='hn strong'>888-32-NINJA (64652)</span>
-      if you have any questions.
-    </p>
+  <Primitive::Section>
+    <div class='hero'>      
+      <img
+        src='/assets/images/hn-holding-clipboard.jpeg'
+        class='view-hero'
+        alt='house ninja with clipboard'
+      />
+      <h1>Your Walkthrough is Booked!</h1>
+    </div>
+  </Primitive::Section>
+  <Primitive::Section>
+    <div class='prompt'>
+      <p class='hn label center mt-8 mb-8'>We’re excited to meet you!</p>
+      <p class='mb-4'>Your House Ninja team will send you an email to confirm your
+        walkthrough and let you know what to expect.
+      </p>
+      <p class='mb-4'>In the meantime, please call or text us at
+        <span class='hn strong'>888-32-NINJA (64652)</span>
+        if you have any questions.
+      </p>
 
-    <p class='hn sign-off center mt-4 mb-4'>We look forward to taking care of your home!</p>
-    ❤️
-    <br/><br/>
-    {{#if this.showLoginButton}}
-      <p class="hn strong">Login now and start exploring</p>            
-      <Primitive::Button
-          @size='lg'
-          @variant='solid'
-          @semantic='primary'                    
-          {{on 'click' (fn this.selectRoute 'login')}}
-      >
-          Login
-      </Primitive::Button>
-    {{else if this.showBackToDashboardButton}}      
-      <Primitive::Button
+      <p class='hn sign-off center mt-4 mb-4'>We look forward to taking care of your home!</p>
+      ❤️
+      <br/><br/>
+      {{#if this.showLoginButton}}
+        <p class="hn strong">Login now and start exploring</p>            
+        <Primitive::Button
             @size='lg'
             @variant='solid'
             @semantic='primary'                    
-            {{on 'click' (fn this.selectRoute 'dashboard.home')}}
+            {{on 'click' (fn this.selectRoute 'login')}}
         >
-            Back to my Dashboard
-        </Primitive::Button>        
-    {{else}}
-    {{! 
-      <p class="hn strong">Download the House Ninja app where you can easily and conveniently:</p>            
-      <ul>
-          <li>Request any service your home needs</li>
-          <li>Chat with your House Ninja team</li>
-          <li>Track all of your current, future, and completed projects for your home</li>
-      </ul>        
+            Login
+        </Primitive::Button>
+      {{else if this.showBackToDashboardButton}}      
+        <Primitive::Button
+              @size='lg'
+              @variant='solid'
+              @semantic='primary'                    
+              {{on 'click' (fn this.selectRoute 'dashboard.home')}}
+          >
+              Back to my Dashboard
+          </Primitive::Button>        
+      {{else}}
+      {{! 
+        <p class="hn strong">Download the House Ninja app where you can easily and conveniently:</p>            
+        <ul>
+            <li>Request any service your home needs</li>
+            <li>Chat with your House Ninja team</li>
+            <li>Track all of your current, future, and completed projects for your home</li>
+        </ul>        
+        }}
+      {{!     
+        <div class="action single">        
+            <button type="button">
+                <img src="/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg" class="" alt="apple store download"/>
+            </button> 
+        </div> 
       }}
-    {{!     
-      <div class="action single">        
-          <button type="button">
-              <img src="/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg" class="" alt="apple store download"/>
-          </button> 
-      </div> 
-    }}
-    {{/if}}        
-  </div>
-  
-
+      {{/if}}        
+    </div>
+  </Primitive::Section>
 </div>

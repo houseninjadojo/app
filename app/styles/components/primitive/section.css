@@ -1,5 +1,6 @@
 .section {
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 16px;
 }
 
 .section .head {
@@ -60,7 +61,7 @@
   height: 100%;
   width: 100%;
   border-radius: 2px;
-  padding: 8px;
+  padding: 16px;
 }
 
 .section .head button .icon .y.is-open,
