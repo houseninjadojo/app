@@ -26,7 +26,7 @@ export const workOrderStatus = {
 };
 
 export const workOrderStatusLabels = {
-  [workOrderStatus.workRequestReceived]: '',
+  [workOrderStatus.workRequestReceived]: 'Initiated',
   [workOrderStatus.workOrderInitiated]: 'Initiated',
   [workOrderStatus.vendorIdentified]: 'Initiated',
   [workOrderStatus.schedulingInProgress]: 'Initiated',
