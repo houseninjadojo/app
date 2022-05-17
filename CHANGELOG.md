@@ -1,3 +1,10 @@
+## [1.12.9](https://github.com/houseninjadojo/app/compare/v1.12.8...v1.12.9) (2022-05-17)
+
+
+### Bug Fixes
+
+* sign-up view styling ([#641](https://github.com/houseninjadojo/app/issues/641)) ([2e7b4c1](https://github.com/houseninjadojo/app/commit/2e7b4c156019def7750365887b9935b08d89f374))
+
 ## [1.12.8](https://github.com/houseninjadojo/app/compare/v1.12.7...v1.12.8) (2022-05-16)
 
 
