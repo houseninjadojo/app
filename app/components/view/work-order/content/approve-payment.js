@@ -4,8 +4,11 @@ import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { service } from '@ember/service';
 
 export default class ApprovePaymentComponent extends Component {
+  @service store;
+
   @tracked cvc = null;
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -28,8 +31,7 @@ export default class ApprovePaymentComponent extends Component {
   }
 
   async _nativeConfirmation() {
-    console.log(this.args.model);
-    const total = await this.args.model.formattedTotal;
+    const total = this.args.model.invoice.get('formattedTotal');
     const result = await ActionSheet.showActions({
       title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
@@ -51,7 +53,7 @@ export default class ApprovePaymentComponent extends Component {
     this.isProcessing = true;
 
     const payment = this.store.createRecord('payment', {
-      invoice: this.args.model.invoice,
+      invoice: this.invoice,
     });
 
     try {
@@ -105,7 +107,7 @@ export default class ApprovePaymentComponent extends Component {
   @action
   gotIt() {
     this.isProcessing = false;
-    this.updateWorkOrderStatus(true);
+    this.args.model.reload();
   }
 
   @action
@@ -114,11 +116,12 @@ export default class ApprovePaymentComponent extends Component {
   }
 
   async cvcResourseVerification() {
+    const paymentMethod = this.current.paymentMethod;
     try {
       const verification = await this.store
         .createRecord('resource-verification', {
           resourceName: 'credit-card',
-          recordId: this.args.model.paymentMethod.id,
+          recordId: paymentMethod.id,
           attribute: 'cvv',
           // value: this.cvc,
           vgsValue: this.cvc,
@@ -128,5 +131,13 @@ export default class ApprovePaymentComponent extends Component {
     } catch {
       return false;
     }
+  }
+
+  get invoice() {
+    return this.args.model.invoice;
+  }
+
+  get formattedTotal() {
+    return this.invoice?.formattedTotal;
   }
 }
