@@ -9,6 +9,7 @@ export default class ApprovePaymentRoute extends Route {
   async model({ access_token }) {
     const invoice = await this.store.findRecord('invoice', access_token, {
       include: [
+        'payment',
         'work_order',
         'work_order.property',
         'work_order.property.user',
@@ -26,6 +27,7 @@ export default class ApprovePaymentRoute extends Route {
       ),
       statusLabel: invoice.get('workOrder.statusLabel'),
       vendor: invoice.get('workOrder.vendor'),
+      formattedTotal: invoice.formattedTotal,
     };
   }
 }

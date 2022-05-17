@@ -28,8 +28,10 @@ export default class ApprovePaymentComponent extends Component {
   }
 
   async _nativeConfirmation() {
+    console.log(this.args.model);
+    const total = await this.args.model.formattedTotal;
     const result = await ActionSheet.showActions({
-      title: `Amount Due ${this.args.model.workOrder.formattedTotal}`,
+      title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
       options: this.actionSheetOptions,
     });
@@ -37,7 +39,7 @@ export default class ApprovePaymentComponent extends Component {
     const choice = this.actionSheetOptions[result.index].title;
     const confirmed = choice === this.actionSheetOptions[1].title;
     if (confirmed) {
-      this._handlePaymentApproval();
+      await this.approvePayment();
     }
   }
 

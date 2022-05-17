@@ -7,25 +7,31 @@ export default class WorkOrderRoute extends Route {
   @service store;
 
   async model({ work_order_id }) {
-    // await this.current.loadUser();
-    // const { paymentMethod } = this.current;
+    await this.current.loadUser();
 
-    return await this.store.findRecord('work-order', work_order_id, {
-      include: 'invoice,invoice.payment',
+    const workOrder = await this.store.findRecord('work-order', work_order_id, {
+      include: [
+        'invoices',
+        'invoices.payment',
+        'property',
+        'property.user',
+        'property.user.payment_methods',
+      ].join(','),
     });
 
-    // return {
-    //   workOrder,
-    //   paymentMethod,
-    // };
+    const invoice = await workOrder.get('invoices.firstObject');
+    const property = await workOrder.get('property');
+    const { user, paymentMethod } = this.current;
 
-    // model.setProperties({
-    //   statusLabel: model.statusLabel,
-    //   vendor: model.scheduledDate && model.vendor,
-    //   lastFour: paymentMethod.obfuscated.lastFour,
-    //   cardBrand: paymentMethod.obfuscated.brand,
-    // });
-
-    // return model;
+    return {
+      workOrder,
+      invoice,
+      user,
+      paymentMethod,
+      property,
+      statusLabel: workOrder.statusLabel,
+      vendor: workOrder.vendor,
+      formattedTotal: invoice.formattedTotal,
+    };
   }
 }

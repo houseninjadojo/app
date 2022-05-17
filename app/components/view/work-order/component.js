@@ -30,7 +30,7 @@ export default class WorkOrderViewComponent extends Component {
   }
 
   get contentType() {
-    const modelStatus = this.args.model?.status ?? '';
+    const modelStatus = this.args.model?.workOrder?.status ?? '';
     const status = workOrderStatus[camelize(modelStatus)];
     switch (status) {
       case workOrderStatus.invoiceSentToCustomer:

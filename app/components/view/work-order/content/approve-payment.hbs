@@ -20,7 +20,7 @@
     </Primitive::Button>
 </div>
 <div class="work-order-details">
-    <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{@model.workOrder.formattedTotal}}</p>
+    <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{@model.workOrder.invoice.formattedTotal}}</p>
     <p class="hn field"><span class="hn label">Status: </span>{{@model.workOrder.statusLabel}}</p>
     <p class="hn field"><span class="hn label">Description: </span>{{@model.workOrder.description}}</p>
     <p class="hn field"><span class="hn label">Vendor: </span>{{@model.workOrder.vendor}}</p>
@@ -31,7 +31,7 @@
     <Primitive::Modal::Dialog @toggleModal={{this.toggleModal}}>
         <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
         <div class="mb-8">
-            <p class="hn center">Do you approve the payment of {{@model.workOrder.formattedTotal}}?</p>
+            <p class="hn center">Do you approve the payment of {{@model.workOrder.invoice.formattedTotal}}?</p>
             <Primitive::Input
                 @id="CVC"
                 @type="number"

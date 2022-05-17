@@ -10,7 +10,7 @@ export default class AccountSettingsComponent extends Component {
 
   @service current;
 
-  @tracked userHasPromoCode = this.current.user.get('promoCode.code');
+  @tracked userHasPromoCode = this.current.get('user.promoCode.code');
 
   /**
    * The current route selection
