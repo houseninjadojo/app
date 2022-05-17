@@ -22,6 +22,7 @@ export const workOrderStatus = {
   closed: 'closed',
   paused: 'paused',
   cancelled: 'cancelled',
+  // referred: 'referred',
 };
 
 export const workOrderStatusLabels = {
@@ -49,4 +50,5 @@ export const workOrderStatusLabels = {
   [workOrderStatus.closed]: 'Completed',
   [workOrderStatus.paused]: 'Paused',
   [workOrderStatus.cancelled]: 'Cancelled',
+  // [workOrderStatus.referred]: 'Referred',
 };
