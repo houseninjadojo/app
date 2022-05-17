@@ -15,7 +15,7 @@ export default class WorkHistoryComponent extends Component {
         id: w.id,
         name: w.description,
         description: w.vendor,
-        // scheduledTime: w.scheduledTime,
+        scheduledTime: null, // Don't display time
         scheduledDate: w.scheduledDate,
         status: w.status,
         tag: w.status && getWorkOrderTag(w.status),
