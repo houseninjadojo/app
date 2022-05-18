@@ -50,11 +50,11 @@
 }
 
 .hn.btn.floating.black {
-  color: var(--black);
+  color: var(--gray-900);
 }
 
 .hn.btn.solid.primary {
-  background: var(--grad-black-1000);
+  background: var(--gray-900);
   box-shadow: var(--shadow-gray-1);
   color: var(--white);
 }
@@ -83,7 +83,7 @@
 }
 
 .hn.btn.outline.primary {
-  border-color: var(--black);
+  border-color: var(--gray-900);
   box-shadow: var(--shadow-gray-1);
 }
 
@@ -152,7 +152,7 @@
   }
 
   .hn.btn.hn.btn.outline.primary:hover {
-    background-color: var(--black);
+    background-color: var(--gray-900);
   }
 
   .hn.btn.hn.btn.outline.accent:hover {

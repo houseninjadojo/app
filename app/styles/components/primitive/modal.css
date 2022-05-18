@@ -101,7 +101,7 @@
 }
 
 .hn.modal .modal-container.dark {
-  background: var(--black);
+  background: var(--gray-900);
 }
 
 .hn.modal .modal-container .head,

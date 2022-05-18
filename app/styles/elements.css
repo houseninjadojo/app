@@ -52,7 +52,7 @@
 }
 
 .hn.banner-message.primary {
-  background-color: var(--black);
+  background-color: var(--gray-900);
   color: var(--white);
 }
 
