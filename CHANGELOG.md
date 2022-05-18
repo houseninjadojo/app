@@ -1,3 +1,10 @@
+## [1.12.10](https://github.com/houseninjadojo/app/compare/v1.12.9...v1.12.10) (2022-05-18)
+
+
+### Bug Fixes
+
+* work order filtering sorting ([#644](https://github.com/houseninjadojo/app/issues/644)) ([1efc977](https://github.com/houseninjadojo/app/commit/1efc97713f82aa34533906e9485b3873c427cb72))
+
 ## [1.12.9](https://github.com/houseninjadojo/app/compare/v1.12.8...v1.12.9) (2022-05-17)
 
 
