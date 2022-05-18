@@ -50,9 +50,21 @@ export default function () {
   );
 
   this.transition(
-    this.fromRoute([NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW]),
+    this.fromRoute([NATIVE_MOBILE_ROUTE.WORK_ORDERS.INDEX]),
     this.toRoute([NATIVE_MOBILE_ROUTE.SETTINGS.INDEX]),
     this.use('toUp', { duration: 500, easing: [100, 20] }),
     this.reverse('toDown', { duration: 300 })
+  );
+
+  this.transition(
+    this.fromRoute([
+      NATIVE_MOBILE_ROUTE.DASHBOARD.INDEX,
+      NATIVE_MOBILE_ROUTE.DASHBOARD.HOME,
+      NATIVE_MOBILE_ROUTE.DASHBOARD.HANDLE_IT,
+      NATIVE_MOBILE_ROUTE.DASHBOARD.HISTORY,
+    ]),
+    this.toRoute([NATIVE_MOBILE_ROUTE.WORK_ORDERS.INDEX]),
+    this.use('toLeft', { duration: 500, easing: [100, 20] }),
+    this.reverse('toRight', { duration: 300 })
   );
 }

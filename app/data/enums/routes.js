@@ -54,6 +54,7 @@ export const NATIVE_MOBILE_ROUTE = {
     },
   },
   WORK_ORDERS: {
+    INDEX: 'work-orders',
     SHOW: 'work-orders.work-order',
   },
 };
