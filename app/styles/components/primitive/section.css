@@ -62,6 +62,7 @@
   width: 100%;
   border-radius: 2px;
   padding: 16px;
+  box-shadow: var(--shadow-gray-2);
 }
 
 .section .head button .icon .y.is-open,
