@@ -32,6 +32,13 @@
   flex: 1 3 auto;
 }
 
+.hn-referral-code .hn-column.right button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .hn-referral-code .hn-column.left span,
 .hn-referral-code .hn-column.right span {
   display: block;
