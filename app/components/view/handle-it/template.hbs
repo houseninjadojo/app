@@ -1,6 +1,6 @@
 <div class="hn handle-it">
     <Primitive::Section @label="Service Requests" @allowCollapse={{true}}>
-        <HouseNinja::ServiceActivityRecords @tabs={{this.tabs}} @workOrders={{this.currentWorkOrders}} />
+        <HouseNinja::ServiceActivityRecords @tabs={{this.tabs}} @workOrders={{this.displayedWorkOrders}} />
     </Primitive::Section>
     <Primitive::Section @label="My Preventative Maintenance Plan">
         <HouseNinja::PreventativeMaintenanceThumbnail @thumbnailUri="/assets/images/pmp-thumb.jpg"/>

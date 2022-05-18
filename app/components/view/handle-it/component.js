@@ -1,11 +1,14 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
-import { getWorkOrderTag } from 'houseninja/utils/components/work-order/work-order-status';
-
-const DATE_FORMAT = 'MM/DD/YY';
+import {
+  getWorkOrderTag,
+  isActiveWorkOrder,
+  newestToOldest,
+  filterWorkOrdersFor,
+  WORK_ORDER_FILTER,
+} from 'houseninja/utils/components/work-order/work-order-status';
 
 export default class HandleItComponent extends Component {
   @service router;
@@ -20,7 +23,10 @@ export default class HandleItComponent extends Component {
     },
   ];
 
-  allWorkOrders = this.args.workOrders
+  activeWorkOrders = this.args.workOrders
+    ?.filter((w) => {
+      return isActiveWorkOrder(w.status);
+    })
     ?.map((w) => {
       return {
         id: w.id,
@@ -39,61 +45,47 @@ export default class HandleItComponent extends Component {
         tag: w.status && getWorkOrderTag(w.status),
         ...w,
       };
-    })
-    ?.filter((w) => {
-      const activeWorkOrder =
-        w.status !== workOrderStatus.workRequestReceived &&
-        w.status !== workOrderStatus.invoicePaidByCustomer &&
-        w.status !== workOrderStatus.closed &&
-        w.status !== workOrderStatus.cancelled;
-      return activeWorkOrder;
-    });
-  failedPaymentWorkOrders = this.allWorkOrders
-    ?.filter((w) => w.status === workOrderStatus.paymentFailed)
-    ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
     });
 
-  approvePaymentWorkOrders = this.allWorkOrders
-    ?.filter((w) => w.status === workOrderStatus.invoiceSentToCustomer)
-    ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-        moment(b.scheduledDate, DATE_FORMAT)
-      );
-    });
+  failedPaymentWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.FAILED_PAYMENT,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  bookedWorkOrders = this.allWorkOrders
-    ?.filter(
-      (w) =>
-        w.status !== workOrderStatus.paymentFailed &&
-        w.status !== workOrderStatus.invoiceSentToCustomer &&
-        w.status !== workOrderStatus.paused &&
-        w.scheduledDate
-    )
-    ?.sort((a, b) => {
-      return (
-        moment(a.scheduledDate, DATE_FORMAT) <
-          moment(b.scheduledDate, DATE_FORMAT) ||
-        (a.scheduledDate && !b.scheduledDate)
-      );
-    });
+  approvePaymentWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.APPROVE_PAYMENT,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  nonBookedWorkOrders = this.allWorkOrders?.filter(
-    (w) => !w.scheduledDate && w.status !== workOrderStatus.paused
-  );
+  remainingBookedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  pausedWorkOrders = this.allWorkOrders?.filter(
-    (w) => w.status === workOrderStatus.paused
-  );
+  nonBookedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
 
-  currentWorkOrders = [
+  pausedWorkOrders = filterWorkOrdersFor(
+    WORK_ORDER_FILTER.PAUSED,
+    this.activeWorkOrders
+  )?.sort((a, b) => {
+    return newestToOldest(a, b);
+  });
+
+  displayedWorkOrders = [
     ...(this.approvePaymentWorkOrders ?? []),
     ...(this.failedPaymentWorkOrders ?? []),
-    ...(this.bookedWorkOrders ?? []),
+    ...(this.remainingBookedWorkOrders ?? []),
     ...(this.nonBookedWorkOrders ?? []),
     ...(this.pausedWorkOrders ?? []),
   ];

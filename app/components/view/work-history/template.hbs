@@ -1,6 +1,6 @@
 <div class="hn work-history">    
     <HouseNinja::ViewWalkthroughButton />
     <Primitive::Section @label="Service History" @allowCollapse={{true}}>
-        <HouseNinja::ServiceActivityRecords @workOrders={{this.pastWorkOrders}} />
+        <HouseNinja::ServiceActivityRecords @workOrders={{this.displayedWorkOrders}} />
     </Primitive::Section>
 </div>

@@ -22,10 +22,11 @@ export const workOrderStatus = {
   closed: 'closed',
   paused: 'paused',
   cancelled: 'cancelled',
+  // referred: 'referred',
 };
 
 export const workOrderStatusLabels = {
-  [workOrderStatus.workRequestReceived]: '',
+  [workOrderStatus.workRequestReceived]: 'Initiated',
   [workOrderStatus.workOrderInitiated]: 'Initiated',
   [workOrderStatus.vendorIdentified]: 'Initiated',
   [workOrderStatus.schedulingInProgress]: 'Initiated',
@@ -49,4 +50,5 @@ export const workOrderStatusLabels = {
   [workOrderStatus.closed]: 'Completed',
   [workOrderStatus.paused]: 'Paused',
   [workOrderStatus.cancelled]: 'Cancelled',
+  // [workOrderStatus.referred]: 'Referred',
 };
