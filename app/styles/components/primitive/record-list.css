@@ -37,7 +37,7 @@ ul.record-list li.record-loading {
   margin-bottom: 0;
   font-size: 17px;
   font-family: var(--campton-strong);
-  color: var(--gray-900);
+  color: var(--gray-950);
   text-align: left;
   white-space: normal;
 }

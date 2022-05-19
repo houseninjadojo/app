@@ -47,22 +47,25 @@
   background-color: var(--blue-100);
   margin-bottom: 16px;
   border-radius: 2px;
+  border: 1px solid var(--blue-500);
   padding: 16px 12px;
   color: var(--blue-500);
 }
 
 .hn.banner-message.primary {
-  background-color: var(--black);
+  background-color: var(--gray-950);
   color: var(--white);
 }
 
 .hn.banner-message.alert {
   background-color: var(--red-10);
+  border: 1px solid var(--red-500);
   color: var(--red-500);
 }
 
 .hn.banner-message.warn {
   background-color: var(--orange-100);
+  border: 1px solid var(--orange-400);
   color: var(--orange-500);
 }
 

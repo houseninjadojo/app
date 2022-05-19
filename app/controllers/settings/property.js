@@ -87,6 +87,11 @@ export default class SettingsPropertyController extends Controller {
   }
 
   @action
+  handleSelect(e) {
+    console.log(e);
+  }
+
+  @action
   async showMessenger() {
     await Intercom.displayMessageComposer({
       message: 'Hello. I need to make a change to my property address.',

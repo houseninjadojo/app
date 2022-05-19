@@ -1,21 +1,23 @@
-<div class="hn document-vault document">
-    <div class="actions">
-        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{on "click" (fn this.selectRoute 'edit')}}>
-            Edit
-        </Primitive::Button>
+    <div class="hn document-vault document">
+        <div class="actions">
+            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" {{on "click" (fn this.selectRoute 'edit')}}>
+                Edit
+            </Primitive::Button>
+        </div>
+        <Primitive::Section>
+            <div class="document-details">
+                <p class="hn field"><span class="hn label">Name: </span>{{@model.name}}</p>
+                <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+                <p class="hn field"><span class="hn label">Category: </span>{{if @model.group.name @model.group.name 'Uncategorized'}}</p>
+            </div>
+            <div class="document-container">
+                <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
+                    <Primitive::Image
+                    @src={{@model.url}}
+                    @alt={{@model.name}}
+                    @width="500"
+                    />
+                </Primitive::Button>
+            </div>
+        </Primitive::Section>
     </div>
-    <div class="document-details">
-        <p class="hn field"><span class="hn label">Name: </span>{{@model.name}}</p>
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
-        <p class="hn field"><span class="hn label">Category: </span>{{if @model.group.name @model.group.name 'Uncategorized'}}</p>
-    </div>
-    <div class="document-container">
-        <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
-            <Primitive::Image
-              @src={{@model.url}}
-              @alt={{@model.name}}
-              @width="500"
-            />
-        </Primitive::Button>
-    </div>
-</div>

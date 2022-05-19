@@ -1,12 +1,16 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import Sentry from 'houseninja/utils/sentry';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+  @service router;
+
   @tracked cvc = null;
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -120,9 +124,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
-  gotIt() {
+  selectRoute() {
     this.isProcessing = false;
-    this.updateWorkOrderStatus(true);
+    setTimeout(() => {
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    }, 500);
   }
 
   @action

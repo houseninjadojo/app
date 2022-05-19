@@ -3,10 +3,14 @@
   margin-bottom: 16px;
 }
 
+.section.with-label {
+  margin-top: 32px;
+}
+
 .section .head {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .section .head.is-closed {
@@ -62,6 +66,7 @@
   width: 100%;
   border-radius: 2px;
   padding: 16px;
+  box-shadow: var(--shadow-gray-1);
 }
 
 .section .head button .icon .y.is-open,
