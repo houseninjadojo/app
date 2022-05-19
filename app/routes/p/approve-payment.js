@@ -4,10 +4,16 @@ import { service } from '@ember/service';
 export default class ApprovePaymentRoute extends Route {
   @service current;
   @service router;
+  @service session;
   @service store;
 
-  model({ access_token }) {
-    return this.store
+  async model({ access_token }) {
+    await this.session.authenticate(
+      'authenticator:payment-approval',
+      access_token
+    );
+
+    return await this.store
       .findRecord('invoice', access_token, {
         include: [
           // 'payment',
