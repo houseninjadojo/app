@@ -1,12 +1,9 @@
-<div class="actions">
-</div>
-<div class="work-order-details">
-    <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
-    <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
-    <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor 'TBD'}}</p>
-    <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
-    <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>    
-</div>
-<div class="work-order-container">
-    
-</div>
+<Primitive::Section>
+    <div class="work-order-details">
+        <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
+        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+        <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor 'TBD'}}</p>
+        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
+        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>    
+    </div>
+</Primitive::Section>
