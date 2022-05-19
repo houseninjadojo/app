@@ -16,6 +16,12 @@ export default class ApprovePaymentComponent extends Component {
   @tracked paid = false;
   @tracked cvcError = [];
 
+  constructor() {
+    super(...arguments);
+    console.log('ARGS');
+    console.log(this.args);
+  }
+
   actionSheetOptions = [
     {
       title: 'Dismiss',
