@@ -143,7 +143,7 @@ export const WORK_ORDER_FILTER = {
   PAUSED: 'paused',
 };
 
-export const filterWorkOrdersFor = (filter, workOrders) => {
+export const filterWorkOrdersFor = (filter, workOrders = []) => {
   let filteredWorkOrders = [];
   switch (filter) {
     case WORK_ORDER_FILTER.APPROVE_PAYMENT:
