@@ -13,19 +13,29 @@ export default class ApprovePaymentRoute extends Route {
       access_token
     );
 
-    return await this.store
-      .findRecord('invoice', access_token, {
-        include: [
-          // 'payment',
-          'work_order',
-          'work_order.property',
-          'work_order.property.user',
-          'work_order.property.user.payment_methods',
-        ].join(','),
-      })
-      .then((invoice) => {
-        return invoice.get('work-order');
-      });
+    return await this.store.findRecord('work-order', access_token, {
+      include: [
+        'invoice',
+        'invoice.payment',
+        'property',
+        'property.user',
+        'property.user.payment_methods',
+      ].join(','),
+    });
+
+    // return await this.store
+    //   .findRecord('invoice', access_token, {
+    //     include: [
+    //       // 'payment',
+    //       'work_order',
+    //       'work_order.property',
+    //       'work_order.property.user',
+    //       'work_order.property.user.payment_methods',
+    //     ].join(','),
+    //   })
+    //   .then((invoice) => {
+    //     return invoice.get('work-order');
+    //   });
 
     // return {
     //   invoice,
