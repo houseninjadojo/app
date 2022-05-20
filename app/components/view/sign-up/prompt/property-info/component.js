@@ -125,6 +125,11 @@ export default class PropertyInfoComponent extends Component {
   }
 
   @action
+  handleSelect(e) {
+    console.log(e);
+  }
+
+  @action
   validateForm(e) {
     this.propertyInfo[e.target.id] = e.target.value.trim();
     this.fields.filter((f) => f.id === e.target.id)[0].value =
