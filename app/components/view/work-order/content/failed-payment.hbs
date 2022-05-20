@@ -18,11 +18,11 @@
 <Primitive::Section>
     <div class="work-order-details">
         <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
+        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Performed On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>        
     </div>    
 </Primitive::Section>
