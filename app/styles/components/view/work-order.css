@@ -88,7 +88,7 @@
 
 .hn.work-order .payment-processing.show.paid {
   position: fixed;
-  background: var(--black);
+  background: var(--gray-950);
 }
 
 .hn.work-order .payment-processing.show .payment-confirmation {

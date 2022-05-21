@@ -1,12 +1,14 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { service } from '@ember/service';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class ApprovePaymentComponent extends Component {
+export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+  @service router;
   @service store;
 
   @tracked cvc = null;
@@ -105,9 +107,10 @@ export default class ApprovePaymentComponent extends Component {
   }
 
   @action
-  gotIt() {
+  selectRoute() {
     this.isProcessing = false;
     this.args.model.reload();
+    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
   }
 
   @action
@@ -144,9 +147,7 @@ export default class ApprovePaymentComponent extends Component {
     return this.invoice?.formattedTotal;
   }
 
-  get paymentMethod() {
-    return this.args.model.invoice?.get(
-      'property.user.payment_methods.firstObject'
-    );
+  get creditCard() {
+    return this.store.peekAll('credit-card').firstObject;
   }
 }

@@ -94,7 +94,8 @@
   --shadow-teal-1: -0.5px 0.5px 0.5px rgb(0 82 79 / 40%), -1px 1px 1px rgb(0 82 79 / 30%);
   --shadow-teal-2: -1px 1px 1px rgb(0 82 79 / 20%), -2px 2px 4px rgb(0 82 79 / 40%);
   --shadow-teal-3: -1px 1px 1px rgb(0 82 79 / 10%), -4px 3px 6px rgb(0 82 79 / 35%);
-  --shadow-gray-1: -0.5px 0.5px 0.5px rgb(26 26 26 / 40%), -1px 1px 1px rgb(26 26 26 / 30%);
+  --shadow-gray-1: -0.5px 0.5px 0.5px rgb(26 26 26 / 10%), -1px 1px 2.5px rgb(26 26 26 / 30%);
+  --shadow-gray-2: 0 0 1px rgb(26 26 26 / 20%), -1px 1.5px 3px rgb(26 26 26 / 40%);
   --shadow-red-1: -0.5px 0.5px 0.5px rgb(56 0 10 / 40%), -1px 1px 1px rgb(56 0 10 / 30%);
   --shadow-blue-1: -0.5px 0.5px 0.5px rgb(19 77 139 / 40%), -1px 1px 1px rgb(19 77 139 / 30%);
 }

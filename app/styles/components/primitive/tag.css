@@ -9,7 +9,7 @@
 }
 
 .hn.tag.primary {
-  background-color: var(--black);
+  background-color: var(--gray-950);
   border: none;
   color: var(--white);
 }

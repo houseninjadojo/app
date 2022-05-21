@@ -1,3 +1,31 @@
+## [1.12.11](https://github.com/houseninjadojo/app/compare/v1.12.10...v1.12.11) (2022-05-19)
+
+
+### Bug Fixes
+
+* misc ux and bugs ([#646](https://github.com/houseninjadojo/app/issues/646)) ([a410a58](https://github.com/houseninjadojo/app/commit/a410a580d498148cf3a41fd671d5a8058e64bceb))
+
+## [1.12.10](https://github.com/houseninjadojo/app/compare/v1.12.9...v1.12.10) (2022-05-18)
+
+
+### Bug Fixes
+
+* work order filtering sorting ([#644](https://github.com/houseninjadojo/app/issues/644)) ([1efc977](https://github.com/houseninjadojo/app/commit/1efc97713f82aa34533906e9485b3873c427cb72))
+
+## [1.12.9](https://github.com/houseninjadojo/app/compare/v1.12.8...v1.12.9) (2022-05-17)
+
+
+### Bug Fixes
+
+* sign-up view styling ([#641](https://github.com/houseninjadojo/app/issues/641)) ([2e7b4c1](https://github.com/houseninjadojo/app/commit/2e7b4c156019def7750365887b9935b08d89f374))
+
+## [1.12.8](https://github.com/houseninjadojo/app/compare/v1.12.7...v1.12.8) (2022-05-16)
+
+
+### Bug Fixes
+
+* primitive button styles ([#640](https://github.com/houseninjadojo/app/issues/640)) ([598c961](https://github.com/houseninjadojo/app/commit/598c96131518e2e171f704bc01d1ab543d90f041))
+
 ## [1.12.7](https://github.com/houseninjadojo/app/compare/v1.12.6...v1.12.7) (2022-05-13)
 
 
