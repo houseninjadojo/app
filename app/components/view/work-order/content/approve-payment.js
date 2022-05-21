@@ -55,7 +55,6 @@ export default class ApprovePaymentComponent extends Component {
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
     });
-    console.log(payment);
 
     try {
       await payment.save(); // this will be long running (probably)
@@ -83,7 +82,6 @@ export default class ApprovePaymentComponent extends Component {
   async validateCVC() {
     if (this.cvc) {
       const isValid = await this.cvcResourceVerification();
-      console.log('isValid', isValid);
       if (isValid) {
         this.cvcError = [];
         this.approvePayment(true);
@@ -133,7 +131,6 @@ export default class ApprovePaymentComponent extends Component {
       verification.save();
       return true;
     } catch (e) {
-      console.log(e);
       captureException(e);
       return false;
     }
