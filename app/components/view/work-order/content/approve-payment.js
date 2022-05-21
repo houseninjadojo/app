@@ -117,13 +117,13 @@ export default class ApprovePaymentComponent extends Component {
 
   async cvcResourceVerification() {
     try {
-      const property = this.args.model.invoice.get('property');
-      console.log(property);
+      const creditCard = this.store.peekAll('credit-card').firstObject;
+      console.log(creditCard);
       const verification = await this.store.createRecord(
         'resource-verification',
         {
           resourceName: 'credit-card',
-          recordId: this.paymentMethod?.id,
+          recordId: creditCard?.id,
           attribute: 'cvv',
           // value: this.cvc,
           vgsValue: this.cvc,
