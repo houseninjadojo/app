@@ -117,17 +117,21 @@ export default class ApprovePaymentComponent extends Component {
 
   async cvcResourceVerification() {
     try {
-      const verification = await this.store
-        .createRecord('resource-verification', {
+      const verification = await this.store.createRecord(
+        'resource-verification',
+        {
           resourceName: 'credit-card',
           recordId: this.paymentMethod?.id,
           attribute: 'cvv',
           // value: this.cvc,
           vgsValue: this.cvc,
-        })
-        .save();
+        }
+      );
+      verification.save();
       return verification.result;
-    } catch {
+    } catch (e) {
+      console.log(e);
+      captureException(e);
       return false;
     }
   }
