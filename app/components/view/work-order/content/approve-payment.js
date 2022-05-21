@@ -131,7 +131,7 @@ export default class ApprovePaymentComponent extends Component {
         }
       );
       verification.save();
-      return verification.result;
+      return true;
     } catch (e) {
       console.log(e);
       captureException(e);
