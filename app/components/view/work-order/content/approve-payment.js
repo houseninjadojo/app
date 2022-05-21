@@ -16,12 +16,6 @@ export default class ApprovePaymentComponent extends Component {
   @tracked paid = false;
   @tracked cvcError = [];
 
-  constructor() {
-    super(...arguments);
-    console.log('ARGS');
-    console.log(this.args);
-  }
-
   actionSheetOptions = [
     {
       title: 'Dismiss',
@@ -87,7 +81,7 @@ export default class ApprovePaymentComponent extends Component {
   @action
   async validateCVC() {
     if (this.cvc) {
-      const isValid = await this.cvcResourseVerification();
+      const isValid = await this.cvcResourceVerification();
       if (isValid) {
         this.cvcError = [];
         this.approvePayment(true);
@@ -121,13 +115,12 @@ export default class ApprovePaymentComponent extends Component {
     window.close();
   }
 
-  async cvcResourseVerification() {
-    const paymentMethod = this.current.paymentMethod;
+  async cvcResourceVerification() {
     try {
       const verification = await this.store
         .createRecord('resource-verification', {
           resourceName: 'credit-card',
-          recordId: paymentMethod.id,
+          recordId: this.paymentMethod?.id,
           attribute: 'cvv',
           // value: this.cvc,
           vgsValue: this.cvc,
@@ -145,5 +138,11 @@ export default class ApprovePaymentComponent extends Component {
 
   get formattedTotal() {
     return this.invoice?.formattedTotal;
+  }
+
+  get paymentMethod() {
+    return this.args.model.invoice?.get(
+      'property.user.payment_methods.firstObject'
+    );
   }
 }
