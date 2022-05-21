@@ -46,6 +46,7 @@ export default class SettingsSecurityController extends Controller {
 
   @action
   async reset() {
+    this.requirementsModel = null;
     this.passwords.currentPassword = null;
     this.passwords.newPassword = null;
     this.passwords.confirmPassword = null;
