@@ -117,6 +117,8 @@ export default class ApprovePaymentComponent extends Component {
 
   async cvcResourceVerification() {
     try {
+      const property = this.args.model.invoice.get('property');
+      console.log(property);
       const verification = await this.store.createRecord(
         'resource-verification',
         {
