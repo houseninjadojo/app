@@ -62,8 +62,8 @@ ul.common-request-list {
   height: max-content;
   padding: 0 2px;
   font-size: 14px;
-  color: var(--blue-400);
-  text-align: left;
+  color: var(--teal-950);
+  text-align: center;
 }
 
 .section .body.home-care-tip-section {
