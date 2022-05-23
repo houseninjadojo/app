@@ -7,17 +7,14 @@
     </Primitive::Button>        
 </div>
 <hr/>
-<div class="hn banner-message">
-    <p class="hn strong center">
-        You have a new estimate for approval.<br/>
-    </p>    
-    <Primitive::Button @size="md" @variant="solid" @semantic="accent" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
-        Approve Estimate
-    </Primitive::Button>
-</div>
 <Primitive::Section>
+    <div class="hn banner-message">
+        <p class="hn">
+            You have a new estimate for approval. Please approve the estimate via the button below.<br/>
+        </p>
+    </div>
     <div class="work-order-details">    
-        <p class="hn field highlight center"><span class="hn label">Estimate: </span>{{"$999"}}</p>
+        <p class="hn field"><span class="hn label strong">Estimate: {{"$999"}}</span></p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
@@ -25,6 +22,9 @@
         <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
     </div>
+    <Primitive::Button @size="md" @variant="solid" @semantic="accent" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
+        Approve Estimate
+    </Primitive::Button>
     <div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">
         {{#if this.isApproved}}
             <div class="payment-confirmation">
