@@ -2,16 +2,16 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have a question
     </Primitive::Button>
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" {{!-- @disabled={{false}} --}}>
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- @disabled={{false}} --}}>
         View Estimate
     </Primitive::Button>        
 </div>
 <hr/>
 <div class="hn banner-message">
     <p class="hn strong center">
-        You have a new estimate for approval.<br/><br/>
+        You have a new estimate for approval.<br/>
     </p>    
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="secondary" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
+    <Primitive::Button @size="md" @variant="solid" @semantic="accent" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
         Approve Estimate
     </Primitive::Button>
 </div>
