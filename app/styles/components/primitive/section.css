@@ -24,12 +24,12 @@
 .section .head .label .section-label {
   width: 100%;
   font-size: 17px;
-  color: var(--gray-600);
+  color: var(--gray-950);
 }
 
 .section .head .label .section-sub-label {
   font-size: 15px;
-  color: var(--gray-400);
+  color: var(--gray-600);
 }
 
 .section .head button {
