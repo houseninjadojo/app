@@ -2,27 +2,27 @@
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
     </Primitive::Button>            
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
+    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
         View Invoice
     </Primitive::Button>
 </div>
 <hr/>
-<div class="hn banner-message alert">
-    <p>
-        There was an issue processing your payment. Please update your payment method or contact us to resolve. <br/><br/>
-        <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="alert" {{on "click" @selectRoute}}>
-            Update Payment
-        </Primitive::Button>
-    </p>
-</div>
 <Primitive::Section>
     <div class="work-order-details">
-        <p class="hn field highlight center"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
+        <div class="hn banner-message alert">
+            <p>
+                There was an issue processing your payment. Please update your payment method or contact us to resolve. <br/><br/>
+                <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="alert" {{on "click" @selectRoute}}>
+                    Update Payment
+                </Primitive::Button>
+            </p>
+        </div>
+        <p class="hn field"><span class="hn label strong">Amount Due: {{"$999"}}</span></p>
+        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Performed On: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>        
     </div>    
 </Primitive::Section>

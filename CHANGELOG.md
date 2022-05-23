@@ -1,3 +1,17 @@
+## [1.12.13](https://github.com/houseninjadojo/app/compare/v1.12.12...v1.12.13) (2022-05-23)
+
+
+### Bug Fixes
+
+* even more ux adjustment ([#655](https://github.com/houseninjadojo/app/issues/655)) ([d654c5a](https://github.com/houseninjadojo/app/commit/d654c5a6897eee07950545f27bc73b490c1793c8))
+
+## [1.12.12](https://github.com/houseninjadojo/app/compare/v1.12.11...v1.12.12) (2022-05-21)
+
+
+### Bug Fixes
+
+* more misc ux ([#651](https://github.com/houseninjadojo/app/issues/651)) ([d285ff3](https://github.com/houseninjadojo/app/commit/d285ff367763e031a5b98d42667c57a69020a77c))
+
 ## [1.12.11](https://github.com/houseninjadojo/app/compare/v1.12.10...v1.12.11) (2022-05-19)
 
 

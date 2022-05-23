@@ -2,10 +2,10 @@
     <img src="/assets/splash/logo-placeholder-after.svg" class="hn-logo" alt="house ninja"/>
     <div class="actions" {{did-insert this.show}}>
         <Primitive::Button @type="button" @size="lg" @variant="solid" @semantic="accent" {{on "click" this.login}}>Login</Primitive::Button>            
-        <button class="hn onboarding-button mt-8" type="button" {{on "click" this.onboardUser}}>
+        <button class="hn onboarding-button mt-4" type="button" {{on "click" this.onboardUser}}>
             Set Up My Account
         </button>
-        <p class="hn center mt-2">Set up your account if logging<br/>in for the first time.</p>
+        <p class="hn center mt-2">Didn’t set up your password during sign up? Tap <span class="hn strong">Set Up My Account</span>.</p>
     </div>
     <div class="hn sign-up-container" {{did-insert this.show}}>
         <Primitive::Button @type="button" @size="lg" @variant="floating" @semantic="white" {{on "click" this.openSignUpViewInSystemBrowser}}>Sign Up</Primitive::Button>

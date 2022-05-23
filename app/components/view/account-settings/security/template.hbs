@@ -15,7 +15,7 @@
         />
     {{/each}}
 
-    <p class="hn label center mt-16 mb-4">Password Requirements</p>
+    <p class="hn label center mb-2">Password Requirements</p>
     <ul>
         <View::AccountSettings::Security::PasswordReq @requirement="Both passwords match" @reqPassed={{@requirementsModel.passwordsMatch}} />
         <View::AccountSettings::Security::PasswordReq @requirement="At least 8 characters long" @reqPassed={{@requirementsModel.atLeastThisLong}}/>

@@ -44,12 +44,11 @@
 
 .hn.banner-message {
   width: 100%;
-  background-color: var(--blue-100);
+  background-color: var(--gray-50);
   margin-bottom: 16px;
   border-radius: 2px;
-  border: 1px solid var(--blue-500);
-  padding: 16px 12px;
-  color: var(--blue-500);
+  border: 1px solid var(--gray-100);
+  padding: 16px;
 }
 
 .hn.banner-message.primary {

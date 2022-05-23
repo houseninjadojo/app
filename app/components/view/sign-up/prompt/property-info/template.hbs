@@ -16,6 +16,7 @@
                         @disabled={{field.disabled}}
                         @value={{mut (get this.propertyInfo field.id)}}
                         @errors={{(get this.errors field.id)}}
+                        @onChange={{this.handleSelect}}
                     />
                 {{else}}
                     <Primitive::Input
