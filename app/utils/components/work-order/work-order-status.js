@@ -43,11 +43,12 @@ export const getWorkOrderTag = (status) => {
         label: getWorkOrderStatusLabel(status),
         type: 'primary',
       };
+    // case workOrderStatus.estimateSharedWithHomeowner:
+    // return {
+    //   label: getWorkOrderStatusLabel(status),
+    //   type: 'secondary-outline',
+    // };
     case workOrderStatus.estimateSharedWithHomeowner:
-      return {
-        label: getWorkOrderStatusLabel(status),
-        type: 'secondary-outline',
-      };
     case workOrderStatus.estimateNotApproved:
     case workOrderStatus.estimateApproved:
     case workOrderStatus.onsiteEstimateScheduled:
