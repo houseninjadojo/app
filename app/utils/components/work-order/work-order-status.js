@@ -128,6 +128,20 @@ export const isHistoricalWorkOrder = (status) => {
   }
 };
 
+export const isCompletedWorkOrder = (status) => {
+  switch (status) {
+    case workOrderStatus.workCompleted:
+    case workOrderStatus.customerConfirmedWork:
+    case workOrderStatus.problemReported:
+    case workOrderStatus.problemBeingAddressed:
+    case workOrderStatus.problemResolved:
+    case workOrderStatus.vendorInvoiceReceived:
+      return true;
+    default:
+      return false;
+  }
+};
+
 export const newestToOldest = (a, b) => {
   const DATE_FORMAT = 'MM/DD/YY';
 
