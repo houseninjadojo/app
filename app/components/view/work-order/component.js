@@ -20,7 +20,7 @@ export default class WorkOrderViewComponent extends Component {
   content = {
     approvePayment: 'approve-payment',
     paymentFailed: 'failed-payment',
-    // approveEstimate: 'approve-estimate',
+    approveEstimate: 'approve-estimate',
     closed: 'closed',
     default: 'default',
   };
@@ -37,8 +37,8 @@ export default class WorkOrderViewComponent extends Component {
         return this.content.approvePayment;
       case workOrderStatus.paymentFailed:
         return this.content.paymentFailed;
-      // case workOrderStatus.estimateSharedWithHomeowner:
-      //   return this.content.approveEstimate;
+      case workOrderStatus.estimateSharedWithHomeowner:
+        return this.content.approveEstimate;
       case workOrderStatus.invoicePaidByCustomer:
       case workOrderStatus.closed:
         return this.content.closed;
