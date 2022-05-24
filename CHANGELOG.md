@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/houseninjadojo/app/compare/v1.12.13...v1.13.0) (2022-05-24)
+
+
+### Features
+
+* payment-approval wiring ([#627](https://github.com/houseninjadojo/app/issues/627)) ([1129f5e](https://github.com/houseninjadojo/app/commit/1129f5e6ef2b361b5964d2f7c8a6755f3a5367aa))
+
 ## [1.12.13](https://github.com/houseninjadojo/app/compare/v1.12.12...v1.12.13) (2022-05-23)
 
 
