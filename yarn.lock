@@ -4559,10 +4559,10 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-branch-sdk@^2.61.0:
-  version "2.61.0"
-  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.61.0.tgz#3380ef4c5f84d21442330a3464c672318b1d6f0e"
-  integrity sha512-e/3YUW8tE57hYBgymwMaHuNyFnr40JeNPzzYMSyp1Hfs/eGmexqUP3B8Ojft0xGsSOnxMolNkZEQWHXa0YPhPw==
+branch-sdk@^2.62.0:
+  version "2.62.0"
+  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.62.0.tgz#74707cf62d7edf429fc0a4e04c3b9e2046fd1ff0"
+  integrity sha512-WjAxfEQKW1gjtj9QtQ43qKEaOnZO1vvHRaXzEmTR8HbnIYf1kzlfatpEno1XUOUVSyyxPFVs2njZIDfVHsneCg==
   dependencies:
     request "^2.55.0"
 
