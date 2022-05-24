@@ -88,6 +88,7 @@ export default class DeepLinksService extends Service {
       if (this.isNonBranchLink(event)) {
         return;
       }
+      console.log(event);
       const referringParams = event.referringParams;
       this.analytics.track('Opened with Deep Link', referringParams);
       Sentry.addBreadcrumb({
@@ -150,10 +151,12 @@ export default class DeepLinksService extends Service {
    * }
    */
   selectRouteFromBranchParams(params) {
+    console.log(params);
     let path = '/';
     if (params.$deeplink_path) {
       path = params.$deeplink_path;
     }
+    console.log(path);
     return path;
   }
 

@@ -1,5 +1,5 @@
 {{#if this.isNativePlatform}}
-<div class="actions">                
+<div class="actions">
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have an issue
     </Primitive::Button>
@@ -9,6 +9,7 @@
 </div>
 <hr/>
 {{/if}}
+
 <Primitive::Section>
     <div class="hn banner-message">
         <p>
@@ -16,7 +17,7 @@
         </p>    
     </div>
     <div class="work-order-details">    
-        <p class="hn field"><span class="hn label">Amount Due: {{"$999"}}</span></p>
+        <p class="hn field"><span class="hn label">Amount Due: {{@model.invoice.formattedTotal}}</span></p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
@@ -30,25 +31,25 @@
         <Primitive::Modal::Dialog @toggleModal={{this.toggleModal}}>
             <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
             <div class="mb-8">
-                <p class="hn center">Do you approve the payment of $999?</p>            
+                <p class="hn center">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
                 <Primitive::Input
                     @id="CVC"
                     @type="number"
-                    @required={{true}}          
-                    @value={{this.cvc}}          
+                    @required={{true}}
+                    @value={{this.cvc}}
                     @label="CVC"
-                    @errors={{this.cvcError}}                          
+                    @errors={{this.cvcError}}
                 />
-                <p class="hn center">Enter the CVC number for your <span class="hn strong">VISA</span> card ending in <span class="hn strong">1234</span></p>            
+                <p class="hn center">Enter the CVC number for your <span class="hn strong">VISA</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
             </div>
-            <div class="actions ">    
+            <div class="actions ">
                 <Primitive::Button {{on "click" this.toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}}>
                     Dismiss
                 </Primitive::Button>
                 <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}}>
                     I approve this payment
                 </Primitive::Button>
-            </div>        
+            </div>
         </Primitive::Modal::Dialog>
     {{/if}}
 </Primitive::Section>
@@ -62,15 +63,15 @@
                 <br/>
                 <br/>
                 <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" this.selectRoute}}>
-                    Back to Home 
+                    Back to Home
                 </Primitive::Button>
             {{else}}
                 <p class="hn center">This job has been marked as complete and can now be found in your History tab of your iOS app.</p>
                 <br/>
-                <p class="hn center">Please feel free to close this browser tab.</p>                                
+                <p class="hn center">Please feel free to close this browser tab.</p>
             {{/if}}
         </div>
-    {{else}}       
+    {{else}}
         <Primitive::Loader::Logo @isDone={{this.isDoneProcessing}}/>
         <p class="hn label strong">Processing Payment</p>
     {{/if}}

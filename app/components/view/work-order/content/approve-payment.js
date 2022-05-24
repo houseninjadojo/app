@@ -3,13 +3,13 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
-import Sentry from 'houseninja/utils/sentry';
-import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
   @service router;
+  @service store;
 
   @tracked cvc = null;
   @tracked showWebDialog = false;
@@ -32,20 +32,10 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return isNativePlatform();
   }
 
-  async updateWorkOrderStatus(success) {
-    try {
-      this.args.model.status = success
-        ? workOrderStatus.invoicePaidByCustomer
-        : workOrderStatus.paymentFailed;
-      await this.args.model.save();
-    } catch (e) {
-      Sentry.captureException(e);
-    }
-  }
-
   async _nativeConfirmation() {
+    const total = this.args.model.invoice.get('formattedTotal');
     const result = await ActionSheet.showActions({
-      title: 'Amount Due $999',
+      title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
       options: this.actionSheetOptions,
     });
@@ -53,7 +43,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     const choice = this.actionSheetOptions[result.index].title;
     const confirmed = choice === this.actionSheetOptions[1].title;
     if (confirmed) {
-      this._handlePaymentApproval();
+      await this.approvePayment();
     }
   }
 
@@ -61,31 +51,27 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.toggleModal();
   }
 
-  async _handlePaymentApproval(isWeb = false) {
+  async approvePayment(isWeb = false) {
     this.isProcessing = true;
+
+    const payment = this.store.createRecord('payment', {
+      invoice: this.invoice,
+    });
+
     try {
-      const success = Math.random() < 1;
-
-      setTimeout(() => {
-        if (success) {
-          this.isDoneProcessing = true;
-
-          setTimeout(() => {
-            this.paid = success;
-            isWeb && this.toggleModal();
-          }, 2250);
-        } else {
-          this.isProcessing = false;
-          this.updateWorkOrderStatus(false);
-        }
-      }, 2500);
+      await payment.save(); // this will be long running (probably)
+      this.isDoneProcessing = true;
+      this.paid = true;
+      isWeb && this.toggleModal();
     } catch (e) {
-      Sentry.captureException(e);
-
-      setTimeout(() => {
-        this.isProcessing = false;
-        this.updateWorkOrderStatus(false);
-      }, 3000);
+      this.isProcessing = false;
+      this.cvcError = [
+        {
+          message:
+            'There was an error approving your payment. Please try again in a few minutes.',
+        },
+      ];
+      captureException(e);
     }
   }
 
@@ -97,13 +83,10 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   async validateCVC() {
     if (this.cvc) {
-      const that = this;
-      let isValid = await new Promise(function (resolve) {
-        setTimeout(() => resolve(that.cvc === '123'), 1000);
-      });
+      const isValid = await this.cvcResourceVerification();
       if (isValid) {
         this.cvcError = [];
-        this._handlePaymentApproval(true);
+        this.approvePayment(true);
       } else {
         this.cvcError = [{ message: 'Invalid CVC code' }];
       }
@@ -126,13 +109,45 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   selectRoute() {
     this.isProcessing = false;
-    setTimeout(() => {
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
-    }, 500);
+    this.args.model.reload();
+    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
   }
 
   @action
   closeWindow() {
     window.close();
+  }
+
+  async cvcResourceVerification() {
+    try {
+      const creditCard = this.store.peekAll('credit-card').firstObject;
+      const verification = await this.store.createRecord(
+        'resource-verification',
+        {
+          resourceName: 'credit-card',
+          recordId: creditCard?.id,
+          attribute: 'cvv',
+          // value: this.cvc,
+          vgsValue: this.cvc,
+        }
+      );
+      verification.save();
+      return true;
+    } catch (e) {
+      captureException(e);
+      return false;
+    }
+  }
+
+  get invoice() {
+    return this.args.model.invoice;
+  }
+
+  get formattedTotal() {
+    return this.invoice?.formattedTotal;
+  }
+
+  get creditCard() {
+    return this.store.peekAll('credit-card').firstObject;
   }
 }

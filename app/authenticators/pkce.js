@@ -293,6 +293,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     // fetch user info
     data.userinfo = await this._getUserinfo(data.access_token);
 
+    // set kind
+    data.kind = 'pkce';
+
     return data;
   }
 

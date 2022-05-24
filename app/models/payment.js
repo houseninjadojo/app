@@ -2,7 +2,7 @@ import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class PaymentModel extends Model {
   @belongsTo('invoice') invoice;
-  @belongsTo('payment-method', { inverse: 'payment' }) paymentMethod;
+  @belongsTo('payment-method', { inverse: 'payments' }) paymentMethod;
   @belongsTo('user') user;
 
   @attr('string') amount;

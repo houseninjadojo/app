@@ -17,8 +17,12 @@ module.exports = function (deployTarget) {
   }
 
   if (deployTarget === 'sandbox') {
-    ENV.build.environment = 'production';
-    // configure other plugins for staging deploy target here
+    ENV.build.environment = 'sandbox';
+    ENV.pipeline = {
+      disabled: {
+        sentry: true,
+      },
+    };
   }
 
   if (deployTarget === 'production') {

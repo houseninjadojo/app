@@ -9,22 +9,27 @@ export default class SessionService extends BaseSessionService {
 
   async handleAuthentication() {
     super.handleAuthentication(...arguments);
-
-    try {
-      this.current.loadIdentifyAndTrack.perform();
-    } catch (err) {
-      await this.invalidate();
-    }
+    await this.loadIfPKCE();
   }
 
   async setup() {
     await super.setup();
-    this.current.loadIdentifyAndTrack.perform();
+    await this.loadIfPKCE();
   }
 
   get authenticatedHeaders() {
     return {
       Authorization: `Bearer ${this.data.authenticated.access_token}`,
     };
+  }
+
+  async loadIfPKCE() {
+    if (this.data.authenticated.kind === 'pkce') {
+      try {
+        this.current.loadIdentifyAndTrack.perform();
+      } catch (err) {
+        await this.invalidate();
+      }
+    }
   }
 }

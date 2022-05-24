@@ -5,7 +5,7 @@ export default Factory.extend({
   document: association(),
 
   description() {
-    return 'House Ninja Monthly Recurring Subscription';
+    return 'Invoice #' + faker.datatype.number({ min: 10000, max: 99999 });
   },
 
   // @type 'draft'|'open'|'paid'|'uncollectible'|'void'
@@ -14,7 +14,7 @@ export default Factory.extend({
   },
 
   total() {
-    return '29.00';
+    return faker.finance.amount(1000, 10000, 0);
   },
 
   periodStart() {
@@ -31,5 +31,9 @@ export default Factory.extend({
 
   updatedAt() {
     return new Date();
+  },
+
+  formattedTotal() {
+    return `$${this.total}.00`;
   },
 });

@@ -1,6 +1,8 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
+import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
 
 export default class WorkOrderModel extends Model {
+  @belongsTo('invoice') invoice;
   @belongsTo('property') property;
 
   @attr('string') description;
@@ -12,4 +14,8 @@ export default class WorkOrderModel extends Model {
   @attr('string') status;
 
   @attr('string') authCode;
+
+  get statusLabel() {
+    return getWorkOrderStatusLabel(this.status);
+  }
 }
