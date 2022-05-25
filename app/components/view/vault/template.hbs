@@ -13,5 +13,16 @@
     <Primitive::Section @label="Uncategorized Documents">
         <HouseNinja::DocumentVaultRecords @records={{@model.documents}} @onRecordClick={{this.handleRecordClick}} @ifEmpty={{hash message="You have no uncategorized documents." actionText="Upload Document"}} @onIfEmptyButtonClick={{this.toggleUploadMenu}}/>
     </Primitive::Section>
-    <Primitive::Modal::Sheet @options={{this.uploadOptions}} @isVisible={{this.showUploadMenu}} @toggleModal={{this.toggleUploadMenu}}/>
+    <Primitive::Modal::Sheet @isVisible={{this.showUploadMenu}} @toggleModal={{this.toggleUploadMenu}}>
+        <ul class="hn-menu">
+            {{#each this.uploadOptions as |option| }}
+                <li class="hn-sheet-menu-option">
+                    <Primitive::Button @variant="plain" {{on "click" (fn option.select option)}}>
+                        {{option.label}}
+                        <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                    </Primitive::Button>
+                </li>
+            {{/each}}
+        </ul>
+    </Primitive::Modal::Sheet>
 </div>

@@ -4,9 +4,11 @@
             I have an issue
         </Primitive::Button>
     {{/if}}
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
-        Cancel Request
-    </Primitive::Button>
+    {{#unless this.hideCancelRequestButton}}
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
+            Cancel Request
+        </Primitive::Button>
+    {{/unless}}
 </div>
 <hr/>
 <Primitive::Section>
@@ -17,8 +19,5 @@
         <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="secondary" @disabled={{true}} {{!-- {{on "click" (fn this.selectRoute 'edit')}} --}}>
-            View Invoice
-        </Primitive::Button>
     </div>
 </Primitive::Section>

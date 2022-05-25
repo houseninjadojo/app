@@ -110,7 +110,8 @@
   width: 100%;
 }
 
-.hn.modal .modal-container .head {
+.hn.modal .modal-container.tray .head,
+.hn.modal .modal-container.shelf .head {
   height: 88px;
   padding: 0 16px;
 }
