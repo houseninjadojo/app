@@ -1108,9 +1108,10 @@
     "@capacitor/filesystem" "^1.0.0"
     "@capacitor/ios" "^3.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
-  version "3.0.2"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/0bf65b95762d3910472200eeffa75d13719209cb"
+"@capacitor-community/intercom@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor-community/intercom/-/intercom-3.0.3.tgz#b9f51dea5430854d30447282fcd04129657b76af"
+  integrity sha512-PqfBOH5klq+vMwdB/2NpDFM6c0xeb5QbMK5CpRcPzRgTMDp9be8pJLYzoFhJdtgeqUgExFi6FecqDzhYv3c+3w==
 
 "@capacitor/action-sheet@^1.0.8":
   version "1.0.8"
