@@ -135,31 +135,35 @@
 }
 
 @media (hover: hover) {
-  .hn.btn {
+  .hn.btn:not(.disabled) {
     cursor: pointer;
   }
 
-  .hn.btn.solid:hover {
+  .hn.btn.disabled{
+    cursor: not-allowed;
+  }
+
+  .hn.btn.solid:hover:not(.disabled) {
     opacity: 0.5;
   }
 
-  .hn.btn.hn.btn.outline:hover {
+  .hn.btn.hn.btn.outline:hover:not(.disabled) {
     color: white;
   }
 
-  .hn.btn.hn.btn.outline:hover .icon {
+  .hn.btn.hn.btn.outline:hover:not(.disabled) .icon {
     filter: brightness(0) invert(1);
   }
 
-  .hn.btn.hn.btn.outline.primary:hover {
+  .hn.btn.hn.btn.outline.primary:hover:not(.disabled) {
     background-color: var(--gray-950);
   }
 
-  .hn.btn.hn.btn.outline.accent:hover {
+  .hn.btn.hn.btn.outline.accent:hover:not(.disabled) {
     background-color: var(--teal-500);
   }
 
-  .hn.btn.hn.btn.outline.secondary:hover {
+  .hn.btn.hn.btn.outline.secondary:hover:not(.disabled) {
     background-color: var(--blue-400);
   }
 }
