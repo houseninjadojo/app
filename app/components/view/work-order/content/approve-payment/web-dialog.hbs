@@ -1,8 +1,8 @@
 <Primitive::Modal::Dialog @toggleModal={{@toggleModal}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-    <div class="mb-8">
-        <p class="hn center">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
-        {{#if @paymentInfoIsKnown}}
+    <div class="mb-8">        
+        {{#if this.paymentInfoIsKnown}}
+            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{@creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{@creditCard.lastFour}}</span></p>
             <Primitive::Input
                 @id="CVC"
                 @type="number"
@@ -11,7 +11,7 @@
                 @label="CVC"
                 @errors={{@cvcError}}
             />
-            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{@creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{@creditCard.lastFour}}</span></p>
+            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
             <div class="actions ">
                 <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
@@ -21,8 +21,9 @@
                 </Primitive::Button>
             </div>
         {{else}}
-            <p class="hn center">It looks like this is your first time approving payment in our app.</p>
-            <p class="hn center strong">Please re-enter your payment information.</p>
+            <p class="hn center">It looks like this is your first time approving payment for services on our website.</p>
+            <p class="hn center">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
+            <p class="hn center strong">Please re-enter your payment information to validate.</p>
             {{#each this.fields as |field|}}
                 <Primitive::Input
                     @id={{field.id}}
@@ -36,6 +37,7 @@
                     @errors={{(get this.errors field.id)}}
                 />
             {{/each}}
+            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
             <div class="actions ">
                 <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss

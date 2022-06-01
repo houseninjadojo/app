@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { isPresent } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
@@ -63,6 +64,14 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
       placeholder: '',
     },
   ];
+
+  get paymentInfoIsKnown() {
+    console.log(
+      'isPresent(this.args.creditCard)',
+      isPresent(this.args.creditCard)
+    );
+    return isPresent(this.args.creditCard);
+  }
 
   @action
   validateForm(e) {
