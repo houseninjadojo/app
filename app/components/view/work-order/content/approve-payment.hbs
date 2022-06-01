@@ -27,30 +27,17 @@
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Payment
     </Primitive::Button>
-    {{#if this.showWebDialog}}
-        <Primitive::Modal::Dialog @toggleModal={{this.toggleModal}}>
-            <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-            <div class="mb-8">
-                <p class="hn center">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
-                <Primitive::Input
-                    @id="CVC"
-                    @type="number"
-                    @required={{true}}
-                    @value={{this.cvc}}
-                    @label="CVC"
-                    @errors={{this.cvcError}}
-                />
-                <p class="hn center">Enter the CVC number for your <span class="hn strong">VISA</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
-            </div>
-            <div class="actions ">
-                <Primitive::Button {{on "click" this.toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}}>
-                    Dismiss
-                </Primitive::Button>
-                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}}>
-                    I approve this payment
-                </Primitive::Button>
-            </div>
-        </Primitive::Modal::Dialog>
+    {{#if this.showWebDialog}}        
+        <View::WorkOrder::Content::ApprovePayment::WebDialog
+            @toggleModal={{this.toggleModal}}
+            @model={{@model}}
+            @cvc={{this.cvc}}
+            @cvcError={{this.cvcError}}
+            @creditCard={{this.creditCard}}
+            @isProcessing={{this.isProcessing}}
+            @validateCVC={{this.validateCVC}}
+            @paymentInfoIsKnown={{this.creditCard}}
+        />
     {{/if}}
 </Primitive::Section>
 <div class="payment-processing {{if this.isProcessing 'show'}} {{if this.paid 'paid'}}">

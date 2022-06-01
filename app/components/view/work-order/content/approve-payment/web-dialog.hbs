@@ -1,0 +1,49 @@
+<Primitive::Modal::Dialog @toggleModal={{@toggleModal}}>
+    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    <div class="mb-8">
+        <p class="hn center">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
+        {{#if @paymentInfoIsKnown}}
+            <Primitive::Input
+                @id="CVC"
+                @type="number"
+                @required={{true}}
+                @value={{@cvc}}
+                @label="CVC"
+                @errors={{@cvcError}}
+            />
+            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{@creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{@creditCard.lastFour}}</span></p>
+            <div class="actions ">
+                <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                    Dismiss
+                </Primitive::Button>
+                <Primitive::Button {{on "click" @validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
+                    I approve this payment
+                </Primitive::Button>
+            </div>
+        {{else}}
+            <p class="hn center">It looks like this is your first time approving payment in our app.</p>
+            <p class="hn center strong">Please re-enter your payment information.</p>
+            {{#each this.fields as |field|}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @label={{field.label}}
+                    @required={{field.required}}
+                    @type={{field.type}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get this.paymentMethod field.id)}}
+                    @onInput={{this.validateForm}}
+                    @maxLength={{field.maxLength}}
+                    @errors={{(get this.errors field.id)}}
+                />
+            {{/each}}
+            <div class="actions ">
+                <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                    Dismiss
+                </Primitive::Button>
+                <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
+                    I approve this payment
+                </Primitive::Button>
+            </div>
+        {{/if}}
+    </div>    
+</Primitive::Modal::Dialog>
