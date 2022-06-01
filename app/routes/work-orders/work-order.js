@@ -21,6 +21,7 @@ export default class WorkOrderRoute extends Route {
       include: [
         'invoice',
         'invoice.payment',
+        'invoice.document',
         'property',
         'property.user',
         'property.user.payment_methods',

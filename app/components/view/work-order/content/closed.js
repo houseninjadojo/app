@@ -7,7 +7,7 @@ export default class WorkOrderClosedViewContentComponent extends Component {
   openBrowser() {
     if (this.args.model) {
       Browser.open({
-        url: `${''}`,
+        url: `${this.args.model.invoice.document.url}`,
         presentationStyle: 'popover',
       });
     }
