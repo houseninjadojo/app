@@ -1,6 +1,6 @@
 <Primitive::Modal::Dialog @toggleWebDialog={{@toggleWebDialog}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-    <div class="mb-8">        
+    <div>        
         {{#if this.paymentInfoIsKnown}}
             <p class="hn center">Enter the CVC number for your <span class="hn strong">{{this.creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
             <Primitive::Input
@@ -22,8 +22,8 @@
             </div>
         {{else}}
             <p class="hn center">It looks like this is your first time approving payment for services on our website.</p>
-            <p class="hn center">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
-            <p class="hn center strong">Please re-enter your payment information to validate.</p>
+            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
+            <p class="hn center strong">Please re-enter your payment information.</p>
             {{#each this.fields as |field|}}
                 <Primitive::Input
                     @id={{field.id}}
