@@ -139,7 +139,7 @@
     cursor: pointer;
   }
 
-  .hn.btn.disabled{
+  .hn.btn.disabled {
     cursor: not-allowed;
   }
 

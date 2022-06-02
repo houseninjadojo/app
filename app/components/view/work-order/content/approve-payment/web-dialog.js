@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 
@@ -135,7 +135,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
         this.errors = paymentMethod.errors;
       }
 
-      Sentry.captureException(e);
+      captureException(e);
     }
   }
 
