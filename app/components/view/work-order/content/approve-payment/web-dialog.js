@@ -11,9 +11,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   @service store;
 
   @tracked cvc = null;
-
   @tracked formIsInvalid = true;
-
   @tracked paymentMethod = {
     cardNumber: null,
     cvv: null,
@@ -21,7 +19,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     expYear: null,
     zipcode: null,
   };
-
   @tracked errors = {
     cardNumber: [],
     cvv: [],
@@ -67,18 +64,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     },
   ];
 
-  get paymentInfoIsKnown() {
-    console.log(
-      'isPresent(this.args.creditCard)',
-      isPresent(this.args.creditCard)
-    );
-    return isPresent(this.args.creditCard);
-  }
-
-  get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
-  }
-
   async _cvcResourceVerification() {
     try {
       const creditCard = this.store.peekAll('credit-card').firstObject;
@@ -101,23 +86,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   @action
-  async validateCVC() {
-    if (this.cvc) {
-      const isValid = await this.cvcResourceVerification();
-      if (isValid) {
-        this.cvcError = [];
-        this.args.approvePayment(true);
-      } else {
-        this.cvcError = [{ message: 'Invalid CVC code' }];
-      }
-    } else {
-      this.cvcError = [
-        { message: 'Please enter the CVC number associated with this card.' },
-      ];
-    }
-  }
-
-  @action
   validateForm(e) {
     if (e.target.id === 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
@@ -135,6 +103,23 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   @action
+  async validateCVC() {
+    if (this.cvc) {
+      const isValid = await this.cvcResourceVerification();
+      if (isValid) {
+        this.cvcError = [];
+        this.args.approvePayment(true);
+      } else {
+        this.cvcError = [{ message: 'Invalid CVC code' }];
+      }
+    } else {
+      this.cvcError = [
+        { message: 'Please enter the CVC number associated with this card.' },
+      ];
+    }
+  }
+
+  @action
   updatePaymentMethod() {
     const success = true; // update payment method
     if (success) {
@@ -142,4 +127,14 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     } else {
     }
   }
+}
+
+get 
+paymentInfoIsKnown() {  
+  return isPresent(this.args.creditCard);
+}
+
+get 
+creditCard() {
+  return this.store.peekAll('credit-card').firstObject;
 }
