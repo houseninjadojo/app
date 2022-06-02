@@ -127,14 +127,12 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     } else {
     }
   }
-}
 
-get 
-paymentInfoIsKnown() {  
-  return isPresent(this.args.creditCard);
-}
+  get paymentInfoIsKnown() {
+    return isPresent(this.args.creditCard);
+  }
 
-get 
-creditCard() {
-  return this.store.peekAll('credit-card').firstObject;
+  get creditCard() {
+    return this.store.peekAll('credit-card').firstObject;
+  }
 }
