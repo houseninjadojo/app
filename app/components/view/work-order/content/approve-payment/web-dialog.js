@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
+import Sentry from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 
@@ -120,11 +121,21 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   @action
-  updatePaymentMethod() {
-    const success = true; // update payment method
-    if (success) {
+  async updatePaymentMethod() {
+    let paymentMethod;
+    try {
+      paymentMethod = this.store.createRecord('credit-card', {
+        ...this.paymentMethod,
+        // user,
+      });
+      await paymentMethod.save();
       this.args.approvePayment(true);
-    } else {
+    } catch (e) {
+      if (isPresent(paymentMethod)) {
+        this.errors = paymentMethod.errors;
+      }
+
+      Sentry.captureException(e);
     }
   }
 
