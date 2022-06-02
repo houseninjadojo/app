@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/houseninjadojo/app/compare/v1.13.1...v1.14.0) (2022-06-02)
+
+
+### Features
+
+* closed work order show invoice ([#675](https://github.com/houseninjadojo/app/issues/675)) ([e99dee5](https://github.com/houseninjadojo/app/commit/e99dee5c9f6301c2f27f153fee129dfe2a1c4d63))
+
 ## [1.13.1](https://github.com/houseninjadojo/app/compare/v1.13.0...v1.13.1) (2022-05-25)
 
 
