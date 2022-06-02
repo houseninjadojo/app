@@ -31,11 +31,7 @@
         <View::WorkOrder::Content::ApprovePayment::WebDialog 
             @toggleModal={{this.toggleModal}} 
             @isProcessing={{this.isProcessing}} 
-            @validateCVC={{this.validateCVC}} 
-            @cvc={{this.cvc}} 
-            @cvcError={{this.cvcError}} 
-            @creditCard={{this.creditCard}}
-            @cvcIsKnown={{this.creditCard.cvv}} 
+            @approvePayment={{this.approvePayment}}
         />
     {{/if}}
 </Primitive::Section>

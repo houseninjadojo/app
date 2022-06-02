@@ -10,6 +10,8 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   @service router;
   @service store;
 
+  @tracked cvc = null;
+
   @tracked formIsInvalid = true;
 
   @tracked paymentMethod = {
@@ -73,6 +75,48 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     return isPresent(this.args.creditCard);
   }
 
+  get creditCard() {
+    return this.store.peekAll('credit-card').firstObject;
+  }
+
+  async _cvcResourceVerification() {
+    try {
+      const creditCard = this.store.peekAll('credit-card').firstObject;
+      const verification = await this.store.createRecord(
+        'resource-verification',
+        {
+          resourceName: 'credit-card',
+          recordId: creditCard?.id,
+          attribute: 'cvv',
+          // value: this.cvc,
+          vgsValue: this.cvc,
+        }
+      );
+      verification.save();
+      return true;
+    } catch (e) {
+      captureException(e);
+      return false;
+    }
+  }
+
+  @action
+  async validateCVC() {
+    if (this.cvc) {
+      const isValid = await this.cvcResourceVerification();
+      if (isValid) {
+        this.cvcError = [];
+        this.args.approvePayment(true);
+      } else {
+        this.cvcError = [{ message: 'Invalid CVC code' }];
+      }
+    } else {
+      this.cvcError = [
+        { message: 'Please enter the CVC number associated with this card.' },
+      ];
+    }
+  }
+
   @action
   validateForm(e) {
     if (e.target.id === 'cardNumber') {
@@ -92,6 +136,10 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
 
   @action
   updatePaymentMethod() {
-    console.log('Updating payment method.');
+    const success = true; // update payment method
+    if (success) {
+      this.args.approvePayment(true);
+    } else {
+    }
   }
 }

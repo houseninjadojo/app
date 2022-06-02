@@ -2,21 +2,21 @@
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
     <div class="mb-8">        
         {{#if this.paymentInfoIsKnown}}
-            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{@creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{@creditCard.lastFour}}</span></p>
+            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{this.creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
             <Primitive::Input
                 @id="CVC"
                 @type="number"
                 @required={{true}}
-                @value={{@cvc}}
+                @value={{this.cvc}}
                 @label="CVC"
-                @errors={{@cvcError}}
+                @errors={{this.cvcError}}
             />
             <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
             <div class="actions ">
                 <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
-                <Primitive::Button {{on "click" @validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
+                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
                     I approve this payment
                 </Primitive::Button>
             </div>
