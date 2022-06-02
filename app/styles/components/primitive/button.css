@@ -19,6 +19,11 @@
   white-space: unset;
 }
 
+.hn.btn.plain.with-image {
+  border-radius: 2px;
+  border: 1px solid var(--gray-100);
+}
+
 /* Size */
 .hn.btn.sm {
   height: var(--btn-sm);
