@@ -42,12 +42,16 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   _webConfirmation() {
-    this.toggleModal();
+    this.toggleWebDialog();
   }
 
+  _toggleIsProcessing() {
+    this.isProcessing = !this.isProcessing;
+  }
+
+  @action
   async approvePayment(isWeb = false) {
-    console.log('approving payment');
-    this.isProcessing = true;
+    this._toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
@@ -57,15 +61,15 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       await payment.save(); // this will be long running (probably)
       this.isDoneProcessing = true;
       this.paid = true;
-      isWeb && this.toggleModal();
+      isWeb && this.toggleWebDialog();
     } catch (e) {
-      this.isProcessing = false;
+      this._toggleIsProcessing();
       captureException(e);
     }
   }
 
   @action
-  toggleModal() {
+  toggleWebDialog() {
     this.showWebDialog = !this.showWebDialog;
   }
 

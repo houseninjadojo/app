@@ -1,4 +1,4 @@
-<Primitive::Modal::Dialog @toggleModal={{@toggleModal}}>
+<Primitive::Modal::Dialog @toggleWebDialog={{@toggleWebDialog}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
     <div class="mb-8">        
         {{#if this.paymentInfoIsKnown}}
@@ -13,7 +13,7 @@
             />
             <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
             <div class="actions ">
-                <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
                 <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
@@ -39,7 +39,7 @@
             {{/each}}
             <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
             <div class="actions ">
-                <Primitive::Button {{on "click" @toggleModal}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
                 <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
