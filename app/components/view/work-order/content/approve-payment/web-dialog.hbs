@@ -16,7 +16,7 @@
                 <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
-                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
+                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
                     I approve this payment
                 </Primitive::Button>
             </div>
@@ -32,7 +32,7 @@
                     @type={{field.type}}
                     @placeholder={{field.placeholder}}
                     @value={{mut (get this.paymentMethod field.id)}}
-                    @onInput={{this.validateForm}}
+                    @onInput={{this.validatePaymentMethodForm}}
                     @maxLength={{field.maxLength}}
                     @errors={{(get this.errors field.id)}}
                 />
@@ -42,7 +42,7 @@
                 <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
-                <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.formIsInvalid}}>
+                <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
                     I approve this payment
                 </Primitive::Button>
             </div>

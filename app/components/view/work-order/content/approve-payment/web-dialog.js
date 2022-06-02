@@ -12,7 +12,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   @service store;
 
   @tracked cvc = null;
-  @tracked formIsInvalid = true;
+  @tracked paymentMethodFormIsInvalid = true;
   @tracked paymentMethod = {
     cardNumber: null,
     cvv: null,
@@ -87,7 +87,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   @action
-  validateForm(e) {
+  validatePaymentMethodForm(e) {
     if (e.target.id === 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       formatCreditCardNumberElement(e.target);
@@ -98,7 +98,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
         this.paymentMethod[e.target.id];
     }
 
-    this.formIsInvalid = inputValidation(this.fields, [
+    this.paymentMethodFormIsInvalid = inputValidation(this.fields, [
       'cardIsValid',
     ]).isInvalid;
   }
