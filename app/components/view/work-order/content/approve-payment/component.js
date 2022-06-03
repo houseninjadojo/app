@@ -11,12 +11,10 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @service router;
   @service store;
 
-  @tracked cvc = null;
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked cvcError = [];
 
   actionSheetOptions = [
     {
@@ -27,10 +25,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       title: 'I approve this payment',
     },
   ];
-
-  get isNativePlatform() {
-    return isNativePlatform();
-  }
 
   async _nativeConfirmation() {
     const total = this.args.model.invoice.get('formattedTotal');
@@ -48,11 +42,16 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   _webConfirmation() {
-    this.toggleModal();
+    this.toggleWebDialog();
   }
 
+  _toggleIsProcessing() {
+    this.isProcessing = !this.isProcessing;
+  }
+
+  @action
   async approvePayment(isWeb = false) {
-    this.isProcessing = true;
+    this._toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
@@ -62,39 +61,16 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       await payment.save(); // this will be long running (probably)
       this.isDoneProcessing = true;
       this.paid = true;
-      isWeb && this.toggleModal();
+      isWeb && this.toggleWebDialog();
     } catch (e) {
-      this.isProcessing = false;
-      this.cvcError = [
-        {
-          message:
-            'There was an error approving your payment. Please try again in a few minutes.',
-        },
-      ];
+      this._toggleIsProcessing();
       captureException(e);
     }
   }
 
   @action
-  toggleModal() {
+  toggleWebDialog() {
     this.showWebDialog = !this.showWebDialog;
-  }
-
-  @action
-  async validateCVC() {
-    if (this.cvc) {
-      const isValid = await this.cvcResourceVerification();
-      if (isValid) {
-        this.cvcError = [];
-        this.approvePayment(true);
-      } else {
-        this.cvcError = [{ message: 'Invalid CVC code' }];
-      }
-    } else {
-      this.cvcError = [
-        { message: 'Please enter the CVC number associated with this card.' },
-      ];
-    }
   }
 
   @action
@@ -113,30 +89,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
   }
 
-  @action
-  closeWindow() {
-    window.close();
-  }
-
-  async cvcResourceVerification() {
-    try {
-      const creditCard = this.store.peekAll('credit-card').firstObject;
-      const verification = await this.store.createRecord(
-        'resource-verification',
-        {
-          resourceName: 'credit-card',
-          recordId: creditCard?.id,
-          attribute: 'cvv',
-          // value: this.cvc,
-          vgsValue: this.cvc,
-        }
-      );
-      verification.save();
-      return true;
-    } catch (e) {
-      captureException(e);
-      return false;
-    }
+  get isNativePlatform() {
+    return isNativePlatform();
   }
 
   get invoice() {
@@ -145,9 +99,5 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   get formattedTotal() {
     return this.invoice?.formattedTotal;
-  }
-
-  get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
   }
 }

@@ -160,7 +160,6 @@
 .hn.modal .modal-container.dialog .body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: var(--white);
   height: max-content;
@@ -174,5 +173,5 @@
 }
 
 .hn.modal .modal-container.dialog img {
-  width: 24px;
+  width: 40px;
 }

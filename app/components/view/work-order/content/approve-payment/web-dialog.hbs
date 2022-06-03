@@ -1,0 +1,51 @@
+<Primitive::Modal::Dialog @toggleWebDialog={{@toggleWebDialog}}>
+    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    <div>        
+        {{#if this.paymentInfoIsKnown}}
+            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{this.creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
+            <Primitive::Input
+                @id="CVC"
+                @type="number"
+                @required={{true}}
+                @value={{this.cvc}}
+                @label="CVC"
+                @errors={{this.cvcError}}
+            />
+            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
+            <div class="actions ">
+                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                    Dismiss
+                </Primitive::Button>
+                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
+                    I approve this payment
+                </Primitive::Button>
+            </div>
+        {{else}}
+            <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Please re-enter your preferred payment method for this invoice, and in the future, you can pay for your services with just one tap!</p>
+            <p class="hn center strong">Please enter your payment information.</p>
+            {{#each this.fields as |field|}}
+                <Primitive::Input
+                    @id={{field.id}}
+                    @label={{field.label}}
+                    @required={{field.required}}
+                    @type={{field.type}}
+                    @placeholder={{field.placeholder}}
+                    @value={{mut (get this.paymentMethod field.id)}}
+                    @onInput={{this.validatePaymentMethodForm}}
+                    @maxLength={{field.maxLength}}
+                    @errors={{(get this.errors field.id)}}
+                />
+            {{/each}}
+            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
+            <div class="actions ">
+                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                    Dismiss
+                </Primitive::Button>
+                <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
+                    I approve this payment
+                </Primitive::Button>
+            </div>
+            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
+        {{/if}}
+    </div>    
+</Primitive::Modal::Dialog>

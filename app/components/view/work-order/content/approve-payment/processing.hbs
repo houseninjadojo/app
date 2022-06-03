@@ -1,0 +1,23 @@
+<div class="payment-processing {{if @isProcessing 'show'}} {{if @paid 'paid'}}">
+    {{#if @paid}}
+        <div class="payment-confirmation">
+            <p class="hn center strong">Thank you for approving payment.</p>
+            <br/>
+            {{#if @isNativePlatform}}
+                <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>
+                <br/>
+                <br/>
+                <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" @selectRoute}}>
+                    Back to Home
+                </Primitive::Button>
+            {{else}}
+                <p class="hn center">This job has been marked as complete and can now be found in your History tab of your iOS app.</p>
+                <br/>
+                <p class="hn center">Please feel free to close this browser tab.</p>
+            {{/if}}
+        </div>
+    {{else}}
+        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}}/>
+        <p class="hn label strong">Processing Payment</p>
+    {{/if}}
+</div>
