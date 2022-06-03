@@ -21,9 +21,8 @@
                 </Primitive::Button>
             </div>
         {{else}}
-            <p class="hn center">It looks like this is your first time approving payment for services on our website.</p>
-            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
-            <p class="hn center strong">Please re-enter your payment information.</p>
+            <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Please re-enter your preferred payment method for this invoice, and in the future, you can pay for your services with just one tap!</p>
+            <p class="hn center strong">Please enter your payment information.</p>
             {{#each this.fields as |field|}}
                 <Primitive::Input
                     @id={{field.id}}
@@ -46,6 +45,7 @@
                     I approve this payment
                 </Primitive::Button>
             </div>
+            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
         {{/if}}
     </div>    
 </Primitive::Modal::Dialog>
