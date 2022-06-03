@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/houseninjadojo/app/compare/v1.14.0...v1.15.0) (2022-06-03)
+
+
+### Features
+
+* external payment approval payment method if not known ([#677](https://github.com/houseninjadojo/app/issues/677)) ([a5b26b5](https://github.com/houseninjadojo/app/commit/a5b26b5a43f1d52e577f55af431d6b4ad56e2b2a))
+
 # [1.14.0](https://github.com/houseninjadojo/app/compare/v1.13.1...v1.14.0) (2022-06-02)
 
 
