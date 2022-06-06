@@ -10,7 +10,7 @@ export default class WorkHistoryComponent extends Component {
     ?.filter((w) => {
       return isHistoricalWorkOrder(w.status);
     })
-    .map((w) => {
+    ?.map((w) => {
       return {
         id: w.id,
         name: w.description,
@@ -22,10 +22,9 @@ export default class WorkHistoryComponent extends Component {
         ...w,
       };
     })
-
-    .sort((a, b) => {
+    ?.sort((a, b) => {
       return newestToOldest(a, b);
     });
 
-  displayedWorkOrders = [...this.inactiveWorkOrders];
+  displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
 }
