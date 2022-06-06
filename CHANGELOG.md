@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/houseninjadojo/app/compare/v1.15.0...v1.15.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* misc code clean-up ([#683](https://github.com/houseninjadojo/app/issues/683)) ([f3de272](https://github.com/houseninjadojo/app/commit/f3de27275daa04abcfe7c559dd32521c3cb08f32))
+
 # [1.15.0](https://github.com/houseninjadojo/app/compare/v1.14.0...v1.15.0) (2022-06-03)
 
 
