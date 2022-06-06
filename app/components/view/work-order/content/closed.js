@@ -3,11 +3,15 @@ import { action } from '@ember/object';
 import { Browser } from '@capacitor/browser';
 
 export default class WorkOrderClosedViewContentComponent extends Component {
+  get imageUrl() {
+    return this.args.model?.invoice?.document?.url;
+  }
+
   @action
   openBrowser() {
-    if (this.args.model) {
+    if (this.imageUrl()) {
       Browser.open({
-        url: `${this.args.model.invoice.document.url}`,
+        url: this.imageUrl(),
         presentationStyle: 'popover',
       });
     }

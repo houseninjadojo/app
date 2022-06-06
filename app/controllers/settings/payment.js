@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import { formatCreditCardNumber } from 'houseninja/utils/components/formatting';
+import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 
 export default class SettingsPaymentController extends Controller {
@@ -66,7 +66,7 @@ export default class SettingsPaymentController extends Controller {
   validateForm(e) {
     if (e.target.id === 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
-      formatCreditCardNumber(e.target);
+      formatCreditCardNumberElement(e.target);
       this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
     } else {
       this.paymentMethod[e.target.id] = e.target.value;
