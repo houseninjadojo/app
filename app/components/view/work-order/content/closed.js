@@ -13,9 +13,9 @@ export default class WorkOrderClosedViewContentComponent extends Component {
 
   @action
   openBrowser() {
-    if (this.imageUrl()) {
+    if (this.imageUrl) {
       Browser.open({
-        url: this.imageUrl(),
+        url: this.imageUrl,
         presentationStyle: 'popover',
       });
     }
