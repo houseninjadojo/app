@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.15.1",
+  "version": "1.15.2",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -49,7 +49,7 @@
     "@sentry/capacitor": "^0.6.1",
     "@sentry/cli": "^2.1.0",
     "@sentry/ember": "^6.19.7",
-    "@sentry/tracing": "^6.14.1",
+    "@sentry/tracing": "^7.1.0",
     "autoprefixer": "^10.4.7",
     "branch-sdk": "^2.62.0",
     "broccoli-asset-rev": "^3.0.0",
