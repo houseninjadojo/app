@@ -6,19 +6,15 @@
         <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>        
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
     </div>
-    <div class="document-container">
-        {{#if this.imageUrl}}
+    {{#if this.imageUrl}}
+        <div class="document-container">
             <Primitive::Button {{on "click" this.openBrowser}} @variant="plain with-image">
                 <Primitive::Image
-                @src={{this.imageUrl}}
-                @alt="invoice"
-                @width="500"
+                    @src={{this.imageUrl}}
+                    @alt="invoice"
+                    @width="500"
                 />
             </Primitive::Button>    
-        {{else}}
-            <div class="document-placeholder">
-                <p class="hn center">Please check back in a few minutes while a receipt is being generated</p>
-            </div>
-        {{/if}}    
-    </div>
+        </div>        
+    {{/if}}    
 </Primitive::Section>
