@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/houseninjadojo/app/compare/v1.15.1...v1.15.2) (2022-06-07)
+
+
+### Bug Fixes
+
+* receipt display on closed work order ([#685](https://github.com/houseninjadojo/app/issues/685)) ([3ddfd5d](https://github.com/houseninjadojo/app/commit/3ddfd5d9545f35d393f829e0bc3fa73dc9226824))
+
 ## [1.15.1](https://github.com/houseninjadojo/app/compare/v1.15.0...v1.15.1) (2022-06-06)
 
 
