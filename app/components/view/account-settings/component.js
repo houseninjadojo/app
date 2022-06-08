@@ -26,7 +26,7 @@ export default class AccountSettingsComponent extends Component {
       name: NATIVE_MOBILE_ROUTE.VAULT.INDEX,
     },
     {
-      label: 'Contact Information',
+      label: 'Account Information',
       name: NATIVE_MOBILE_ROUTE.SETTINGS.CONTACT,
     },
     {
