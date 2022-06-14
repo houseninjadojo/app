@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
-import moment from 'moment';
 
 export default class HomeContentComponent extends Component {
   @service router;
@@ -40,19 +39,7 @@ export default class HomeContentComponent extends Component {
   }
 
   get weeklyHomeCareTip() {
-    const weeklyTipIndex = moment().week();
-    const randomTipIndex = Math.floor(
-      Math.random() * this.args.homeCareTips?.length
-    );
-    let tip = null;
-
-    if (this.args.homeCareTips?.length) {
-      tip =
-        this.args.homeCareTips?.objectAt(weeklyTipIndex) ||
-        this.args.homeCareTips?.objectAt(randomTipIndex);
-    }
-
-    return tip;
+    return this.args.homeCareTips.firstObject;
   }
   @action
   async selectRoute(route) {
