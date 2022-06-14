@@ -7,7 +7,7 @@ export default class SettingsContactRoute extends Route {
   @service store;
 
   async model() {
-    let userId = null;
+    let userId = this.current?.user?.id;
 
     if (isBlank(this.current.user)) {
       await this.current.loadUser();
