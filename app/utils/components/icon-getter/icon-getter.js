@@ -13,6 +13,6 @@ export function getIconUri(type) {
     case 'image/heic':
       return `${PATH}/image.svg`;
     default:
-      return `${PATH}/`;
+      return `${PATH}/file.svg`;
   }
 }

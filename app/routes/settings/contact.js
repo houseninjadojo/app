@@ -8,14 +8,13 @@ export default class SettingsContactRoute extends Route {
 
   async model() {
     let userId = null;
-    let model = null;
+
     if (isBlank(this.current.user)) {
       await this.current.loadUser();
       userId = this.current.user.id;
-      model = await this.store.findRecord('user', userId, {
-        backgroundReload: true,
-      });
     }
-    return model;
+    return await this.store.findRecord('user', userId, {
+      backgroundReload: true,
+    });
   }
 }

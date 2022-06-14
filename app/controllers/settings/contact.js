@@ -65,8 +65,8 @@ export default class SettingsContactController extends Controller {
 
   @action
   async saveAction() {
-    this.model.setProperties(this.contactInfo);
-    if (this.model.hasDirtyAttributes) {
+    this.model?.setProperties(this.contactInfo);
+    if (this.model?.hasDirtyAttributes) {
       try {
         await this.model.save();
         await this.resetForm();
