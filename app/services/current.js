@@ -37,6 +37,7 @@ export default class CurrentService extends Service {
       'promo_code',
       'properties',
       'properties.work_orders',
+      'subscription',
     ];
     this.user = yield this.store.findRecord('user', userId, {
       include: includes.join(','),
