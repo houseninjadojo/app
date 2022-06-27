@@ -1,7 +1,12 @@
- <div class="hn logo-loader-container">
-    {{#if @isDone}}
-        <div id="logo-loader-finished" {{did-insert (fn this.showLoader "logo-loader-finished")}} />
-    {{else}}            
-        <div id="logo-loader" {{did-insert (fn this.showLoader "logo-loader")}} />
-    {{/if}}
+<div class="hn logo-loader-full">
+    <div class="hn logo-loader-container">
+        {{#if @isDone}}
+            <div id="logo-loader-finished" {{did-insert (fn this.showLoader "logo-loader-finished")}} />
+        {{else}}            
+            <div id="logo-loader" {{did-insert (fn this.showLoader "logo-loader")}} />
+            {{#if @title}}            
+                <p class="hn label strong">{{@title}}</p>
+            {{/if}}
+        {{/if}}
+    </div>
 </div>

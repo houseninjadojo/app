@@ -43,6 +43,10 @@
   border-style: solid;
 }
 
+.hn.btn.outline.empty {
+  background: none;
+}
+
 .hn.btn.floating {
   width: max-content;
   background: none;
@@ -56,12 +60,6 @@
 
 .hn.btn.floating.black {
   color: var(--gray-950);
-}
-
-.hn.btn.solid.primary {
-  background: var(--gray-950);
-  box-shadow: var(--shadow-gray-1);
-  color: var(--white);
 }
 
 .hn.btn.hn.btn.solid .icon,
@@ -108,6 +106,12 @@
   border-color: var(--red-400);
   box-shadow: var(--shadow-red-1);
   color: var(--red-400);
+}
+
+.hn.btn.solid.primary {
+  background: var(--gray-950);
+  box-shadow: var(--shadow-gray-1);
+  color: var(--white);
 }
 
 .hn.btn.solid.accent {
