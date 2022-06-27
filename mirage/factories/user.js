@@ -8,6 +8,7 @@ import { ALL as OnboardingSteps } from 'houseninja/data/enums/onboarding-step';
 
 export default Factory.extend({
   promoCode: association(),
+  subscription: association(),
 
   email() {
     return faker.internet.email();
