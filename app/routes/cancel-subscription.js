@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { isEmpty } from '@ember/utils';
 
 export default class CancelSubscriptionRoute extends Route {
   @service current;
