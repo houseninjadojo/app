@@ -1,4 +1,4 @@
-<div class="settings-view dark">
+<div class="settings-view dark account-information">
     <h1 class="hn view-title">Edit Account Information</h1>
     {{#each @fields as |field|}}
         <Primitive::Input
@@ -13,4 +13,5 @@
           @onInput={{@validateForm}}
         />
     {{/each}}
+    <Primitive::Button @type="button" @size="lg" @variant="floating" @semantic="white" {{on "click" (fn this.selectRoute "cancel-subscription")}}>Cancel My Subscription</Primitive::Button>
 </div>

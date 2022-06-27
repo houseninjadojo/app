@@ -1,0 +1,95 @@
+.hn.cancel-subscription div {
+  background-color: var(--gray-100);
+  padding: 16px;
+  border-radius: 2px;
+}
+
+.hn.cancel-subscription div ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.hn.cancel-subscription button.hn {
+  margin: 16px 0;
+}
+
+.hn.cancel-subscription p.hndp,
+.hn.cancel-subscription p.hndp * {
+  font-size: 12px !important;
+  color: var(--gray-500) !important;
+}
+
+.hn.cancel-subscription p.hndp button {
+  text-decoration: underline;
+}
+
+.hn.cancel-subscription-confirmed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hn.cancellation-survey {
+  background-color: var(--gray-25);
+  border-radius: 2px;
+  padding: 16px;
+}
+
+.hn.cancellation-survey * {
+  color: var(--gray-950);
+}
+
+.hn.radio-input-container ul li.radio-option {
+  display: flex;
+}
+
+.hn.radio-input-container ul li.radio-option input[type="radio"] {
+  opacity: 0;
+}
+
+.hn.radio-input-container ul li.radio-option label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  background-color: var(--white);  
+  border-left: 1px solid var(--gray-400);
+  border-right: 1px solid var(--gray-400);
+  border-bottom: 1px solid var(--gray-400);
+  padding: 24px 0;  
+}
+
+.hn.radio-input-container ul li.radio-option:first-child label {
+  border-top: 1px solid var(--gray-400);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.hn.radio-input-container ul li.radio-option:last-child label {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.hn.radio-input-container ul li.radio-option.checked label {
+  border-top: 1px solid var(--teal-500);
+  border-color: var(--teal-500);
+  color: var(--teal-500);
+  font-family: var(--campton-strong);
+}
+
+.hn.cancellation-survey textarea {
+  width: 100%;
+  min-height: 120px;
+  border-radius: 2px;
+  border: 1px solid var(--gray-400);
+  outline: none;
+  padding: 8px;
+  color: var(--gray-950);
+}
+
+.hn.cancellation-survey textarea:focus {
+  border: 1px solid var(--teal-500);
+}
