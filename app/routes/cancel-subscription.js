@@ -15,7 +15,7 @@ export default class CancelSubscriptionRoute extends Route {
     model.user = this.current.user;
 
     if (model.user.subscription) {
-      model.subscription = await this.store.findRecord(
+      model.subscription = await this.store.peekRecord(
         'subscription',
         model.user?.subscription?.get('id')
       );
