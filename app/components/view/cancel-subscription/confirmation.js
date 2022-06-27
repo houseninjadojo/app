@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-
+import Sentry from 'houseninja/utils/sentry';
 export default class CancelSubscriptionConfirmationViewComponent extends Component {
   @service session;
   @service store;
@@ -38,7 +38,7 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
   @tracked additionalFeedback = '';
 
   @action
-  selectRoute() {
+  goodbye() {
     this.session.terminate();
   }
 
@@ -53,12 +53,29 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
 
       return { ...o };
     });
-
-    console.log(this.surveyOptions);
   }
 
   @action
   handleTextAreaInput(e) {
     this.additionalFeedback = e.target.value;
+  }
+
+  @action
+  handleSubmit() {
+    const reason = this.surveyOptions.filter((o) => o.checked);
+    this.additionalFeedback;
+
+    if (reason.length === 1) {
+      try {
+        console.log('Saving survey...', {
+          reason: reason[0],
+          additionalFeedback: this.additionalFeedback,
+        });
+      } catch (e) {
+        Sentry.captureException(e);
+      } finally {
+        this.goodbye();
+      }
+    }
   }
 }

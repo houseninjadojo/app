@@ -9,7 +9,7 @@
             @handleTextAreaInput={{this.handleTextAreaInput}}
             @additionalFeedback={{this.additionalFeedback}} 
         />                
-        <Primitive::Button {{!-- {{on "click" (fn this.handleCancel false)}} --}} @class="mb-4" @size="md" @variant="solid" @semantic="accent">Submit</Primitive::Button>
-        <Primitive::Button {{on "click" this.selectRoute}} @size="md" @variant="outline empty" @semantic="accent">Close</Primitive::Button>
+        <Primitive::Button {{on "click" (fn this.handleSubmit)}} @class="mb-4" @size="md" @variant="solid" @semantic="accent">Submit</Primitive::Button>
+        <Primitive::Button {{on "click" this.goodbye}} @size="md" @variant="outline empty" @semantic="accent">Close</Primitive::Button>
     </div>
 </View>
