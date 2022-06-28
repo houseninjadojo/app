@@ -21,6 +21,6 @@ export default class ServiceActivityRecordsComponent extends Component {
 
   @action
   openChatModal() {
-    this.intercom.show();
+    this.intercom.showComposer('I’d like to request a service.');
   }
 }

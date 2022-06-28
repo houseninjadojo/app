@@ -32,6 +32,6 @@ export default class TopBarDashboardContentComponent extends Component {
 
   @action
   showIntercom() {
-    this.intercom.show();
+    this.intercom.showMessenger();
   }
 }

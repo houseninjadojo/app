@@ -1,12 +1,14 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import { Intercom } from '@capacitor-community/intercom';
+import { service } from '@ember/service';
 
 export default class DashboardIndexController extends Controller {
+  @service intercom;
+
   @action
-  async showMessenger() {
-    await Intercom.displayMessageComposer({
-      message: `Hi. I'm a new member and would like to add my property address to my account.`,
-    });
+  showMessenger() {
+    this.intercom.showComposer(
+      `Hi. I'm a new member and would like to add my property address to my account.`
+    );
   }
 }

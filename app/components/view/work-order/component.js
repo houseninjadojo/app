@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { Intercom } from '@capacitor-community/intercom';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 import { camelize } from '@ember/string';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
@@ -14,8 +13,8 @@ export default class WorkOrderViewComponent extends Component {
 
   paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
 
-  cancelMessage = 'I would like to cancel this work order.';
-  issueMessage = 'I have an issue with my work order.';
+  cancelMessage = 'I would like to cancel this service request.';
+  issueMessage = 'I have an issue with my service request.';
 
   content = {
     approvePayment: 'approve-payment',
@@ -61,6 +60,6 @@ export default class WorkOrderViewComponent extends Component {
 
   @action
   async displayMessageComposer(message) {
-    await Intercom.displayMessageComposer({ message });
+    this.intercom.showComposer(message);
   }
 }

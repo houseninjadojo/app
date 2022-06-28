@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { Intercom } from '@capacitor-community/intercom';
+import { service } from '@ember/service';
 
 export default class HomeCareTipComponent extends Component {
+  @service intercom;
   @action
   async openChatModal(message) {
-    await Intercom.displayMessageComposer({ message });
+    this.intercom.showComposer(message);
   }
 }

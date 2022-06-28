@@ -3,9 +3,9 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import { Intercom } from '@capacitor-community/intercom';
 
 export default class SettingsPropertyController extends Controller {
+  @service intercom;
   @service router;
   @service view;
 
@@ -93,8 +93,8 @@ export default class SettingsPropertyController extends Controller {
 
   @action
   async showMessenger() {
-    await Intercom.displayMessageComposer({
-      message: 'Hello. I need to make a change to my property address.',
-    });
+    this.intercom.showComposer(
+      'Hello. I need to make a change to my property address.'
+    );
   }
 }
