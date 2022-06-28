@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/houseninjadojo/app/compare/v1.15.3...v1.16.0) (2022-06-28)
+
+
+### Features
+
+* request button on home route ([#704](https://github.com/houseninjadojo/app/issues/704)) ([9cbbe5c](https://github.com/houseninjadojo/app/commit/9cbbe5c1cd479fc5ebd0e633b77045dce3cb0035))
+
 ## [1.15.3](https://github.com/houseninjadojo/app/compare/v1.15.2...v1.15.3) (2022-06-14)
 
 
