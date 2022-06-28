@@ -5478,10 +5478,10 @@ capacitor-branch-deep-links@^4.1.1:
   resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.1.1.tgz#be73969a814aa0d188ed7fadcae137579e398147"
   integrity sha512-52rAJGqFRKbkWC0XyunI+3MabGnbUEi8X09MywyNrOdRhu2Kw33aq354LhKW6SqwgkMcFxPHlXTsQd3yGJFD5w==
 
-capacitor-secure-storage-plugin@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.7.0.tgz#934706f5625e008fb103eebb9201411f77fc142f"
-  integrity sha512-F4y9Umv5j5sleXPRzAWkYHhmUHlIiPPSVebjTrw8lec3t2SZGO4sk91MbDlL+IO68N54LDqDxsD9Fa/02oNhmQ==
+capacitor-secure-storage-plugin@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.7.1.tgz#8b646ebaf09658df144effd21f26eecf75529ea5"
+  integrity sha512-fxuLh2PYaLw/AewRLpao4CnnWbXnCM3t8E624XrgvzAPk7vqVWXWE1/SV5kzSU0luaTLlZXuxcjx1KAtQi+c1A==
 
 capture-exit@^2.0.0:
   version "2.0.0"
