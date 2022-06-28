@@ -49,9 +49,7 @@ export default class IntercomService extends Service {
 
   @task({ drop: true }) *_showMessenger() {
     this.isOpen = true;
-    this.analytics.track('Intercom messenger opened', {
-      message,
-    });
+    this.analytics.track('Intercom messenger opened', {});
     yield Intercom.displayMessenger();
   }
 
