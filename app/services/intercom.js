@@ -7,6 +7,7 @@ import { task } from 'ember-concurrency';
 
 export default class IntercomService extends Service {
   @service current;
+  @service analytics;
 
   unreadConversationCount = '';
   isOpen = false;
@@ -42,13 +43,28 @@ export default class IntercomService extends Service {
     });
   }
 
-  show() {
-    this._show.perform();
+  showMessenger() {
+    this._showMessenger.perform();
   }
 
-  @task({ drop: true }) *_show() {
+  @task({ drop: true }) *_showMessenger() {
     this.isOpen = true;
+    this.analytics.track('Intercom messenger opened', {
+      message,
+    });
     yield Intercom.displayMessenger();
+  }
+
+  showComposer(message) {
+    this._showComposer.perform(message);
+  }
+
+  @task({ drop: true }) *_showComposer(message = '') {
+    this.isOpen = true;
+    this.analytics.track('Intercom composer opened', {
+      message,
+    });
+    yield Intercom.displayMessageComposer({ message });
   }
 
   hide() {
