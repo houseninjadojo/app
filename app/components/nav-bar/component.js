@@ -31,10 +31,12 @@ export default class NavBarComponent extends Component {
 
   @action
   async openChatModal() {
+    const message = '';
+
     await this.analytics.track('Intercom Opened', {
-      message: '',
+      message,
     });
-    await Intercom.displayMessageComposer({ message: '' });
+    await Intercom.displayMessageComposer({ message });
   }
 
   @action

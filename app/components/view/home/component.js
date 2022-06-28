@@ -1,9 +1,11 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { Intercom } from '@capacitor-community/intercom';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class HomeContentComponent extends Component {
+  @service analytics;
   @service router;
   @service view;
   @service haptics;
@@ -50,5 +52,15 @@ export default class HomeContentComponent extends Component {
       this.view.preservePreviousRoute(this.router);
     }
     this.router.transitionTo(route);
+  }
+
+  @action
+  async openChatModal() {
+    const message = 'I’d like to request a service.';
+
+    await this.analytics.track('Intercom Opened', {
+      message,
+    });
+    await Intercom.displayMessageComposer({ message });
   }
 }
