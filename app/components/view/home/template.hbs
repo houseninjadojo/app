@@ -5,6 +5,9 @@
         {{#if this.streetAddress}}
             <p class="prompt">{{this.streetAddress}}?</p>
         {{/if}}
+        <Primitive::Button @class="mt-4" @type="button" @size="md" @variant="outline empty" @semantic="accent" {{on "click" this.openChatModal}}>
+            Request Service
+        </Primitive::Button>
     </div>
     <hr class="hn line" />
     {{#if @shouldBookWalkthrough}}

@@ -43,6 +43,10 @@
   border-style: solid;
 }
 
+.hn.btn.outline.empty {
+  background: none;
+}
+
 .hn.btn.floating {
   width: max-content;
   background: none;
