@@ -5,13 +5,12 @@
         <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
-        <p class="hn field"><span class="hn label">Invoice Document: <br/></span>{{if @model.invoice.document @model.invoice.document.filename}}</p>
     </div>
-    {{#if this.imageUrl}}
+    {{#if @model.invoice.document.url}}
         <div class="document-container">
             <Primitive::Button {{on "click" this.openBrowser}} @variant="plain with-image">
                 <Primitive::Image
-                    @src={{this.imageUrl}}
+                    @src={{@model.invoice.document.url}}
                     @alt="invoice"
                     @width="500"
                 />

@@ -4,9 +4,7 @@ import { Browser } from '@capacitor/browser';
 
 export default class WorkOrderClosedViewContentComponent extends Component {
   get imageUrl() {
-    const document = this.args.model.invoice.get('document');
-
-    return document?.get('url');
+    return this.args.model.get('invoice').get('document').url;
   }
 
   @action
