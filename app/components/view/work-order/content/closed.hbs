@@ -3,8 +3,9 @@
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>        
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
+        <p class="hn field"><span class="hn label">Invoice Document: <br/></span>{{if @model.invoice.document @model.invoice.document.filename}}</p>
     </div>
     {{#if this.imageUrl}}
         <div class="document-container">
@@ -14,7 +15,7 @@
                     @alt="invoice"
                     @width="500"
                 />
-            </Primitive::Button>    
-        </div>        
-    {{/if}}    
+            </Primitive::Button>
+        </div>
+    {{/if}}
 </Primitive::Section>
