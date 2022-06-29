@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/houseninjadojo/app/compare/v1.16.0...v1.16.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **payment-approval:** add user to full payment method save ([#708](https://github.com/houseninjadojo/app/issues/708)) ([b5e2508](https://github.com/houseninjadojo/app/commit/b5e25083a6e6853434d57b4b9f6d9054a342bb1f))
+
 # [1.16.0](https://github.com/houseninjadojo/app/compare/v1.15.3...v1.16.0) (2022-06-28)
 
 
