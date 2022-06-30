@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/houseninjadojo/app/compare/v1.16.1...v1.16.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* **signup:** add how did you hear about us? ([#709](https://github.com/houseninjadojo/app/issues/709)) ([67db67c](https://github.com/houseninjadojo/app/commit/67db67c60ea96bdb538b7588981ad45d02825ba3))
+
 ## [1.16.1](https://github.com/houseninjadojo/app/compare/v1.16.0...v1.16.1) (2022-06-29)
 
 
