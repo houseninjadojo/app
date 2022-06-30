@@ -14,6 +14,10 @@ export default class SignupWalkthroughBookingRoute extends Route {
     });
   }
 
+  activate() {
+    this.onboarding.currentStep = WALKTHROUGH_BOOKING;
+  }
+
   deactivate() {
     this.onboarding.completeStep(WALKTHROUGH_BOOKING);
   }

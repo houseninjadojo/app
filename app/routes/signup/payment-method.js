@@ -8,6 +8,10 @@ export default class SignupPaymentMethodRoute extends Route {
   @service store;
   @service onboarding;
 
+  activate() {
+    this.onboarding.currentStep = PAYMENT_METHOD;
+  }
+
   async model() {
     this.fetchSubscriptionPlan.perform();
     return this.onboarding.fetchLocalModel('credit-card');

@@ -6,6 +6,10 @@ export default class SignupContactInfoRoute extends Route {
   @service store;
   @service onboarding;
 
+  activate() {
+    this.onboarding.currentStep = CONTACT_INFO;
+  }
+
   async model() {
     return await this.onboarding.fetchLocalModel('user');
   }

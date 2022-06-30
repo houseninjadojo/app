@@ -10,6 +10,10 @@ export default class SignupSetPasswordRoute extends Route {
     return await this.onboarding.fetchLocalModel('user');
   }
 
+  activate() {
+    this.onboarding.currentStep = SET_PASSWORD;
+  }
+
   deactivate() {
     this.onboarding.completeStep(SET_PASSWORD);
   }

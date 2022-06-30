@@ -12,6 +12,10 @@ export default class SignupPlanSelectionRoute extends Route {
     });
   }
 
+  activate() {
+    this.onboarding.currentStep = PLAN_SELECTION;
+  }
+
   deactivate() {
     this.onboarding.completeStep(PLAN_SELECTION);
   }

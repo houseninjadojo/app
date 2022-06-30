@@ -14,6 +14,10 @@ export default class SignupIndexRoute extends Route {
     onboardingCode: { refreshModel: false },
   };
 
+  activate() {
+    this.onboarding.currentStep = SERVICE_AREA;
+  }
+
   async model(params) {
     // deal with an onboarding code passed into query params
     if (params.onboardingCode) {
