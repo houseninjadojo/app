@@ -13,6 +13,11 @@
   box-shadow: var(--shadow-gray-1);
 }
 
+.hn.nav-bar button.hn-nav-message-us {
+  background: var(--gray-200);
+  color: var(--gray-950);
+}
+
 .nav-menu {
   display: flex;
   flex-direction: row;
