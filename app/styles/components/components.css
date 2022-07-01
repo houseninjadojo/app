@@ -1,6 +1,5 @@
 @import "./top-bar.css";
 @import "./nav-bar.css";
-
 @import "./house-ninja/service-activity.css";
 @import "./house-ninja/terms-and-conditions-agreement.css";
 @import "./house-ninja/referral-code.css";
@@ -11,7 +10,7 @@
 @import "./primitive/input/input.css";
 @import "./primitive/loader.css";
 @import "./primitive/modal.css";
-@import './primitive/page-banner.css';
+@import "./primitive/page-banner.css";
 @import "./primitive/record-list.css";
 @import "./primitive/tag.css";
 @import "./view/view.css";
