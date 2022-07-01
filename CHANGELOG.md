@@ -1,3 +1,10 @@
+## [1.16.4](https://github.com/houseninjadojo/app/compare/v1.16.3...v1.16.4) (2022-07-01)
+
+
+### Bug Fixes
+
+* moar misc ux ([#714](https://github.com/houseninjadojo/app/issues/714)) ([bdd8ce4](https://github.com/houseninjadojo/app/commit/bdd8ce40d47eeca069fc41a7cbb328e04a714d7a))
+
 ## [1.16.3](https://github.com/houseninjadojo/app/compare/v1.16.2...v1.16.3) (2022-06-30)
 
 
