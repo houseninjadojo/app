@@ -2412,14 +2412,14 @@
     "@sentry/utils" "6.19.2"
     tslib "^1.9.3"
 
-"@sentry/browser@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.19.7.tgz#a40b6b72d911b5f1ed70ed3b4e7d4d4e625c0b5f"
-  integrity sha512-oDbklp4O3MtAM4mtuwyZLrgO1qDVYIujzNJQzXmi9YzymJCuzMLSRDvhY83NNDCRxf0pds4DShgYeZdbSyKraA==
+"@sentry/browser@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-7.4.0.tgz#3f4a644c6ab45cee26f89fd6623df8ea92b76700"
+  integrity sha512-mnr3WEgL6Rm1NBQiYS+1NIvw3aRnLQRNqhp2bWSyVJ6lewfdHbP94v/cesM+//puj+oSkSpIV97Vs7YWDT61tA==
   dependencies:
-    "@sentry/core" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
+    "@sentry/core" "7.4.0"
+    "@sentry/types" "7.4.0"
+    "@sentry/utils" "7.4.0"
     tslib "^1.9.3"
 
 "@sentry/capacitor@^0.6.1":
@@ -2473,27 +2473,26 @@
     "@sentry/utils" "6.19.2"
     tslib "^1.9.3"
 
-"@sentry/core@6.19.7":
-  version "6.19.7"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.19.7.tgz#156aaa56dd7fad8c89c145be6ad7a4f7209f9785"
-  integrity sha512-tOfZ/umqB2AcHPGbIrsFLcvApdTm9ggpi/kQZFkej7kMphjT+SGBiQfYtjyg9jcRW+ilAR4JXC9BGKsdEQ+8Vw==
+"@sentry/core@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.4.0.tgz#42711c46cc8d5a06333da71f76b5cc2442136048"
+  integrity sha512-JOqbw57DwDeAnWTzXzMkT/2/LLNxtPIPInLyZThduk300Zs/le4+HDw45F4tJIPEmf+QFdKiZmKh5M/2PrqDNg==
   dependencies:
-    "@sentry/hub" "6.19.7"
-    "@sentry/minimal" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
+    "@sentry/hub" "7.4.0"
+    "@sentry/types" "7.4.0"
+    "@sentry/utils" "7.4.0"
     tslib "^1.9.3"
 
-"@sentry/ember@^6.19.7":
-  version "6.19.7"
-  resolved "https://registry.yarnpkg.com/@sentry/ember/-/ember-6.19.7.tgz#bbcbaf98857e075a3ef5ed1a9b2c096a8e578b62"
-  integrity sha512-Afv57oJ14RK8XR8BR20tgmjA1obbKklXW53KDXcYCvhJL8gaH8nVisfF6VYn18ZV0/1V2Bw5wHeDcN94IrWHBQ==
+"@sentry/ember@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/ember/-/ember-7.4.0.tgz#5e8b8d219e129e33e0f6b1c5f141d3ed2db7650f"
+  integrity sha512-kC9E+jQFPM10vos2ccUBGN9aS+67qKJ+wPFr0OQYI1wT/JYXKsuWgs1zwz9nGkEFY/SClQQtiz0OTLn1GEyg6w==
   dependencies:
     "@embroider/macros" "~0.47.2"
-    "@sentry/browser" "6.19.7"
-    "@sentry/tracing" "6.19.7"
-    "@sentry/types" "6.19.7"
-    "@sentry/utils" "6.19.7"
+    "@sentry/browser" "7.4.0"
+    "@sentry/tracing" "7.4.0"
+    "@sentry/types" "7.4.0"
+    "@sentry/utils" "7.4.0"
     ember-auto-import "~1.12.1 || ~2.2.0"
     ember-cli-babel "~7.26.6"
     ember-cli-htmlbars "^6.0.1"
@@ -2515,6 +2514,15 @@
   dependencies:
     "@sentry/types" "6.19.7"
     "@sentry/utils" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/hub@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-7.4.0.tgz#1b3340d5a0fd99a89b60811e96be178128f7d0f7"
+  integrity sha512-7th3MNVxjWiuG8fhzgtxhcLqGSXVUE86NuaRAzUFOzyA/ruXbq2wLb3ulvJsfX+JeiSjkVlCo+Xz21POvZ/vkA==
+  dependencies:
+    "@sentry/types" "7.4.0"
+    "@sentry/utils" "7.4.0"
     tslib "^1.9.3"
 
 "@sentry/integrations@6.19.2":
@@ -2556,7 +2564,17 @@
     "@sentry/utils" "6.19.2"
     tslib "^1.9.3"
 
-"@sentry/tracing@6.19.7", "@sentry/tracing@^6.14.1":
+"@sentry/tracing@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.4.0.tgz#6ab667151a90acac4e96746e1acdb4049a732bc1"
+  integrity sha512-zRywOpm012P1pTQYvXtDpYrxtzOvKTjz1vyKxhqb+UOMu95A+llMkFfmZMeWn2OZNr0xg6zsLlGPnoFIiJNz9w==
+  dependencies:
+    "@sentry/hub" "7.4.0"
+    "@sentry/types" "7.4.0"
+    "@sentry/utils" "7.4.0"
+    tslib "^1.9.3"
+
+"@sentry/tracing@^6.14.1":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.19.7.tgz#54bb99ed5705931cd33caf71da347af769f02a4c"
   integrity sha512-ol4TupNnv9Zd+bZei7B6Ygnr9N3Gp1PUrNI761QSlHtPC25xXC5ssSD3GMhBgyQrcvpuRcCFHVNNM97tN5cZiA==
@@ -2577,6 +2595,11 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.19.7.tgz#c6b337912e588083fc2896eb012526cf7cfec7c7"
   integrity sha512-jH84pDYE+hHIbVnab3Hr+ZXr1v8QABfhx39KknxqKWr2l0oEItzepV0URvbEhB446lk/S/59230dlUUIBGsXbg==
 
+"@sentry/types@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.4.0.tgz#b03523ced07da56506ccea18b46b5e6904802292"
+  integrity sha512-vBg7tldxWgBWAtslm8dy3PNpaB206pUObjTYLG3cF69h1gAbWGpZ99lZ6wDsvrEHi+1S9RTIZMHaxJiTRmO/7A==
+
 "@sentry/utils@6.19.2":
   version "6.19.2"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.19.2.tgz#995efb896c5159369509f4896c27a2d2ea9191f2"
@@ -2591,6 +2614,14 @@
   integrity sha512-z95ECmE3i9pbWoXQrD/7PgkBAzJYR+iXtPuTkpBjDKs86O3mT+PXOT3BAn79w2wkn7/i3vOGD2xVr1uiMl26dA==
   dependencies:
     "@sentry/types" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/utils@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.4.0.tgz#1e967f439f179ae9d09c25c3a0ed5946d9c9e0d6"
+  integrity sha512-5vaEBjnKkEv1kTyTtgAjCmMzD8whB6ojNrswULgyTynRHjd1bGi3BPOOLpBjjzb2nWJwvSMOxBpTHFdRqGIZ7Q==
+  dependencies:
+    "@sentry/types" "7.4.0"
     tslib "^1.9.3"
 
 "@sentry/wizard@^1.1.4":
