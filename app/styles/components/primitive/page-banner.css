@@ -1,0 +1,8 @@
+.hn.hn-page-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: var(--white);        
+}
