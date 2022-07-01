@@ -1,3 +1,24 @@
+## [1.16.3](https://github.com/houseninjadojo/app/compare/v1.16.2...v1.16.3) (2022-06-30)
+
+
+### Bug Fixes
+
+* misc ux touches ([#711](https://github.com/houseninjadojo/app/issues/711)) ([966bcf4](https://github.com/houseninjadojo/app/commit/966bcf46758c7c964f495cfe696fc51496676183))
+
+## [1.16.2](https://github.com/houseninjadojo/app/compare/v1.16.1...v1.16.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* **signup:** add how did you hear about us? ([#709](https://github.com/houseninjadojo/app/issues/709)) ([67db67c](https://github.com/houseninjadojo/app/commit/67db67c60ea96bdb538b7588981ad45d02825ba3))
+
+## [1.16.1](https://github.com/houseninjadojo/app/compare/v1.16.0...v1.16.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **payment-approval:** add user to full payment method save ([#708](https://github.com/houseninjadojo/app/issues/708)) ([b5e2508](https://github.com/houseninjadojo/app/commit/b5e25083a6e6853434d57b4b9f6d9054a342bb1f))
+
 # [1.16.0](https://github.com/houseninjadojo/app/compare/v1.15.3...v1.16.0) (2022-06-28)
 
 

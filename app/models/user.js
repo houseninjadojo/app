@@ -33,6 +33,8 @@ export default class UserModel extends Model {
   @attr('string') onboardingStep;
   @attr('string') onboardingCode;
 
+  @attr('string') howDidYouHearAboutUs;
+
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
