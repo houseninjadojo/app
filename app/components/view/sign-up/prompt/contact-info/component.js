@@ -54,9 +54,6 @@ export default class ContactInfoComponent extends Component {
       id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      description: !this.args.isOnboardingViaNativeApp
-        ? 'We only use your phone number to contact you.'
-        : '',
       value: null,
     },
   ];
