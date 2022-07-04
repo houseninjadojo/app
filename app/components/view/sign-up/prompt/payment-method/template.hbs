@@ -1,9 +1,9 @@
 <div class="content">
     <Primitive::Section>
         <div class="hero">
-            <p class="primary hn strong">Add Your Preferred Payment Method</p>
-            <p>Join today for just $29/mo</p>
-            <p class="hn emphasis">If you have a promo code, please enter it below.</p>
+            <p class="primary hn strong">Payment Method</p>
+            <p class="hn accent mt-4">Join today for just $29/mo</p>
+            <p class="hn emphasis small">If you have a promo code, please enter it below.</p>
         </div>
     </Primitive::Section>
     <Primitive::Section>
@@ -32,23 +32,28 @@
             />
             <div class='terms'>
                 <Primitive::Button
-                @size='lg' @variant='accent'
-                @semantic='outline'
-                {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
-            >
-                {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
-            </Primitive::Button>
-                <div class='agreement'>
-                    <Input
-                        @type="checkbox"
-                        @checked={{mut this.agreedToTermsAndConditions}}
-                        id="terms-agree"
-                        name="terms"
-                        disabled={{true}}
-                    />
-                    <span for="terms">I have read and agree to House Ninja Inc’s limited warranty.</span>
-                </div>
-
+                    @size='lg' @variant={{if this.agreedToTermsAndConditions 'primary' 'accent'}}
+                    @semantic='outline'
+                    {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
+                >
+                    {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
+                </Primitive::Button>
+                <Primitive::Button
+                    @variant="plain"
+                    {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
+                >
+                    <div class='agreement'>
+                        <Input
+                            @type="checkbox"
+                            @checked={{mut this.agreedToTermsAndConditions}}
+                            id="terms-agree"
+                            name="terms"
+                            disabled={{false}}
+                            {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
+                        />
+                        <label for="terms">I have read and agree to House Ninja Inc’s limited warranty.</label>
+                    </div>
+                </Primitive::Button>
             </div>
         </div>
         <div class="action">

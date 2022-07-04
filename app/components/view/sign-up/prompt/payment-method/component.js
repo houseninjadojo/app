@@ -129,7 +129,7 @@ export default class PaymentMethodComponent extends Component {
       if (promoCodes.length > 0) {
         this.promoCode = promoCodes.get('firstObject');
         this.promoCodeAlert = null;
-        this.promoCodeDescription = `Promo code '${this.promoCode.code}' applied.`;
+        this.promoCodeDescription = `Promo code '${this.promoCode.code}' applied, and no cost will be charged.`;
       } else {
         this.promoCodeAlert = {
           title: `Promo Code '${this.promoCodeInput}' is not valid`,
