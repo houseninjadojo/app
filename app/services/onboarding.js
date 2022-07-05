@@ -18,6 +18,7 @@ const CACHED_MODELS = [
 export default class OnboardingService extends Service {
   @service storage;
   @service store;
+  @service analytics;
 
   currentStep = null;
 
@@ -34,6 +35,11 @@ export default class OnboardingService extends Service {
       user.save();
     }
     await this.dehydrate();
+    this.sendTrackingEvent(step, user);
+  }
+
+  sendTrackingEvent(step, user) {
+    this.analytics.track(step, { user: user });
   }
 
   cleanup() {
