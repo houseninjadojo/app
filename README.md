@@ -68,6 +68,12 @@ When the terminal prompt shows `iOS Serve: Serving Ember app in Xcode`, Xcode wi
 
 Then, inside the Xcode window, click the "play" arrow button in the top left. This will build the app and run it in your simulator.
 
+## Run against sandbox API
+
+To work with the sandbox API on chrome/browser (not in a simulator), you should be able to do
+
+* `ember serve --environment=sandbox`
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details
