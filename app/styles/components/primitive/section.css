@@ -23,13 +23,14 @@
 
 .section .head .label .section-label {
   width: 100%;
-  font-size: 17px;
+  font-family: var(--campton-strong);
+  font-size: 20px;
   color: var(--gray-950);
 }
 
 .section .head .label .section-sub-label {
-  font-size: 15px;
-  color: var(--gray-600);
+  font-size: 17px;
+  color: var(--gray-800);
 }
 
 .section .head button {

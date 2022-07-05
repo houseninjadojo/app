@@ -3,10 +3,10 @@
 */
 .hn.view-title {
   height: 48px;
-  font-family: var(--campton-default);
-  font-size: 15px;
+  font-family: var(--campton-strong);
+  font-size: 20px;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .hn.field {
@@ -82,7 +82,7 @@
 }
 
 h1.hn {
-  font-size: 24px;
+  font-size: 20px;
   font-family: var(--campton-strong);
 }
 
