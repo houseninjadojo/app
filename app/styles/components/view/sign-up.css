@@ -198,6 +198,10 @@
   margin-right: 8px;
 }
 
+.sign-up-module .view .content .prompt .terms .agreement label {
+  margin-top: 4px;
+}
+
 .onboarding .content .action,
 .sign-up-module .view .content .action {
   width: 100%;

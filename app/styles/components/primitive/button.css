@@ -75,6 +75,14 @@
   margin-bottom: 2px;
 }
 
+.hn.btn.hn.btn.solid .icon.left,
+.hn.btn.hn.btn.outline .icon.left {
+  height: 24px;
+  margin-right: 16px;
+  margin-left: 0;
+  margin-bottom: 2px;
+}
+
 .hn.btn.hn.btn.solid .icon {
   filter: brightness(0) invert(1);
 }
