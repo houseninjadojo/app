@@ -31,12 +31,15 @@
                 @onInput={{(perform this.checkPromoCode)}}
             />
             <div class='terms'>
+                {{#unless this.agreedToTermsAndConditions}}
+                    <p class="mb-4">To proceed, review House Ninja's Limited Warranty.</p>
+                {{/unless}}
                 <Primitive::Button
                     @size='lg' @variant={{if this.agreedToTermsAndConditions 'primary' 'accent'}}
                     @semantic='outline'
                     {{on 'click' (fn this.showTermsAndConditionsComponent true)}}
                 >
-                    {{if this.agreedToTermsAndConditions '' 'NEXT: '}}View House Ninja Inc. Limited Warranty
+                    View Limited Warranty
                 </Primitive::Button>
                 <Primitive::Button
                     @variant="plain"
