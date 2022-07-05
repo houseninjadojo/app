@@ -42,6 +42,10 @@
   color: var(--teal-500);
 }
 
+.hn.accent.override {
+  color: var(--teal-500);
+}
+
 .hn.small {
   font-size: 14px !important;
 }
