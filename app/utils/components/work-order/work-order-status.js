@@ -16,10 +16,6 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.invoicePaidByCustomer:
       return;
     case workOrderStatus.paymentFailed:
-      return {
-        label: getWorkOrderStatusLabel(status),
-        type: 'alert',
-      };
     case workOrderStatus.invoiceSentToCustomer:
       return {
         label: getWorkOrderStatusLabel(status),
