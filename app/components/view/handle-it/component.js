@@ -82,13 +82,15 @@ export default class HandleItComponent extends Component {
     return newestToOldest(a, b);
   });
 
-  displayedWorkOrders = [
-    ...(this.approvePaymentWorkOrders ?? []),
-    ...(this.failedPaymentWorkOrders ?? []),
-    ...(this.remainingBookedWorkOrders ?? []),
-    ...(this.nonBookedWorkOrders ?? []),
-    ...(this.pausedWorkOrders ?? []),
-  ];
+  get displayedWorkOrders() {
+    return [
+      ...(this.approvePaymentWorkOrders ?? []),
+      ...(this.failedPaymentWorkOrders ?? []),
+      ...(this.remainingBookedWorkOrders ?? []),
+      ...(this.nonBookedWorkOrders ?? []),
+      ...(this.pausedWorkOrders ?? []),
+    ];
+  }
 
   @action
   selectRoute(routeName) {
