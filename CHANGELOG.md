@@ -1,3 +1,10 @@
+## [1.16.6](https://github.com/houseninjadojo/app/compare/v1.16.5...v1.16.6) (2022-07-06)
+
+
+### Bug Fixes
+
+* show invoice document on work history ([#707](https://github.com/houseninjadojo/app/issues/707)) ([92e5bfb](https://github.com/houseninjadojo/app/commit/92e5bfb58c6cfbeab6276a98f66a32f28fc1fbbe))
+
 ## [1.16.5](https://github.com/houseninjadojo/app/compare/v1.16.4...v1.16.5) (2022-07-05)
 
 
