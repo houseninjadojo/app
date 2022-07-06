@@ -36,9 +36,12 @@
 </Primitive::Section>
 <View::WorkOrder::Content::ApprovePayment::Processing 
     @paid={{this.paid}}
+    @paymentFailed={{this.paymentFailed}}
+    @requestDifferentPayment={{this.requestDifferentPayment}}
     @isProcessing={{this.isProcessing}}
     @isDoneProcessing={{this.isDoneProcessing}}
     @isNativePlatform={{this.isNativePlatform}}
     @selectRoute={{this.selectRoute}}
     @isDone={{@isDone}}
+    @toggleIsProcessing={{this.toggleIsProcessing}}
 />

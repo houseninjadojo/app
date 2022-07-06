@@ -88,3 +88,9 @@ button {
 strong {
   font-family: var(--campton-strong) !important;
 }
+
+a {
+  font-family: var(--campton-strong) !important;
+  text-decoration: underline;
+  color: var(--teal-500);
+}
