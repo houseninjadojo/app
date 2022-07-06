@@ -41,7 +41,7 @@ export async function initialize(appInstance) {
     });
     if (devices.length > 0) {
       // we know about this device, so update any changes
-      device = devices.firstObject();
+      device = devices.firstObject;
       device.setProperties(deviceInfo);
     } else {
       // this is a new device, so create it
