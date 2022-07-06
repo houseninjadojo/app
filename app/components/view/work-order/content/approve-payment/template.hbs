@@ -1,7 +1,7 @@
 {{#if this.isNativePlatform}}
     <div class="actions">
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
-            I have an issue
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutInvoice}}>
+            I have a question
         </Primitive::Button>
     </div>
     <hr/>
@@ -24,6 +24,7 @@
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Payment
     </Primitive::Button>
+    <p class="mt-4">This will charge your {{this.creditCard.cardBrand}} ending in {{this.creditCard.lastFour}}. If you would like to use a different method of payment, please <button class="hn accent override" type="button" {{on "click" this.requestDifferentPayment}}><strong>tap here</strong></button> to message us.</p>
     {{#if this.showWebDialog}}
         <View::WorkOrder::Content::ApprovePayment::WebDialog 
             @toggleWebDialog={{this.toggleWebDialog}} 

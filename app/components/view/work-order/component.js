@@ -12,9 +12,7 @@ export default class WorkOrderViewComponent extends Component {
   @service view;
 
   paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
-
-  cancelMessage = 'I would like to cancel this service request.';
-  issueMessage = 'I have an issue with my service request.';
+  issueMessage = `I have a question about the ${this.args.model.description} service request.`;
 
   content = {
     approvePayment: 'approve-payment',

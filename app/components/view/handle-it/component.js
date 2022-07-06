@@ -87,7 +87,7 @@ export default class HandleItComponent extends Component {
     ...(this.failedPaymentWorkOrders ?? []),
     ...(this.remainingBookedWorkOrders ?? []),
     ...(this.nonBookedWorkOrders ?? []),
-    ...(this.pausedWorkOrders ?? []),
+    // ...(this.pausedWorkOrders ?? []),
   ];
 
   @action
