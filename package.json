@@ -91,7 +91,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-ember": "^10.6.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-qunit": "^7.2.0",
     "liquid-fire": "^0.34.0",
     "loader.js": "^4.7.0",
@@ -136,7 +136,7 @@
     "@houseninja/capacitor-mixpanel": "^0.1.0",
     "@robingenz/capacitor-file-picker": "^0.3.0",
     "capacitor-branch-deep-links": "^4.1.1",
-    "capacitor-secure-storage-plugin": "^0.7.0",
+    "capacitor-secure-storage-plugin": "^0.7.1",
     "lottie-web": "^5.9.4",
     "moment": "^2.29.3"
   }
