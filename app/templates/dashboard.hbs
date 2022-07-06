@@ -2,15 +2,13 @@
 <TopBar @content="dashboard" />
     <LiquidOutlet />
 <NavBar />
-{{#unless this.model.property}}
-    <Primitive::Modal::Dialog>
-        <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-        <div class="mb-8">
-            <p class="hn center mb-4">It looks like we're missing your property address.</p>
-            <p class="hn strong center">Let's get that updated for you.</p>
-        </div>
-        <Primitive::Button {{on "click" this.showMessenger}} @size="md" @variant="solid" @semantic="accent">
-            Update My Address
-        </Primitive::Button>
-    </Primitive::Modal::Dialog>
-{{/unless}}
+<Primitive::Modal::Dialog @isVisible={{this.model.showPropertyDialog}}>
+    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    <div class="mb-8">
+        <p class="hn center mb-4">It looks like we're missing your property address.</p>
+        <p class="hn strong center">Let's get that updated for you.</p>
+    </div>
+    <Primitive::Button {{on "click" this.showMessenger}} @size="md" @variant="solid" @semantic="accent">
+        Update My Address
+    </Primitive::Button>
+</Primitive::Modal::Dialog>
