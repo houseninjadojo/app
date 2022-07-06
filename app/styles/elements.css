@@ -30,16 +30,20 @@
   text-align: center !important;
 }
 
-.hn .strong {
+.hn.strong {
   font-family: var(--campton-strong) !important;
 }
 
-.hn .emphasis {
+.hn.emphasis {
   font-family: var(--campton-emphasis) !important;
 }
 
-.hn .accent:not(button) {
+.hn.accent:not(button) {
   color: var(--teal-500);
+}
+
+.hn.small {
+  font-size: 14px !important;
 }
 
 .hn.banner-message {
