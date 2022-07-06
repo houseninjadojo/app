@@ -1,8 +1,16 @@
 <div class="hn walkthrough-button mb-4">
     <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
         <div class="overlay">                
-            <span class="sig">View Walkthrough Report</span>
+            <span class="sig">View My Walkthrough Report</span>
         </div>
         <img src={{"/assets/images/minh-pham-OtXADkUh3-I-unsplash.jpg"}} alt="walkthrough-report" />
     </Primitive::Button>
 </div>
+<Primitive::Modal::Dialog @toggleModal={{this.toggleDialog}} @isVisible={{this.dialogIsVisible}}>
+    <p class="hn center mb-8">
+        Your walkthrough report will be uploaded here as soon as it’s complete.
+    </p>
+    <Primitive::Button @size="sm" @variant="solid" @semantic="primary" {{on "click" this.toggleDialog}}>
+        Close
+    </Primitive::Button>
+</Primitive::Modal::Dialog>

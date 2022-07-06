@@ -18,9 +18,9 @@
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
+        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>
+        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime }}</p>
+        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.description}}</p>
     </div>
     <Primitive::Button @size="md" @variant="solid" @semantic="accent" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
         Approve Estimate

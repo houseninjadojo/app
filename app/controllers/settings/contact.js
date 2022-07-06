@@ -8,6 +8,7 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 
 export default class SettingsContactController extends Controller {
+  @service intercom;
   @service router;
   @service view;
 
@@ -41,8 +42,8 @@ export default class SettingsContactController extends Controller {
       required: true,
       label: 'Phone',
       placeholder: '',
-      description: 'We only use your phone number to contact you.',
       value: this.model.phoneNumber,
+      disabled: true,
     },
     {
       type: 'email',
@@ -51,6 +52,7 @@ export default class SettingsContactController extends Controller {
       label: 'Email',
       placeholder: '',
       value: this.model.email,
+      disabled: true,
     },
   ];
 
@@ -96,5 +98,12 @@ export default class SettingsContactController extends Controller {
       // 'phoneIsValid',
       'emailIsValid',
     ]).isInvalid;
+  }
+
+  @action
+  openChatModal() {
+    this.intercom.showComposer(
+      'I need to make a change to my account information.'
+    );
   }
 }

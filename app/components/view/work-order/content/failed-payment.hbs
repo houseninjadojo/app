@@ -1,6 +1,6 @@
 <div class="actions">                
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
-        I have an issue
+        I have a question
     </Primitive::Button>
 </div>
 <hr/>
@@ -19,7 +19,7 @@
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Amount Due: </span>{{"$999"}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>    
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>        
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>    
+        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.description}}</p>        
     </div>    
 </Primitive::Section>

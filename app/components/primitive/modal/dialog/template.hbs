@@ -1,4 +1,4 @@
-<div class="hn modal">
+<div class="hn modal {{unless @isVisible 'hide'}}">
     {{#if @disableClose}}      
       <div class="hn overlay" />
     {{else}}
@@ -6,7 +6,7 @@
           <div class="hn overlay" />
       </Primitive::Button>
     {{/if}}
-    <div class="hn modal-container dialog light {{if @isVisible 'show'}}">            
+    <div class="hn modal-container dialog light">            
         <div class="body">
           {{yield}}
         </div>        

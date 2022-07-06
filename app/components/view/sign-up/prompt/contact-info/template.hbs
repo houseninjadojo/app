@@ -29,16 +29,16 @@
             {{/each}}
         </div>        
         <div class="action">
-            <Primitive::Button
-                @size='lg'
-                @variant='outline'
-                @semantic='primary'                
-                {{on 'click' this.goBack}}
-            >                
-                {{#unless @isOnboardingViaNativeApp}}
-                    <img src="/assets/icons/left-arrow.svg" alt="previous" class="icon left"/> Previous
-                {{/unless}}
-            </Primitive::Button>
+            {{#unless @isOnboardingViaNativeApp}}
+                <Primitive::Button
+                    @size='lg'
+                    @variant='outline'
+                    @semantic='primary'                
+                    {{on 'click' this.goBack}}
+                >                                
+                        <img src="/assets/icons/left-arrow.svg" alt="previous" class="icon left"/> Previous                
+                </Primitive::Button>
+            {{/unless}}
             <Primitive::Button
                 @size='lg'
                 @variant='solid'
