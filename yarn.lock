@@ -1130,10 +1130,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-1.3.1.tgz#bb63bd47e87b9b5916b77cdb164e5c01b2f85e25"
   integrity sha512-P0Isb1RKUGUpvmLTxsfVOge6bte7hGzp/zObQAQJ96wh9IAGv8S87g7qPm6SLPhg9HK+E8JY3eUmN6KbIRGJNg==
 
-"@capacitor/cli@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.5.1.tgz#7184554f3460a6fa0988ed7db2617fd53e7eade5"
-  integrity sha512-zIA5BqT8ZnfUFEJwHlSdQ8Q5iWqmT7S6Mgsjbk55Pkv3BKQIP2VIFYpM4E7lGLEKd4kBnKStD0lTw5/P3E03KA==
+"@capacitor/cli@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.6.0.tgz#31c07f364828e750d20a8e6bb2d516f0d21be81d"
+  integrity sha512-YNQNM1wvy3zJkKNWcNL5KzIqgV5J1YzO27MHSxZyVA6+XmWCZi8Qz/Cq/uDrepsuBG67QdIvtOeL+JnXARedfw==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.1"
     "@ionic/utils-fs" "^3.1.5"
@@ -5478,10 +5478,10 @@ capacitor-branch-deep-links@^4.1.1:
   resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.1.1.tgz#be73969a814aa0d188ed7fadcae137579e398147"
   integrity sha512-52rAJGqFRKbkWC0XyunI+3MabGnbUEi8X09MywyNrOdRhu2Kw33aq354LhKW6SqwgkMcFxPHlXTsQd3yGJFD5w==
 
-capacitor-secure-storage-plugin@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.7.0.tgz#934706f5625e008fb103eebb9201411f77fc142f"
-  integrity sha512-F4y9Umv5j5sleXPRzAWkYHhmUHlIiPPSVebjTrw8lec3t2SZGO4sk91MbDlL+IO68N54LDqDxsD9Fa/02oNhmQ==
+capacitor-secure-storage-plugin@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.7.1.tgz#8b646ebaf09658df144effd21f26eecf75529ea5"
+  integrity sha512-fxuLh2PYaLw/AewRLpao4CnnWbXnCM3t8E624XrgvzAPk7vqVWXWE1/SV5kzSU0luaTLlZXuxcjx1KAtQi+c1A==
 
 capture-exit@^2.0.0:
   version "2.0.0"

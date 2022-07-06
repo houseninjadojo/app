@@ -31,7 +31,7 @@
     "@babel/eslint-parser": "^7.18.2",
     "@babel/plugin-proposal-decorators": "^7.18.2",
     "@capacitor/android": "^3.5.1",
-    "@capacitor/cli": "^3.5.1",
+    "@capacitor/cli": "^3.6.0",
     "@capacitor/core": "^3.5.1",
     "@capacitor/ios": "^3.5.1",
     "@commitlint/cli": "^17.0.1",
@@ -136,7 +136,7 @@
     "@houseninja/capacitor-mixpanel": "^0.1.0",
     "@robingenz/capacitor-file-picker": "^0.3.0",
     "capacitor-branch-deep-links": "^4.1.1",
-    "capacitor-secure-storage-plugin": "^0.7.0",
+    "capacitor-secure-storage-plugin": "^0.7.1",
     "lottie-web": "^5.9.4",
     "moment": "^2.29.3"
   }
