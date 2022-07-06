@@ -1,3 +1,10 @@
+## [1.16.7](https://github.com/houseninjadojo/app/compare/v1.16.6...v1.16.7) (2022-07-06)
+
+
+### Bug Fixes
+
+* upgrade capacitor-secure-storage-plugin from 0.7.0 to 0.7.1 ([#703](https://github.com/houseninjadojo/app/issues/703)) ([1331f7a](https://github.com/houseninjadojo/app/commit/1331f7a9e69b4646319f5b8942c778bfa329423b))
+
 ## [1.16.6](https://github.com/houseninjadojo/app/compare/v1.16.5...v1.16.6) (2022-07-06)
 
 
