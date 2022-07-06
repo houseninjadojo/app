@@ -347,6 +347,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @public
    */
   async invalidate(data) {
+    await SecureStorage.clear(`${STASH_TOKEN}:refresh_token`);
+
     // cancel any scheduled future token refresh
     cancel(this._upcomingRefresh);
 
@@ -411,6 +413,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     };
 
     let data = await this._post(this.serverTokenEndpoint, params);
+
     let expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
     await this._scheduleRefresh(data.expires_in, data.refresh_token);

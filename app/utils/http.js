@@ -29,14 +29,13 @@ export async function get(url, headers = {}) {
  */
 export async function post(url, headers = {}, data = null) {
   const options = { url, headers, data };
-  try {
-    let response = await run(async () => {
-      return await Http.post(options);
-    });
-    return response.data;
-  } catch (e) {
-    console.error(e);
+  let response = await run(async () => {
+    return await Http.post(options);
+  });
+  if (response.status === 403) {
+    throw new Error(response);
   }
+  return response.data;
 }
 
 /**
