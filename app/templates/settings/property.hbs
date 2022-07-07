@@ -1,15 +1,15 @@
 {{page-title 'Settings - Property Information'}}
 <Primitive::Modal::Tray
   @onBack={{this.resetForm}}
-  @primaryActionText={{'Update My Address'}}
-  @hideRightAction={{true}}
-  @primaryAction={{this.showMessenger}}  
+  @hideRightAction={{true}}  
   @backText="Back"
+  @hideFooter={{true}}
 >
   <View::AccountSettings::Property
     @model={{this.propertyInfo}}
     @fields={{this.fields}}
     @validateForm={{this.validateForm}}
     @onSelect={{this.handleSelect}}
+    @showMessenger={{this.showMessenger}}
   />
 </Primitive::Modal::Tray>

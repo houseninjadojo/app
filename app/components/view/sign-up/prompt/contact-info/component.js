@@ -161,9 +161,4 @@ export default class ContactInfoComponent extends Component {
       'emailIsValid',
     ]).isInvalid;
   }
-
-  @action
-  toggleModal() {
-    this.showDialog = !this.showDialog;
-  }
 }

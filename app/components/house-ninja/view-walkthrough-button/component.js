@@ -1,11 +1,18 @@
 import Component from '@glimmer/component';
-import { service } from '@ember/service';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { Browser } from '@capacitor/browser';
 import { isPresent } from '@ember/utils';
 
 export default class ViewWalkthroughButtonComponent extends Component {
   @service store;
+  @tracked dialogIsVisible = false;
+
+  @action
+  toggleDialog() {
+    this.dialogIsVisible = !this.dialogIsVisible;
+  }
 
   async walkthroughReport() {
     return await this.store.queryRecord('document', {
@@ -24,6 +31,8 @@ export default class ViewWalkthroughButtonComponent extends Component {
         url: doc.url,
         presentationStyle: 'popover',
       });
+    } else {
+      this.toggleDialog();
     }
   }
 }

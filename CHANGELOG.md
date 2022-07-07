@@ -1,3 +1,24 @@
+## [1.16.9](https://github.com/houseninjadojo/app/compare/v1.16.8...v1.16.9) (2022-07-06)
+
+
+### Bug Fixes
+
+* qa adjustments in-app ([#735](https://github.com/houseninjadojo/app/issues/735)) ([39b170f](https://github.com/houseninjadojo/app/commit/39b170f0b4de1b03b703fa2db4915308ad2e3990))
+
+## [1.16.8](https://github.com/houseninjadojo/app/compare/v1.16.7...v1.16.8) (2022-07-06)
+
+
+### Bug Fixes
+
+* buncha bs ([#734](https://github.com/houseninjadojo/app/issues/734)) ([fb4dd6d](https://github.com/houseninjadojo/app/commit/fb4dd6db1a89fb1b5e8850d73feaa8b4ad80a828))
+
+## [1.16.7](https://github.com/houseninjadojo/app/compare/v1.16.6...v1.16.7) (2022-07-06)
+
+
+### Bug Fixes
+
+* upgrade capacitor-secure-storage-plugin from 0.7.0 to 0.7.1 ([#703](https://github.com/houseninjadojo/app/issues/703)) ([1331f7a](https://github.com/houseninjadojo/app/commit/1331f7a9e69b4646319f5b8942c778bfa329423b))
+
 ## [1.16.6](https://github.com/houseninjadojo/app/compare/v1.16.5...v1.16.6) (2022-07-06)
 
 
