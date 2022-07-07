@@ -47,7 +47,8 @@ export const workOrderStatusLabels = {
   [workOrderStatus.invoiceSentToCustomer]: 'Payment Due',
   // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
   [workOrderStatus.invoicePaidByCustomer]: 'Paid',
-  [workOrderStatus.paymentFailed]: 'Payment Failed',
+  // [workOrderStatus.paymentFailed]: 'Payment Failed',
+  [workOrderStatus.paymentFailed]: 'Payment Due',
   [workOrderStatus.closed]: 'Completed',
   [workOrderStatus.paused]: 'Paused',
   [workOrderStatus.cancelled]: 'Cancelled',
