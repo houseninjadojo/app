@@ -1,3 +1,10 @@
+## [1.16.10](https://github.com/houseninjadojo/app/compare/v1.16.9...v1.16.10) (2022-07-07)
+
+
+### Bug Fixes
+
+* use a getter for displayedWorkOrders ([#722](https://github.com/houseninjadojo/app/issues/722)) ([9802278](https://github.com/houseninjadojo/app/commit/9802278c6f33309e2047906aec93feadc73c4c97))
+
 ## [1.16.9](https://github.com/houseninjadojo/app/compare/v1.16.8...v1.16.9) (2022-07-06)
 
 
