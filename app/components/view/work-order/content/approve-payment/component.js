@@ -62,11 +62,9 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
     try {
       await payment.save(); // this will be long running (probably)
-      this.toggleIsProcessing();
       this.paid = true;
       isWeb && this.toggleWebDialog();
     } catch (e) {
-      this.toggleIsProcessing();
       this.paymentFailed = true;
       isWeb && this.toggleWebDialog();
       captureException(e);

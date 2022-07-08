@@ -1,5 +1,5 @@
 {{#if @paid}}
-    <div class="payment-confirmation">
+    <div class="payment-confirmation {{if @isProcessing 'show'}}">
         <p class="hn center strong">Thank you for approving payment.</p>
         <br/>
         {{#if @isNativePlatform}}
@@ -16,7 +16,7 @@
         {{/if}}
     </div>
 {{else if @paymentFailed}}
-    <div class="payment-failed">
+    <div class="payment-failed {{if @isProcessing 'show'}}">
         <h1 class="hn center strong">Your payment was not successful</h1>
         <br/>
         {{#if @isNativePlatform}}
@@ -36,7 +36,7 @@
         {{/if}}
     </div>
 {{else if @isProcessing}}
-    <div class="payment-processing">
+    <div class="payment-processing {{if @isProcessing 'show'}}">
         <Primitive::Loader::Logo @isDone={{@isDoneProcessing}}/>
         <p class="hn label strong">Processing Payment</p>
     </div>

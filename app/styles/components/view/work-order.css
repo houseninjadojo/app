@@ -71,7 +71,7 @@
 .hn.work-order .payment-processing,
 .hn.work-order .payment-confirmation,
 .hn.work-order .payment-failed {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -90,12 +90,18 @@
   color: var(--white);
 }
 
+.hn.work-order .payment-processing.show,
+.hn.work-order .payment-confirmation.show,
+.hn.work-order .payment-failed.show {
+  display: flex;
+}
+
 .hn.work-order .payment-processing .hn.logo-loader-container {
   margin-bottom: 16px;
 }
 
-.hn.work-order .payment-confirmation,
-.hn.work-order .payment-failed {
+.hn.work-order .payment-confirmation.show,
+.hn.work-order .payment-failed.show {
   position: fixed;
   background: var(--gray-950);
   width: 100%;
