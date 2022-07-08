@@ -1,3 +1,10 @@
+## [1.16.13](https://github.com/houseninjadojo/app/compare/v1.16.12...v1.16.13) (2022-07-08)
+
+
+### Bug Fixes
+
+* moar qa adjustments ([#751](https://github.com/houseninjadojo/app/issues/751)) ([23dab37](https://github.com/houseninjadojo/app/commit/23dab372cc1f6944ab16efec0221d5aa3f68b3b7))
+
 ## [1.16.12](https://github.com/houseninjadojo/app/compare/v1.16.11...v1.16.12) (2022-07-08)
 
 
