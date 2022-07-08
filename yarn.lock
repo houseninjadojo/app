@@ -7707,8 +7707,9 @@ ember-truth-helpers@^3.0.0:
     ember-cli-babel "^7.22.1"
 
 ember-user-activity@houseninjadojo/ember-user-activity:
-  version "6.0.0"
-  resolved "https://codeload.github.com/houseninjadojo/ember-user-activity/tar.gz/e57b20c7028c6987d794dbc141cff766e72d65df"
+  version "7.0.0"
+  uid "34b22d31a00f09eda9a3e7577af33f45df0419b0"
+  resolved "https://codeload.github.com/houseninjadojo/ember-user-activity/tar.gz/34b22d31a00f09eda9a3e7577af33f45df0419b0"
   dependencies:
     ember-classic-decorator "^3.0.0"
     ember-cli-babel "^7.26.11"
