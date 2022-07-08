@@ -138,6 +138,6 @@
     "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.7.1",
     "lottie-web": "^5.9.4",
-    "moment": "^2.29.3"
+    "moment": "^2.29.4"
   }
 }
