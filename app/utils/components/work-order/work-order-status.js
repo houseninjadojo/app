@@ -90,6 +90,7 @@ export const isActiveWorkOrder = (status) => {
     case workOrderStatus.paymentFailed:
     case workOrderStatus.paused:
     case workOrderStatus.homeWalkthroughScheduled:
+    case workOrderStatus.walkthroughCompleted:
       return true;
     // case workOrderStatus.invoicePaidByCustomer:
     // case workOrderStatus.closed:
