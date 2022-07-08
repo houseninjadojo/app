@@ -1,3 +1,10 @@
+## [1.16.12](https://github.com/houseninjadojo/app/compare/v1.16.11...v1.16.12) (2022-07-08)
+
+
+### Bug Fixes
+
+* **work-order:** add waklkthrough booking statuses to filter ([#747](https://github.com/houseninjadojo/app/issues/747)) ([63b9c19](https://github.com/houseninjadojo/app/commit/63b9c198f0d5d2e9fb80617b45b090b5c0212861))
+
 ## [1.16.11](https://github.com/houseninjadojo/app/compare/v1.16.10...v1.16.11) (2022-07-07)
 
 
