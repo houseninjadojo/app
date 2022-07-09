@@ -1,5 +1,5 @@
 import { Factory, association } from 'miragejs';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 

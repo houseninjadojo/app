@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 
 const getRandomProperty = (obj) => {
