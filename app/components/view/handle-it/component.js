@@ -76,7 +76,7 @@ export default class HandleItComponent extends Component {
     });
   }
 
-  get nonBookedWorkOrders() {
+  get initiatedWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED,
       this.activeWorkOrders
@@ -99,8 +99,8 @@ export default class HandleItComponent extends Component {
       ...(this.approvePaymentWorkOrders ?? []),
       ...(this.failedPaymentWorkOrders ?? []),
       ...(this.remainingBookedWorkOrders ?? []),
-      ...(this.nonBookedWorkOrders ?? []),
-      ...(this.pausedWorkOrders ?? []),
+      ...(this.initiatedWorkOrders ?? []),
+      // ...(this.pausedWorkOrders ?? []),
     ];
   }
 

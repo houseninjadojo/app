@@ -127,6 +127,8 @@ export const isHistoricalWorkOrder = (status) => {
     // case workOrderStatus.paused:
     // case workOrderStatus.cancelled:
     // case workOrderStatus.referred:
+    default:
+      return false;
   }
 };
 
@@ -177,7 +179,7 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
     case WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED:
       filteredWorkOrders = workOrders.filter(
         (w) =>
-          w.scheduledDate &&
+          workOrderStatusLabels[w.status] === 'Scheduled' &&
           w.status !== workOrderStatus.paymentFailed &&
           w.status !== workOrderStatus.invoiceSentToCustomer &&
           w.status !== workOrderStatus.paused
@@ -186,7 +188,7 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
     case WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
-          !w.scheduledDate &&
+          workOrderStatusLabels[w.status] === 'Initiated' &&
           w.status !== workOrderStatus.paymentFailed &&
           w.status !== workOrderStatus.invoiceSentToCustomer &&
           w.status !== workOrderStatus.paused
