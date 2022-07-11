@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import {
-  getWorkOrderTag,
+  // getWorkOrderTag,
   isHistoricalWorkOrder,
   newestToOldest,
 } from 'houseninja/utils/components/work-order/work-order-status';
