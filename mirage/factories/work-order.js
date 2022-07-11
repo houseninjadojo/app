@@ -4,7 +4,7 @@ import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
 
 const pastOrFuture = () => {
-  return faker.random.boolean()
+  return faker.datatype.boolean()
     ? faker.date.past(1, moment())
     : faker.date.future(1, moment());
 };
