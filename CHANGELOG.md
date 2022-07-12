@@ -1,3 +1,10 @@
+## [1.16.17](https://github.com/houseninjadojo/app/compare/v1.16.16...v1.16.17) (2022-07-12)
+
+
+### Bug Fixes
+
+* **settings:** create payment method vs update in settings ([#763](https://github.com/houseninjadojo/app/issues/763)) ([3d09800](https://github.com/houseninjadojo/app/commit/3d09800fade886702f8af55f4f076a90995afd9d))
+
 ## [1.16.16](https://github.com/houseninjadojo/app/compare/v1.16.15...v1.16.16) (2022-07-12)
 
 
