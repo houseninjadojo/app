@@ -9,6 +9,7 @@ export const SET_PASSWORD = 'set-password';
 export const WALKTHROUGH_BOOKING = 'walkthrough-booking';
 export const WELCOME = 'welcome';
 export const COMPLETED = 'completed';
+export const ACCOUNT_SETUP = 'account-setup'; // this one is independent of the onboarding flow
 
 export const ALL = [
   AREA_NOTIFICATION,
