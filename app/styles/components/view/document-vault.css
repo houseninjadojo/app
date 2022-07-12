@@ -29,9 +29,12 @@
 
 .hn.document-vault.document .document-details {
   background-color: var(--white);
-  padding: 16px;
   margin-bottom: 16px;
   border-radius: 2px;
+}
+
+.hn.document-vault.document .document-container .image-container {
+  width: 100%;
 }
 
 .hn.document-vault.document .document-container img {
