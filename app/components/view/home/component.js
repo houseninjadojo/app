@@ -4,9 +4,11 @@ import { action } from '@ember/object';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class HomeContentComponent extends Component {
+  @service analytics;
+  @service haptics;
+  @service intercom;
   @service router;
   @service view;
-  @service haptics;
 
   documentVaultRoute = NATIVE_MOBILE_ROUTE.VAULT.INDEX;
   walkthroughBookingRoute = NATIVE_MOBILE_ROUTE.ONBOARDING.WALKTHROUGH_BOOKING;
@@ -50,5 +52,10 @@ export default class HomeContentComponent extends Component {
       this.view.preservePreviousRoute(this.router);
     }
     this.router.transitionTo(route);
+  }
+
+  @action
+  async openChatModal() {
+    this.intercom.showComposer('I’d like to request a service.');
   }
 }

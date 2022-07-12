@@ -8,7 +8,7 @@
   padding: 3px 16px 0;
   outline: none;
   white-space: nowrap;
-  font-family: var(--campton-default);
+  font-family: var(--campton-strong);
   font-size: 17px;
 }
 
@@ -39,7 +39,7 @@
 
 .hn.btn.outline {
   background-color: var(--white);
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
 }
 
@@ -66,6 +66,14 @@
 .hn.btn.hn.btn.outline .icon {
   height: 24px;
   margin-left: 16px;
+  margin-bottom: 2px;
+}
+
+.hn.btn.hn.btn.solid .icon.left,
+.hn.btn.hn.btn.outline .icon.left {
+  height: 24px;
+  margin-right: 16px;
+  margin-left: 0;
   margin-bottom: 2px;
 }
 
@@ -108,10 +116,15 @@
   color: var(--red-400);
 }
 
+
 .hn.btn.solid.primary {
   background: var(--gray-950);
   box-shadow: var(--shadow-gray-1);
   color: var(--white);
+
+.hn.btn.outline.light {
+  border-color: var(--gray-200);
+  color: var(--gray-200);
 }
 
 .hn.btn.solid.accent {

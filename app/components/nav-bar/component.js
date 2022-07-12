@@ -1,11 +1,11 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { Intercom } from '@capacitor-community/intercom';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class NavBarComponent extends Component {
   @service analytics;
+  @service intercom;
   @service router;
 
   dashboardHomeRoute = NATIVE_MOBILE_ROUTE.DASHBOARD.HOME;
@@ -31,10 +31,7 @@ export default class NavBarComponent extends Component {
 
   @action
   async openChatModal() {
-    await this.analytics.track('Intercom Opened', {
-      message: '',
-    });
-    await Intercom.displayMessageComposer({ message: '' });
+    this.intercom.showComposer();
   }
 
   @action

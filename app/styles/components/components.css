@@ -6,10 +6,11 @@
 @import "./primitive/section.css";
 @import "./primitive/tabbed-content.css";
 @import "./primitive/button.css";
+@import "./primitive/embed.css";
 @import "./primitive/input/input.css";
 @import "./primitive/loader.css";
 @import "./primitive/modal.css";
-@import "./primitive/embed.css";
+@import "./primitive/page-banner.css";
 @import "./primitive/record-list.css";
 @import "./primitive/tag.css";
 @import "./view/view.css";

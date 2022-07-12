@@ -72,11 +72,6 @@
   background-size: 200px auto;
 }
 
-.hn.splash-loader.loaded {
-  background: url("/assets/splash/logo-placeholder-after.svg") center center no-repeat;
-  background-size: 200px auto;
-}
-
-.hn.splash-loader video {
+.hn.splash-loader #logo-splash {
   width: 200px;
 }

@@ -23,6 +23,9 @@ export const workOrderStatus = {
   paused: 'paused',
   cancelled: 'cancelled',
   // referred: 'referred',
+  homeWalkthroughScheduled: 'home_walkthrough_scheduled',
+  walkthroughCompleted: 'walkthrough_completed',
+  walkthroughReportSent: 'walkthrough_report_sent',
 };
 
 export const workOrderStatusLabels = {
@@ -47,9 +50,13 @@ export const workOrderStatusLabels = {
   [workOrderStatus.invoiceSentToCustomer]: 'Payment Due',
   // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
   [workOrderStatus.invoicePaidByCustomer]: 'Paid',
-  [workOrderStatus.paymentFailed]: 'Payment Failed',
+  // [workOrderStatus.paymentFailed]: 'Payment Failed',
+  [workOrderStatus.paymentFailed]: 'Payment Due',
   [workOrderStatus.closed]: 'Completed',
   [workOrderStatus.paused]: 'Paused',
   [workOrderStatus.cancelled]: 'Cancelled',
   // [workOrderStatus.referred]: 'Referred',
+  [workOrderStatus.homeWalkthroughScheduled]: 'Scheduled',
+  [workOrderStatus.walkthroughCompleted]: 'Creating Report',
+  [workOrderStatus.walkthroughReportSent]: 'Completed',
 };

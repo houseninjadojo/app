@@ -1,4 +1,4 @@
-<Primitive::Modal::Dialog @toggleWebDialog={{@toggleWebDialog}}>
+<Primitive::Modal::Dialog @toggleModal={{@toggleWebDialog}} @isVisible={{@isVisible}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
     <div>        
         {{#if this.paymentInfoIsKnown}}
@@ -12,7 +12,7 @@
                 @errors={{this.cvcError}}
             />
             <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
-            <div class="actions ">
+            <div class="actions mb-4">
                 <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
                 </Primitive::Button>
@@ -20,6 +20,7 @@
                     I approve this payment
                 </Primitive::Button>
             </div>
+            <p class="hn center">If you would like to use an alternate payment method for this invoice, please email us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or call us <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
         {{else}}
             <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Please re-enter your preferred payment method for this invoice, and in the future, you can pay for your services with just one tap!</p>
             <p class="hn center strong">Please enter your payment information.</p>
@@ -45,7 +46,7 @@
                     I approve this payment
                 </Primitive::Button>
             </div>
-            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-32-NINJA">888-32-NINJA</a></p>
+            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
         {{/if}}
     </div>    
 </Primitive::Modal::Dialog>

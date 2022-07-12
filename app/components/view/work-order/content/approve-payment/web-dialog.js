@@ -126,7 +126,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     try {
       paymentMethod = this.store.createRecord('credit-card', {
         ...this.paymentMethod,
-        // user,
+        user: this.user,
       });
       await paymentMethod.save();
       this.args.approvePayment(true);
@@ -145,5 +145,9 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
 
   get creditCard() {
     return this.store.peekAll('credit-card').firstObject;
+  }
+
+  get user() {
+    return this.store.peekAll('user').firstObject;
   }
 }

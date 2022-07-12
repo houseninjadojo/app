@@ -10,3 +10,11 @@
         <img src={{@thumbnailUri}} alt="preventative maintenance plan" />
     </Primitive::Button>
 </div>
+<Primitive::Modal::Dialog @toggleModal={{this.toggleDialog}} @isVisible={{this.dialogIsVisible}}>
+    <p class="hn center mb-8">
+        Your personalized preventative maintenance plan will be uploaded here as soon as it’s ready.
+    </p>
+    <Primitive::Button @size="sm" @variant="solid" @semantic="primary" {{on "click" this.toggleDialog}}>
+        Close
+    </Primitive::Button>
+</Primitive::Modal::Dialog>

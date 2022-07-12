@@ -8,6 +8,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+  @service intercom;
   @service router;
   @service store;
 
@@ -15,6 +16,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
+  @tracked paymentFailed = false;
 
   actionSheetOptions = [
     {
@@ -27,7 +29,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   ];
 
   async _nativeConfirmation() {
-    const total = this.args.model.invoice.get('formattedTotal');
+    const total = this.args.model.get('invoice.formattedTotal');
     const result = await ActionSheet.showActions({
       title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
@@ -45,13 +47,14 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.toggleWebDialog();
   }
 
-  _toggleIsProcessing() {
+  @action
+  toggleIsProcessing() {
     this.isProcessing = !this.isProcessing;
   }
 
   @action
   async approvePayment(isWeb = false) {
-    this._toggleIsProcessing();
+    this.toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
@@ -59,11 +62,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
     try {
       await payment.save(); // this will be long running (probably)
-      this.isDoneProcessing = true;
       this.paid = true;
       isWeb && this.toggleWebDialog();
     } catch (e) {
-      this._toggleIsProcessing();
+      this.paymentFailed = true;
+      isWeb && this.toggleWebDialog();
       captureException(e);
     }
   }
@@ -83,6 +86,18 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
+  requestDifferentPayment() {
+    this.intercom.showComposer('I would like to update my payment method.');
+  }
+
+  @action
+  inquireAboutInvoice() {
+    this.intercom.showComposer(
+      `I have a question about the invoice for the ${this.args.model.description} service request.`
+    );
+  }
+
+  @action
   selectRoute() {
     this.isProcessing = false;
     this.args.model.reload();
@@ -99,5 +114,9 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   get formattedTotal() {
     return this.invoice?.formattedTotal;
+  }
+
+  get creditCard() {
+    return this.store.peekAll('credit-card').firstObject;
   }
 }

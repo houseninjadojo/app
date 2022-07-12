@@ -1,5 +1,5 @@
 export const SIGNUP_ROUTE = {
-  INDEX: 'signup',
+  INDEX: 'signup.index',
   AREA_NOTIFICATION: 'signup.area-notification',
   PLAN_SELECTION: 'signup.plan-selection',
   CONTACT_INFO: 'signup.contact-info',

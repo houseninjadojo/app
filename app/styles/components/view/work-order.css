@@ -68,8 +68,13 @@
   padding: 16px;
 }
 
-.hn.work-order .payment-processing {
+.hn.work-order .payment-processing,
+.hn.work-order .payment-confirmation,
+.hn.work-order .payment-failed {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: rgb(0 0 0 / 60%);
   backdrop-filter: blur(8px);
   width: 100%;
@@ -81,30 +86,27 @@
   left: 0;
   right: 0;
   margin: 0 auto;
+  padding: 16px;
   color: var(--white);
 }
 
 .hn.work-order .payment-processing.show,
-.hn.work-order .payment-processing.show .payment-confirmation {
+.hn.work-order .payment-confirmation.show,
+.hn.work-order .payment-failed.show {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.hn.work-order .payment-processing.show .hn.logo-loader-container {
+.hn.work-order .payment-processing .hn.logo-loader-container {
   margin-bottom: 16px;
 }
 
-.hn.work-order .payment-processing.show.paid {
+.hn.work-order .payment-confirmation.show,
+.hn.work-order .payment-failed.show {
   position: fixed;
   background: var(--gray-950);
+  width: 100%;
 }
 
-.hn.work-order .payment-processing.show .payment-confirmation {
-  width: 80%;
-}
-
-.hn.work-order .payment-processing.show .payment-confirmation .encouragement {
+.hn.work-order .payment-confirmation .encouragement {
   font-size: 24px;
 }

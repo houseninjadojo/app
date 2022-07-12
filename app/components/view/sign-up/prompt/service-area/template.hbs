@@ -1,45 +1,44 @@
-    <div class="content">
-        <Primitive::Section>
-            <div class="hero mb-8">
-                <img src="/assets/images/wordmark+vertical+black+teal.svg" class="view-logo" alt="house ninja"/>
-                <p class="hn strong mb-4">Managing your home is a hassle—let House Ninja handle it.</p>
-                <div class="">           
-                    <ul>
-                        <li>Detailed home evaluation</li>
-                        <li>Dedicated team to manage your home</li>
-                        <li>Automated home maintenance</li>
-                        <li>24/7 availability for your home needs</li>
-                        <li>The best local vendors</li>
-                        <li>Digital home record</li>
-                    </ul>
-                    <p class="hn accent mt-8 mb-8">…all for just $29/mo!</p>
-                </div>
-                <p>To get started, enter the zip code of your property.</p>
+<div class="content">        
+    <Primitive::Section>
+        <div class="prompt">
+            <p class="primary">What is your zip code?</p>
+            <Primitive::Input
+                @label='Zipcode'
+                @placeholder='Zipcode'
+                @hideLabel={{true}}
+                @required={{true}}
+                @type={{'number'}}
+                @value={{mut this.zipcode}}
+                @onInput={{this.validateForm}}
+            />
+        </div>
+        <div class="action single">
+            <Primitive::Button
+            @size='lg'
+            @variant='solid'
+            @semantic='primary'
+            @disabled={{this.formIsInvalid}}
+            {{on 'click' this.checkServiceArea}}
+            >
+                Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+            </Primitive::Button>
+        </div>
+    </Primitive::Section>
+    <Primitive::Section>
+        <div class="hero">                
+            <p class="hn strong mt-4 mb-4">Managing your home is a hassle—let House Ninja handle it.</p>
+            <div class="mb-4">
+                <p class="hn accent">For just $29/mo, you get:</p>
+                <ul>
+                    <li>Dedicated team to manage your home</li>
+                    <li>A comprehensive home evaluation</li>
+                    <li>Access to the best local vendors</li>
+                    <li>24/7 availability for your home needs</li>
+                    <li>Automated home maintenance</li>
+                    <li>An app to track all of your home data</li>
+                </ul>                    
             </div>
-        </Primitive::Section>
-        <Primitive::Section>
-            <div class="prompt">
-                <p class="primary">What is your zip code?</p>
-                <Primitive::Input
-                    @label='Zipcode'
-                    @placeholder='Zipcode'
-                    @hideLabel={{true}}
-                    @required={{true}}
-                    @type={{'number'}}
-                    @value={{mut this.zipcode}}
-                    @onInput={{this.validateForm}}
-                />
-            </div>
-            <div class="action single">
-                <Primitive::Button
-                @size='lg'
-                @variant='solid'
-                @semantic='primary'
-                @disabled={{this.formIsInvalid}}
-                {{on 'click' this.checkServiceArea}}
-                >
-                    Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
-                </Primitive::Button>
-            </div>
-        </Primitive::Section>
-    </div>
+            <p>To get started, enter the zip code of your property.</p>
+        </div>
+    </Primitive::Section>
+</div>

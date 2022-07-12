@@ -16,10 +16,6 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.invoicePaidByCustomer:
       return;
     case workOrderStatus.paymentFailed:
-      return {
-        label: getWorkOrderStatusLabel(status),
-        type: 'alert',
-      };
     case workOrderStatus.invoiceSentToCustomer:
       return {
         label: getWorkOrderStatusLabel(status),
@@ -31,6 +27,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.customerConfirmedWork:
     case workOrderStatus.problemReported:
     case workOrderStatus.workCompleted:
+    case workOrderStatus.walkthroughCompleted:
       // case workOrderStatus.referred:
       return {
         label: getWorkOrderStatusLabel(status),
@@ -39,6 +36,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.changeOrderReceived:
     case workOrderStatus.workInProgress:
     case workOrderStatus.workScheduled:
+    case workOrderStatus.homeWalkthroughScheduled:
       return {
         label: getWorkOrderStatusLabel(status),
         type: 'primary',
@@ -56,6 +54,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.vendorIdentified:
     case workOrderStatus.workOrderInititated:
     case workOrderStatus.workRequestReceived:
+    case workOrderStatus.walkthroughReportSent:
     default:
       return {
         label: getWorkOrderStatusLabel(status),
@@ -90,6 +89,8 @@ export const isActiveWorkOrder = (status) => {
     case workOrderStatus.invoiceSentToCustomer:
     case workOrderStatus.paymentFailed:
     case workOrderStatus.paused:
+    case workOrderStatus.homeWalkthroughScheduled:
+    case workOrderStatus.walkthroughCompleted:
       return true;
     // case workOrderStatus.invoicePaidByCustomer:
     // case workOrderStatus.closed:
@@ -121,10 +122,13 @@ export const isHistoricalWorkOrder = (status) => {
     // case workOrderStatus.paymentFailed:
     case workOrderStatus.invoicePaidByCustomer:
     case workOrderStatus.closed:
+    case workOrderStatus.walkthroughReportSent:
       return true;
     // case workOrderStatus.paused:
     // case workOrderStatus.cancelled:
     // case workOrderStatus.referred:
+    default:
+      return false;
   }
 };
 
@@ -136,6 +140,7 @@ export const isCompletedWorkOrder = (status) => {
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemResolved:
     case workOrderStatus.vendorInvoiceReceived:
+    case workOrderStatus.walkthroughCompleted:
       return true;
     default:
       return false;
@@ -174,7 +179,7 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
     case WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED:
       filteredWorkOrders = workOrders.filter(
         (w) =>
-          w.scheduledDate &&
+          workOrderStatusLabels[w.status] === 'Scheduled' &&
           w.status !== workOrderStatus.paymentFailed &&
           w.status !== workOrderStatus.invoiceSentToCustomer &&
           w.status !== workOrderStatus.paused
@@ -183,7 +188,7 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
     case WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
-          !w.scheduledDate &&
+          workOrderStatusLabels[w.status] === 'Initiated' &&
           w.status !== workOrderStatus.paymentFailed &&
           w.status !== workOrderStatus.invoiceSentToCustomer &&
           w.status !== workOrderStatus.paused

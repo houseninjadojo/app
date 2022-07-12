@@ -84,3 +84,13 @@ input[type="number"]::-webkit-outer-spin-button {
 button {
   user-select: none;
 }
+
+strong {
+  font-family: var(--campton-strong) !important;
+}
+
+a {
+  font-family: var(--campton-strong) !important;
+  text-decoration: underline;
+  color: var(--teal-500);
+}
