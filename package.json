@@ -36,7 +36,7 @@
     "@capacitor/ios": "^3.6.0",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@commitlint/prompt-cli": "^17.0.0",
+    "@commitlint/prompt-cli": "^17.0.3",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.4",
