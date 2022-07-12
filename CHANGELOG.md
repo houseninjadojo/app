@@ -1,3 +1,10 @@
+## [1.16.16](https://github.com/houseninjadojo/app/compare/v1.16.15...v1.16.16) (2022-07-12)
+
+
+### Bug Fixes
+
+* **onboarding:** use specific onboarding step to trigger account setup ([#762](https://github.com/houseninjadojo/app/issues/762)) ([be3a797](https://github.com/houseninjadojo/app/commit/be3a797060f7824d0ef4be53a41ed8db630698a0))
+
 ## [1.16.15](https://github.com/houseninjadojo/app/compare/v1.16.14...v1.16.15) (2022-07-11)
 
 
