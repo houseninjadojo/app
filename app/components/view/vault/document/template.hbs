@@ -12,11 +12,14 @@
             </div>
             <div class="document-container">
                 <Primitive::Button {{on "click" this.openBrowser}} @variant="plain">
-                    <Primitive::Image
-                    @src={{@model.url}}
-                    @alt={{@model.name}}
-                    @width="500"
-                    />
+                    <div class="image-container">
+                        <Primitive::Image
+                            @src={{@model.url}}
+                            @alt={{@model.name}}
+                            @width="600"
+                            @height="800"
+                        />
+                    </div>
                 </Primitive::Button>
             </div>
         </Primitive::Section>
