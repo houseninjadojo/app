@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/houseninjadojo/app/compare/v1.16.17...v1.17.0) (2022-07-12)
+
+
+### Features
+
+* account deletion ([#702](https://github.com/houseninjadojo/app/issues/702)) ([986679a](https://github.com/houseninjadojo/app/commit/986679ac0ac20a176ee653dbc25b7bd06365d995))
+
 ## [1.16.17](https://github.com/houseninjadojo/app/compare/v1.16.16...v1.16.17) (2022-07-12)
 
 
