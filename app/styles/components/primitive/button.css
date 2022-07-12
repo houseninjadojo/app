@@ -116,11 +116,11 @@
   color: var(--red-400);
 }
 
-
 .hn.btn.solid.primary {
   background: var(--gray-950);
   box-shadow: var(--shadow-gray-1);
   color: var(--white);
+}
 
 .hn.btn.outline.light {
   border-color: var(--gray-200);
@@ -188,4 +188,5 @@
   .hn.btn.hn.btn.outline.secondary:hover:not(.disabled) {
     background-color: var(--blue-400);
   }
+}
 }
