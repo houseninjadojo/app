@@ -100,16 +100,12 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async onboardUser(user) {
-    if (this.args.isOnboardingViaNativeApp) {
-      this.args.toggleModal && this.args.toggleModal();
-    } else {
-      this.onboarding.rehydrateFromRemote.perform();
-      let route = this.onboarding.routeFromStep(user.onboardingStep);
-      if (user.onboardingStep === CONTACT_INFO) {
-        route = SIGNUP_ROUTE.PAYMENT_METHOD;
-      }
-      this.router.transitionTo(route);
+    this.onboarding.rehydrateFromRemote.perform();
+    let route = this.onboarding.routeFromStep(user.onboardingStep);
+    if (user.onboardingStep === CONTACT_INFO) {
+      route = SIGNUP_ROUTE.PAYMENT_METHOD;
     }
+    this.router.transitionTo(route);
   }
 
   @action
