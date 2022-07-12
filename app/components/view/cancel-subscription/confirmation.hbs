@@ -1,0 +1,15 @@
+<View @hideLogo={{true}} @class="dark no-top-bar no-nav-bar">    
+    <div class="hn cancel-subscription-confirmed">        
+        <p class="hn strong center">Your subscription has been cancelled</p>
+        <p class="hn strong center">We’re sad to see you go!</p>
+        <p class="hn center mb-8">Allow up to five business days for the process to complete</p>
+        <View::CancelSubscription::Survey 
+            @options={{this.surveyOptions}} 
+            @handleSurveyChange={{this.handleSurveyChange}} 
+            @handleTextAreaInput={{this.handleTextAreaInput}}
+            @additionalFeedback={{this.additionalFeedback}} 
+        />                
+        <Primitive::Button {{on "click" this.handleSubmit}} @class="mb-4" @size="md" @variant="solid" @semantic="accent">Submit</Primitive::Button>
+        <Primitive::Button {{on "click" this.goodbye}} @size="md" @variant="outline empty" @semantic="accent">Close</Primitive::Button>
+    </div>
+</View>

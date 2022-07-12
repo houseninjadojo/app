@@ -62,12 +62,6 @@
   color: var(--gray-950);
 }
 
-.hn.btn.solid.primary {
-  background: var(--gray-950);
-  box-shadow: var(--shadow-gray-1);
-  color: var(--white);
-}
-
 .hn.btn.hn.btn.solid .icon,
 .hn.btn.hn.btn.outline .icon {
   height: 24px;
@@ -120,6 +114,12 @@
   border-color: var(--red-400);
   box-shadow: var(--shadow-red-1);
   color: var(--red-400);
+}
+
+.hn.btn.solid.primary {
+  background: var(--gray-950);
+  box-shadow: var(--shadow-gray-1);
+  color: var(--white);
 }
 
 .hn.btn.outline.light {

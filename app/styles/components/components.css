@@ -15,6 +15,7 @@
 @import "./primitive/tag.css";
 @import "./view/view.css";
 @import "./view/account-settings.css";
+@import "./view/cancel-subscription.css";
 @import "./view/dashboard/home.css";
 @import "./view/dashboard/handle-it.css";
 @import "./view/dashboard/work-history.css";
