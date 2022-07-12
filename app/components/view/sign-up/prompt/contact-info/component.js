@@ -9,6 +9,7 @@ import { isPresent } from '@ember/utils';
 import {
   PAYMENT_METHOD,
   CONTACT_INFO,
+  ACCOUNT_SETUP,
 } from 'houseninja/data/enums/onboarding-step';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
@@ -99,44 +100,51 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async onboardUser(user) {
-    if (this.args.isOnboardingViaNativeApp) {
-      this.args.toggleModal && this.args.toggleModal();
-    } else {
-      this.onboarding.rehydrateFromRemote.perform();
-      let route = this.onboarding.routeFromStep(user.onboardingStep);
-      if (user.onboardingStep === CONTACT_INFO) {
-        route = SIGNUP_ROUTE.PAYMENT_METHOD;
-      }
-      this.router.transitionTo(route);
+    this.onboarding.rehydrateFromRemote.perform();
+    let route = this.onboarding.routeFromStep(user.onboardingStep);
+    if (user.onboardingStep === CONTACT_INFO) {
+      route = SIGNUP_ROUTE.PAYMENT_METHOD;
     }
+    this.router.transitionTo(route);
   }
 
   @action
   async saveContactInfo() {
+    // get rid of anything in memory
     if (isPresent(this.args.user)) {
       this.args.user.unloadRecord();
     }
+    // get the onboarding step
+    const onboardingStep = this.args.isOnboardingViaNativeApp
+      ? ACCOUNT_SETUP
+      : PAYMENT_METHOD;
+    // commit to memory
     const user = this.store.createRecord('user', {
       ...this.contactInfo,
-      onboardingStep: PAYMENT_METHOD,
+      onboardingStep,
     });
     try {
+      // save to the server
       await user.save();
     } catch (e) {
       this.errors = user.errors;
       captureException(e);
       return;
     }
-    if (user.shouldResumeOnboarding) {
-      this.onboardUser(user);
-    } else {
-      this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
-    }
+    return user;
   }
 
   @action
   async handlePrimaryClick() {
-    this.saveContactInfo();
+    const user = await this.saveContactInfo();
+    if (this.args.isOnboardingViaNativeApp) {
+      this.args.toggleModal && this.args.toggleModal();
+      return;
+    } else if (user.shouldResumeOnboarding) {
+      this.onboardUser(user);
+    } else {
+      this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
+    }
   }
 
   @action
