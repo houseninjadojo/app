@@ -30,14 +30,14 @@
   align-items: center;
   white-space: nowrap;
   width: 192px;
-  font-size: 16px;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 2px;
 }
 
 .hn.hn-input-field.active .hn-input-container .hn-input-label {
   font-size: 12px;
-  position: absolute;
-  top: 0;
-  left: 2px;
 }
 
 .hn.hn-input-field .hn-input-container .hn.hn-select,
@@ -63,7 +63,7 @@
 
 /* Select */
 .hn.hn-input-field .hn-input-container .hn-select {
-  padding: 0 12px;
+  padding: 16px 8px;
   appearance: none;
 }
 
