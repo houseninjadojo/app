@@ -1,4 +1,4 @@
-<div class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}} {{if @hideLabel 'label-hidden'}}">
+<div {{did-insert this.handleInsert}} class="hn hn-input-field {{if @warn 'warn' ''}} {{if @alert 'alert' ''}}{{if @disabled 'disabled' ''}} {{if @errors 'alert' ''}} {{if @hideLabel 'label-hidden'}} {{if (or this.hasValue this.isFocused) 'active'}}">
     <div class="hn-input-container">
         {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
@@ -26,6 +26,8 @@
               @value={{mut @value}}
               disabled={{@disabled}}
               {{on 'input' this.handleInput}}
+              {{on 'focus' this.handleFocus}}
+              {{on 'blur' this.handleBlur}}
             />
         {{/if}}
     </div>
