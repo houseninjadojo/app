@@ -36,12 +36,12 @@ export default class InputComponent extends Component {
   }
 
   @action
-  handleFocus(e) {
+  handleFocus() {
     if (!this.args.hideLabel) this.isFocused = true;
   }
 
   @action
-  handleBlur(e) {
+  handleBlur() {
     if (!this.args.hideLabel && !this.hasValue) this.isFocused = false;
   }
 
