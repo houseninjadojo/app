@@ -10,6 +10,7 @@ import Sentry from 'houseninja/utils/sentry';
 export default class SettingsPaymentController extends Controller {
   @service router;
   @service view;
+  @service store;
 
   @tracked formIsInvalid = true;
   @tracked paymentMethod = {
