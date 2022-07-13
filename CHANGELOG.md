@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/houseninjadojo/app/compare/v1.17.0...v1.17.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* **payment-method:** inject the store ([#765](https://github.com/houseninjadojo/app/issues/765)) ([1112ed1](https://github.com/houseninjadojo/app/commit/1112ed190db06b21f8c57bd7f9902993e172aa13))
+
 # [1.17.0](https://github.com/houseninjadojo/app/compare/v1.16.17...v1.17.0) (2022-07-12)
 
 
