@@ -22,9 +22,9 @@ export const getWorkOrderTag = (status) => {
         type: 'accent',
       };
     case workOrderStatus.vendorInvoiceReceived:
+    case workOrderStatus.readyToInvoice:
     case workOrderStatus.problemResolved:
     case workOrderStatus.problemBeingAddressed:
-    case workOrderStatus.customerConfirmedWork:
     case workOrderStatus.problemReported:
     case workOrderStatus.workCompleted:
     case workOrderStatus.walkthroughCompleted:
@@ -69,7 +69,6 @@ export const getWorkOrderStatusLabel = (status) => {
 
 export const isActiveWorkOrder = (status) => {
   switch (status) {
-    case workOrderStatus.workRequestReceived:
     case workOrderStatus.workOrderInitiated:
     case workOrderStatus.vendorIdentified:
     case workOrderStatus.schedulingInProgress:
@@ -81,21 +80,24 @@ export const isActiveWorkOrder = (status) => {
     case workOrderStatus.workInProgress:
     case workOrderStatus.changeOrderReceived:
     case workOrderStatus.workCompleted:
-    case workOrderStatus.customerConfirmedWork:
     case workOrderStatus.problemReported:
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemResolved:
     case workOrderStatus.vendorInvoiceReceived:
+    case workOrderStatus.readyToInvoice:
     case workOrderStatus.invoiceSentToCustomer:
     case workOrderStatus.paymentFailed:
-    case workOrderStatus.paused:
     case workOrderStatus.homeWalkthroughScheduled:
     case workOrderStatus.walkthroughCompleted:
       return true;
+    // case workOrderStatus.workRequestReceived:
     // case workOrderStatus.invoicePaidByCustomer:
     // case workOrderStatus.closed:
+    // case workOrderStatus.paused:
     // case workOrderStatus.cancelled:
     // case workOrderStatus.referred:
+    default:
+      return false;
   }
 };
 
@@ -113,11 +115,11 @@ export const isHistoricalWorkOrder = (status) => {
     // case workOrderStatus.workInProgress:
     // case workOrderStatus.changeOrderReceived:
     // case workOrderStatus.workCompleted:
-    // case workOrderStatus.customerConfirmedWork:
     // case workOrderStatus.problemReported:
     // case workOrderStatus.problemBeingAddressed:
     // case workOrderStatus.problemResolved:
     // case workOrderStatus.vendorInvoiceReceived:
+    // case workOrderStatus.readyToInvoice:
     // case workOrderStatus.invoiceSentToCustomer:
     // case workOrderStatus.paymentFailed:
     case workOrderStatus.invoicePaidByCustomer:
@@ -135,11 +137,11 @@ export const isHistoricalWorkOrder = (status) => {
 export const isCompletedWorkOrder = (status) => {
   switch (status) {
     case workOrderStatus.workCompleted:
-    case workOrderStatus.customerConfirmedWork:
     case workOrderStatus.problemReported:
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemResolved:
     case workOrderStatus.vendorInvoiceReceived:
+    case workOrderStatus.readyToInvoice:
     case workOrderStatus.walkthroughCompleted:
       return true;
     default:
