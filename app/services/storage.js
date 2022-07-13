@@ -17,7 +17,7 @@ export default class StorageService extends Service {
 
   async getLocal(key) {
     let item = await getLocalStorage(key);
-    if (item.expiresAt < new Date()) {
+    if (item && item.expiresAt < new Date()) {
       return item.value;
     }
   }
