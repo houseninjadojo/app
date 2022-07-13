@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { workOrderStatus } from 'houseninja/data/work-order-status';
 import {
   getWorkOrderTag,
   isActiveWorkOrder,
@@ -32,14 +31,10 @@ export default class HandleItComponent extends Component {
         return {
           id: w.id,
           name: w.description,
-          description:
-            w.status !== workOrderStatus.paused && w.scheduledDate
-              ? w.vendor
-              : null,
-          scheduledDate:
-            w.status !== workOrderStatus.paused ? w.scheduledDate : null,
+          description: w.vendor && w.scheduledDate ? w.vendor : null,
+          scheduledDate: w.vendor && w.scheduledDate ? w.scheduledDate : null,
           scheduledTime:
-            w.status !== workOrderStatus.paused && w.scheduledDate
+            w.vendor && w.scheduledDate && w.scheduledTime
               ? w.scheduledTime
               : null,
           status: w.status,
