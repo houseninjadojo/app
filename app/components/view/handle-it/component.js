@@ -85,22 +85,12 @@ export default class HandleItComponent extends Component {
     });
   }
 
-  get pausedWorkOrders() {
-    return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.PAUSED,
-      this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
-  }
-
   get displayedWorkOrders() {
     return [
       ...(this.approvePaymentWorkOrders ?? []),
       ...(this.failedPaymentWorkOrders ?? []),
       ...(this.remainingBookedWorkOrders ?? []),
       ...(this.initiatedWorkOrders ?? []),
-      // ...(this.pausedWorkOrders ?? []),
     ];
   }
 
