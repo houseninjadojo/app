@@ -1,3 +1,10 @@
+## [1.17.5](https://github.com/houseninjadojo/app/compare/v1.17.4...v1.17.5) (2022-07-13)
+
+
+### Bug Fixes
+
+* moar input label adjustments ([#769](https://github.com/houseninjadojo/app/issues/769)) ([ec34988](https://github.com/houseninjadojo/app/commit/ec34988990a12e803b66508af10778674d515b8e))
+
 ## [1.17.4](https://github.com/houseninjadojo/app/compare/v1.17.3...v1.17.4) (2022-07-13)
 
 
