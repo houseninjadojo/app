@@ -1,3 +1,10 @@
+## [1.17.3](https://github.com/houseninjadojo/app/compare/v1.17.2...v1.17.3) (2022-07-13)
+
+
+### Bug Fixes
+
+* misc ui changes ([#767](https://github.com/houseninjadojo/app/issues/767)) ([13dda7a](https://github.com/houseninjadojo/app/commit/13dda7a41eee3e9e6bb005744498a390b0209055))
+
 ## [1.17.2](https://github.com/houseninjadojo/app/compare/v1.17.1...v1.17.2) (2022-07-13)
 
 
