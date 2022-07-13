@@ -1,3 +1,10 @@
+## [1.17.4](https://github.com/houseninjadojo/app/compare/v1.17.3...v1.17.4) (2022-07-13)
+
+
+### Bug Fixes
+
+* input padding ([#768](https://github.com/houseninjadojo/app/issues/768)) ([c05d03f](https://github.com/houseninjadojo/app/commit/c05d03f813f2420d164f4a0fe158b9b55314bfe7))
+
 ## [1.17.3](https://github.com/houseninjadojo/app/compare/v1.17.2...v1.17.3) (2022-07-13)
 
 
