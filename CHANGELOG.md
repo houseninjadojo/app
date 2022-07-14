@@ -1,3 +1,10 @@
+## [1.17.6](https://github.com/houseninjadojo/app/compare/v1.17.5...v1.17.6) (2022-07-14)
+
+
+### Bug Fixes
+
+* **home-care-tip:** add new attributes ([#774](https://github.com/houseninjadojo/app/issues/774)) ([1e56a13](https://github.com/houseninjadojo/app/commit/1e56a1397097cdfa18e465d33b78a4797391a31b))
+
 ## [1.17.5](https://github.com/houseninjadojo/app/compare/v1.17.4...v1.17.5) (2022-07-13)
 
 
