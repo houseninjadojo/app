@@ -9,12 +9,12 @@ export default class SettingsPaymentRoute extends Route {
   async model() {
     if (isBlank(this.current.paymentMethod)) {
       await this.current.loadUser();
-      return this.current.paymentMethod;
+      return this.current.paymentMethod.reload();
     }
     return await this.store.findRecord(
       'payment-method',
       this.current.paymentMethod.id,
-      { backgroundReload: true }
+      { reload: true }
     );
   }
 }

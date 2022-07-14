@@ -11,7 +11,7 @@ export default PaymentMethod.extend({
   },
 
   cvv() {
-    return faker.finance.creditCardCVV();
+    // return faker.finance.creditCardCVV();
   },
 
   expMonth() {
@@ -32,7 +32,8 @@ export default PaymentMethod.extend({
   },
 
   cardNumber() {
-    return faker.finance.creditCardNumber(this.brand);
+    // return faker.finance.creditCardNumber(this.brand).replace(/\D/g, '*');
+    return '************4321';
   },
 
   zipcode() {
