@@ -2413,10 +2413,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@robingenz/capacitor-file-picker@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.0.tgz#10b342fb06c3bda867c6fd0b84c213922018f62b"
-  integrity sha512-PrwxhGUz0CWpMWFy+m7wT6LA3rpdHR+xlGSI+b/0j+6Lvt7O3N9ghkOBDpbzHd81HOdF9QSTx4v1JfmrNb9yrQ==
+"@robingenz/capacitor-file-picker@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.1.tgz#6f1c2b4ba3e8cf3787840ce78750bbdbf5305b2c"
+  integrity sha512-cjXARYPEQ/XKMGIhA4wF7sQ4PkDjJVIzUy6bNXwjWCm8p2EjwjnogWOp/pgBFxLBkq0ktSEBXKJSJXC8fJnR/w==
 
 "@semantic-release/changelog@^6.0.1":
   version "6.0.1"
