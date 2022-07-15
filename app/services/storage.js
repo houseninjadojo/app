@@ -18,7 +18,7 @@ export default class StorageService extends Service {
   async getLocal(key) {
     let item = await getLocalStorage(key);
     if (item && item.expiresAt) {
-      if (item.expiresAt < new Date()) {
+      if (item.expiresAt > new Date()) {
         return item.value;
       }
     } else {
@@ -30,7 +30,7 @@ export default class StorageService extends Service {
     let time = new Date();
     await setLocalStorage(key, {
       value: value,
-      expiresAt: time.setHours(time.getMinutes() + ttlMinutes),
+      expiresAt: time.setMinutes(time.getMinutes() + ttlMinutes),
     });
   }
 
