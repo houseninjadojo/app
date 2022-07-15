@@ -129,7 +129,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
         user: this.user,
       });
       await paymentMethod.save();
-      this.args.approvePayment(true);
+      this.args.approvePayment();
     } catch (e) {
       if (isPresent(paymentMethod)) {
         this.errors = paymentMethod.errors;
