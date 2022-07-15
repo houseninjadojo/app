@@ -15,7 +15,7 @@ export default class IndexRoute extends Route {
     // => go to dashboard.home
     if (
       this.session.isAuthenticated &&
-      this.session.data.authenticated.userinfo // don't redirect to dashboard if we logged in via payment-approval key
+      this.session.data.authenticated.kind !== 'payment-approval' // don't redirect to dashboard if we logged in via payment-approval key
     ) {
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
       return;
