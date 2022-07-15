@@ -16,6 +16,9 @@ export default class SessionService extends BaseSessionService {
   @service store;
 
   async handleAuthentication() {
+    if (this.data.authenticated.kind == 'payment-approval') {
+      return;
+    }
     super.handleAuthentication(...arguments);
     await this.loadIfPKCE();
   }
