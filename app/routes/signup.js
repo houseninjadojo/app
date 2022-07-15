@@ -8,7 +8,9 @@ export default class SignupRoute extends Route {
 
   beforeModel() {
     // prohibit authorized users from returning to signup
-    this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    if (this.session.data.authenticated.kind !== 'payment-approval') {
+      this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    }
     this.onboarding.rehydrate();
   }
 }
