@@ -1,3 +1,10 @@
+## [1.18.4](https://github.com/houseninjadojo/app/compare/v1.18.3...v1.18.4) (2022-07-15)
+
+
+### Bug Fixes
+
+* post-password setting message when setting up account ([#785](https://github.com/houseninjadojo/app/issues/785)) ([6241d95](https://github.com/houseninjadojo/app/commit/6241d95f6b0ceb8a0cdec322d96602780a887232))
+
 ## [1.18.3](https://github.com/houseninjadojo/app/compare/v1.18.2...v1.18.3) (2022-07-15)
 
 
