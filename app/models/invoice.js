@@ -2,6 +2,7 @@ import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class InvoiceModel extends Model {
   @belongsTo('document', { async: false }) document;
+  @belongsTo('document', { async: false }) receipt;
   @belongsTo('payment') payment;
   @belongsTo('promo-code') promoCode;
   @belongsTo('subscription') subscription;

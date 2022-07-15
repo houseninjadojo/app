@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker';
 
 export default Factory.extend({
   document: association(),
+  receipt: association(),
 
   description() {
     return 'Invoice #' + faker.datatype.number({ min: 10000, max: 99999 });
