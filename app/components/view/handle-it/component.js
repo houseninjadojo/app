@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { workOrderStatus } from 'houseninja/data/work-order-status';
 import {
   getWorkOrderTag,
   isActiveWorkOrder,
@@ -32,14 +31,10 @@ export default class HandleItComponent extends Component {
         return {
           id: w.id,
           name: w.description,
-          description:
-            w.status !== workOrderStatus.paused && w.scheduledDate
-              ? w.vendor
-              : null,
-          scheduledDate:
-            w.status !== workOrderStatus.paused ? w.scheduledDate : null,
+          description: w.vendor && w.scheduledDate ? w.vendor : null,
+          scheduledDate: w.vendor && w.scheduledDate ? w.scheduledDate : null,
           scheduledTime:
-            w.status !== workOrderStatus.paused && w.scheduledDate
+            w.vendor && w.scheduledDate && w.scheduledTime
               ? w.scheduledTime
               : null,
           status: w.status,
@@ -76,18 +71,9 @@ export default class HandleItComponent extends Component {
     });
   }
 
-  get nonBookedWorkOrders() {
+  get initiatedWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED,
-      this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
-  }
-
-  get pausedWorkOrders() {
-    return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.PAUSED,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return newestToOldest(a, b);
@@ -99,8 +85,7 @@ export default class HandleItComponent extends Component {
       ...(this.approvePaymentWorkOrders ?? []),
       ...(this.failedPaymentWorkOrders ?? []),
       ...(this.remainingBookedWorkOrders ?? []),
-      ...(this.nonBookedWorkOrders ?? []),
-      ...(this.pausedWorkOrders ?? []),
+      ...(this.initiatedWorkOrders ?? []),
     ];
   }
 

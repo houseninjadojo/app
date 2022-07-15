@@ -1393,7 +1393,7 @@
     "@commitlint/rules" "^17.0.0"
     "@commitlint/types" "^17.0.0"
 
-"@commitlint/load@^17.0.0", "@commitlint/load@^17.0.3":
+"@commitlint/load@^17.0.3":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.0.3.tgz#683aa484a5515714512e442f2f4b11f75e66097a"
   integrity sha512-3Dhvr7GcKbKa/ey4QJ5MZH3+J7QFlARohUow6hftQyNjzoXXROm+RwpBes4dDFrXG1xDw9QPXA7uzrOShCd4bw==
@@ -1424,22 +1424,22 @@
     conventional-changelog-angular "^5.0.11"
     conventional-commits-parser "^3.2.2"
 
-"@commitlint/prompt-cli@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/prompt-cli/-/prompt-cli-17.0.0.tgz#a3b54524141a93add6480a9ed01c3e5a384051e7"
-  integrity sha512-WQ2LaKLvak/DQ1NoJkghrt3yZVw9yL6AVfXOTeqXY7oYghvzRiaZKvPrFNuSq1v3BfiZsOIftyQOV6QbRSKmiQ==
+"@commitlint/prompt-cli@^17.0.3":
+  version "17.0.3"
+  resolved "https://registry.yarnpkg.com/@commitlint/prompt-cli/-/prompt-cli-17.0.3.tgz#ec83de53849bbd53d09b8f884e98931e995b5ee9"
+  integrity sha512-RUWbXKMrBDca4+mf0HcSSBVjMK8tzrGHpRFdPCwWZQ+dXAPBZ1RvDCaNAl9AdkJJqF556btrIqBjhmO5Q7VKoQ==
   dependencies:
-    "@commitlint/prompt" "^17.0.0"
+    "@commitlint/prompt" "^17.0.3"
     execa "^5.0.0"
     inquirer "^6.5.2"
 
-"@commitlint/prompt@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/prompt/-/prompt-17.0.0.tgz#b43984f1a2469b0862e0bed69e9022860fb1d2cf"
-  integrity sha512-kjF3sm0pDDF10pH/zTDeJkxkczQGYhUKG4IyqzHlmWJpjSH0XdLF6tUvTlmxuxt24lRfyr5U07KTvSvTybw3pA==
+"@commitlint/prompt@^17.0.3":
+  version "17.0.3"
+  resolved "https://registry.yarnpkg.com/@commitlint/prompt/-/prompt-17.0.3.tgz#e3f06071d54231967272c92cc990d04531a7d3a5"
+  integrity sha512-YdR1tarst9bcjQXhD6+4S2/buEyUPC+9G1nfklwizQIzaiHe3rkvmF0HgTR8PJgZjvbHEOM2KDjBz3q60Dsmtw==
   dependencies:
     "@commitlint/ensure" "^17.0.0"
-    "@commitlint/load" "^17.0.0"
+    "@commitlint/load" "^17.0.3"
     "@commitlint/types" "^17.0.0"
     chalk "^4.1.0"
     inquirer "^6.5.2"
@@ -2413,10 +2413,10 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@robingenz/capacitor-file-picker@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.0.tgz#10b342fb06c3bda867c6fd0b84c213922018f62b"
-  integrity sha512-PrwxhGUz0CWpMWFy+m7wT6LA3rpdHR+xlGSI+b/0j+6Lvt7O3N9ghkOBDpbzHd81HOdF9QSTx4v1JfmrNb9yrQ==
+"@robingenz/capacitor-file-picker@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.1.tgz#6f1c2b4ba3e8cf3787840ce78750bbdbf5305b2c"
+  integrity sha512-cjXARYPEQ/XKMGIhA4wF7sQ4PkDjJVIzUy6bNXwjWCm8p2EjwjnogWOp/pgBFxLBkq0ktSEBXKJSJXC8fJnR/w==
 
 "@semantic-release/changelog@^6.0.1":
   version "6.0.1"
@@ -2522,16 +2522,6 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@sentry/browser@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.19.2.tgz#c0f6df07584f3b36fa037067aea20b2c8c2095a3"
-  integrity sha512-5VC44p5Vu2eJhVT39nLAJFgha5MjHDYCyZRR1ieeZt3a++otojPGBBAKNAtrEMGV+A2Z9AoneD6ZnDVlyb3GKg==
-  dependencies:
-    "@sentry/core" "6.19.2"
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
-    tslib "^1.9.3"
-
 "@sentry/browser@6.19.7":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-6.19.7.tgz#a40b6b72d911b5f1ed70ed3b4e7d4d4e625c0b5f"
@@ -2542,18 +2532,28 @@
     "@sentry/utils" "6.19.7"
     tslib "^1.9.3"
 
-"@sentry/capacitor@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.6.1.tgz#45a112c69cab06a62a44c3572f172a482ac69305"
-  integrity sha512-JQ8TWpuUGUEwaxThaoTXA20gG9ow4qr6EFYvFhWo/3SJQPLvOvy7nbEekdudRrBem/LiNHK5r/LzErb9ijkk+w==
+"@sentry/browser@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-7.1.1.tgz#2d1fe4a81e0d9679aa73c5ae69a0958e4e42b422"
+  integrity sha512-5AQvStZ+nOP/yxsBmeMZpeGLVtuOgnCNvswKd/c1CJwNw7bDmCE4TQeNKp1C3Gb7lSdBk8ViwUKn0ZpoVQ5MTw==
   dependencies:
-    "@sentry/browser" "6.19.2"
-    "@sentry/core" "6.19.2"
-    "@sentry/hub" "6.19.2"
-    "@sentry/integrations" "6.19.2"
-    "@sentry/tracing" "6.19.2"
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
+    "@sentry/core" "7.1.1"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
+    tslib "^1.9.3"
+
+"@sentry/capacitor@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.7.0.tgz#64e69d578420e63304dd1ea29d013b64f592358b"
+  integrity sha512-7gfAaCc6neI6y8JDu3Kl+gN5lEl6TejrC1f9kzRVePzFHhNsMm9hQ7rb/i5XxDgR3pNQk02BAXkZBTdLXPflSw==
+  dependencies:
+    "@sentry/browser" "7.1.1"
+    "@sentry/core" "7.1.1"
+    "@sentry/hub" "7.1.1"
+    "@sentry/integrations" "7.1.1"
+    "@sentry/tracing" "7.1.1"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
     "@sentry/wizard" "^1.1.4"
     promise "^8.1.0"
 
@@ -2582,17 +2582,6 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/core@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.19.2.tgz#dd35ba6ca41a2dd011c43f732bcdadbb52c06376"
-  integrity sha512-yu1R3ewBT4udmB4v7sc4biQZ0Z0rfB9+TzB5ZKoCftbe6kqXjFMMaFRYNUF9HicVldKAsBktgkWw3+yfqGkw/A==
-  dependencies:
-    "@sentry/hub" "6.19.2"
-    "@sentry/minimal" "6.19.2"
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
-    tslib "^1.9.3"
-
 "@sentry/core@6.19.7":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.19.7.tgz#156aaa56dd7fad8c89c145be6ad7a4f7209f9785"
@@ -2602,6 +2591,16 @@
     "@sentry/minimal" "6.19.7"
     "@sentry/types" "6.19.7"
     "@sentry/utils" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/core@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.1.1.tgz#85f73f8037eec61e37549998de03a6d3d3c635b5"
+  integrity sha512-SADdAoG5u1LTJhPN5KPtn5HHmH6r0mr6h2LokuZnhj6/okrAuCIIKOb6Fh8jV7j2VuABvew8+FjJHORxi7D/3Q==
+  dependencies:
+    "@sentry/hub" "7.1.1"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
     tslib "^1.9.3"
 
 "@sentry/ember@^6.19.7":
@@ -2619,15 +2618,6 @@
     ember-cli-htmlbars "^6.0.1"
     ember-cli-typescript "^4.2.1"
 
-"@sentry/hub@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.19.2.tgz#0e9f9c507e55d8396002f644b43ef27cc9ff1289"
-  integrity sha512-W7KCgNBgdBIMagOxy5J5KQPe+maYxSqfE8a5ncQ3R8BcZDQEKnkW/1FplNbfRLZqA/tL/ndKb7pTPqVtzsbARw==
-  dependencies:
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
-    tslib "^1.9.3"
-
 "@sentry/hub@6.19.7":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-6.19.7.tgz#58ad7776bbd31e9596a8ec46365b45cd8b9cfd11"
@@ -2637,23 +2627,23 @@
     "@sentry/utils" "6.19.7"
     tslib "^1.9.3"
 
-"@sentry/integrations@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-6.19.2.tgz#d5abcab94ae23ada097eb454c269e9ab573e14bb"
-  integrity sha512-RjkZXPrtrM+lJVEa4OpZ9CYjJdkpPoWslEQzLMvbaRpURpHFqmABGtXRAnJRYKmy6h7/9q9sABcDgCD4OZw11g==
+"@sentry/hub@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-7.1.1.tgz#d6aa54e7bd20a71cebd602701dd29d5d581d391a"
+  integrity sha512-ASsRVjYDIii6ZTf36JnIYKHWBQBk0P42Tgq324MpyPgaeVDg3saBcyXO5iAtWvY6Vmdi2H4JCVDoir2Zz3Me1w==
   dependencies:
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
-    localforage "^1.8.1"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
     tslib "^1.9.3"
 
-"@sentry/minimal@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-6.19.2.tgz#e748541e4adbc7e80a3b6ccaf01b631c17fc44b4"
-  integrity sha512-ClwxKm77iDHET7kpzv1JvzDx1er5DoNu+EUjst0kQzARIrXvu9xuZuE2/CnBWycQWqw8o3HoGoKz65uIhsUCzQ==
+"@sentry/integrations@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-7.1.1.tgz#e0d512e0e44bbcd1f1fab0808312615dd7aa1439"
+  integrity sha512-FAkxuY/3O9xc+1CTovouhQyHycMrWlCYZw+oB0AOJUug1Vcq+XRPNG4gRpwt/HNFGuu7VjPXvk4ZQc60g1CQww==
   dependencies:
-    "@sentry/hub" "6.19.2"
-    "@sentry/types" "6.19.2"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
+    localforage "^1.8.1"
     tslib "^1.9.3"
 
 "@sentry/minimal@6.19.7":
@@ -2663,17 +2653,6 @@
   dependencies:
     "@sentry/hub" "6.19.7"
     "@sentry/types" "6.19.7"
-    tslib "^1.9.3"
-
-"@sentry/tracing@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-6.19.2.tgz#ed6ff1bc901c4d79ef97f77ed54ce58c650e4915"
-  integrity sha512-rGoPpP1JIAxdq5bzrww0XuNVr6yn7RN6/wUcaxf6CAvklKvDx+q28WTGlZLGTZ/3un8Rv6i1FZFZOXizgnVnrg==
-  dependencies:
-    "@sentry/hub" "6.19.2"
-    "@sentry/minimal" "6.19.2"
-    "@sentry/types" "6.19.2"
-    "@sentry/utils" "6.19.2"
     tslib "^1.9.3"
 
 "@sentry/tracing@6.19.7", "@sentry/tracing@^6.19.7":
@@ -2687,23 +2666,25 @@
     "@sentry/utils" "6.19.7"
     tslib "^1.9.3"
 
-"@sentry/types@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.19.2.tgz#0219c9da21ed975951108b8541913b1966464435"
-  integrity sha512-XO5qmVBdTs+7PdCz7fAwn1afWxSnRE2KLBFg5/vOdKosPSSHsSHUURSkxiEZc2QsR+JpRB4AeQ26AkIRX38qTg==
+"@sentry/tracing@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.1.1.tgz#8996c0913803d3c4a103388c9c0dd2410cca8478"
+  integrity sha512-MJ+EPGfvPlgbJOcZRoIl6+Oi0oRE2nIi/HP2BPJSKGxXFi2Y09bcZUwfxOH8fkUa465jOGBFdCm+sXcbyExvuw==
+  dependencies:
+    "@sentry/hub" "7.1.1"
+    "@sentry/types" "7.1.1"
+    "@sentry/utils" "7.1.1"
+    tslib "^1.9.3"
 
 "@sentry/types@6.19.7":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.19.7.tgz#c6b337912e588083fc2896eb012526cf7cfec7c7"
   integrity sha512-jH84pDYE+hHIbVnab3Hr+ZXr1v8QABfhx39KknxqKWr2l0oEItzepV0URvbEhB446lk/S/59230dlUUIBGsXbg==
 
-"@sentry/utils@6.19.2":
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-6.19.2.tgz#995efb896c5159369509f4896c27a2d2ea9191f2"
-  integrity sha512-2DQQ2OJaxjtyxGq5FmMlqb6hptsqMs2xoBiVRMkTS/rvyTrk1oQdKZ8ePwjtgX3nJ728ni3IXIyXV+vfGp4EBw==
-  dependencies:
-    "@sentry/types" "6.19.2"
-    tslib "^1.9.3"
+"@sentry/types@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.1.1.tgz#63aa68e7be36d63cc305d01af9119a4cdb186ae3"
+  integrity sha512-5N1UMd2SqvUXprcIUMyDEju3H9lJY2oWfWQBGo0lG6Amn/lGAPAYlchg+4vQCLutDQMyd8K9zPwcbKn4u6gHdw==
 
 "@sentry/utils@6.19.7":
   version "6.19.7"
@@ -2711,6 +2692,14 @@
   integrity sha512-z95ECmE3i9pbWoXQrD/7PgkBAzJYR+iXtPuTkpBjDKs86O3mT+PXOT3BAn79w2wkn7/i3vOGD2xVr1uiMl26dA==
   dependencies:
     "@sentry/types" "6.19.7"
+    tslib "^1.9.3"
+
+"@sentry/utils@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.1.1.tgz#7174a1439f8970510207fa7587385119397e1718"
+  integrity sha512-DPRHDf3InfyVgmxToE4Z+AATAR4OVm+wsXDLFGGyncR91CE1x4wLQKOcAJJwX3F0Hz1VHENfmx1DvyYTHOrC/A==
+  dependencies:
+    "@sentry/types" "7.1.1"
     tslib "^1.9.3"
 
 "@sentry/wizard@^1.1.4":
@@ -7953,10 +7942,10 @@ eslint-plugin-prettier@^4.2.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-qunit@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-qunit/-/eslint-plugin-qunit-7.3.0.tgz#ea19c6df16b3e231764f93363709172ad3c22bc8"
-  integrity sha512-o80qEsBpnh2hGCLKmNVimPSPY6TP2eyM+wQl9vdOKWJKrQXEgNTMX9mf4X4h3GguaBlmSNnLaPVsycKaZEaGZg==
+eslint-plugin-qunit@^7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-qunit/-/eslint-plugin-qunit-7.3.1.tgz#cb7c0012199a8db8ff43916d07b0361e999a53b1"
+  integrity sha512-L1yutkLqCgr70ZmMAbBKPvUOUwhKryZ0RaJKOzw72Bmn8no3JNBL9hhbX2aTvfZqYM/wLXIT0nICZiGrV4xVJw==
   dependencies:
     eslint-utils "^3.0.0"
     requireindex "^1.2.0"
@@ -12880,13 +12869,13 @@ postcss-js@^4.0.0:
   dependencies:
     camelcase-css "^2.0.1"
 
-postcss-load-config@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-4.0.1.tgz#152383f481c2758274404e4962743191d73875bd"
-  integrity sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==
+postcss-load-config@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-3.1.4.tgz#1ab2571faf84bb078877e1d07905eabe9ebda855"
+  integrity sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==
   dependencies:
     lilconfig "^2.0.5"
-    yaml "^2.1.1"
+    yaml "^1.10.2"
 
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
@@ -12980,10 +12969,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.5.1, prettier@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
-  integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
+prettier@^2.5.1, prettier@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
+  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
 pretty-ms@^3.1.0:
   version "3.2.0"
@@ -14997,10 +14986,10 @@ table@^6.8.0:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tailwindcss@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.1.5.tgz#c8e0bb1cbacf29a6411d9c07debc1af9d388d4ca"
-  integrity sha512-bC/2dy3dGPqxMWAqFSRgQxVCfmO/31ZbeEp8s9DMDh4zgPZ5WW1gxRJkbBkXcTUIzaSUdhWrcsrSOe32ccgB4w==
+tailwindcss@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.1.6.tgz#bcb719357776c39e6376a8d84e9834b2b19a49f1"
+  integrity sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==
   dependencies:
     arg "^5.0.2"
     chokidar "^3.5.3"
@@ -15018,7 +15007,7 @@ tailwindcss@^3.1.5:
     postcss "^8.4.14"
     postcss-import "^14.1.0"
     postcss-js "^4.0.0"
-    postcss-load-config "^4.0.1"
+    postcss-load-config "^3.1.4"
     postcss-nested "5.0.6"
     postcss-selector-parser "^6.0.10"
     postcss-value-parser "^4.2.0"
@@ -16190,15 +16179,10 @@ yam@^1.0.0:
     fs-extra "^4.0.2"
     lodash.merge "^4.6.0"
 
-yaml@^1.10.0:
+yaml@^1.10.0, yaml@^1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
-
-yaml@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.1.1.tgz#1e06fb4ca46e60d9da07e4f786ea370ed3c3cfec"
-  integrity sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==
 
 yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.9"

@@ -1,0 +1,22 @@
+<View @hideLogo={{true}}>    
+    <div class="hn light cancel-subscription">
+        <h1 class="hn view-title">Cancel Subscription</h1>
+        <p class="hn strong">When you cancel your account, effective immediately:</p>
+        <div>
+            <ul>
+                <li>Your recurring membership payment will stop</li>
+                <li>You will no longer have access to the House Ninja app</li>
+                <li>Any service requests that have not yet been performed will be cancelled</li>
+                <li>Service requests that require payment settlement will be managed via email or phone</li>            
+            </ul>
+        </div>
+        <Primitive::Button {{on "click" (fn this.handleCancel false)}} @size="md" @variant="solid" @semantic="alert" @disabled={{this.isProcessing}}>Cancel Subscription</Primitive::Button>
+        <p class="hndp">
+            If you would like to cancel your subscription and delete your data, <button type="button" {{on "click" (fn this.handleCancel true)}}>click here</button>.<br/><br/>
+            By deleting your data, we will not be able to recover your service history should you choose to sign up again.
+        </p>        
+    </div>
+    {{#if this.isProcessing}}
+        <Primitive::Loader::Logo @isDone={{this.hasProcessed}} />        
+    {{/if}}
+</View>

@@ -8,6 +8,10 @@
   overflow-y: auto;
 }
 
+.settings-view.account-information {
+  align-items: center;
+}
+
 .settings-menu .menu-item button {
   display: flex;
   flex-direction: row;

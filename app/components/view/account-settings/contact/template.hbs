@@ -1,4 +1,4 @@
-<div class="settings-view dark">
+<div class="settings-view dark account-information">
     <h1 class="hn view-title">Edit Account Information</h1>
     {{#each @fields as |field|}}
         <Primitive::Input
@@ -13,5 +13,6 @@
           @onInput={{@validateForm}}
         />
     {{/each}}
-    <p>If you’d like to update your email or phone number, please <strong><button class="hn strong accent override underline" type="button" {{on "click" @openChatModal}}>message us</button></strong> directly.</p>
+    <p class="mb-4">If you’d like to update your email or phone number, please <strong><button class="hn strong accent override underline" type="button" {{on "click" @openChatModal}}>message us</button></strong> directly.</p>
+    <Primitive::Button @type="button" @size="sm" @variant="floating" @semantic="white" {{on "click" (fn this.selectRoute "cancel-subscription")}}>Cancel My Subscription</Primitive::Button>
 </div>

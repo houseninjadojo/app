@@ -34,6 +34,12 @@ export default function () {
   );
 
   this.transition(
+    this.toRoute([NATIVE_MOBILE_ROUTE.CANCEL_SUBSCRIPTION.INDEX]),
+    this.use('toLeft', { duration: 500, easing: [100, 20] }),
+    this.reverse('toRight', { duration: 300 })
+  );
+
+  this.transition(
     this.fromRoute([
       NATIVE_MOBILE_ROUTE.DASHBOARD.INDEX,
       NATIVE_MOBILE_ROUTE.DASHBOARD.HOME,
