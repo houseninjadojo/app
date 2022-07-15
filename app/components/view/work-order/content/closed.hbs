@@ -3,8 +3,8 @@
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor }}</p>
-        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>        
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.description}}</p>
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>
+        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.formattedNotes}}</p>
     </div>
     {{#if this.imageUrl}}
         <div class="document-container">
