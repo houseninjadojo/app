@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/houseninjadojo/app/compare/v1.18.1...v1.18.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* **invoice:** mark invoice notes htmlSafe ([#783](https://github.com/houseninjadojo/app/issues/783)) ([a06a841](https://github.com/houseninjadojo/app/commit/a06a84137b69ced1d2ee117635ecabc19fc9c0bf))
+
 ## [1.18.1](https://github.com/houseninjadojo/app/compare/v1.18.0...v1.18.1) (2022-07-15)
 
 
