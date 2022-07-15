@@ -1,4 +1,5 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+import { htmlSafe } from '@ember/template';
 
 export default class InvoiceModel extends Model {
   @belongsTo('document', { async: false }) document;
@@ -24,6 +25,6 @@ export default class InvoiceModel extends Model {
   @attr('date') updatedAt;
 
   get formattedNotes() {
-    return this.description.replace(/\n/g, '<br>');
+    return htmlSafe(this.description.replace(/\n/g, '<br>'));
   }
 }
