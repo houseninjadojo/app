@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/houseninjadojo/app/compare/v1.18.0...v1.18.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* **invoice:** format description/notes with line breaks ([#782](https://github.com/houseninjadojo/app/issues/782)) ([b7a1436](https://github.com/houseninjadojo/app/commit/b7a143671b06e78ff93a46e92d9c5a50e5338b51))
+
 # [1.18.0](https://github.com/houseninjadojo/app/compare/v1.17.8...v1.18.0) (2022-07-15)
 
 
