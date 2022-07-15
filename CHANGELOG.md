@@ -1,3 +1,16 @@
+# [1.18.0](https://github.com/houseninjadojo/app/compare/v1.17.8...v1.18.0) (2022-07-15)
+
+
+### Bug Fixes
+
+* **auth:** check auth kind in index route ([#780](https://github.com/houseninjadojo/app/issues/780)) ([604a9d9](https://github.com/houseninjadojo/app/commit/604a9d983146ff557422e78dbb0798ce10ea9978))
+* **invoice:** use receipt over invoice ([#777](https://github.com/houseninjadojo/app/issues/777)) ([4a273b6](https://github.com/houseninjadojo/app/commit/4a273b6c9584c6449f798440aa57cfa989bfb7ae))
+
+
+### Features
+
+* expire local storage items after some time ([#754](https://github.com/houseninjadojo/app/issues/754)) ([d67991f](https://github.com/houseninjadojo/app/commit/d67991f5ae2bfbfd1779c42944333c675347d294))
+
 ## [1.17.8](https://github.com/houseninjadojo/app/compare/v1.17.7...v1.17.8) (2022-07-15)
 
 
