@@ -11,31 +11,31 @@
     <div class="hn banner-message">
         <p>
             Your service has been completed. Please finalize payment via the button below.
-        </p>    
+        </p>
     </div>
-    <div class="work-order-details">    
+    <div class="work-order-details">
         <p class="hn field"><span class="hn label">Amount Due: {{@model.invoice.formattedTotal}}</span></p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>    
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.description}}</p>
-    </div>    
+        <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>
+        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.formattedNotes}}</p>
+    </div>
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Payment
     </Primitive::Button>
     {{#if this.isNativePlatform}}
         <p class="mt-4">This will charge your {{this.creditCard.cardBrand}} ending in {{this.creditCard.lastFour}}. If you would like to use a different method of payment, please <button class="hn accent override" type="button" {{on "click" this.requestDifferentPayment}}><span class="underline"><strong>tap here</strong></span></button> to message us.</p>
-    {{/if}}    
-    <View::WorkOrder::Content::ApprovePayment::WebDialog 
+    {{/if}}
+    <View::WorkOrder::Content::ApprovePayment::WebDialog
         @isVisible={{this.showWebDialog}}
-        @toggleWebDialog={{this.toggleWebDialog}} 
-        @isProcessing={{this.isProcessing}} 
+        @toggleWebDialog={{this.toggleWebDialog}}
+        @isProcessing={{this.isProcessing}}
         @approvePayment={{this.approvePayment}}
         @formattedTotal={{@model.invoice.formattedTotal}}
-    />    
+    />
 </Primitive::Section>
-<View::WorkOrder::Content::ApprovePayment::Processing 
+<View::WorkOrder::Content::ApprovePayment::Processing
     @paid={{this.paid}}
     @paymentFailed={{this.paymentFailed}}
     @requestDifferentPayment={{this.requestDifferentPayment}}

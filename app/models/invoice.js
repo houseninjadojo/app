@@ -22,4 +22,8 @@ export default class InvoiceModel extends Model {
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
+
+  get formattedNotes() {
+    return this.description.replace(/\n/g, '<br>');
+  }
 }
