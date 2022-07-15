@@ -1,3 +1,10 @@
+## [1.17.8](https://github.com/houseninjadojo/app/compare/v1.17.7...v1.17.8) (2022-07-15)
+
+
+### Bug Fixes
+
+* move payment-approval redirect logic to session service ([#779](https://github.com/houseninjadojo/app/issues/779)) ([5505045](https://github.com/houseninjadojo/app/commit/55050456695ec75c405e68092d77175582832e15))
+
 ## [1.17.7](https://github.com/houseninjadojo/app/compare/v1.17.6...v1.17.7) (2022-07-14)
 
 ## [1.17.6](https://github.com/houseninjadojo/app/compare/v1.17.5...v1.17.6) (2022-07-14)
