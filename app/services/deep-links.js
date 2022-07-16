@@ -27,7 +27,8 @@ export default class DeepLinksService extends Service {
 
   start() {
     if (isNativePlatform()) {
-      this.setupRouteHandler();
+      // @todo figure out why this takes precedence over branch
+      // this.setupRouteHandler();
       this.setupBranchHandlers();
     }
   }
@@ -85,10 +86,7 @@ export default class DeepLinksService extends Service {
    */
   setupBranchHandlers() {
     this.branchListener = BranchDeepLinks.addListener('init', (event) => {
-      if (this.isNonBranchLink(event)) {
-        return;
-      }
-      console.log(event);
+      debug('Opened with Branch Link');
       const referringParams = event.referringParams;
       this.analytics.track('Opened with Deep Link', referringParams);
       Sentry.addBreadcrumb({
@@ -100,7 +98,7 @@ export default class DeepLinksService extends Service {
       // Retrieve deeplink keys from 'referringParams' and evaluate the values to determine where to route the user
       // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
       const route = this.selectRouteFromBranchParams(referringParams);
-      this.forwardRoute({ raw: route });
+      this.forwardRoute({ raw: route, name: route });
     });
     this.branchErrorListener = BranchDeepLinks.addListener(
       'initError',
@@ -151,12 +149,10 @@ export default class DeepLinksService extends Service {
    * }
    */
   selectRouteFromBranchParams(params) {
-    console.log(params);
     let path = '/';
     if (params.$deeplink_path) {
       path = params.$deeplink_path;
     }
-    console.log(path);
     return path;
   }
 
