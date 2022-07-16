@@ -11,6 +11,7 @@ export default class SettingsPaymentController extends Controller {
   @service router;
   @service view;
   @service store;
+  @service current;
 
   @tracked formIsInvalid = true;
   @tracked paymentMethod = {
@@ -83,7 +84,10 @@ export default class SettingsPaymentController extends Controller {
   @action
   async saveAction() {
     this.model.unloadRecord();
-    this.model = this.store.createRecord('credit-card', ...this.paymentMethod);
+    this.model = this.store.createRecord('credit-card', {
+      ...this.paymentMethod,
+      user: this.current?.user,
+    });
     try {
       await this.model.save();
       await this.resetForm();
