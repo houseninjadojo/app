@@ -1,3 +1,10 @@
+## [1.18.5](https://github.com/houseninjadojo/app/compare/v1.18.4...v1.18.5) (2022-07-16)
+
+
+### Bug Fixes
+
+* **settings:** fix payment method save action ([#786](https://github.com/houseninjadojo/app/issues/786)) ([cb429e9](https://github.com/houseninjadojo/app/commit/cb429e97bceac739be9ff824c34957f5febec756))
+
 ## [1.18.4](https://github.com/houseninjadojo/app/compare/v1.18.3...v1.18.4) (2022-07-15)
 
 
