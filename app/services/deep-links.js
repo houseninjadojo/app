@@ -50,9 +50,11 @@ export default class DeepLinksService extends Service {
     debug('url: ' + url.name);
     debug('options: ' + JSON.stringify(url.options));
     debug('raw: ' + url.raw);
-    let route = this.router.recognize(url.name);
+    let route = this.router.recognize(url.raw);
     debug('route: ' + route.name);
-    this.router.transitionTo(url.raw);
+    if (route) {
+      this.router.transitionTo(route.name, route.params);
+    }
   }
 
   parseUrl(url) {
