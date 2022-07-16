@@ -1,3 +1,10 @@
+## [1.18.6](https://github.com/houseninjadojo/app/compare/v1.18.5...v1.18.6) (2022-07-16)
+
+
+### Bug Fixes
+
+* **deep-links:** branch link deep linking ([#787](https://github.com/houseninjadojo/app/issues/787)) ([22a0e5c](https://github.com/houseninjadojo/app/commit/22a0e5cdce656fdb0a9973618e3cd9cf36595d03))
+
 ## [1.18.5](https://github.com/houseninjadojo/app/compare/v1.18.4...v1.18.5) (2022-07-16)
 
 
