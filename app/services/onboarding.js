@@ -44,7 +44,7 @@ export default class OnboardingService extends Service {
   }
 
   routeFromStep(step) {
-    return `signup.${step}`;
+    return `onboarding.${step}`;
   }
 
   async userFromOnboardingCode(onboardingCode) {
