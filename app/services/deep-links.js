@@ -6,7 +6,7 @@ import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 import BranchWeb from 'branch-sdk';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import ENV from 'houseninja/config/environment';
-import { isEqual, compare } from '@ember/utils';
+// import { isEqual, compare } from '@ember/utils';
 
 /**
  * This service registers a listener to pick up incoming deep links.
