@@ -59,7 +59,8 @@ export default class DeepLinksService extends Service {
     }
 
     if (route) {
-      this.router.transitionTo(route.name, route.params);
+      // this.router.transitionTo(route.name, route.params);
+      this.router.transitionTo(url.raw);
     }
   }
 
