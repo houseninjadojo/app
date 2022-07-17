@@ -1,3 +1,10 @@
+## [1.18.8](https://github.com/houseninjadojo/app/compare/v1.18.7...v1.18.8) (2022-07-17)
+
+
+### Bug Fixes
+
+* **deep-links:** fix login ([#789](https://github.com/houseninjadojo/app/issues/789)) ([be9376d](https://github.com/houseninjadojo/app/commit/be9376dfa2b5ac9cf178a3c8649c69dfd04c2ea1))
+
 ## [1.18.7](https://github.com/houseninjadojo/app/compare/v1.18.6...v1.18.7) (2022-07-16)
 
 
