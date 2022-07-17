@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
 
-        if isSimulatorOrTestFlight() {
+        if isSimulator() {
           Branch.setUseTestBranchKey(true)
           Branch.getInstance().enableLogging()
         }
@@ -100,6 +100,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
+    }
+
+    private func isSimulator() -> Bool {
+        guard let path = Bundle.main.appStoreReceiptURL?.path else {
+            return false
+        }
+        return path.contains("CoreSimulator")
     }
 
     private func clearKeychain() -> Bool {
