@@ -6,7 +6,7 @@ import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 import BranchWeb from 'branch-sdk';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import ENV from 'houseninja/config/environment';
-import { isEqual } from '@ember/utils';
+// import { isEqual, compare } from '@ember/utils';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -28,7 +28,7 @@ export default class DeepLinksService extends Service {
   start() {
     if (isNativePlatform()) {
       // @todo figure out why this takes precedence over branch
-      // this.setupRouteHandler();
+      this.setupRouteHandler();
       this.setupBranchHandlers();
     }
   }
@@ -52,6 +52,12 @@ export default class DeepLinksService extends Service {
     debug('raw: ' + url.raw);
     let route = this.router.recognize(url.raw);
     debug('route: ' + route.name);
+    // console.log(route);
+
+    if (route?.name === 'login.callback') {
+      this.router.transitionTo(url.raw);
+    }
+
     if (route) {
       this.router.transitionTo(route.name, route.params);
     }
@@ -74,6 +80,10 @@ export default class DeepLinksService extends Service {
 
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
+      // console.log(event);
+      if (!this.isNonBranchLink(event)) {
+        return;
+      }
       debug('non branch url: ' + event.url);
       const url = this.parseUrl(event.url);
       this.forwardRoute(url);
@@ -88,6 +98,10 @@ export default class DeepLinksService extends Service {
    */
   setupBranchHandlers() {
     this.branchListener = BranchDeepLinks.addListener('init', (event) => {
+      // console.log(event);
+      if (this.isNonBranchLink(event)) {
+        return;
+      }
       debug('Opened with Branch Link');
       const referringParams = event.referringParams;
       this.analytics.track('Opened with Deep Link', referringParams);
@@ -159,6 +173,10 @@ export default class DeepLinksService extends Service {
   }
 
   isNonBranchLink(event) {
-    return !isEqual(event.referringParams, {});
+    return (
+      event?.referringParams === undefined ||
+      (typeof event?.referringParams === 'object' &&
+        Object.keys(event?.referringParams).length === 0)
+    );
   }
 }
