@@ -21,6 +21,7 @@ import ENV from 'houseninja/config/environment';
  */
 export default class DeepLinksService extends Service {
   @service router;
+  @service metrics;
   @service analytics;
 
   listener = null;
@@ -105,7 +106,10 @@ export default class DeepLinksService extends Service {
       }
       debug('Opened with Branch Link');
       const referringParams = event.referringParams;
-      this.analytics.track('Opened with Deep Link', referringParams);
+      this.metrics.trackEvent({
+        event: 'Opened with Deep Link',
+        properties: { referringParams },
+      });
       Sentry.addBreadcrumb({
         category: 'deep-link',
         message: 'Branch deep link',
@@ -130,7 +134,10 @@ export default class DeepLinksService extends Service {
       if (err) {
         captureException(err);
       } else {
-        this.analytics.track('Opened with Web Link', data.data_parsed);
+        this.metrics.trackEvent({
+          event: 'Opened with Web Link',
+          properties: data.data_parsed,
+        });
         Sentry.addBreadcrumb({
           category: 'web-link',
           message: 'Branch web link',

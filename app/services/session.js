@@ -61,9 +61,9 @@ export default class SessionService extends BaseSessionService {
       );
     }
 
-    await this.analytics.track('Logout');
+    this.metrics.trackEvent({ event: 'Logout' });
     await this.invalidate();
-    await this.analytics.reset();
+    this.metrics.reset();
     await this.intercom.logout();
     await this._closeBrowser();
     this.router.transitionTo('index');

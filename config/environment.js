@@ -75,6 +75,26 @@ module.exports = function (environment) {
       },
     },
 
+    metricsAdapters: [
+      {
+        name: 'GoogleTagManager',
+        environments: ['all'],
+        config: {
+          // id: 'GTM-N2WVZKP',
+          id: 'GTM-5LKVFJQ',
+          // dataLayer: [],
+          // envParams: "gtm_auth=xxxxx&gtm_preview=env-xx&gtm_cookies_win=x",
+        },
+      },
+      {
+        name: 'CapacitorMixpanel',
+        environments: ['all'],
+        config: {
+          token: 'cd20057a467eef665b9e86f0b687a5e3',
+        },
+      },
+    ],
+
     '@sentry/ember': {
       sentry: {
         dsn: null,

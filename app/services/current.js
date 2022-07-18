@@ -7,6 +7,7 @@ import { task } from 'ember-concurrency';
 export default class CurrentService extends Service {
   @service analytics;
   @service intercom;
+  @service metrics;
   @service store;
   @service session;
 
@@ -90,10 +91,12 @@ export default class CurrentService extends Service {
       'fullName'
     );
     Sentry.setUser({ email });
-    yield this.analytics.identify(email);
-    yield this.analytics.setProfile({
-      $email: email,
-      $name: fullName,
+    this.metrics.identify({
+      distinctId: email,
+      profile: {
+        $email: email,
+        $name: fullName,
+      },
     });
     yield this.intercom.registerUser(id, email, intercomHash);
     this.isLoadingUser = false;

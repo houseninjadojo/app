@@ -10,6 +10,7 @@ class ApplicationRoute extends Route {
   @service current;
   @service deepLinks;
   @service intercom;
+  @service metrics;
   @service session;
   @service router;
   @service loader;
@@ -32,8 +33,7 @@ class ApplicationRoute extends Route {
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
-    await this.analytics.setup();
-    await this.analytics.track('Ember App Started');
+    // await this.metrics.install();
     this.deepLinks.setup();
   }
 
@@ -46,7 +46,7 @@ class ApplicationRoute extends Route {
   async _trackPage() {
     const page = this.router.currentURL;
     const title = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('Page Visit', { page, title });
+    this.metrics.trackPage({ page, title });
   }
 
   /**
@@ -58,9 +58,10 @@ class ApplicationRoute extends Route {
     const tag = event.target.localName;
     const classNames = event.target.className.replaceAll(' ', '.');
     const id = event.target.id;
-    const queryString = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    await this.analytics.track('Click', {
-      selector: queryString,
+    const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
+    this.metrics.trackEvent({
+      event: 'Click',
+      properties: { selector },
     });
   }
 

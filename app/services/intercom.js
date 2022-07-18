@@ -6,6 +6,7 @@ import ENV from 'houseninja/config/environment';
 import { task } from 'ember-concurrency';
 
 export default class IntercomService extends Service {
+  @service metrics;
   @service current;
   @service analytics;
 
@@ -49,7 +50,7 @@ export default class IntercomService extends Service {
 
   @task({ drop: true }) *_showMessenger() {
     this.isOpen = true;
-    this.analytics.track('Intercom messenger opened', {});
+    this.metrics.trackEvent({ event: 'Intercom messenger opened' });
     yield Intercom.displayMessenger();
   }
 
@@ -59,8 +60,9 @@ export default class IntercomService extends Service {
 
   @task({ drop: true }) *_showComposer(message = '') {
     this.isOpen = true;
-    this.analytics.track('Intercom composer opened', {
-      message,
+    this.metrics.trackEvent({
+      event: 'Intercom composer opened',
+      properties: { message },
     });
     yield Intercom.displayMessageComposer({ message });
   }
