@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.17.6",
+  "version": "1.18.10",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -134,7 +134,7 @@
     "@capacitor/splash-screen": "^1.2.2",
     "@capacitor/storage": "^1.2.5",
     "@houseninja/capacitor-mixpanel": "^0.1.0",
-    "@robingenz/capacitor-file-picker": "^0.3.0",
+    "@robingenz/capacitor-file-picker": "^0.3.1",
     "capacitor-branch-deep-links": "^4.1.1",
     "capacitor-secure-storage-plugin": "^0.7.1",
     "lottie-web": "^5.9.6",

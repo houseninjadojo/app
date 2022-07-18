@@ -15,6 +15,8 @@ const CACHED_MODELS = [
   'user',
 ];
 
+const TTL_MINUTES = 30;
+
 export default class OnboardingService extends Service {
   @service storage;
   @service store;
@@ -27,7 +29,7 @@ export default class OnboardingService extends Service {
 
   async completeStep(step) {
     this.currentStep = step;
-    await this.storage.setLocal('current-step', this.nextStep);
+    await this.storage.setLocal('current-step', this.nextStep, TTL_MINUTES);
     const user = this.localModel('user');
     if (isPresent(user)) {
       user.onboardingStep = this.nextStep;
@@ -42,7 +44,7 @@ export default class OnboardingService extends Service {
   }
 
   routeFromStep(step) {
-    return `signup.${step}`;
+    return `onboarding.${step}`;
   }
 
   async userFromOnboardingCode(onboardingCode) {
@@ -93,7 +95,7 @@ export default class OnboardingService extends Service {
       }
     }).compact();
     records.forEach(async (record) => {
-      await this.storage.setLocal(record.data.type, record);
+      await this.storage.setLocal(record.data.type, record, TTL_MINUTES);
     });
   }
 
@@ -102,7 +104,7 @@ export default class OnboardingService extends Service {
   }
 
   set zipcode(zip) {
-    this.storage.setLocal('zipcode', zip);
+    this.storage.setLocal('zipcode', zip, TTL_MINUTES);
   }
 
   async fetchLocalModel(modelType) {

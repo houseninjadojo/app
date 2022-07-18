@@ -21,6 +21,7 @@ export default class SetPasswordComponent extends Component {
   @service store;
 
   @tracked passwordHasBeenSet = false;
+  @tracked requestedToSetUpAccount = false;
 
   @tracked passwords = {
     password: '',
@@ -82,6 +83,7 @@ export default class SetPasswordComponent extends Component {
     let user;
     if (isPresent(this.args.user)) {
       user = this.args.user;
+      this.requestedToSetUpAccount = true;
     } else {
       user = await this.store.peekAll('user').get('firstObject');
     }
@@ -90,7 +92,7 @@ export default class SetPasswordComponent extends Component {
       try {
         await user.save();
 
-        if (this.args.isOnboardingViaNativeApp) {
+        if (this.requestedToSetUpAccount) {
           this.passwordHasBeenSet = true;
         } else {
           await this.onboarding.cleanup();

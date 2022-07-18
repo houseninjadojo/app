@@ -1,14 +1,14 @@
-<div class="actions">        
-    {{#if @model.scheduledDate}}    
+<div class="actions">
+    {{#if @model.scheduledDate}}
         <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
             I have a question
         </Primitive::Button>
-    {{/if}}    
+    {{/if}}
     <hr/>
 </div>
 <Primitive::Section>
     <div class="work-order-details">
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+        <p class="hn field"><span class="hn label">Description: </span>{{@model.formattedNotes}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{if (and @model.vendor @model.scheduledDate) @model.vendor }}</p>
         <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if (and @model.vendor @model.scheduledDate) @model.scheduledDate }}</p>

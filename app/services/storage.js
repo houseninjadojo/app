@@ -16,11 +16,28 @@ export default class StorageService extends Service {
   }
 
   async getLocal(key) {
-    return await getLocalStorage(key);
+    let item = await getLocalStorage(key);
+    if (item && item.expiresAt) {
+      if (item.expiresAt > new Date()) {
+        return item.value;
+      }
+    } else {
+      return item;
+    }
   }
 
-  async setLocal(key, value) {
-    await setLocalStorage(key, value);
+  async setLocal(key, value, ttlMinutes) {
+    let time = new Date();
+    let item;
+    if (ttlMinutes) {
+      item = {
+        value: value,
+        expiresAt: time.setMinutes(time.getMinutes() + ttlMinutes),
+      };
+    } else {
+      item = value;
+    }
+    await setLocalStorage(key, item);
   }
 
   async clearLocal() {

@@ -53,7 +53,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
-  async approvePayment(isWeb = false) {
+  async approvePayment() {
     this.toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
@@ -63,10 +63,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     try {
       await payment.save(); // this will be long running (probably)
       this.paid = true;
-      isWeb && this.toggleWebDialog();
     } catch (e) {
       this.paymentFailed = true;
-      isWeb && this.toggleWebDialog();
       captureException(e);
     }
   }

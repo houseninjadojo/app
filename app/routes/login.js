@@ -13,7 +13,9 @@ export default class LoginRoute extends Route {
   @service analytics;
 
   async beforeModel() {
-    this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    if (this.session.data.authenticated.kind !== 'payment-approval') {
+      this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    }
 
     const pkce = getOwner(this).lookup('authenticator:pkce');
     const { state: loginState } = await this.loginState();
