@@ -4922,7 +4922,7 @@ broccoli-funnel-reducer@^1.0.0:
     symlink-or-copy "^1.0.0"
     walk-sync "^0.3.1"
 
-broccoli-funnel@^3.0.0, broccoli-funnel@^3.0.3, broccoli-funnel@^3.0.5, broccoli-funnel@^3.0.6, broccoli-funnel@^3.0.8:
+broccoli-funnel@^3.0.0, broccoli-funnel@^3.0.2, broccoli-funnel@^3.0.3, broccoli-funnel@^3.0.5, broccoli-funnel@^3.0.6, broccoli-funnel@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-3.0.8.tgz#f5b62e2763c3918026a15a3c833edc889971279b"
   integrity sha512-ng4eIhPYiXqMw6SyGoxPHR3YAwEd2lr9FgBI1CyTbspl4txZovOsmzFkMkGAlu88xyvYXJqHiM2crfLa65T1BQ==
@@ -7517,6 +7517,15 @@ ember-load-initializers@^2.1.2:
   dependencies:
     ember-cli-babel "^7.13.0"
     ember-cli-typescript "^2.0.2"
+
+ember-metrics@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/ember-metrics/-/ember-metrics-1.5.2.tgz#4090720f5391026ae6a0cc94c83861e92841f186"
+  integrity sha512-6QUg3XcGQ/wnMHxT4T+QXQs9NlojJ+ai/055sQWdmLrxep4w2fyy/spn9wxAkokdwEjj0nV5MPfTOTq5OS748w==
+  dependencies:
+    broccoli-funnel "^3.0.2"
+    ember-cli-babel "^7.26.6"
+    ember-cli-typescript "^4.2.1"
 
 ember-modifier-manager-polyfill@^1.2.0:
   version "1.2.0"

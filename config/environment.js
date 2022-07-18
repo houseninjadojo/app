@@ -50,6 +50,20 @@ module.exports = function (environment) {
       mixpanelToken: null,
     },
 
+    metricsAdapters: [
+      {
+        name: 'GoogleTagManager',
+        id: 'xxx' // TODO
+      },
+      {
+        name: 'Mixpanel',
+        environments: ['production'],
+        config: {
+          token: '', // TODO
+        },
+      },
+    ],
+
     branch: {
       key: 'key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI',
     },
