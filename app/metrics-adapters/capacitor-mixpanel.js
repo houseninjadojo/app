@@ -1,7 +1,7 @@
 import BaseAdapter from 'ember-metrics/metrics-adapters/base';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { Mixpanel } from '@houseninja/capacitor-mixpanel';
-import { run } from '@ember/runloop';
+import { schedule } from '@ember/runloop';
 import { assert, debug } from '@ember/debug';
 import { isPresent } from '@ember/utils';
 
@@ -35,7 +35,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   identify(options = {}) {
     const { distinctId, profile } = options;
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.identify({ distinctId });
       } catch (e) {
@@ -49,7 +49,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   trackEvent(options = {}) {
     const { event, properties } = options;
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.track({ event, properties });
       } catch (e) {
@@ -61,7 +61,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
   trackPage(options = {}) {
     const { page, title } = options;
     const properties = { page, title };
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.track({ event: 'Page Visit', properties });
       } catch (e) {
@@ -72,7 +72,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   alias(options = {}) {
     const { alias, distinctId } = options;
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.alias({ alias, distinctId });
       } catch (e) {
@@ -83,7 +83,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   setProfile(options = {}) {
     const { properties } = options;
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.setProfile({ properties });
       } catch (e) {
@@ -93,7 +93,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
   }
 
   uninstall() {
-    run(async () => {
+    schedule('afterRender', this, () => {
       try {
         Mixpanel.reset();
       } catch (e) {

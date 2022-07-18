@@ -4,6 +4,7 @@ import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { schedule } from '@ember/runloop';
 
 class ApplicationRoute extends Route {
   @service analytics;
@@ -44,9 +45,11 @@ class ApplicationRoute extends Route {
   }
 
   async _trackPage() {
-    const page = this.router.currentURL;
-    const title = this.router.currentRouteName || 'unknown';
-    this.metrics.trackPage({ page, title });
+    schedule('afterRender', this, () => {
+      const page = this.router.currentURL;
+      const title = this.router.currentRouteName || 'unknown';
+      this.metrics.trackPage({ page, title });
+    });
   }
 
   /**
@@ -55,13 +58,15 @@ class ApplicationRoute extends Route {
    * <div id="a" class="b c"></div> => `div.b.c#a`
    */
   async _trackClick(event) {
-    const tag = event.target.localName;
-    const classNames = event.target.className.replaceAll(' ', '.');
-    const id = event.target.id;
-    const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    this.metrics.trackEvent({
-      event: 'Click',
-      properties: { selector },
+    schedule('afterRender', this, () => {
+      const tag = event.target.localName;
+      const classNames = event.target.className.replaceAll(' ', '.');
+      const id = event.target.id;
+      const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
+      this.metrics.trackEvent({
+        event: 'Click',
+        properties: { selector },
+      });
     });
   }
 

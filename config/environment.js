@@ -78,7 +78,7 @@ module.exports = function (environment) {
     metricsAdapters: [
       {
         name: 'GoogleTagManager',
-        environments: ['all'],
+        environments: ['production'],
         config: {
           // id: 'GTM-N2WVZKP',
           id: 'GTM-5LKVFJQ',
