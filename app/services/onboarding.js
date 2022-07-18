@@ -41,7 +41,7 @@ export default class OnboardingService extends Service {
   }
 
   sendTrackingEvent(step, user) {
-    this.analytics.track(step, { user: user?.email });
+    this.metrics.trackEvent({ event: step, properties: { user: user?.email } });
   }
 
   cleanup() {
