@@ -20,6 +20,7 @@ const TTL_MINUTES = 30;
 export default class OnboardingService extends Service {
   @service storage;
   @service store;
+  @service analytics;
 
   currentStep = null;
 
@@ -36,6 +37,11 @@ export default class OnboardingService extends Service {
       user.save();
     }
     await this.dehydrate();
+    this.sendTrackingEvent(step, user);
+  }
+
+  sendTrackingEvent(step, user) {
+    this.analytics.track(step, { user: user?.email });
   }
 
   cleanup() {
@@ -44,7 +50,7 @@ export default class OnboardingService extends Service {
   }
 
   routeFromStep(step) {
-    return `onboarding.${step}`;
+    return `signup.${step}`;
   }
 
   async userFromOnboardingCode(onboardingCode) {
