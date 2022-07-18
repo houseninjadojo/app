@@ -41,7 +41,7 @@ export default class OnboardingService extends Service {
   }
 
   sendTrackingEvent(step, user) {
-    this.analytics.track(step, { user: user });
+    this.analytics.track(step, { user: user?.email });
   }
 
   cleanup() {
@@ -50,7 +50,7 @@ export default class OnboardingService extends Service {
   }
 
   routeFromStep(step) {
-    return `onboarding.${step}`;
+    return `signup.${step}`;
   }
 
   async userFromOnboardingCode(onboardingCode) {
