@@ -61,7 +61,7 @@ export default class SessionService extends BaseSessionService {
       );
     }
 
-    this.metrics.trackEvent({ event: 'Logout' });
+    this.metrics?.trackEvent({ event: 'Logout' });
     await this.invalidate();
     this.metrics.reset();
     await this.intercom.logout();
