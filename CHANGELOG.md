@@ -1,3 +1,10 @@
+## [1.18.11](https://github.com/houseninjadojo/app/compare/v1.18.10...v1.18.11) (2022-07-18)
+
+
+### Bug Fixes
+
+* **analytics:** send onboarding steps as events to mixpanel for signup funnel ([a089a2a](https://github.com/houseninjadojo/app/commit/a089a2a48b8698813246fcb8028c358d9215aced))
+
 ## [1.18.10](https://github.com/houseninjadojo/app/compare/v1.18.9...v1.18.10) (2022-07-17)
 
 
