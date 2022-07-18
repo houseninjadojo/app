@@ -22,4 +22,12 @@ export default class BookingConfirmationComponent extends Component {
     }
     this.router.transitionTo(route);
   }
+
+  @action
+  downloadFromAppStore() {
+    window.open(
+      'https://apps.apple.com/us/app/house-ninja/id1603710358',
+      '_blank'
+    );
+  }
 }
