@@ -5,4 +5,7 @@ export default class HomeCareTipModel extends Model {
   @attr('string') description;
   @attr('boolean') showButton;
   @attr('string') defaultHnChatMessage;
+  @attr('string') timeOfYear;
+  @attr('string') serviceProvider;
+  @attr('string') otherProvider;
 }

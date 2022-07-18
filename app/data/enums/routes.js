@@ -39,6 +39,10 @@ export const NATIVE_MOBILE_ROUTE = {
     SECURITY: 'settings.security',
     PROPERTY: 'settings.property',
   },
+  CANCEL_SUBSCRIPTION: {
+    INDEX: 'cancel-subscription.index',
+    CONFIRMATION: 'cancel-subscription.confirmation',
+  },
   FAQ: 'faq',
   VAULT: {
     INDEX: 'vault',

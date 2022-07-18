@@ -1,10 +1,10 @@
-<div class="actions">                
+<div class="actions">
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
         I have a question
     </Primitive::Button>
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{!-- @disabled={{false}} --}}>
         View Estimate
-    </Primitive::Button>        
+    </Primitive::Button>
 </div>
 <hr/>
 <Primitive::Section>
@@ -13,14 +13,14 @@
             You have a new estimate for approval. Please approve the estimate via the button below.<br/>
         </p>
     </div>
-    <div class="work-order-details">    
+    <div class="work-order-details">
         <p class="hn field"><span class="hn label strong">Estimate: {{"$999"}}</span></p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
+        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>
+        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime }}</p>
+        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.description @model.invoice.formattedNotes}}</p>
     </div>
     <Primitive::Button @size="md" @variant="solid" @semantic="accent" {{!-- @disabled={{this.isProcessing}} --}} {{!-- {{on "click" this.handleEstimateApproval}} --}}>
         Approve Estimate
@@ -36,7 +36,7 @@
                     Got It
                 </Primitive::Button>
             </div>
-        {{else}}       
+        {{else}}
             <Primitive::Loader::Logo @isDone={{this.isDoneProcessing}}/>
             <p class="hn label strong">Processing</p>
         {{/if}}

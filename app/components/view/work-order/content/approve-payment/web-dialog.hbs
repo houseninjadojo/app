@@ -1,4 +1,4 @@
-<Primitive::Modal::Dialog @toggleWebDialog={{@toggleWebDialog}}>
+<Primitive::Modal::Dialog @toggleModal={{@toggleWebDialog}} @isVisible={{@isVisible}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
     <div>        
         {{#if this.paymentInfoIsKnown}}
@@ -11,7 +11,7 @@
                 @label="CVC"
                 @errors={{this.cvcError}}
             />
-            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
+            <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
             <div class="actions mb-4">
                 <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss
@@ -37,7 +37,7 @@
                     @errors={{(get this.errors field.id)}}
                 />
             {{/each}}
-            <p class="hn center strong mb-4">Do you approve the payment of {{@model.invoice.formattedTotal}}?</p>
+            <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
             <div class="actions ">
                 <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
                     Dismiss

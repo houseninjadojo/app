@@ -41,10 +41,10 @@ export default class AccountSettingsComponent extends Component {
       label: 'Property Details',
       name: NATIVE_MOBILE_ROUTE.SETTINGS.PROPERTY,
     },
-    {
-      label: 'FAQ',
-      name: NATIVE_MOBILE_ROUTE.FAQ,
-    },
+    // {
+    //   label: 'FAQ',
+    //   name: NATIVE_MOBILE_ROUTE.FAQ,
+    // },
     {
       label: 'Logout',
       name: NATIVE_MOBILE_ROUTE.AUTH.LOGOUT,

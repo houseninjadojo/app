@@ -1,23 +1,17 @@
-<div class="actions">        
-    {{#if @model.scheduledDate}}    
+<div class="actions">
+    {{#if @model.scheduledDate}}
         <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
-            I have an issue
+            I have a question
         </Primitive::Button>
     {{/if}}
-    {{#unless this.hideCancelRequestButton}}
-        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="alert" {{on "click" @handleCancelRequest}}>
-            Cancel Request
-        </Primitive::Button>
-    {{/unless}}
+    <hr/>
 </div>
-<hr/>
 <Primitive::Section>
     <div class="work-order-details">
-        <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
+        <p class="hn field"><span class="hn label">Description: </span>{{@model.formattedNotes}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
-        <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if @model.scheduledDate @model.scheduledDate 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime 'TBD'}}</p>
-        <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.notes @model.notes}}</p>
+        <p class="hn field"><span class="hn label">Vendor: </span>{{if (and @model.vendor @model.scheduledDate) @model.vendor }}</p>
+        <p class="hn field"><span class="hn label">Scheduled Date: </span>{{if (and @model.vendor @model.scheduledDate) @model.scheduledDate }}</p>
+        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if (and @model.vendor @model.scheduledDate @model.scheduledTime) @model.scheduledTime }}</p>
     </div>
 </Primitive::Section>

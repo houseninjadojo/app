@@ -1,7 +1,9 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+import { htmlSafe } from '@ember/template';
 
 export default class InvoiceModel extends Model {
-  @belongsTo('document') document;
+  @belongsTo('document', { async: false }) document;
+  @belongsTo('document', { async: false }) receipt;
   @belongsTo('payment') payment;
   @belongsTo('promo-code') promoCode;
   @belongsTo('subscription') subscription;
@@ -21,4 +23,8 @@ export default class InvoiceModel extends Model {
 
   @attr('date') createdAt;
   @attr('date') updatedAt;
+
+  get formattedNotes() {
+    return htmlSafe(this.description.replace(/\n/g, '<br/>'));
+  }
 }

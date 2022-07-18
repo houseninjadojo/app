@@ -1,14 +1,13 @@
 <div class="content">    
     {{#if this.passwordHasBeenSet}}
         <Primitive::Section>    
-            <div class="hero mb-4">                
-                <p class="hn strong mb-4">Password Successfully Set</p>                    
-                <br/>                                            
+            <div class="hero">                
+                <p class="hn strong mb-4">Password Successfully Set</p>
                 <p>
-                    Let's get you logged in.
+                    You’re all set! You can now use your email and password to log in to the House Ninja app.
                 </p>
             </div>        
-            <div class="action single">
+            {{!-- <div class="action single">
                 <Primitive::Button
                     @size='lg'
                     @variant='solid'
@@ -17,7 +16,7 @@
                 >
                     Login
                 </Primitive::Button>
-            </div>
+            </div> --}}
         </Primitive::Section>        
     {{else}}
         <Primitive::Section>

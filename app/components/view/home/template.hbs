@@ -5,7 +5,7 @@
         {{#if this.streetAddress}}
             <p class="prompt">{{this.streetAddress}}?</p>
         {{/if}}
-        <Primitive::Button @class="mt-4" @type="button" @size="md" @variant="outline empty" @semantic="accent" {{on "click" this.openChatModal}}>
+        <Primitive::Button @class="mt-4" @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" this.openChatModal}}>
             Request Service
         </Primitive::Button>
     </div>
@@ -32,7 +32,7 @@
             <View::Home::HomeCareTip @homeCareTip={{this.weeklyHomeCareTip}}/>
         </Primitive::Section>
     {{/if}}
-    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mb-4" {{on "click" (fn this.selectRoute this.documentVaultRoute)}}>
+    <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="primary" class="mt-8 mb-4" {{on "click" (fn this.selectRoute this.documentVaultRoute)}}>
         Document Vault
     </Primitive::Button>
 </div>

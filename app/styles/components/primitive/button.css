@@ -62,16 +62,18 @@
   color: var(--gray-950);
 }
 
-.hn.btn.solid.primary {
-  background: var(--gray-950);
-  box-shadow: var(--shadow-gray-1);
-  color: var(--white);
-}
-
 .hn.btn.hn.btn.solid .icon,
 .hn.btn.hn.btn.outline .icon {
   height: 24px;
   margin-left: 16px;
+  margin-bottom: 2px;
+}
+
+.hn.btn.hn.btn.solid .icon.left,
+.hn.btn.hn.btn.outline .icon.left {
+  height: 24px;
+  margin-right: 16px;
+  margin-left: 0;
   margin-bottom: 2px;
 }
 
@@ -112,6 +114,12 @@
   border-color: var(--red-400);
   box-shadow: var(--shadow-red-1);
   color: var(--red-400);
+}
+
+.hn.btn.solid.primary {
+  background: var(--gray-950);
+  box-shadow: var(--shadow-gray-1);
+  color: var(--white);
 }
 
 .hn.btn.outline.light {

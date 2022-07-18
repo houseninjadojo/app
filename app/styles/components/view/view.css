@@ -6,6 +6,18 @@
   overflow-y: auto;
 }
 
+.hn.view.dark {
+  background: var(--gray-950);
+}
+
+.hn.view.no-top-bar {
+  padding-top: 64px;
+}
+
+.hn.view.no-nav-bar {
+  padding-bottom: 16px;
+}
+
 .hn.view .logo-container {
   display: flex;
   justify-content: center;
