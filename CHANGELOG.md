@@ -1,3 +1,10 @@
+## [1.18.13](https://github.com/houseninjadojo/app/compare/v1.18.12...v1.18.13) (2022-07-19)
+
+
+### Bug Fixes
+
+* ui adjustments ([#801](https://github.com/houseninjadojo/app/issues/801)) ([6c1e7c2](https://github.com/houseninjadojo/app/commit/6c1e7c26847c37a62d1bc7be136b35893e264082))
+
 ## [1.18.12](https://github.com/houseninjadojo/app/compare/v1.18.11...v1.18.12) (2022-07-19)
 
 
