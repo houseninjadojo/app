@@ -15,13 +15,13 @@
     {{if @disabled "disabled"}}
     {{@class}}'
   type={{if @type @type 'button'}}
-  disabled={{@disabled}}
+  disabled={{(or @disabled @isLoading)}}
   {{on "click" this.handleClick}}
   ...attributes
 >
   {{#if @isLoading}}
     <Primitive::Loader::Spinner />
   {{else}}
-      {{yield}}
+    {{yield}}
   {{/if}}  
 </button>
