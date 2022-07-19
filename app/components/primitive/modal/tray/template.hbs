@@ -24,13 +24,10 @@
                   @variant="solid"
                   @semantic="accent"
                   @disabled={{@formIsInvalid}}
+                  @isLoading={{this.isLoading}}
                   {{on 'click' this.handlePrimaryClick}}
                 >
-                    {{#if this.isLoading}}
-                        <Primitive::Loader::Spinner />
-                    {{else}}
-                        {{if @primaryActionText @primaryActionText 'Save'}}
-                    {{/if}}
+                    {{if @primaryActionText @primaryActionText 'Save'}}                    
                 </Primitive::Button>
             </div>
         {{/unless}}

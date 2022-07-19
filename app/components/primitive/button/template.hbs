@@ -19,5 +19,9 @@
   {{on "click" this.handleClick}}
   ...attributes
 >
-  {{yield}}
+  {{#if @isLoading}}
+    <Primitive::Loader::Spinner />
+  {{else}}
+      {{yield}}
+  {{/if}}  
 </button>
