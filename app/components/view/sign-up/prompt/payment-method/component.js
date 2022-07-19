@@ -18,6 +18,7 @@ export default class PaymentMethodComponent extends Component {
   @service store;
   @service onboarding;
 
+  @tracked isLoading = false;
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
   @tracked formIsValid = false;
@@ -158,6 +159,7 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   async savePaymentMethod() {
+    this.isLoading = true;
     const user = await this.onboarding.fetchLocalModel('user');
     const subscription = await this.findOrCreateSubscription();
 
@@ -188,6 +190,8 @@ export default class PaymentMethodComponent extends Component {
       }
       debug(e);
       Sentry.captureException(e);
+    } finally {
+      this.isLoading = false;
     }
   }
 

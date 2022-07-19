@@ -34,6 +34,7 @@ export default class SetPasswordComponent extends Component {
   };
 
   @tracked formIsInvalid = true;
+  @tracked isLoading = false;
 
   @tracked requirementsModel = passwordValidation;
 
@@ -80,6 +81,7 @@ export default class SetPasswordComponent extends Component {
 
   @action
   async savePassword() {
+    this.isLoading = true;
     let user;
     if (isPresent(this.args.user)) {
       user = this.args.user;
@@ -102,6 +104,8 @@ export default class SetPasswordComponent extends Component {
         this.errors = user.errors;
         debug(e);
         Sentry.captureException(e);
+      } finally {
+        this.isLoading = false;
       }
     }
   }
