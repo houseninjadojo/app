@@ -48,6 +48,7 @@ export default class WalkthroughBookingComponent extends Component {
       firstName: this.args.user.firstName,
       lastName: this.args.user.lastName,
       email: this.args.user.email,
+      phone: this.args.user.phoneNumber,
       address: this.args.property.streetAddress1,
       address_2: this.args.property.streetAddress2,
       city: 'Austin', // this.args.property.city,
@@ -56,7 +57,9 @@ export default class WalkthroughBookingComponent extends Component {
     };
     return Object.entries(params)
       .map((entry) => {
-        return entry[0] ? `${entry[0]}=${entry[1] ? entry[1] : ''}` : '';
+        return entry[0]
+          ? `${entry[0]}=${entry[1] ? encodeURIComponent(entry[1]) : ''}`
+          : '';
       })
       .join('&');
   }
