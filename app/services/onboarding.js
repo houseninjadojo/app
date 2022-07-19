@@ -21,6 +21,7 @@ export default class OnboardingService extends Service {
   @service storage;
   @service store;
   @service analytics;
+  @service metrics;
 
   currentStep = null;
 
