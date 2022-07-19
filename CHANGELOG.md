@@ -1,3 +1,10 @@
+## [1.18.12](https://github.com/houseninjadojo/app/compare/v1.18.11...v1.18.12) (2022-07-19)
+
+
+### Bug Fixes
+
+* **hubspot:** URI encode attributes for hubspot walkthrough iframe ([#800](https://github.com/houseninjadojo/app/issues/800)) ([ff0ad50](https://github.com/houseninjadojo/app/commit/ff0ad50e7987c453d7aae4240d71a882f9b1116b))
+
 ## [1.18.11](https://github.com/houseninjadojo/app/compare/v1.18.10...v1.18.11) (2022-07-18)
 
 
