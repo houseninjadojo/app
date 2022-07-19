@@ -1,6 +1,6 @@
 .hn .terms-and-conditions-agreement {
   width: 100%;
-  height: calc(100% - 80px);
+  height: calc(100% - var(--top-bar-offset-browser) - var(--page-banner--offset));
   background-color: rgb(153 153 153 / 40%);
   backdrop-filter: blur(4px);
 

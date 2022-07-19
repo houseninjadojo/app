@@ -3,7 +3,9 @@
     Offsets
   */
   --top-bar-offset: 96px;
+  --top-bar-offset-browser: 80px;
   --nav-bar-offset: 152px;
+  --page-banner--offset: 64px;
 
   /*
         Typography
