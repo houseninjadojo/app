@@ -65,6 +65,7 @@
                     @variant='solid'
                     @semantic='primary'
                     @disabled={{this.formIsInvalid}}
+                    @isLoading={{this.isLoading}}
                     {{on 'click' this.savePassword}}
                 >
                     Set Password

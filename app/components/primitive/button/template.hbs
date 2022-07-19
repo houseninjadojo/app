@@ -5,6 +5,7 @@
     @semantic: primary, accent, secondary, alert, white, black
     @class: string
     @disabled: true / false
+    @isLoading: true / false
     @turnOffHapticFeedback: true / false (default)
  }}
 <button
@@ -15,9 +16,13 @@
     {{if @disabled "disabled"}}
     {{@class}}'
   type={{if @type @type 'button'}}
-  disabled={{@disabled}}
+  disabled={{(or @disabled @isLoading)}}
   {{on "click" this.handleClick}}
   ...attributes
 >
-  {{yield}}
+  {{#if @isLoading}}
+    <Primitive::Loader::Spinner />
+  {{else}}
+    {{yield}}
+  {{/if}}  
 </button>

@@ -12,9 +12,11 @@ export default class AreaNotificationComponent extends Component {
 
   @tracked email;
   @tracked userSubmittedEmail = false;
+  @tracked isLoading = false;
 
   @action
   async saveUserEmail() {
+    this.isLoading = true;
     let zipcode = this.current.signup.zipcode;
     let user = this.store.createRecord('user', {
       email: this.email,
@@ -28,6 +30,8 @@ export default class AreaNotificationComponent extends Component {
       debug(e);
       Sentry.captureException(e);
       return false;
+    } finally {
+      this.isLoading = false;
     }
   }
 }

@@ -1,10 +1,10 @@
 {{page-title "House Ninja"}}
 <fragment>
-  {{#if this.showLoader}}
-    <Primitive::Loader::Splash @toggle={{this.toggleLoading}}/>
-  {{else}}
   <div class="application">
-    <LiquidOutlet/>
+    {{#if this.showLoader}}
+      <Primitive::Loader::Splash @toggle={{this.toggleLoading}}/>
+    {{else}}  
+      <LiquidOutlet/>  
+    {{/if}}
   </div>
-  {{/if}}
 </fragment>

@@ -34,6 +34,7 @@ export default class ContactInfoComponent extends Component {
   };
 
   @tracked formIsInvalid = true;
+  @tracked isLoading = false;
 
   signupFields = [
     {
@@ -110,6 +111,7 @@ export default class ContactInfoComponent extends Component {
 
   @action
   async saveContactInfo() {
+    this.isLoading = true;
     // get rid of anything in memory
     if (isPresent(this.args.user)) {
       this.args.user.unloadRecord();
@@ -130,6 +132,8 @@ export default class ContactInfoComponent extends Component {
       this.errors = user.errors;
       captureException(e);
       return;
+    } finally {
+      this.isLoading = false;
     }
     return user;
   }

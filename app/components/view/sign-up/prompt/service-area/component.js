@@ -14,6 +14,7 @@ export default class ServiceAreaComponent extends Component {
 
   @tracked zipcode;
   @tracked formIsInvalid = true;
+  @tracked isLoading = false;
 
   constructor() {
     super(...arguments);
@@ -25,6 +26,7 @@ export default class ServiceAreaComponent extends Component {
 
   @action
   async checkServiceArea() {
+    this.isLoading = true;
     let serviceArea;
     try {
       serviceArea = await this.store.queryRecord('service-area', {
@@ -34,6 +36,8 @@ export default class ServiceAreaComponent extends Component {
       });
     } catch (e) {
       captureException(e);
+    } finally {
+      this.isLoading = false;
     }
     if (isPresent(serviceArea)) {
       this.onboarding.zipcode = this.zipcode;

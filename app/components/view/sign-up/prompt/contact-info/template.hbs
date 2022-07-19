@@ -44,6 +44,7 @@
                 @variant='solid'
                 @semantic='primary'
                 @disabled={{this.formIsInvalid}}
+                @isLoading={{this.isLoading}}
                 {{on 'click' this.handlePrimaryClick}}
             >
                 {{if @isOnboardingViaNativeApp "Submit" "Next"}}
