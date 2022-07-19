@@ -6,11 +6,11 @@
   overflow-y: scroll;
 }
 
-.hn.view.with-top-bar {  
-  padding-top: calc(var(--top-bar-offset) + 16px);  
+.hn.view.with-top-bar {
+  padding-top: calc(var(--top-bar-offset) + 16px);
 }
 
-.hn.view.with-nav-bar {  
+.hn.view.with-nav-bar {
   padding-bottom: calc(var(--nav-bar-offset) + 16px);
 }
 
