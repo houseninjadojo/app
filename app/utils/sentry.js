@@ -7,30 +7,31 @@ import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
 
 const { environment, sentry: sentryConfig } = config;
 
-const rrWebPlugin = () => {
+const integrations = () => {
   if (environment === 'development' || environment === 'test') {
-    return null;
+    return [];
+  } else {
+    return [
+      new CaptureConsole({
+        levels: ['error', 'warn'],
+      }),
+      new ExtraErrorData(),
+      new SentryRRWeb({
+        // @see https://github.com/rrweb-io/rrweb/blob/master/guide.md#options
+        // maskInputOptions: {
+        //   password: true,
+        //   email: true,
+        //   tel: true,
+        //   // creditCard: true,
+        // }
+      }),
+    ];
   }
-  return new SentryRRWeb({
-    // @see https://github.com/rrweb-io/rrweb/blob/master/guide.md#options
-    // maskInputOptions: {
-    //   password: true,
-    //   email: true,
-    //   tel: true,
-    //   // creditCard: true,
-    // }
-  });
 };
 
 const sentryOptions = {
   ...sentryConfig,
-  integrations: [
-    new CaptureConsole({
-      levels: ['error', 'warn'],
-    }),
-    new ExtraErrorData(),
-    rrWebPlugin,
-  ],
+  integrations,
 };
 
 sentryOptions.environment = config.environment;
