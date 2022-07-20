@@ -47,21 +47,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    autoImport: {
-      // skipBabel: [
-      //   {
-      //     package: 'rrweb',
-      //     semverRange: '*',
-      //   },
-      // ],
-      webpack: {
-        resolve: {
-          fallback: {
-            worker_threads: require.resolve('worker_threads'),
-          }
-        }
-      },
-    },
     // PostCSS Options
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
