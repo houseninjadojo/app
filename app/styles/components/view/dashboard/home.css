@@ -38,7 +38,7 @@ ul.common-request-list {
 
 .common-request-list li.common-request {
   flex: 0 1 calc(50%);
-  padding: 0 4px;
+  padding: 4px;
 }
 
 .common-request-list li.common-request:not(:last-of-type) {
