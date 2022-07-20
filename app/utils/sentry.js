@@ -7,7 +7,12 @@ import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
 
 const sentryOptions = {
   ...config.sentry,
-  integrations: [new CaptureConsole(), new ExtraErrorData()],
+  integrations: [
+    new CaptureConsole({
+      levels: ['error', 'warn'],
+    }),
+    new ExtraErrorData(),
+  ],
 };
 
 sentryOptions.environment = config.environment;
