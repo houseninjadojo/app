@@ -1,6 +1,6 @@
 {{page-title "Service Request"}}
 <TopBar @content="logo-only" />
-<View @class="hn work-order public">
+<View @class="hn work-order public" @topBar={{true}}>
     <div class="position">
         <div class="constraint">
             <View::WorkOrder::Content::ApprovePayment @model={{this.model}}/>      
