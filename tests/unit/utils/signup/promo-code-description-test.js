@@ -9,7 +9,7 @@ module('Unit | Utility | signup/promo-code-description', function () {
   test('it works', function (assert) {
     let result = signupPromoCodeDescription();
     let result2 = signupPromoCodeAlert();
-    assert.ok(result);
+    assert.strictEqual(result, '');
     assert.ok(result2);
   });
 });
