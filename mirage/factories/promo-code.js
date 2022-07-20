@@ -14,8 +14,20 @@ export default Factory.extend({
     return '10% off';
   },
 
+  amountOff() {
+    null;
+  },
+
   percentOff() {
     return '10.0';
+  },
+
+  duration() {
+    return 'repeating';
+  },
+
+  durationInMonths() {
+    return 2;
   },
 
   createdAt() {
