@@ -9,6 +9,10 @@ import { formatCreditCardNumberElement } from 'houseninja/utils/components/forma
 import Sentry from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import {
+  signupPromoCodeDescription,
+  signupPromoCodeAlert,
+} from 'houseninja/utils/signup/promo-code-description';
 
 const DEBOUNCE_MS = 250;
 
@@ -127,17 +131,13 @@ export default class PaymentMethodComponent extends Component {
     } catch (e) {
       Sentry.captureException(e);
     } finally {
-      if (promoCodes.length > 0) {
-        this.promoCode = promoCodes.get('firstObject');
-        this.promoCodeAlert = null;
-        this.promoCodeDescription = `Promo code '${this.promoCode.code}' applied, and no cost will be charged.`;
-      } else {
-        this.promoCodeAlert = {
-          title: `Promo Code '${this.promoCodeInput}' is not valid`,
-          detail: `Please try again with a different code.`,
-        };
-        this.promoCodeDescription = '';
-      }
+      this.promoCode =
+        promoCodes.length > 0 ? promoCodes.get('firstObject') : null;
+      this.promoCodeAlert = signupPromoCodeAlert(
+        this.promoCodeInput,
+        this.promoCode
+      );
+      this.promoCodeDescription = signupPromoCodeDescription(this.promoCode);
     }
   }
 
