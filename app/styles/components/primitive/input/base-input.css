@@ -24,7 +24,6 @@
 
 /* Label */
 .hn.hn-input-field .hn-input-container .hn-input-label {
-  position: absolute;
   flex-direction: row;
   align-items: center;
   white-space: nowrap;
@@ -45,7 +44,6 @@
 }
 
 .hn.hn-input-field.active .hn-input-container .hn-input-label {
-  position: absolute;
   font-size: 12px;
   top: 0;
 }
