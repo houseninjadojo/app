@@ -14,7 +14,7 @@ import {
   set as stash,
   clear as clearStash,
 } from 'houseninja/utils/secure-storage';
-import * as Sentry from '@sentry/ember';
+import { captureException } from 'houseninja/utils/sentry';
 import { Intercom } from '@capacitor-community/intercom';
 
 /**
@@ -47,7 +47,7 @@ const registerListenerHandlers = async (appInstance) => {
 
   // failed push notification registration
   addListener('registrationError', async (error) => {
-    Sentry.captureException(error);
+    captureException(error);
     await clearStash('pushToken');
   });
 

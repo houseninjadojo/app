@@ -2,8 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import { captureException } from 'houseninja/utils/sentry';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 
@@ -74,8 +73,7 @@ export default class SettingsContactController extends Controller {
         await this.resetForm();
         this.view.transitionToPreviousRoute();
       } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
+        captureException(e);
       }
     }
   }

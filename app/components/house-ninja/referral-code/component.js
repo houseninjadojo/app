@@ -3,8 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Share } from '@capacitor/share';
-import { debug } from '@ember/debug';
-import * as Sentry from '@sentry/ember';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class ServiceAreaComponent extends Component {
   @service current;
@@ -23,8 +22,7 @@ export default class ServiceAreaComponent extends Component {
         // dialogTitle: 'Share with buddies', //Android only. Not sure where it presents.
       });
     } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
     }
   }
 }
