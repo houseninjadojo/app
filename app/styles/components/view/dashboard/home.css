@@ -34,13 +34,15 @@ ul.common-request-list {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
-  padding: 8px 0;
 }
 
 .common-request-list li.common-request {
   flex: 0 1 calc(50%);
+  padding: 0 4px;
+}
+
+.common-request-list li.common-request:not(:last-of-type) {
   margin-bottom: 16px;
-  padding: 0 8px;
 }
 
 .common-request-list li.common-request .content-container {
