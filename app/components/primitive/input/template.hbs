@@ -15,7 +15,12 @@
               {{on 'input' this.handleInput}}
             />
         {{else}}
-            <label class="hn-input-label" for={{@id}} >{{@label}}</label>
+            <label class="hn-input-label" for={{@id}}>
+                {{@label}}
+                {{#if @placeholder}}
+                    <span class="hn-input-placeholder" aria-placeholder={{@placeholder}}>{{@placeholder}}</span>
+                {{/if}}
+                </label>
             <Input
               class="hn-input"
               id={{@id}}
