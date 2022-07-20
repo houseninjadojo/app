@@ -53,7 +53,6 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Card Number',
       placeholder: '',
-      rrwebMask: true,
     },
     {
       type: 'number',
@@ -61,7 +60,6 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Security Code',
       placeholder: '',
-      rrwebMask: true,
     },
     {
       type: 'number',
@@ -69,7 +67,6 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Month',
       placeholder: 'MM',
-      rrwebMask: true,
     },
     {
       type: 'number',
@@ -77,7 +74,6 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Year',
       placeholder: 'YY',
-      rrwebMask: true,
     },
     {
       type: 'number',
@@ -85,7 +81,6 @@ export default class PaymentMethodComponent extends Component {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      rrwebMask: true,
     },
   ];
 

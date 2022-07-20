@@ -3,7 +3,7 @@
         {{#if @hideLabel}}
             {{!-- template-lint-disable require-input-label  --}}
             <Input
-              class="hn-input {{if @rrwebMask 'rr-mask' ''}}"
+              class="hn-input"
               id={{@id}}
               @type={{if @type @type "text"}}
               pattern={{if @pattern @pattern}}
@@ -17,7 +17,7 @@
         {{else}}
             <label class="hn-input-label" for={{@id}} >{{@label}}</label>
             <Input
-              class="hn-input {{if @rrwebMask 'rr-block' ''}}"
+              class="hn-input}"
               id={{@id}}
               @type={{if @type @type "text"}}
               pattern={{if @pattern @pattern}}

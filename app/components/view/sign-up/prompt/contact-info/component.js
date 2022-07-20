@@ -71,7 +71,6 @@ export default class ContactInfoComponent extends Component {
       label: 'Email',
       placeholder: '',
       value: null,
-      rrwebMask: true,
     },
     ...(!this.args.isOnboardingViaNativeApp
       ? [
