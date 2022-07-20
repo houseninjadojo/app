@@ -1,3 +1,10 @@
+## [1.18.15](https://github.com/houseninjadojo/app/compare/v1.18.14...v1.18.15) (2022-07-20)
+
+
+### Bug Fixes
+
+* tweaks and nudges ([#808](https://github.com/houseninjadojo/app/issues/808)) ([cc3b65b](https://github.com/houseninjadojo/app/commit/cc3b65bb7acc69d808f0a2984c1ef9a16bdc5e2c))
+
 ## [1.18.14](https://github.com/houseninjadojo/app/compare/v1.18.13...v1.18.14) (2022-07-20)
 
 
