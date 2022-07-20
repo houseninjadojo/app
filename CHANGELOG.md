@@ -1,3 +1,10 @@
+## [1.18.16](https://github.com/houseninjadojo/app/compare/v1.18.15...v1.18.16) (2022-07-20)
+
+
+### Bug Fixes
+
+* moar nudges ([#810](https://github.com/houseninjadojo/app/issues/810)) ([2305bff](https://github.com/houseninjadojo/app/commit/2305bff5040921f79c0c6c50353c41639d62a18a))
+
 ## [1.18.15](https://github.com/houseninjadojo/app/compare/v1.18.14...v1.18.15) (2022-07-20)
 
 
