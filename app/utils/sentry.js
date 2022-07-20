@@ -4,11 +4,12 @@ import SentryRRWeb from '@sentry/rrweb';
 import config from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
 import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
+import { isPresent } from '@ember/utils';
 
-const { environment, sentry: sentryConfig } = config;
+const { sentry: sentryConfig } = config;
 
 const integrations = () => {
-  if (environment === 'development' || environment === 'test') {
+  if (isPresent(sentryConfig.dsn)) {
     return [];
   } else {
     return [
@@ -37,7 +38,9 @@ const sentryOptions = {
 sentryOptions.environment = config.environment;
 
 export function init() {
-  SentryCapacitor.init(sentryOptions, SentryEmber.init);
+  if (isPresent(sentryConfig.dsn)) {
+    SentryCapacitor.init(sentryOptions, SentryEmber.init);
+  }
 }
 
 const Sentry = SentryCapacitor;
