@@ -1,3 +1,10 @@
+## [1.18.14](https://github.com/houseninjadojo/app/compare/v1.18.13...v1.18.14) (2022-07-20)
+
+
+### Bug Fixes
+
+* **signup:** promo codes in english ([#802](https://github.com/houseninjadojo/app/issues/802)) ([732deaf](https://github.com/houseninjadojo/app/commit/732deafbd32b68c0f0b6e67f146c886ee1a146fc))
+
 ## [1.18.13](https://github.com/houseninjadojo/app/compare/v1.18.12...v1.18.13) (2022-07-19)
 
 
