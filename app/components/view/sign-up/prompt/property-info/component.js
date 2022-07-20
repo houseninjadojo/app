@@ -38,6 +38,7 @@ export default class PropertyInfoComponent extends Component {
       label: 'Street Address 1',
       placeholder: '',
       value: null,
+      rrwebMask: true,
     },
     {
       id: 'streetAddress2',
@@ -45,6 +46,7 @@ export default class PropertyInfoComponent extends Component {
       label: 'Street Address 2',
       placeholder: '(Optional)',
       value: null,
+      rrwebMask: true,
     },
     {
       id: 'city',
@@ -53,6 +55,7 @@ export default class PropertyInfoComponent extends Component {
       placeholder: '',
       disabled: false,
       value: null,
+      rrwebMask: true,
     },
     {
       isSelect: true,
@@ -71,6 +74,7 @@ export default class PropertyInfoComponent extends Component {
       label: 'Zipcode',
       placeholder: '',
       value: null,
+      rrwebMask: true,
     },
   ];
 

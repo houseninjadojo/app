@@ -7,7 +7,7 @@
         </div>
     </Primitive::Section>
     <Primitive::Section>
-        <div class="prompt">            
+        <div class="prompt">
             {{#each this.fields as |field|}}
                 <Primitive::Input
                     @id={{field.id}}
@@ -19,6 +19,7 @@
                     @onInput={{this.validateForm}}
                     @maxLength={{field.maxLength}}
                     @errors={{(get this.errors field.id)}}
+                    @rrwebMask={{field.rrwebMask}}
                 />
             {{/each}}
             <Primitive::Input

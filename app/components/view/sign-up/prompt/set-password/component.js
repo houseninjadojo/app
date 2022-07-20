@@ -46,6 +46,7 @@ export default class SetPasswordComponent extends Component {
       label: 'New Password',
       placeholder: '',
       value: null,
+      rrwebMask: true,
     },
     {
       type: 'password',
@@ -54,6 +55,7 @@ export default class SetPasswordComponent extends Component {
       label: 'Confirm Password',
       placeholder: '',
       value: null,
+      rrwebMask: true,
     },
   ];
 

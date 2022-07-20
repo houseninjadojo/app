@@ -5,7 +5,7 @@
         </div>
     </Primitive::Section>
     <Primitive::Section>
-        <div class="prompt">            
+        <div class="prompt">
             {{#each this.fields as |field|}}
                 {{#if field.isSelect}}
                     <Primitive::Select
@@ -30,6 +30,7 @@
                         @disabled={{field.disabled}}
                         @onInput={{this.validateForm}}
                         @errors={{(get this.errors field.id)}}
+                        @rrwebMask={{field.rrwebMask}}
                     />
                 {{/if}}
             {{/each}}
