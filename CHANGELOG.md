@@ -1,3 +1,10 @@
+## [1.18.18](https://github.com/houseninjadojo/app/compare/v1.18.17...v1.18.18) (2022-07-21)
+
+
+### Bug Fixes
+
+* **branch:** universal email web only handler ([#807](https://github.com/houseninjadojo/app/issues/807)) ([12f5b99](https://github.com/houseninjadojo/app/commit/12f5b992bea55c1122e834755c8a84a475ddcab1))
+
 ## [1.18.17](https://github.com/houseninjadojo/app/compare/v1.18.16...v1.18.17) (2022-07-21)
 
 
