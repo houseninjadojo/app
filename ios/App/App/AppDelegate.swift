@@ -28,17 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // required for nativelink feature
         // @see https://help.branch.io/developers-hub/docs/ios-advanced-features#options-for-implementation
         Branch.getInstance().checkPasteboardOnInstall() // enable pasteboard check
-        Branch.getInstance().initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: { (params, error) in
-            if (params?["$3p"] != nil && params?["$web_only"] != nil) {
-                if let urlString = params?["$original_url"] as? String {
-                    if let url = URL(string: urlString) {
-                        application.openURL(url)
-                    }
-                }
-            } else {
-                self.handleBranchDeeplink(params)
-            }
-        })
+        Branch.getInstance().initSession(launchOptions: launchOptions)
 
         return true
     }
