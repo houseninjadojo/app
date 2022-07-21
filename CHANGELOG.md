@@ -1,3 +1,10 @@
+## [1.18.17](https://github.com/houseninjadojo/app/compare/v1.18.16...v1.18.17) (2022-07-21)
+
+
+### Bug Fixes
+
+* cancel subscription view padding ([#811](https://github.com/houseninjadojo/app/issues/811)) ([53371bc](https://github.com/houseninjadojo/app/commit/53371bc1edd213ac16b2106414c1ea41af7b7dac))
+
 ## [1.18.16](https://github.com/houseninjadojo/app/compare/v1.18.15...v1.18.16) (2022-07-20)
 
 
