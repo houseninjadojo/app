@@ -1,64 +1,73 @@
 {{#if this.isLoading}}
-    <ul class='record-list'>
-      <li class="record-loading">
-        <ContentLoader @width={{this.width}} @height={{this.height}} >
-          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
-        </ContentLoader>      
-      </li>
-      <li class="record-loading">
-        <ContentLoader @width={{this.width}} @height={{this.height}} >
-          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
-        </ContentLoader>
-      </li>
-      <li class="record-loading">
-        <ContentLoader @width={{this.width}} @height={{this.height}} >
-          <rect x="0" y="0" width={{this.width}} height={{this.height}} />
-        </ContentLoader>
-      </li>
-    </ul>
+  <ul class='record-list'>
+    <li class='record-loading'>
+      <ContentLoader @width={{this.width}} @height={{this.height}}>
+        <rect x='0' y='0' width={{this.width}} height={{this.height}}></rect>
+      </ContentLoader>
+    </li>
+    <li class='record-loading'>
+      <ContentLoader @width={{this.width}} @height={{this.height}}>
+        <rect x='0' y='0' width={{this.width}} height={{this.height}}></rect>
+      </ContentLoader>
+    </li>
+    <li class='record-loading'>
+      <ContentLoader @width={{this.width}} @height={{this.height}}>
+        <rect x='0' y='0' width={{this.width}} height={{this.height}}></rect>
+      </ContentLoader>
+    </li>
+  </ul>
 {{else}}
-{{#each @records as |record|}}
-  <div class='filled'>
-    <ul class='record-list'>    
-      <li>
-        <Primitive::Button {{on 'click' (fn this.handleClick record)}} @class="record" @variant="plain">        
-          {{#if @showIcon}}
-            {{#if record.iconUri}}
-              <span class='icon'>
-                <img src={{record.iconUri}} alt={{record.type}} />
-              </span>
-            {{/if}}
-          {{/if}}
-          {{#if @showTimestamp}}
-            <p class='timestamp'>
-              {{#if record.scheduledTime}}
-                <span>
-                  {{record.scheduledTime}}
-                </span>
+  {{#if @records}}
+    <div class='filled'>
+      <ul class='record-list'>
+        {{#each @records as |record|}}
+          <li>
+            <Primitive::Button
+              {{on 'click' (fn this.handleClick record)}}
+              @class='record'
+              @variant='plain'
+            >
+              {{#if @showIcon}}
+                {{#if record.iconUri}}
+                  <span class='icon'>
+                    <img src={{record.iconUri}} alt={{record.type}} />
+                  </span>
+                {{/if}}
               {{/if}}
-              <span>
-                {{record.scheduledDate}}
-              </span>
-            </p>
-          {{/if}}
-          <div class='details'>
-            <p class='name'>
-              {{record.name}}
-            </p>
-            <div class="hn row">
-              <p class='description'>
-                {{record.description}}
-              </p>
-              {{#if record.tag}}
-                <Primitive::Tag @label={{record.tag.label}} @type={{record.tag.type}}/>
+              {{#if @showTimestamp}}
+                <p class='timestamp'>
+                  {{#if record.scheduledTime}}
+                    <span>
+                      {{record.scheduledTime}}
+                    </span>
+                  {{/if}}
+                  <span>
+                    {{record.scheduledDate}}
+                  </span>
+                </p>
               {{/if}}
-            </div>
-          </div>
-        </Primitive::Button>
-      </li>      
-    </ul>
-  </div>
-{{else}}    
+              <div class='details'>
+                <p class='name'>
+                  {{record.name}}
+                </p>
+                <div class='hn row'>
+                  <p class='description'>
+                    {{record.description}}
+                  </p>
+                  {{#if record.tag}}
+                    <Primitive::Tag
+                      @label={{record.tag.label}}
+                      @type={{record.tag.type}}
+                    />
+                  {{/if}}
+                </div>
+              </div>
+            </Primitive::Button>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{else}}
     <div class='empty'>
       <p>{{@ifEmpty.message}}</p>
       {{#if this.showEmptyStateButton}}
@@ -67,11 +76,11 @@
           @size='sm'
           @variant='outline'
           @semantic='primary'
-          {{on "click" this.handleIfEmptyClick}}
+          {{on 'click' this.handleIfEmptyClick}}
         >
           {{@ifEmpty.actionText}}
         </Primitive::Button>
       {{/if}}
     </div>
-{{/each}}
+  {{/if}}
 {{/if}}
