@@ -1,3 +1,10 @@
+## [1.18.19](https://github.com/houseninjadojo/app/compare/v1.18.18...v1.18.19) (2022-07-22)
+
+
+### Bug Fixes
+
+* previous route transition fallback ([#816](https://github.com/houseninjadojo/app/issues/816)) ([64853d8](https://github.com/houseninjadojo/app/commit/64853d848a449f76e4cbb2e99203db31835d0107))
+
 ## [1.18.18](https://github.com/houseninjadojo/app/compare/v1.18.17...v1.18.18) (2022-07-21)
 
 
