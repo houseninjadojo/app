@@ -91,7 +91,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @action
   inquireAboutInvoice() {
     this.intercom.showComposer(
-      `I have a question about the invoice for the ${this.args.model.description} service request.`
+      `I have a question about the invoice for the ${this.args.model?.description} service request.`
     );
   }
 
