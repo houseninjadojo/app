@@ -41,15 +41,15 @@ export default class ViewService extends Service {
   @action
   transitionToPreviousRoute() {
     const previousRoute = this.history.preservedPreviousRoute.pop();
-    const { name, params } = previousRoute;
+    const { name, params } = previousRoute || {};
 
-    if (Object.keys(params).length && name) {
+    if (!name || !params) {
+      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    } else if (Object.keys(params).length && name) {
       // @todo There's got to be a better way to pass the an >1 paramter values, but I can't figure it out.
       this.router.transitionTo(name, Object.values(params)[0]);
     } else if (name) {
       this.router.transitionTo(name);
-    } else {
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
     }
   }
 
