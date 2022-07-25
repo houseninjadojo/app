@@ -95,6 +95,7 @@ export const isActiveWorkOrder = (status) => {
     // case workOrderStatus.closed:
     // case workOrderStatus.paused:
     // case workOrderStatus.cancelled:
+    // case workOrderStatus.canceled:
     // case workOrderStatus.referred:
     default:
       return false;
@@ -128,6 +129,7 @@ export const isHistoricalWorkOrder = (status) => {
       return true;
     // case workOrderStatus.paused:
     // case workOrderStatus.cancelled:
+    // case workOrderStatus.canceled:
     // case workOrderStatus.referred:
     default:
       return false;
