@@ -1,3 +1,10 @@
+## [1.18.20](https://github.com/houseninjadojo/app/compare/v1.18.19...v1.18.20) (2022-07-25)
+
+
+### Bug Fixes
+
+* use a getter for showPropertyDialog ([#818](https://github.com/houseninjadojo/app/issues/818)) ([0c63584](https://github.com/houseninjadojo/app/commit/0c63584d560fc506d2a58a0f7cbc21191e98f808))
+
 ## [1.18.19](https://github.com/houseninjadojo/app/compare/v1.18.18...v1.18.19) (2022-07-22)
 
 
