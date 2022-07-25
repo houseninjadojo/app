@@ -5,15 +5,14 @@ export default class WorkOrderModel extends Model {
   @belongsTo('invoice', { async: false }) invoice;
   @belongsTo('property') property;
 
+  @attr('string') authCode;
+  @attr('date') completedAt;
+  @attr('string') cost;
   @attr('string') description;
-  @attr('string') vendor;
-
   @attr('string') scheduledDate;
   @attr('string') scheduledTime;
-
   @attr('string') status;
-
-  @attr('string') authCode;
+  @attr('string') vendor;
 
   get statusLabel() {
     return getWorkOrderStatusLabel(this.status);
