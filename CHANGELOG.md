@@ -1,3 +1,10 @@
+## [1.18.21](https://github.com/houseninjadojo/app/compare/v1.18.20...v1.18.21) (2022-07-25)
+
+
+### Bug Fixes
+
+* updating work order status map ([#809](https://github.com/houseninjadojo/app/issues/809)) ([ca6a8ac](https://github.com/houseninjadojo/app/commit/ca6a8acc6f1cb2e930d26e1db1e3efe6b0ab621b))
+
 ## [1.18.20](https://github.com/houseninjadojo/app/compare/v1.18.19...v1.18.20) (2022-07-25)
 
 
