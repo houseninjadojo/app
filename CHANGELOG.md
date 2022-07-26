@@ -1,3 +1,10 @@
+## [1.18.22](https://github.com/houseninjadojo/app/compare/v1.18.21...v1.18.22) (2022-07-26)
+
+
+### Bug Fixes
+
+* onboarding param check during set-password ([#825](https://github.com/houseninjadojo/app/issues/825)) ([38e8517](https://github.com/houseninjadojo/app/commit/38e8517ba3eb97684fbaddd3458bed26498ef17c))
+
 ## [1.18.21](https://github.com/houseninjadojo/app/compare/v1.18.20...v1.18.21) (2022-07-25)
 
 
