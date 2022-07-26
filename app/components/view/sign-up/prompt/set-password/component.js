@@ -21,7 +21,6 @@ export default class SetPasswordComponent extends Component {
   @service store;
 
   @tracked passwordHasBeenSet = false;
-  @tracked requestedToSetUpAccount = false;
 
   @tracked passwords = {
     password: '',
@@ -67,6 +66,11 @@ export default class SetPasswordComponent extends Component {
     }
   }
 
+  __isOnboarding() {
+    const ONBOARDING_PARAM = 'code';
+    return this.router.location.location.search.includes(ONBOARDING_PARAM);
+  }
+
   @action
   validateForm(e) {
     this.passwords[e.target.id] = e.target.value;
@@ -85,7 +89,6 @@ export default class SetPasswordComponent extends Component {
     let user;
     if (isPresent(this.args.user)) {
       user = this.args.user;
-      this.requestedToSetUpAccount = true;
     } else {
       user = await this.store.peekAll('user').get('firstObject');
     }
@@ -93,11 +96,11 @@ export default class SetPasswordComponent extends Component {
       user.password = this.passwords.password;
       try {
         await user.save();
+        await this.onboarding.cleanup();
 
-        if (this.requestedToSetUpAccount) {
+        if (this.__isOnboarding()) {
           this.passwordHasBeenSet = true;
         } else {
-          await this.onboarding.cleanup();
           this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
         }
       } catch (e) {
