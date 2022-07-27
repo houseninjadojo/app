@@ -152,11 +152,7 @@ export const isCompletedWorkOrder = (status) => {
 };
 
 export const newestToOldest = (a, b) => {
-  const DATE_FORMAT = 'MM/DD/YY';
-
-  return (
-    moment(a.scheduledDate, DATE_FORMAT) < moment(b.scheduledDate, DATE_FORMAT)
-  );
+  return moment(a.scheduledDate) < moment(b.scheduledDate);
 };
 
 export const WORK_ORDER_FILTER = {
