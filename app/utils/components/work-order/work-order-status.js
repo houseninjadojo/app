@@ -157,9 +157,10 @@ export const newestToOldest = (a, b) => {
 };
 
 export const WORK_ORDER_FILTER = {
-  PAYMENT_DUE: 'payment due',
-  SCHEDULED: 'scheduled',
   INITITATED: 'inititated',
+  SCHEDULED: 'scheduled',
+  PAYMENT_DUE: 'payment due',
+  COMPLETED: 'completed',
   PAUSED: 'paused',
 };
 
@@ -176,6 +177,11 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
     case WORK_ORDER_FILTER.SCHEDULED:
       filteredWorkOrders = workOrders.filter(
         (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.SCHEDULED
+      );
+      break;
+    case WORK_ORDER_FILTER.COMPLETED:
+      filteredWorkOrders = workOrders.filter(
+        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.COMPLETED
       );
       break;
     case WORK_ORDER_FILTER.INITITATED:
