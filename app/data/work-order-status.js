@@ -57,7 +57,7 @@ export const workOrderStatusLabels = {
   [workOrderStatus.problemBeingAddressed]: WORK_ORDER_UI_STATE.COMPLETED,
   [workOrderStatus.problemResolved]: WORK_ORDER_UI_STATE.COMPLETED,
   [workOrderStatus.vendorInvoiceReceived]: WORK_ORDER_UI_STATE.COMPLETED,
-  [workOrderStatus.readyToInvoice]: WORK_ORDER_UI_STATE.COMPLETED,
+  [workOrderStatus.readyToInvoiceCustomer]: WORK_ORDER_UI_STATE.COMPLETED,
   [workOrderStatus.invoiceSentToCustomer]: WORK_ORDER_UI_STATE.PAYMENT_DUE,
   // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
   [workOrderStatus.invoicePaidByCustomer]: WORK_ORDER_UI_STATE.PAID,
