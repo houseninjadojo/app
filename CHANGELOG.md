@@ -1,3 +1,10 @@
+## [1.18.23](https://github.com/houseninjadojo/app/compare/v1.18.22...v1.18.23) (2022-07-27)
+
+
+### Bug Fixes
+
+* **work-order-status:** loosen moment parser ([#826](https://github.com/houseninjadojo/app/issues/826)) ([eae1280](https://github.com/houseninjadojo/app/commit/eae128055c44532ce74e03a764ac4cd634739d12))
+
 ## [1.18.22](https://github.com/houseninjadojo/app/compare/v1.18.21...v1.18.22) (2022-07-26)
 
 
