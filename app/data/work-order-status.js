@@ -32,9 +32,9 @@ export const workOrderStatus = {
 export const WORK_ORDER_UI_STATE = {
   INITIATED: 'Initiated',
   SCHEDULED: 'Scheduled',
-  COMPLETED: 'Cmpleted',
+  COMPLETED: 'Completed',
   PAYMENT_DUE: 'Payment Due',
-  CANCELED: 'Cancelled',
+  CANCELED: 'Canceled',
   PAUSED: 'Paused',
   PAID: 'Paid',
 };
