@@ -1,3 +1,10 @@
+## [1.18.27](https://github.com/houseninjadojo/app/compare/v1.18.26...v1.18.27) (2022-07-27)
+
+
+### Bug Fixes
+
+* default work order content description field ([#831](https://github.com/houseninjadojo/app/issues/831)) ([7626e0e](https://github.com/houseninjadojo/app/commit/7626e0e388928f022eeb0655daa03baad93c48f0))
+
 ## [1.18.26](https://github.com/houseninjadojo/app/compare/v1.18.25...v1.18.26) (2022-07-27)
 
 
