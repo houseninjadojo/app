@@ -1,3 +1,10 @@
+## [1.18.25](https://github.com/houseninjadojo/app/compare/v1.18.24...v1.18.25) (2022-07-27)
+
+
+### Bug Fixes
+
+* **work-order_status:** missing 'customer' matching string ([#828](https://github.com/houseninjadojo/app/issues/828)) ([196cbf5](https://github.com/houseninjadojo/app/commit/196cbf54d135e22d55cacef4181bf81c80b5b8eb))
+
 ## [1.18.24](https://github.com/houseninjadojo/app/compare/v1.18.23...v1.18.24) (2022-07-27)
 
 
