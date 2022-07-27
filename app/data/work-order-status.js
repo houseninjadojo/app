@@ -15,7 +15,7 @@ export const workOrderStatus = {
   problemBeingAddressed: 'problem_being_addressed',
   problemResolved: 'problem_resolved',
   vendorInvoiceReceived: 'vendor_invoice_received',
-  readyToInvoice: 'ready_to_invoice',
+  readyToInvoiceCustomer: 'ready_to_invoice_customer',
   invoiceSentToCustomer: 'invoice_sent_to_customer',
   invoicePaidByCustomer: 'invoice_paid_by_customer',
   paymentFailed: 'payment_failed',
@@ -47,7 +47,7 @@ export const workOrderStatusLabels = {
   [workOrderStatus.problemBeingAddressed]: 'Completed',
   [workOrderStatus.problemResolved]: 'Completed',
   [workOrderStatus.vendorInvoiceReceived]: 'Completed',
-  [workOrderStatus.readyToInvoice]: 'Completed',
+  [workOrderStatus.readyToInvoiceCustomer]: 'Completed',
   [workOrderStatus.invoiceSentToCustomer]: 'Payment Due',
   // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
   [workOrderStatus.invoicePaidByCustomer]: 'Paid',

@@ -22,7 +22,7 @@ export const getWorkOrderTag = (status) => {
         type: 'accent',
       };
     case workOrderStatus.vendorInvoiceReceived:
-    case workOrderStatus.readyToInvoice:
+    case workOrderStatus.readyToInvoiceCustomer:
     case workOrderStatus.problemResolved:
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemReported:
@@ -84,7 +84,7 @@ export const isActiveWorkOrder = (status) => {
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemResolved:
     case workOrderStatus.vendorInvoiceReceived:
-    case workOrderStatus.readyToInvoice:
+    case workOrderStatus.readyToInvoiceCustomer:
     case workOrderStatus.invoiceSentToCustomer:
     case workOrderStatus.paymentFailed:
     case workOrderStatus.homeWalkthroughScheduled:
@@ -120,7 +120,7 @@ export const isHistoricalWorkOrder = (status) => {
     // case workOrderStatus.problemBeingAddressed:
     // case workOrderStatus.problemResolved:
     // case workOrderStatus.vendorInvoiceReceived:
-    // case workOrderStatus.readyToInvoice:
+    // case workOrderStatus.readyToInvoiceCustomer:
     // case workOrderStatus.invoiceSentToCustomer:
     // case workOrderStatus.paymentFailed:
     case workOrderStatus.invoicePaidByCustomer:
@@ -143,7 +143,7 @@ export const isCompletedWorkOrder = (status) => {
     case workOrderStatus.problemBeingAddressed:
     case workOrderStatus.problemResolved:
     case workOrderStatus.vendorInvoiceReceived:
-    case workOrderStatus.readyToInvoice:
+    case workOrderStatus.readyToInvoiceCustomer:
     case workOrderStatus.walkthroughCompleted:
       return true;
     default:
