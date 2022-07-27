@@ -1,3 +1,10 @@
+## [1.18.24](https://github.com/houseninjadojo/app/compare/v1.18.23...v1.18.24) (2022-07-27)
+
+
+### Bug Fixes
+
+* work order status filter clean-up ([#827](https://github.com/houseninjadojo/app/issues/827)) ([979d6f4](https://github.com/houseninjadojo/app/commit/979d6f422f672ab87eab129952cd204dec9a6910))
+
 ## [1.18.23](https://github.com/houseninjadojo/app/compare/v1.18.22...v1.18.23) (2022-07-27)
 
 
