@@ -44,27 +44,18 @@ export default class HandleItComponent extends Component {
       });
   }
 
-  get failedPaymentWorkOrders() {
+  get paymentDueWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.FAILED_PAYMENT,
+      WORK_ORDER_FILTER.PAYMENT_DUE,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return newestToOldest(a, b);
     });
   }
 
-  get approvePaymentWorkOrders() {
+  get scheduledWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.APPROVE_PAYMENT,
-      this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
-  }
-
-  get remainingBookedWorkOrders() {
-    return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+      WORK_ORDER_FILTER.SCHEDULED,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return newestToOldest(a, b);
@@ -73,7 +64,7 @@ export default class HandleItComponent extends Component {
 
   get initiatedWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_FILTER.NOT_BOOKED_NOT_APPROVE_AND_NOT_FAILED,
+      WORK_ORDER_FILTER.INITITATED,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return newestToOldest(a, b);
@@ -82,9 +73,8 @@ export default class HandleItComponent extends Component {
 
   get displayedWorkOrders() {
     return [
-      ...(this.approvePaymentWorkOrders ?? []),
-      ...(this.failedPaymentWorkOrders ?? []),
-      ...(this.remainingBookedWorkOrders ?? []),
+      ...(this.paymentDueWorkOrders ?? []),
+      ...(this.scheduledWorkOrders ?? []),
       ...(this.initiatedWorkOrders ?? []),
     ];
   }
