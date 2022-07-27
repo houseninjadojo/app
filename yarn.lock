@@ -2568,10 +2568,10 @@
     "@sentry/utils" "7.7.0"
     tslib "^1.9.3"
 
-"@sentry/capacitor@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.7.1.tgz#6e1f18fcaff7a40f67b62789c064ab1e375a7bd5"
-  integrity sha512-gr+k6qjGQswR5npcnZhvPfmMtg0EHEUvO0mUvtAPig8DtyfB97QB1BfKourUqY8a6WoHDZmA13e1P40dIUyRYA==
+"@sentry/capacitor@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@sentry/capacitor/-/capacitor-0.8.0.tgz#9bd1396767ff2e549d8e4199ee8e76ca2c0ae015"
+  integrity sha512-80lg46hvNmBjEeQnlah0FHmtx5bny0V9cUpS4N4sw9HbyRiCM6ypR9NEip8v710+TUAddNa3vFw0zpYjqJlixQ==
   dependencies:
     "@sentry/browser" "7.6.0"
     "@sentry/core" "7.6.0"
