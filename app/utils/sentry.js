@@ -9,29 +9,6 @@ import { isPresent } from '@ember/utils';
 
 const { sentry: sentryConfig } = config;
 
-// const integrations = () => {
-//   // if (isPresent(sentryConfig.dsn)) {
-//   return [
-//     // new BrowserTracing(sentryConfig.browserTracingOptions),
-//     new CaptureConsole({
-//       levels: ['error', 'warn'],
-//     }),
-//     new ExtraErrorData(),
-//     new SentryRRWeb({
-//       // @see https://github.com/rrweb-io/rrweb/blob/master/guide.md#options
-//       // maskInputOptions: {
-//       //   password: true,
-//       //   email: true,
-//       //   tel: true,
-//       //   // creditCard: true,
-//       // }
-//     }),
-//   ];
-//   // } else {
-//   //   return [];
-//   // }
-// };
-
 const integrations = [
   new CaptureConsole({
     levels: ['error', 'warn'],
