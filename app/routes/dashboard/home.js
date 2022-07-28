@@ -32,7 +32,7 @@ export default class DashboarHomeRoute extends Route {
 
     return RSVP.hash({
       user: this.current.user || user,
-      property: this.current.property || property,
+      property,
       commonRequests: this.store.findAll('common-request', {
         backgroundReload: true,
       }),
