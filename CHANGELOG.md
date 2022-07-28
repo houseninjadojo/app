@@ -1,3 +1,10 @@
+## [1.18.29](https://github.com/houseninjadojo/app/compare/v1.18.28...v1.18.29) (2022-07-28)
+
+
+### Bug Fixes
+
+* **telemetry:** explicit tracing integration ([#835](https://github.com/houseninjadojo/app/issues/835)) ([9aa7611](https://github.com/houseninjadojo/app/commit/9aa76118d00bc963bfddd7b898d0863ab64515cd))
+
 ## [1.18.28](https://github.com/houseninjadojo/app/compare/v1.18.27...v1.18.28) (2022-07-28)
 
 
