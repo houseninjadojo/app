@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import {
   getWorkOrderTag,
   isActiveWorkOrder,
-  newestToOldest,
+  newestToOldestScheduledDate,
   filterWorkOrdersFor,
   WORK_ORDER_FILTER,
 } from 'houseninja/utils/components/work-order/work-order-status';
@@ -48,45 +48,35 @@ export default class HandleItComponent extends Component {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.PAYMENT_DUE,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    )?.sort(newestToOldestScheduledDate);
   }
 
   get completedWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.COMPLETED,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    )?.sort(newestToOldestScheduledDate);
   }
 
   get scheduledWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.SCHEDULED,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    )?.sort(newestToOldestScheduledDate);
   }
 
   get completedAndScheduledWorkOrders() {
     return [
       ...(this.completedWorkOrders ?? []),
       ...(this.scheduledWorkOrders ?? []),
-    ]?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    ]?.sort(newestToOldestScheduledDate);
   }
 
   get initiatedWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.INITITATED,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    )?.sort(newestToOldestScheduledDate);
   }
 
   get displayedWorkOrders() {

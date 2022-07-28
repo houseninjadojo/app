@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import {
   // getWorkOrderTag,
   isHistoricalWorkOrder,
-  newestToOldest,
+  newestToOldestCompletedAt,
 } from 'houseninja/utils/components/work-order/work-order-status';
 
 export default class WorkHistoryComponent extends Component {
@@ -23,7 +23,7 @@ export default class WorkHistoryComponent extends Component {
       };
     })
     ?.sort((a, b) => {
-      return newestToOldest(a, b);
+      return newestToOldestCompletedAt(a, b);
     });
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
