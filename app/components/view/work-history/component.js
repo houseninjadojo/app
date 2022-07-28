@@ -1,30 +1,36 @@
 import Component from '@glimmer/component';
-import {
-  // getWorkOrderTag,
-  isHistoricalWorkOrder,
-  newestToOldest,
-} from 'houseninja/utils/components/work-order/work-order-status';
+import { isHistoricalWorkOrder } from 'houseninja/utils/components/work-order/work-order-status';
+import moment from 'moment';
 
 export default class WorkHistoryComponent extends Component {
-  inactiveWorkOrders = this.args.workOrders
-    ?.filter((w) => {
-      return isHistoricalWorkOrder(w.status);
-    })
-    ?.map((w) => {
-      return {
-        id: w.id,
-        name: w.description,
-        description: w.vendor,
-        scheduledTime: null, // Don't display time
-        scheduledDate: w.scheduledDate,
-        status: w.status,
-        // tag: w.status && getWorkOrderTag(w.status),
-        ...w,
-      };
-    })
-    ?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+  get inactiveWorkOrders() {
+    return this.args.workOrders
+      ?.filter((w) => {
+        return isHistoricalWorkOrder(w.status);
+      })
+      ?.map((w) => {
+        return {
+          id: w.id,
+          name: w.description,
+          description: w.vendor,
+          displayTime: null, // Don't display time
+          completedAt: w.completedAt,
+          displayDate:
+            (w.completedAt && moment(w.completedAt).format('MM/DD/YYYY')) || '',
+          status: w.status,
+          // tag: w.status && getWorkOrderTag(w.status),
+          ...w,
+        };
+      })
+      ?.sort((a, b) => {
+        const FORMAT = 'YYYYMMDD';
+
+        return (
+          moment(b.completedAt)?.format(FORMAT) -
+          moment(a.completedAt)?.format(FORMAT)
+        );
+      });
+  }
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
 }

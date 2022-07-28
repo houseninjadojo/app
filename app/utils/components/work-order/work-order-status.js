@@ -3,7 +3,6 @@ import {
   WORK_ORDER_UI_STATE,
   workOrderStatusLabels,
 } from 'houseninja/data/work-order-status';
-import moment from 'moment';
 
 export const getWorkOrderTag = (status) => {
   switch (status) {
@@ -150,10 +149,6 @@ export const isCompletedWorkOrder = (status) => {
     default:
       return false;
   }
-};
-
-export const newestToOldest = (a, b) => {
-  return moment(a.scheduledDate) < moment(b.scheduledDate);
 };
 
 export const WORK_ORDER_FILTER = {

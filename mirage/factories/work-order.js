@@ -19,8 +19,20 @@ const getRandomProperty = (obj) => {
 export default Factory.extend({
   invoice: association(),
 
+  completedAt() {
+    return moment(faker.date.past(3, moment()));
+  },
+
+  updatedAt() {
+    return moment(faker.date.past(3, moment()));
+  },
+
+  createdAt() {
+    return moment(faker.date.past(5, moment()));
+  },
+
   scheduledDate() {
-    return moment(pastOrFuture()).format('MM/DD/YY');
+    return moment(pastOrFuture()).format('MM/DD/YYYY');
   },
 
   scheduledTime() {

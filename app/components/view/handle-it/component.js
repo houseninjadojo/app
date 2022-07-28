@@ -4,11 +4,10 @@ import { action } from '@ember/object';
 import {
   getWorkOrderTag,
   isActiveWorkOrder,
-  newestToOldest,
   filterWorkOrdersFor,
   WORK_ORDER_FILTER,
 } from 'houseninja/utils/components/work-order/work-order-status';
-
+import moment from 'moment';
 export default class HandleItComponent extends Component {
   @service router;
 
@@ -32,8 +31,13 @@ export default class HandleItComponent extends Component {
           id: w.id,
           name: w.description,
           description: w.vendor && w.scheduledDate ? w.vendor : null,
-          scheduledDate: w.vendor && w.scheduledDate ? w.scheduledDate : null,
-          scheduledTime:
+          createdAt: w.createdAt,
+          scheduledDate: w.scheduledDate,
+          displayDate:
+            w.vendor && w.scheduledDate
+              ? moment(w.scheduledDate).format('MM/DD/YYYY')
+              : null,
+          displayTime:
             w.vendor && w.scheduledDate && w.scheduledTime
               ? w.scheduledTime
               : null,
@@ -44,12 +48,22 @@ export default class HandleItComponent extends Component {
       });
   }
 
+  __newestToOldest(a, b, sortByCreatedAt = false) {
+    const FORMAT = 'MM/DD/YYYY';
+
+    if (sortByCreatedAt) {
+      return moment(b.createdAt, FORMAT) - moment(a.createdAt, FORMAT);
+    } else {
+      return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
+    }
+  }
+
   get paymentDueWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.PAYMENT_DUE,
       this.activeWorkOrders
     )?.sort((a, b) => {
-      return newestToOldest(a, b);
+      return this.__newestToOldest(a, b);
     });
   }
 
@@ -57,18 +71,14 @@ export default class HandleItComponent extends Component {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.COMPLETED,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    );
   }
 
   get scheduledWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.SCHEDULED,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return newestToOldest(a, b);
-    });
+    );
   }
 
   get completedAndScheduledWorkOrders() {
@@ -76,7 +86,7 @@ export default class HandleItComponent extends Component {
       ...(this.completedWorkOrders ?? []),
       ...(this.scheduledWorkOrders ?? []),
     ]?.sort((a, b) => {
-      return newestToOldest(a, b);
+      return this.__newestToOldest(a, b);
     });
   }
 
@@ -85,7 +95,7 @@ export default class HandleItComponent extends Component {
       WORK_ORDER_FILTER.INITITATED,
       this.activeWorkOrders
     )?.sort((a, b) => {
-      return newestToOldest(a, b);
+      return this.__newestToOldest(a, b, true);
     });
   }
 
