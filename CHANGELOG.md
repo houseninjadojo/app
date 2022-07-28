@@ -1,3 +1,10 @@
+## [1.18.31](https://github.com/houseninjadojo/app/compare/v1.18.30...v1.18.31) (2022-07-28)
+
+
+### Bug Fixes
+
+* set-password post success copywriting change ([#845](https://github.com/houseninjadojo/app/issues/845)) ([43b8881](https://github.com/houseninjadojo/app/commit/43b88811ba112ba1c600b7b9ef9f2442f62f9560))
+
 ## [1.18.30](https://github.com/houseninjadojo/app/compare/v1.18.29...v1.18.30) (2022-07-28)
 
 
