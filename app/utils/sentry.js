@@ -10,8 +10,6 @@ const { sentry: sentryConfig } = config;
 
 const integrations = () => {
   if (isPresent(sentryConfig.dsn)) {
-    return [];
-  } else {
     return [
       new CaptureConsole({
         levels: ['error', 'warn'],
@@ -27,6 +25,8 @@ const integrations = () => {
         // }
       }),
     ];
+  } else {
+    return [];
   }
 };
 
