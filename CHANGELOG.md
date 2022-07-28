@@ -1,3 +1,10 @@
+## [1.18.30](https://github.com/houseninjadojo/app/compare/v1.18.29...v1.18.30) (2022-07-28)
+
+
+### Bug Fixes
+
+* work order sorting ([#842](https://github.com/houseninjadojo/app/issues/842)) ([5bae39c](https://github.com/houseninjadojo/app/commit/5bae39c416d7dff5a11cb43d713cda3069584bb1))
+
 ## [1.18.29](https://github.com/houseninjadojo/app/compare/v1.18.28...v1.18.29) (2022-07-28)
 
 
