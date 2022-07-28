@@ -36,13 +36,13 @@
               {{/if}}
               {{#if @showTimestamp}}
                 <p class='timestamp'>
-                  {{#if record.scheduledTime}}
+                  {{#if record.time}}
                     <span>
-                      {{record.scheduledTime}}
+                      {{record.time}}
                     </span>
                   {{/if}}
                   <span>
-                    {{record.scheduledDate}}
+                    {{record.displayDate}}
                   </span>
                 </p>
               {{/if}}
