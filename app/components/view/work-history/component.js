@@ -1,9 +1,6 @@
 import Component from '@glimmer/component';
-import {
-  // getWorkOrderTag,
-  isHistoricalWorkOrder,
-  newestToOldest,
-} from 'houseninja/utils/components/work-order/work-order-status';
+import { isHistoricalWorkOrder } from 'houseninja/utils/components/work-order/work-order-status';
+import moment from 'moment';
 
 export default class WorkHistoryComponent extends Component {
   inactiveWorkOrders = this.args.workOrders
@@ -15,15 +12,21 @@ export default class WorkHistoryComponent extends Component {
         id: w.id,
         name: w.description,
         description: w.vendor,
-        scheduledTime: null, // Don't display time
-        scheduledDate: w.scheduledDate,
+        displayTime: null, // Don't display time
+        completedAt: w.completedAt,
+        displayDate:
+          (w.completedAt && moment(w.completedAt).format('MM/DD/YYYY')) || '',
         status: w.status,
         // tag: w.status && getWorkOrderTag(w.status),
         ...w,
       };
     })
     ?.sort((a, b) => {
-      return newestToOldest(a, b);
+      const FORMAT = 'MM/DD/YYYY';
+      const aNormalized = moment(a.completedAt).format(FORMAT);
+      const bNormalized = moment(b.completedAt).format(FORMAT);
+
+      return moment(aNormalized, FORMAT) < moment(bNormalized, FORMAT);
     });
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
