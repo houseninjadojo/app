@@ -31,8 +31,7 @@ export default class DashboardRoute extends Route {
     }
 
     return RSVP.hash({
-      property: this.current.property || property,
-      showPropertyDialog: isBlank(this.current.property || property),
+      property: this.current.property || property
     });
   }
 }

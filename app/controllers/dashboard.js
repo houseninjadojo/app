@@ -15,7 +15,7 @@ export default class DashboardIndexController extends Controller {
   }
 
   get showPropertyDialog() {
-    if (this.current.user) {
+    if (this.current.user?.properties) {
       let property = this.current.user.get('properties.firstObject');
       return isBlank(this.current.property || property);
     } else {
