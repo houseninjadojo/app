@@ -22,9 +22,7 @@ export default class WorkHistoryComponent extends Component {
         ...w,
       };
     })
-    ?.sort((a, b) => {
-      return newestToOldestCompletedAt(a, b);
-    });
+    ?.sort(newestToOldestCompletedAt);
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
 }
