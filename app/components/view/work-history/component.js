@@ -24,12 +24,7 @@ export default class WorkHistoryComponent extends Component {
       })
       ?.sort((a, b) => {
         const FORMAT = 'YYYYMMDD';
-        console.log(a.completedAt);
-        console.log(b.completedAt);
-        // console.log(
-        //   moment(b.completedAt)?.format(FORMAT) -
-        //     moment(a.completedAt)?.format(FORMAT)
-        // );
+
         return (
           moment(b.completedAt)?.format(FORMAT) -
           moment(a.completedAt)?.format(FORMAT)
