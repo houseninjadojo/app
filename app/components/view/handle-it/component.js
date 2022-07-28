@@ -31,6 +31,7 @@ export default class HandleItComponent extends Component {
           id: w.id,
           name: w.description,
           description: w.vendor && w.scheduledDate ? w.vendor : null,
+          createdAt: w.createdAt,
           scheduledDate: w.scheduledDate,
           displayDate:
             w.vendor && w.scheduledDate
@@ -47,10 +48,13 @@ export default class HandleItComponent extends Component {
       });
   }
 
-  __newestToOldest(a, b) {
+  __newestToOldest(a, b, createdAt = false) {
     const FORMAT = 'MM/DD/YYYY';
-
-    return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
+    if (createdAt) {
+      return moment(b.createdAt, FORMAT) - moment(a.createdAt, FORMAT);
+    } else {
+      return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
+    }
   }
 
   get paymentDueWorkOrders() {
@@ -89,7 +93,9 @@ export default class HandleItComponent extends Component {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.INITITATED,
       this.activeWorkOrders
-    );
+    )?.sort((a, b) => {
+      return this.__newestToOldest(a, b, true);
+    });
   }
 
   get displayedWorkOrders() {
