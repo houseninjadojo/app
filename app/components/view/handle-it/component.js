@@ -48,9 +48,10 @@ export default class HandleItComponent extends Component {
       });
   }
 
-  __newestToOldest(a, b, createdAt = false) {
+  __newestToOldest(a, b, sortByCreatedAt = false) {
     const FORMAT = 'MM/DD/YYYY';
-    if (createdAt) {
+
+    if (sortByCreatedAt) {
       return moment(b.createdAt, FORMAT) - moment(a.createdAt, FORMAT);
     } else {
       return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
