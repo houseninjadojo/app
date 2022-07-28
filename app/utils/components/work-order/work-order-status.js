@@ -3,7 +3,6 @@ import {
   WORK_ORDER_UI_STATE,
   workOrderStatusLabels,
 } from 'houseninja/data/work-order-status';
-import moment from 'moment';
 
 export const getWorkOrderTag = (status) => {
   switch (status) {
