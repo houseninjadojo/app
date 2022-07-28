@@ -1,3 +1,10 @@
+## [1.18.32](https://github.com/houseninjadojo/app/compare/v1.18.31...v1.18.32) (2022-07-28)
+
+
+### Bug Fixes
+
+* display address on first app load ([#846](https://github.com/houseninjadojo/app/issues/846)) ([714fde8](https://github.com/houseninjadojo/app/commit/714fde8ab0f89dfa9238fd863f10a008fc1070b0))
+
 ## [1.18.31](https://github.com/houseninjadojo/app/compare/v1.18.30...v1.18.31) (2022-07-28)
 
 
