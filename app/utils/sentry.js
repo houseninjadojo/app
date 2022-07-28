@@ -1,39 +1,48 @@
 import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
+import SentryRRWeb from '@sentry/rrweb';
 import config from 'houseninja/config/environment';
-// import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { debug } from '@ember/debug';
 import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
+import { isPresent } from '@ember/utils';
+
+const { sentry: sentryConfig } = config;
+
+const integrations = () => {
+  if (isPresent(sentryConfig.dsn)) {
+    return [];
+  } else {
+    return [
+      new CaptureConsole({
+        levels: ['error', 'warn'],
+      }),
+      new ExtraErrorData(),
+      new SentryRRWeb({
+        // @see https://github.com/rrweb-io/rrweb/blob/master/guide.md#options
+        // maskInputOptions: {
+        //   password: true,
+        //   email: true,
+        //   tel: true,
+        //   // creditCard: true,
+        // }
+      }),
+    ];
+  }
+};
 
 const sentryOptions = {
-  ...config.sentry,
-  integrations: [
-    new CaptureConsole({
-      levels: ['error', 'warn'],
-    }),
-    new ExtraErrorData(),
-  ],
+  ...sentryConfig,
+  integrations,
 };
 
 sentryOptions.environment = config.environment;
 
-export function nativeInit() {
-  SentryCapacitor.init(sentryOptions, SentryEmber.init);
-}
-
-export function webInit() {
-  SentryEmber.init();
-}
-
 export function init() {
-  // if (isNativePlatform()) {
-  nativeInit();
-  // } else {
-  //   webInit();
-  // }
+  if (isPresent(sentryConfig.dsn)) {
+    SentryCapacitor.init(sentryOptions, SentryEmber.init);
+  }
 }
 
-// const Sentry = isNativePlatform() ? SentryCapacitor : SentryEmber;
 const Sentry = SentryCapacitor;
 
 export default Sentry;
