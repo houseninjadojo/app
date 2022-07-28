@@ -6,6 +6,8 @@ export default class WorkOrderModel extends Model {
   @belongsTo('property') property;
 
   @attr('string') authCode;
+  @attr('date') createdAt;
+  @attr('date') updatedAt;
   @attr('date') completedAt;
   @attr('string') cost;
   @attr('string') description;

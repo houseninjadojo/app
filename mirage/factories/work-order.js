@@ -23,8 +23,12 @@ export default Factory.extend({
     return moment(faker.date.past(3, moment()));
   },
 
+  updatedAt() {
+    return moment(faker.date.past(3, moment()));
+  },
+
   createdAt() {
-    return moment(pastOrFuture()).format('MM/DD/YYYY');
+    return moment(faker.date.past(5, moment()));
   },
 
   scheduledDate() {
