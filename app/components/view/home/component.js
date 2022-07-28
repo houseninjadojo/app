@@ -18,9 +18,10 @@ export default class HomeContentComponent extends Component {
   }
 
   get streetAddress() {
-    const streetAddress =
-      (this.args.property && this.args.property.get('streetAddress1')) || null;
-    return streetAddress;
+    return (
+      this.args.property.get('streetAddress1') ||
+      this.current.property.get('streetAddress1')
+    );
   }
 
   get salutation() {
