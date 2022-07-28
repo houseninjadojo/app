@@ -3,31 +3,39 @@ import { isHistoricalWorkOrder } from 'houseninja/utils/components/work-order/wo
 import moment from 'moment';
 
 export default class WorkHistoryComponent extends Component {
-  inactiveWorkOrders = this.args.workOrders
-    ?.filter((w) => {
-      return isHistoricalWorkOrder(w.status);
-    })
-    ?.map((w) => {
-      return {
-        id: w.id,
-        name: w.description,
-        description: w.vendor,
-        displayTime: null, // Don't display time
-        completedAt: w.completedAt,
-        displayDate:
-          (w.completedAt && moment(w.completedAt).format('MM/DD/YYYY')) || '',
-        status: w.status,
-        // tag: w.status && getWorkOrderTag(w.status),
-        ...w,
-      };
-    })
-    ?.sort((a, b) => {
-      const FORMAT = 'MM/DD/YYYY';
-      const aNormalized = moment(a.completedAt).format(FORMAT);
-      const bNormalized = moment(b.completedAt).format(FORMAT);
-
-      return moment(aNormalized, FORMAT) < moment(bNormalized, FORMAT);
-    });
+  get inactiveWorkOrders() {
+    return this.args.workOrders
+      ?.filter((w) => {
+        return isHistoricalWorkOrder(w.status);
+      })
+      ?.map((w) => {
+        return {
+          id: w.id,
+          name: w.description,
+          description: w.vendor,
+          displayTime: null, // Don't display time
+          completedAt: w.completedAt,
+          displayDate:
+            (w.completedAt && moment(w.completedAt).format('MM/DD/YYYY')) || '',
+          status: w.status,
+          // tag: w.status && getWorkOrderTag(w.status),
+          ...w,
+        };
+      })
+      ?.sort((a, b) => {
+        const FORMAT = 'YYYYMMDD';
+        console.log(a.completedAt);
+        console.log(b.completedAt);
+        // console.log(
+        //   moment(b.completedAt)?.format(FORMAT) -
+        //     moment(a.completedAt)?.format(FORMAT)
+        // );
+        return (
+          moment(b.completedAt)?.format(FORMAT) -
+          moment(a.completedAt)?.format(FORMAT)
+        );
+      });
+  }
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];
 }
