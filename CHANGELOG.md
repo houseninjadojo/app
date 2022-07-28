@@ -1,3 +1,10 @@
+## [1.18.28](https://github.com/houseninjadojo/app/compare/v1.18.27...v1.18.28) (2022-07-28)
+
+
+### Bug Fixes
+
+* **sentry:** flip integration loading ([#834](https://github.com/houseninjadojo/app/issues/834)) ([caa8c6c](https://github.com/houseninjadojo/app/commit/caa8c6c9879b7c302907e57aa895b730b61b249e))
+
 ## [1.18.27](https://github.com/houseninjadojo/app/compare/v1.18.26...v1.18.27) (2022-07-27)
 
 
