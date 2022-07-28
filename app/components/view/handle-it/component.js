@@ -49,9 +49,7 @@ export default class HandleItComponent extends Component {
 
   __newestToOldest(a, b) {
     const FORMAT = 'MM/DD/YYYY';
-    console.log(
-      moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT)
-    );
+
     return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
   }
 
@@ -60,10 +58,7 @@ export default class HandleItComponent extends Component {
       WORK_ORDER_FILTER.PAYMENT_DUE,
       this.activeWorkOrders
     )?.sort((a, b) => {
-      return this.__newestToOldest(
-        moment(a.scheduledDate),
-        moment(b.scheduledDate)
-      );
+      return this.__newestToOldest(a, b);
     });
   }
 
@@ -86,10 +81,7 @@ export default class HandleItComponent extends Component {
       ...(this.completedWorkOrders ?? []),
       ...(this.scheduledWorkOrders ?? []),
     ]?.sort((a, b) => {
-      return this.__newestToOldest(
-        moment(a.scheduledDate),
-        moment(b.scheduledDate)
-      );
+      return this.__newestToOldest(a, b);
     });
   }
 
