@@ -4,6 +4,7 @@ import SentryRRWeb from '@sentry/rrweb';
 import config from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
 import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
+import { BrowserTracing } from '@sentry/tracing';
 import { isPresent } from '@ember/utils';
 
 const { sentry: sentryConfig } = config;
@@ -11,6 +12,7 @@ const { sentry: sentryConfig } = config;
 const integrations = () => {
   if (isPresent(sentryConfig.dsn)) {
     return [
+      new BrowserTracing(sentryConfig.browserTracingOptions),
       new CaptureConsole({
         levels: ['error', 'warn'],
       }),
