@@ -116,7 +116,9 @@ export default class PaymentMethodComponent extends Component {
   }
 
   @task({ restartable: true })
-  *checkPromoCode() {
+  *checkPromoCode(e) {
+    this.promoCodeInput = e.target.value;
+
     if (this.promoCodeInput.length < 3) {
       return null;
     }
