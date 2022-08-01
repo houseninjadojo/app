@@ -23,7 +23,7 @@ export default Factory.extend({
   },
 
   phoneNumber() {
-    return faker.phone.phoneNumberFormat();
+    return faker.phone.number();
   },
 
   intercomHash() {
