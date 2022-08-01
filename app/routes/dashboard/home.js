@@ -17,12 +17,12 @@ export default class DashboarHomeRoute extends Route {
   }
 
   async model() {
-    const { user_id } = this.session.data.authenticated.userinfo;
+    const userId = this.session?.data?.authenticated?.userinfo?.user_id;
     let user = null;
     let property = null;
 
     if (isBlank(this.current.user)) {
-      user = await this.store.findRecord('user', user_id, {
+      user = await this.store.findRecord('user', userId, {
         include: 'properties',
       });
       property = user.get('properties.firstObject');
