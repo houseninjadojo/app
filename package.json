@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.18.32",
+  "version": "1.18.33",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -48,7 +48,7 @@
     "@semantic-release/git": "^10.0.1",
     "@sentry/capacitor": "^0.8.0",
     "@sentry/cli": "^2.1.0",
-    "@sentry/ember": "^7.7.0",
+    "@sentry/ember": "^7.8.1",
     "@sentry/integrations": "^7.7.0",
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "^7.7.0",
