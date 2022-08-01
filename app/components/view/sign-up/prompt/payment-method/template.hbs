@@ -29,6 +29,7 @@
                 @label={{'Promo Code'}}
                 @value={{mut this.promoCodeInput}}
                 @onInput={{(perform this.checkPromoCode)}}
+                @onPaste={{(perform this.checkPromoCode)}}
             />
             <div class='terms'>
                 {{#unless this.agreedToTermsAndConditions}}

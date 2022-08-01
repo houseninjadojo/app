@@ -55,4 +55,15 @@ export default class InputComponent extends Component {
       this.hasValue = false;
     }
   }
+
+  @action
+  handlePaste(e) {
+    this.args.onPaste && this.args.onPaste(e);
+
+    if (!this.args.hideLabel && e.target.value) {
+      this.hasValue = true;
+    } else {
+      this.hasValue = false;
+    }
+  }
 }

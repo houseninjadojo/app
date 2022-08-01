@@ -13,6 +13,7 @@
               disabled={{@disabled}}
               aria-label={{@label}}
               {{on 'input' this.handleInput}}
+              {{on 'paste' this.handlePaste}}
             />
         {{else}}
             <label class="hn-input-label" for={{@id}}>
@@ -31,6 +32,7 @@
               @value={{mut @value}}
               disabled={{@disabled}}
               {{on 'input' this.handleInput}}
+              {{on 'paste' this.handlePaste}}
               {{on 'focus' this.handleFocus}}
               {{on 'blur' this.handleBlur}}
             />
