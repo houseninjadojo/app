@@ -1,3 +1,10 @@
+## [1.18.33](https://github.com/houseninjadojo/app/compare/v1.18.32...v1.18.33) (2022-08-01)
+
+
+### Bug Fixes
+
+* optional chaining ([#854](https://github.com/houseninjadojo/app/issues/854)) ([bd27832](https://github.com/houseninjadojo/app/commit/bd27832faddabd83b140b2cd683ae88d31ee775d))
+
 ## [1.18.32](https://github.com/houseninjadojo/app/compare/v1.18.31...v1.18.32) (2022-07-28)
 
 
