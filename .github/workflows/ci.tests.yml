@@ -19,7 +19,7 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - run: mkdir -p tmp
-      - run: yarn test:ember -o tmp/app
+      - run: yarn test:ci -o tmp/app
       - uses: actions/upload-artifact@v2
         with:
           name: app

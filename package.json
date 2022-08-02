@@ -24,7 +24,8 @@
     "lint:css:fix": "stylelint 'app/styles/**/*.css' --fix",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
-    "test:ember": "ember test"
+    "test:ember": "ember test",
+    "test:ci": "percy exec -- ember test"
   },
   "devDependencies": {
     "@algonauti/ember-active-storage": "^2.1.1",
@@ -44,6 +45,8 @@
     "@faker-js/faker": "^7.3.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@percy/cli": "^1.7.2",
+    "@percy/ember": "^3.0.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@sentry/capacitor": "^0.8.0",
