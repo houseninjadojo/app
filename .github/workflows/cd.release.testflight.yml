@@ -1,5 +1,7 @@
 name: cd / release
 
+concurrency: testflight-release-lock
+
 on:
   release:
     types:
