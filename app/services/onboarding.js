@@ -41,7 +41,11 @@ export default class OnboardingService extends Service {
   }
 
   sendTrackingEvent(step, user) {
-    this.analytics.track(step, { user: user?.email });
+    try {
+      this.analytics.track(step, { user: user?.email });
+    } catch (e) {
+      captureException(e);
+    }
   }
 
   cleanup() {
@@ -124,6 +128,11 @@ export default class OnboardingService extends Service {
   localModel(modelType) {
     // im not sure why, but `this.store.peekFirst(modelType);` does not work
     // while this does.
-    return this.store.peekAll(modelType).get('firstObject');
+    try {
+      return this.store.peekAll(modelType).get('firstObject');
+    } catch (e) {
+      captureException(e);
+      return null;
+    }
   }
 }

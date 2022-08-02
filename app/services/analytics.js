@@ -8,7 +8,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
   async setup() {
-    if (!isNativePlatform()) {
+    if (!isNativePlatform() && ENV.environment !== 'test') {
       try {
         const token = ENV.analytics.mixpanelToken;
         await Mixpanel.initialize({ token });
@@ -19,6 +19,9 @@ export default class AnalyticsService extends Service {
   }
 
   async track(event, properties) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.track({ event, properties });
@@ -29,6 +32,9 @@ export default class AnalyticsService extends Service {
   }
 
   async identify(distinctId) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.identify({ distinctId });
@@ -39,6 +45,9 @@ export default class AnalyticsService extends Service {
   }
 
   async alias(alias, distinctId) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.alias({ alias, distinctId });
@@ -49,6 +58,9 @@ export default class AnalyticsService extends Service {
   }
 
   async registerSuperProperties(properties = {}) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.registerSuperProperties({ properties });
@@ -59,6 +71,9 @@ export default class AnalyticsService extends Service {
   }
 
   async reset() {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.reset();
@@ -69,6 +84,9 @@ export default class AnalyticsService extends Service {
   }
 
   async setProfile(properties = {}) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.setProfile({ properties });
@@ -79,6 +97,9 @@ export default class AnalyticsService extends Service {
   }
 
   async trackCharge(amount, properties = {}) {
+    if (this._shouldNotExecute()) {
+      return;
+    }
     await run(async () => {
       try {
         Mixpanel.trackCharge({ amount, properties });
@@ -90,5 +111,9 @@ export default class AnalyticsService extends Service {
 
   _debug(e) {
     debug(`AnalyticsService - ${e}`);
+  }
+
+  _shouldNotExecute() {
+    return ENV.environment === 'test' || isNativePlatform();
   }
 }
