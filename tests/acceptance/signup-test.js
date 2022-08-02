@@ -7,11 +7,6 @@ module('Acceptance | signup', function (hooks) {
   setupApplicationTest(hooks);
 
   test('visiting /signup', async function (assert) {
-    // try {
-    //   await visit('/signup');
-    // } catch (e) {
-    //   console.log(e);
-    // }
     await visit('/signup');
     await percySnapshot('route:signup/index');
 
