@@ -35,8 +35,8 @@ export default class WorkOrderViewComponent extends Component {
       case workOrderStatus.paymentFailed:
         // return this.content.paymentFailed;
         return this.content.approvePayment;
-      // case workOrderStatus.estimateSharedWithHomeowner:
-      //   return this.content.approveEstimate;
+      case workOrderStatus.estimateSharedWithHomeowner:
+        return this.content.approveEstimate;
       case workOrderStatus.invoicePaidByCustomer:
       case workOrderStatus.closed:
         return this.content.closed;

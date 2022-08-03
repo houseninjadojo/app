@@ -1,0 +1,106 @@
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { captureException } from 'houseninja/utils/sentry';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+
+export default class WorkOrderApproveEstimateViewContentComponent extends Component {
+  @service intercom;
+  @service router;
+  @service store;
+
+  @tracked showWebDialog = false;
+  @tracked isProcessing = false;
+  @tracked isDoneProcessing = false;
+  @tracked estimateApproved = false;
+
+  actionSheetOptions = [
+    {
+      title: 'Dismiss',
+      style: ActionSheetButtonStyle.Cancel,
+    },
+    {
+      title: 'I approve this estimate',
+    },
+  ];
+
+  async _nativeConfirmation() {
+    const total = this.args.model.get('estimate.formattedTotal');
+    const result = await ActionSheet.showActions({
+      title: `Estimate ${total}`,
+      message: 'Do you approve this estimate?',
+      options: this.actionSheetOptions,
+    });
+
+    const choice = this.actionSheetOptions[result.index].title;
+    const confirmed = choice === this.actionSheetOptions[1].title;
+    if (confirmed) {
+      await this.approveEstimate();
+    }
+  }
+
+  _webConfirmation() {
+    this.toggleWebDialog();
+  }
+
+  @action
+  toggleIsProcessing() {
+    this.isProcessing = !this.isProcessing;
+  }
+
+  @action
+  async approveEstimate() {
+    this.toggleIsProcessing();
+
+    try {
+      setTimeout(() => {
+        this.estimateApproved = true;
+      }, 1000);
+    } catch (e) {
+      captureException(e);
+    }
+  }
+
+  @action
+  toggleWebDialog() {
+    this.showWebDialog = !this.showWebDialog;
+  }
+
+  @action
+  async confirm() {
+    if (isNativePlatform()) {
+      this._nativeConfirmation();
+    } else {
+      this._webConfirmation();
+    }
+  }
+
+  @action
+  inquireAboutEstimate() {
+    this.intercom.showComposer(
+      `I have a question about the estimate for the ${this.args.model?.description} service request.`
+    );
+  }
+
+  @action
+  selectRoute() {
+    this.isProcessing = false;
+    this.args.model.reload();
+    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+  }
+
+  get isNativePlatform() {
+    return isNativePlatform();
+  }
+
+  get estimate() {
+    return this.args.model.estimate;
+  }
+
+  get formattedTotal() {
+    return this.estimate?.formattedTotal;
+  }
+}
