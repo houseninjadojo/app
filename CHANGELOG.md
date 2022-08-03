@@ -1,3 +1,10 @@
+## [1.18.34](https://github.com/houseninjadojo/app/compare/v1.18.33...v1.18.34) (2022-08-03)
+
+
+### Bug Fixes
+
+* property check UI feedback ([#865](https://github.com/houseninjadojo/app/issues/865)) ([22bf1cc](https://github.com/houseninjadojo/app/commit/22bf1cc05f2d101c90ad46ed50dca4a3e3cf9dee))
+
 ## [1.18.33](https://github.com/houseninjadojo/app/compare/v1.18.32...v1.18.33) (2022-08-01)
 
 
