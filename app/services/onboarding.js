@@ -15,9 +15,12 @@ const CACHED_MODELS = [
   'user',
 ];
 
+const TTL_MINUTES = 30;
+
 export default class OnboardingService extends Service {
   @service storage;
   @service store;
+  @service analytics;
 
   currentStep = null;
 
@@ -27,13 +30,22 @@ export default class OnboardingService extends Service {
 
   async completeStep(step) {
     this.currentStep = step;
-    await this.storage.setLocal('current-step', this.nextStep);
+    await this.storage.setLocal('current-step', this.nextStep, TTL_MINUTES);
     const user = this.localModel('user');
     if (isPresent(user)) {
       user.onboardingStep = this.nextStep;
       user.save();
     }
     await this.dehydrate();
+    this.sendTrackingEvent(step, user);
+  }
+
+  sendTrackingEvent(step, user) {
+    try {
+      this.analytics.track(step, { user: user?.email });
+    } catch (e) {
+      captureException(e);
+    }
   }
 
   cleanup() {
@@ -93,7 +105,7 @@ export default class OnboardingService extends Service {
       }
     }).compact();
     records.forEach(async (record) => {
-      await this.storage.setLocal(record.data.type, record);
+      await this.storage.setLocal(record.data.type, record, TTL_MINUTES);
     });
   }
 
@@ -102,7 +114,7 @@ export default class OnboardingService extends Service {
   }
 
   set zipcode(zip) {
-    this.storage.setLocal('zipcode', zip);
+    this.storage.setLocal('zipcode', zip, TTL_MINUTES);
   }
 
   async fetchLocalModel(modelType) {
@@ -116,6 +128,11 @@ export default class OnboardingService extends Service {
   localModel(modelType) {
     // im not sure why, but `this.store.peekFirst(modelType);` does not work
     // while this does.
-    return this.store.peekAll(modelType).get('firstObject');
+    try {
+      return this.store.peekAll(modelType).get('firstObject');
+    } catch (e) {
+      captureException(e);
+      return null;
+    }
   }
 }

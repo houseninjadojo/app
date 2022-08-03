@@ -1,5 +1,5 @@
 import { Factory } from 'miragejs';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 export default Factory.extend({
   active() {
@@ -14,8 +14,20 @@ export default Factory.extend({
     return '10% off';
   },
 
+  amountOff() {
+    null;
+  },
+
   percentOff() {
     return '10.0';
+  },
+
+  duration() {
+    return 'repeating';
+  },
+
+  durationInMonths() {
+    return 2;
   },
 
   createdAt() {

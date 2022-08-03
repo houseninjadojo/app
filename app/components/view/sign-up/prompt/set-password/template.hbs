@@ -1,34 +1,33 @@
-<div class="content">    
+<div class="content">
     {{#if this.passwordHasBeenSet}}
-        <Primitive::Section>    
-            <div class="hero mb-4">                
-                <p class="hn strong mb-4">Password Successfully Set</p>                    
-                <br/>                                            
+        <Primitive::Section>
+            <div class="hero">
+                <p class="hn strong mb-4">Password Successfully Set</p>
                 <p>
-                    Let's get you logged in.
+                    You’re all set! Please confirm your account (check your inbox for the email), and then you can use your email and password to log in to the House Ninja app.
                 </p>
-            </div>        
-            <div class="action single">
+            </div>
+            {{!-- <div class="action single">
                 <Primitive::Button
                     @size='lg'
                     @variant='solid'
-                    @semantic='primary'                    
+                    @semantic='primary'
                     {{on 'click' this.login}}
                 >
                     Login
                 </Primitive::Button>
-            </div>
-        </Primitive::Section>        
+            </div> --}}
+        </Primitive::Section>
     {{else}}
         <Primitive::Section>
             <div class="hero mb-4">
                 {{#if @isOnboardingViaNativeApp}}
-                    <p class="hn strong mb-4">Set Your Account Password</p>                    
-                    <br/>            
+                    <p class="hn strong mb-4">Set Your Account Password</p>
+                    <br/>
                 {{else}}
                     <p class="hn strong mb-4">One last step!</p>
-                    <p class="mb-4">To access the iOS app where you'll be able to easily and conveniently manage your home, you'll need to choose a password.</p>        
-                    <br/>            
+                    <p class="mb-4">To access the iOS app where you'll be able to easily and conveniently manage your home, you'll need to choose a password.</p>
+                    <br/>
                 {{/if}}
                 <div class="password-reqs">
                     <p class="hn label">Password Requirements</p>
@@ -66,6 +65,7 @@
                     @variant='solid'
                     @semantic='primary'
                     @disabled={{this.formIsInvalid}}
+                    @isLoading={{this.isLoading}}
                     {{on 'click' this.savePassword}}
                 >
                     Set Password

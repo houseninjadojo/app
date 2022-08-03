@@ -50,6 +50,10 @@ Router.map(function () {
     this.route('security');
     this.route('property');
   });
+  this.route('cancel-subscription', function () {
+    this.route('index');
+    this.route('confirmation');
+  });
   this.route('faq');
   this.route('vault', function () {
     this.route('index', { path: '/' });

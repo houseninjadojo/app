@@ -2,21 +2,25 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
+import { isBlank } from '@ember/utils';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import { Intercom } from '@capacitor-community/intercom';
 
 export default class SettingsPropertyController extends Controller {
+  @service current;
+  @service intercom;
   @service router;
   @service view;
+
+  @tracked showPropertyDialog = false;
 
   @tracked formIsInvalid = true;
 
   @tracked propertyInfo = {
-    streetAddress1: this.model.streetAddress1,
-    streetAddress2: this.model.streetAddress2,
-    city: this.model.city,
-    state: this.model.city,
-    zipcode: this.model.zipcode,
+    streetAddress1: this.model?.streetAddress1,
+    streetAddress2: this.model?.streetAddress2,
+    city: this.model?.city,
+    state: this.model?.state,
+    zipcode: this.model?.zipcode,
   };
 
   @tracked fields = [
@@ -63,13 +67,25 @@ export default class SettingsPropertyController extends Controller {
   ];
 
   @action
+  shouldShowPropertyDialog() {
+    if (isBlank(this.current?.property?.streetAddress1)) {
+      setTimeout(() => this.toggleModal(), 500);
+    }
+  }
+
+  @action
+  toggleModal() {
+    this.showPropertyDialog = !this.showPropertyDialog;
+  }
+
+  @action
   resetForm() {
     if (this.model) {
-      this.propertyInfo.streetAddress1 = this.model.streetAddress1;
-      this.propertyInfo.streetAddress2 = this.model.streetAddress2;
-      this.propertyInfo.city = this.model.city;
-      this.propertyInfo.state = this.model.state;
-      this.propertyInfo.zipcode = this.model.zipcode;
+      this.propertyInfo.streetAddress1 = this.model?.streetAddress1;
+      this.propertyInfo.streetAddress2 = this.model?.streetAddress2;
+      this.propertyInfo.city = this.mode?.city;
+      this.propertyInfo.state = this.model?.state;
+      this.propertyInfo.zipcode = this.model?.zipcode;
     }
 
     this.formIsInvalid = true;
@@ -93,8 +109,8 @@ export default class SettingsPropertyController extends Controller {
 
   @action
   async showMessenger() {
-    await Intercom.displayMessageComposer({
-      message: 'Hello. I need to make a change to my property address.',
-    });
+    this.intercom.showComposer(
+      'Hello. I need to make a change to my property address.'
+    );
   }
 }

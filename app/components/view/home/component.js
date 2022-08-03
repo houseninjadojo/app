@@ -2,12 +2,13 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
-import moment from 'moment';
 
 export default class HomeContentComponent extends Component {
+  @service analytics;
+  @service haptics;
+  @service intercom;
   @service router;
   @service view;
-  @service haptics;
 
   documentVaultRoute = NATIVE_MOBILE_ROUTE.VAULT.INDEX;
   walkthroughBookingRoute = NATIVE_MOBILE_ROUTE.ONBOARDING.WALKTHROUGH_BOOKING;
@@ -17,9 +18,10 @@ export default class HomeContentComponent extends Component {
   }
 
   get streetAddress() {
-    const streetAddress =
-      (this.args.property && this.args.property.get('streetAddress1')) || null;
-    return streetAddress;
+    return (
+      this.args.property?.get('streetAddress1') ||
+      this.current?.property?.get('streetAddress1')
+    );
   }
 
   get salutation() {
@@ -40,19 +42,7 @@ export default class HomeContentComponent extends Component {
   }
 
   get weeklyHomeCareTip() {
-    const weeklyTipIndex = moment().week();
-    const randomTipIndex = Math.floor(
-      Math.random() * this.args.homeCareTips?.length
-    );
-    let tip = null;
-
-    if (this.args.homeCareTips?.length) {
-      tip =
-        this.args.homeCareTips?.objectAt(weeklyTipIndex) ||
-        this.args.homeCareTips?.objectAt(randomTipIndex);
-    }
-
-    return tip;
+    return this.args.homeCareTips.firstObject;
   }
   @action
   async selectRoute(route) {
@@ -63,5 +53,10 @@ export default class HomeContentComponent extends Component {
       this.view.preservePreviousRoute(this.router);
     }
     this.router.transitionTo(route);
+  }
+
+  @action
+  async openChatModal() {
+    this.intercom.showComposer('I’d like to request a service.');
   }
 }

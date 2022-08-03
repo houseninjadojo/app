@@ -14,8 +14,7 @@ module.exports = function (environment) {
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
       EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false,
+        // Array: false,
       },
     },
 
@@ -76,20 +75,21 @@ module.exports = function (environment) {
       },
     },
 
+    sentry: {
+      dsn: null,
+      tracesSampleRate: 1.0,
+      debug: true,
+      autoSessionTracking: true,
+      release: `co.houseninja.application@${pkg.version}+1`,
+      browserTracingOptions: {
+        tracingOrigins: [
+          'api.houseninja.co',
+          'sandbox.api.houseninja.co',
+        ],
+      }
+    },
+
     '@sentry/ember': {
-      sentry: {
-        dsn: null,
-        tracesSampleRate: 1.0,
-        debug: true,
-        autoSessionTracking: true,
-        release: `co.houseninja.application@${pkg.version}+1`,
-        browserTracingOptions: {
-          tracingOrigins: [
-            'api.houseninja.co',
-            'sandbox.api.houseninja.co',
-          ],
-        }
-      },
       enableComponentDefinition: true,
       disablePerformance: false,
     },
@@ -117,7 +117,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
 
-    ENV['@sentry/ember'].sentry.debug = false;
+    ENV.sentry.debug = false;
   }
 
   if (environment === 'sandbox') {
@@ -139,9 +139,9 @@ module.exports = function (environment) {
     ENV['ember-cli-mirage'].enabled = false;
 
     // Sentry
-    ENV['@sentry/ember'].sentry.debug = false;
-    ENV['@sentry/ember'].sentry.environment = 'sandbox';
-    ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
+    ENV.sentry.debug = false;
+    ENV.sentry.environment = 'sandbox';
+    ENV.sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
     ENV.analytics.mixpanelToken = 'cd20057a467eef665b9e86f0b687a5e3';
@@ -166,9 +166,9 @@ module.exports = function (environment) {
     ENV['ember-cli-mirage'].enabled = false;
 
     // Sentry
-    ENV['@sentry/ember'].sentry.debug = false;
-    ENV['@sentry/ember'].sentry.environment = 'production';
-    ENV['@sentry/ember'].sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
+    ENV.sentry.debug = false;
+    ENV.sentry.environment = 'production';
+    ENV.sentry.dsn = 'https://4263250e9c344c61bc6033d3a79d822a@o1061437.ingest.sentry.io/6051789';
 
     // Analytics
     ENV.analytics.mixpanelToken = 'a114d73d1af6fc278d53462a5c096fe7';

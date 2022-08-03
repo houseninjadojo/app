@@ -8,7 +8,7 @@
   padding: 3px 16px 0;
   outline: none;
   white-space: nowrap;
-  font-family: var(--campton-default);
+  font-family: var(--campton-strong);
   font-size: 17px;
 }
 
@@ -17,6 +17,11 @@
   padding: 0;
   outline: none;
   white-space: unset;
+}
+
+.hn.btn.plain.with-image {
+  border-radius: 2px;
+  border: 1px solid var(--gray-100);
 }
 
 /* Size */
@@ -34,8 +39,12 @@
 
 .hn.btn.outline {
   background-color: var(--white);
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
+}
+
+.hn.btn.outline.empty {
+  background: none;
 }
 
 .hn.btn.floating {
@@ -53,16 +62,18 @@
   color: var(--gray-950);
 }
 
-.hn.btn.solid.primary {
-  background: var(--gray-950);
-  box-shadow: var(--shadow-gray-1);
-  color: var(--white);
-}
-
 .hn.btn.hn.btn.solid .icon,
 .hn.btn.hn.btn.outline .icon {
   height: 24px;
   margin-left: 16px;
+  margin-bottom: 2px;
+}
+
+.hn.btn.hn.btn.solid .icon.left,
+.hn.btn.hn.btn.outline .icon.left {
+  height: 24px;
+  margin-right: 16px;
+  margin-left: 0;
   margin-bottom: 2px;
 }
 
@@ -105,6 +116,17 @@
   color: var(--red-400);
 }
 
+.hn.btn.solid.primary {
+  background: var(--gray-950);
+  box-shadow: var(--shadow-gray-1);
+  color: var(--white);
+}
+
+.hn.btn.outline.light {
+  border-color: var(--gray-200);
+  color: var(--gray-200);
+}
+
 .hn.btn.solid.accent {
   background: var(--grad-teal-500);
   box-shadow: var(--shadow-teal-1);
@@ -135,31 +157,35 @@
 }
 
 @media (hover: hover) {
-  .hn.btn {
+  .hn.btn:not(.disabled) {
     cursor: pointer;
   }
 
-  .hn.btn.solid:hover {
+  .hn.btn.disabled {
+    cursor: not-allowed;
+  }
+
+  .hn.btn.solid:hover:not(.disabled) {
     opacity: 0.5;
   }
 
-  .hn.btn.hn.btn.outline:hover {
+  .hn.btn.hn.btn.outline:hover:not(.disabled) {
     color: white;
   }
 
-  .hn.btn.hn.btn.outline:hover .icon {
+  .hn.btn.hn.btn.outline:hover:not(.disabled) .icon {
     filter: brightness(0) invert(1);
   }
 
-  .hn.btn.hn.btn.outline.primary:hover {
+  .hn.btn.hn.btn.outline.primary:hover:not(.disabled) {
     background-color: var(--gray-950);
   }
 
-  .hn.btn.hn.btn.outline.accent:hover {
+  .hn.btn.hn.btn.outline.accent:hover:not(.disabled) {
     background-color: var(--teal-500);
   }
 
-  .hn.btn.hn.btn.outline.secondary:hover {
+  .hn.btn.hn.btn.outline.secondary:hover:not(.disabled) {
     background-color: var(--blue-400);
   }
 }

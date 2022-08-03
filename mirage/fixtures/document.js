@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 export const documentIds = {
   homeInsurance: faker.datatype.uuid(),
@@ -71,24 +71,24 @@ export default [
     documentGroupId: null,
     tags: [],
   },
-  {
-    id: documentIds.walkthroughReport,
-    name: 'Walkthrough Report',
-    // description: faker.lorem.sentence(4),
-    contentType: 'application/pdf',
-    url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Walkthrough.pdf',
-    iconUri: '',
-    documentGroupId: null,
-    tags: ['system:walkthrough-report'],
-  },
-  {
-    id: documentIds.preventativeMaintenancePlan,
-    name: 'My Preventative Maintenance Plan',
-    // description: faker.lorem.sentence(4),
-    contentType: 'application/pdf',
-    url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Preventative+Maintenance+Calendar.pdf',
-    iconUri: '',
-    documentGroupId: null,
-    tags: ['system:preventative-maintenance-plan'],
-  },
+  // {
+  //   id: documentIds.walkthroughReport,
+  //   name: 'Walkthrough Report',
+  //   // description: faker.lorem.sentence(4),
+  //   contentType: 'application/pdf',
+  //   url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Walkthrough.pdf',
+  //   iconUri: '',
+  //   documentGroupId: null,
+  //   tags: ['system:walkthrough-report'],
+  // },
+  // {
+  //   id: documentIds.preventativeMaintenancePlan,
+  //   name: 'My Preventative Maintenance Plan',
+  //   // description: faker.lorem.sentence(4),
+  //   contentType: 'application/pdf',
+  //   url: 'https://kw-demo-docs.s3.us-east-2.amazonaws.com/Andrew+Kerrigan+Preventative+Maintenance+Calendar.pdf',
+  //   iconUri: '',
+  //   documentGroupId: null,
+  //   tags: ['system:preventative-maintenance-plan'],
+  // },
 ];

@@ -8,15 +8,15 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
+  @service intercom;
   @service router;
   @service store;
 
-  @tracked cvc = null;
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked cvcError = [];
+  @tracked paymentFailed = false;
 
   actionSheetOptions = [
     {
@@ -28,12 +28,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     },
   ];
 
-  get isNativePlatform() {
-    return isNativePlatform();
-  }
-
   async _nativeConfirmation() {
-    const total = this.args.model.invoice.get('formattedTotal');
+    const total = this.args.model.get('invoice.formattedTotal');
     const result = await ActionSheet.showActions({
       title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
@@ -48,11 +44,17 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   _webConfirmation() {
-    this.toggleModal();
+    this.toggleWebDialog();
   }
 
-  async approvePayment(isWeb = false) {
-    this.isProcessing = true;
+  @action
+  toggleIsProcessing() {
+    this.isProcessing = !this.isProcessing;
+  }
+
+  @action
+  async approvePayment() {
+    this.toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
@@ -60,41 +62,16 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
     try {
       await payment.save(); // this will be long running (probably)
-      this.isDoneProcessing = true;
       this.paid = true;
-      isWeb && this.toggleModal();
     } catch (e) {
-      this.isProcessing = false;
-      this.cvcError = [
-        {
-          message:
-            'There was an error approving your payment. Please try again in a few minutes.',
-        },
-      ];
+      this.paymentFailed = true;
       captureException(e);
     }
   }
 
   @action
-  toggleModal() {
+  toggleWebDialog() {
     this.showWebDialog = !this.showWebDialog;
-  }
-
-  @action
-  async validateCVC() {
-    if (this.cvc) {
-      const isValid = await this.cvcResourceVerification();
-      if (isValid) {
-        this.cvcError = [];
-        this.approvePayment(true);
-      } else {
-        this.cvcError = [{ message: 'Invalid CVC code' }];
-      }
-    } else {
-      this.cvcError = [
-        { message: 'Please enter the CVC number associated with this card.' },
-      ];
-    }
   }
 
   @action
@@ -107,36 +84,26 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
+  requestDifferentPayment() {
+    this.intercom.showComposer('I would like to update my payment method.');
+  }
+
+  @action
+  inquireAboutInvoice() {
+    this.intercom.showComposer(
+      `I have a question about the invoice for the ${this.args.model?.description} service request.`
+    );
+  }
+
+  @action
   selectRoute() {
     this.isProcessing = false;
     this.args.model.reload();
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
   }
 
-  @action
-  closeWindow() {
-    window.close();
-  }
-
-  async cvcResourceVerification() {
-    try {
-      const creditCard = this.store.peekAll('credit-card').firstObject;
-      const verification = await this.store.createRecord(
-        'resource-verification',
-        {
-          resourceName: 'credit-card',
-          recordId: creditCard?.id,
-          attribute: 'cvv',
-          // value: this.cvc,
-          vgsValue: this.cvc,
-        }
-      );
-      verification.save();
-      return true;
-    } catch (e) {
-      captureException(e);
-      return false;
-    }
+  get isNativePlatform() {
+    return isNativePlatform();
   }
 
   get invoice() {

@@ -1,3 +1,480 @@
+## [1.18.34](https://github.com/houseninjadojo/app/compare/v1.18.33...v1.18.34) (2022-08-03)
+
+
+### Bug Fixes
+
+* property check UI feedback ([#865](https://github.com/houseninjadojo/app/issues/865)) ([22bf1cc](https://github.com/houseninjadojo/app/commit/22bf1cc05f2d101c90ad46ed50dca4a3e3cf9dee))
+
+## [1.18.33](https://github.com/houseninjadojo/app/compare/v1.18.32...v1.18.33) (2022-08-01)
+
+
+### Bug Fixes
+
+* optional chaining ([#854](https://github.com/houseninjadojo/app/issues/854)) ([bd27832](https://github.com/houseninjadojo/app/commit/bd27832faddabd83b140b2cd683ae88d31ee775d))
+
+## [1.18.32](https://github.com/houseninjadojo/app/compare/v1.18.31...v1.18.32) (2022-07-28)
+
+
+### Bug Fixes
+
+* display address on first app load ([#846](https://github.com/houseninjadojo/app/issues/846)) ([714fde8](https://github.com/houseninjadojo/app/commit/714fde8ab0f89dfa9238fd863f10a008fc1070b0))
+
+## [1.18.31](https://github.com/houseninjadojo/app/compare/v1.18.30...v1.18.31) (2022-07-28)
+
+
+### Bug Fixes
+
+* set-password post success copywriting change ([#845](https://github.com/houseninjadojo/app/issues/845)) ([43b8881](https://github.com/houseninjadojo/app/commit/43b88811ba112ba1c600b7b9ef9f2442f62f9560))
+
+## [1.18.30](https://github.com/houseninjadojo/app/compare/v1.18.29...v1.18.30) (2022-07-28)
+
+
+### Bug Fixes
+
+* work order sorting ([#842](https://github.com/houseninjadojo/app/issues/842)) ([5bae39c](https://github.com/houseninjadojo/app/commit/5bae39c416d7dff5a11cb43d713cda3069584bb1))
+
+## [1.18.29](https://github.com/houseninjadojo/app/compare/v1.18.28...v1.18.29) (2022-07-28)
+
+
+### Bug Fixes
+
+* **telemetry:** explicit tracing integration ([#835](https://github.com/houseninjadojo/app/issues/835)) ([9aa7611](https://github.com/houseninjadojo/app/commit/9aa76118d00bc963bfddd7b898d0863ab64515cd))
+
+## [1.18.28](https://github.com/houseninjadojo/app/compare/v1.18.27...v1.18.28) (2022-07-28)
+
+
+### Bug Fixes
+
+* **sentry:** flip integration loading ([#834](https://github.com/houseninjadojo/app/issues/834)) ([caa8c6c](https://github.com/houseninjadojo/app/commit/caa8c6c9879b7c302907e57aa895b730b61b249e))
+
+## [1.18.27](https://github.com/houseninjadojo/app/compare/v1.18.26...v1.18.27) (2022-07-27)
+
+
+### Bug Fixes
+
+* default work order content description field ([#831](https://github.com/houseninjadojo/app/issues/831)) ([7626e0e](https://github.com/houseninjadojo/app/commit/7626e0e388928f022eeb0655daa03baad93c48f0))
+
+## [1.18.26](https://github.com/houseninjadojo/app/compare/v1.18.25...v1.18.26) (2022-07-27)
+
+
+### Bug Fixes
+
+* work order status completed filter ([#829](https://github.com/houseninjadojo/app/issues/829)) ([8517efc](https://github.com/houseninjadojo/app/commit/8517efc8cff654e494a720127f824a878fd0f1eb))
+
+## [1.18.25](https://github.com/houseninjadojo/app/compare/v1.18.24...v1.18.25) (2022-07-27)
+
+
+### Bug Fixes
+
+* **work-order_status:** missing 'customer' matching string ([#828](https://github.com/houseninjadojo/app/issues/828)) ([196cbf5](https://github.com/houseninjadojo/app/commit/196cbf54d135e22d55cacef4181bf81c80b5b8eb))
+
+## [1.18.24](https://github.com/houseninjadojo/app/compare/v1.18.23...v1.18.24) (2022-07-27)
+
+
+### Bug Fixes
+
+* work order status filter clean-up ([#827](https://github.com/houseninjadojo/app/issues/827)) ([979d6f4](https://github.com/houseninjadojo/app/commit/979d6f422f672ab87eab129952cd204dec9a6910))
+
+## [1.18.23](https://github.com/houseninjadojo/app/compare/v1.18.22...v1.18.23) (2022-07-27)
+
+
+### Bug Fixes
+
+* **work-order-status:** loosen moment parser ([#826](https://github.com/houseninjadojo/app/issues/826)) ([eae1280](https://github.com/houseninjadojo/app/commit/eae128055c44532ce74e03a764ac4cd634739d12))
+
+## [1.18.22](https://github.com/houseninjadojo/app/compare/v1.18.21...v1.18.22) (2022-07-26)
+
+
+### Bug Fixes
+
+* onboarding param check during set-password ([#825](https://github.com/houseninjadojo/app/issues/825)) ([38e8517](https://github.com/houseninjadojo/app/commit/38e8517ba3eb97684fbaddd3458bed26498ef17c))
+
+## [1.18.21](https://github.com/houseninjadojo/app/compare/v1.18.20...v1.18.21) (2022-07-25)
+
+
+### Bug Fixes
+
+* updating work order status map ([#809](https://github.com/houseninjadojo/app/issues/809)) ([ca6a8ac](https://github.com/houseninjadojo/app/commit/ca6a8acc6f1cb2e930d26e1db1e3efe6b0ab621b))
+
+## [1.18.20](https://github.com/houseninjadojo/app/compare/v1.18.19...v1.18.20) (2022-07-25)
+
+
+### Bug Fixes
+
+* use a getter for showPropertyDialog ([#818](https://github.com/houseninjadojo/app/issues/818)) ([0c63584](https://github.com/houseninjadojo/app/commit/0c63584d560fc506d2a58a0f7cbc21191e98f808))
+
+## [1.18.19](https://github.com/houseninjadojo/app/compare/v1.18.18...v1.18.19) (2022-07-22)
+
+
+### Bug Fixes
+
+* previous route transition fallback ([#816](https://github.com/houseninjadojo/app/issues/816)) ([64853d8](https://github.com/houseninjadojo/app/commit/64853d848a449f76e4cbb2e99203db31835d0107))
+
+## [1.18.18](https://github.com/houseninjadojo/app/compare/v1.18.17...v1.18.18) (2022-07-21)
+
+
+### Bug Fixes
+
+* **branch:** universal email web only handler ([#807](https://github.com/houseninjadojo/app/issues/807)) ([12f5b99](https://github.com/houseninjadojo/app/commit/12f5b992bea55c1122e834755c8a84a475ddcab1))
+
+## [1.18.17](https://github.com/houseninjadojo/app/compare/v1.18.16...v1.18.17) (2022-07-21)
+
+
+### Bug Fixes
+
+* cancel subscription view padding ([#811](https://github.com/houseninjadojo/app/issues/811)) ([53371bc](https://github.com/houseninjadojo/app/commit/53371bc1edd213ac16b2106414c1ea41af7b7dac))
+
+## [1.18.16](https://github.com/houseninjadojo/app/compare/v1.18.15...v1.18.16) (2022-07-20)
+
+
+### Bug Fixes
+
+* moar nudges ([#810](https://github.com/houseninjadojo/app/issues/810)) ([2305bff](https://github.com/houseninjadojo/app/commit/2305bff5040921f79c0c6c50353c41639d62a18a))
+
+## [1.18.15](https://github.com/houseninjadojo/app/compare/v1.18.14...v1.18.15) (2022-07-20)
+
+
+### Bug Fixes
+
+* tweaks and nudges ([#808](https://github.com/houseninjadojo/app/issues/808)) ([cc3b65b](https://github.com/houseninjadojo/app/commit/cc3b65bb7acc69d808f0a2984c1ef9a16bdc5e2c))
+
+## [1.18.14](https://github.com/houseninjadojo/app/compare/v1.18.13...v1.18.14) (2022-07-20)
+
+
+### Bug Fixes
+
+* **signup:** promo codes in english ([#802](https://github.com/houseninjadojo/app/issues/802)) ([732deaf](https://github.com/houseninjadojo/app/commit/732deafbd32b68c0f0b6e67f146c886ee1a146fc))
+
+## [1.18.13](https://github.com/houseninjadojo/app/compare/v1.18.12...v1.18.13) (2022-07-19)
+
+
+### Bug Fixes
+
+* ui adjustments ([#801](https://github.com/houseninjadojo/app/issues/801)) ([6c1e7c2](https://github.com/houseninjadojo/app/commit/6c1e7c26847c37a62d1bc7be136b35893e264082))
+
+## [1.18.12](https://github.com/houseninjadojo/app/compare/v1.18.11...v1.18.12) (2022-07-19)
+
+
+### Bug Fixes
+
+* **hubspot:** URI encode attributes for hubspot walkthrough iframe ([#800](https://github.com/houseninjadojo/app/issues/800)) ([ff0ad50](https://github.com/houseninjadojo/app/commit/ff0ad50e7987c453d7aae4240d71a882f9b1116b))
+
+## [1.18.11](https://github.com/houseninjadojo/app/compare/v1.18.10...v1.18.11) (2022-07-18)
+
+
+### Bug Fixes
+
+* **analytics:** send onboarding steps as events to mixpanel for signup funnel ([a089a2a](https://github.com/houseninjadojo/app/commit/a089a2a48b8698813246fcb8028c358d9215aced))
+
+## [1.18.10](https://github.com/houseninjadojo/app/compare/v1.18.9...v1.18.10) (2022-07-17)
+
+
+### Bug Fixes
+
+* **deep-links:** just use raw url ([#791](https://github.com/houseninjadojo/app/issues/791)) ([155df80](https://github.com/houseninjadojo/app/commit/155df80a2fa7d017a7174bde89967732317ec152))
+
+## [1.18.9](https://github.com/houseninjadojo/app/compare/v1.18.8...v1.18.9) (2022-07-17)
+
+
+### Bug Fixes
+
+* **branch:** only use test key in simulator ([#790](https://github.com/houseninjadojo/app/issues/790)) ([c2b45fe](https://github.com/houseninjadojo/app/commit/c2b45fe98bcd2f9ccd8b3309a759cdfd48eca114))
+
+## [1.18.8](https://github.com/houseninjadojo/app/compare/v1.18.7...v1.18.8) (2022-07-17)
+
+
+### Bug Fixes
+
+* **deep-links:** fix login ([#789](https://github.com/houseninjadojo/app/issues/789)) ([be9376d](https://github.com/houseninjadojo/app/commit/be9376dfa2b5ac9cf178a3c8649c69dfd04c2ea1))
+
+## [1.18.7](https://github.com/houseninjadojo/app/compare/v1.18.6...v1.18.7) (2022-07-16)
+
+
+### Bug Fixes
+
+* deep links ([#788](https://github.com/houseninjadojo/app/issues/788)) ([2fa71a9](https://github.com/houseninjadojo/app/commit/2fa71a97b9a3605b81cd9a62cd0cdffb841c3018))
+
+## [1.18.6](https://github.com/houseninjadojo/app/compare/v1.18.5...v1.18.6) (2022-07-16)
+
+
+### Bug Fixes
+
+* **deep-links:** branch link deep linking ([#787](https://github.com/houseninjadojo/app/issues/787)) ([22a0e5c](https://github.com/houseninjadojo/app/commit/22a0e5cdce656fdb0a9973618e3cd9cf36595d03))
+
+## [1.18.5](https://github.com/houseninjadojo/app/compare/v1.18.4...v1.18.5) (2022-07-16)
+
+
+### Bug Fixes
+
+* **settings:** fix payment method save action ([#786](https://github.com/houseninjadojo/app/issues/786)) ([cb429e9](https://github.com/houseninjadojo/app/commit/cb429e97bceac739be9ff824c34957f5febec756))
+
+## [1.18.4](https://github.com/houseninjadojo/app/compare/v1.18.3...v1.18.4) (2022-07-15)
+
+
+### Bug Fixes
+
+* post-password setting message when setting up account ([#785](https://github.com/houseninjadojo/app/issues/785)) ([6241d95](https://github.com/houseninjadojo/app/commit/6241d95f6b0ceb8a0cdec322d96602780a887232))
+
+## [1.18.3](https://github.com/houseninjadojo/app/compare/v1.18.2...v1.18.3) (2022-07-15)
+
+
+### Bug Fixes
+
+* post-external-payment-approval-response dialog ([#784](https://github.com/houseninjadojo/app/issues/784)) ([950dcc3](https://github.com/houseninjadojo/app/commit/950dcc38d0b618d61d189f213de99f1a31e4089f))
+
+## [1.18.2](https://github.com/houseninjadojo/app/compare/v1.18.1...v1.18.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* **invoice:** mark invoice notes htmlSafe ([#783](https://github.com/houseninjadojo/app/issues/783)) ([a06a841](https://github.com/houseninjadojo/app/commit/a06a84137b69ced1d2ee117635ecabc19fc9c0bf))
+
+## [1.18.1](https://github.com/houseninjadojo/app/compare/v1.18.0...v1.18.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* **invoice:** format description/notes with line breaks ([#782](https://github.com/houseninjadojo/app/issues/782)) ([b7a1436](https://github.com/houseninjadojo/app/commit/b7a143671b06e78ff93a46e92d9c5a50e5338b51))
+
+# [1.18.0](https://github.com/houseninjadojo/app/compare/v1.17.8...v1.18.0) (2022-07-15)
+
+
+### Bug Fixes
+
+* **auth:** check auth kind in index route ([#780](https://github.com/houseninjadojo/app/issues/780)) ([604a9d9](https://github.com/houseninjadojo/app/commit/604a9d983146ff557422e78dbb0798ce10ea9978))
+* **invoice:** use receipt over invoice ([#777](https://github.com/houseninjadojo/app/issues/777)) ([4a273b6](https://github.com/houseninjadojo/app/commit/4a273b6c9584c6449f798440aa57cfa989bfb7ae))
+
+
+### Features
+
+* expire local storage items after some time ([#754](https://github.com/houseninjadojo/app/issues/754)) ([d67991f](https://github.com/houseninjadojo/app/commit/d67991f5ae2bfbfd1779c42944333c675347d294))
+
+## [1.17.8](https://github.com/houseninjadojo/app/compare/v1.17.7...v1.17.8) (2022-07-15)
+
+
+### Bug Fixes
+
+* move payment-approval redirect logic to session service ([#779](https://github.com/houseninjadojo/app/issues/779)) ([5505045](https://github.com/houseninjadojo/app/commit/55050456695ec75c405e68092d77175582832e15))
+
+## [1.17.7](https://github.com/houseninjadojo/app/compare/v1.17.6...v1.17.7) (2022-07-14)
+
+## [1.17.6](https://github.com/houseninjadojo/app/compare/v1.17.5...v1.17.6) (2022-07-14)
+
+
+### Bug Fixes
+
+* **home-care-tip:** add new attributes ([#774](https://github.com/houseninjadojo/app/issues/774)) ([1e56a13](https://github.com/houseninjadojo/app/commit/1e56a1397097cdfa18e465d33b78a4797391a31b))
+
+## [1.17.5](https://github.com/houseninjadojo/app/compare/v1.17.4...v1.17.5) (2022-07-13)
+
+
+### Bug Fixes
+
+* moar input label adjustments ([#769](https://github.com/houseninjadojo/app/issues/769)) ([ec34988](https://github.com/houseninjadojo/app/commit/ec34988990a12e803b66508af10778674d515b8e))
+
+## [1.17.4](https://github.com/houseninjadojo/app/compare/v1.17.3...v1.17.4) (2022-07-13)
+
+
+### Bug Fixes
+
+* input padding ([#768](https://github.com/houseninjadojo/app/issues/768)) ([c05d03f](https://github.com/houseninjadojo/app/commit/c05d03f813f2420d164f4a0fe158b9b55314bfe7))
+
+## [1.17.3](https://github.com/houseninjadojo/app/compare/v1.17.2...v1.17.3) (2022-07-13)
+
+
+### Bug Fixes
+
+* misc ui changes ([#767](https://github.com/houseninjadojo/app/issues/767)) ([13dda7a](https://github.com/houseninjadojo/app/commit/13dda7a41eee3e9e6bb005744498a390b0209055))
+
+## [1.17.2](https://github.com/houseninjadojo/app/compare/v1.17.1...v1.17.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* work order status adjustments ([#766](https://github.com/houseninjadojo/app/issues/766)) ([b51dda2](https://github.com/houseninjadojo/app/commit/b51dda2a66be57b68a4ac7de2b9a0cd8b38ec805))
+
+## [1.17.1](https://github.com/houseninjadojo/app/compare/v1.17.0...v1.17.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* **payment-method:** inject the store ([#765](https://github.com/houseninjadojo/app/issues/765)) ([1112ed1](https://github.com/houseninjadojo/app/commit/1112ed190db06b21f8c57bd7f9902993e172aa13))
+
+# [1.17.0](https://github.com/houseninjadojo/app/compare/v1.16.17...v1.17.0) (2022-07-12)
+
+
+### Features
+
+* account deletion ([#702](https://github.com/houseninjadojo/app/issues/702)) ([986679a](https://github.com/houseninjadojo/app/commit/986679ac0ac20a176ee653dbc25b7bd06365d995))
+
+## [1.16.17](https://github.com/houseninjadojo/app/compare/v1.16.16...v1.16.17) (2022-07-12)
+
+
+### Bug Fixes
+
+* **settings:** create payment method vs update in settings ([#763](https://github.com/houseninjadojo/app/issues/763)) ([3d09800](https://github.com/houseninjadojo/app/commit/3d09800fade886702f8af55f4f076a90995afd9d))
+
+## [1.16.16](https://github.com/houseninjadojo/app/compare/v1.16.15...v1.16.16) (2022-07-12)
+
+
+### Bug Fixes
+
+* **onboarding:** use specific onboarding step to trigger account setup ([#762](https://github.com/houseninjadojo/app/issues/762)) ([be3a797](https://github.com/houseninjadojo/app/commit/be3a797060f7824d0ef4be53a41ed8db630698a0))
+
+## [1.16.15](https://github.com/houseninjadojo/app/compare/v1.16.14...v1.16.15) (2022-07-11)
+
+
+### Bug Fixes
+
+* work order filtering and sorting ([#759](https://github.com/houseninjadojo/app/issues/759)) ([56bb923](https://github.com/houseninjadojo/app/commit/56bb92334c15edf22b27aa1951fbeedf739cb572))
+
+## [1.16.14](https://github.com/houseninjadojo/app/compare/v1.16.13...v1.16.14) (2022-07-08)
+
+
+### Bug Fixes
+
+* bug hunt ([#752](https://github.com/houseninjadojo/app/issues/752)) ([56daa69](https://github.com/houseninjadojo/app/commit/56daa69eff88287c32db5e8324c9db024c44e7ab))
+
+## [1.16.13](https://github.com/houseninjadojo/app/compare/v1.16.12...v1.16.13) (2022-07-08)
+
+
+### Bug Fixes
+
+* moar qa adjustments ([#751](https://github.com/houseninjadojo/app/issues/751)) ([23dab37](https://github.com/houseninjadojo/app/commit/23dab372cc1f6944ab16efec0221d5aa3f68b3b7))
+
+## [1.16.12](https://github.com/houseninjadojo/app/compare/v1.16.11...v1.16.12) (2022-07-08)
+
+
+### Bug Fixes
+
+* **work-order:** add waklkthrough booking statuses to filter ([#747](https://github.com/houseninjadojo/app/issues/747)) ([63b9c19](https://github.com/houseninjadojo/app/commit/63b9c198f0d5d2e9fb80617b45b090b5c0212861))
+
+## [1.16.11](https://github.com/houseninjadojo/app/compare/v1.16.10...v1.16.11) (2022-07-07)
+
+
+### Bug Fixes
+
+* qa adjustments stragglers ([#737](https://github.com/houseninjadojo/app/issues/737)) ([2c1fd7e](https://github.com/houseninjadojo/app/commit/2c1fd7e0f92c8a8584a5b60ca3e1c4ad55bb0018))
+
+## [1.16.10](https://github.com/houseninjadojo/app/compare/v1.16.9...v1.16.10) (2022-07-07)
+
+
+### Bug Fixes
+
+* use a getter for displayedWorkOrders ([#722](https://github.com/houseninjadojo/app/issues/722)) ([9802278](https://github.com/houseninjadojo/app/commit/9802278c6f33309e2047906aec93feadc73c4c97))
+
+## [1.16.9](https://github.com/houseninjadojo/app/compare/v1.16.8...v1.16.9) (2022-07-06)
+
+
+### Bug Fixes
+
+* qa adjustments in-app ([#735](https://github.com/houseninjadojo/app/issues/735)) ([39b170f](https://github.com/houseninjadojo/app/commit/39b170f0b4de1b03b703fa2db4915308ad2e3990))
+
+## [1.16.8](https://github.com/houseninjadojo/app/compare/v1.16.7...v1.16.8) (2022-07-06)
+
+
+### Bug Fixes
+
+* buncha bs ([#734](https://github.com/houseninjadojo/app/issues/734)) ([fb4dd6d](https://github.com/houseninjadojo/app/commit/fb4dd6db1a89fb1b5e8850d73feaa8b4ad80a828))
+
+## [1.16.7](https://github.com/houseninjadojo/app/compare/v1.16.6...v1.16.7) (2022-07-06)
+
+
+### Bug Fixes
+
+* upgrade capacitor-secure-storage-plugin from 0.7.0 to 0.7.1 ([#703](https://github.com/houseninjadojo/app/issues/703)) ([1331f7a](https://github.com/houseninjadojo/app/commit/1331f7a9e69b4646319f5b8942c778bfa329423b))
+
+## [1.16.6](https://github.com/houseninjadojo/app/compare/v1.16.5...v1.16.6) (2022-07-06)
+
+
+### Bug Fixes
+
+* show invoice document on work history ([#707](https://github.com/houseninjadojo/app/issues/707)) ([92e5bfb](https://github.com/houseninjadojo/app/commit/92e5bfb58c6cfbeab6276a98f66a32f28fc1fbbe))
+
+## [1.16.5](https://github.com/houseninjadojo/app/compare/v1.16.4...v1.16.5) (2022-07-05)
+
+
+### Bug Fixes
+
+* qa adjustments ([#717](https://github.com/houseninjadojo/app/issues/717)) ([8b34db0](https://github.com/houseninjadojo/app/commit/8b34db0ac0cda6751df33aba60c17cfc6fe0d2d8))
+
+## [1.16.4](https://github.com/houseninjadojo/app/compare/v1.16.3...v1.16.4) (2022-07-01)
+
+
+### Bug Fixes
+
+* moar misc ux ([#714](https://github.com/houseninjadojo/app/issues/714)) ([bdd8ce4](https://github.com/houseninjadojo/app/commit/bdd8ce40d47eeca069fc41a7cbb328e04a714d7a))
+
+## [1.16.3](https://github.com/houseninjadojo/app/compare/v1.16.2...v1.16.3) (2022-06-30)
+
+
+### Bug Fixes
+
+* misc ux touches ([#711](https://github.com/houseninjadojo/app/issues/711)) ([966bcf4](https://github.com/houseninjadojo/app/commit/966bcf46758c7c964f495cfe696fc51496676183))
+
+## [1.16.2](https://github.com/houseninjadojo/app/compare/v1.16.1...v1.16.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* **signup:** add how did you hear about us? ([#709](https://github.com/houseninjadojo/app/issues/709)) ([67db67c](https://github.com/houseninjadojo/app/commit/67db67c60ea96bdb538b7588981ad45d02825ba3))
+
+## [1.16.1](https://github.com/houseninjadojo/app/compare/v1.16.0...v1.16.1) (2022-06-29)
+
+
+### Bug Fixes
+
+* **payment-approval:** add user to full payment method save ([#708](https://github.com/houseninjadojo/app/issues/708)) ([b5e2508](https://github.com/houseninjadojo/app/commit/b5e25083a6e6853434d57b4b9f6d9054a342bb1f))
+
+# [1.16.0](https://github.com/houseninjadojo/app/compare/v1.15.3...v1.16.0) (2022-06-28)
+
+
+### Features
+
+* request button on home route ([#704](https://github.com/houseninjadojo/app/issues/704)) ([9cbbe5c](https://github.com/houseninjadojo/app/commit/9cbbe5c1cd479fc5ebd0e633b77045dce3cb0035))
+
+## [1.15.3](https://github.com/houseninjadojo/app/compare/v1.15.2...v1.15.3) (2022-06-14)
+
+
+### Bug Fixes
+
+* ui bugs ([#692](https://github.com/houseninjadojo/app/issues/692)) ([1900851](https://github.com/houseninjadojo/app/commit/1900851bae97de2cccceaea1b0113156c53905d7))
+
+## [1.15.2](https://github.com/houseninjadojo/app/compare/v1.15.1...v1.15.2) (2022-06-07)
+
+
+### Bug Fixes
+
+* receipt display on closed work order ([#685](https://github.com/houseninjadojo/app/issues/685)) ([3ddfd5d](https://github.com/houseninjadojo/app/commit/3ddfd5d9545f35d393f829e0bc3fa73dc9226824))
+
+## [1.15.1](https://github.com/houseninjadojo/app/compare/v1.15.0...v1.15.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* misc code clean-up ([#683](https://github.com/houseninjadojo/app/issues/683)) ([f3de272](https://github.com/houseninjadojo/app/commit/f3de27275daa04abcfe7c559dd32521c3cb08f32))
+
+# [1.15.0](https://github.com/houseninjadojo/app/compare/v1.14.0...v1.15.0) (2022-06-03)
+
+
+### Features
+
+* external payment approval payment method if not known ([#677](https://github.com/houseninjadojo/app/issues/677)) ([a5b26b5](https://github.com/houseninjadojo/app/commit/a5b26b5a43f1d52e577f55af431d6b4ad56e2b2a))
+
+# [1.14.0](https://github.com/houseninjadojo/app/compare/v1.13.1...v1.14.0) (2022-06-02)
+
+
+### Features
+
+* closed work order show invoice ([#675](https://github.com/houseninjadojo/app/issues/675)) ([e99dee5](https://github.com/houseninjadojo/app/commit/e99dee5c9f6301c2f27f153fee129dfe2a1c4d63))
+
+## [1.13.1](https://github.com/houseninjadojo/app/compare/v1.13.0...v1.13.1) (2022-05-25)
+
+
+### Bug Fixes
+
+* moar ux ([#665](https://github.com/houseninjadojo/app/issues/665)) ([cb51742](https://github.com/houseninjadojo/app/commit/cb51742904783d6ea2306d2d051fcf3d31a5f1fb))
+
 # [1.13.0](https://github.com/houseninjadojo/app/compare/v1.12.13...v1.13.0) (2022-05-24)
 
 

@@ -5,12 +5,17 @@
   background: rgb(0 0 0 / 88%);
   width: 100%;
   height: var(--nav-bar-offset);
-  position: absolute;
+  position: fixed;
   z-index: 100;
   bottom: 0;
   padding: 16px 24px;
   backdrop-filter: blur(4px);
   box-shadow: var(--shadow-gray-1);
+}
+
+.hn.nav-bar button.hn-nav-message-us {
+  background: var(--gray-200);
+  color: var(--gray-950);
 }
 
 .nav-menu {

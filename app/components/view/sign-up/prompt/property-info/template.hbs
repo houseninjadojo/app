@@ -5,7 +5,7 @@
         </div>
     </Primitive::Section>
     <Primitive::Section>
-        <div class="prompt">            
+        <div class="prompt">
             {{#each this.fields as |field|}}
                 {{#if field.isSelect}}
                     <Primitive::Select
@@ -40,6 +40,7 @@
                 @variant='solid'
                 @semantic='primary'
                 @disabled={{this.formIsInvalid}}
+                @isLoading={{this.isLoading}}
                 {{on 'click' this.savePropertyInfo}}
             >
                 Next: Book My Walkthrough <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>

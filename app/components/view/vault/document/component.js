@@ -6,6 +6,7 @@ import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultDocumentComponent extends Component {
   @service router;
+  @service view;
 
   @action
   openBrowser() {
@@ -33,6 +34,7 @@ export default class VaultDocumentComponent extends Component {
     }
     if (route === 'edit') {
       // edit document
+      this.view.preservePreviousRoute(this.router);
       this.router.transitionTo(
         NATIVE_MOBILE_ROUTE.VAULT.DOCUMENTS.EDIT,
         this.args.model.id

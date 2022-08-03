@@ -33,6 +33,7 @@ export default class SetPasswordComponent extends Component {
   };
 
   @tracked formIsInvalid = true;
+  @tracked isLoading = false;
 
   @tracked requirementsModel = passwordValidation;
 
@@ -65,6 +66,11 @@ export default class SetPasswordComponent extends Component {
     }
   }
 
+  __isOnboarding() {
+    const ONBOARDING_PARAM = 'code';
+    return this.router.location.location.search.includes(ONBOARDING_PARAM);
+  }
+
   @action
   validateForm(e) {
     this.passwords[e.target.id] = e.target.value;
@@ -79,6 +85,7 @@ export default class SetPasswordComponent extends Component {
 
   @action
   async savePassword() {
+    this.isLoading = true;
     let user;
     if (isPresent(this.args.user)) {
       user = this.args.user;
@@ -89,17 +96,19 @@ export default class SetPasswordComponent extends Component {
       user.password = this.passwords.password;
       try {
         await user.save();
+        await this.onboarding.cleanup();
 
-        if (this.args.isOnboardingViaNativeApp) {
+        if (this.__isOnboarding()) {
           this.passwordHasBeenSet = true;
         } else {
-          await this.onboarding.cleanup();
           this.router.transitionTo(SIGNUP_ROUTE.BOOKING_CONFIRMATION);
         }
       } catch (e) {
         this.errors = user.errors;
         debug(e);
         Sentry.captureException(e);
+      } finally {
+        this.isLoading = false;
       }
     }
   }

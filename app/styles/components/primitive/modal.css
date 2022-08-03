@@ -110,7 +110,8 @@
   width: 100%;
 }
 
-.hn.modal .modal-container .head {
+.hn.modal .modal-container.tray .head,
+.hn.modal .modal-container.shelf .head {
   height: 88px;
   padding: 0 16px;
 }
@@ -159,12 +160,11 @@
 .hn.modal .modal-container.dialog .body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: var(--white);
   height: max-content;
   border-radius: 2px;
-  padding: 32px;
+  padding: 32px 16px;
   z-index: 101;
 
   /* animation-name: slide-out;
@@ -173,5 +173,5 @@
 }
 
 .hn.modal .modal-container.dialog img {
-  width: 24px;
+  width: 40px;
 }

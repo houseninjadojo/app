@@ -2,15 +2,14 @@
     <Primitive::Section>
         <div class="hero">
             {{#if @isOnboardingViaNativeApp}}
-                    <p class="primary mb-4">To access your account, enter the email address used during the sign-up process.</p>        
+                    <p class="primary mb-4">To access your account, enter the email address used during the sign-up process.</p>
             {{else}}
                 <p class="primary hn strong">Contact Information</p>
-                <p>Let’s start by creating your account. We only use your contact information to help you manage your home.</p>
-            {{/if}}        
+            {{/if}}
         </div>
     </Primitive::Section>
     <Primitive::Section>
-        <div class="prompt">                    
+        <div class="prompt">
             {{#each this.fields as |field|}}
                 {{#if (eq field.id this.howDidYouHearAboutUsLabel)}}
                     <p class="mt-4">How did you hear about us?</p>
@@ -28,13 +27,24 @@
                         @errors={{(get this.errors field.id)}}
                     />
             {{/each}}
-        </div>        
-        <div class="action single">
+        </div>
+        <div class="action">
+            {{#unless @isOnboardingViaNativeApp}}
+                <Primitive::Button
+                    @size='lg'
+                    @variant='outline'
+                    @semantic='primary'
+                    {{on 'click' this.goBack}}
+                >
+                        <img src="/assets/icons/left-arrow.svg" alt="previous" class="icon left"/> Previous
+                </Primitive::Button>
+            {{/unless}}
             <Primitive::Button
                 @size='lg'
                 @variant='solid'
                 @semantic='primary'
                 @disabled={{this.formIsInvalid}}
+                @isLoading={{this.isLoading}}
                 {{on 'click' this.handlePrimaryClick}}
             >
                 {{if @isOnboardingViaNativeApp "Submit" "Next"}}

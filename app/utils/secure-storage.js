@@ -35,7 +35,7 @@ export async function get(key) {
     });
     return JSON.parse(encodedValue.value);
   } catch (e) {
-    console.error(e);
+    debug(e);
     return {};
   }
 }

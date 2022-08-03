@@ -5,7 +5,7 @@
   background: rgb(0 0 0 / 88%);
   width: 100%;
   height: var(--top-bar-offset);
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   padding: 12px 16px;
@@ -15,7 +15,7 @@
 
 .hn.top-bar.browser-version {
   position: sticky;
-  height: 80px;
+  height: var(--top-bar-offset-browser);
   justify-content: center;
 }
 
@@ -39,6 +39,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hn.top-bar .action-container .action img {
   filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(216deg) brightness(94%) contrast(95%);
 }
 

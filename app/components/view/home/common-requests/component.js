@@ -1,11 +1,12 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-// import { service } from '@ember/service';
-import { Intercom } from '@capacitor-community/intercom';
+import { service } from '@ember/service';
 
 export default class CommonRequestsComponent extends Component {
+  @service intercom;
+
   @action
   async openChatWithPrompt(message) {
-    await Intercom.displayMessageComposer({ message });
+    this.intercom.showComposer(message);
   }
 }

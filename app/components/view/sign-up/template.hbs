@@ -1,4 +1,9 @@
 <div class="sign-up-module">
+    {{#if this.showPromoBanner}}
+        <Primitive::PageBanner>
+            <p>TRY HOUSE NINJA FREE TODAY WITH CODE <strong>HELPMYHOUSE</strong></p>
+        </Primitive::PageBanner>
+    {{/if}}
     <TopBar @content="logo-only" @class="browser-version" />
     <View @hideLogo={{true}} @class="light">
         <View::SignUp::Wrapper>

@@ -43,6 +43,20 @@
   }
 }
 
+.hn.logo-loader-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
 .hn.logo-loader-container {
   width: 120px;
 }
@@ -58,11 +72,6 @@
   background-size: 200px auto;
 }
 
-.hn.splash-loader.loaded {
-  background: url("/assets/splash/logo-placeholder-after.svg") center center no-repeat;
-  background-size: 200px auto;
-}
-
-.hn.splash-loader video {
+.hn.splash-loader #logo-splash {
   width: 200px;
 }

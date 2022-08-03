@@ -12,7 +12,9 @@ export default class LoginOrSignupRoute extends Route {
   @service router;
 
   beforeModel() {
-    this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    if (this.session.data.authenticated.kind !== 'payment-approval') {
+      this.session.prohibitAuthentication(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    }
     if (!isNativePlatform()) {
       this.router.transitionTo(SIGNUP_ROUTE.INDEX);
     }

@@ -1,4 +1,4 @@
-<main class="hn view {{@class}}" {{did-insert this.applyPreservedScrollPosition}}>
+<main class="hn view {{@class}} {{if @topBar "with-top-bar"}} {{if @navBar "with-nav-bar"}}" {{did-insert this.applyPreservedScrollPosition}}>
   {{yield}}
   {{#if @hideLogo}}
   {{else}}
@@ -6,5 +6,4 @@
       <img class="logo" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
     </div>
   {{/if}}
-
 </main>

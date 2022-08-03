@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  position: relative;
 }
 
 .hn.hn-input-field,
@@ -16,20 +17,35 @@
   flex-direction: row;
   width: 100%;
   height: 52px;
-  margin-bottom: 8px;
   border-bottom: 1px solid var(--gray-400);
-  padding: 0 8px;
+  padding: 0;
   font-size: 16px;
 }
 
 /* Label */
 .hn.hn-input-field .hn-input-container .hn-input-label {
-  display: flex;
   flex-direction: row;
   align-items: center;
   white-space: nowrap;
-  width: 192px;
+  line-height: 14px;
   font-size: 14px;
+  position: absolute;
+  top: 16px;
+  left: 2px;
+}
+
+.hn.hn-input-field .hn-input-container .hn-input-label .hn-input-placeholder {
+  margin-left: 2px;
+  opacity: 0.5;
+}
+
+.hn.hn-input-field.active .hn-input-container .hn-input-label .hn-input-placeholder {
+  display: none;
+}
+
+.hn.hn-input-field.active .hn-input-container .hn-input-label {
+  font-size: 12px;
+  top: 0;
 }
 
 .hn.hn-input-field .hn-input-container .hn.hn-select,
@@ -42,7 +58,20 @@
 
 /* Input */
 .hn.hn-input-field .hn-input-container .hn-input {
-  padding: 16px 12px;
+  padding: 16px 8px;
+  caret-color: var(--teal-600);
+}
+
+.hn.hn-input-field .hn-input-container .hn-input::placeholder {
+  opacity: 0;
+}
+
+.hn.hn-input-field.active .hn-input-container .hn-input {
+  padding: 24px 8px 16px;
+}
+
+.hn.hn-input-field.active .hn-input-container .hn-input::placeholder {
+  opacity: 1;
 }
 
 .hn.hn-input-field.label-hidden .hn-input-container .hn-input {
@@ -51,7 +80,7 @@
 
 /* Select */
 .hn.hn-input-field .hn-input-container .hn-select {
-  padding: 0 12px;
+  padding: 16px 8px;
   appearance: none;
 }
 

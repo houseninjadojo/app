@@ -1,0 +1,24 @@
+<div class="hn cancellation-survey mb-8">
+    <p class="mb-4">Please let us know your reason for cancelling</p>
+    <div class="hn radio-input-container">        
+        <ul class="options mb-4">
+            {{#each @options as |option|}}
+                <li class="radio-option {{if option.checked "checked"}}">                    
+                    <label for={{option.value}}>
+                        <input 
+                            type="radio" 
+                            id={{option.value}} 
+                            name="reason" 
+                            value={{option.value}} 
+                            checked={{option.checked}} 
+                            {{on "change" (fn @handleSurveyChange option)}}
+                        />
+                        {{option.label}}
+                    </label>                    
+                </li>
+            {{/each}}                  
+        </ul>
+        <label for="cancellation-survey-feedback">Additional comments or feedback</label>
+        <textarea id="cancellation-survey-feedback" {{on "input" @handleTextAreaInput}} value={{@additionalFeedback}}/>
+    </div>
+</div>

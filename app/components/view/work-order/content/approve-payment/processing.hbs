@@ -1,0 +1,43 @@
+{{#if @paid}}
+    <div class="payment-confirmation {{if @isProcessing 'show'}}">
+        <p class="hn center strong">Thank you for approving payment.</p>
+        <br/>
+        {{#if @isNativePlatform}}
+            <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>
+            <br/>
+            <br/>
+            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" @selectRoute}}>
+                Back to Home
+            </Primitive::Button>
+        {{else}}
+            <p class="hn center">This job has been marked as complete and can now be found in your History tab of your iOS app.</p>
+            <br/>
+            <p class="hn center">Please feel free to close this browser tab.</p>
+        {{/if}}
+    </div>
+{{else if @paymentFailed}}
+    <div class="payment-failed {{if @isProcessing 'show'}}">
+        <h1 class="hn center strong">Your payment was not successful</h1>
+        <br/>
+        {{#if @isNativePlatform}}
+            <p class="hn center">Please message us to update your payment method on file.</p>
+            <br/>
+            <br/>
+            <Primitive::Button @class="mb-4" @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" @requestDifferentPayment}}>
+                Update my payment method
+            </Primitive::Button>
+            <Primitive::Button @type="button" @size="md" @variant="outline empty" @semantic="accent" {{on "click" @toggleIsProcessing}}>
+                Close
+            </Primitive::Button>
+        {{else}}
+            <p class="hn center">If you would like to use an alternate payment method for this invoice, please email us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or call us <a href="tel:888-326-4652">888-32-NINJA (64652)</a> us to update your payment method on file.</p>
+            <br/>
+            <p class="hn center">Please feel free to close this browser tab.</p>
+        {{/if}}
+    </div>
+{{else if @isProcessing}}
+    <div class="payment-processing {{if @isProcessing 'show'}}">
+        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}}/>
+        <p class="hn label strong">Processing Payment</p>
+    </div>
+{{/if}}

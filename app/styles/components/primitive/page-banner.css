@@ -1,0 +1,12 @@
+.hn.hn-page-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--white);
+  padding: 8px;
+}
+
+.hn.hn-page-banner p {
+  text-align: center;
+}

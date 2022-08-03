@@ -29,6 +29,7 @@ export default class PropertyInfoComponent extends Component {
   };
 
   @tracked formIsInvalid = true;
+  @tracked isLoading = false;
 
   @tracked fields = [
     {
@@ -90,6 +91,7 @@ export default class PropertyInfoComponent extends Component {
 
   @action
   async savePropertyInfo() {
+    this.isLoading = true;
     let property;
     try {
       let user = this.store.peekFirst('user');
@@ -116,6 +118,8 @@ export default class PropertyInfoComponent extends Component {
     } catch (e) {
       this.errors = property?.errors;
       captureException(e);
+    } finally {
+      this.isLoading = false;
     }
   }
 

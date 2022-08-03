@@ -1,5 +1,5 @@
 import { Factory, association } from 'miragejs';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import ENV from 'houseninja/config/environment';
 import getPlatform from 'houseninja/utils/get-platform';
@@ -8,6 +8,7 @@ import { ALL as OnboardingSteps } from 'houseninja/data/enums/onboarding-step';
 
 export default Factory.extend({
   promoCode: association(),
+  subscription: association(),
 
   email() {
     return faker.internet.email();
@@ -22,7 +23,7 @@ export default Factory.extend({
   },
 
   phoneNumber() {
-    return faker.phone.phoneNumberFormat();
+    return faker.phone.number();
   },
 
   intercomHash() {

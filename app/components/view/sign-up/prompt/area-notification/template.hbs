@@ -7,14 +7,13 @@
                 <br/>
                 {{!-- <p>In the meantime, you can set up a House Ninja account that you can use to manage your home.</p> --}}
             {{else}}
-                <p>We don’t cover this area at the moment, but we’ll let you know as soon as we do!</p>
+                <p>House Ninja is not available in your area yet, but add your email below to get FREE service once we get there!</p>
             {{/if}}
         </div>
     </Primitive::Section>
     {{#unless this.userSubmittedEmail}}    
         <Primitive::Section>
-            <div class="prompt">
-                <p class="primary">What email address should we notify?</p>
+            <div class="prompt">                
                 <Primitive::Input
                     @label='Email'
                     @placeholder='Email'
@@ -29,6 +28,7 @@
                     @size='lg'
                     @variant='solid'
                     @semantic='primary'
+                    @isLoading={{this.isLoading}}
                     {{on 'click' this.saveUserEmail}}
                 >
                     Notify Me
