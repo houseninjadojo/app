@@ -31,6 +31,7 @@ export const workOrderStatus = {
 
 export const WORK_ORDER_UI_STATE = {
   INITIATED: 'Initiated',
+  ESTIMATE: 'Review Estimate',
   SCHEDULED: 'Scheduled',
   COMPLETED: 'Completed',
   PAYMENT_DUE: 'Payment Due',
@@ -46,7 +47,7 @@ export const workOrderStatusLabels = {
   [workOrderStatus.schedulingInProgress]: WORK_ORDER_UI_STATE.INITIATED,
   [workOrderStatus.onsiteEstimateScheduled]: WORK_ORDER_UI_STATE.INITIATED,
   // [workOrderStatus.estimateSharedWithHomeowner]: 'Approve Estimate',
-  [workOrderStatus.estimateSharedWithHomeowner]: WORK_ORDER_UI_STATE.INITIATED,
+  [workOrderStatus.estimateSharedWithHomeowner]: WORK_ORDER_UI_STATE.ESTIMATE,
   [workOrderStatus.estimateApproved]: WORK_ORDER_UI_STATE.INITIATED,
   [workOrderStatus.estimateNotApproved]: WORK_ORDER_UI_STATE.INITIATED,
   [workOrderStatus.workScheduled]: WORK_ORDER_UI_STATE.SCHEDULED,

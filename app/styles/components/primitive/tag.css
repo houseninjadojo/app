@@ -14,6 +14,12 @@
   color: var(--white);
 }
 
+.hn.tag.secondary {
+  background-color: var(--blue-500);
+  border: none;
+  color: var(--white);
+}
+
 .hn.tag.alert {
   background-color: var(--red-400);
   border: none;

@@ -67,6 +67,15 @@ export default class HandleItComponent extends Component {
     });
   }
 
+  get estimateReviewWorkOrders() {
+    return filterWorkOrdersFor(
+      WORK_ORDER_FILTER.ESTIMATE,
+      this.activeWorkOrders
+    )?.sort((a, b) => {
+      return this.__newestToOldest(a, b);
+    });
+  }
+
   get completedWorkOrders() {
     return filterWorkOrdersFor(
       WORK_ORDER_FILTER.COMPLETED,
@@ -102,6 +111,7 @@ export default class HandleItComponent extends Component {
   get displayedWorkOrders() {
     return [
       ...(this.paymentDueWorkOrders ?? []),
+      ...(this.estimateReviewWorkOrders ?? []),
       ...(this.completedAndScheduledWorkOrders ?? []),
       ...(this.initiatedWorkOrders ?? []),
     ];

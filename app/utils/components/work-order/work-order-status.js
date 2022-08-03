@@ -44,7 +44,7 @@ export const getWorkOrderTag = (status) => {
     case workOrderStatus.estimateSharedWithHomeowner:
       return {
         label: getWorkOrderStatusLabel(status),
-        type: 'secondary-outline',
+        type: 'secondary',
       };
     case workOrderStatus.estimateNotApproved:
     case workOrderStatus.estimateApproved:
@@ -152,6 +152,7 @@ export const isCompletedWorkOrder = (status) => {
 
 export const WORK_ORDER_FILTER = {
   INITITATED: 'inititated',
+  ESTIMATE: 'estimate',
   SCHEDULED: 'scheduled',
   PAYMENT_DUE: 'payment due',
   COMPLETED: 'completed',
@@ -166,6 +167,11 @@ export const filterWorkOrdersFor = (filter, workOrders = []) => {
         return (
           workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.PAYMENT_DUE
         );
+      });
+      break;
+    case WORK_ORDER_FILTER.ESTIMATE:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.ESTIMATE;
       });
       break;
     case WORK_ORDER_FILTER.SCHEDULED:
