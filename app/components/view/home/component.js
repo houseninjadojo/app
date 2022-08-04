@@ -42,8 +42,9 @@ export default class HomeContentComponent extends Component {
   }
 
   get weeklyHomeCareTip() {
-    return this.args.homeCareTips.firstObject;
+    return this.args.homeCareTips?.[0];
   }
+
   @action
   async selectRoute(route) {
     this.haptics.giveFeedback();

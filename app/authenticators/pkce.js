@@ -218,7 +218,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const state = generateCodeVerifier();
 
     // Clear stash then set state, verifier, challenge
-    await SecureStorage.clear(STASH_TOKEN); // eslint-ignore ember/no-array-prototype-extensions
+    // eslint-disable-next-line ember/no-array-prototype-extensions
+    await SecureStorage.clear(STASH_TOKEN);
     await SecureStorage.set(STASH_TOKEN, {
       code_challenge,
       code_verifier,
@@ -347,7 +348,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @public
    */
   async invalidate(data) {
-    await SecureStorage.clear(`${STASH_TOKEN}:refresh_token`); // eslint-ignore ember/no-array-prototype-extensions
+    // eslint-disable-next-line ember/no-array-prototype-extensions
+    await SecureStorage.clear(`${STASH_TOKEN}:refresh_token`);
 
     // cancel any scheduled future token refresh
     cancel(this._upcomingRefresh);
