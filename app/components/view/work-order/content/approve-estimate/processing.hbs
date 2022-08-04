@@ -17,7 +17,6 @@
     </div>
 {{else if @isProcessing}}
     <div class="estimate-processing {{if @isProcessing 'show'}}">
-        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}}/>
-        <p class="hn label strong">Processing</p>
+        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}} @title="Processing Estimate Approval"/>        
     </div>
 {{/if}}
