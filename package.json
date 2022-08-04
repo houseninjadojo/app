@@ -45,7 +45,7 @@
     "@faker-js/faker": "^7.3.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@percy/cli": "^1.7.2",
+    "@percy/cli": "^1.8.0",
     "@percy/ember": "^3.0.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
