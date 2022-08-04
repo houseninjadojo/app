@@ -12,7 +12,10 @@ jobs:
     name: pull request title
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    # if: ${{ github.event. }}
+    if: |
+      github.event.action == 'opened' ||
+      github.event.action == 'reopened' ||
+      (github.event.action == 'edited' && github.event.changes.title != null)
     steps:
       - uses: actions/checkout@v2
         with:
