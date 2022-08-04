@@ -6,16 +6,21 @@ on:
       - opened
       - reopened
       - edited
-      - synchronize
 
 jobs:
   commits:
     name: pull request title
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    # if: ${{ github.event. }}
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: npm install @commitlint/config-conventional
-      - uses: JulienKode/pull-request-name-linter-action@v0.5.0
+      - name: dump payload
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.event) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+      # - run: npm install @commitlint/config-conventional
+      # - uses: JulienKode/pull-request-name-linter-action@v0.5.0
