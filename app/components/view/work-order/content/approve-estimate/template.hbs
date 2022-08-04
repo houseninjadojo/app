@@ -23,6 +23,13 @@
         Approve Estimate
     </Primitive::Button>    
 </Primitive::Section>
+<View::WorkOrder::Content::ApproveEstimate::WebDialog
+        @isVisible={{this.showWebDialog}}
+        @toggleWebDialog={{this.toggleWebDialog}}
+        @isProcessing={{this.isProcessing}}
+        @approveEstimate={{this.approveEstimate}}
+        @formattedTotal={{@model.estimate.formattedTotal}}
+    />
 <View::WorkOrder::Content::ApproveEstimate::Processing        
     @isProcessing={{this.isProcessing}}
     @isDoneProcessing={{this.isDoneProcessing}}
