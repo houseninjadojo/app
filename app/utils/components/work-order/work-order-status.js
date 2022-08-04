@@ -1,6 +1,6 @@
 import {
   workOrderStatus,
-  WORK_ORDER_UI_STATE,
+  WORK_ORDER_UI_LABEL,
   workOrderStatusLabels,
 } from 'houseninja/data/work-order-status';
 
@@ -150,7 +150,7 @@ export const isCompletedWorkOrder = (status) => {
   }
 };
 
-export const WORK_ORDER_FILTER = {
+export const WORK_ORDER_STATE = {
   INITITATED: 'inititated',
   ESTIMATE: 'estimate',
   SCHEDULED: 'scheduled',
@@ -162,38 +162,38 @@ export const WORK_ORDER_FILTER = {
 export const filterWorkOrdersFor = (filter, workOrders = []) => {
   let filteredWorkOrders = [];
   switch (filter) {
-    case WORK_ORDER_FILTER.PAYMENT_DUE:
+    case WORK_ORDER_STATE.PAYMENT_DUE:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
-          workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.PAYMENT_DUE
+          workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.PAYMENT_DUE
         );
       });
       break;
-    case WORK_ORDER_FILTER.ESTIMATE:
+    case WORK_ORDER_STATE.ESTIMATE:
       filteredWorkOrders = workOrders.filter((w) => {
-        return workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.ESTIMATE;
+        return workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.ESTIMATE;
       });
       break;
-    case WORK_ORDER_FILTER.SCHEDULED:
+    case WORK_ORDER_STATE.SCHEDULED:
       filteredWorkOrders = workOrders.filter(
-        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.SCHEDULED
+        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.SCHEDULED
       );
       break;
-    case WORK_ORDER_FILTER.COMPLETED:
+    case WORK_ORDER_STATE.COMPLETED:
       filteredWorkOrders = workOrders.filter(
-        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.COMPLETED
+        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.COMPLETED
       );
       break;
-    case WORK_ORDER_FILTER.INITITATED:
+    case WORK_ORDER_STATE.INITITATED:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
-          workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.INITIATED
+          workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.INITIATED
         );
       });
       break;
-    case WORK_ORDER_FILTER.PAUSED:
+    case WORK_ORDER_STATE.PAUSED:
       filteredWorkOrders = workOrders.filter(
-        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_STATE.PAUSED
+        (w) => workOrderStatusLabels[w.status] === WORK_ORDER_UI_LABEL.PAUSED
       );
       break;
   }

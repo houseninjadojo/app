@@ -5,6 +5,13 @@ import { workOrderStatus } from 'houseninja/data/work-order-status';
 import { camelize } from '@ember/string';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
+const WORK_ORDER_VIEW_CONTENT = {
+  APPROVE_PAYMENT: 'approve-payment',
+  APPROVE_ESTIMATE: 'approve-estimate',
+  CLOSED: 'closed',
+  DEFAULT: 'default',
+};
+
 export default class WorkOrderViewComponent extends Component {
   @service loader;
   @service intercom;
@@ -13,14 +20,6 @@ export default class WorkOrderViewComponent extends Component {
 
   paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
-
-  content = {
-    approvePayment: 'approve-payment',
-    paymentFailed: 'failed-payment',
-    approveEstimate: 'approve-estimate',
-    closed: 'closed',
-    default: 'default',
-  };
 
   get isLoading() {
     return this.loader.isLoading;
@@ -31,17 +30,15 @@ export default class WorkOrderViewComponent extends Component {
     const status = workOrderStatus[camelize(modelStatus)];
     switch (status) {
       case workOrderStatus.invoiceSentToCustomer:
-        return this.content.approvePayment;
       case workOrderStatus.paymentFailed:
-        // return this.content.paymentFailed;
-        return this.content.approvePayment;
+        return WORK_ORDER_VIEW_CONTENT.APPROVE_PAYMENT;
       case workOrderStatus.estimateSharedWithHomeowner:
-        return this.content.approveEstimate;
+        return WORK_ORDER_VIEW_CONTENT.APPROVE_ESTIMATE;
       case workOrderStatus.invoicePaidByCustomer:
       case workOrderStatus.closed:
-        return this.content.closed;
+        return WORK_ORDER_VIEW_CONTENT.CLOSED;
       default:
-        return this.content.default;
+        return WORK_ORDER_VIEW_CONTENT.DEFAULT;
     }
   }
 
