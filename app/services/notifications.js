@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
 import EmberObject from '@ember/object';
 import { debug } from '@ember/debug';
-import { typeOf } from '@ember/utils';
 
 export default class NotificationsService extends Service {
   // set to true on initialization
