@@ -77,7 +77,6 @@ const registerListenerHandlers = async (appInstance) => {
       debug(
         `From Native ->  PushNotifications actionPerformed ${notification.id}`
       );
-      console.log(notification);
       if (notification.data.intercom_push_type === 'notification') {
         Intercom.displayMessenger();
       } else if (isPresent(notification.data.deeplink_path)) {
