@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/houseninjadojo/app/compare/v1.18.34...v1.19.0) (2022-08-08)
+
+
+### Features
+
+* **notifications:** working push notification redirects ([#871](https://github.com/houseninjadojo/app/issues/871)) ([a71f2fb](https://github.com/houseninjadojo/app/commit/a71f2fb54c7a7e09be822a980bd47c6c271cb434))
+
 ## [1.18.34](https://github.com/houseninjadojo/app/compare/v1.18.33...v1.18.34) (2022-08-03)
 
 
