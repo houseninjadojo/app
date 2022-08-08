@@ -1251,10 +1251,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-1.0.8.tgz#8b53954e4d045c71cc1f00d3fecb654203fdd387"
   integrity sha512-mC3/LhVMgdeJesB8iN/Kjd0QUDjVj8KKEaPm1baqn3VAZWY4JssdMHVox3l4m6zEmGt4+YyD4g6fijq07RZdbQ==
 
-"@capacitor/android@^3.0.0", "@capacitor/android@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.6.0.tgz#60438a0614415c7c242dda48a031cd45335e067a"
-  integrity sha512-X6n0OLy7BE3c6qfVuL7UYyq/aIwEsqIAqtyDOwMdj5k+P1rLQVsGaWERXUtC0BGeoKBD5YgbWiyKwAwg5Spjdg==
+"@capacitor/android@^3.0.0", "@capacitor/android@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.7.0.tgz#6685390caf4afc821e0e24ee728fac8e6bf1572d"
+  integrity sha512-SF06sqvEKvRnev+T+k4jjfDIdsqcDiGnzGld7oTtJipiO16xVkKPG0kEbFZEWkrMvhqRn6jNyl+ZHn5/9JR7nA==
 
 "@capacitor/app@^1.1.1":
   version "1.1.1"
