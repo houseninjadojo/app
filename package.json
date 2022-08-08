@@ -49,7 +49,7 @@
     "@percy/ember": "^3.0.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@sentry/capacitor": "^0.8.0",
+    "@sentry/capacitor": "^0.9.0",
     "@sentry/cli": "^2.1.0",
     "@sentry/ember": "^7.8.1",
     "@sentry/integrations": "^7.8.1",
