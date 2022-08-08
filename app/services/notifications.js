@@ -24,7 +24,6 @@ export default class NotificationsService extends Service {
     debug(
       `From Native ->  Notifications add ${kind} ${state} ${notification.id}`
     );
-    console.log(notification);
     this.queue.pushObject(
       EmberObject.create({
         kind,
