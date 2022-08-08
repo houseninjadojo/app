@@ -16,6 +16,9 @@ import {
 } from 'houseninja/utils/secure-storage';
 import { captureException } from 'houseninja/utils/sentry';
 import { Intercom } from '@capacitor-community/intercom';
+import { schedule } from '@ember/runloop';
+import { debug } from '@ember/debug';
+import { isPresent } from '@ember/utils';
 
 /**
  * @todo
@@ -29,11 +32,13 @@ import { Intercom } from '@capacitor-community/intercom';
  * so we can send notifications to it later.
  */
 const registrationHandler = async (token) => {
-  const pushToken = {
-    apnsDeviceToken: token && token.value,
-    fcmToken: await getToken(),
-  };
-  await stash('pushToken', pushToken);
+  schedule('afterRender', this, async () => {
+    const pushToken = {
+      apnsDeviceToken: token && token.value,
+      fcmToken: await getToken(),
+    };
+    await stash('pushToken', pushToken);
+  });
 };
 
 /**
@@ -41,32 +46,48 @@ const registrationHandler = async (token) => {
  */
 const registerListenerHandlers = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
+  let router = appInstance.lookup('service:router');
 
   // successful push notification registration
   addListener('registration', registrationHandler);
 
   // failed push notification registration
   addListener('registrationError', async (error) => {
-    captureException(error);
-    await clearStash('pushToken');
+    schedule('afterRender', appInstance, async () => {
+      captureException(error);
+      await clearStash('pushToken');
+    });
   });
 
   addListener('pushNotificationReceived', (notification) => {
-    notifications.add('push', 'delivered', notification);
+    schedule('afterRender', appInstance, () => {
+      notifications.add('push', 'delivered', notification);
+    });
   });
 
   addListener('localNotificationReceived', (notification) => {
-    notifications.add('local', 'delivered', notification);
+    schedule('afterRender', appInstance, () => {
+      notifications.add('local', 'delivered', notification);
+    });
   });
 
   // @todo handle clicking a notification
-  addListener('pushNotificationActionPerformed', (payload) => {
-    // console.log(notification);
-    const { notification /* , actionId */ } = payload;
-    if (notification.data.intercom_push_type === 'notification') {
-      Intercom.displayMessenger();
-    }
+  addListener('pushNotificationActionPerformed', ({ notification }) => {
+    schedule('afterRender', appInstance, () => {
+      debug(
+        `From Native ->  PushNotifications actionPerformed ${notification.id}`
+      );
+      if (notification.data.intercom_push_type === 'notification') {
+        Intercom.displayMessenger();
+      } else if (isPresent(notification.data.deeplink_path)) {
+        router.transitionTo(notification.data.deeplink_path);
+      }
+    });
   });
+
+  // addListener('tap', () => {
+  //   // do nothing
+  // });
 };
 
 /**
