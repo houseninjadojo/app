@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/houseninjadojo/app/compare/v1.19.0...v1.19.1) (2022-08-11)
+
+
+### Bug Fixes
+
+* formatted notes return ([#881](https://github.com/houseninjadojo/app/issues/881)) ([1637235](https://github.com/houseninjadojo/app/commit/16372355831bd2541d43cb32b15c0e7fad70345a))
+
 # [1.19.0](https://github.com/houseninjadojo/app/compare/v1.18.34...v1.19.0) (2022-08-08)
 
 
