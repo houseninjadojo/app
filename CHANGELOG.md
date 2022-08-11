@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/houseninjadojo/app/compare/v1.19.1...v1.19.2) (2022-08-11)
+
+
+### Bug Fixes
+
+* moment deprecation warning ([#882](https://github.com/houseninjadojo/app/issues/882)) ([2a5d925](https://github.com/houseninjadojo/app/commit/2a5d9250c0622520de22f6663c2377331e2f84ff))
+
 ## [1.19.1](https://github.com/houseninjadojo/app/compare/v1.19.0...v1.19.1) (2022-08-11)
 
 
