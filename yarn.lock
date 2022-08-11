@@ -2794,13 +2794,23 @@
     "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
-"@sentry/integrations@7.8.1", "@sentry/integrations@^7.8.1":
+"@sentry/integrations@7.8.1":
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-7.8.1.tgz#4a068c1bc44aaa7c8890b1d66641abecd9b84876"
   integrity sha512-aKMLe+LNA6bOLF3r1t1YjeCsOkUk3f69ldoHbIp9zrYfuCIZBH5AJAsJBCmPnTA4jJotzYEjQfpfb1b/nYBs6A==
   dependencies:
     "@sentry/types" "7.8.1"
     "@sentry/utils" "7.8.1"
+    localforage "^1.8.1"
+    tslib "^1.9.3"
+
+"@sentry/integrations@^7.10.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-7.10.0.tgz#bf09a4e55803043f8653a396b8baf9cb5011f70c"
+  integrity sha512-pP4DYhyhtTYS8C5kinIXXn1icD4UmZD8Dh3Qd+SArHZiWgRnrsWPLzrtoQEa8RN8tmQ8ekU9nLnWua5rRWiSBA==
+  dependencies:
+    "@sentry/types" "7.10.0"
+    "@sentry/utils" "7.10.0"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
@@ -2829,6 +2839,11 @@
     "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
+"@sentry/types@7.10.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.10.0.tgz#c91d634768336238ac30ed750fa918326c384cbb"
+  integrity sha512-1UBwdbS0xXzANzp63g4eNQly/qKIXp0swP5OTKWoADvKBtL4anroLUA/l8ADMtuwFZYtVANc8WRGxM2+YmaXtg==
+
 "@sentry/types@7.8.1":
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.8.1.tgz#c00a1ed02ad8f69d3b94fcda91e2d24e0bb3492a"
@@ -2838,6 +2853,14 @@
   version "7.9.0"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.9.0.tgz#8fa952865fda76f7c7c7fc6c84043979a22043ae"
   integrity sha512-VGnUgELVMpGJCYW1triO+5XSyaPjB2Zu6esUgbb8iJ5bi+OWtxklixXgwhdaTb0FDzmRL/T/pckmrIuBTLySHQ==
+
+"@sentry/utils@7.10.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.10.0.tgz#237cfcfa300f65fad45ec703d4acb4f02f22093b"
+  integrity sha512-/aD2DnfyOhV0Wdbb6VF78vu4fQIZJyuReDpBI7MV/EqcEB6FxUKq2YjinfKZF/exHEPig6Ag/Yt+CRFgvtVFuw==
+  dependencies:
+    "@sentry/types" "7.10.0"
+    tslib "^1.9.3"
 
 "@sentry/utils@7.8.1":
   version "7.8.1"
