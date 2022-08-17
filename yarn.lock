@@ -2729,10 +2729,10 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/cli@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-2.1.0.tgz#f00805563d2c830a9755acf94cd4758a754ebbe9"
-  integrity sha512-RTT8rD2Z1UoGHLsLdvwztDoP8zWR9TZk6JHDuRZAZbvgCPjlFOUENkRgM9hOOp+nYI/oUy6ZMi/NDe8lVeiLHA==
+"@sentry/cli@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-2.5.1.tgz#bc86faf8516481c9c4821dd6f1e55cafd40e8d39"
+  integrity sha512-Sl5m3bvVDMY1rEvI7BmT0QGYmhPJIUm8y7iZqUbzTCI84pHcXAZW+zG6hgVitj41N3amCy9Jn/qMBmwevFegUQ==
   dependencies:
     https-proxy-agent "^5.0.0"
     node-fetch "^2.6.7"
