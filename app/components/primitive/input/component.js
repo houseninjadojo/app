@@ -24,6 +24,18 @@ export default class InputComponent extends Component {
     return descriptionString;
   }
 
+  __focusOnElement(input) {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    new IntersectionObserver(() => {
+      input.focus();
+    }, options).observe(input);
+  }
+
   @action
   handleInsert(e) {
     const input = e.querySelector('.hn-input');
@@ -32,6 +44,10 @@ export default class InputComponent extends Component {
       this.hasValue = true;
     } else {
       this.hasValue = false;
+    }
+
+    if (this.args.focused) {
+      this.__focusOnElement(input);
     }
   }
 
