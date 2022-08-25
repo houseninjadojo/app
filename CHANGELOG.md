@@ -1,3 +1,10 @@
+## [1.19.3](https://github.com/houseninjadojo/app/compare/v1.19.2...v1.19.3) (2022-08-25)
+
+
+### Bug Fixes
+
+* external payment approval dialog updates ([#895](https://github.com/houseninjadojo/app/issues/895)) ([f196093](https://github.com/houseninjadojo/app/commit/f1960939b89ca6c67b55bf54b7db84a707df2f87))
+
 ## [1.19.2](https://github.com/houseninjadojo/app/compare/v1.19.1...v1.19.2) (2022-08-11)
 
 
