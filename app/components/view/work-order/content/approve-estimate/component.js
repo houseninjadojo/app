@@ -30,8 +30,11 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   async _nativeConfirmation() {
     const total = this.args.model.get('estimate.formattedTotal');
     const result = await ActionSheet.showActions({
-      title: `Estimate ${total}`,
-      message: 'Do you approve this estimate?',
+      title: total
+        ? `Do you approve this estimate of ${total}?`
+        : `Do you approve this estimate?`,
+      message:
+        'I understand that the estimate provided is subject to change and that work will be charged based upon the price of parts plus labor required to complete the project. I agree to cover the cost of any additional work, services or fittings that need to be provided to rectify any event or situation which arises during the course of the work that are unexpected or are beyond the vendor’s control.',
       options: this.actionSheetOptions,
     });
 
