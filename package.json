@@ -56,7 +56,7 @@
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "^7.8.1",
     "autoprefixer": "^10.4.8",
-    "branch-sdk": "^2.62.0",
+    "branch-sdk": "^2.64.0",
     "broccoli-asset-rev": "^3.0.0",
     "canvas-confetti": "^1.5.1",
     "crypto-js": "^4.1.1",
