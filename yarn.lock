@@ -2028,12 +2028,12 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
-"@houseninja/capacitor-mixpanel@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.1.0.tgz#1e8fc27d14cb073b713980226cbb61970e0a39f0"
-  integrity sha512-SBhGi4+a/COwAm/LplUp9zJvMTOKlkFC22sji+vaO1rPz8TUeBrChC7iirdYN/Is5qiHv6Hw8+poJM46Hub9ug==
+"@houseninja/capacitor-mixpanel@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.2.0.tgz#714b1196ff55e9b2d5962590c7bc271d2ef6d3b7"
+  integrity sha512-F7OK+ZqYvBHoxQ9i4AkK2z6RBw/Aov8v9fqmXBpLlSykP7y3cQQ45vmFl2uj3G/y2YsvR6u4XKkXKWSK6xj+Lw==
   dependencies:
-    mixpanel-browser "^2.43.0"
+    mixpanel-browser "^2.45.0"
 
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
@@ -7259,7 +7259,7 @@ ember-cli-deploy-progress@^1.3.0:
   resolved "https://registry.yarnpkg.com/ember-cli-deploy-progress/-/ember-cli-deploy-progress-1.3.0.tgz#18663deed25b4d5397476332f25eed3c3fdf225a"
   integrity sha1-GGY97tJbTVOXR2My8l7tPD/fIlo=
 
-ember-cli-deploy-sentry@houseninjadojo/ember-cli-deploy-sentry:
+ember-cli-deploy-sentry@houseninjadojo/ember-cli-deploy-sentry#d33400a:
   version "0.7.0"
   resolved "https://codeload.github.com/houseninjadojo/ember-cli-deploy-sentry/tar.gz/d33400a74f59376aadafd2c669b908705e861fa8"
   dependencies:
@@ -10659,7 +10659,7 @@ json-stringify-nice@^1.1.4:
 json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
-  integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
+  integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
 json5@^0.5.1:
   version "0.5.1"
@@ -12036,10 +12036,10 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mixpanel-browser@^2.43.0:
-  version "2.43.0"
-  resolved "https://registry.yarnpkg.com/mixpanel-browser/-/mixpanel-browser-2.43.0.tgz#a4d4f97f5a7ca85411697ef70fa833177e67eb95"
-  integrity sha512-6zOjFXaRRWYo7YdcBwa9Z6nk9zRkkxPd9Qa/KNRcjSJ0OkMv7ka/p8rR+6VqMeY93pia/7X31c/HU5YhqAXnEQ==
+mixpanel-browser@^2.45.0:
+  version "2.45.0"
+  resolved "https://registry.yarnpkg.com/mixpanel-browser/-/mixpanel-browser-2.45.0.tgz#a2973be5b66e6d2799ef95a1e55b8ad8eede57e8"
+  integrity sha512-PQ1DaTk68yyYtLA0iejmzPA9iNDhT4uIZpqZjRTw7HWpYfl123fydHb2laKanaKjm8YDmrGGz3+xZ4Q6joogyg==
 
 mkdirp-infer-owner@^2.0.0:
   version "2.0.0"
