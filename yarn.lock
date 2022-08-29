@@ -5829,7 +5829,7 @@ canvas-confetti@^1.5.1:
 
 capacitor-branch-deep-links@houseninjadojo/capacitor-branch-deep-links:
   version "4.2.0"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-branch-deep-links/tar.gz/488f107d70b790fcff7eec289addd9e8eb3953ca"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-branch-deep-links/tar.gz/060063f033a324652bea8e71b720711b9fd40a69"
 
 capacitor-secure-storage-plugin@^0.7.1:
   version "0.7.1"
