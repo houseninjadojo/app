@@ -1,3 +1,10 @@
+## [1.19.4](https://github.com/houseninjadojo/app/compare/v1.19.3...v1.19.4) (2022-08-29)
+
+
+### Bug Fixes
+
+* **analytics:** bump capacitor-mixpanel and fix analytics call ([#903](https://github.com/houseninjadojo/app/issues/903)) ([f4584c4](https://github.com/houseninjadojo/app/commit/f4584c4aa91a2216a05a637ba4e226b157ee4981))
+
 ## [1.19.3](https://github.com/houseninjadojo/app/compare/v1.19.2...v1.19.3) (2022-08-25)
 
 
