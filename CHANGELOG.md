@@ -1,3 +1,52 @@
+## [1.19.5](https://github.com/houseninjadojo/app/compare/v1.19.4...v1.19.5) (2022-08-29)
+
+
+### Bug Fixes
+
+* **branch:** revert 4.2.0 update until they fix their problems ([#912](https://github.com/houseninjadojo/app/issues/912)) ([6ce8769](https://github.com/houseninjadojo/app/commit/6ce87695d9e484b28c1af2ecea06629634a67271))
+
+## [1.19.4](https://github.com/houseninjadojo/app/compare/v1.19.3...v1.19.4) (2022-08-29)
+
+
+### Bug Fixes
+
+* **analytics:** bump capacitor-mixpanel and fix analytics call ([#903](https://github.com/houseninjadojo/app/issues/903)) ([f4584c4](https://github.com/houseninjadojo/app/commit/f4584c4aa91a2216a05a637ba4e226b157ee4981))
+
+## [1.19.3](https://github.com/houseninjadojo/app/compare/v1.19.2...v1.19.3) (2022-08-25)
+
+
+### Bug Fixes
+
+* external payment approval dialog updates ([#895](https://github.com/houseninjadojo/app/issues/895)) ([f196093](https://github.com/houseninjadojo/app/commit/f1960939b89ca6c67b55bf54b7db84a707df2f87))
+
+## [1.19.2](https://github.com/houseninjadojo/app/compare/v1.19.1...v1.19.2) (2022-08-11)
+
+
+### Bug Fixes
+
+* moment deprecation warning ([#882](https://github.com/houseninjadojo/app/issues/882)) ([2a5d925](https://github.com/houseninjadojo/app/commit/2a5d9250c0622520de22f6663c2377331e2f84ff))
+
+## [1.19.1](https://github.com/houseninjadojo/app/compare/v1.19.0...v1.19.1) (2022-08-11)
+
+
+### Bug Fixes
+
+* formatted notes return ([#881](https://github.com/houseninjadojo/app/issues/881)) ([1637235](https://github.com/houseninjadojo/app/commit/16372355831bd2541d43cb32b15c0e7fad70345a))
+
+# [1.19.0](https://github.com/houseninjadojo/app/compare/v1.18.34...v1.19.0) (2022-08-08)
+
+
+### Features
+
+* **notifications:** working push notification redirects ([#871](https://github.com/houseninjadojo/app/issues/871)) ([a71f2fb](https://github.com/houseninjadojo/app/commit/a71f2fb54c7a7e09be822a980bd47c6c271cb434))
+
+## [1.18.34](https://github.com/houseninjadojo/app/compare/v1.18.33...v1.18.34) (2022-08-03)
+
+
+### Bug Fixes
+
+* property check UI feedback ([#865](https://github.com/houseninjadojo/app/issues/865)) ([22bf1cc](https://github.com/houseninjadojo/app/commit/22bf1cc05f2d101c90ad46ed50dca4a3e3cf9dee))
+
 ## [1.18.33](https://github.com/houseninjadojo/app/compare/v1.18.32...v1.18.33) (2022-08-01)
 
 

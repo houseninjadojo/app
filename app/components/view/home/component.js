@@ -19,8 +19,8 @@ export default class HomeContentComponent extends Component {
 
   get streetAddress() {
     return (
-      this.args.property.get('streetAddress1') ||
-      this.current.property.get('streetAddress1')
+      this.args.property?.get('streetAddress1') ||
+      this.current?.property?.get('streetAddress1')
     );
   }
 

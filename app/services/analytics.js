@@ -114,6 +114,8 @@ export default class AnalyticsService extends Service {
   }
 
   _shouldNotExecute() {
-    return ENV.environment === 'test' || isNativePlatform();
+    // @todo why did I have this not run if native?
+    // return ENV.environment === 'test' || isNativePlatform();
+    return ENV.environment === 'test';
   }
 }

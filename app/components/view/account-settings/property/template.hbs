@@ -1,4 +1,4 @@
-<div class="settings-view dark">
+<div class="settings-view dark" {{did-insert @shouldShowPropertyDialog}}>
     <h1 class="hn view-title">Edit Property Address</h1>
 
     {{#each @fields as |field|}}
@@ -28,3 +28,16 @@
     {{/each}}
     <p>If you’d like to update your property address, please <strong><button class="hn strong accent override underline" type="button" {{on "click" @showMessenger}}>message us</button></strong> directly.</p>
 </div>
+<Primitive::Modal::Dialog @isVisible={{@showPropertyDialog}} @toggleModal={{@toggleModal}}>
+    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    <div class="mb-4">
+        <p class="hn center mb-2">It looks like we're missing your property address.</p>
+        <p class="hn strong center">Let's get that updated for you.</p>
+    </div>
+    <Primitive::Button {{on "click" @toggleModal}} @size="md" @variant="outline" @semantic="primary" @class="mb-4">
+        Close
+    </Primitive::Button>
+    <Primitive::Button {{on "click" @showMessenger}} @size="md" @variant="solid" @semantic="accent">
+        Update My Address
+    </Primitive::Button>    
+</Primitive::Modal::Dialog>
