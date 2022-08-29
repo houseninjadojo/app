@@ -1,3 +1,10 @@
+## [1.19.5](https://github.com/houseninjadojo/app/compare/v1.19.4...v1.19.5) (2022-08-29)
+
+
+### Bug Fixes
+
+* **branch:** revert 4.2.0 update until they fix their problems ([#912](https://github.com/houseninjadojo/app/issues/912)) ([6ce8769](https://github.com/houseninjadojo/app/commit/6ce87695d9e484b28c1af2ecea06629634a67271))
+
 ## [1.19.4](https://github.com/houseninjadojo/app/compare/v1.19.3...v1.19.4) (2022-08-29)
 
 
