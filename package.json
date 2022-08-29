@@ -141,7 +141,7 @@
     "@capacitor/storage": "^1.2.5",
     "@houseninja/capacitor-mixpanel": "^0.2.0",
     "@robingenz/capacitor-file-picker": "^0.3.1",
-    "capacitor-branch-deep-links": "^4.2.0",
+    "capacitor-branch-deep-links": "houseninjadojo/capacitor-branch-deep-links",
     "capacitor-secure-storage-plugin": "^0.7.1",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4"

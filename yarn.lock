@@ -5827,10 +5827,9 @@ canvas-confetti@^1.5.1:
   resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.5.1.tgz#bf5b8622ef3bcd347378a972fc4194a89cfe0c9b"
   integrity sha512-Ncz+oZJP6OvY7ti4E1slxVlyAV/3g7H7oQtcCDXgwGgARxPnwYY9PW5Oe+I8uvspYNtuHviAdgA0LfcKFWJfpg==
 
-capacitor-branch-deep-links@^4.2.0:
+capacitor-branch-deep-links@houseninjadojo/capacitor-branch-deep-links:
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.2.0.tgz#f7efc234b70d6f6686b64c298cf1b07c042e3d5f"
-  integrity sha512-cWk/vwj/MIeZda5UQqeozbsFsSLHI/kxp/lxquFVp4fvwpq5cLT3XozfJ3fwbK93pn9eMqeSmhhlZIQBZcDSFw==
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-branch-deep-links/tar.gz/488f107d70b790fcff7eec289addd9e8eb3953ca"
 
 capacitor-secure-storage-plugin@^0.7.1:
   version "0.7.1"
@@ -7267,7 +7266,6 @@ ember-cli-deploy-sentry@houseninjadojo/ember-cli-deploy-sentry#d33400a:
     ember-cli-deploy-plugin "^0.2.0"
     glob "^5.0.14"
     parse-link-header "^1.0.1"
-    request "^2.88.2"
     request-promise "^4.2.5"
     silent-error "^1.0.0"
     throat "^2.0.0"
