@@ -37,7 +37,7 @@ const integrations = [
     // root: frameRoot,
 
     // a custom prefix that will be used by the default iteratee (default: `app://`)
-    prefix: 'app:///assets/',
+    // prefix: 'app:///assets/',
 
     // function that takes the frame, applies a transformation, and returns it
     // iteratee: (frame) => frame;
