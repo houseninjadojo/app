@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/houseninjadojo/app/compare/v1.19.7...v1.20.0) (2022-08-30)
+
+
+### Features
+
+* toast component and service ([#917](https://github.com/houseninjadojo/app/issues/917)) ([1358d46](https://github.com/houseninjadojo/app/commit/1358d46d2de9e711f90f18a46cd76b6250722ac8))
+
 ## [1.19.7](https://github.com/houseninjadojo/app/compare/v1.19.6...v1.19.7) (2022-08-30)
 
 
