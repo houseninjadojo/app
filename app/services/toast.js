@@ -24,12 +24,4 @@ export default class ToastService extends Service {
       that.isVisible = false;
     }, 5000);
   }
-
-  @action
-  async giveFeedback(turnOffHapticFeedback = false) {
-    if (this.provideHapticFeedback && turnOffHapticFeedback !== true) {
-      isNativePlatform() &&
-        (await Haptics.impact({ style: ImpactStyle.Light }));
-    }
-  }
 }
