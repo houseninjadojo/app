@@ -1,0 +1,13 @@
+<div class="hn toast {{this.toastType}} {{if this.isVisible "show"}}">
+    <div class="column left">
+        {{#if this.isInfo}} 
+            <span class="hn strong icon" aria-role="icon">i</span>
+        {{else if this.isAlert}}
+            <span class="hn strong icon" aria-role="icon">!</span>
+        {{/if}}
+    </div>
+    <div class="column right">
+        <span class="hn strong">{{this.title}}</span>
+        <span>{{this.message}}</span>
+    </div>    
+</div>
