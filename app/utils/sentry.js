@@ -10,8 +10,13 @@ import {
 } from '@sentry/integrations';
 // import { BrowserTracing } from '@sentry/tracing';
 import { isPresent } from '@ember/utils';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 const { sentry: sentryConfig } = config;
+
+// const frameRoot = isNativePlatform()
+//   ? 'app:///co.houseninja.application://'
+//   : 'https://app.houseninja.co';
 
 const integrations = [
   new CaptureConsole({
@@ -29,10 +34,10 @@ const integrations = [
   }),
   new RewriteFrames({
     // root path that will be stripped from the current frame's filename by the default iteratee if the filename is an absolute path
-    root: 'app:///co.houseninja.application://',
+    // root: frameRoot,
 
     // a custom prefix that will be used by the default iteratee (default: `app://`)
-    // prefix: '~',
+    prefix: 'app:///assets/',
 
     // function that takes the frame, applies a transformation, and returns it
     // iteratee: (frame) => frame;
