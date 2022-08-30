@@ -5,20 +5,23 @@ import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 
 export default class ToastService extends Service {
   @tracked type = TOAST_TYPE.DEFAULT;
+  @tracked title = null; 
   @tracked message = null;
   @tracked isVisible = false;
 
   @action
-  show (message, type = TOAST_TYPE.DEFAULT) {
+  show (title, message, type = TOAST_TYPE.DEFAULT) {
+    this.type = type;
+    this.title = title;
     this.message = message;
     this.isVisible = true
-    this.type = type;
 
     const that = this;
     setTimeout(()=>{
-        that.isVisible = false;
         that.type = TOAST_TYPE.DEFAULT;
-        that.message = "";
+        that.title = null
+        that.message = null;
+        that.isVisible = false;
     },5000);
   }
 

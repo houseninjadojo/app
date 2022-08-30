@@ -5,6 +5,10 @@ import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 export default class ToastComponent extends Component {
   @service toast;
   
+  get title () {
+    return this.toast.title;
+  }
+
   get  message () {
     return this.toast.message;
   }
