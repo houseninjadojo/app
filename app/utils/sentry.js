@@ -40,7 +40,11 @@ const integrations = [
     // prefix: 'app:///assets/',
 
     // function that takes the frame, applies a transformation, and returns it
-    // iteratee: (frame) => frame;
+    iteratee: (frame) => {
+      const filename = frame.filename.split('/').pop();
+      frame.filename = `assets/${filename}`;
+      return frame;
+    },
   }),
 ];
 
