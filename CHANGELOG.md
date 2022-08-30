@@ -1,3 +1,10 @@
+## [1.19.6](https://github.com/houseninjadojo/app/compare/v1.19.5...v1.19.6) (2022-08-30)
+
+
+### Bug Fixes
+
+* **sentry:** rewrite frames for debugging ([#916](https://github.com/houseninjadojo/app/issues/916)) ([6f28106](https://github.com/houseninjadojo/app/commit/6f281067163de37144a2d9316f04a6e9ede264dd))
+
 ## [1.19.5](https://github.com/houseninjadojo/app/compare/v1.19.4...v1.19.5) (2022-08-29)
 
 
