@@ -4,29 +4,33 @@ import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 
 export default class ToastComponent extends Component {
   @service toast;
-  
-  get title () {
+
+  get title() {
     return this.toast.title;
   }
 
-  get  message () {
+  get message() {
     return this.toast.message;
   }
 
-  get toastType (){
-    return this.toast.type
-  };
-
-  get isVisible(){
-    return this.toast.isVisible
+  get toastType() {
+    return this.toast.type;
   }
 
-  get isAlert () {
-    return this.toastType === TOAST_TYPE.ERROR || this.toastType === TOAST_TYPE.WARN
+  get isVisible() {
+    return this.toast.isVisible;
   }
 
-  get isInfo () {
-    return this.toastType === TOAST_TYPE.DEFAULT || this.toastType === TOAST_TYPE.INFO
+  get isAlert() {
+    return (
+      this.toastType === TOAST_TYPE.ERROR || this.toastType === TOAST_TYPE.WARN
+    );
   }
-  
+
+  get isInfo() {
+    return (
+      this.toastType === TOAST_TYPE.DEFAULT ||
+      this.toastType === TOAST_TYPE.INFO
+    );
+  }
 }
