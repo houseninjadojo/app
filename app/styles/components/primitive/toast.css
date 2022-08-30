@@ -34,6 +34,13 @@
   animation: fade-out 1.5s;
 }
 
+@media (min-width: 768px) {
+  .hn.toast {
+    left: unset;
+    right: 16px;
+  }
+}
+
 .hn.toast.show {
   animation: fade-in-from-above 0.75s;
   animation-direction: vertical;
