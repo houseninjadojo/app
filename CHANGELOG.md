@@ -1,3 +1,10 @@
+## [1.19.7](https://github.com/houseninjadojo/app/compare/v1.19.6...v1.19.7) (2022-08-30)
+
+
+### Bug Fixes
+
+* **sentry:** fix frame rewrite ([#918](https://github.com/houseninjadojo/app/issues/918)) ([773543c](https://github.com/houseninjadojo/app/commit/773543ccbc08ae9e55825c5777cbcacad4eab4b9))
+
 ## [1.19.6](https://github.com/houseninjadojo/app/compare/v1.19.5...v1.19.6) (2022-08-30)
 
 
