@@ -41,8 +41,8 @@ const integrations = [
 
     // function that takes the frame, applies a transformation, and returns it
     iteratee: (frame) => {
-      const filename = frame.filename.split('/').pop();
-      frame.filename = `assets/${filename}`;
+      const filename = frame.filename.split('/').pop().replace('?', '');
+      frame.filename = `~/assets/${filename}`;
       return frame;
     },
   }),
