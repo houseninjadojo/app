@@ -32,7 +32,7 @@ const integrations = [
     root: 'app:///co.houseninja.application://',
 
     // a custom prefix that will be used by the default iteratee (default: `app://`)
-    prefix: '~',
+    // prefix: '~',
 
     // function that takes the frame, applies a transformation, and returns it
     // iteratee: (frame) => frame;
