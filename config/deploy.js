@@ -44,6 +44,8 @@ module.exports = function (deployTarget) {
       // or
       sentryBearerApiKey:
         'ff65161f14594302ab7597df9d8b92122cfd8029129b41b38ac13c3a05e54698',
+
+      distDir: 'dist/assets',
     };
   }
 

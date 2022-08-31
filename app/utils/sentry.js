@@ -28,16 +28,10 @@ const integrations = [
     // }
   }),
   new RewriteFrames({
-    // root path that will be stripped from the current frame's filename by the default iteratee if the filename is an absolute path
-    // root: 'app:///co.houseninja.application://',
-
-    // a custom prefix that will be used by the default iteratee (default: `app://`)
-    // prefix: 'app:///assets/',
-
     // function that takes the frame, applies a transformation, and returns it
     iteratee: (frame) => {
       const filename = frame.filename.split('/').pop().replace('?', '');
-      frame.filename = `~/assets/${filename}`;
+      frame.filename = `app:///${filename}`;
       return frame;
     },
   }),
