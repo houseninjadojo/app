@@ -32,12 +32,12 @@ const integrations = [
     // root: 'app:///co.houseninja.application://',
     //
     // // a custom prefix that will be used by the default iteratee (default: `app://`)
-    // prefix: 'app:///assets/',
+    prefix: 'app://',
     //
-    // // function that takes the frame, applies a transformation, and returns it
+    // function that takes the frame, applies a transformation, and returns it
     // iteratee: (frame) => {
     //   const filename = frame.filename.split('/').pop().replace('?', '');
-    //   frame.filename = `~/assets/${filename}`;
+    //   frame.filename = `${filename}`;
     //   return frame;
     // },
   }),
