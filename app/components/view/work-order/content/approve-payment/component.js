@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -11,6 +12,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @service intercom;
   @service router;
   @service store;
+  @service toast;
 
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -64,7 +66,22 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       await payment.save(); // this will be long running (probably)
       this.paid = true;
     } catch (e) {
-      this.paymentFailed = true;
+      if (!this.payment) {
+        const hasGenericError =
+          payment.errors?.messages.filter((e) => e.attribute === null).length >
+          0;
+
+        if (hasGenericError) {
+          this.toast.show(
+            'Error',
+            'Your payment was unsuccessful. If this happens again, please contact us at hello@houseninja.co',
+            TOAST_TYPE.ERROR
+          );
+        }
+
+        this.toggleIsProcessing();
+      }
+
       captureException(e);
     }
   }
