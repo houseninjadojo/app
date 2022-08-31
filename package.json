@@ -92,7 +92,7 @@
     "ember-source": "~4.6.0",
     "ember-template-lint": "^4.13.0",
     "ember-truth-helpers": "^3.1.1",
-    "ember-user-activity": "houseninjadojo/ember-user-activity",
+    "ember-user-activity": "elwayman02/ember-user-activity",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-ember": "^11.0.6",

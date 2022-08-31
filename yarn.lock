@@ -7947,9 +7947,9 @@ ember-truth-helpers@^3.1.1:
   dependencies:
     ember-cli-babel "^7.22.1"
 
-ember-user-activity@houseninjadojo/ember-user-activity:
+ember-user-activity@elwayman02/ember-user-activity:
   version "6.0.0"
-  resolved "https://codeload.github.com/houseninjadojo/ember-user-activity/tar.gz/e57b20c7028c6987d794dbc141cff766e72d65df"
+  resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/022968b79260e46f5534c8784dbec7d8a0e55603"
   dependencies:
     ember-classic-decorator "^3.0.0"
     ember-cli-babel "^7.26.11"
@@ -8614,7 +8614,7 @@ fast-json-stable-stringify@^2.0.0:
 fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
-  integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+  integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
 fast-ordered-set@^1.0.0:
   version "1.0.3"
