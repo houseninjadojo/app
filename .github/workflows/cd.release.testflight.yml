@@ -61,6 +61,10 @@ jobs:
         with:
           name: android.tar.gz
           path: android.tar.gz
+      - uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.CF_PAGES_DEPLOY_HOOK_URL }}
+          method: POST
   ios:
     needs: web
     if: success()
