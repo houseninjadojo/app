@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/houseninjadojo/app/compare/v1.20.0...v1.20.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* **sentry:** build with assets dir ([#921](https://github.com/houseninjadojo/app/issues/921)) ([052a620](https://github.com/houseninjadojo/app/commit/052a620f9a85b2d3f8d507762e8bcb835bd97549))
+
 # [1.20.0](https://github.com/houseninjadojo/app/compare/v1.19.7...v1.20.0) (2022-08-30)
 
 
