@@ -1,3 +1,52 @@
+## [1.20.2](https://github.com/houseninjadojo/app/compare/v1.20.1...v1.20.2) (2022-08-31)
+
+
+### Bug Fixes
+
+* **release:** invoke correct build function ([#922](https://github.com/houseninjadojo/app/issues/922)) ([b57df71](https://github.com/houseninjadojo/app/commit/b57df713df19bfa5f6659f09047571d7a4adec31))
+
+## [1.20.1](https://github.com/houseninjadojo/app/compare/v1.20.0...v1.20.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* **sentry:** build with assets dir ([#921](https://github.com/houseninjadojo/app/issues/921)) ([052a620](https://github.com/houseninjadojo/app/commit/052a620f9a85b2d3f8d507762e8bcb835bd97549))
+
+# [1.20.0](https://github.com/houseninjadojo/app/compare/v1.19.7...v1.20.0) (2022-08-30)
+
+
+### Features
+
+* toast component and service ([#917](https://github.com/houseninjadojo/app/issues/917)) ([1358d46](https://github.com/houseninjadojo/app/commit/1358d46d2de9e711f90f18a46cd76b6250722ac8))
+
+## [1.19.7](https://github.com/houseninjadojo/app/compare/v1.19.6...v1.19.7) (2022-08-30)
+
+
+### Bug Fixes
+
+* **sentry:** fix frame rewrite ([#918](https://github.com/houseninjadojo/app/issues/918)) ([773543c](https://github.com/houseninjadojo/app/commit/773543ccbc08ae9e55825c5777cbcacad4eab4b9))
+
+## [1.19.6](https://github.com/houseninjadojo/app/compare/v1.19.5...v1.19.6) (2022-08-30)
+
+
+### Bug Fixes
+
+* **sentry:** rewrite frames for debugging ([#916](https://github.com/houseninjadojo/app/issues/916)) ([6f28106](https://github.com/houseninjadojo/app/commit/6f281067163de37144a2d9316f04a6e9ede264dd))
+
+## [1.19.5](https://github.com/houseninjadojo/app/compare/v1.19.4...v1.19.5) (2022-08-29)
+
+
+### Bug Fixes
+
+* **branch:** revert 4.2.0 update until they fix their problems ([#912](https://github.com/houseninjadojo/app/issues/912)) ([6ce8769](https://github.com/houseninjadojo/app/commit/6ce87695d9e484b28c1af2ecea06629634a67271))
+
+## [1.19.4](https://github.com/houseninjadojo/app/compare/v1.19.3...v1.19.4) (2022-08-29)
+
+
+### Bug Fixes
+
+* **analytics:** bump capacitor-mixpanel and fix analytics call ([#903](https://github.com/houseninjadojo/app/issues/903)) ([f4584c4](https://github.com/houseninjadojo/app/commit/f4584c4aa91a2216a05a637ba4e226b157ee4981))
+
 ## [1.19.3](https://github.com/houseninjadojo/app/compare/v1.19.2...v1.19.3) (2022-08-25)
 
 

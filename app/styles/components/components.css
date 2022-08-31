@@ -13,6 +13,7 @@
 @import "./primitive/page-banner.css";
 @import "./primitive/record-list.css";
 @import "./primitive/tag.css";
+@import "./primitive/toast.css";
 @import "./view/view.css";
 @import "./view/account-settings.css";
 @import "./view/cancel-subscription.css";
