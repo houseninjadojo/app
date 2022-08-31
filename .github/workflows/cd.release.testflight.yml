@@ -22,7 +22,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: yarn deploy production
+      - run: yarn deploy
         env:
           NODE_ENV: production
       - uses: ruby/setup-ruby@v1
