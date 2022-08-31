@@ -29,7 +29,7 @@
     "test:ci": "percy exec -- ember test"
   },
   "devDependencies": {
-    "@algonauti/ember-active-storage": "^2.1.1",
+    "@algonauti/ember-active-storage": "^2.2.0",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/plugin-proposal-decorators": "^7.18.10",
     "@capacitor/android": "^3.7.0",

@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@algonauti/ember-active-storage@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@algonauti/ember-active-storage/-/ember-active-storage-2.1.1.tgz#b21c2e45595cc7d249e6123b51b731f4749d721a"
-  integrity sha512-0Wdop/BsUSsCfnxgwKCcauxG2cTMYpZap1OwoqrXGVyS7Y6Z+l8dJiBX302JEGRdNcYaHkBXYK8DyLRxbhTlQg==
+"@algonauti/ember-active-storage@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@algonauti/ember-active-storage/-/ember-active-storage-2.2.0.tgz#bb0fb05fbebc813c5708fde1b0e92284a968256f"
+  integrity sha512-JgumLQ9PIs/8Se6zuldVxj07h3UodSjY58anV4uNIpwQfVrhfZ938Km7/Tiy2FPGpeh/EjuHWzUvyVOGxAIU3g==
   dependencies:
     ember-cli-babel "^7.26.6"
-    ember-cli-htmlbars "^5.7.1"
+    ember-cli-htmlbars "^5.7.2"
     spark-md5 "^3.0.2"
 
 "@ampproject/remapping@^2.1.0":
@@ -7286,7 +7286,7 @@ ember-cli-get-component-path-option@^1.0.0:
   resolved "https://registry.yarnpkg.com/ember-cli-get-component-path-option/-/ember-cli-get-component-path-option-1.0.0.tgz#0d7b595559e2f9050abed804f1d8eff1b08bc771"
   integrity sha1-DXtZVVni+QUKvtgE8djv8bCLx3E=
 
-ember-cli-htmlbars@^5.3.2, ember-cli-htmlbars@^5.7.1:
+ember-cli-htmlbars@^5.3.2, ember-cli-htmlbars@^5.7.1, ember-cli-htmlbars@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-5.7.2.tgz#e0cd2fb3c20d85fe4c3e228e6f0590ee1c645ba8"
   integrity sha512-Uj6R+3TtBV5RZoJY14oZn/sNPnc+UgmC8nb5rI4P3fR/gYoyTFIZSXiIM7zl++IpMoIrocxOrgt+mhonKphgGg==
