@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/houseninjadojo/app/compare/v1.20.1...v1.20.2) (2022-08-31)
+
+
+### Bug Fixes
+
+* **release:** invoke correct build function ([#922](https://github.com/houseninjadojo/app/issues/922)) ([b57df71](https://github.com/houseninjadojo/app/commit/b57df713df19bfa5f6659f09047571d7a4adec31))
+
 ## [1.20.1](https://github.com/houseninjadojo/app/compare/v1.20.0...v1.20.1) (2022-08-31)
 
 
