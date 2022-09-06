@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 import { isPresent, isBlank } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { captureException } from 'houseninja/utils/sentry';
@@ -91,10 +90,8 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
           .length > 0;
 
       if (hasGenericError) {
-        this.toast.show(
-          'Error',
-          'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co',
-          TOAST_TYPE.ERROR
+        this.toast.showError(
+          'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co.'
         );
       }
 
@@ -161,10 +158,8 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
           this.errors?.messages.filter((e) => e.attribute === null).length > 0;
 
         if (hasGenericError) {
-          this.toast.show(
-            'Error',
-            'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co',
-            TOAST_TYPE.ERROR
+          this.toast.showError(
+            'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co.'
           );
         }
       }

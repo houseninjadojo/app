@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { TOAST_TYPE } from 'houseninja/data/enums/toast-type';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -72,10 +71,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
           0;
 
         if (hasGenericError) {
-          this.toast.show(
-            'Error',
-            'Your payment was unsuccessful. If this happens again, please contact us at hello@houseninja.co',
-            TOAST_TYPE.ERROR
+          this.toast.showError(
+            'Your payment was unsuccessful. If this happens again, please contact us at hello@houseninja.co.'
           );
         }
 

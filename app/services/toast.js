@@ -10,6 +10,11 @@ export default class ToastService extends Service {
   @tracked isVisible = false;
 
   @action
+  showError(message, title = 'Error') {
+    this.show(title, message, TOAST_TYPE.ERROR);
+  }
+
+  @action
   show(title, message, type = TOAST_TYPE.DEFAULT) {
     this.type = type;
     this.title = title;
