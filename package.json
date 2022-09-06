@@ -53,7 +53,7 @@
     "@sentry/capacitor": "^0.9.0",
     "@sentry/cli": "^2.5.2",
     "@sentry/ember": "^7.12.1",
-    "@sentry/integrations": "^7.11.1",
+    "@sentry/integrations": "^7.12.1",
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "^7.8.1",
     "autoprefixer": "^10.4.8",
