@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/houseninjadojo/app/compare/v1.20.2...v1.20.3) (2022-09-06)
+
+
+### Bug Fixes
+
+* payment approval error ui feedback ([#924](https://github.com/houseninjadojo/app/issues/924)) ([d46f2b8](https://github.com/houseninjadojo/app/commit/d46f2b868f906fc32f7cf43574a5a201711d1004))
+
 ## [1.20.2](https://github.com/houseninjadojo/app/compare/v1.20.1...v1.20.2) (2022-08-31)
 
 
