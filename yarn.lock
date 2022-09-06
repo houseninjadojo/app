@@ -7978,7 +7978,8 @@ ember-truth-helpers@^3.1.1:
 
 ember-user-activity@elwayman02/ember-user-activity:
   version "6.0.0"
-  resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/022968b79260e46f5534c8784dbec7d8a0e55603"
+  uid "576b0ad9d1f2fb47085b687da9ff1ba4c86ea33c"
+  resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/576b0ad9d1f2fb47085b687da9ff1ba4c86ea33c"
   dependencies:
     ember-classic-decorator "^3.0.0"
     ember-cli-babel "^7.26.11"
