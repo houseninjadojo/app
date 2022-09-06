@@ -64,10 +64,6 @@
 		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
 	},
 	{
-		"pkg": "@capacitor/storage",
-		"classpath": "com.capacitorjs.plugins.storage.StoragePlugin"
-	},
-	{
 		"pkg": "@houseninja/capacitor-mixpanel",
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
@@ -82,6 +78,10 @@
 	{
 		"pkg": "capacitor-secure-storage-plugin",
 		"classpath": "com.whitestein.securestorage.SecureStoragePluginPlugin"
+	},
+	{
+		"pkg": "@capacitor/preferences",
+		"classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
 	},
 	{
 		"pkg": "@sentry/capacitor",
