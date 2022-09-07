@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { isPresent, isBlank } from '@ember/utils';
+import { isPresent } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { captureException } from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
