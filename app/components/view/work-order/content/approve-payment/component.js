@@ -11,6 +11,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @service intercom;
   @service router;
   @service store;
+  @service toast;
 
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -64,7 +65,20 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       await payment.save(); // this will be long running (probably)
       this.paid = true;
     } catch (e) {
-      this.paymentFailed = true;
+      if (!this.payment) {
+        const hasGenericError =
+          payment.errors?.messages.filter((e) => e.attribute === null).length >
+          0;
+
+        if (hasGenericError) {
+          this.toast.showError(
+            'Your payment was unsuccessful. If this happens again, please contact us at hello@houseninja.co.'
+          );
+        }
+
+        this.toggleIsProcessing();
+      }
+
       captureException(e);
     }
   }

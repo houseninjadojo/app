@@ -2,6 +2,14 @@
 
 const pkg = require('../package.json');
 
+const commitSHA = () => {
+  if (process.env.CF_PAGES) {
+    return process.env.CF_PAGES_COMMIT_SHA.substring(0, 8);
+  } else {
+    return '1';
+  }
+};
+
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'houseninja',
@@ -80,7 +88,7 @@ module.exports = function (environment) {
       tracesSampleRate: 1.0,
       debug: true,
       autoSessionTracking: true,
-      release: `co.houseninja.application@${pkg.version}+1`,
+      release: `co.houseninja.application@${pkg.version}+${commitSHA()}`,
       browserTracingOptions: {
         tracingOrigins: [
           'api.houseninja.co',

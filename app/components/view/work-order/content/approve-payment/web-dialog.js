@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { isPresent } from '@ember/utils';
+import { isPresent, isBlank } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { captureException } from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
@@ -10,8 +10,10 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 export default class WorkOrderApprovePaymentWebDialogViewContentComponent extends Component {
   @service router;
   @service store;
+  @service toast;
 
   @tracked cvc = null;
+  @tracked cvcError = [];
   @tracked paymentMethodFormIsInvalid = true;
   @tracked paymentMethod = {
     cardNumber: null,
@@ -28,6 +30,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     zipcode: [],
   };
 
+  paymentInfoIsKnown = isPresent(this.args.creditCard);
   fields = [
     {
       id: 'cardNumber',
@@ -66,22 +69,32 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   ];
 
   async _cvcResourceVerification() {
+    let verification;
+
     try {
       const creditCard = this.store.peekAll('credit-card').firstObject;
-      const verification = await this.store.createRecord(
-        'resource-verification',
-        {
-          resourceName: 'credit-card',
-          recordId: creditCard?.id,
-          attribute: 'cvv',
-          // value: this.cvc,
-          vgsValue: this.cvc,
-        }
-      );
+      verification = await this.store.createRecord('resource-verification', {
+        resourceName: 'credit-card',
+        recordId: creditCard?.id,
+        attribute: 'cvv',
+        // value: this.cvc,
+        vgsValue: this.cvc,
+      });
       verification.save();
       return true;
     } catch (e) {
       captureException(e);
+
+      const hasGenericError =
+        verification.errors?.messages.filter((e) => e.attribute === null)
+          .length > 0;
+
+      if (hasGenericError) {
+        this.toast.showError(
+          'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co.'
+        );
+      }
+
       return false;
     }
   }
@@ -104,12 +117,19 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   @action
+  validateCVCInput(e) {
+    this.cvc = e.target.value;
+    this.paymentMethodFormIsInvalid = isBlank(this.cvc);
+  }
+
+  @action
   async validateCVC() {
     if (this.cvc) {
-      const isValid = await this.cvcResourceVerification();
+      const isValid = await this._cvcResourceVerification();
+
       if (isValid) {
         this.cvcError = [];
-        this.args.approvePayment(true);
+        this.args.approvePayment();
       } else {
         this.cvcError = [{ message: 'Invalid CVC code' }];
       }
@@ -133,14 +153,19 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     } catch (e) {
       if (isPresent(paymentMethod)) {
         this.errors = paymentMethod.errors;
+
+        const hasGenericError =
+          this.errors?.messages.filter((e) => e.attribute === null).length > 0;
+
+        if (hasGenericError) {
+          this.toast.showError(
+            'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co.'
+          );
+        }
       }
 
       captureException(e);
     }
-  }
-
-  get paymentInfoIsKnown() {
-    return isPresent(this.args.creditCard);
   }
 
   get creditCard() {

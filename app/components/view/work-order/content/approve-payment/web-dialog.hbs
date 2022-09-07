@@ -4,7 +4,7 @@
         {{#if this.paymentInfoIsKnown}}
             <p class="hn center">Enter the CVC number for your <span class="hn strong">{{this.creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
             <Primitive::Input
-                @id="CVC"
+                @id="cvc"
                 @type="number"
                 @required={{true}}
                 @value={{this.cvc}}
@@ -12,6 +12,7 @@
                 @hideLabel={{true}}
                 @errors={{this.cvcError}}
                 @focused={{true}}
+                @onInput={{this.validateCVCInput}}
             />
             <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
             <div class="actions mb-4">
