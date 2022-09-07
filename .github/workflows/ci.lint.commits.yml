@@ -20,5 +20,5 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: npm install @commitlint/config-conventional
-      - uses: JulienKode/pull-request-name-linter-action@v0.5.0
+      # - run: npm install @commitlint/config-conventional
+      - uses: wagoid/commitlint-github-action@v5
