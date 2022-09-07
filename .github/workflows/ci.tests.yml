@@ -37,4 +37,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           coverage_path: "coverage/coverage-summary.json"
           status_context: ci / tests / coverage
-          check: false
+          check: true
+          threshold_alert: 10
+          threshold_warning: 10
+          threshold_metric: lines
+      - uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+          lcov-file: ./coverage/lcov.info
