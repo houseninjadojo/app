@@ -41,7 +41,7 @@ jobs:
           threshold_alert: 10
           threshold_warning: 10
           threshold_metric: lines
-      - uses: romeovs/lcov-reporter-action@v0.2.16
+      - uses: romeovs/lcov-reporter-action@v0.3.1
         with:
           lcov-file: ./coverage/lcov.info
           github-token: ${{ github.token }}
