@@ -17,8 +17,4 @@ jobs:
       github.event.action == 'reopened' ||
       (github.event.action == 'edited' && github.event.changes.title != null)
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      # - run: npm install @commitlint/config-conventional
       - uses: amannn/action-semantic-pull-request@v4
