@@ -12,8 +12,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   @service store;
   @service toast;
 
-  @tracked cvc = null;
-  @tracked cvcError = [];
   @tracked paymentMethodFormIsInvalid = true;
   @tracked paymentMethod = {
     cardNumber: null,
@@ -30,7 +28,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     zipcode: [],
   };
 
-  paymentInfoIsKnown = isPresent(this.args.creditCard);
   fields = [
     {
       id: 'cardNumber',
@@ -68,37 +65,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     },
   ];
 
-  async _cvcResourceVerification() {
-    let verification;
-
-    try {
-      const creditCard = this.store.peekAll('credit-card').firstObject;
-      verification = await this.store.createRecord('resource-verification', {
-        resourceName: 'credit-card',
-        recordId: creditCard?.id,
-        attribute: 'cvv',
-        // value: this.cvc,
-        vgsValue: this.cvc,
-      });
-      verification.save();
-      return true;
-    } catch (e) {
-      captureException(e);
-
-      const hasGenericError =
-        verification.errors?.messages.filter((e) => e.attribute === null)
-          .length > 0;
-
-      if (hasGenericError) {
-        this.toast.showError(
-          'There was an issue while verifying your payment method. If this happens again, please contact us at hello@houseninja.co.'
-        );
-      }
-
-      return false;
-    }
-  }
-
   @action
   validatePaymentMethodForm(e) {
     if (e.target.id === 'cardNumber') {
@@ -114,30 +80,6 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     this.paymentMethodFormIsInvalid = inputValidation(this.fields, [
       'cardIsValid',
     ]).isInvalid;
-  }
-
-  @action
-  validateCVCInput(e) {
-    this.cvc = e.target.value;
-    this.paymentMethodFormIsInvalid = isBlank(this.cvc);
-  }
-
-  @action
-  async validateCVC() {
-    if (this.cvc) {
-      const isValid = await this._cvcResourceVerification();
-
-      if (isValid) {
-        this.cvcError = [];
-        this.args.approvePayment();
-      } else {
-        this.cvcError = [{ message: 'Invalid CVC code' }];
-      }
-    } else {
-      this.cvcError = [
-        { message: 'Please enter the CVC number associated with this card.' },
-      ];
-    }
   }
 
   @action
@@ -168,8 +110,12 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
     }
   }
 
-  get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
+  @action
+  downloadFromAppStore() {
+    window.open(
+      'https://apps.apple.com/us/app/house-ninja/id1603710358',
+      '_blank'
+    );
   }
 
   get user() {

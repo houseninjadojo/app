@@ -1,33 +1,15 @@
 <Primitive::Modal::Dialog @toggleModal={{@toggleWebDialog}} @isVisible={{@isVisible}}>
     <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
-    <div>        
-        {{#if this.paymentInfoIsKnown}}
-            <p class="hn center">Enter the CVC number for your <span class="hn strong">{{this.creditCard.cardBrand}}</span> card ending in <span class="hn strong">{{this.creditCard.lastFour}}</span></p>
-            <Primitive::Input
-                @id="cvc"
-                @type="number"
-                @required={{true}}
-                @value={{this.cvc}}
-                @label="CVC"
-                @hideLabel={{true}}
-                @errors={{this.cvcError}}
-                @focused={{true}}
-                @onInput={{this.validateCVCInput}}
-            />
-            <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
-            <div class="actions mb-4">
-                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
-                    Dismiss
-                </Primitive::Button>
-                <Primitive::Button {{on "click" this.validateCVC}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
-                    I approve this payment
-                </Primitive::Button>
-            </div>
-            <p class="hn center">If you would like to use an alternate payment method for this invoice, please email us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or call us <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
-        {{else}}
-            <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Please re-enter your payment method on file, and in the future, you can pay for your services with just one tap!</p>            
-            <p class="hn center strong underline">Please re-enter your payment method on file</p>
-            <p class="hn center">Note: If you would like to pay with a different card, please call us at <a href="tel:888-326-4652">888-32-NINJA (64652)</a> or reply to the invoice email.</p>
+    <div class="hn app-download-encouragement">
+        <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Download the House Ninja app to make one-tap payments and store multiple payment methods to your account.</p>
+        <button class="hn ios-download" type="button" {{on "click" this.downloadFromAppStore}}>
+            <img src="/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg" class="" alt="apple store download"/>
+        </button>
+    </div>    
+    <p class="hn center strong underline">Or simply use the payment form below to pay for your service</p>
+    {{!-- <p class="hn center strong underline">Please enter your payment method on file</p> --}}
+    <div>
+        <div class="hn payment-method-form">
             {{#each this.fields as |field|}}
                 <Primitive::Input
                     @id={{field.id}}
@@ -41,16 +23,16 @@
                     @errors={{(get this.errors field.id)}}
                 />
             {{/each}}
-            <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
-            <div class="actions ">
-                <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
-                    Dismiss
-                </Primitive::Button>
-                <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
-                    I approve this payment
-                </Primitive::Button>
-            </div>
-            <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
-        {{/if}}
+        </div>
+        <p class="hn center strong mb-4">Do you approve the payment of {{@formattedTotal}}?</p>
+        <div class="actions">
+            <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                Dismiss
+            </Primitive::Button>
+            <Primitive::Button {{on "click" this.updatePaymentMethod}} @size="md" @variant="solid" @semantic="accent" @disabled={{this.paymentMethodFormIsInvalid}}>
+                I approve this payment
+            </Primitive::Button>
+        </div>
+        <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>            
     </div>    
 </Primitive::Modal::Dialog>
