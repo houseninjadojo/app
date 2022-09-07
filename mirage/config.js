@@ -21,7 +21,8 @@ const INVOICE_ACCESS_TOKEN =
 // 'eZAGjnH91fpQJ6jg0/pmwt2VegG1DuLsSmloZgcb3tlmTlkuN86Qu4hLaKuMXKtBHckIX+kmcKF/45iKwB1zIUPsfqkJFi1DJvHDvfEBSs0aOnVn5LMBHtFYspfAqQJrmTfHRreTvjKw/Do9jvxj0D2M5a/jq6KP1OToOKZ2fsROJM42TuR2RndRMFgbfAlzTfagFYrsTgX3QbDuashYkAEVb8lAmE9jP/QchPJ5IDacf77aIFxmd0bmmzKtulUyiptKGDwEfFNrmGs9eTtS8eqgxe1COTM=--rTmMzbCLQ8A80GDG--fxrcgmX7B3incGIFfgMLPg==';
 
 function routes() {
-  // These comments are here to help you get started. Feel free to delete them.
+  // CodeCov
+  this.passthrough('/write-coverage');
 
   /*
     Config (with defaults).

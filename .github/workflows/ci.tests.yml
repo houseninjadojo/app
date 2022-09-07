@@ -30,3 +30,8 @@ jobs:
         with:
           name: app
           path: tmp/app/
+      - uses: slavcodev/coverage-monitor-action@v1
+        if: ! contains(github.event.pull_request.user.login, 'dependabot[bot]')
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_path: "coverage/coverage-summary.json"
