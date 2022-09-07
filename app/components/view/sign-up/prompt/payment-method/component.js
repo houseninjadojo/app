@@ -25,6 +25,7 @@ export default class PaymentMethodComponent extends Component {
   @tracked isLoading = false;
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
+  @tracked agreedToReceivingSms = false;
   @tracked formIsValid = false;
   @tracked shallNotPass = true;
   @tracked promoCode;
@@ -99,6 +100,14 @@ export default class PaymentMethodComponent extends Component {
     }
   }
 
+  __validateAgreements() {
+    this.shallNotPass = !(
+      this.formIsValid &&
+      this.agreedToTermsAndConditions &&
+      this.agreedToReceivingSms
+    );
+  }
+
   @action
   goBack() {
     this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
@@ -109,10 +118,17 @@ export default class PaymentMethodComponent extends Component {
   }
 
   @action
-  handleAgreement(agreesToTermsAndConditions) {
+  handleTermsAgreement(agreesToTermsAndConditions) {
     this.agreedToTermsAndConditions = agreesToTermsAndConditions;
-    this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
     this.showTermsAndConditionsComponent(false);
+
+    this.__validateAgreements();
+  }
+
+  @action
+  handleSMSAgreement(e) {
+    this.agreedToReceivingSms = e.target.checked;
+    this.__validateAgreements();
   }
 
   @task({ restartable: true })

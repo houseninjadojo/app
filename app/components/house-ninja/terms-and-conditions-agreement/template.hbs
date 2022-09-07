@@ -10,7 +10,7 @@
                     <Primitive::Button
                         @size='lg' @variant='outline'
                         @semantic='primary'
-                        {{on 'click' (fn @handleAgreement false)}}
+                        {{on 'click' (fn @handleTermsAgreement false)}}
                     >
                         I Decline
                     </Primitive::Button>
@@ -18,7 +18,7 @@
                         @size='lg'
                         @variant='solid'
                         @semantic='primary'                        
-                        {{on 'click' (fn @handleAgreement true)}}
+                        {{on 'click' (fn @handleTermsAgreement true)}}
                     >
                         I Accept
                     </Primitive::Button>
