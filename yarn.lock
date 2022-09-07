@@ -1227,16 +1227,7 @@
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/types@^7.1.6", "@babel/types@^7.12.13", "@babel/types@^7.16.0", "@babel/types@^7.16.7", "@babel/types@^7.16.8", "@babel/types@^7.17.0", "@babel/types@^7.18.6", "@babel/types@^7.18.7", "@babel/types@^7.18.8", "@babel/types@^7.18.9", "@babel/types@^7.4.4", "@babel/types@^7.7.2":
-  version "7.18.13"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.18.13.tgz#30aeb9e514f4100f7c1cb6e5ba472b30e48f519a"
-  integrity sha512-ePqfTihzW0W6XAU+aMw2ykilisStJfDnsejDCXRchCcMJ4O0+8DhPXf2YUbZ6wjBlsEmZwLK/sPweWtu8hcJYQ==
-  dependencies:
-    "@babel/helper-string-parser" "^7.18.10"
-    "@babel/helper-validator-identifier" "^7.18.6"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.18.10", "@babel/types@^7.19.0":
+"@babel/types@^7.1.6", "@babel/types@^7.12.13", "@babel/types@^7.16.0", "@babel/types@^7.16.7", "@babel/types@^7.16.8", "@babel/types@^7.17.0", "@babel/types@^7.18.10", "@babel/types@^7.18.6", "@babel/types@^7.18.7", "@babel/types@^7.18.8", "@babel/types@^7.18.9", "@babel/types@^7.19.0", "@babel/types@^7.4.4", "@babel/types@^7.7.2":
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.19.0.tgz#75f21d73d73dc0351f3368d28db73465f4814600"
   integrity sha512-YuGopBq3ke25BVSiS6fgF49Ul9gH1x70Bcr6bqRLjWCkcX8Hre1/5+z+IiWOIerRMSSEfGZVB9z9kyq7wVs9YA==
@@ -7678,10 +7669,10 @@ ember-compatibility-helpers@^1.1.2, ember-compatibility-helpers@^1.2.0, ember-co
     fs-extra "^9.1.0"
     semver "^5.4.1"
 
-ember-concurrency@^2.3.4:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-2.3.4.tgz#e353939a62ed025faf7f8446a8fcb018d56c37b5"
-  integrity sha512-o0lT5uQ8FH8P9uf7tY7SON0RxiCaBheqydW9TkuShNkjYh4WL4y1fYXfIZDnExC26spIcN3/9vGHCjC2XjiCgQ==
+ember-concurrency@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-2.3.5.tgz#428f9935682c67b1b635beef50bb37d6be3c7864"
+  integrity sha512-LAwERNKVP9SI5YRp5WtXiUnFwhMClk/m67XMddxok/of/YKnCSGAFnTAfyls/qam+JyOboO5Ggkd7PkIKlGpQw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
     "@babel/types" "^7.12.13"
