@@ -102,9 +102,8 @@ export default class PaymentMethodComponent extends Component {
 
   __validateAgreements() {
     this.shallNotPass = !(
-      this.formIsValid &&
-      this.agreedToTermsAndConditions &&
-      this.agreedToReceivingSms
+      (this.formIsValid && this.agreedToTermsAndConditions)
+      //  && this.agreedToReceivingSms
     );
   }
 
@@ -128,7 +127,7 @@ export default class PaymentMethodComponent extends Component {
   @action
   handleSMSAgreement(e) {
     this.agreedToReceivingSms = e.target.checked;
-    this.__validateAgreements();
+    // this.__validateAgreements();
   }
 
   @task({ restartable: true })
