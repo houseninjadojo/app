@@ -25,6 +25,7 @@ jobs:
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app
         env:
+          COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:

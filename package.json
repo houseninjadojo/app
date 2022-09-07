@@ -26,7 +26,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "test:ci": "percy exec -- COVERAGE=true ember test"
+    "test:ci": "percy exec -- ember test"
   },
   "devDependencies": {
     "@algonauti/ember-active-storage": "^2.2.0",
