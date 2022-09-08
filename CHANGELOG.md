@@ -1,3 +1,10 @@
+## [1.20.4](https://github.com/houseninjadojo/app/compare/v1.20.3...v1.20.4) (2022-09-08)
+
+
+### Bug Fixes
+
+* accessbility icon for input errors ([#952](https://github.com/houseninjadojo/app/issues/952)) ([ab56b11](https://github.com/houseninjadojo/app/commit/ab56b1184035e6c83934a30c01c230b355fd2900))
+
 ## [1.20.3](https://github.com/houseninjadojo/app/compare/v1.20.2...v1.20.3) (2022-09-06)
 
 
