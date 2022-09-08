@@ -40,9 +40,14 @@
     </div>
     {{#if @errors}}
         {{#each @errors as |error|}}
+        <div class="hn hn-input-description-container">        
+            <span class="hn strong icon" aria-role="icon">!</span>
             <span class="hn-input-description">{{error.message}}</span>
+        </div>
         {{/each}}
     {{else if this.descriptionText}}
-        <span class="hn-input-description">{{this.descriptionText}}</span>
+        <div class="hn hn-input-description-container">        
+            <span class="hn hn-input-description">{{this.descriptionText}}</span>
+        </div>
     {{/if}}
 </div>
