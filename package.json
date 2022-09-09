@@ -72,7 +72,7 @@
     "ember-cli-deploy-build": "^2.0.0",
     "ember-cli-deploy-sentry": "houseninjadojo/ember-cli-deploy-sentry#d33400a",
     "ember-cli-deprecation-workflow": "^2.1.0",
-    "ember-cli-htmlbars": "^6.1.0",
+    "ember-cli-htmlbars": "^6.1.1",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-mirage": "^2.4.0",
     "ember-cli-postcss": "^8.2.0",
