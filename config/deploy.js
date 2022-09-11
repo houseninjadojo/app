@@ -11,6 +11,16 @@ const commitSHA = () => {
   }
 };
 
+// const buildEnv = () => {
+//   if (process.env.CF_PAGES) {
+//     return 'web';
+//   } else if (process.env.GITHUB_ACTIONS) {
+//     return 'ios';
+//   } else {
+//     return 'local';
+//   }
+// };
+
 module.exports = function (deployTarget) {
   let ENV = {
     build: {
@@ -26,27 +36,28 @@ module.exports = function (deployTarget) {
 
   if (deployTarget === 'sandbox') {
     ENV.build.environment = 'sandbox';
-    ENV.pipeline = {
-      disabled: {
-        sentry: true,
-      },
+    // ENV.pipeline = {
+    //   disabled: {
+    //     sentry: true,
+    //   },
+    // };
+    ENV['sentry-cli'] = {
+      appName: 'app',
+      orgName: 'houseninja',
+      releaseName: `co.houseninja.application@${pkg.version}+1`,
+      dist: `${commitSHA()}`,
+      urlPrefix: '~/',
     };
   }
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
-    ENV.sentry = {
-      // the URL or CDN your js assets are served from
-      publicUrl: '~/',
-      // the sentry install you're using, https://sentry.io for hosted accounts
-      sentryUrl: 'https://sentry.io',
-      sentryOrganizationSlug: 'houseninja',
-      sentryProjectSlug: 'app',
-      revisionKey: `co.houseninja.application@${pkg.version}+${commitSHA()}`,
-      enableRevisionTagging: false,
-      sentryBearerApiKey: 'ff65161f14594302ab7597df9d8b92122cfd8029129b41b38ac13c3a05e54698', // eslint-disable-line
-
-      distDir: 'dist/assets',
+    ENV['sentry-cli'] = {
+      appName: 'app',
+      orgName: 'houseninja',
+      releaseName: `co.houseninja.application@${pkg.version}+1`,
+      dist: `${commitSHA()}`,
+      urlPrefix: '~/',
     };
   }
 

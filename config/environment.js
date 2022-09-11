@@ -10,6 +10,16 @@ const commitSHA = () => {
   }
 };
 
+// const buildEnv = () => {
+//   if (process.env.CF_PAGES) {
+//     return 'web';
+//   } else if (process.env.GITHUB_ACTIONS) {
+//     return 'ios';
+//   } else {
+//     return 'local';
+//   }
+// };
+
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'houseninja',
@@ -88,7 +98,8 @@ module.exports = function (environment) {
       tracesSampleRate: 1.0,
       debug: true,
       autoSessionTracking: true,
-      release: `co.houseninja.application@${pkg.version}+${commitSHA()}`,
+      release: `co.houseninja.application@${pkg.version}+1`,
+      dist: `${commitSHA()}`,
       browserTracingOptions: {
         tracingOrigins: [
           'api.houseninja.co',
