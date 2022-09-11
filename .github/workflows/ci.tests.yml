@@ -41,6 +41,23 @@ jobs:
           threshold_alert: 10
           threshold_warning: 10
           threshold_metric: lines
+
+      - run: yarn build
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: production
+          sourcemaps: dist/assets
+          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+          url_prefix: ~/
+          finalize: false
       # - uses: romeovs/lcov-reporter-action@v0.3.1
       #   with:
       #     lcov-file: ./coverage/lcov.info
