@@ -47,6 +47,8 @@ module.exports = function (deployTarget) {
       releaseName: `co.houseninja.application@${pkg.version}+1`,
       dist: `${commitSHA()}`,
       urlPrefix: '~/',
+      authToken:
+        'ff65161f14594302ab7597df9d8b92122cfd8029129b41b38ac13c3a05e54698',
     };
   }
 
@@ -58,6 +60,8 @@ module.exports = function (deployTarget) {
       releaseName: `co.houseninja.application@${pkg.version}+1`,
       dist: `${commitSHA()}`,
       urlPrefix: '~/',
+      authToken:
+        'ff65161f14594302ab7597df9d8b92122cfd8029129b41b38ac13c3a05e54698',
     };
   }
 
