@@ -1,3 +1,10 @@
+## [1.20.6](https://github.com/houseninjadojo/app/compare/v1.20.5...v1.20.6) (2022-09-11)
+
+
+### Bug Fixes
+
+* **sentry:** use correct version number on traces ([#961](https://github.com/houseninjadojo/app/issues/961)) ([15f3968](https://github.com/houseninjadojo/app/commit/15f396842a26752fef78ce68f434248b1929aa27))
+
 ## [1.20.5](https://github.com/houseninjadojo/app/compare/v1.20.4...v1.20.5) (2022-09-11)
 
 
