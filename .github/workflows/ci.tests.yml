@@ -42,7 +42,9 @@ jobs:
           threshold_warning: 10
           threshold_metric: lines
 
-      - run: yarn build
+      - run: yarn build:env
+        env:
+          NODE_ENV: sandbox
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
@@ -55,7 +57,7 @@ jobs:
         with:
           environment: production
           sourcemaps: dist/assets
-          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+2
           url_prefix: ~/
           finalize: false
       # - uses: romeovs/lcov-reporter-action@v0.3.1
