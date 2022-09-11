@@ -51,6 +51,7 @@ jobs:
           projectName: houseninja
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
