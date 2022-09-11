@@ -10,16 +10,6 @@ const commitSHA = () => {
   }
 };
 
-// const buildEnv = () => {
-//   if (process.env.CF_PAGES) {
-//     return 'web';
-//   } else if (process.env.GITHUB_ACTIONS) {
-//     return 'ios';
-//   } else {
-//     return 'local';
-//   }
-// };
-
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'houseninja',
