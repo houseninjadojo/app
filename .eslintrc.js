@@ -40,6 +40,7 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        'capacitor.config.js',
       ],
       parserOptions: {
         sourceType: 'script',

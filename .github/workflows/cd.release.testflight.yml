@@ -15,6 +15,7 @@ jobs:
     name: build / web
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    environment: production
     permissions:
       contents: read
       deployments: write
@@ -94,6 +95,7 @@ jobs:
     runs-on: macos-latest
     name: build / ios
     timeout-minutes: 30
+    environment: production
     steps:
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:

@@ -14,6 +14,7 @@ jobs:
   hbs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -25,6 +26,7 @@ jobs:
   js:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -36,6 +38,7 @@ jobs:
   css:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
