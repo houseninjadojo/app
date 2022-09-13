@@ -132,18 +132,15 @@ jobs:
             ${{ runner.os }}-pods-
       - run: pod install
         working-directory: 'ios/App'
-      - run: bundle exec fastlane ios sandbox
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npx dotenv-vault pull --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'ios/App'
         env:
-          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
-          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
-          APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
-          BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_APP_IDENTIFIER: ${{ secrets.APPLE_APP_IDENTIFIER }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
+      - run: bundle exec fastlane ios sandbox
+        working-directory: 'ios/App'
       - uses: actions/upload-artifact@v2
         if: success()
         with:
