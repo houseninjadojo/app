@@ -28,7 +28,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   ];
 
   async _nativeConfirmation() {
-    const total = this.args.model.get('estimate.formattedTotal');
+    const total = this.args.model.get('estimate.amount');
     const result = await ActionSheet.showActions({
       title: total
         ? `Do you approve this estimate of ${total}?`
@@ -58,7 +58,10 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   async approveEstimate() {
     this.toggleIsProcessing();
 
+    this.estimate.approvedAt = new Date();
+
     try {
+      this.estimate.save();
       setTimeout(() => {
         this.estimateApproved = true;
       }, 1000);

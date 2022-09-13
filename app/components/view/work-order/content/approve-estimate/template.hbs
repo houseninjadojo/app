@@ -1,7 +1,7 @@
 <div class="actions">
     <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutEstimate}}>
         I have a question
-    </Primitive::Button>    
+    </Primitive::Button>
 </div>
 <hr/>
 <Primitive::Section>
@@ -11,7 +11,7 @@
         </p>
     </div>
     <div class="work-order-details">
-        <p class="hn field"><span class="hn label strong">Estimate: {{@model.estimate.formattedTotal}}</span></p>
+        <p class="hn field"><span class="hn label strong">Estimate: {{@model.estimate.amount}}</span></p>
         <p class="hn field"><span class="hn label">Description: </span>{{@model.description}}</p>
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{@model.vendor}}</p>
@@ -21,7 +21,7 @@
     </div>
     <Primitive::Button @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Estimate
-    </Primitive::Button>    
+    </Primitive::Button>
 </Primitive::Section>
 <View::WorkOrder::Content::ApproveEstimate::WebDialog
         @isVisible={{this.showWebDialog}}
@@ -30,7 +30,7 @@
         @approveEstimate={{this.approveEstimate}}
         @formattedTotal={{@model.estimate.formattedTotal}}
     />
-<View::WorkOrder::Content::ApproveEstimate::Processing        
+<View::WorkOrder::Content::ApproveEstimate::Processing
     @isProcessing={{this.isProcessing}}
     @isDoneProcessing={{this.isDoneProcessing}}
     @estimateApproved={{this.estimateApproved}}

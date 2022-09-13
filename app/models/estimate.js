@@ -1,4 +1,5 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
+import { typeOf } from '@ember/utils';
 
 export default class EstimateModel extends Model {
   @belongsTo('work-order') workOrder;
@@ -12,4 +13,8 @@ export default class EstimateModel extends Model {
   @attr('date') approvedAt;
   @attr('date') scheduledWindowStart;
   @attr('date') scheduledWindowEnd;
+
+  get isApproved() {
+    return typeOf(this.approvedAt) === 'date';
+  }
 }

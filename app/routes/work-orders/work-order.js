@@ -19,6 +19,7 @@ export default class WorkOrderRoute extends Route {
 
     return await this.store.findRecord('work-order', work_order_id, {
       include: [
+        'estimates',
         'invoice',
         'invoice.payment',
         'invoice.document',

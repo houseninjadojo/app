@@ -8,19 +8,13 @@ export default class ExternalApproveEstimateRoute extends Route {
   @service store;
 
   async model({ access_token }) {
-    // await this.session.authenticate(
-    //   'authenticator:estimate-approval',
-    //   access_token
-    // );
+    await this.session.authenticate(
+      'authenticator:payment-approval',
+      access_token
+    );
 
     return await this.store.findRecord('work-order', access_token, {
-      include: [
-        // 'invoice',
-        // 'invoice.payment',
-        'property',
-        'property.user',
-        // 'property.user.payment_methods',
-      ].join(','),
+      include: 'estimates,property,property.user',
     });
   }
 }

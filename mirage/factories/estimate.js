@@ -15,7 +15,7 @@ export default Factory.extend({
   },
 
   vendorName() {
-    return faker.company.companyName();
+    return faker.company.name();
   },
 
   // approvedAt() {
