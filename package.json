@@ -14,6 +14,7 @@
     "build": "ember build --environment=production",
     "build:env": "ember build --environment=$NODE_ENV",
     "commit": "commit",
+    "env:load": "dotenv-vault pull --dotenvMe $DOTENV_IT_TOKEN",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
