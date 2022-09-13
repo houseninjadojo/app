@@ -97,7 +97,7 @@ jobs:
   ios:
     needs: web
     if: success()
-    runs-on: macos-latest
+    runs-on: macos-12
     name: build / ios
     timeout-minutes: 30
     steps:
@@ -132,7 +132,7 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-      - run: pod install
+      - run: pod install --deployment
         working-directory: 'ios/App'
       - uses: actions/setup-node@v2
         with:
