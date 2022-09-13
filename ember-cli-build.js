@@ -47,7 +47,12 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // PostCSS Options
+    // Babel Configuration
+    // @see https://babeljs.io/docs/en/options
+    babel: {
+      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+    },
+    // PostCSS Configuration
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
       compile: {
@@ -59,6 +64,8 @@ module.exports = function (defaults) {
         ],
       },
     },
+    // Ember Configuration
+    // @see https://cli.emberjs.com/release/advanced-use/
     sourcemaps: {
       enabled: true,
     },

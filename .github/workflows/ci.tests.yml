@@ -2,9 +2,30 @@ name: ci / tests
 
 on:
   pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
   push:
     branches:
       - main
+
+env:
+  API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
+  API_HOST: ${{ secrets.API_HOST }}
+  APP_HOST: ${{ secrets.APP_HOST }}
+  APP_SCHEME: ${{ secrets.APP_SCHEME }}
+  AUTH_CLIENT_ID: ${{ secrets.AUTH_CLIENT_ID }}
+  AUTH_AUDIENCE: ${{ secrets.AUTH_AUDIENCE }}
+  AUTH_CONNECTION: ${{ secrets.AUTH_CONNECTION }}
+  AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+  BRANCH_KEY: ${{ secrets.BRANCH_KEY }}
+  INTERCOM_APP_ID: ${{ secrets.INTERCOM_APP_ID }}
+  INTERCOM_IDENTITY_VERIFICATION_SECRET_WEB: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_WEB }}
+  INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS }}
+  INTERCOM_IDENTITY_VERIFICATION_SECRET_ANDROID: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_ANDROID }}
+  MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
 jobs:
   test:
@@ -21,8 +42,26 @@ jobs:
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app
         env:
+          COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          DOTENV_ENABLED: false
       - uses: actions/upload-artifact@v2
         with:
           name: app
           path: tmp/app/
+      - uses: slavcodev/coverage-monitor-action@v1
+        if: contains(github.event.pull_request.user.login, 'dependabot[bot]') == false
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_path: "coverage/coverage-summary.json"
+          status_context: ci / tests / coverage
+          check: true
+          threshold_alert: 10
+          threshold_warning: 10
+          threshold_metric: lines
+      # - uses: romeovs/lcov-reporter-action@v0.3.1
+      #   with:
+      #     lcov-file: ./coverage/lcov.info
+      #     github-token: ${{ github.token }}
+      #     filter-changed-files: true
+      #     delete-old-comments: true

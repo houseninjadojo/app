@@ -40,6 +40,8 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        './capacitor.config.js',
+        './lib/utils.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -60,6 +62,15 @@ module.exports = {
       // test files
       files: ['tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
+    },
+    {
+      files: ['./lib/utils.js'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+      env: {
+        node: true,
+      },
     },
   ],
 };

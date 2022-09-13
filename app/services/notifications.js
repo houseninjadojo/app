@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
 import EmberObject from '@ember/object';
+import { debug } from '@ember/debug';
 
 export default class NotificationsService extends Service {
   // set to true on initialization
@@ -20,6 +21,9 @@ export default class NotificationsService extends Service {
    * @param {Object} notification
    */
   add(kind, state, notification) {
+    debug(
+      `From Native ->  Notifications add ${kind} ${state} ${notification.id}`
+    );
     this.queue.pushObject(
       EmberObject.create({
         kind,

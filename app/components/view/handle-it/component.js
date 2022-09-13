@@ -35,7 +35,7 @@ export default class HandleItComponent extends Component {
           scheduledDate: w.scheduledDate,
           displayDate:
             w.vendor && w.scheduledDate
-              ? moment(w.scheduledDate).format('MM/DD/YYYY')
+              ? moment(new Date(w.scheduledDate)).format('MM/DD/YYYY')
               : null,
           displayTime:
             w.vendor && w.scheduledDate && w.scheduledTime

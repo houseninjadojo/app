@@ -15,6 +15,9 @@ jobs:
     name: build / web
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -22,9 +25,36 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+      - run: yarn env:load
+        env:
+          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
       - run: yarn build
         env:
           NODE_ENV: production
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: production
+          sourcemaps: dist/assets
+          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+          url_prefix: ~/
+          finalize: false
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: houseninja
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -93,6 +123,7 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
+      - run: cp .env ios/App/.env.default
       - uses: actions/cache@v2
         with:
           path: ios/App/Pods
