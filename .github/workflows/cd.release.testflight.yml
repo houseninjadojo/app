@@ -25,6 +25,9 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+      - run: yarn env:load
+        env:
+          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
       - run: yarn build
         env:
           NODE_ENV: production
@@ -120,6 +123,7 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
+      - run: cp .env ios/App/.env.default
       - uses: actions/cache@v2
         with:
           path: ios/App/Pods
