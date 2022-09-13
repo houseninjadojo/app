@@ -24,7 +24,8 @@ export default function () {
   this.transition(
     this.toRoute([
       NATIVE_MOBILE_ROUTE.SETTINGS.CONTACT,
-      NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT,
+      'settings.payment-methods',
+      'settings.payment-methods.new',
       NATIVE_MOBILE_ROUTE.SETTINGS.SECURITY,
       NATIVE_MOBILE_ROUTE.SETTINGS.PROPERTY,
       NATIVE_MOBILE_ROUTE.FAQ,
