@@ -33,3 +33,7 @@ ember-cli-build.js
 webpack.config.js
 commitlint.config.js
 release.config.js
+
+# capacitor
+/ios/
+/android/
