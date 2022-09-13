@@ -7,7 +7,7 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import Sentry from 'houseninja/utils/sentry';
 
-export default class SettingsPaymentController extends Controller {
+export default class SettingsPaymentMethodsNewController extends Controller {
   @service router;
   @service view;
   @service store;
@@ -20,6 +20,7 @@ export default class SettingsPaymentController extends Controller {
     expMonth: null,
     expYear: null,
     zipcode: null,
+    isDefault: false,
   };
   @tracked fields = [
     {
@@ -61,11 +62,21 @@ export default class SettingsPaymentController extends Controller {
   @action
   resetForm() {
     this.fields.forEach((f) => (f.value = null));
+    this.paymentMethod = {
+      cardNumber: null,
+      cvv: null,
+      expMonth: null,
+      expYear: null,
+      zipcode: null,
+      isDefault: null,
+    };
+
+    this.paymentMethod = { ...this.paymentMethod };
     this.formIsInvalid = true;
   }
 
   @action
-  validateForm(e) {
+  handleInput(e) {
     if (e.target.id === 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       formatCreditCardNumberElement(e.target);
@@ -76,25 +87,39 @@ export default class SettingsPaymentController extends Controller {
         this.paymentMethod[e.target.id];
     }
 
-    this.formIsInvalid = inputValidation(this.fields, [
-      'cardIsValid',
-    ]).isInvalid;
+    this.__validateForm();
   }
 
   @action
   async saveAction() {
-    this.model.unloadRecord();
-    this.model = this.store.createRecord('credit-card', {
+    const model = this.store.createRecord('credit-card', {
       ...this.paymentMethod,
       user: this.current?.user,
     });
     try {
-      await this.model.save();
+      await model.save();
       await this.resetForm();
       this.view.transitionToPreviousRoute();
     } catch (e) {
       debug(e);
       Sentry.captureException(e);
     }
+  }
+
+  @action
+  handleSetAsDefault() {
+    this.paymentMethod.isDefault = !this.paymentMethod.isDefault;
+    this.paymentMethod = { ...this.paymentMethod };
+
+    this.__validateForm();
+  }
+
+  __validateForm() {
+    const fields = this.fields.map((f) => {
+      return {
+        ...f,
+      };
+    });
+    this.formIsInvalid = inputValidation(fields, ['cardIsValid']).isInvalid;
   }
 }
