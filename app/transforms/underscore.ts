@@ -1,12 +1,6 @@
 import Transform from '@ember-data/serializer/transform';
 import { underscore } from '@ember/string';
 
-declare module 'ember-data/types/registries/transform' {
-  export default interface TransformRegistry {
-    'underscore': UnderscoreTransform;
-  }
-}
-
 export default class UnderscoreTransform extends Transform {
   deserialize(serialized: string): string {
     return underscore(serialized);
@@ -14,5 +8,11 @@ export default class UnderscoreTransform extends Transform {
 
   serialize(deserialized: string): string {
     return underscore(deserialized);
+  }
+}
+
+declare module 'ember-data/types/registries/transform' {
+  export default interface TransformRegistry {
+    'underscore': UnderscoreTransform;
   }
 }

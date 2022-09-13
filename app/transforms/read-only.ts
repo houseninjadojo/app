@@ -1,12 +1,6 @@
 import Transform from '@ember-data/serializer/transform';
 import { isEmpty } from '@ember/utils';
 
-declare module 'ember-data/types/registries/transform' {
-  export default interface TransformRegistry {
-    'read-only': ReadOnlyTransform;
-  }
-}
-
 export default class ReadOnlyTransform extends Transform {
   deserialize(serialized: any): any | null {
     if (isEmpty(serialized)) {
@@ -18,5 +12,11 @@ export default class ReadOnlyTransform extends Transform {
 
   serialize(/* deserialized */): undefined {
     return undefined;
+  }
+}
+
+declare module 'ember-data/types/registries/transform' {
+  export default interface TransformRegistry {
+    'read-only': ReadOnlyTransform;
   }
 }

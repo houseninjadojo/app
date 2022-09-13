@@ -1,12 +1,6 @@
 import Transform from '@ember-data/serializer/transform';
 import { isEmpty } from '@ember/utils';
 
-declare module 'ember-data/types/registries/transform' {
-  export default interface TransformRegistry {
-    'write-only': WriteOnlyTransform;
-  }
-}
-
 export default class WriteOnlyTransform extends Transform {
   deserialize(/* serialized */): null {
     return null;
@@ -18,5 +12,11 @@ export default class WriteOnlyTransform extends Transform {
     } else {
       return deserialized;
     }
+  }
+}
+
+declare module 'ember-data/types/registries/transform' {
+  export default interface TransformRegistry {
+    'write-only': WriteOnlyTransform;
   }
 }
