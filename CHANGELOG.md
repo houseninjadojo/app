@@ -1,3 +1,10 @@
+## [1.20.9](https://github.com/houseninjadojo/app/compare/v1.20.8...v1.20.9) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use dotenv explicitly in Fastlane ([#972](https://github.com/houseninjadojo/app/issues/972)) ([250546a](https://github.com/houseninjadojo/app/commit/250546ae7e44a281895e0f620455ea5c99369e0e))
+
 ## [1.20.8](https://github.com/houseninjadojo/app/compare/v1.20.7...v1.20.8) (2022-09-13)
 
 
