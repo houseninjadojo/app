@@ -28,7 +28,6 @@ jobs:
       - run: yarn env:load
         env:
           DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
-      - run: cp .env ios/App
       - run: yarn build
         env:
           NODE_ENV: production
