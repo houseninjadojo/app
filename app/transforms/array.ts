@@ -1,16 +1,17 @@
 import Transform from '@ember-data/serializer/transform';
-import { A, isArray } from '@ember/array';
+import { isArray } from '@ember/array';
+import { TrackedArray } from 'tracked-built-ins';
 
 export default class ArrayTransform extends Transform {
-  deserialize(serialized: Array<any>): Array<any> {
+  deserialize(serialized: Array<any>): TrackedArray<any> {
     if (isArray(serialized)) {
-      return A(serialized);
+      return new TrackedArray(serialized);
     } else {
-      return A();
+      return new TrackedArray();
     }
   }
 
-  serialize(deserialized: Array<any>): Array<any> {
+  serialize(deserialized: TrackedArray<any>): Array<any> {
     return deserialized;
   }
 }
