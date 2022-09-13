@@ -1,3 +1,10 @@
+## [1.20.14](https://github.com/houseninjadojo/app/compare/v1.20.13...v1.20.14) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use macos-12 runner w/ xcode 14 and lock intercom pod version ([#977](https://github.com/houseninjadojo/app/issues/977)) ([b3054f7](https://github.com/houseninjadojo/app/commit/b3054f7232547764879b428a8f1aa452d9b25ddd))
+
 ## [1.20.13](https://github.com/houseninjadojo/app/compare/v1.20.12...v1.20.13) (2022-09-13)
 
 
