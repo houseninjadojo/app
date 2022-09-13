@@ -82,6 +82,11 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   }
 
   @action
+  async decline() {
+    console.log('Customer declined estimate');
+  }
+
+  @action
   inquireAboutEstimate() {
     this.intercom.showComposer(
       `I have a question about the estimate for the ${this.args.model?.description} service request.`

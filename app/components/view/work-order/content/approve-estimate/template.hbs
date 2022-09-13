@@ -19,6 +19,9 @@
         <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime }}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.estimate.description @model.estimate.formattedNotes}}</p>
     </div>
+    <Primitive::Button @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}} {{on "click" this.decline}}>
+        Decline Estimate
+    </Primitive::Button>
     <Primitive::Button @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Estimate
     </Primitive::Button>
