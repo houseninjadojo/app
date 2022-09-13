@@ -21,7 +21,7 @@
   height: 48px;
 }
 
-.settings-menu .menu-item:not(:last-child) {
+.settings-menu .menu-item {
   border-bottom: 1px solid var(--gray-800);
 }
 
@@ -46,4 +46,55 @@
   right: 0;
   margin: auto;
   width: calc(100% - 32px);
+}
+
+.settings-view.payment-methods .settings-menu .menu-item .card-details {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.settings-view.payment-methods .settings-menu .menu-item .card-details .card-brand {
+  width: 32px;
+  margin-right: 8px;  
+}
+
+.settings-view.payment-methods .settings-menu .menu-item .card-details .card-brand .unknown-card-brand {
+  filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(3deg) brightness(104%) contrast(102%);
+}
+
+.settings-view.payment-methods .settings-menu .menu-item .default-payment, .settings-view.payment-method .default-payment .default-payment-icon {
+  filter: invert(73%) sepia(44%) saturate(616%) hue-rotate(337deg) brightness(106%) contrast(105%);
+}
+
+.settings-view.payment-method .default-payment {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.settings-view.payment-method .default-payment .default-payment-icon {
+  margin-top: -5px;
+  margin-right: 4px;
+}
+
+.settings-view.payment-method .default-payment .default-payment-icon.is-default {  
+  animation-name: scale-in;
+  animation-timing-function: ease-out;
+  animation-duration: .32s;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
