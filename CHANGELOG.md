@@ -1,3 +1,10 @@
+## [1.20.10](https://github.com/houseninjadojo/app/compare/v1.20.9...v1.20.10) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** fastlane app store connect key encoded as base64 ([#973](https://github.com/houseninjadojo/app/issues/973)) ([4fecd47](https://github.com/houseninjadojo/app/commit/4fecd47cd5523d9221c9d5c4a20854aa7e7c73c8))
+
 ## [1.20.9](https://github.com/houseninjadojo/app/compare/v1.20.8...v1.20.9) (2022-09-13)
 
 
