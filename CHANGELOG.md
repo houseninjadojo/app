@@ -1,3 +1,11 @@
+## [1.20.7](https://github.com/houseninjadojo/app/compare/v1.20.6...v1.20.7) (2022-09-13)
+
+
+### Bug Fixes
+
+* next deploy ([ed441d7](https://github.com/houseninjadojo/app/commit/ed441d7486f33eb37f0bbeaa59d212c263b48243))
+* try deploy ([bc9782e](https://github.com/houseninjadojo/app/commit/bc9782efd9d825afdc277871a2c2473374dfed8b))
+
 ## [1.20.6](https://github.com/houseninjadojo/app/compare/v1.20.5...v1.20.6) (2022-09-11)
 
 
