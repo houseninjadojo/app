@@ -134,8 +134,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: npx dotenv-vault pull --dotenvMe=$DOTENV_IT_TOKEN
-        working-directory: 'ios/App'
+      - run: npx dotenv-vault pull production ios/App/.env --yes --dotenvMe=$DOTENV_IT_TOKEN
         env:
           DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
       - run: bundle exec fastlane ios sandbox
