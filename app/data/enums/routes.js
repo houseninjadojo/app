@@ -35,7 +35,14 @@ export const NATIVE_MOBILE_ROUTE = {
   SETTINGS: {
     INDEX: 'settings',
     CONTACT: 'settings.contact',
-    PAYMENT: 'settings.payment',
+    PAYMENT_METHODS: {
+      INDEX: 'settings.payment-methods',
+      NEW: 'settings.payment-methods.new',
+      PAYMENT_METHOD: {
+        SHOW: 'settings.payment-methods.payment-method',
+        EDIT: 'settings.payment-methods.payment-method.edit',
+      },
+    },
     SECURITY: 'settings.security',
     PROPERTY: 'settings.property',
   },
