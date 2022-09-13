@@ -1,0 +1,56 @@
+<div class='dark settings-view payment-method'>
+  <h1 class='hn view-title'>{{@addOrUpdate}} Payment Method</h1>
+  {{#if @paymentMethod.isDefault}}
+    <Primitive::Button {{on 'click' @handleSetAsDefault}} @variant='plain'>
+      <span class='default-payment'>
+        <img
+          src='/assets/icons/star.svg'
+          alt='default'
+          class='default-payment-icon is-default'
+        />
+        Default payment method
+      </span>
+    </Primitive::Button>
+  {{else}}
+    <Primitive::Button {{on 'click' @handleSetAsDefault}} @variant='plain'>
+      <span class='default-payment'>
+        <img
+          src='/assets/icons/star-outline.svg'
+          alt='default'
+          class='default-payment-icon'
+        />
+        Set as default payment method
+      </span>
+    </Primitive::Button>
+  {{/if}}
+
+  {{#each @fields as |field|}}
+    {{#if (eq field.id 'cardNumber')}}
+      <Primitive::Input
+        @id={{field.id}}
+        @required={{field.required}}
+        @placeholder={{field.placeholder}}
+        @value={{if (eq @addOrUpdate 'update' @creditCard.obfuscated.lastFour field.value)}}
+        @description={{field.description}}
+        @label={{field.label}}
+        @type={{field.type}}
+        @disabled={{field.disabled}}
+        @maxLength={{field.maxLength}}
+        @onInput={{@handleInput}}
+      />
+    {{else}}
+      <Primitive::Input
+        @id={{field.id}}
+        @required={{field.required}}
+        @placeholder={{field.placeholder}}
+        @value={{field.value}}
+        @description={{field.description}}
+        @label={{field.label}}
+        @type={{field.type}}
+        @disabled={{field.disabled}}
+        @maxLength={{field.maxLength}}
+        @onInput={{@handleInput}}
+      />
+    {{/if}}
+  {{/each}}
+</div>

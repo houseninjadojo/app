@@ -1,0 +1,50 @@
+<div class='settings-view payment-methods dark'>
+  <h1 class='hn view-title'>Payment Methods</h1>
+  <ul class='settings-menu'>
+    {{#each @menuItems as |card|}}
+      <li class='menu-item'>
+        <Primitive::Button
+          {{on "click" (fn this.selectRoute card.id)}}
+          @variant='plain'
+        >
+          <div class="card-details">
+            <span class="card-brand">
+              {{#if card.brand}}
+                <img src={{(concat "/assets/images/card-brands" "/" card.brand ".png")}} alt={{card.brand}}/>
+              {{else}}
+                <img class="unknown-card-brand" src="/assets/images/card-brands/unknown.svg" alt={{"unknown card brand"}}/>
+              {{/if}}
+            </span>            
+            <span class='menu-item-label'>•••• {{card.lastFour}}</span>
+          </div>
+          {{#if card.isDefault}}
+            <img
+                src='/assets/icons/star.svg'
+                alt='default'
+                class='menu-item-icon default-payment'
+            />
+          {{else}}
+            <img
+                src='/assets/icons/greater-than.svg'
+                alt='right arrow'
+                class='menu-item-icon'
+            />
+          {{/if}}
+        </Primitive::Button>
+      </li>
+    {{/each}}
+    <li class='menu-item'>
+      <Primitive::Button
+        {{on "click" (fn this.selectRoute null)}}
+        @variant='plain'
+      >
+        <span class='menu-item-label'>Add Payment Method</span>
+        <img
+          src='/assets/icons/greater-than.svg'
+          alt='right arrow'
+          class='menu-item-icon'
+        />
+      </Primitive::Button>
+    </li>
+  </ul>
+</div>
