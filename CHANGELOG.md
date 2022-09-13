@@ -1,3 +1,10 @@
+## [1.20.13](https://github.com/houseninjadojo/app/compare/v1.20.12...v1.20.13) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** copy .env.vault to ios/App ([#976](https://github.com/houseninjadojo/app/issues/976)) ([068a63a](https://github.com/houseninjadojo/app/commit/068a63a97bdbe659352909e1ca6de3c4f82a7ec4))
+
 ## [1.20.12](https://github.com/houseninjadojo/app/compare/v1.20.11...v1.20.12) (2022-09-13)
 
 
