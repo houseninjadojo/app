@@ -32,7 +32,8 @@ export default function (server) {
     lastName: 'Demo',
   });
 
-  server.createList('work-order', 5);
+  server.createList('payment-method', 5);
+  // server.createList('work-order', 50);
 
   server.loadFixtures();
 }

@@ -3,7 +3,12 @@ import { faker } from '@faker-js/faker';
 
 export default PaymentMethod.extend({
   brand() {
-    return faker.helpers.arrayElement(['visa', 'mastercard']);
+    return faker.helpers.arrayElement([
+      'amex',
+      'discover',
+      'mastercard',
+      'visa',
+    ]);
   },
 
   country() {
@@ -36,6 +41,6 @@ export default PaymentMethod.extend({
   },
 
   zipcode() {
-    return faker.address.zipCode();
+    return faker.address.zipCode('#####');
   },
 });
