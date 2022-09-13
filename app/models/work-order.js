@@ -1,9 +1,10 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
 
 export default class WorkOrderModel extends Model {
   @belongsTo('invoice', { async: false }) invoice;
   @belongsTo('property') property;
+  @hasMany('estimate') estimates;
 
   @attr('string') authCode;
   @attr('date') createdAt;
