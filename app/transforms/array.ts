@@ -1,8 +1,14 @@
 import Transform from '@ember-data/serializer/transform';
 import { A, isArray } from '@ember/array';
 
+declare module 'ember-data/types/registries/transform' {
+  export default interface TransformRegistry {
+    'array': ArrayTransform;
+  }
+}
+
 export default class ArrayTransform extends Transform {
-  deserialize(serialized) {
+  deserialize(serialized: Array<any>): Array<any> {
     if (isArray(serialized)) {
       return A(serialized);
     } else {
@@ -10,7 +16,7 @@ export default class ArrayTransform extends Transform {
     }
   }
 
-  serialize(deserialized) {
+  serialize(deserialized: Array<any>): Array<any> {
     return deserialized;
   }
 }
