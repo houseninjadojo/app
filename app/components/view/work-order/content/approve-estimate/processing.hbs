@@ -1,4 +1,4 @@
-{{#if @estimateApproved}}    
+{{#if this.estimateApproved}}
     <div class="estimate-confirmation {{if @isProcessing 'show'}}">
         <p class="hn center strong">Thank you for approving the estimate.</p>
         <br/>
@@ -17,6 +17,6 @@
     </div>
 {{else if @isProcessing}}
     <div class="estimate-processing {{if @isProcessing 'show'}}">
-        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}} @title="Processing Estimate Approval"/>        
+        <Primitive::Loader::Logo @isDone={{@isDoneProcessing}} @title="Processing Estimate Approval"/>
     </div>
 {{/if}}

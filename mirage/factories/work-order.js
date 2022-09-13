@@ -1,4 +1,4 @@
-import { Factory, association } from 'miragejs';
+import { Factory, association, trait } from 'miragejs';
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
 import { workOrderStatus } from 'houseninja/data/work-order-status';
@@ -59,4 +59,12 @@ export default Factory.extend({
   notes() {
     return faker.lorem.sentence(7);
   },
+
+  withEstimate: trait({
+    afterCreate(workOrder, server) {
+      if (workOrder.estimates.length === 0) {
+        server.createList('estimate', 1, { workOrder });
+      }
+    },
+  }),
 });

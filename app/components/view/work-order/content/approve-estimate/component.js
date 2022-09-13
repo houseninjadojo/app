@@ -15,7 +15,6 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
-  @tracked estimateApproved = false;
 
   actionSheetOptions = [
     {
@@ -62,10 +61,8 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
     try {
       this.estimate.save();
-      setTimeout(() => {
-        this.estimateApproved = true;
-      }, 1000);
     } catch (e) {
+      this.estimate.approvedAt = null;
       captureException(e);
     }
   }
@@ -108,5 +105,9 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
   get formattedTotal() {
     return this.estimate?.formattedTotal;
+  }
+
+  get estimateApproved() {
+    return this.estimate?.isApproved;
   }
 }
