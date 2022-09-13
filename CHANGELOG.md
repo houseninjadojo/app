@@ -1,3 +1,10 @@
+## [1.20.11](https://github.com/houseninjadojo/app/compare/v1.20.10...v1.20.11) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** another fastlane ci release ([#974](https://github.com/houseninjadojo/app/issues/974)) ([be9c4a9](https://github.com/houseninjadojo/app/commit/be9c4a9311722af33632ee6066532a8286d0643c))
+
 ## [1.20.10](https://github.com/houseninjadojo/app/compare/v1.20.9...v1.20.10) (2022-09-13)
 
 
