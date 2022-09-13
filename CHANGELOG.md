@@ -1,3 +1,10 @@
+## [1.20.12](https://github.com/houseninjadojo/app/compare/v1.20.11...v1.20.12) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use specific vault file command ([#975](https://github.com/houseninjadojo/app/issues/975)) ([a4c3806](https://github.com/houseninjadojo/app/commit/a4c38069ca3ae113b6f3db78e398921d2650b29f))
+
 ## [1.20.11](https://github.com/houseninjadojo/app/compare/v1.20.10...v1.20.11) (2022-09-13)
 
 
