@@ -1,6 +1,8 @@
 import { Device } from '@capacitor/device';
 import { run } from '@ember/runloop';
 
+import type { DeviceId, DeviceInfo, BatteryInfo } from '@capacitor/device';
+
 /**
  * @see https://capacitorjs.com/docs/apis/device#getid
  *
@@ -8,9 +10,9 @@ import { run } from '@ember/runloop';
  *
  * @return {Promise<String>} uuid
  */
-export async function getId() {
+export async function getId(): Promise<string> {
   return await run(async () => {
-    let result = await Device.getId();
+    let result: DeviceId = await Device.getId();
     return result.uuid;
   });
 }
@@ -41,7 +43,7 @@ export async function getId() {
  * @return {Number} DeviceInfo.realDiskTotal - The total size of the normal data storage path, in bytes.
  * @return {String} DeviceInfo.webViewVersion - The web view browser version
  */
-export async function getInfo() {
+export async function getInfo(): Promise<DeviceInfo> {
   return await run(async () => {
     return await Device.getInfo();
   });
@@ -56,7 +58,7 @@ export async function getInfo() {
  * @return {Number} BatteryInfo.batteryLevel - A percentage (0 to 1) indicating how much the battery is charged.
  * @return {Boolean} BatteryInfo.isCharging - Whether the device is charging.
  */
-export async function getBatteryInfo() {
+export async function getBatteryInfo(): Promise<BatteryInfo> {
   return await run(async () => {
     return await Device.getBatteryInfo();
   });
