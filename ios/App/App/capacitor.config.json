@@ -2,7 +2,7 @@
 	"appId": "co.houseninja.application",
 	"appName": "House Ninja",
 	"bundledWebRuntime": false,
-	"loggingBehavior": "debug",
+	"loggingBehavior": "production",
 	"npmClient": "yarn",
 	"webDir": "dist",
 	"android": {
@@ -17,7 +17,7 @@
 		"iosScheme": "co.houseninja.application",
 		"androidScheme": "co.houseninja.application",
 		"cleartext": false,
-		"url": "http://localhost:4200",
+		"url": "co.houseninja.application://",
 		"allowNavigation": [
 			"auth.houseninja.co",
 			"sandbox.auth.houseninja.co",

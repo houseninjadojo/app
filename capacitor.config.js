@@ -1,5 +1,23 @@
 // eslint-disable-next-line
-require('dotenv').config();
+const environment = process.env.NODE_ENV;
+
+const envPath = () => {
+  let envExt = `.${environment}`;
+  if (environment === 'development') {
+    envExt = '';
+  }
+  return `.env${envExt}`;
+};
+
+// eslint-disable-next-line
+require('dotenv').config({
+  path: `${__dirname}/${envPath()}`,
+});
+
+/**
+ * Capactior Configuration
+ * https://capacitorjs.com/docs/config
+ */
 
 const base = {
   appId: process.env.CAPACITOR_APP_ID,
@@ -20,7 +38,7 @@ const ios = {
 };
 
 const server = {
-  hostname: 'localhost',
+  hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
   iosScheme: process.env.APP_SCHEME,
   androidScheme: process.env.APP_SCHEME,
   cleartext: false,
@@ -73,9 +91,6 @@ const config = {
   plugins,
   cordova,
 };
-
-// eslint-disable-next-line
-const environment = process.env.NODE_ENV;
 
 if (environment === 'production') {
   config.loggingBehavior = 'production';
