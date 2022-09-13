@@ -44,6 +44,7 @@ jobs:
         env:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          DOTENV_ENABLED: false
       - uses: actions/upload-artifact@v2
         with:
           name: app

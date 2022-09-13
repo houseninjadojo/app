@@ -4,7 +4,25 @@
 
 const path = require('path');
 
-module.exports = function (/* env */) {
+// const isCI = () => {
+//   return !!process.env.CI || !!process.env.CF_PAGES;
+// };
+
+const envPath = (env) => {
+  let envExt = `.${env}`;
+  if (env === 'development') {
+    envExt = '';
+  }
+  return path.join(path.dirname(__dirname), `.env${envExt}`);
+};
+
+// Disable by setting DOTENV_ENABLED=false
+const isEnabled = () => {
+  const val = process.env.DOTENV_ENABLED || 'true';
+  return val === 'true';
+};
+
+module.exports = function (env) {
   return {
     clientAllowedKeys: [
       'API_ACTIVE_STORAGE_HOST',
@@ -25,6 +43,7 @@ module.exports = function (/* env */) {
     ],
     fastbootAllowedKeys: [],
     failOnMissingKey: false,
-    path: path.join(path.dirname(__dirname), '.env'),
+    path: envPath(env),
+    enabled: isEnabled(),
   };
 };
