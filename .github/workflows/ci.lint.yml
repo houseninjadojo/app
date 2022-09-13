@@ -10,11 +10,27 @@ on:
     branches:
       - main
 
+# env:
+#   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
+#   API_HOST: ${{ secrets.API_HOST }}
+#   APP_HOST: ${{ secrets.APP_HOST }}
+#   APP_SCHEME: ${{ secrets.APP_SCHEME }}
+#   AUTH_CLIENT_ID: ${{ secrets.AUTH_CLIENT_ID }}
+#   AUTH_AUDIENCE: ${{ secrets.AUTH_AUDIENCE }}
+#   AUTH_CONNECTION: ${{ secrets.AUTH_CONNECTION }}
+#   AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+#   BRANCH_KEY: ${{ secrets.BRANCH_KEY }}
+#   INTERCOM_APP_ID: ${{ secrets.INTERCOM_APP_ID }}
+#   INTERCOM_IDENTITY_VERIFICATION_SECRET_WEB: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_WEB }}
+#   INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS }}
+#   INTERCOM_IDENTITY_VERIFICATION_SECRET_ANDROID: ${{ secrets.INTERCOM_IDENTITY_VERIFICATION_SECRET_ANDROID }}
+#   MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN }}
+#   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
 jobs:
   hbs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -26,7 +42,6 @@ jobs:
   js:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -38,7 +53,6 @@ jobs:
   css:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    environment: test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

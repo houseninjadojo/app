@@ -42,3 +42,8 @@
 **/*.p12
 **/*.certSigningRequest
 **/*.mobileprovision
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

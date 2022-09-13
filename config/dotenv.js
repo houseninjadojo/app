@@ -16,7 +16,6 @@ module.exports = function (/* env */) {
       'AUTH_CONNECTION',
       'AUTH_DOMAIN',
       'BRANCH_KEY',
-      'CF_PAGES_COMMIT_SHA',
       'INTERCOM_APP_ID',
       'INTERCOM_IDENTITY_VERIFICATION_SECRET_WEB',
       'INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS',
