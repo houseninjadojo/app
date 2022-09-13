@@ -1,3 +1,32 @@
+## [1.20.7](https://github.com/houseninjadojo/app/compare/v1.20.6...v1.20.7) (2022-09-13)
+
+
+### Bug Fixes
+
+* next deploy ([ed441d7](https://github.com/houseninjadojo/app/commit/ed441d7486f33eb37f0bbeaa59d212c263b48243))
+* try deploy ([bc9782e](https://github.com/houseninjadojo/app/commit/bc9782efd9d825afdc277871a2c2473374dfed8b))
+
+## [1.20.6](https://github.com/houseninjadojo/app/compare/v1.20.5...v1.20.6) (2022-09-11)
+
+
+### Bug Fixes
+
+* **sentry:** use correct version number on traces ([#961](https://github.com/houseninjadojo/app/issues/961)) ([15f3968](https://github.com/houseninjadojo/app/commit/15f396842a26752fef78ce68f434248b1929aa27))
+
+## [1.20.5](https://github.com/houseninjadojo/app/compare/v1.20.4...v1.20.5) (2022-09-11)
+
+
+### Bug Fixes
+
+* **ci/cd:** centralized release deployment ([#960](https://github.com/houseninjadojo/app/issues/960)) ([f51371f](https://github.com/houseninjadojo/app/commit/f51371fd8aea3690dd474ce09c46c2d45ae0d174))
+
+## [1.20.4](https://github.com/houseninjadojo/app/compare/v1.20.3...v1.20.4) (2022-09-08)
+
+
+### Bug Fixes
+
+* accessbility icon for input errors ([#952](https://github.com/houseninjadojo/app/issues/952)) ([ab56b11](https://github.com/houseninjadojo/app/commit/ab56b1184035e6c83934a30c01c230b355fd2900))
+
 ## [1.20.3](https://github.com/houseninjadojo/app/compare/v1.20.2...v1.20.3) (2022-09-06)
 
 
