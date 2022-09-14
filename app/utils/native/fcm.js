@@ -1,4 +1,4 @@
-import { FCM } from '@mineminemine/fcm/fcm';
+import { FCM } from '@mineminemine/fcm';
 import { run } from '@ember/runloop';
 
 /**
