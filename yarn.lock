@@ -1944,6 +1944,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.0.1.tgz#5017a33bade5509e075f010c6381190e6ca6c5ba"
   integrity sha512-7hklUx69aZDonuLP1R5X4ZTGgZLwX8RTj9/3U1905Kz/XflcT7Rhighbad+uZBaOU+L/8Vm6Y3RlR3rFj4ELVA==
 
+"@capawesome/capacitor-file-picker@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@capawesome/capacitor-file-picker/-/capacitor-file-picker-0.5.0.tgz#013ded2b88f59f1f9d161c76ed30481313217d1e"
+  integrity sha512-72LZikX4U1sCI7Id3N3lNkrQe2nPDe8mR7VXRfbfsndYe1dJ0qrskNk6TRWpcWpXOq3zfrpbNAmeZskryDZrTQ==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -3492,11 +3497,6 @@
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@percy/sdk-utils/-/sdk-utils-1.7.2.tgz#58b760356e9570832a52c6bb1c892cdf737d7264"
   integrity sha512-jvh9wcyAbVxOUElJ7966AC8eI8pfCoggIe/9Avl5UfMLA6bbOS++EYR4iWkpgdcAQABTyFJnuOvQc95foEFJog==
-
-"@robingenz/capacitor-file-picker@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@robingenz/capacitor-file-picker/-/capacitor-file-picker-0.3.1.tgz#6f1c2b4ba3e8cf3787840ce78750bbdbf5305b2c"
-  integrity sha512-cjXARYPEQ/XKMGIhA4wF7sQ4PkDjJVIzUy6bNXwjWCm8p2EjwjnogWOp/pgBFxLBkq0ktSEBXKJSJXC8fJnR/w==
 
 "@semantic-release/changelog@^6.0.1":
   version "6.0.1"

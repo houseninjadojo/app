@@ -1,4 +1,4 @@
-import { FCM } from '@capacitor-community/fcm';
+import { FCM } from '@mineminemine/fcm/fcm';
 import { run } from '@ember/runloop';
 
 /**
