@@ -58,7 +58,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - run: yarn cap sync
+      - run: yarn cap sync --deployment
         env:
           NODE_ENV: production
       - run: |
@@ -132,7 +132,7 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-      - run: pod install
+      - run: pod install --deployment
         working-directory: 'ios/App'
       - uses: actions/setup-node@v2
         with:
