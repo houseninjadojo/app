@@ -36,7 +36,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked paymentFailed = false;
   @tracked creditCard = this.allPaymentMethods.filter((c) => c.isDefault)[0];
 
   actionSheetOptions = [
