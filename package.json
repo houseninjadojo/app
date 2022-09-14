@@ -160,7 +160,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@capacitor-community/fcm": "^2.0.2",
+    "@mineminemine/fcm": "^4.0.3",
     "@capacitor-community/http": "^2.0.0-0",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#7c5a337",
     "@capacitor/action-sheet": "^4.0.0",
