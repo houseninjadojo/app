@@ -22,4 +22,11 @@ export default class AccountSettingsPaymentMethodsComponent extends Component {
       );
     }
   }
+
+  get menuItems() {
+    const defaultPaymentMethod = this.args.model?.filter((p) => p.isDefault)[0];
+    const remainingPaymentMethod = this.args.model?.filter((p) => !p.isDefault);
+
+    return [defaultPaymentMethod, ...remainingPaymentMethod];
+  }
 }
