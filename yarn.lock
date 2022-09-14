@@ -6520,10 +6520,10 @@ canvas-confetti@^1.5.1:
   resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.5.1.tgz#bf5b8622ef3bcd347378a972fc4194a89cfe0c9b"
   integrity sha512-Ncz+oZJP6OvY7ti4E1slxVlyAV/3g7H7oQtcCDXgwGgARxPnwYY9PW5Oe+I8uvspYNtuHviAdgA0LfcKFWJfpg==
 
-capacitor-branch-deep-links@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.1.1.tgz#be73969a814aa0d188ed7fadcae137579e398147"
-  integrity sha512-52rAJGqFRKbkWC0XyunI+3MabGnbUEi8X09MywyNrOdRhu2Kw33aq354LhKW6SqwgkMcFxPHlXTsQd3yGJFD5w==
+capacitor-branch-deep-links@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-5.0.0.tgz#efc5e3bacabd8fb0ce01e03ca07c1525b2ceacc1"
+  integrity sha512-/UBHzloa7nFtPlz7wH3GqsYAIjMBjQWyJNCSiS5LNZ64uoN8u3Qgg1rexQaoKRN3IQqiGyFFiYmrIATUvW4yoQ==
 
 capacitor-secure-storage-plugin@^0.8.0:
   version "0.8.0"

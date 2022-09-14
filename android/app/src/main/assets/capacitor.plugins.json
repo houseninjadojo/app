@@ -1,6 +1,6 @@
 [
 	{
-		"pkg": "@capacitor-community/fcm",
+		"pkg": "@mineminemine/fcm",
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
