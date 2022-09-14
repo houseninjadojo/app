@@ -1,5 +1,26 @@
+// eslint-disable-next-line
+const environment = process.env.NODE_ENV;
+
+const envPath = () => {
+  let envExt = `.${environment}`;
+  if (environment === 'development') {
+    envExt = '';
+  }
+  return `.env${envExt}`;
+};
+
+// eslint-disable-next-line
+require('dotenv').config({
+  path: `${__dirname}/${envPath()}`,
+});
+
+/**
+ * Capactior Configuration
+ * https://capacitorjs.com/docs/config
+ */
+
 const base = {
-  appId: 'co.houseninja.application',
+  appId: process.env.CAPACITOR_APP_ID,
   appName: 'House Ninja',
   bundledWebRuntime: false,
   loggingBehavior: 'debug',
@@ -17,11 +38,11 @@ const ios = {
 };
 
 const server = {
-  hostname: 'localhost',
-  iosScheme: 'co.houseninja.application',
-  androidScheme: 'co.houseninja.application',
+  hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
+  iosScheme: process.env.APP_SCHEME,
+  androidScheme: process.env.APP_SCHEME,
   cleartext: false,
-  url: 'http://localhost:4200',
+  url: process.env.CAPACITOR_SERVER_URL,
   allowNavigation: [
     // 'localhost:3000',
     'auth.houseninja.co',
@@ -49,14 +70,14 @@ const plugins = {
     sound: '',
   },
   Intercom: {
-    androidApiKey: 'android_sdk-a93cf5fe93b642764014a740fca5425649a231f8',
-    androidAppId: 'rgqc8u39',
-    iosApiKey: 'ios_sdk-952078c58482051e56f9534434101ca50e6f7de7',
-    iosAppId: 'rgqc8u39',
+    androidApiKey: process.env.INTERCOM_ANDROID_API_KEY,
+    androidAppId: process.env.INTERCOM_APP_ID,
+    iosApiKey: process.env.INTERCOM_IOS_API_KEY,
+    iosAppId: process.env.INTERCOM_APP_ID,
   },
   Mixpanel: {
-    iosToken: 'cd20057a467eef665b9e86f0b687a5e3',
-    androidToken: 'cd20057a467eef665b9e86f0b687a5e3',
+    iosToken: process.env.MIXPANEL_TOKEN,
+    androidToken: process.env.MIXPANEL_TOKEN,
   },
 };
 
@@ -71,17 +92,12 @@ const config = {
   cordova,
 };
 
-// eslint-disable-next-line
-const environment = process.env.NODE_ENV;
-
 if (environment === 'production') {
   config.loggingBehavior = 'production';
-  config.server.url = 'co.houseninja.application://';
 }
 
 if (environment === 'sandbox') {
   config.loggingBehavior = 'production';
-  config.server.url = 'co.houseninja.application://';
 }
 
 if (environment === 'test') {
