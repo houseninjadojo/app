@@ -1,3 +1,38 @@
+## [1.20.18](https://github.com/houseninjadojo/app/compare/v1.20.17...v1.20.18) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** use fastlane workaround for release ([#982](https://github.com/houseninjadojo/app/issues/982)) ([62ef0be](https://github.com/houseninjadojo/app/commit/62ef0be9412190d461234025e674b01fc0ce5b93))
+
+## [1.20.17](https://github.com/houseninjadojo/app/compare/v1.20.16...v1.20.17) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock xcode to 14 and update fastlane ([#981](https://github.com/houseninjadojo/app/issues/981)) ([2d04b7f](https://github.com/houseninjadojo/app/commit/2d04b7f0d430844a871dd89fb682f8fd3fb60f02))
+
+## [1.20.16](https://github.com/houseninjadojo/app/compare/v1.20.15...v1.20.16) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock down podfile ([#980](https://github.com/houseninjadojo/app/issues/980)) ([16c8513](https://github.com/houseninjadojo/app/commit/16c8513963624cbb07da4358ffff09837197d1c3))
+
+## [1.20.15](https://github.com/houseninjadojo/app/compare/v1.20.14...v1.20.15) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock capacitor-intercom version ([#979](https://github.com/houseninjadojo/app/issues/979)) ([ac38051](https://github.com/houseninjadojo/app/commit/ac3805121ee1f4b8e28a935d08eef0df3925d240))
+
+## [1.20.14](https://github.com/houseninjadojo/app/compare/v1.20.13...v1.20.14) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use macos-12 runner w/ xcode 14 and lock intercom pod version ([#977](https://github.com/houseninjadojo/app/issues/977)) ([b3054f7](https://github.com/houseninjadojo/app/commit/b3054f7232547764879b428a8f1aa452d9b25ddd))
+
 ## [1.20.13](https://github.com/houseninjadojo/app/compare/v1.20.12...v1.20.13) (2022-09-13)
 
 

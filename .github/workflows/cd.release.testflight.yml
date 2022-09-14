@@ -58,7 +58,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - run: yarn cap sync
+      - run: yarn cap sync --deployment
         env:
           NODE_ENV: production
       - run: |
@@ -100,6 +100,8 @@ jobs:
     runs-on: macos-12
     name: build / ios
     timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:
