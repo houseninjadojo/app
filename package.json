@@ -161,7 +161,7 @@
   },
   "dependencies": {
     "@capacitor-community/fcm": "^2.0.2",
-    "@capacitor-community/http": "^1.4.1",
+    "@capacitor-community/http": "^2.0.0-0",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom",
     "@capacitor/action-sheet": "^4.0.0",
     "@capacitor/app": "^4.0.0",
@@ -176,10 +176,10 @@
     "@capacitor/push-notifications": "^4.0.0",
     "@capacitor/share": "^4.0.0",
     "@capacitor/splash-screen": "^4.0.0",
-    "@houseninja/capacitor-mixpanel": "^0.2.0",
+    "@houseninja/capacitor-mixpanel": "^1.0.0-beta.1",
     "@robingenz/capacitor-file-picker": "^0.3.1",
     "capacitor-branch-deep-links": "4.1.1",
-    "capacitor-secure-storage-plugin": "^0.7.1",
+    "capacitor-secure-storage-plugin": "^0.8.0",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4"
   }

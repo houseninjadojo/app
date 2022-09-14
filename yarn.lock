@@ -1827,15 +1827,15 @@
   dependencies:
     "@capacitor/core" "^3.0.1"
 
-"@capacitor-community/http@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@capacitor-community/http/-/http-1.4.1.tgz#005f51c2129f48bff75c46b8679a2fff57ced5a9"
-  integrity sha512-+pCkBXrwfm97UfjOgjV950H/qZ8SE36Mrcb46BlL1ps3VIsGuIO+AulL8GqTC6LewheRVtGJpRspNtneXQotNA==
+"@capacitor-community/http@^2.0.0-0":
+  version "2.0.0-0"
+  resolved "https://registry.yarnpkg.com/@capacitor-community/http/-/http-2.0.0-0.tgz#43d739668e1754590feb22170fc70ba730055581"
+  integrity sha512-NX0Rq+GvpPbg2bAvgE4zNa1iVPs0kX6SmpazuSLRHSlLrzRJyYP0XM64Z4HNFEFYAvFbB9v64P1juXlvOlD+eA==
   dependencies:
-    "@capacitor/android" "^3.0.0"
-    "@capacitor/core" "^3.0.0"
-    "@capacitor/filesystem" "^1.0.0"
-    "@capacitor/ios" "^3.0.0"
+    "@capacitor/android" "^4.0.0"
+    "@capacitor/core" "^4.0.0"
+    "@capacitor/filesystem" "^4.0.0"
+    "@capacitor/ios" "^4.0.0"
 
 "@capacitor-community/intercom@houseninjadojo/capacitor-intercom":
   version "3.0.2"
@@ -1845,11 +1845,6 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.0.1.tgz#58a0c2b6dfaa7de06d20a31af726cf6c65f8917a"
   integrity sha512-8F4TT05KCvSccGZjezEXPgiRvjuwQRpVUApTTVNQaEgHP9vPhuzfQB9hp9NByR8IfuHMwAlJGSnoFp7fZ6xHuw==
-
-"@capacitor/android@^3.0.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.7.0.tgz#6685390caf4afc821e0e24ee728fac8e6bf1572d"
-  integrity sha512-SF06sqvEKvRnev+T+k4jjfDIdsqcDiGnzGld7oTtJipiO16xVkKPG0kEbFZEWkrMvhqRn6jNyl+ZHn5/9JR7nA==
 
 "@capacitor/android@^4.0.0":
   version "4.1.0"
@@ -1894,7 +1889,7 @@
     tslib "^2.4.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1":
+"@capacitor/core@^3.0.1":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.7.0.tgz#2278b49aae18b63661c60637d35a4b9bf48ca340"
   integrity sha512-Y6Wrt1Im246fIfAIAsOElqPkBgzV1w9jG/NnBtxCb5kJ6IGtszl9fOvJ3WdGAfh9UOnEBr4m3iaz2L7ZGkQzWg==
@@ -1918,11 +1913,6 @@
   resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-4.0.1.tgz#b1d6812037da4cac4529d1d4916abfa15f8ec88e"
   integrity sha512-mHcTU+z2SiGL0azdr4Pn9Qzq+AHKBIoDzAOUVAco+OyFsASdMu/+d/DB2MipA4VvO2QNnbcvvtSFwDnCoyg+aw==
 
-"@capacitor/filesystem@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-1.1.0.tgz#0bd6a8bc185b7fd9a1219c3080ab26c2b54ea8b6"
-  integrity sha512-8O3UuvL8HNUEJvZnmn8yUmvgB1evtXfcF0oxIo3YbSlylqywJwS3JTiuhKmsvSxCdpbTy8IaTsutVh3gZgWbKg==
-
 "@capacitor/filesystem@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-4.1.0.tgz#610ec3c1e13d484218e6920354cc5644aa73454c"
@@ -1932,11 +1922,6 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-4.0.1.tgz#8113c757f9bce3cd6618f6aadda47e7aa7a92069"
   integrity sha512-ZLVoLdK1Md/xIRRrDOnrLCKGRg8UENY1ShpKcysPN1z1MgcpvB/9Nbqczm3RH24zyo3MP/7homkqMzUGxPBlwQ==
-
-"@capacitor/ios@^3.0.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.7.0.tgz#ff3fe96dff086b5fd999972abe9ca233642c2fd1"
-  integrity sha512-4zqwRdxCdBFRqJf08+V8eyed69in4xLQh9fX6Me6g9Sl+uYhhmR1KSOLxtlgT2GJgBdszXx9xUk62SRjlQfEQA==
 
 "@capacitor/ios@^4.0.0":
   version "4.1.0"
@@ -2794,10 +2779,10 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
-"@houseninja/capacitor-mixpanel@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-0.2.0.tgz#714b1196ff55e9b2d5962590c7bc271d2ef6d3b7"
-  integrity sha512-F7OK+ZqYvBHoxQ9i4AkK2z6RBw/Aov8v9fqmXBpLlSykP7y3cQQ45vmFl2uj3G/y2YsvR6u4XKkXKWSK6xj+Lw==
+"@houseninja/capacitor-mixpanel@^1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-mixpanel/-/capacitor-mixpanel-1.0.0-beta.1.tgz#408cb49319f05f8ca03c8b9c8633a6b3e95e3b5d"
+  integrity sha512-K0t8+aMZGuuimjadriY7htoD46qI6mBrD+O2tr1FialVPs9MX7ImjU9DELiRE+e6ODBP2bRkdDdRL7hj6Mykpw==
   dependencies:
     mixpanel-browser "^2.45.0"
 
@@ -6549,10 +6534,10 @@ capacitor-branch-deep-links@4.1.1:
   resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-4.1.1.tgz#be73969a814aa0d188ed7fadcae137579e398147"
   integrity sha512-52rAJGqFRKbkWC0XyunI+3MabGnbUEi8X09MywyNrOdRhu2Kw33aq354LhKW6SqwgkMcFxPHlXTsQd3yGJFD5w==
 
-capacitor-secure-storage-plugin@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.7.1.tgz#8b646ebaf09658df144effd21f26eecf75529ea5"
-  integrity sha512-fxuLh2PYaLw/AewRLpao4CnnWbXnCM3t8E624XrgvzAPk7vqVWXWE1/SV5kzSU0luaTLlZXuxcjx1KAtQi+c1A==
+capacitor-secure-storage-plugin@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.8.0.tgz#2edcb0a190d49b9c61c68498903c7f0ee733855b"
+  integrity sha512-iYzQtsiHBxKUOonvtHR6stKdDyZM+xV6rZAmQZFU+NOCEHgwAbtvFKADmb/Ujkik/bkIeVe8R8jUtmVQ/B/vxQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
