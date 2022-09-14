@@ -132,7 +132,7 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-      - run: pod install --deployment
+      - run: pod install
         working-directory: 'ios/App'
       - uses: actions/setup-node@v2
         with:
