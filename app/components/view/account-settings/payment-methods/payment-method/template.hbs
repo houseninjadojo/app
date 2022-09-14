@@ -30,7 +30,8 @@
         @id={{field.id}}
         @required={{field.required}}
         @placeholder={{field.placeholder}}
-        @value={{if (eq @addOrUpdate 'update' @creditCard.obfuscated.lastFour field.value)}}
+        {{!-- @value={{if (eq @addOrUpdate 'update' @creditCard.obfuscated.lastFour field.value)}} --}}
+        @value={{field.value}}
         @description={{field.description}}
         @label={{field.label}}
         @type={{field.type}}
@@ -53,4 +54,11 @@
       />
     {{/if}}
   {{/each}}
+  {{#if (eq @addOrUpdate 'Update')}}
+    <div class="remove-payment-method">
+        <Primitive::Button {{on 'click' @handleRemoveAction}} @variant='floating' @semantic='alert'>
+            Remove Payment Method
+        </Primitive::Button>
+    </div>
+  {{/if}}
 </div>
