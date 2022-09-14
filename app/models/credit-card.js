@@ -13,9 +13,8 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('boolean') isDefault;
 
   get obfuscated() {
-    const brand = isPresent(this.brand) ? this.brand.toUpperCase() : null;
     return {
-      brand,
+      brand: this.cardBrand,
       country: '',
       cvv: '•••',
       expMonth: this.expMonth,
@@ -40,7 +39,7 @@ export default class CreditCardModel extends PaymentMethod {
     if (isPresent(this.brand)) {
       return this.brand.toUpperCase();
     } else {
-      return '';
+      return 'CARD';
     }
   }
 }
