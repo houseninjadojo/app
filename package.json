@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.20.7",
+  "version": "1.20.14",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -148,6 +148,7 @@
     "stylelint": "^14.11.0",
     "stylelint-config-standard": "^28.0.0",
     "tailwindcss": "^3.1.8",
+    "tracked-built-ins": "^3.1.0",
     "typescript": "^4.8.3",
     "webpack": "^5.74.0",
     "whatwg-url": "11.0.0"

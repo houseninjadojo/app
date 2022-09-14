@@ -1,3 +1,52 @@
+## [1.20.14](https://github.com/houseninjadojo/app/compare/v1.20.13...v1.20.14) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use macos-12 runner w/ xcode 14 and lock intercom pod version ([#977](https://github.com/houseninjadojo/app/issues/977)) ([b3054f7](https://github.com/houseninjadojo/app/commit/b3054f7232547764879b428a8f1aa452d9b25ddd))
+
+## [1.20.13](https://github.com/houseninjadojo/app/compare/v1.20.12...v1.20.13) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** copy .env.vault to ios/App ([#976](https://github.com/houseninjadojo/app/issues/976)) ([068a63a](https://github.com/houseninjadojo/app/commit/068a63a97bdbe659352909e1ca6de3c4f82a7ec4))
+
+## [1.20.12](https://github.com/houseninjadojo/app/compare/v1.20.11...v1.20.12) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use specific vault file command ([#975](https://github.com/houseninjadojo/app/issues/975)) ([a4c3806](https://github.com/houseninjadojo/app/commit/a4c38069ca3ae113b6f3db78e398921d2650b29f))
+
+## [1.20.11](https://github.com/houseninjadojo/app/compare/v1.20.10...v1.20.11) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** another fastlane ci release ([#974](https://github.com/houseninjadojo/app/issues/974)) ([be9c4a9](https://github.com/houseninjadojo/app/commit/be9c4a9311722af33632ee6066532a8286d0643c))
+
+## [1.20.10](https://github.com/houseninjadojo/app/compare/v1.20.9...v1.20.10) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** fastlane app store connect key encoded as base64 ([#973](https://github.com/houseninjadojo/app/issues/973)) ([4fecd47](https://github.com/houseninjadojo/app/commit/4fecd47cd5523d9221c9d5c4a20854aa7e7c73c8))
+
+## [1.20.9](https://github.com/houseninjadojo/app/compare/v1.20.8...v1.20.9) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** use dotenv explicitly in Fastlane ([#972](https://github.com/houseninjadojo/app/issues/972)) ([250546a](https://github.com/houseninjadojo/app/commit/250546ae7e44a281895e0f620455ea5c99369e0e))
+
+## [1.20.8](https://github.com/houseninjadojo/app/compare/v1.20.7...v1.20.8) (2022-09-13)
+
+
+### Bug Fixes
+
+* **release:** attempt build ([8dd7c60](https://github.com/houseninjadojo/app/commit/8dd7c607e67d59b514cd39139ed045c6391e663d))
+
 ## [1.20.7](https://github.com/houseninjadojo/app/compare/v1.20.6...v1.20.7) (2022-09-13)
 
 
