@@ -151,11 +151,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   get allPaymentMethods() {
-    if (this.args.model.get('property.user.payment_methods')) {
-      return this.args.model.get('property.user.payment_methods');
-    } /*  else {
-      return cardsStub;
-    } */
+    return this.args.model.get('property.user.payment_methods');
   }
 
   get paymentMethodSelectConfig() {

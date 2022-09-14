@@ -6,7 +6,9 @@ module('Unit | Controller | settings/payment', function (hooks) {
 
   // TODO: Replace this with your real tests.
   test('it exists', function (assert) {
-    let controller = this.owner.lookup('controller:settings/payment');
+    let controller = this.owner.lookup(
+      'controller:settings/payment-methods/payment-method'
+    );
     assert.ok(controller);
   });
 });

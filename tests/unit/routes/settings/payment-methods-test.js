@@ -5,7 +5,7 @@ module('Unit | Route | settings/payment', function (hooks) {
   setupTest(hooks);
 
   test('it exists', function (assert) {
-    let route = this.owner.lookup('route:settings/payment');
+    let route = this.owner.lookup('route:settings/payment-methods');
     assert.ok(route);
   });
 });
