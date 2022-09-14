@@ -1,3 +1,10 @@
+## [1.20.16](https://github.com/houseninjadojo/app/compare/v1.20.15...v1.20.16) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock down podfile ([#980](https://github.com/houseninjadojo/app/issues/980)) ([16c8513](https://github.com/houseninjadojo/app/commit/16c8513963624cbb07da4358ffff09837197d1c3))
+
 ## [1.20.15](https://github.com/houseninjadojo/app/compare/v1.20.14...v1.20.15) (2022-09-14)
 
 
