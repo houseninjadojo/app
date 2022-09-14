@@ -7,6 +7,25 @@ import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
+// const cardsStub = [
+//   {
+//     id: 'asdf',
+//     cardBrand: 'TEST MASTERCARD',
+//     lastFour: '9999',
+//   },
+//   {
+//     id: 'zxcv',
+//     cardBrand: 'TEST VISA',
+//     lastFour: '8888',
+//   },
+//   {
+//     id: 'qwer',
+//     cardBrand: 'TEST CARD',
+//     lastFour: '7777',
+//     isDefault: true,
+//   },
+// ];
+
 export default class WorkOrderApprovePaymentViewContentComponent extends Component {
   @service intercom;
   @service router;
@@ -18,6 +37,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isDoneProcessing = false;
   @tracked paid = false;
   @tracked paymentFailed = false;
+  @tracked creditCard = this.allPaymentMethods.filter((c) => c.isDefault)[0];
 
   actionSheetOptions = [
     {
@@ -59,6 +79,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
+      paymentMethod: this.creditCard,
     });
 
     try {
@@ -98,11 +119,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
-  requestDifferentPayment() {
-    this.intercom.showComposer('I would like to update my payment method.');
-  }
-
-  @action
   inquireAboutInvoice() {
     this.intercom.showComposer(
       `I have a question about the invoice for the ${this.args.model?.description} service request.`
@@ -114,6 +130,13 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.isProcessing = false;
     this.args.model.reload();
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+  }
+
+  @action
+  handlePaymentMethodChange(e) {
+    this.creditCard = this.allPaymentMethods.filter(
+      (c) => c.id === e.target.value
+    )[0];
   }
 
   get isNativePlatform() {
@@ -128,7 +151,30 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return this.invoice?.formattedTotal;
   }
 
-  get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
+  get allPaymentMethods() {
+    if (this.args.model.get('property.user.payment_methods')) {
+      return this.args.model.get('property.user.payment_methods');
+    } /*  else {
+      return cardsStub;
+    } */
+  }
+
+  get paymentMethodSelectConfig() {
+    const allCards = this.allPaymentMethods;
+    const mappedCards = allCards?.map((c) => {
+      return {
+        value: c.id,
+        label: `${c.cardBrand ? c.cardBrand.toUpperCase() : 'Card'} ending in ${
+          c.lastFour
+        } ${c.isDefault ? '(default) ' : ''}`,
+        selected: c.isDefault,
+      };
+    });
+
+    return {
+      id: 'payment-methods',
+      label: 'Payment Method',
+      options: mappedCards || [],
+    };
   }
 }
