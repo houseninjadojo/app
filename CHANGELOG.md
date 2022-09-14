@@ -1,3 +1,10 @@
+## [1.20.17](https://github.com/houseninjadojo/app/compare/v1.20.16...v1.20.17) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock xcode to 14 and update fastlane ([#981](https://github.com/houseninjadojo/app/issues/981)) ([2d04b7f](https://github.com/houseninjadojo/app/commit/2d04b7f0d430844a871dd89fb682f8fd3fb60f02))
+
 ## [1.20.16](https://github.com/houseninjadojo/app/compare/v1.20.15...v1.20.16) (2022-09-14)
 
 
