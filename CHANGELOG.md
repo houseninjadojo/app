@@ -1,3 +1,10 @@
+## [1.20.15](https://github.com/houseninjadojo/app/compare/v1.20.14...v1.20.15) (2022-09-14)
+
+
+### Bug Fixes
+
+* **release:** lock capacitor-intercom version ([#979](https://github.com/houseninjadojo/app/issues/979)) ([ac38051](https://github.com/houseninjadojo/app/commit/ac3805121ee1f4b8e28a935d08eef0df3925d240))
+
 ## [1.20.14](https://github.com/houseninjadojo/app/compare/v1.20.13...v1.20.14) (2022-09-13)
 
 
