@@ -1,14 +1,17 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Controller | settings/payment', function (hooks) {
-  setupTest(hooks);
+module(
+  'Unit | Controller | settings/payment-methods/payment-method/edit',
+  function (hooks) {
+    setupTest(hooks);
 
-  // TODO: Replace this with your real tests.
-  test('it exists', function (assert) {
-    let controller = this.owner.lookup(
-      'controller:settings/payment-methods/payment-method'
-    );
-    assert.ok(controller);
-  });
-});
+    // TODO: Replace this with your real tests.
+    test('it exists', function (assert) {
+      let controller = this.owner.lookup(
+        'controller:settings/payment-methods/payment-method/edit'
+      );
+      assert.ok(controller);
+    });
+  }
+);
