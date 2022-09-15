@@ -5785,10 +5785,10 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-branch-sdk@^2.64.0:
-  version "2.64.0"
-  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.64.0.tgz#4e64ae53bb7bd4760831e225d0e435a287910543"
-  integrity sha512-DS9IrM1ovxZsrDxcKA33FH/tEDBdNfLdzXKrlc0EZiLP90l9W+zKA119uNEhsy3+suRpAfmp1hUzqVOhp/ZECQ==
+branch-sdk@^2.65.0:
+  version "2.65.0"
+  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.65.0.tgz#cdb7733461c08905f52321aa29bdf9d590129496"
+  integrity sha512-EIFRRon3zjKO69KwsyBXKMwBXsnr4eyPSwZkXY1iNTfWJT2O3ZlwJjF3Vm+Wt8SQ0w3H2qLuSxGV9fp7e2/N6A==
   dependencies:
     google-closure-compiler "^20220601.0.0"
     google-closure-deps "^20220502.0.0"
