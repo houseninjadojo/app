@@ -14,10 +14,10 @@ Before you install the app, you will need the following installed:
 
 #### Set up ASDF
 
-After following the ASDF installation instructions, add the nodejs and yarn plugins:
+After following the ASDF installation instructions, add the nodejs and pnpm plugins:
 
 1. `asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git`
-2. `asdf plugin add yarn https://github.com/twuni/asdf-yarn`
+2. `asdf plugin add pnpm`
 
 #### Set up Xcode 13
 
@@ -34,7 +34,7 @@ In a directory of your choosing run: `git clone git@github.com:houseninjadojo/ap
 
 `cd` into the app directory you just checked out and run: `asdf install`.
 
-This will install the nodejs and yarn versions locked in `.tool-versions` file and create a version-locked space for global node modules.
+This will install the nodejs and pnpm versions locked in `.tool-versions` file and create a version-locked space for global node modules.
 
 ### Install Ember CLI
 
@@ -44,7 +44,7 @@ npm install -g ember-cli
 
 ### Install node modules
 
-In the app directory, run: `yarn install`.
+In the app directory, run: `pnpm install`.
 
 ### Install Code Editor Addons (VSCode)
 

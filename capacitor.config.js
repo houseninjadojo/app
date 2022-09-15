@@ -24,7 +24,7 @@ const base = {
   appName: 'House Ninja',
   bundledWebRuntime: false,
   loggingBehavior: 'debug',
-  npmClient: 'yarn',
+  npmClient: 'pnpm',
   webDir: 'dist',
 };
 

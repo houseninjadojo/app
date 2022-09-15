@@ -1,6 +1,6 @@
 PODS:
   - Branch (1.43.1)
-  - Capacitor (3.7.0):
+  - Capacitor (3.8.0):
     - CapacitorCordova
   - CapacitorActionSheet (1.0.8):
     - Capacitor
@@ -21,7 +21,7 @@ PODS:
   - CapacitorCommunityIntercom (3.0.3):
     - Capacitor
     - Intercom
-  - CapacitorCordova (3.7.0)
+  - CapacitorCordova (3.8.0)
   - CapacitorDevice (1.1.2):
     - Capacitor
   - CapacitorDialog (1.0.7):
@@ -121,31 +121,31 @@ PODS:
   - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
-  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
-  - "CapacitorActionSheet (from `../../node_modules/@capacitor/action-sheet`)"
-  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
-  - CapacitorBranchDeepLinks (from `../../node_modules/capacitor-branch-deep-links`)
-  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
-  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
-  - "CapacitorCommunityFcm (from `../../node_modules/@capacitor-community/fcm`)"
-  - "CapacitorCommunityHttp (from `../../node_modules/@capacitor-community/http`)"
-  - "CapacitorCommunityIntercom (from `../../node_modules/@capacitor-community/intercom`)"
-  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
-  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
-  - "CapacitorDialog (from `../../node_modules/@capacitor/dialog`)"
-  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
-  - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
-  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
-  - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
-  - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
-  - CapacitorSecureStoragePlugin (from `../../node_modules/capacitor-secure-storage-plugin`)
-  - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
-  - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
-  - "CapacitorStorage (from `../../node_modules/@capacitor/storage`)"
+  - "Capacitor (from `../../node_modules/.pnpm/@capacitor+ios@3.8.0_@capacitor+core@3.8.0/node_modules/@capacitor/ios`)"
+  - "CapacitorActionSheet (from `../../node_modules/.pnpm/@capacitor+action-sheet@1.0.8_@capacitor+core@3.8.0/node_modules/@capacitor/action-sheet`)"
+  - "CapacitorApp (from `../../node_modules/.pnpm/@capacitor+app@1.1.1_@capacitor+core@3.8.0/node_modules/@capacitor/app`)"
+  - "CapacitorBranchDeepLinks (from `../../node_modules/.pnpm/capacitor-branch-deep-links@4.1.1_@capacitor+core@3.8.0/node_modules/capacitor-branch-deep-links`)"
+  - "CapacitorBrowser (from `../../node_modules/.pnpm/@capacitor+browser@1.0.7_@capacitor+core@3.8.0/node_modules/@capacitor/browser`)"
+  - "CapacitorCamera (from `../../node_modules/.pnpm/@capacitor+camera@1.3.1_@capacitor+core@3.8.0/node_modules/@capacitor/camera`)"
+  - "CapacitorCommunityFcm (from `../../node_modules/.pnpm/@capacitor-community+fcm@2.0.2/node_modules/@capacitor-community/fcm`)"
+  - "CapacitorCommunityHttp (from `../../node_modules/.pnpm/@capacitor-community+http@1.4.1/node_modules/@capacitor-community/http`)"
+  - "CapacitorCommunityIntercom (from `../../node_modules/.pnpm/github.com+houseninjadojo+capacitor-intercom@7c5a337_@capacitor+core@3.8.0/node_modules/@houseninjadojo/capacitor-intercom`)"
+  - "CapacitorCordova (from `../../node_modules/.pnpm/@capacitor+ios@3.8.0_@capacitor+core@3.8.0/node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/.pnpm/@capacitor+device@1.1.2_@capacitor+core@3.8.0/node_modules/@capacitor/device`)"
+  - "CapacitorDialog (from `../../node_modules/.pnpm/@capacitor+dialog@1.0.7_@capacitor+core@3.8.0/node_modules/@capacitor/dialog`)"
+  - "CapacitorFilesystem (from `../../node_modules/.pnpm/@capacitor+filesystem@1.1.0_@capacitor+core@3.8.0/node_modules/@capacitor/filesystem`)"
+  - "CapacitorHaptics (from `../../node_modules/.pnpm/@capacitor+haptics@1.1.4_@capacitor+core@3.8.0/node_modules/@capacitor/haptics`)"
+  - "CapacitorKeyboard (from `../../node_modules/.pnpm/@capacitor+keyboard@1.2.3_@capacitor+core@3.8.0/node_modules/@capacitor/keyboard`)"
+  - "CapacitorLocalNotifications (from `../../node_modules/.pnpm/@capacitor+local-notifications@1.1.0_@capacitor+core@3.8.0/node_modules/@capacitor/local-notifications`)"
+  - "CapacitorPushNotifications (from `../../node_modules/.pnpm/@capacitor+push-notifications@1.0.9_@capacitor+core@3.8.0/node_modules/@capacitor/push-notifications`)"
+  - "CapacitorSecureStoragePlugin (from `../../node_modules/.pnpm/capacitor-secure-storage-plugin@0.7.1_@capacitor+core@3.8.0/node_modules/capacitor-secure-storage-plugin`)"
+  - "CapacitorShare (from `../../node_modules/.pnpm/@capacitor+share@1.1.2_@capacitor+core@3.8.0/node_modules/@capacitor/share`)"
+  - "CapacitorSplashScreen (from `../../node_modules/.pnpm/@capacitor+splash-screen@1.2.2_@capacitor+core@3.8.0/node_modules/@capacitor/splash-screen`)"
+  - "CapacitorStorage (from `../../node_modules/.pnpm/@capacitor+storage@1.2.5_@capacitor+core@3.8.0/node_modules/@capacitor/storage`)"
   - Firebase/Messaging
-  - "HouseninjaCapacitorMixpanel (from `../../node_modules/@houseninja/capacitor-mixpanel`)"
-  - "RobingenzCapacitorFilePicker (from `../../node_modules/@robingenz/capacitor-file-picker`)"
-  - "SentryCapacitor (from `../../node_modules/@sentry/capacitor`)"
+  - "HouseninjaCapacitorMixpanel (from `../../node_modules/.pnpm/@houseninja+capacitor-mixpanel@0.2.0_@capacitor+core@3.8.0/node_modules/@houseninja/capacitor-mixpanel`)"
+  - "RobingenzCapacitorFilePicker (from `../../node_modules/.pnpm/@robingenz+capacitor-file-picker@0.3.1_@capacitor+core@3.8.0/node_modules/@robingenz/capacitor-file-picker`)"
+  - "SentryCapacitor (from `../../node_modules/.pnpm/@sentry+capacitor@0.10.0_@capacitor+core@3.8.0/node_modules/@sentry/capacitor`)"
 
 SPEC REPOS:
   trunk:
@@ -167,57 +167,57 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Capacitor:
-    :path: "../../node_modules/@capacitor/ios"
+    :path: "../../node_modules/.pnpm/@capacitor+ios@3.8.0_@capacitor+core@3.8.0/node_modules/@capacitor/ios"
   CapacitorActionSheet:
-    :path: "../../node_modules/@capacitor/action-sheet"
+    :path: "../../node_modules/.pnpm/@capacitor+action-sheet@1.0.8_@capacitor+core@3.8.0/node_modules/@capacitor/action-sheet"
   CapacitorApp:
-    :path: "../../node_modules/@capacitor/app"
+    :path: "../../node_modules/.pnpm/@capacitor+app@1.1.1_@capacitor+core@3.8.0/node_modules/@capacitor/app"
   CapacitorBranchDeepLinks:
-    :path: "../../node_modules/capacitor-branch-deep-links"
+    :path: "../../node_modules/.pnpm/capacitor-branch-deep-links@4.1.1_@capacitor+core@3.8.0/node_modules/capacitor-branch-deep-links"
   CapacitorBrowser:
-    :path: "../../node_modules/@capacitor/browser"
+    :path: "../../node_modules/.pnpm/@capacitor+browser@1.0.7_@capacitor+core@3.8.0/node_modules/@capacitor/browser"
   CapacitorCamera:
-    :path: "../../node_modules/@capacitor/camera"
+    :path: "../../node_modules/.pnpm/@capacitor+camera@1.3.1_@capacitor+core@3.8.0/node_modules/@capacitor/camera"
   CapacitorCommunityFcm:
-    :path: "../../node_modules/@capacitor-community/fcm"
+    :path: "../../node_modules/.pnpm/@capacitor-community+fcm@2.0.2/node_modules/@capacitor-community/fcm"
   CapacitorCommunityHttp:
-    :path: "../../node_modules/@capacitor-community/http"
+    :path: "../../node_modules/.pnpm/@capacitor-community+http@1.4.1/node_modules/@capacitor-community/http"
   CapacitorCommunityIntercom:
-    :path: "../../node_modules/@capacitor-community/intercom"
+    :path: "../../node_modules/.pnpm/github.com+houseninjadojo+capacitor-intercom@7c5a337_@capacitor+core@3.8.0/node_modules/@houseninjadojo/capacitor-intercom"
   CapacitorCordova:
-    :path: "../../node_modules/@capacitor/ios"
+    :path: "../../node_modules/.pnpm/@capacitor+ios@3.8.0_@capacitor+core@3.8.0/node_modules/@capacitor/ios"
   CapacitorDevice:
-    :path: "../../node_modules/@capacitor/device"
+    :path: "../../node_modules/.pnpm/@capacitor+device@1.1.2_@capacitor+core@3.8.0/node_modules/@capacitor/device"
   CapacitorDialog:
-    :path: "../../node_modules/@capacitor/dialog"
+    :path: "../../node_modules/.pnpm/@capacitor+dialog@1.0.7_@capacitor+core@3.8.0/node_modules/@capacitor/dialog"
   CapacitorFilesystem:
-    :path: "../../node_modules/@capacitor/filesystem"
+    :path: "../../node_modules/.pnpm/@capacitor+filesystem@1.1.0_@capacitor+core@3.8.0/node_modules/@capacitor/filesystem"
   CapacitorHaptics:
-    :path: "../../node_modules/@capacitor/haptics"
+    :path: "../../node_modules/.pnpm/@capacitor+haptics@1.1.4_@capacitor+core@3.8.0/node_modules/@capacitor/haptics"
   CapacitorKeyboard:
-    :path: "../../node_modules/@capacitor/keyboard"
+    :path: "../../node_modules/.pnpm/@capacitor+keyboard@1.2.3_@capacitor+core@3.8.0/node_modules/@capacitor/keyboard"
   CapacitorLocalNotifications:
-    :path: "../../node_modules/@capacitor/local-notifications"
+    :path: "../../node_modules/.pnpm/@capacitor+local-notifications@1.1.0_@capacitor+core@3.8.0/node_modules/@capacitor/local-notifications"
   CapacitorPushNotifications:
-    :path: "../../node_modules/@capacitor/push-notifications"
+    :path: "../../node_modules/.pnpm/@capacitor+push-notifications@1.0.9_@capacitor+core@3.8.0/node_modules/@capacitor/push-notifications"
   CapacitorSecureStoragePlugin:
-    :path: "../../node_modules/capacitor-secure-storage-plugin"
+    :path: "../../node_modules/.pnpm/capacitor-secure-storage-plugin@0.7.1_@capacitor+core@3.8.0/node_modules/capacitor-secure-storage-plugin"
   CapacitorShare:
-    :path: "../../node_modules/@capacitor/share"
+    :path: "../../node_modules/.pnpm/@capacitor+share@1.1.2_@capacitor+core@3.8.0/node_modules/@capacitor/share"
   CapacitorSplashScreen:
-    :path: "../../node_modules/@capacitor/splash-screen"
+    :path: "../../node_modules/.pnpm/@capacitor+splash-screen@1.2.2_@capacitor+core@3.8.0/node_modules/@capacitor/splash-screen"
   CapacitorStorage:
-    :path: "../../node_modules/@capacitor/storage"
+    :path: "../../node_modules/.pnpm/@capacitor+storage@1.2.5_@capacitor+core@3.8.0/node_modules/@capacitor/storage"
   HouseninjaCapacitorMixpanel:
-    :path: "../../node_modules/@houseninja/capacitor-mixpanel"
+    :path: "../../node_modules/.pnpm/@houseninja+capacitor-mixpanel@0.2.0_@capacitor+core@3.8.0/node_modules/@houseninja/capacitor-mixpanel"
   RobingenzCapacitorFilePicker:
-    :path: "../../node_modules/@robingenz/capacitor-file-picker"
+    :path: "../../node_modules/.pnpm/@robingenz+capacitor-file-picker@0.3.1_@capacitor+core@3.8.0/node_modules/@robingenz/capacitor-file-picker"
   SentryCapacitor:
-    :path: "../../node_modules/@sentry/capacitor"
+    :path: "../../node_modules/.pnpm/@sentry+capacitor@0.10.0_@capacitor+core@3.8.0/node_modules/@sentry/capacitor"
 
 SPEC CHECKSUMS:
   Branch: b5b57fc2e6f098916fd2ea26c9b66f52ffe7e293
-  Capacitor: a7dc804520a7b3bba6a566c472329365622b663e
+  Capacitor: 858180089d91c2da74977836a9da6586a4215552
   CapacitorActionSheet: a32d0c1dd152d324a7c9b20b8998d7ecc0742b13
   CapacitorApp: 6539a37b671391147dd0180e1483c051077254bf
   CapacitorBranchDeepLinks: 04e1483b22d701357841d06b22fa2cb1c5e52c49
@@ -226,7 +226,7 @@ SPEC CHECKSUMS:
   CapacitorCommunityFcm: af38ba6452104d1b3c4eef9007d9856b2805a6e8
   CapacitorCommunityHttp: 7be90668527ef14ee10d08135b0e00fac9cf8247
   CapacitorCommunityIntercom: 6a8aba15da594d5535f0284dea4ac8d7edf622ed
-  CapacitorCordova: 6ea8e936eac6cd3c50f2cfc1b7423ac71d9909e4
+  CapacitorCordova: c529275185e3cfb6c2015c1500efa563e867b2de
   CapacitorDevice: 793e3e66d5b27872e66e0e4079d0cd93b762872c
   CapacitorDialog: 8bc7116e58d30b126c4d033c06f78a14e554d089
   CapacitorFilesystem: 47738a7110f2eb8629054217d8d6027d9ffd4e5b
@@ -256,6 +256,6 @@ SPEC CHECKSUMS:
   SentryCapacitor: 02192515706232d86e560a62c5adc4ae77939631
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: 242e24d1de403a6cfb9ae904da07148df0fba309
+PODFILE CHECKSUM: 22753985351f0c3994762ae7dd2dd60aeaf7ee0d
 
 COCOAPODS: 1.11.3

@@ -26,6 +26,7 @@ module.exports = {
       {
         assets: [
           'CHANGELOG.md',
+          'pnpm-lock.yaml',
           'package.json',
           'yarn.lock',
         ]
