@@ -53,8 +53,8 @@ project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capa
 include ':houseninja-capacitor-mixpanel'
 project(':houseninja-capacitor-mixpanel').projectDir = new File('../node_modules/@houseninja/capacitor-mixpanel/android')
 
-include ':robingenz-capacitor-file-picker'
-project(':robingenz-capacitor-file-picker').projectDir = new File('../node_modules/@robingenz/capacitor-file-picker/android')
+include ':capawesome-capacitor-file-picker'
+project(':capawesome-capacitor-file-picker').projectDir = new File('../node_modules/@capawesome/capacitor-file-picker/android')
 
 include ':capacitor-branch-deep-links'
 project(':capacitor-branch-deep-links').projectDir = new File('../node_modules/capacitor-branch-deep-links/android')

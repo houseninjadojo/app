@@ -68,8 +68,8 @@
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
 	{
-		"pkg": "@robingenz/capacitor-file-picker",
-		"classpath": "dev.robingenz.capacitorjs.plugins.filepicker.FilePickerPlugin"
+		"pkg": "@capawesome/capacitor-file-picker",
+		"classpath": "io.capawesome.capacitorjs.plugins.filepicker.FilePickerPlugin"
 	},
 	{
 		"pkg": "capacitor-branch-deep-links",
