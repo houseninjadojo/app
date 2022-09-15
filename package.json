@@ -163,7 +163,7 @@
     "@capacitor-community/http": "^1.4.1",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#7c5a337",
     "@capacitor/action-sheet": "^1.0.8",
-    "@capacitor/app": "^1.1.1",
+    "@capacitor/app": "^4.0.1",
     "@capacitor/browser": "^1.0.7",
     "@capacitor/camera": "^1.3.1",
     "@capacitor/device": "^1.1.2",

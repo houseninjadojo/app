@@ -1851,10 +1851,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.7.0.tgz#6685390caf4afc821e0e24ee728fac8e6bf1572d"
   integrity sha512-SF06sqvEKvRnev+T+k4jjfDIdsqcDiGnzGld7oTtJipiO16xVkKPG0kEbFZEWkrMvhqRn6jNyl+ZHn5/9JR7nA==
 
-"@capacitor/app@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-1.1.1.tgz#bde7202faad1b47c4ae2c4a622285d7569384c5e"
-  integrity sha512-8ADkldHnoE1xkWvPUsGlERVGm6/Zvcxy6hCI80AxydIKyaCG7kbDAvUclebbnw/eFRxj2zBoVatGLjmJNvTbYw==
+"@capacitor/app@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-4.0.1.tgz#05c60541c427ef30f4762d8f786e70d0ed32fe01"
+  integrity sha512-frPft9TMJL70jWq5jmxwGSBddZVvsWxX5Agj2i19WJerk37aTgljB05HRr/YLg6mF1G/NIXmmFJZDY8MEgirDg==
 
 "@capacitor/browser@^1.0.7":
   version "1.0.7"
