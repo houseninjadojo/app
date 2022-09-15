@@ -31,7 +31,11 @@ export default class UserModel extends Model {
   @hasMany('invoice', { async: true, inverse: 'user' })
   declare invoices: AsyncHasMany<Invoice>;
 
-  @hasMany('payment-method', { async: true, inverse: 'user', polymorphic: true })
+  @hasMany('payment-method', {
+    async: true,
+    inverse: 'user',
+    polymorphic: true,
+  })
   declare paymentMethods: AsyncHasMany<PaymentMethod>;
 
   @hasMany('payment', { async: true, inverse: 'user' })
