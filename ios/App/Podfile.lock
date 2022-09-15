@@ -112,12 +112,12 @@ PODS:
   - PromisesObjC (2.1.1)
   - RobingenzCapacitorFilePicker (0.3.1):
     - Capacitor
-  - Sentry (7.11.0):
-    - Sentry/Core (= 7.11.0)
-  - Sentry/Core (7.11.0)
-  - SentryCapacitor (0.9.0):
+  - Sentry (7.23.0):
+    - Sentry/Core (= 7.23.0)
+  - Sentry/Core (7.23.0)
+  - SentryCapacitor (0.10.0):
     - Capacitor
-    - Sentry (~> 7.11.0)
+    - Sentry (~> 7.23.0)
   - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
@@ -252,8 +252,8 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RobingenzCapacitorFilePicker: f20b11e6020fd9aac95d37e364fd98fbb218eb3b
-  Sentry: 0c5cd63d714187b4a39c331c1f0eb04ba7868341
-  SentryCapacitor: 35abcab7d80bb69fb330b00aaf7b99c2fb2db02c
+  Sentry: a0d4563fa4ddacba31fdcc35daaa8573d87224d6
+  SentryCapacitor: 02192515706232d86e560a62c5adc4ae77939631
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
 PODFILE CHECKSUM: 242e24d1de403a6cfb9ae904da07148df0fba309
