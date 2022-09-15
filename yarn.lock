@@ -1856,10 +1856,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-1.1.1.tgz#bde7202faad1b47c4ae2c4a622285d7569384c5e"
   integrity sha512-8ADkldHnoE1xkWvPUsGlERVGm6/Zvcxy6hCI80AxydIKyaCG7kbDAvUclebbnw/eFRxj2zBoVatGLjmJNvTbYw==
 
-"@capacitor/browser@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-1.0.7.tgz#2602ca1df5580a58e5edf3e7bed7ebfed7466d13"
-  integrity sha512-ni8IjsPyFUYqQ2JxBwzI7VpJUZHPr7QiRds5hQWM/1cpfH0+DWvjWHwzxQXuSbW0h+QGXGSJ/vwqjRns7NzLfQ==
+"@capacitor/browser@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-4.0.1.tgz#0a725fea27d706940af8dbcc362b6d14bf20bfd2"
+  integrity sha512-tPOA/eYDJdDeMFd+A3I8teuGfPP0GEqhWtMzH8z5r2tW40iJ/mL8qH5NgVLMZ3uvs7gN2LfQTCMNJvl0F/WdBw==
 
 "@capacitor/camera@^1.3.1":
   version "1.3.1"
