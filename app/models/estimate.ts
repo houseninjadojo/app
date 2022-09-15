@@ -5,7 +5,8 @@ import type { AsyncBelongsTo } from '@ember-data/model';
 // import type WorkOrder from './work-order';
 
 export default class EstimateModel extends Model {
-  @belongsTo('work-order') declare workOrder: AsyncBelongsTo<any>;
+  @belongsTo('work-order', { async: true })
+  declare workOrder: AsyncBelongsTo<any>;
 
   @attr('string') declare description?: string;
   @attr('string') declare amount: string;
