@@ -11,9 +11,12 @@ import {
 // import { BrowserTracing } from '@sentry/tracing';
 import { isPresent } from '@ember/utils';
 
+import type { CapacitorOptions } from '@sentry/capacitor';
+import type { Integration } from '@sentry/types';
+
 const { sentry: sentryConfig } = config;
 
-const integrations = [
+const integrations: Integration[] = [
   new CaptureConsole({
     levels: ['error', 'warn'],
   }),
@@ -30,7 +33,7 @@ const integrations = [
   new RewriteFrames({
     // function that takes the frame, applies a transformation, and returns it
     iteratee: (frame) => {
-      const filename = frame.filename.split('/').pop().replace('?', '');
+      const filename = frame.filename?.split('/').pop()?.replace('?', '');
       frame.filename = `app:///${filename}`;
       return frame;
     },
@@ -40,12 +43,12 @@ const integrations = [
 const sentryOptions = {
   ...sentryConfig,
   integrations,
+  environment: config.environment
 };
 
-sentryOptions.environment = config.environment;
-
-export function init() {
+export function init(): void {
   if (isPresent(sentryConfig.dsn)) {
+    // @ts-ignore
     SentryCapacitor.init(sentryOptions, SentryEmber.init);
   }
 }
@@ -54,10 +57,10 @@ const Sentry = SentryCapacitor;
 
 export default Sentry;
 
-export function captureException(ex) {
+export function captureException(ex: Error): void {
   if (config.environment === 'development') {
     console.error(ex);
   }
-  debug(ex);
+  debug(ex.message);
   Sentry.captureException(ex);
 }

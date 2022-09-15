@@ -2,21 +2,33 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import { ActionSheet, ActionSheetButtonStyle, type ShowActionsResult } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class WorkOrderApproveEstimateViewContentComponent extends Component {
-  @service intercom;
-  @service router;
-  @service store;
+import type Estimate from 'houseninja/models/estimate';
+import type RouterService from '@ember/routing/router-service';
+// import type IntercomService from 'houseninja/services/intercom';
 
-  @tracked showWebDialog = false;
-  @tracked isProcessing = false;
-  @tracked isDoneProcessing = false;
+interface Args {
+  model?: any;
+}
 
-  actionSheetOptions = [
+type ActionSheetOptions = Array<{
+  title: string;
+  style?: ActionSheetButtonStyle;
+}>;
+
+export default class WorkOrderApproveEstimateViewContentComponent extends Component<Args> {
+  @service declare intercom: any;
+  @service declare router: RouterService;
+
+  @tracked showWebDialog: boolean = false;
+  @tracked isProcessing: boolean = false;
+  @tracked isDoneProcessing: boolean = false;
+
+  actionSheetOptions: ActionSheetOptions = [
     {
       title: 'Dismiss',
       style: ActionSheetButtonStyle.Cancel,
@@ -26,9 +38,9 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     },
   ];
 
-  async _nativeConfirmation() {
-    const total = this.args.model.get('estimate.amount');
-    const result = await ActionSheet.showActions({
+  async _nativeConfirmation(): Promise<void> {
+    const total: string = this.args.model.get('estimate.amount');
+    const result: ShowActionsResult = await ActionSheet.showActions({
       title: total
         ? `Do you approve this estimate of ${total}?`
         : `Do you approve this estimate?`,
@@ -37,43 +49,43 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       options: this.actionSheetOptions,
     });
 
-    const choice = this.actionSheetOptions[result.index].title;
-    const confirmed = choice === this.actionSheetOptions[1].title;
+    const choice: string | undefined = this.actionSheetOptions[result.index]?.title;
+    const confirmed: boolean = choice === this.actionSheetOptions[1]?.title;
     if (confirmed) {
       await this.approveEstimate();
     }
   }
 
-  _webConfirmation() {
+  _webConfirmation(): void {
     this.toggleWebDialog();
   }
 
   @action
-  toggleIsProcessing() {
+  toggleIsProcessing(): void {
     this.isProcessing = !this.isProcessing;
   }
 
   @action
-  async approveEstimate() {
+  async approveEstimate(): Promise<void> {
     this.toggleIsProcessing();
 
     this.estimate.approvedAt = new Date();
 
     try {
       this.estimate.save();
-    } catch (e) {
-      this.estimate.approvedAt = null;
+    } catch (e: any) {
+      this.estimate.approvedAt = undefined;
       captureException(e);
     }
   }
 
   @action
-  toggleWebDialog() {
+  toggleWebDialog(): void {
     this.showWebDialog = !this.showWebDialog;
   }
 
   @action
-  async confirm() {
+  async confirm(): Promise<void> {
     if (isNativePlatform()) {
       this._nativeConfirmation();
     } else {
@@ -82,32 +94,32 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   }
 
   @action
-  inquireAboutEstimate() {
+  inquireAboutEstimate(): void {
     this.intercom.showComposer(
       `I have a question about the estimate for the ${this.args.model?.description} service request.`
     );
   }
 
   @action
-  selectRoute() {
+  selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
   }
 
-  get isNativePlatform() {
+  get isNativePlatform(): boolean {
     return isNativePlatform();
   }
 
-  get estimate() {
+  get estimate(): Estimate {
     return this.args.model.estimate;
   }
 
-  get formattedTotal() {
-    return this.estimate?.formattedTotal;
+  get formattedTotal(): string | null {
+    return this.estimate?.amount;
   }
 
-  get estimateApproved() {
+  get estimateApproved(): boolean {
     return this.estimate?.isApproved;
   }
 }
