@@ -9,10 +9,10 @@ import type Invoice from './invoice';
 import type Property from './property';
 
 export default class WorkOrderModel extends Model {
-  @belongsTo('invoice', { async: false })
+  @belongsTo('invoice', { async: false, inverse: 'workOrder' })
   declare invoice: AsyncBelongsTo<Invoice>;
 
-  @belongsTo('property', { async: true })
+  @belongsTo('property', { async: true, inverse: 'workOrders' })
   declare property: AsyncBelongsTo<Property>;
 
   @attr('string') declare authCode?: string;

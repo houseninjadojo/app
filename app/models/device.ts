@@ -3,7 +3,7 @@ import Model, { attr, belongsTo, type AsyncBelongsTo } from '@ember-data/model';
 import type User from './user';
 
 export default class DeviceModel extends Model {
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'devices' })
   declare user: AsyncBelongsTo<User>;
 
   @attr('string') declare apnsDeviceToken?: string; // apple push notification token

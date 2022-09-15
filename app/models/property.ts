@@ -12,16 +12,16 @@ import type User from './user';
 import type WorkOrder from './work-order';
 
 export default class PropertyModel extends Model {
-  @belongsTo('service-area', { async: true })
+  @belongsTo('service-area', { async: true, inverse: 'properties' })
   declare serviceArea: AsyncBelongsTo<ServiceArea>;
 
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'properties' })
   declare user: AsyncBelongsTo<User>;
 
-  @hasMany('document', { async: true })
+  @hasMany('document', { async: true, inverse: 'property' })
   declare documents: AsyncHasMany<Document>;
 
-  @hasMany('work-order', { async: true })
+  @hasMany('work-order', { async: true, inverse: 'property' })
   declare workOrders: AsyncHasMany<WorkOrder>;
 
   @attr('string') declare streetAddress1: string;

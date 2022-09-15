@@ -5,13 +5,13 @@ import type PaymentMethod from './payment-method';
 import type User from './user';
 
 export default class PaymentModel extends Model {
-  @belongsTo('invoice', { async: true })
+  @belongsTo('invoice', { async: true, inverse: 'payment' })
   declare invoice: AsyncBelongsTo<Invoice>;
 
   @belongsTo('payment-method', { async: true, inverse: 'payments' })
   declare paymentMethod: AsyncBelongsTo<PaymentMethod>;
 
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'payments' })
   declare user: AsyncBelongsTo<User>;
 
   @attr('string') declare amount: string;

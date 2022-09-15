@@ -17,28 +17,28 @@ import type User from './user';
 import type WorkOrder from './work-order';
 
 export default class InvoiceModel extends Model {
-  @belongsTo('document', { async: false })
+  @belongsTo('document', { async: false, inverse: 'invoice' })
   declare document: AsyncBelongsTo<Document>;
 
-  @belongsTo('document', { async: false })
+  @belongsTo('document', { async: false, inverse: 'invoice' })
   declare receipt: AsyncBelongsTo<Document>;
 
-  @belongsTo('payment', { async: true })
+  @belongsTo('payment', { async: true, inverse: 'invoice' })
   declare payment: AsyncBelongsTo<Payment>;
 
-  @belongsTo('promo-code', { async: true })
+  @belongsTo('promo-code', { async: true, inverse: 'invoices' })
   declare promoCode: AsyncBelongsTo<PromoCode>;
 
-  @belongsTo('subscription', { async: true })
+  @belongsTo('subscription', { async: true, inverse: 'invoices' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'invoices' })
   declare user: AsyncBelongsTo<User>;
 
-  @belongsTo('work-order', { async: true })
+  @belongsTo('work-order', { async: true, inverse: 'invoice' })
   declare workOrder: AsyncBelongsTo<WorkOrder>;
 
-  @hasMany('line-item', { async: true })
+  @hasMany('line-item', { async: true, inverse: 'invoice' })
   declare lineItems: AsyncHasMany<LineItem>;
 
   @attr('string') declare description?: string;

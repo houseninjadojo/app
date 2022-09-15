@@ -13,19 +13,19 @@ import type SubscriptionPlan from './subscription-plan';
 import type User from './user';
 
 export default class SubscriptionModel extends Model {
-  @belongsTo('credit-card', { async: true })
+  @belongsTo('credit-card', { async: true, inverse: 'subscriptions' })
   declare paymentMethod: AsyncBelongsTo<CreditCard>;
 
-  @belongsTo('promo-code', { async: true })
+  @belongsTo('promo-code', { async: true, inverse: 'subscriptions' })
   declare promoCode: AsyncBelongsTo<PromoCode>;
 
-  @belongsTo('subscription-plan', { async: true })
+  @belongsTo('subscription-plan', { async: true, inverse: 'subscriptions' })
   declare subscriptionPlan: AsyncBelongsTo<SubscriptionPlan>;
 
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'subscription' })
   declare user: AsyncBelongsTo<User>;
 
-  @hasMany('invoice', { async: true })
+  @hasMany('invoice', { async: true, inverse: 'subscription' })
   declare invoices: AsyncHasMany<Invoice>;
 
   @attr('string') declare status: string;

@@ -6,13 +6,13 @@ import type Subscription from './subscription';
 import type User from './user';
 
 export default class PromoCodeModel extends Model {
-  @hasMany('invoice', { async: true })
+  @hasMany('invoice', { async: true, inverse: 'promoCode' })
   declare invoices: AsyncHasMany<Invoice>;
 
-  @hasMany('subscription', { async: true })
+  @hasMany('subscription', { async: true, inverse: 'promoCode' })
   declare subscriptions: AsyncHasMany<Subscription>;
 
-  @hasMany('user', { async: true })
+  @hasMany('user', { async: true, inverse: 'promoCode' })
   declare users: AsyncHasMany<User>;
 
   @attr('boolean') declare active: boolean;

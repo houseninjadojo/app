@@ -3,7 +3,7 @@ import Model, { AsyncHasMany, attr, hasMany } from '@ember-data/model';
 import type Subscription from './subscription';
 
 export default class SubscriptionPlanModel extends Model {
-  @hasMany('subscription', { async: true })
+  @hasMany('subscription', { async: true, inverse: 'subscriptionPlan' })
   declare subscriptions: AsyncHasMany<Subscription>;
 
   @attr('string') declare slug: string;

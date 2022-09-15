@@ -16,7 +16,7 @@ import type User from './user';
  * @see app/models/payment-method/card
  */
 export default class PaymentMethodModel extends Model {
-  @belongsTo('subscription', { async: true })
+  @belongsTo('subscription', { async: true, inverse: 'paymentMethod' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
   @belongsTo('user', { async: true, inverse: 'paymentMethods' })

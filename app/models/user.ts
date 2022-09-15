@@ -19,31 +19,31 @@ import type PromoCode from './promo-code';
 import type Subscription from './subscription';
 
 export default class UserModel extends Model {
-  @hasMany('document', { async: true })
+  @hasMany('document', { async: true, inverse: 'user' })
   declare documents: AsyncHasMany<Document>;
 
-  @hasMany('document-group', { async: true })
+  @hasMany('document-group', { async: true, inverse: 'user' })
   declare documentGroups: AsyncHasMany<DocumentGroup>;
 
-  @hasMany('device', { async: true })
+  @hasMany('device', { async: true, inverse: 'user' })
   declare devices: AsyncHasMany<Device>;
 
-  @hasMany('invoice', { async: true })
+  @hasMany('invoice', { async: true, inverse: 'user' })
   declare invoices: AsyncHasMany<Invoice>;
 
-  @hasMany('payment-method', { async: true, polymorphic: true })
+  @hasMany('payment-method', { async: true, inverse: 'user', polymorphic: true })
   declare paymentMethods: AsyncHasMany<PaymentMethod>;
 
-  @hasMany('payment', { async: true })
+  @hasMany('payment', { async: true, inverse: 'user' })
   declare payments: AsyncHasMany<Payment>;
 
-  @hasMany('property', { async: true })
+  @hasMany('property', { async: true, inverse: 'user' })
   declare properties: AsyncHasMany<Property>;
 
-  @belongsTo('promo-code', { async: true })
-  declare promoCode: AsyncHasMany<PromoCode>;
+  @belongsTo('promo-code', { async: true, inverse: 'users' })
+  declare promoCode: AsyncBelongsTo<PromoCode>;
 
-  @belongsTo('subscription', { async: true })
+  @belongsTo('subscription', { async: true, inverse: 'user' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
   @attr('string') declare email: string;

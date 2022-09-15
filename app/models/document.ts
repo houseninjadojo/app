@@ -9,16 +9,16 @@ import type User from './user';
 import type WriteOnlyTransform from 'houseninja/transforms/write-only';
 
 export default class DocumentModel extends Model {
-  @belongsTo('invoice', { async: true })
+  @belongsTo('invoice', { async: true, inverse: 'document' })
   declare invoice: AsyncBelongsTo<Invoice>;
 
-  @belongsTo('property', { async: true })
+  @belongsTo('property', { async: true, inverse: 'documents' })
   declare property: AsyncBelongsTo<Property>;
 
-  @belongsTo('user', { async: true })
+  @belongsTo('user', { async: true, inverse: 'documents' })
   declare user: AsyncBelongsTo<User>;
 
-  @belongsTo('document-group', { async: true })
+  @belongsTo('document-group', { async: true, inverse: 'documents' })
   declare documentGroup: AsyncBelongsTo<DocumentGroup>;
 
   @attr('array') declare tags: string[];
