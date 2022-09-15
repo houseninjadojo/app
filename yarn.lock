@@ -1830,9 +1830,9 @@
     "@capacitor/filesystem" "^4.0.0"
     "@capacitor/ios" "^4.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#880ad8b":
-  version "4.0.0-beta.1"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/880ad8b9d8924a3bc7db9df9e6250f1e8803435c"
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#ce1afcd":
+  version "4.0.0-beta.3"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/ce1afcd940337a88f39d8e6fde348ac1f0eb57b8"
 
 "@capacitor/action-sheet@^4.0.1":
   version "4.0.1"
