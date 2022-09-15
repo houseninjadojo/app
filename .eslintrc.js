@@ -27,6 +27,17 @@ module.exports = {
   },
   rules: {},
   overrides: [
+    {
+      files: ['**/*.ts'],
+      plugins: ['ember', '@typescript-eslint'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:prettier/recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      parser: '@typescript-eslint/parser',
+    },
     // node files
     {
       files: [

@@ -12,7 +12,7 @@ import type { DeviceId, DeviceInfo, BatteryInfo } from '@capacitor/device';
  */
 export async function getId(): Promise<string> {
   return await run(async () => {
-    let result: DeviceId = await Device.getId();
+    const result: DeviceId = await Device.getId();
     return result.uuid;
   });
 }
