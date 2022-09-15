@@ -35,7 +35,7 @@ export default class SessionService extends BaseSessionService {
   }
 
   async loadIfPKCE() {
-    if (this.data.authenticated.kind === 'pkce') {
+    if (this.data?.authenticated?.authenticator === 'authenticator:pkce') {
       try {
         this.current.loadIdentifyAndTrack.perform();
       } catch (err) {
