@@ -1,8 +1,14 @@
-export function trackCursorPosition(inputEl, formatter, delimiter = ' ') {
-  const node = inputEl; // vanilla javascript element
-  const lastValue = inputEl.value; // get value before formatting
-  const formattedValue = formatter(inputEl);
-  let cursor = node.selectionStart; // store cursor position
+type FormatterFn = (inputEl: HTMLInputElement) => string;
+
+export function trackCursorPosition(
+  inputEl: HTMLInputElement,
+  formatter: FormatterFn,
+  delimiter = ' '
+) {
+  const node: HTMLInputElement = inputEl; // vanilla javascript element
+  const lastValue: string = inputEl.value; // get value before formatting
+  const formattedValue: string = formatter(inputEl);
+  let cursor: number = node.selectionStart ?? 0; // store cursor position
   inputEl.value = formattedValue; // set value to formatted
 
   // keep the cursor at the end on addition of spaces
@@ -10,8 +16,7 @@ export function trackCursorPosition(inputEl, formatter, delimiter = ' ') {
     cursor = formattedValue.length;
     // decrement cursor when backspacing// i.e. "4444 |" => backspace => "4444|"
     if (
-      inputEl.getAttribute('data-lastvalue') &&
-      inputEl.getAttribute('data-lastvalue').charAt(cursor - 1) == delimiter
+      inputEl.getAttribute('data-lastvalue')?.charAt(cursor - 1) == delimiter
     ) {
       cursor--;
     }

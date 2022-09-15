@@ -1,13 +1,13 @@
 import Model, { attr, hasMany, type AsyncHasMany } from '@ember-data/model';
-import ArrayTransform from 'houseninja/transforms/array';
-// import type Property from './property';
+
+import type Property from './property';
 
 export default class ServiceAreaModel extends Model {
-  @hasMany('property') declare properties: AsyncHasMany<any>;
+  @hasMany('property') declare properties: AsyncHasMany<Property>;
 
   @attr('string') declare name: string;
   @attr('string') declare calendarUrl: string;
-  @attr('array')  declare zipcodes: ArrayTransform;
+  @attr('array') declare zipcodes: string[];
 
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;

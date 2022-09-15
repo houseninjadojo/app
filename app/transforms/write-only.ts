@@ -6,6 +6,7 @@ export default class WriteOnlyTransform extends Transform {
     return null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   serialize(deserialized: any): any {
     if (isEmpty(deserialized)) {
       return null;
