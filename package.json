@@ -107,7 +107,7 @@
     "ember-cli-dotenv": "^3.1.0",
     "ember-cli-htmlbars": "^6.1.1",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-mirage": "^2.4.0",
+    "ember-cli-mirage": "kiwi-josh/ember-cli-mirage#fix/deprecation-early-static",
     "ember-cli-postcss": "^8.2.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
