@@ -22,11 +22,11 @@ export default class IntercomService extends Service {
 
   async registerUser(userId, email, hmac) {
     if (isNativePlatform()) {
-      await Intercom.registerIdentifiedUser({
+      await Intercom.setUserHash({ hmac });
+      await Intercom.loginUser({
         userId,
         email,
       });
-      await Intercom.setUserHash({ hmac });
     } else {
       await Intercom.boot({
         appId: ENV.intercom.appId,
