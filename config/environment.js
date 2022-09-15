@@ -109,6 +109,9 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+    // Mirage
+    ENV['ember-cli-mirage'].enabled = true;
+
     // Testem prefers this...
     ENV.locationType = 'none';
 
