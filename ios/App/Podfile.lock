@@ -1,6 +1,6 @@
 PODS:
   - Branch (1.43.2)
-  - Capacitor (4.1.0):
+  - Capacitor (4.2.0):
     - CapacitorCordova
   - CapacitorActionSheet (4.0.1):
     - Capacitor
@@ -11,29 +11,29 @@ PODS:
     - Capacitor
   - CapacitorBrowser (4.0.1):
     - Capacitor
-  - CapacitorCamera (4.1.0):
+  - CapacitorCamera (4.1.1):
     - Capacitor
   - CapacitorCommunityHttp (2.0.0-0):
     - Capacitor
-  - CapacitorCommunityIntercom (4.0.0-beta.0):
+  - CapacitorCommunityIntercom (4.0.0-beta.1):
     - Capacitor
     - Intercom
-  - CapacitorCordova (4.1.0)
+  - CapacitorCordova (4.2.0)
   - CapacitorDevice (4.0.1):
     - Capacitor
   - CapacitorDialog (4.0.1):
     - Capacitor
-  - CapacitorFilesystem (4.1.0):
+  - CapacitorFilesystem (4.1.1):
     - Capacitor
   - CapacitorHaptics (4.0.1):
     - Capacitor
   - CapacitorKeyboard (4.0.1):
     - Capacitor
-  - CapacitorLocalNotifications (4.0.1):
+  - CapacitorLocalNotifications (4.1.0):
     - Capacitor
   - CapacitorPreferences (4.0.1):
     - Capacitor
-  - CapacitorPushNotifications (4.0.1):
+  - CapacitorPushNotifications (4.1.0):
     - Capacitor
   - CapacitorSecureStoragePlugin (0.8.0):
     - Capacitor
@@ -217,23 +217,23 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Branch: 74cc856025984f691833c8fa332834ac38a0cf4e
-  Capacitor: 525c8f270214dea07bc75b5ca9dc10ac3c0f38d4
+  Capacitor: 1dc8dbe3b5ffb9fd085739dbec754180975a7d37
   CapacitorActionSheet: addfd7a5680c40ddba677c6a2a0896b644996fa2
   CapacitorApp: 70ea773d069c24ab188ae7a01237b951920ffacf
   CapacitorBranchDeepLinks: b89845501569ad98f54ee1b7015244b8bce7e021
   CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
-  CapacitorCamera: 0c2f63e8af2d9984e2ff8712274e0cfccece938b
+  CapacitorCamera: 0bdf42438683cdc89fd0fc674a2ee281293d4cb3
   CapacitorCommunityHttp: 72a0758deecbd6ebf2b600c2a6a1bdc8563f8ac4
-  CapacitorCommunityIntercom: 7390e6eef6e2a4c4ab3b3823e56deaa0348df595
-  CapacitorCordova: 63c02d1f0b3b08ccddcbdcbab0087f54135e76b0
+  CapacitorCommunityIntercom: 37d95e3de974fb44600ce850d859f61ce703de44
+  CapacitorCordova: 8de8340fa4fe8f93523a8884ef7024069b44d794
   CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
   CapacitorDialog: e979738675fcd964bfab54c705ff77abb985f5c9
-  CapacitorFilesystem: 328bf35e2fe78d8e8144ac7d2e7476cc395f6b44
+  CapacitorFilesystem: e36a560cb7013cba63cb90bccb04612026f3e3cd
   CapacitorHaptics: 02d48e2efca06ccf3273dbb638b68b0e145f623a
   CapacitorKeyboard: 3b49a9d517641c123fb691713f99a89d6ebf3a37
-  CapacitorLocalNotifications: 24350326640221bd31baaf7b052ddc83b189c352
+  CapacitorLocalNotifications: 216ef48caada97839b7641c2608fa3e7b5666d20
   CapacitorPreferences: d365ea3b5023b2aac39e8f5ce18de141e39d2cae
-  CapacitorPushNotifications: 3f6c041596bfc3a55ec84150a4de05a2fa9b26ba
+  CapacitorPushNotifications: afc6b4d3c7935a3fa6cb08bc78b344c282cafe91
   CapacitorSecureStoragePlugin: f4d8b50d96bebd71b21b6eb2322544cb1fd92bea
   CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
   CapacitorSplashScreen: 4fc967486a75ae5ef6f0fe154f60f68fd83e5ac3
@@ -256,6 +256,6 @@ SPEC CHECKSUMS:
   SentryCapacitor: da1721be0244bb90695b681f3e03521080b528e3
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: 1422ee1a9227c5ae3eb17665bf4cb14e025409d4
+PODFILE CHECKSUM: c987eebedb9d2c03a65951008ec3f404a9a95332
 
 COCOAPODS: 1.11.3

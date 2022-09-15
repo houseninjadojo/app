@@ -52,6 +52,10 @@
 		"classpath": "com.capacitorjs.plugins.localnotifications.LocalNotificationsPlugin"
 	},
 	{
+		"pkg": "@capacitor/preferences",
+		"classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
+	},
+	{
 		"pkg": "@capacitor/push-notifications",
 		"classpath": "com.capacitorjs.plugins.pushnotifications.PushNotificationsPlugin"
 	},
@@ -78,10 +82,6 @@
 	{
 		"pkg": "capacitor-secure-storage-plugin",
 		"classpath": "com.whitestein.securestorage.SecureStoragePluginPlugin"
-	},
-	{
-		"pkg": "@capacitor/preferences",
-		"classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
 	},
 	{
 		"pkg": "@sentry/capacitor",
