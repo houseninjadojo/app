@@ -7813,10 +7813,10 @@ dot-prop@^5.1.0, dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv-vault@^1.13.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/dotenv-vault/-/dotenv-vault-1.13.1.tgz#aa23bb6a8f9d32f00b619d689191ad8dbd03b177"
-  integrity sha512-AtVNhghXLkAr4KLV8ui8rJr9hxkByYYBB9n7tiYU9yZ3hrRc6Pgmj2bo0lasveNo1m/4E3+qF9RVsIK+6gKebw==
+dotenv-vault@^1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/dotenv-vault/-/dotenv-vault-1.13.2.tgz#a18db455cda7cd81ad76f175ae5919399cd25b64"
+  integrity sha512-GgCFSRcEbTkBgInQ4tHXUl7Zycn43/KkG72R8d6XBLx4ZgDiOwDBkfaXp+FyMyvZ7WPUL6yDCv0KL+jRpRh+Lg==
   dependencies:
     "@oclif/core" "^1"
     "@oclif/plugin-help" "^5.1.12"
