@@ -16,12 +16,12 @@ export default class SettingsPaymentMethodsEditController extends Controller {
 
   @tracked formIsInvalid = true;
   @tracked paymentMethod = {
-    cardNumber: this.creditCard.cardNumber,
-    cvv: this.creditCard.cvv,
-    expMonth: null,
-    expYear: null,
-    zipcode: null,
-    isDefault: false,
+    cardNumber: this.model.cardNumber,
+    cvv: this.model.cvv,
+    expMonth: this.model.expMonth,
+    expYear: this.model.expYear,
+    zipcode: this.model.zipcode,
+    isDefault: this.model.isDefault,
   };
   @tracked fields = [
     {
@@ -30,7 +30,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       label: 'Card Number',
       placeholder: '',
       disabled: true,
-      value: this.creditCard.obfuscated.lastFour,
+      value: this.model.obfuscated.lastFour,
     },
     {
       // type: 'number',
@@ -38,7 +38,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       required: true,
       label: 'Security Code',
       placeholder: '',
-      value: this.paymentMethod.cvv || this.creditCard.obfuscated.cvv,
+      value: this.paymentMethod.cvv || this.model.obfuscated.cvv,
     },
     {
       type: 'number',
@@ -46,7 +46,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       required: true,
       label: 'Month',
       placeholder: 'MM',
-      value: this.paymentMethod.expMonth || this.creditCard.expMonth,
+      value: this.paymentMethod.expMonth || this.model.expMonth,
     },
     {
       type: 'number',
@@ -54,7 +54,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       required: true,
       label: 'Year',
       placeholder: 'YY',
-      value: this.paymentMethod.expYear || this.creditCard.expYear,
+      value: this.paymentMethod.expYear || this.model.expYear,
     },
     {
       type: 'number',
@@ -62,7 +62,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       required: true,
       label: 'Zipcode',
       placeholder: '',
-      value: this.paymentMethod.zipcode || this.creditCard.zipcode,
+      value: this.paymentMethod.zipcode || this.model.zipcode,
     },
   ];
 
@@ -70,20 +70,20 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   resetForm() {
     this.fields.forEach((f) => {
       if (f.id === 'cardNumber') {
-        f.value = this.creditCard.obfuscated.lastFour;
+        f.value = this.model.obfuscated.lastFour;
       } else if (f.id === 'cvv') {
-        f.value = this.creditCard.obfuscated.cvv;
+        f.value = this.model.obfuscated.cvv;
       } else {
-        f.value = this.creditCard[f.id];
+        f.value = this.model[f.id];
       }
     });
     this.paymentMethod = {
-      cardNumber: null,
-      cvv: null,
-      expMonth: null,
-      expYear: null,
-      zipcode: null,
-      isDefault: false,
+      cardNumber: this.model.cardNumber,
+      cvv: this.model.cvv,
+      expMonth: this.model.expMonth,
+      expYear: this.model.expYear,
+      zipcode: this.model.zipcode,
+      isDefault: this.model.isDefault,
     };
 
     this.fields = [...this.fields];
@@ -184,9 +184,5 @@ export default class SettingsPaymentMethodsEditController extends Controller {
     console.log('fields', fields);
 
     this.formIsInvalid = inputValidation(fields, ['cardIsValid']).isInvalid;
-  }
-
-  get creditCard() {
-    return this.model;
   }
 }
