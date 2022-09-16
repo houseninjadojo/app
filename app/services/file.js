@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { FilePicker } from '@robingenz/capacitor-file-picker';
+import { FilePicker } from '@capawesome/capacitor-file-picker';
 
 export default class FileService extends Service {
   @tracked file = null;
@@ -19,6 +19,7 @@ export default class FileService extends Service {
       const result = await FilePicker.pickFiles({
         types: ['application/pdf', 'image/png', 'image/jpg', 'image/jpg'],
         multiple: false,
+        readData: true,
       });
       if (result?.files.length !== 0) {
         return result.files[0];

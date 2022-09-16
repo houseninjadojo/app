@@ -13,6 +13,6 @@ export default class UnderscoreTransform extends Transform {
 
 declare module 'ember-data/types/registries/transform' {
   export default interface TransformRegistry {
-    'underscore': UnderscoreTransform;
+    underscore: UnderscoreTransform;
   }
 }

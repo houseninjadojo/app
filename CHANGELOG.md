@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/houseninjadojo/app/compare/v1.20.18...v1.21.0) (2022-09-15)
+
+
+### Features
+
+* capacitor 4 ([3f2c29e](https://github.com/houseninjadojo/app/commit/3f2c29eba4409ad45139043acc9115a9c3c4eccf))
+
 ## [1.20.18](https://github.com/houseninjadojo/app/compare/v1.20.17...v1.20.18) (2022-09-14)
 
 
