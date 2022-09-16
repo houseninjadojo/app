@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
 import SentryRRWeb from '@sentry/rrweb';
@@ -11,7 +13,7 @@ import {
 // import { BrowserTracing } from '@sentry/tracing';
 import { isPresent } from '@ember/utils';
 
-import type { CapacitorOptions } from '@sentry/capacitor';
+// import type { CapacitorOptions } from '@sentry/capacitor';
 import type { Integration } from '@sentry/types';
 
 const { sentry: sentryConfig } = config;
@@ -43,12 +45,11 @@ const integrations: Integration[] = [
 const sentryOptions = {
   ...sentryConfig,
   integrations,
-  environment: config.environment
+  environment: config.environment,
 };
 
 export function init(): void {
   if (isPresent(sentryConfig.dsn)) {
-    // @ts-ignore
     SentryCapacitor.init(sentryOptions, SentryEmber.init);
   }
 }
