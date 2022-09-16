@@ -38,7 +38,7 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       rules: {
-        'max-len': ['error', { code: 120, ignoreComments: true }],
+        'max-len': ['error', { code: 100, ignoreComments: true }],
       },
     },
     // node files

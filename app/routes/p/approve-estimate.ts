@@ -16,7 +16,7 @@ export default class ExternalApproveEstimateRoute extends Route {
   @service declare session: SessionService;
   @service declare store: StoreService;
 
-  async model({ access_token }: Params): Promise<WorkOrder | undefined> {
+  async model({ access_token }: Params): Promise<WorkOrder> {
     await this.session.authenticate(
       'authenticator:payment-approval',
       access_token
