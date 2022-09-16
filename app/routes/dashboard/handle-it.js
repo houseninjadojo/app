@@ -14,6 +14,7 @@ export default class DashboardHandleItRoute extends Route {
     // });
     return await this.store.findAll('work-order', {
       backgroundReload: true,
+      include: 'estimate,invoice',
     });
   }
 }

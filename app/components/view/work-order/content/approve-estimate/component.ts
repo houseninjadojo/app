@@ -34,6 +34,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
+  @tracked estimateApproved = false;
 
   actionSheetOptions: ActionSheetOptions = [
     {
@@ -83,9 +84,11 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     estimate.approvedAt = new Date();
 
     try {
-      estimate.save();
+      await estimate.save();
+      this.estimateApproved = true;
     } catch (e: unknown) {
       estimate.approvedAt = undefined;
+      this.toggleIsProcessing();
       captureException(e as Error);
     }
   }
@@ -98,7 +101,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   @action
   async confirm(): Promise<void> {
     if (isNativePlatform()) {
-      this.nativeConfirmation();
+      await this.nativeConfirmation();
     } else {
       this.webConfirmation();
     }
@@ -136,7 +139,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     return this.args.model.estimate?.get('amount');
   }
 
-  get estimateApproved(): boolean {
-    return this.args.model.estimate?.get('isApproved') === true;
-  }
+  // get estimateApproved(): boolean {
+  //   return this.args.model.estimate?.get('isApproved') === true;
+  // }
 }

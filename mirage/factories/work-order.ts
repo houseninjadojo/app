@@ -42,8 +42,8 @@ export default Factory.extend({
   },
 
   status(): WorkOrderStatus {
-    return faker.helpers.arrayElement(Object.values(WorkOrderStatus));
-    // return 'closed';
+    // return faker.helpers.arrayElement(Object.values(WorkOrderStatus));
+    return WorkOrderStatus.EstimateSharedWithHomeowner;
   },
 
   invoiceUri(): string {

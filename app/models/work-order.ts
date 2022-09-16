@@ -10,7 +10,7 @@ import type Invoice from './invoice';
 import type Property from './property';
 
 export default class WorkOrderModel extends Model {
-  @belongsTo('estimate', { async: true, inverse: 'workOrder' })
+  @belongsTo('estimate', { async: false, inverse: 'workOrder' })
   declare estimate: AsyncBelongsTo<Estimate>;
 
   @belongsTo('invoice', { async: false, inverse: 'workOrder' })
