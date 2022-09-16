@@ -68,7 +68,13 @@ export default class SettingsPaymentMethodsEditController extends Controller {
 
   @action
   resetForm() {
-    // this.fields.forEach((f) => (f.value = this.creditCard[f.id]));
+    this.fields.forEach((f) => {
+      if (f.id === 'cvv') {
+        f.value = this.creditCard.obfuscated.cvv;
+      } else {
+        f.value = this.creditCard[f.id];
+      }
+    });
     this.paymentMethod = {
       cardNumber: null,
       cvv: null,
