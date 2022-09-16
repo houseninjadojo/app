@@ -91,7 +91,7 @@
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "autoprefixer": "^10.4.11",
-    "branch-sdk": "^2.64.0",
+    "branch-sdk": "^2.65.0",
     "broccoli-asset-rev": "^3.0.0",
     "canvas-confetti": "^1.5.1",
     "crypto-js": "^4.1.1",
