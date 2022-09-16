@@ -27,6 +27,17 @@ module.exports = {
   },
   rules: {},
   overrides: [
+    {
+      files: ['**/*.ts'],
+      plugins: ['ember', '@typescript-eslint'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:prettier/recommended',
+        'plugin:@typescript-eslint/recommended',
+      ],
+      parser: '@typescript-eslint/parser',
+    },
     // node files
     {
       files: [
@@ -40,6 +51,8 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        './capacitor.config.js',
+        './lib/utils.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -60,6 +73,15 @@ module.exports = {
       // test files
       files: ['tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
+    },
+    {
+      files: ['./lib/utils.js'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+      env: {
+        node: true,
+      },
     },
   ],
 };

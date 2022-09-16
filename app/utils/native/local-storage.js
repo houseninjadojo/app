@@ -1,4 +1,4 @@
-import { Storage } from '@capacitor/storage';
+import { Preferences } from '@capacitor/preferences';
 import { run } from '@ember/runloop';
 import { serializeJSON, deserializeJSON } from 'houseninja/utils/serializers';
 import { captureException } from 'houseninja/utils/sentry';
@@ -17,7 +17,7 @@ export const GROUPNAME = 'houseninja';
  */
 export async function configure(options = { group: GROUPNAME }) {
   return await run(async () => {
-    return Storage.configure(options);
+    return Preferences.configure(options);
   });
 }
 
@@ -32,7 +32,7 @@ export async function configure(options = { group: GROUPNAME }) {
 export async function get(key) {
   try {
     return await run(async () => {
-      const { value } = await Storage.get({ key });
+      const { value } = await Preferences.get({ key });
       return deserializeJSON(value);
     });
   } catch (e) {
@@ -54,7 +54,7 @@ export async function set(key, value) {
   try {
     return await run(async () => {
       const payload = { key, value: serializeJSON(value) };
-      return await Storage.set(payload);
+      return await Preferences.set(payload);
     });
   } catch (e) {
     captureException(e);
@@ -72,7 +72,7 @@ export async function set(key, value) {
  */
 export async function remove(options) {
   return await run(async () => {
-    return await Storage.remove(options);
+    return await Preferences.remove(options);
   });
 }
 
@@ -85,7 +85,7 @@ export async function remove(options) {
  */
 export async function clear() {
   return await run(async () => {
-    return await Storage.clear();
+    return await Preferences.clear();
   });
 }
 
@@ -98,6 +98,6 @@ export async function clear() {
  */
 export async function keys() {
   return await run(async () => {
-    return await Storage.keys();
+    return await Preferences.keys();
   });
 }
