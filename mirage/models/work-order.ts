@@ -1,7 +1,7 @@
-import { Model, belongsTo, hasMany } from 'miragejs';
+import { Model, belongsTo } from 'miragejs';
 
 export default Model.extend({
-  estimates: hasMany('estimate'),
+  estimate: belongsTo('estimate'),
   invoice: belongsTo('invoice'),
   property: belongsTo('property'),
 });

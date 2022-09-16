@@ -2,19 +2,19 @@ import { Factory } from 'miragejs';
 import { faker } from '@faker-js/faker';
 
 export default Factory.extend({
-  description() {
+  description(): string {
     return faker.lorem.sentence(1);
   },
 
-  amount() {
+  amount(): string {
     return faker.commerce.price(100, 10000, 2, '$');
   },
 
-  vendorCategory() {
+  vendorCategory(): string {
     return faker.commerce.department();
   },
 
-  vendorName() {
+  vendorName(): string {
     return faker.company.name();
   },
 
@@ -22,11 +22,11 @@ export default Factory.extend({
   //   return faker.date.past(1);
   // },
 
-  scheduledWindowStart() {
+  scheduledWindowStart(): Date {
     return faker.date.future(1);
   },
 
-  scheduledWindowEnd() {
+  scheduledWindowEnd(): Date {
     return faker.date.future(2);
   },
 });
