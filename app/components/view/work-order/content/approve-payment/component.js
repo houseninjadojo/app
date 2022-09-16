@@ -36,7 +36,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked creditCard = this.allPaymentMethods.filter((c) => c.isDefault)[0];
+  @tracked creditCard = this.allPaymentMethods().filter((c) => c.isDefault)[0];
 
   actionSheetOptions = [
     {
@@ -133,7 +133,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   @action
   handlePaymentMethodChange(e) {
-    this.creditCard = this.allPaymentMethods.filter(
+    this.creditCard = this.allPaymentMethods().filter(
       (c) => c.id === e.target.value
     )[0];
   }
@@ -150,12 +150,12 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return this.invoice?.formattedTotal;
   }
 
-  get allPaymentMethods() {
-    return this.args.model.get('property.user.payment_methods');
+  allPaymentMethods() {
+    return this.args.model.get('property.user.paymentMethods');
   }
 
   get paymentMethodSelectConfig() {
-    const allCards = this.allPaymentMethods;
+    const allCards = this.allPaymentMethods();
     const mappedCards = allCards?.map((c) => {
       return {
         value: c.id,
