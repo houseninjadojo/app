@@ -23,7 +23,7 @@ export default class ExternalApproveEstimateRoute extends Route {
     );
 
     return await this.store.findRecord('work-order', access_token, {
-      include: 'estimates,property,property.user',
+      include: 'estimate,property,property.user',
     });
   }
 }
