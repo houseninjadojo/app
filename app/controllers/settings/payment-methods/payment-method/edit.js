@@ -17,66 +17,59 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   @tracked formIsInvalid = true;
   @tracked paymentMethod = {
     cardNumber: this.model.cardNumber,
-    cvv: this.model.cvv,
+    cvv: this.model.cvv || this.model.obfuscated.cvv,
     expMonth: this.model.expMonth,
     expYear: this.model.expYear,
     zipcode: this.model.zipcode,
     isDefault: this.model.isDefault,
   };
-  @tracked fields = [
-    {
-      id: 'cardNumber',
-      required: true,
-      label: 'Card Number',
-      placeholder: '',
-      disabled: true,
-      value: this.model.obfuscated.lastFour,
-    },
-    {
-      // type: 'number',
-      id: 'cvv',
-      required: true,
-      label: 'Security Code',
-      placeholder: '',
-      value: this.paymentMethod.cvv || this.model.obfuscated.cvv,
-    },
-    {
-      type: 'number',
-      id: 'expMonth',
-      required: true,
-      label: 'Month',
-      placeholder: 'MM',
-      value: this.paymentMethod.expMonth || this.model.expMonth,
-    },
-    {
-      type: 'number',
-      id: 'expYear',
-      required: true,
-      label: 'Year',
-      placeholder: 'YY',
-      value: this.paymentMethod.expYear || this.model.expYear,
-    },
-    {
-      type: 'number',
-      id: 'zipcode',
-      required: true,
-      label: 'Zipcode',
-      placeholder: '',
-      value: this.paymentMethod.zipcode || this.model.zipcode,
-    },
-  ];
+  get fields() {
+    return [
+      {
+        id: 'cardNumber',
+        required: true,
+        label: 'Card Number',
+        placeholder: '',
+        disabled: true,
+        value: this.model.obfuscated.lastFour,
+      },
+      {
+        // type: 'number',
+        id: 'cvv',
+        required: true,
+        label: 'Security Code',
+        placeholder: '',
+        value: this.paymentMethod.cvv || this.model.obfuscated.cvv,
+      },
+      {
+        type: 'number',
+        id: 'expMonth',
+        required: true,
+        label: 'Month',
+        placeholder: 'MM',
+        value: this.paymentMethod.expMonth || this.model.expMonth,
+      },
+      {
+        type: 'number',
+        id: 'expYear',
+        required: true,
+        label: 'Year',
+        placeholder: 'YY',
+        value: this.paymentMethod.expYear || this.model.expYear,
+      },
+      {
+        type: 'number',
+        id: 'zipcode',
+        required: true,
+        label: 'Zipcode',
+        placeholder: '',
+        value: this.paymentMethod.zipcode || this.model.zipcode,
+      },
+    ];
+  }
 
   @action
   resetForm() {
-    this.fields.forEach((f) => {
-      if (f.id === 'cardNumber') {
-        f.value = this.model.obfuscated.lastFour;
-      } else if (f.id === 'cvv') {
-        f.value = this.model.obfuscated.cvv;
-      } else {
-        f.value = this.model[f.id];
-      }
-    });
     this.paymentMethod = {
       cardNumber: this.model.cardNumber,
       cvv: this.model.cvv,
@@ -86,7 +79,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       isDefault: this.model.isDefault,
     };
 
-    this.fields = [...this.fields];
     this.paymentMethod = { ...this.paymentMethod };
     this.formIsInvalid = true;
   }
@@ -95,10 +87,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   handleInput(e) {
     if (e.target.id !== 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value;
-      this.fields.filter((f) => f.id === e.target.id)[0].value =
-        this.paymentMethod[e.target.id];
-      this.fields = [...this.fields];
-      this.paymentMethod = { ...this.paymentMethod };
     }
 
     this.__validateForm();
