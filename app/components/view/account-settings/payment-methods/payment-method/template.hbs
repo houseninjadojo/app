@@ -30,8 +30,7 @@
         @id={{field.id}}
         @required={{field.required}}
         @placeholder={{field.placeholder}}
-        {{!-- @value={{if (eq @addOrUpdate 'update' @creditCard.obfuscated.lastFour field.value)}} --}}
-        @value={{get @paymentMethod field.id}}
+        @value={{@paymentMethod.obfuscated.lastFour}}
         @description={{field.description}}
         @label={{field.label}}
         @type={{field.type}}

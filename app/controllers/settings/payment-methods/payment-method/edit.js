@@ -15,14 +15,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   @service current;
 
   @tracked formIsInvalid = true;
-  @tracked paymentMethod = {
-    cardNumber: this.model.cardNumber,
-    cvv: this.model.cvv || this.model.obfuscated.cvv,
-    expMonth: this.model.expMonth,
-    expYear: this.model.expYear,
-    zipcode: this.model.zipcode,
-    isDefault: this.model.isDefault,
-  };
+
   get fields() {
     return [
       {
@@ -31,7 +24,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         label: 'Card Number',
         placeholder: '',
         disabled: true,
-        value: this.model.obfuscated.lastFour,
       },
       {
         // type: 'number',
@@ -39,7 +31,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         required: true,
         label: 'Security Code',
         placeholder: '',
-        value: this.paymentMethod.cvv || this.model.obfuscated.cvv,
       },
       {
         type: 'number',
@@ -47,7 +38,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         required: true,
         label: 'Month',
         placeholder: 'MM',
-        value: this.paymentMethod.expMonth || this.model.expMonth,
       },
       {
         type: 'number',
@@ -55,7 +45,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         required: true,
         label: 'Year',
         placeholder: 'YY',
-        value: this.paymentMethod.expYear || this.model.expYear,
       },
       {
         type: 'number',
@@ -63,30 +52,14 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         required: true,
         label: 'Zipcode',
         placeholder: '',
-        value: this.paymentMethod.zipcode || this.model.zipcode,
       },
     ];
   }
 
   @action
-  resetForm() {
-    this.paymentMethod = {
-      cardNumber: this.model.cardNumber,
-      cvv: this.model.cvv,
-      expMonth: this.model.expMonth,
-      expYear: this.model.expYear,
-      zipcode: this.model.zipcode,
-      isDefault: this.model.isDefault,
-    };
-
-    this.paymentMethod = { ...this.paymentMethod };
-    this.formIsInvalid = true;
-  }
-
-  @action
   handleInput(e) {
     if (e.target.id !== 'cardNumber') {
-      this.paymentMethod[e.target.id] = e.target.value;
+      this.model.set(e.target.id, e.target.value);
     }
 
     this.__validateForm();
@@ -95,12 +68,11 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   @action
   async saveAction() {
     const model = this.store.createRecord('credit-card', {
-      ...this.paymentMethod,
+      ...this.model,
       user: this.current?.user,
     });
     try {
       await model.save();
-      await this.resetForm();
       this.view.transitionToPreviousRoute();
     } catch (e) {
       debug(e);
@@ -110,8 +82,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
 
   @action
   handleSetAsDefault() {
-    this.paymentMethod.isDefault = !this.paymentMethod.isDefault;
-    this.paymentMethod = { ...this.paymentMethod };
+    this.model.isDefault = !this.model.isDefault;
 
     this.__validateForm();
   }
@@ -140,7 +111,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
     if (confirmed) {
       try {
         await this.model.destroyRecord();
-        await this.resetForm();
         this.view.transitionToPreviousRoute();
       } catch (e) {
         debug(e);
@@ -154,17 +124,17 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       if (f.id === 'cardNumber') {
         return {
           ...f,
-          value: formatCreditCardNumber(this.paymentMethod.cardNumber),
+          value: formatCreditCardNumber(this.model.cardNumber),
         };
       } else if (f.id === 'cvv') {
         return {
           ...f,
-          value: this.paymentMethod.cvv,
+          value: this.model.cvv,
         };
       } else {
         return {
           ...f,
-          value: this.paymentMethod[f.id],
+          value: this.model.get(f.id),
         };
       }
     });
