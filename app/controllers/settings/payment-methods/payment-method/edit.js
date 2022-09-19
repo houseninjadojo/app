@@ -82,7 +82,9 @@ export default class SettingsPaymentMethodsEditController extends Controller {
 
   @action
   handleSetAsDefault() {
-    this.model.isDefault = !this.model.isDefault;
+    if (!this.model.isDefault) {
+      this.model.isDefault = true;
+    }
 
     this.__validateForm();
   }
@@ -119,6 +121,11 @@ export default class SettingsPaymentMethodsEditController extends Controller {
     }
   }
 
+  @action
+  resetForm() {
+    this.formIsInvalid = true;
+  }
+
   __validateForm() {
     const fields = this.fields.map((f) => {
       if (f.id === 'cardNumber') {
@@ -138,8 +145,6 @@ export default class SettingsPaymentMethodsEditController extends Controller {
         };
       }
     });
-
-    console.log('fields', fields);
 
     this.formIsInvalid = inputValidation(fields, ['cardIsValid']).isInvalid;
   }
