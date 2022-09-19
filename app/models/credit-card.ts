@@ -40,7 +40,7 @@ export default class CreditCardModel extends PaymentMethod {
   }
 
   get lastFour() {
-    return this.cardNumber.substring(this.cardNumber.length - 4) ?? '';
+    return this.cardNumber?.substring(this.cardNumber.length - 4) ?? '';
   }
 
   get cardBrand() {
