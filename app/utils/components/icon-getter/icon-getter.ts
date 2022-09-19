@@ -1,4 +1,4 @@
-export function getIconUri(type) {
+export function getIconUri(type: string): string {
   const PATH = '/assets/icons';
   switch (type) {
     case 'application/pdf':

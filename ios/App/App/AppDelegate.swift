@@ -80,17 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-
-        let statusBarRect = UIApplication.shared.statusBarFrame
-        guard let touchPoint = event?.allTouches?.first?.location(in: self.window) else { return }
-
-        if statusBarRect.contains(touchPoint) {
-            NotificationCenter.default.post(name: .capacitorStatusBarTapped, object: nil)
-        }
-    }
-
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         Branch.getInstance().handlePushNotification(userInfo)
     }
