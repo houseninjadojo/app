@@ -3,6 +3,7 @@ import { isPresent } from '@ember/utils';
 import PaymentMethod from './payment-method';
 
 interface CreditCardArgs {
+  isDefault?: boolean;
   brand?: string;
   country?: string;
   cvv?: string;
@@ -14,6 +15,7 @@ interface CreditCardArgs {
 }
 
 export default class CreditCardModel extends PaymentMethod {
+  @attr('boolean') declare isDefault: boolean;
   @attr('string') declare brand?: string;
   @attr('string') declare country?: string;
   @attr('string') declare cvv?: string;
