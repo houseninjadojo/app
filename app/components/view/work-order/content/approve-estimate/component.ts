@@ -88,8 +88,9 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       this.estimateApproved = true;
     } catch (e: unknown) {
       estimate.approvedAt = undefined;
-      this.toggleIsProcessing();
       captureException(e as Error);
+    } finally {
+      this.toggleIsProcessing();
     }
   }
 
