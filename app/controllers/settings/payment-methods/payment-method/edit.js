@@ -82,9 +82,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
 
   @action
   handleSetAsDefault() {
-    if (!this.model.isDefault) {
-      this.model.isDefault = true;
-    }
+    this.model.isDefault = !this.model.isDefault;
 
     this.__validateForm();
   }
