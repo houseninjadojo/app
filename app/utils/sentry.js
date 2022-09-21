@@ -27,15 +27,7 @@ const integrations = [
     //   // creditCard: true,
     // }
   }),
-  new RewriteFrames({
-    // function that takes the frame, applies a transformation, and returns it
-    iteratee: (frame) => {
-      const filename = frame.filename.split('/').pop().replace('?', '');
-      console.log('sentry filename: ', filename);
-      frame.filename = `app://${filename}`;
-      return frame;
-    },
-  }),
+  new RewriteFrames(),
 ];
 
 const sentryOptions = {
