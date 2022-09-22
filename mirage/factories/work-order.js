@@ -1,7 +1,7 @@
 import { Factory, association } from 'miragejs';
 import { faker } from '@faker-js/faker';
 import moment from 'moment';
-import { workOrderStatus } from 'houseninja/data/work-order-status';
+import { WorkOrderStatus } from 'houseninja/data/work-order-status';
 
 const pastOrFuture = () => {
   return faker.datatype.boolean()
@@ -48,7 +48,7 @@ export default Factory.extend({
   },
 
   status() {
-    return getRandomProperty(workOrderStatus);
+    return getRandomProperty(WorkOrderStatus);
     // return 'closed';
   },
 

@@ -32,6 +32,5 @@ export default function (server) {
     lastName: 'Demo',
   });
 
-
   server.loadFixtures();
 }
