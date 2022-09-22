@@ -40,7 +40,7 @@ export default Factory.extend({
   },
 
   vendor() {
-    return faker.company.companyName();
+    return faker.company.name();
   },
 
   description() {
