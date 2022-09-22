@@ -1,3 +1,10 @@
+## [1.21.4](https://github.com/houseninjadojo/app/compare/v1.21.3...v1.21.4) (2022-09-22)
+
+
+### Bug Fixes
+
+* **capacitor:** config build env silent failure ([#1029](https://github.com/houseninjadojo/app/issues/1029)) ([6f275cb](https://github.com/houseninjadojo/app/commit/6f275cbb44f3695a11d12bd2c00e3bfa78f70695))
+
 ## [1.21.3](https://github.com/houseninjadojo/app/compare/v1.21.2...v1.21.3) (2022-09-22)
 
 
