@@ -11,5 +11,6 @@
   "componentStructure": "nested",
   "ssl": false,
   "sslKey": "vendor/ssl/server.key",
-  "sslCert": "vendor/ssl/server.crt"
+  "sslCert": "vendor/ssl/server.crt",
+  "isTypeScriptProject": true
 }
