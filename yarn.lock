@@ -1651,15 +1651,15 @@
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.0.1.tgz#58a0c2b6dfaa7de06d20a31af726cf6c65f8917a"
   integrity sha512-8F4TT05KCvSccGZjezEXPgiRvjuwQRpVUApTTVNQaEgHP9vPhuzfQB9hp9NByR8IfuHMwAlJGSnoFp7fZ6xHuw==
 
+"@capacitor/android@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.3.0.tgz#d0c6cf909db822ef095e2304e9322baf9370a88a"
+  integrity sha512-JnyQsxq44wLFPQ1sN1sMISNbVuNVHXdUdseil1mNsag3JOKu1BkLCyC3aqI4ioce63fK6VtoUIvzR4YzqBn1yg==
+
 "@capacitor/android@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.1.0.tgz#d4f4a84213b948911757a00a58255418f126f2c7"
   integrity sha512-aYHvpYVlS6WC+bG9jJfwqgHMxTw3e8f3taNnl/y9qCjglmMmtFcZWFAVLlOleVK4Q7olSirqjx37f0ppvxRTLg==
-
-"@capacitor/android@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.2.0.tgz#f06539694adbaf189cf38cb039f079bde4f7422b"
-  integrity sha512-LWZhM31DoQuNSW8ZGslJ8gZfOAZS2A5TLq30HP1bn0OQTJGvOFIizQysraVRSOOq5FRptykf2nZWu6WEwoKMlA==
 
 "@capacitor/app@^4.0.1":
   version "4.0.1"
@@ -1676,10 +1676,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-4.1.1.tgz#a361b3595c378666614e3bd3384d158b85e4d7c3"
   integrity sha512-L/1KLg4IRCAUmwhmu5jIic4U2OLAHFSW5GoExFU9yR8iCJo1SBGSiay2TpU3PpgmJHRtazO6pxKUCyAmDExkhw==
 
-"@capacitor/cli@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-4.2.0.tgz#626b8ea447a210d38d77eedf3d0dc629bf19beaa"
-  integrity sha512-34L/BoDe3BmWBdrXRoF7lszT27ho6ikMdCeMePohU+cEn4ceqiURN7tnPZRyUlpc/1TO+d8d+qb1QQQSTq2oPA==
+"@capacitor/cli@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-4.3.0.tgz#e1515536f8e28b65df9e0ef45bd519fe62102cd9"
+  integrity sha512-+IBIJvxpHWSrtfb6XxPSh5m5h5ijLBqh0aGPxvj0nm7mXUwkT/fuQbeEUVCwIoImmYZCuUAFIkQFB0nWd74bEg==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.5"
     "@ionic/utils-fs" "^3.1.6"
@@ -1699,17 +1699,17 @@
     tslib "^2.4.0"
     xml2js "^0.4.23"
 
+"@capacitor/core@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.3.0.tgz#3f769b5b3791ce51903b0965f9af587d8db7977e"
+  integrity sha512-zb225feaiHYcttHqw7SnKVj9gjOh3yoM2ol0Efky4kd80qZvqPHt7nRI1XZmGUKid5j3AVggULd5rRke5OEOXQ==
+  dependencies:
+    tslib "^2.1.0"
+
 "@capacitor/core@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.1.0.tgz#4f5b80cd9cbf65bfc5a203082399fa794ffc5f45"
   integrity sha512-bMYFnC5l5n11D/kLTz9TOOJfUH+nQqYRwzG7h5h4AXIm8aFxH5ZY3iFlDZd7R4xcyrlnfxzfoooSH9trPjRBLA==
-  dependencies:
-    tslib "^2.1.0"
-
-"@capacitor/core@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.2.0.tgz#608285d4d8d60388940fc8f25dc1576aa99187e4"
-  integrity sha512-kHKn6693Yt9TWfuJ0Q+fyxYCpYAvVMKdu3t500seMEfdgNlF6BGaX5GbOnXkU4cnM9p+sIhRiwXv8Iqwm0E+NA==
   dependencies:
     tslib "^2.1.0"
 
@@ -1738,15 +1738,15 @@
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-4.0.1.tgz#8113c757f9bce3cd6618f6aadda47e7aa7a92069"
   integrity sha512-ZLVoLdK1Md/xIRRrDOnrLCKGRg8UENY1ShpKcysPN1z1MgcpvB/9Nbqczm3RH24zyo3MP/7homkqMzUGxPBlwQ==
 
+"@capacitor/ios@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.3.0.tgz#e38cfb7c25b820d6d6c8ebd24fab769bd1dbb51c"
+  integrity sha512-l9vuFzGkopHEWTsbdCwcJF/TLPspuhWSSq5cfB61YO4HAG5o3y/M6TiftL3JTyw/OOJ6cgWtLI/2QMp1TPIU4w==
+
 "@capacitor/ios@^4.0.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.1.0.tgz#db3ca463611dccda03244ca4dac41d3b6f69e79c"
   integrity sha512-zkv48Xc5QwdL7TIT4YpXwgISrA5Cuy59KyN+uq3ovr+L/y5SgtKAOg7pATRBYT7CFgFLqkey/PQKcTjbcxhyaA==
-
-"@capacitor/ios@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.2.0.tgz#718aef107044af35f574a32c17230cb638399ed6"
-  integrity sha512-YOncOJHMB1QhgmWBk3Ml8IT+KoN131zlmtCBtx9Szzc6/LvzG/NMojVqfl996k37gRw9sYHrvNP01sn22IijSA==
 
 "@capacitor/keyboard@^4.0.1":
   version "4.0.1"
