@@ -5,6 +5,7 @@ import config from 'houseninja/config/environment';
 import { init } from 'houseninja/lib/sentry';
 import { Intercom } from '@capacitor-community/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+
 // init sentry
 init();
 

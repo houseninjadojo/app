@@ -4,6 +4,11 @@ import { isBlank } from '@ember/utils';
 
 import type { StackFrame } from '@sentry/types';
 
+/**
+ * RewriteFrames integration
+ * @see https://docs.sentry.io/platforms/javascript/configuration/integrations/plugin/#rewriteframes
+ */
+
 // sentry expects the triple slash for some reason
 const prefix = 'app:///';
 
@@ -24,8 +29,6 @@ const iteratee = (frame: StackFrame): StackFrame => {
   // put it together
   // e.g. app:///asdf.js
   frame.filename = `${prefix}${filename}`;
-
-  console.log('sentry frame', filename);
 
   return frame;
 };
