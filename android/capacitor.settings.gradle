@@ -5,9 +5,6 @@ project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/
 include ':mineminemine-fcm'
 project(':mineminemine-fcm').projectDir = new File('../node_modules/@mineminemine/fcm/android')
 
-include ':capacitor-community-http'
-project(':capacitor-community-http').projectDir = new File('../node_modules/@capacitor-community/http/android')
-
 include ':capacitor-community-intercom'
 project(':capacitor-community-intercom').projectDir = new File('../node_modules/@capacitor-community/intercom/android')
 

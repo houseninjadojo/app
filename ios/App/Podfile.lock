@@ -13,8 +13,6 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.1):
     - Capacitor
-  - CapacitorCommunityHttp (2.0.0-0):
-    - Capacitor
   - CapacitorCommunityIntercom (4.0.0-beta.3):
     - Capacitor
     - Intercom
@@ -127,7 +125,6 @@ DEPENDENCIES:
   - CapacitorBranchDeepLinks (from `../../node_modules/capacitor-branch-deep-links`)
   - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
-  - "CapacitorCommunityHttp (from `../../node_modules/@capacitor-community/http`)"
   - "CapacitorCommunityIntercom (from `../../node_modules/@capacitor-community/intercom`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
@@ -178,8 +175,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/browser"
   CapacitorCamera:
     :path: "../../node_modules/@capacitor/camera"
-  CapacitorCommunityHttp:
-    :path: "../../node_modules/@capacitor-community/http"
   CapacitorCommunityIntercom:
     :path: "../../node_modules/@capacitor-community/intercom"
   CapacitorCordova:
@@ -223,7 +218,6 @@ SPEC CHECKSUMS:
   CapacitorBranchDeepLinks: b89845501569ad98f54ee1b7015244b8bce7e021
   CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
   CapacitorCamera: 0bdf42438683cdc89fd0fc674a2ee281293d4cb3
-  CapacitorCommunityHttp: 72a0758deecbd6ebf2b600c2a6a1bdc8563f8ac4
   CapacitorCommunityIntercom: 1c7f222534b0bf7c3b38a7b3f443e65d70f47224
   CapacitorCordova: 19a82a3b91fbeb9bdd049729551edc3cd7e5e648
   CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
@@ -256,6 +250,6 @@ SPEC CHECKSUMS:
   SentryCapacitor: da1721be0244bb90695b681f3e03521080b528e3
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: c987eebedb9d2c03a65951008ec3f404a9a95332
+PODFILE CHECKSUM: 8c0257051ac8c509c7c8b6561dd9f2368e0557fe
 
 COCOAPODS: 1.11.3

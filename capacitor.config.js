@@ -79,6 +79,9 @@ const plugins = {
     iosToken: process.env.MIXPANEL_TOKEN,
     androidToken: process.env.MIXPANEL_TOKEN,
   },
+  CapacitorHttp: {
+    enabled: true,
+  },
 };
 
 const cordova = {};
