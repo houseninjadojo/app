@@ -10,7 +10,6 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':mineminemine-fcm')
-    implementation project(':capacitor-community-http')
     implementation project(':capacitor-community-intercom')
     implementation project(':capacitor-action-sheet')
     implementation project(':capacitor-app')
