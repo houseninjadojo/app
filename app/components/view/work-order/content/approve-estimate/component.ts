@@ -11,8 +11,6 @@ import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-import type { AsyncBelongsTo } from '@ember-data/model';
-
 import type Estimate from 'houseninja/models/estimate';
 import type WorkOrder from 'houseninja/models/work-order';
 import type RouterService from '@ember/routing/router-service';
@@ -47,8 +45,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   ];
 
   private async nativeConfirmation(): Promise<void> {
-    const estimate = await this.args.model.estimate;
-    const total: string = estimate.amount;
+    const total: string = this.estimate.amount;
     const result: ShowActionsResult = await ActionSheet.showActions({
       title: total
         ? `Do you approve this estimate of ${total}?`
@@ -80,14 +77,13 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   async approveEstimate(): Promise<void> {
     this.toggleIsProcessing();
 
-    const estimate = await this.args.model.estimate;
-    estimate.approvedAt = new Date();
+    this.estimate.approvedAt = new Date();
 
     try {
-      await estimate.save();
+      await this.estimate.save();
       this.estimateApproved = true;
     } catch (e: unknown) {
-      estimate.approvedAt = undefined;
+      this.estimate.approvedAt = undefined;
       captureException(e as Error);
     } finally {
       this.toggleIsProcessing();
@@ -115,9 +111,8 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
   @action
   async inquireAboutEstimate(): Promise<void> {
-    const estimate = await this.args.model;
     await this.intercom.showComposer(
-      `I have a question about the estimate for the ${estimate.description} service request.`
+      `I have a question about the estimate for the ${this.estimate.description} service request.`
     );
   }
 
@@ -132,12 +127,12 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     return isNativePlatform();
   }
 
-  get estimate(): AsyncBelongsTo<Estimate> {
+  get estimate(): Estimate {
     return this.args.model.estimate;
   }
 
   get formattedTotal(): string | undefined {
-    return this.args.model.estimate?.get('amount');
+    return this.estimate?.get('amount');
   }
 
   // get estimateApproved(): boolean {
