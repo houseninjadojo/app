@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.hn.work-order .hn.payment-method-form {
+  margin-bottom: 24px;
+}
+
 .hn.work-order .actions {
   display: flex;
   flex-direction: row;
@@ -22,6 +26,17 @@
 
 .hn.work-order .actions .hn.btn:nth-of-type(2) {
   margin-left: 4px;
+}
+
+.hn.work-order .app-download-encouragement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hn.work-order .app-download-encouragement .hn.ios-download img {
+  width: 160px;
+  margin-bottom: 16px;
 }
 
 @media (orientation: portrait) {

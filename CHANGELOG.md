@@ -1,3 +1,17 @@
+## [1.21.2](https://github.com/houseninjadojo/app/compare/v1.21.1...v1.21.2) (2022-09-22)
+
+
+### Bug Fixes
+
+* **sentry:** correct filepath parsing ([#1016](https://github.com/houseninjadojo/app/issues/1016)) ([53180a0](https://github.com/houseninjadojo/app/commit/53180a062bee38d970b2f0eb1d2befbd7306744d))
+
+## [1.21.1](https://github.com/houseninjadojo/app/compare/v1.21.0...v1.21.1) (2022-09-16)
+
+
+### Bug Fixes
+
+* remove cvc verification at external payment approval ([#945](https://github.com/houseninjadojo/app/issues/945)) ([95cc8c3](https://github.com/houseninjadojo/app/commit/95cc8c31e6631f18e6060842be237c56e8142bfe))
+
 # [1.21.0](https://github.com/houseninjadojo/app/compare/v1.20.18...v1.21.0) (2022-09-15)
 
 

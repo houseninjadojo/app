@@ -1,6 +1,6 @@
 PODS:
   - Branch (1.43.2)
-  - Capacitor (4.2.0):
+  - Capacitor (4.3.0):
     - CapacitorCordova
   - CapacitorActionSheet (4.0.1):
     - Capacitor
@@ -13,12 +13,10 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.1):
     - Capacitor
-  - CapacitorCommunityHttp (2.0.0-0):
-    - Capacitor
   - CapacitorCommunityIntercom (4.0.0-beta.4):
     - Capacitor
     - Intercom
-  - CapacitorCordova (4.2.0)
+  - CapacitorCordova (4.3.0)
   - CapacitorDevice (4.0.1):
     - Capacitor
   - CapacitorDialog (4.0.1):
@@ -127,7 +125,6 @@ DEPENDENCIES:
   - CapacitorBranchDeepLinks (from `../../node_modules/capacitor-branch-deep-links`)
   - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
-  - "CapacitorCommunityHttp (from `../../node_modules/@capacitor-community/http`)"
   - "CapacitorCommunityIntercom (from `../../node_modules/@capacitor-community/intercom`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
@@ -178,8 +175,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/browser"
   CapacitorCamera:
     :path: "../../node_modules/@capacitor/camera"
-  CapacitorCommunityHttp:
-    :path: "../../node_modules/@capacitor-community/http"
   CapacitorCommunityIntercom:
     :path: "../../node_modules/@capacitor-community/intercom"
   CapacitorCordova:
@@ -217,15 +212,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Branch: 74cc856025984f691833c8fa332834ac38a0cf4e
-  Capacitor: 1dc8dbe3b5ffb9fd085739dbec754180975a7d37
+  Capacitor: 5534f805df231c76164e1d63119bff7b4eac6cd5
   CapacitorActionSheet: addfd7a5680c40ddba677c6a2a0896b644996fa2
   CapacitorApp: 70ea773d069c24ab188ae7a01237b951920ffacf
   CapacitorBranchDeepLinks: b89845501569ad98f54ee1b7015244b8bce7e021
   CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
   CapacitorCamera: 0bdf42438683cdc89fd0fc674a2ee281293d4cb3
-  CapacitorCommunityHttp: 72a0758deecbd6ebf2b600c2a6a1bdc8563f8ac4
   CapacitorCommunityIntercom: 6168568f3c8641938a10f00cd74a3a6f7e91fc88
-  CapacitorCordova: 8de8340fa4fe8f93523a8884ef7024069b44d794
+  CapacitorCordova: 19a82a3b91fbeb9bdd049729551edc3cd7e5e648
   CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
   CapacitorDialog: e979738675fcd964bfab54c705ff77abb985f5c9
   CapacitorFilesystem: e36a560cb7013cba63cb90bccb04612026f3e3cd
@@ -256,6 +250,6 @@ SPEC CHECKSUMS:
   SentryCapacitor: da1721be0244bb90695b681f3e03521080b528e3
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: c987eebedb9d2c03a65951008ec3f404a9a95332
+PODFILE CHECKSUM: 8c0257051ac8c509c7c8b6561dd9f2368e0557fe
 
 COCOAPODS: 1.11.3
