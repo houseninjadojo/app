@@ -1,4 +1,4 @@
-import { Http } from '@capacitor-community/http';
+import { CapacitorHttp } from '@capacitor/core';
 import { run } from '@ember/runloop';
 
 /**
@@ -8,10 +8,10 @@ import { run } from '@ember/runloop';
  * @param {Object} [headers={}]
  * @return {RSVP.Promise<Object|String>} - the response body
  */
-export async function get(url, headers = {}) {
+export async function get(url: string, headers = {}) {
   try {
     return await run(async () => {
-      let response = await Http.get({ url, headers });
+      const response = await CapacitorHttp.get({ url, headers });
       return response.data;
     });
   } catch (e) {
@@ -27,13 +27,13 @@ export async function get(url, headers = {}) {
  * @param {Object|String} [data=null]
  * @return {RSVP.Promise<Object>}
  */
-export async function post(url, headers = {}, data = null) {
+export async function post(url: string, headers = {}, data = null) {
   const options = { url, headers, data };
-  let response = await run(async () => {
-    return await Http.post(options);
+  const response = await run(async () => {
+    return await CapacitorHttp.post(options);
   });
   if (response.status === 403) {
-    throw new Error(response);
+    throw new Error(response.data);
   }
   return response.data;
 }
@@ -59,7 +59,7 @@ export default {
  * @param {Object} data
  * @return {String}
  */
-export function encodeFormData(data) {
+export function encodeFormData(data: { [key: string]: string }) {
   return Object.keys(data)
     .map((k) => `${k}=${data[k]}`)
     .join('&');

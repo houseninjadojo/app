@@ -1632,16 +1632,6 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
-"@capacitor-community/http@^2.0.0-0":
-  version "2.0.0-0"
-  resolved "https://registry.yarnpkg.com/@capacitor-community/http/-/http-2.0.0-0.tgz#43d739668e1754590feb22170fc70ba730055581"
-  integrity sha512-NX0Rq+GvpPbg2bAvgE4zNa1iVPs0kX6SmpazuSLRHSlLrzRJyYP0XM64Z4HNFEFYAvFbB9v64P1juXlvOlD+eA==
-  dependencies:
-    "@capacitor/android" "^4.0.0"
-    "@capacitor/core" "^4.0.0"
-    "@capacitor/filesystem" "^4.0.0"
-    "@capacitor/ios" "^4.0.0"
-
 "@capacitor-community/intercom@houseninjadojo/capacitor-intercom#ce1afcd":
   version "4.0.0-beta.3"
   resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/ce1afcd940337a88f39d8e6fde348ac1f0eb57b8"
@@ -1655,11 +1645,6 @@
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.3.0.tgz#d0c6cf909db822ef095e2304e9322baf9370a88a"
   integrity sha512-JnyQsxq44wLFPQ1sN1sMISNbVuNVHXdUdseil1mNsag3JOKu1BkLCyC3aqI4ioce63fK6VtoUIvzR4YzqBn1yg==
-
-"@capacitor/android@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.1.0.tgz#d4f4a84213b948911757a00a58255418f126f2c7"
-  integrity sha512-aYHvpYVlS6WC+bG9jJfwqgHMxTw3e8f3taNnl/y9qCjglmMmtFcZWFAVLlOleVK4Q7olSirqjx37f0ppvxRTLg==
 
 "@capacitor/app@^4.0.1":
   version "4.0.1"
@@ -1706,13 +1691,6 @@
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/core@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.1.0.tgz#4f5b80cd9cbf65bfc5a203082399fa794ffc5f45"
-  integrity sha512-bMYFnC5l5n11D/kLTz9TOOJfUH+nQqYRwzG7h5h4AXIm8aFxH5ZY3iFlDZd7R4xcyrlnfxzfoooSH9trPjRBLA==
-  dependencies:
-    tslib "^2.1.0"
-
 "@capacitor/device@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-4.0.1.tgz#4bf1e79aeba6d1ae07c7db0df44331bf18515887"
@@ -1722,11 +1700,6 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-4.0.1.tgz#b1d6812037da4cac4529d1d4916abfa15f8ec88e"
   integrity sha512-mHcTU+z2SiGL0azdr4Pn9Qzq+AHKBIoDzAOUVAco+OyFsASdMu/+d/DB2MipA4VvO2QNnbcvvtSFwDnCoyg+aw==
-
-"@capacitor/filesystem@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-4.1.0.tgz#610ec3c1e13d484218e6920354cc5644aa73454c"
-  integrity sha512-isUL8kyH+GzcWToNu1uGyn83pwrnOC6wevefN6kGsq0jluBfryJme6WG1VTq0gi3cw604t8j8XtVoTKz8V7gfQ==
 
 "@capacitor/filesystem@^4.0.1":
   version "4.1.1"
@@ -1742,11 +1715,6 @@
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.3.0.tgz#e38cfb7c25b820d6d6c8ebd24fab769bd1dbb51c"
   integrity sha512-l9vuFzGkopHEWTsbdCwcJF/TLPspuhWSSq5cfB61YO4HAG5o3y/M6TiftL3JTyw/OOJ6cgWtLI/2QMp1TPIU4w==
-
-"@capacitor/ios@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.1.0.tgz#db3ca463611dccda03244ca4dac41d3b6f69e79c"
-  integrity sha512-zkv48Xc5QwdL7TIT4YpXwgISrA5Cuy59KyN+uq3ovr+L/y5SgtKAOg7pATRBYT7CFgFLqkey/PQKcTjbcxhyaA==
 
 "@capacitor/keyboard@^4.0.1":
   version "4.0.1"
