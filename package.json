@@ -34,7 +34,7 @@
     "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-decorators": "^7.19.1",
-    "@capacitor/android": "^4.2.0",
+    "@capacitor/android": "^4.3.0",
     "@capacitor/cli": "^4.2.0",
     "@capacitor/core": "^4.2.0",
     "@capacitor/ios": "^4.2.0",

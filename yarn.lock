@@ -1651,15 +1651,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.0.1.tgz#58a0c2b6dfaa7de06d20a31af726cf6c65f8917a"
   integrity sha512-8F4TT05KCvSccGZjezEXPgiRvjuwQRpVUApTTVNQaEgHP9vPhuzfQB9hp9NByR8IfuHMwAlJGSnoFp7fZ6xHuw==
 
-"@capacitor/android@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.1.0.tgz#d4f4a84213b948911757a00a58255418f126f2c7"
-  integrity sha512-aYHvpYVlS6WC+bG9jJfwqgHMxTw3e8f3taNnl/y9qCjglmMmtFcZWFAVLlOleVK4Q7olSirqjx37f0ppvxRTLg==
-
-"@capacitor/android@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.2.0.tgz#f06539694adbaf189cf38cb039f079bde4f7422b"
-  integrity sha512-LWZhM31DoQuNSW8ZGslJ8gZfOAZS2A5TLq30HP1bn0OQTJGvOFIizQysraVRSOOq5FRptykf2nZWu6WEwoKMlA==
+"@capacitor/android@^4.0.0", "@capacitor/android@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.3.0.tgz#d0c6cf909db822ef095e2304e9322baf9370a88a"
+  integrity sha512-JnyQsxq44wLFPQ1sN1sMISNbVuNVHXdUdseil1mNsag3JOKu1BkLCyC3aqI4ioce63fK6VtoUIvzR4YzqBn1yg==
 
 "@capacitor/app@^4.0.1":
   version "4.0.1"
