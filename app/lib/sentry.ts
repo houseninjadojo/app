@@ -2,14 +2,10 @@ import * as SentryCapacitor from '@sentry/capacitor';
 import * as SentryEmber from '@sentry/ember';
 import SentryRRWeb from '@sentry/rrweb';
 import config from 'houseninja/config/environment';
-import { debug } from '@ember/debug';
-import {
-  CaptureConsole,
-  ExtraErrorData,
-  RewriteFrames,
-} from '@sentry/integrations';
-// import { BrowserTracing } from '@sentry/tracing';
+import { CaptureConsole, ExtraErrorData } from '@sentry/integrations';
 import { isPresent } from '@ember/utils';
+
+import RewriteFrames from './sentry/rewrite-frames';
 
 const { sentry: sentryConfig } = config;
 
@@ -27,18 +23,19 @@ const integrations = [
     //   // creditCard: true,
     // }
   }),
-  new RewriteFrames(),
+  RewriteFrames,
 ];
 
 const sentryOptions = {
   ...sentryConfig,
   integrations,
+  environment: config.environment,
 };
-
-sentryOptions.environment = config.environment;
 
 export function init() {
   if (isPresent(sentryConfig.dsn)) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     SentryCapacitor.init(sentryOptions, SentryEmber.init);
   }
 }
@@ -47,10 +44,10 @@ const Sentry = SentryCapacitor;
 
 export default Sentry;
 
-export function captureException(ex) {
-  if (config.environment === 'development') {
-    console.error(ex);
-  }
-  debug(ex);
-  Sentry.captureException(ex);
-}
+// export function captureException(ex) {
+//   if (config.environment === 'development') {
+//     console.error(ex);
+//   }
+//   debug(ex);
+//   Sentry.captureException(ex);
+// }
