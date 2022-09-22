@@ -27,6 +27,7 @@ export async function subscribeTo(topic: string): Promise<{ message: string }> {
  *
  * @param {String} topic
  */
+// eslint-disable-next-line prettier/prettier
 export async function unsubscribeFrom(topic: string): Promise<{ message: string }> {
   return await run(async () => {
     return await FCM.unsubscribeFrom({ topic });
@@ -42,7 +43,7 @@ export async function unsubscribeFrom(topic: string): Promise<{ message: string 
  */
 export async function getToken(): Promise<string> {
   return await run(async () => {
-    let { token } = await FCM.getToken();
+    const { token } = await FCM.getToken();
     return token;
   });
 }
@@ -65,7 +66,7 @@ export async function deleteInstance(): Promise<boolean> {
  *
  * @param {Boolean} [enabled=true]
  */
-export async function setAutoInit(enabled: boolean = true): Promise<void> {
+export async function setAutoInit(enabled = true): Promise<void> {
   return await run(async () => {
     return await FCM.setAutoInit({ enabled });
   });
@@ -80,7 +81,7 @@ export async function setAutoInit(enabled: boolean = true): Promise<void> {
  */
 export async function isAutoInitEnabled(): Promise<boolean> {
   return await run(async () => {
-    let { enabled } = await FCM.isAutoInitEnabled();
+    const { enabled } = await FCM.isAutoInitEnabled();
     return enabled;
   });
 }

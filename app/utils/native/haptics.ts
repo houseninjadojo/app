@@ -10,6 +10,7 @@ export { ImpactStyle, NotificationType };
  * @param {ImpactStyle} [strenth=ImpactStyle.Medium] the impact strength
  * @return {RSVP.Promise}
  */
+// eslint-disable-next-line prettier/prettier
 export async function impact(strength: ImpactStyle = ImpactStyle.Medium): Promise<void> {
   debug(`Haptics - impact strength='${strength}' called`);
   return await run(async () => {
@@ -23,6 +24,7 @@ export async function impact(strength: ImpactStyle = ImpactStyle.Medium): Promis
  * @param {NotificationType} [type=NotificationType.Success] notification type
  * @return {RSVP.Promise}
  */
+// eslint-disable-next-line prettier/prettier
 export async function notification(type: NotificationType = NotificationType.Success): Promise<void> {
   debug(`Haptics - notification type='${type}' called`);
   return await run(async () => {
