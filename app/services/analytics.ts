@@ -9,50 +9,55 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 export default class AnalyticsService extends Service {
   async setup() {
     if (!isNativePlatform() && ENV.environment !== 'test') {
+      const token = ENV.analytics.mixpanelToken;
+      const options = {
+        token,
+        autotrack: true,
+        debug: false,
+      };
       try {
-        const token = ENV.analytics.mixpanelToken;
-        await Mixpanel.initialize({ token });
-      } catch (e) {
-        this._debug(e);
+        await Mixpanel.initialize(options);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     }
   }
 
-  async track(event, properties) {
+  async track(event: string, properties: object = {}) {
     if (this._shouldNotExecute()) {
       return;
     }
     await run(async () => {
       try {
         Mixpanel.track({ event, properties });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
 
-  async identify(distinctId) {
+  async identify(distinctId: string) {
     if (this._shouldNotExecute()) {
       return;
     }
     await run(async () => {
       try {
         Mixpanel.identify({ distinctId });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
 
-  async alias(alias, distinctId) {
+  async alias(alias: string, distinctId: string) {
     if (this._shouldNotExecute()) {
       return;
     }
     await run(async () => {
       try {
         Mixpanel.alias({ alias, distinctId });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
@@ -64,8 +69,8 @@ export default class AnalyticsService extends Service {
     await run(async () => {
       try {
         Mixpanel.registerSuperProperties({ properties });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
@@ -77,8 +82,8 @@ export default class AnalyticsService extends Service {
     await run(async () => {
       try {
         Mixpanel.reset();
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
@@ -90,26 +95,26 @@ export default class AnalyticsService extends Service {
     await run(async () => {
       try {
         Mixpanel.setProfile({ properties });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
 
-  async trackCharge(amount, properties = {}) {
+  async trackCharge(amount: number, properties = {}) {
     if (this._shouldNotExecute()) {
       return;
     }
     await run(async () => {
       try {
         Mixpanel.trackCharge({ amount, properties });
-      } catch (e) {
-        this._debug(e);
+      } catch (e: unknown) {
+        this._debug(e as Error);
       }
     });
   }
 
-  _debug(e) {
+  _debug(e: Error) {
     debug(`AnalyticsService - ${e}`);
   }
 
