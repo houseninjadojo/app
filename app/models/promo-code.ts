@@ -49,8 +49,8 @@ export default class PromoCodeModel extends Model {
       ? `$${this.amountOff}`
       : `${this.percentOff}%`;
     const firstHalf = `${wordDiscount} off`;
-    const secondHalf: string =
-      numMonths > 0 ? ` for ${numMonths} ${wordMonths}` : '';
+    // eslint-disable-next-line prettier/prettier
+    const secondHalf: string = numMonths > 0 ? ` for ${numMonths} ${wordMonths}` : '';
     return `${firstHalf}${secondHalf}`;
   }
 }

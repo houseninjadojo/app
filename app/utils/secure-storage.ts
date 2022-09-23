@@ -2,6 +2,17 @@ import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
 import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
+type JSONSerializable =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | JSONSerializable[]
+  | { [key: string]: JSONSerializable };
+
+type SetResult = Promise<{ value: boolean } | undefined>;
+
 /**
  * Store key/value data in secure storage
  *
@@ -9,16 +20,16 @@ import { debug } from '@ember/debug';
  * @param {String|Object} value - json serializable
  * @return {RSVP.Promise}
  */
-export async function set(key, value) {
+export async function set(key: string, value: JSONSerializable): SetResult {
   try {
-    return await run(async () => {
+    return await run(async (): Promise<{ value: boolean }> => {
       return await SecureStoragePlugin.set({
         key,
         value: JSON.stringify(value),
       });
     });
   } catch (e) {
-    debug(e);
+    debug(e as string);
   }
 }
 
@@ -28,14 +39,14 @@ export async function set(key, value) {
  * @param {String} key
  * @return {RSVP.Promise<String|Object>} the deserialized value
  */
-export async function get(key) {
+export async function get(key: string): Promise<JSONSerializable | undefined> {
   try {
-    let encodedValue = await run(async () => {
+    const encodedValue = await run(async () => {
       return await SecureStoragePlugin.get({ key });
     });
     return JSON.parse(encodedValue.value);
   } catch (e) {
-    debug(e);
+    debug(e as string);
     return {};
   }
 }
@@ -46,7 +57,7 @@ export async function get(key) {
  * @param {String} key
  * @return {RSVP.Promise}
  */
-export async function clear(key) {
+export async function clear(key: string): Promise<void> {
   await run(async () => {
     try {
       await SecureStoragePlugin.remove({ key });

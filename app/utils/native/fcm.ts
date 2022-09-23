@@ -14,7 +14,7 @@ import { run } from '@ember/runloop';
  *
  * @param {String} topic
  */
-export async function subscribeTo(topic) {
+export async function subscribeTo(topic: string): Promise<{ message: string }> {
   return await run(async () => {
     return await FCM.subscribeTo({ topic });
   });
@@ -27,7 +27,8 @@ export async function subscribeTo(topic) {
  *
  * @param {String} topic
  */
-export async function unsubscribeFrom(topic) {
+// eslint-disable-next-line prettier/prettier
+export async function unsubscribeFrom(topic: string): Promise<{ message: string }> {
   return await run(async () => {
     return await FCM.unsubscribeFrom({ topic });
   });
@@ -40,9 +41,9 @@ export async function unsubscribeFrom(topic) {
  *
  * @return {String} token
  */
-export async function getToken() {
+export async function getToken(): Promise<string> {
   return await run(async () => {
-    let { token } = await FCM.getToken();
+    const { token } = await FCM.getToken();
     return token;
   });
 }
@@ -52,7 +53,7 @@ export async function getToken() {
  *
  * platforms: ios, android
  */
-export async function deleteInstance() {
+export async function deleteInstance(): Promise<boolean> {
   return await run(async () => {
     return await FCM.deleteInstance();
   });
@@ -65,7 +66,7 @@ export async function deleteInstance() {
  *
  * @param {Boolean} [enabled=true]
  */
-export async function setAutoInit(enabled = true) {
+export async function setAutoInit(enabled = true): Promise<void> {
   return await run(async () => {
     return await FCM.setAutoInit({ enabled });
   });
@@ -78,9 +79,9 @@ export async function setAutoInit(enabled = true) {
  *
  * @return {Boolean} enabled
  */
-export async function isAutoInitEnabled() {
+export async function isAutoInitEnabled(): Promise<boolean> {
   return await run(async () => {
-    let { enabled } = await FCM.isAutoInitEnabled();
+    const { enabled } = await FCM.isAutoInitEnabled();
     return enabled;
   });
 }

@@ -58,7 +58,13 @@
 }
 
 .hn.logo-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 120px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .hn.splash-loader {

@@ -4,10 +4,6 @@
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
-		"pkg": "@capacitor-community/http",
-		"classpath": "com.getcapacitor.plugin.http.Http"
-	},
-	{
 		"pkg": "@capacitor-community/intercom",
 		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
 	},

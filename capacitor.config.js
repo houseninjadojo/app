@@ -1,18 +1,8 @@
 // eslint-disable-next-line
-const environment = process.env.NODE_ENV;
-
-const envPath = () => {
-  let envExt = `.${environment}`;
-  if (environment === 'development') {
-    envExt = '';
-  }
-  return `.env${envExt}`;
-};
+require('dotenv').config();
 
 // eslint-disable-next-line
-require('dotenv').config({
-  path: `${__dirname}/${envPath()}`,
-});
+const environment = process.env.NODE_ENV || 'development';
 
 /**
  * Capactior Configuration

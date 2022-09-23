@@ -1,3 +1,31 @@
+## [1.22.1](https://github.com/houseninjadojo/app/compare/v1.22.0...v1.22.1) (2022-09-23)
+
+
+### Bug Fixes
+
+* **payments|estimates:** fix htmlSafe call for line breaks in external page ([#1032](https://github.com/houseninjadojo/app/issues/1032)) ([4194891](https://github.com/houseninjadojo/app/commit/4194891ca84ecd25c567ae4421524d815167c136))
+
+# [1.22.0](https://github.com/houseninjadojo/app/compare/v1.21.4...v1.22.0) (2022-09-23)
+
+
+### Features
+
+* estimate approval ([#659](https://github.com/houseninjadojo/app/issues/659)) ([10f78b2](https://github.com/houseninjadojo/app/commit/10f78b2e94e5f9b7bc6767878cbe7382e188168b))
+
+## [1.21.4](https://github.com/houseninjadojo/app/compare/v1.21.3...v1.21.4) (2022-09-22)
+
+
+### Bug Fixes
+
+* **capacitor:** config build env silent failure ([#1029](https://github.com/houseninjadojo/app/issues/1029)) ([6f275cb](https://github.com/houseninjadojo/app/commit/6f275cbb44f3695a11d12bd2c00e3bfa78f70695))
+
+## [1.21.3](https://github.com/houseninjadojo/app/compare/v1.21.2...v1.21.3) (2022-09-22)
+
+
+### Bug Fixes
+
+* cut release ([d54b49d](https://github.com/houseninjadojo/app/commit/d54b49d47aaa47085876417a8eb2f7740bac68d5))
+
 ## [1.21.2](https://github.com/houseninjadojo/app/compare/v1.21.1...v1.21.2) (2022-09-22)
 
 

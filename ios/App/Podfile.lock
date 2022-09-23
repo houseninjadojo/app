@@ -13,7 +13,7 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.1):
     - Capacitor
-  - CapacitorCommunityIntercom (4.0.0-beta.3):
+  - CapacitorCommunityIntercom (4.0.0-beta.4):
     - Capacitor
     - Intercom
   - CapacitorCordova (4.3.0)
@@ -218,7 +218,7 @@ SPEC CHECKSUMS:
   CapacitorBranchDeepLinks: b89845501569ad98f54ee1b7015244b8bce7e021
   CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
   CapacitorCamera: 0bdf42438683cdc89fd0fc674a2ee281293d4cb3
-  CapacitorCommunityIntercom: 1c7f222534b0bf7c3b38a7b3f443e65d70f47224
+  CapacitorCommunityIntercom: 6168568f3c8641938a10f00cd74a3a6f7e91fc88
   CapacitorCordova: 19a82a3b91fbeb9bdd049729551edc3cd7e5e648
   CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
   CapacitorDialog: e979738675fcd964bfab54c705ff77abb985f5c9

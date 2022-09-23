@@ -2,43 +2,33 @@ import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 import { run } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
-const IMPACT_STRENGTHS = {
-  heavy: ImpactStyle.Heavy,
-  medium: ImpactStyle.Medium,
-  light: ImpactStyle.Light,
-  default: ImpactStyle.Medium,
-};
-
-const NOTIFICATION_TYPE = {
-  success: NotificationType.Success,
-  warning: NotificationType.Warning,
-  error: NotificationType.Error,
-  default: NotificationType.Success,
-};
+export { ImpactStyle, NotificationType };
 
 /**
  * Trigger haptic "impact" feedback
  *
- * @param {String} [strenth='default'] the impact strength
+ * @param {ImpactStyle} [strenth=ImpactStyle.Medium] the impact strength
  * @return {RSVP.Promise}
  */
-export async function impact(strength = 'default') {
+// eslint-disable-next-line prettier/prettier
+export async function impact(strength: ImpactStyle = ImpactStyle.Medium): Promise<void> {
   debug(`Haptics - impact strength='${strength}' called`);
   return await run(async () => {
-    return await Haptics.impact({ style: IMPACT_STRENGTHS[strength] });
+    return await Haptics.impact({ style: strength });
   });
 }
 
 /**
  * Trigger haptic "notification" feedback
  *
- * @param {String} [type='default'] notification type
+ * @param {NotificationType} [type=NotificationType.Success] notification type
  * @return {RSVP.Promise}
  */
-export async function notification(type = 'default') {
+// eslint-disable-next-line max-len, prettier/prettier
+export async function notification(type: NotificationType = NotificationType.Success): Promise<void> {
   debug(`Haptics - notification type='${type}' called`);
   return await run(async () => {
-    return await Haptics.impact({ style: NOTIFICATION_TYPE[type] });
+    return await Haptics.notification({ type });
   });
 }
 
@@ -48,10 +38,10 @@ export async function notification(type = 'default') {
  * @param {Number} [duration=300] vibration duration in ms
  * @return {RSVP.Promise}
  */
-export async function vibrate(duration = 300) {
+export async function vibrate(duration = 300): Promise<void> {
   debug(`Haptics - vibrate duration=${duration} called`);
   return await run(async () => {
-    return await Haptics.impact({ duration });
+    return await Haptics.vibrate({ duration });
   });
 }
 
@@ -60,7 +50,7 @@ export async function vibrate(duration = 300) {
  *
  * @return {RSVP.Promise}
  */
-export async function selectionStart() {
+export async function selectionStart(): Promise<void> {
   debug(`Haptics - selectionStart called`);
   return await run(async () => {
     return await Haptics.selectionStart();
@@ -72,7 +62,7 @@ export async function selectionStart() {
  *
  * @return {RSVP.Promise}
  */
-export async function selectionChanged() {
+export async function selectionChanged(): Promise<void> {
   debug(`Haptics - selectionStart called`);
   return await run(async () => {
     return await Haptics.selectionStart();
@@ -84,7 +74,7 @@ export async function selectionChanged() {
  *
  * @return {RSVP.Promise}
  */
-export async function selectionEnd() {
+export async function selectionEnd(): Promise<void> {
   debug(`Haptics - selectionStart called`);
   return await run(async () => {
     return await Haptics.selectionStart();

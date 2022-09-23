@@ -2,60 +2,56 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
-import { classify } from '@ember/string';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-enum Content {
+import WorkOrder from 'houseninja/models/work-order';
+import IntercomService from 'houseninja/services/intercom';
+import RouterService from '@ember/routing/router-service';
+
+enum WorkOrderViewContent {
   ApprovePayment = 'approve-payment',
-  PaymentFailed = 'failed-payment',
-  // approveEstimate: 'approve-estimate',
+  ApproveEstimate = 'approve-estimate',
   Closed = 'closed',
   Default = 'default',
 }
 
-interface WorkOrder {
-  model: { description: string; status: keyof typeof WorkOrderStatus };
-}
+type Args = {
+  model: WorkOrder;
+};
 
-export default class WorkOrderViewComponent extends Component<WorkOrder> {
+export default class WorkOrderViewComponent extends Component<Args> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare loader: any;
-  @service declare intercom: any;
-  @service declare router: any;
+  @service declare intercom: IntercomService;
+  @service declare router: RouterService;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare view: any;
 
-  paymentRoute = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
+  paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
 
-  get isLoading(): boolean {
+  get isLoading() {
     return this.loader.isLoading;
   }
 
-  get contentType(): Content {
-    const modelStatus: string =
-      this.args.model?.status && classify(this.args.model.status);
-    const status: WorkOrderStatus =
-      WorkOrderStatus[modelStatus as keyof typeof WorkOrderStatus];
-    console.log('modelStatus', modelStatus);
-    console.log('status', status);
-
+  get contentType(): string {
+    const status = this.args.model?.status ?? '';
     switch (status) {
       case WorkOrderStatus.InvoiceSentToCustomer:
-        return Content.ApprovePayment;
       case WorkOrderStatus.PaymentFailed:
-        // return Content.paymentFailed;
-        return Content.ApprovePayment;
-      // case WorkOrderStatus.EstimateSharedWithHomeowner:
-      //   return Content.approveEstimate;
+        return WorkOrderViewContent.ApprovePayment;
+      case WorkOrderStatus.EstimateSharedWithHomeowner:
+        return WorkOrderViewContent.ApproveEstimate;
       case WorkOrderStatus.InvoicePaidByCustomer:
       case WorkOrderStatus.Closed:
-        return Content.Closed;
+        return WorkOrderViewContent.Closed;
       default:
-        return Content.Default;
+        return WorkOrderViewContent.Default;
     }
   }
 
   @action
-  selectRoute(route: string | { id: string }): void {
+  selectRoute(route: string | WorkOrder): void {
     if (typeof route === 'object') {
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
     } else {
@@ -68,6 +64,6 @@ export default class WorkOrderViewComponent extends Component<WorkOrder> {
 
   @action
   async displayMessageComposer(message: string): Promise<void> {
-    this.intercom.showComposer(message);
+    await this.intercom.showComposer(message);
   }
 }

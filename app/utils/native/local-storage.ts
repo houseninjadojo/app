@@ -3,6 +3,15 @@ import { run } from '@ember/runloop';
 import { serializeJSON, deserializeJSON } from 'houseninja/utils/serializers';
 import { captureException } from 'houseninja/utils/sentry';
 
+type JSONSerializable =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | JSONSerializable[]
+  | { [key: string]: JSONSerializable };
+
 export const GROUPNAME = 'houseninja';
 
 /**
@@ -15,7 +24,7 @@ export const GROUPNAME = 'houseninja';
  *  Set the storage group. Storage groups are used to organize key/value pairs.
  * @return {Promise<void>}
  */
-export async function configure(options = { group: GROUPNAME }) {
+export async function configure(options = { group: GROUPNAME }): Promise<void> {
   return await run(async () => {
     return Preferences.configure(options);
   });
@@ -29,14 +38,15 @@ export async function configure(options = { group: GROUPNAME }) {
  * @param {String} key
  * @return {Promise<{ value: String }>}
  */
-export async function get(key) {
+// eslint-disable-next-line prettier/prettier
+export async function get(key: string): Promise<{ [value: string]: JSONSerializable } | undefined> {
   try {
     return await run(async () => {
       const { value } = await Preferences.get({ key });
       return deserializeJSON(value);
     });
   } catch (e) {
-    captureException(e);
+    captureException(e as Error);
   }
 }
 
@@ -50,14 +60,14 @@ export async function get(key) {
  * @param {String} options.value
  * @return {Promise<{ value: String }>}
  */
-export async function set(key, value) {
+export async function set(key: string, value: JSONSerializable): Promise<void> {
   try {
     return await run(async () => {
       const payload = { key, value: serializeJSON(value) };
       return await Preferences.set(payload);
     });
   } catch (e) {
-    captureException(e);
+    captureException(e as Error);
   }
 }
 
@@ -70,7 +80,7 @@ export async function set(key, value) {
  * @param {String} options.key
  * @return {Promise<void>}
  */
-export async function remove(options) {
+export async function remove(options: { key: string }): Promise<void> {
   return await run(async () => {
     return await Preferences.remove(options);
   });
@@ -83,7 +93,7 @@ export async function remove(options) {
  *
  * @return {Promise<void>}
  */
-export async function clear() {
+export async function clear(): Promise<void> {
   return await run(async () => {
     return await Preferences.clear();
   });
@@ -96,8 +106,9 @@ export async function clear() {
  *
  * @return {Promise<{ keys: String[] }>}
  */
-export async function keys() {
-  return await run(async () => {
-    return await Preferences.keys();
+export async function keys(): Promise<string[]> {
+  return await run(async (): Promise<string[]> => {
+    const { keys } = await Preferences.keys();
+    return keys;
   });
 }
