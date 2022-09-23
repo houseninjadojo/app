@@ -111,7 +111,6 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-cli-typescript": "^5.1.1",
-    "ember-cli-typescript-blueprints": "^3.0.0",
     "ember-concurrency": "^2.3.7",
     "ember-content-loader": "^3.0.0",
     "ember-data": "~4.7.2",

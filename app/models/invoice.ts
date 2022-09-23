@@ -18,10 +18,10 @@ import type WorkOrder from './work-order';
 
 export default class InvoiceModel extends Model {
   @belongsTo('document', { async: false, inverse: 'invoice' })
-  declare document: AsyncBelongsTo<Document>;
+  declare document: Document;
 
   @belongsTo('document', { async: false, inverse: 'invoice' })
-  declare receipt: AsyncBelongsTo<Document>;
+  declare receipt: Document;
 
   @belongsTo('payment', { async: true, inverse: 'invoice' })
   declare payment: AsyncBelongsTo<Payment>;

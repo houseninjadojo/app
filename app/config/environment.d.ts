@@ -53,7 +53,7 @@ declare const config: {
     };
   };
   sentry: {
-    dsn: string | null;
+    dsn: string | undefined;
     tracesSampleRate: number;
     debug: boolean;
     autoSessionTracking: boolean;

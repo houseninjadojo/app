@@ -14,6 +14,7 @@ Router.map(function () {
   this.route('p', function () {
     this.route('index');
     this.route('approve-payment', { path: 'approve-payment/:access_token' });
+    this.route('approve-estimate', { path: 'approve-estimate/:access_token' });
   });
   this.route('dashboard', function () {
     this.route('home');

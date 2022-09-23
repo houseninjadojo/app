@@ -1,0 +1,16 @@
+<Primitive::Modal::Dialog @toggleModal={{@toggleWebDialog}} @isVisible={{@isVisible}}>
+    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    <div>
+        <p class="hn center mb-4">I understand that the estimate provided is subject to change and that work will be charged based upon the price of parts plus labor required to complete the project. I agree to cover the cost of any additional work, services or fittings that need to be provided to rectify any event or situation which arises during the course of the work that are unexpected or are beyond the vendor’s control.</p>
+        <p class="hn center strong mb-4">Do you approve the estimate of {{@amount}}?</p>
+        <div class="actions ">
+            <Primitive::Button {{on "click" @toggleWebDialog}} @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{@isProcessing}}>
+                Dismiss
+            </Primitive::Button>
+            <Primitive::Button {{on "click" @approveEstimate}} @size="md" @variant="solid" @semantic="accent">
+                I approve this estimate
+            </Primitive::Button>
+        </div>
+        <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
+    </div>
+</Primitive::Modal::Dialog>

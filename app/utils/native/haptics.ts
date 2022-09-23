@@ -24,7 +24,7 @@ export async function impact(strength: ImpactStyle = ImpactStyle.Medium): Promis
  * @param {NotificationType} [type=NotificationType.Success] notification type
  * @return {RSVP.Promise}
  */
-// eslint-disable-next-line prettier/prettier
+// eslint-disable-next-line max-len, prettier/prettier
 export async function notification(type: NotificationType = NotificationType.Success): Promise<void> {
   debug(`Haptics - notification type='${type}' called`);
   return await run(async () => {
