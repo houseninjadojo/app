@@ -37,9 +37,6 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
       ],
       parser: '@typescript-eslint/parser',
-      rules: {
-        'max-len': ['error', { code: 100, ignoreComments: true }],
-      },
     },
     // node files
     {
