@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/houseninjadojo/app/compare/v1.22.0...v1.22.1) (2022-09-23)
+
+
+### Bug Fixes
+
+* **payments|estimates:** fix htmlSafe call for line breaks in external page ([#1032](https://github.com/houseninjadojo/app/issues/1032)) ([4194891](https://github.com/houseninjadojo/app/commit/4194891ca84ecd25c567ae4421524d815167c136))
+
 # [1.22.0](https://github.com/houseninjadojo/app/compare/v1.21.4...v1.22.0) (2022-09-23)
 
 
