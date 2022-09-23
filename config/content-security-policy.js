@@ -3,7 +3,7 @@ module.exports = function (environment) {
 
   return {
     delivery: ['meta'],
-    enabled: enabled,
+    enabled,
     failTests: false,
     policy: {
       'default-src': ["'none'"],
@@ -14,11 +14,23 @@ module.exports = function (environment) {
         'https://cdn.branch.io',
         'https://app.link',
         'https://api2.branch.io',
+        '*.pages.cloudflare.dev',
+        process.env.APP_HOST,
       ],
-      'font-src': ["'self'"],
-      'connect-src': ["'self'"],
-      'img-src': ["'self'"],
-      'style-src': ["'self'"],
+      'font-src': [
+        "'self'",
+        'data:',
+        '*.pages.cloudflare.dev',
+        process.env.APP_HOST,
+      ],
+      'connect-src': [
+        "'self'",
+        '*.pages.cloudflare.dev',
+        `https://${process.env.AUTH_DOMAIN}`,
+        process.env.API_HOST,
+      ],
+      'img-src': ["'self'", 'data:', process.env.APP_HOST],
+      'style-src': ["'self'", 'data:', process.env.APP_HOST],
       'media-src': ["'self'"],
     },
     reportOnly: true,
