@@ -1,124 +1,90 @@
 import Service from '@ember/service';
 import ENV from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
-import { run } from '@ember/runloop';
+import { scheduleOnce } from '@ember/runloop';
 import { Mixpanel } from '@houseninja/capacitor-mixpanel';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
+type UnionToIntersectionHelper<U> = (
+  U extends unknown ? (k: U) => void : never
+) extends (k: infer I) => void
+  ? I
+  : never;
+
+type MPMethod = keyof typeof Mixpanel;
+type MPMPayload = UnionToIntersectionHelper<
+  Exclude<Parameters<typeof Mixpanel[keyof typeof Mixpanel]>[0], undefined>
+>;
+
+type MMPP<T extends MPMethod> = Exclude<
+  Parameters<typeof Mixpanel[T]>[0],
+  undefined
+>;
+
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
-  async setup() {
-    if (!isNativePlatform() && ENV.environment !== 'test') {
-      const token = ENV.analytics.mixpanelToken;
-      const options = {
-        token,
-        autotrack: true,
-        debug: false,
-      };
-      try {
-        await Mixpanel.initialize(options);
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    }
-  }
-
-  async track(event: string, properties: object = {}) {
-    if (this._shouldNotExecute()) {
+  private execMixpanelMethod(
+    method: MPMethod,
+    payload?: MMPP<typeof method>
+  ): void {
+    if (this.shouldNotExecute) {
       return;
     }
-    await run(async () => {
+    const execMethod = () => {
       try {
-        Mixpanel.track({ event, properties });
+        Mixpanel[method](payload as MPMPayload);
       } catch (e: unknown) {
-        this._debug(e as Error);
+        this.debug(e as Error);
       }
-    });
+    };
+    scheduleOnce('afterRender', this, execMethod);
   }
 
-  async identify(distinctId: string) {
-    if (this._shouldNotExecute()) {
-      return;
+  setup(): void {
+    if (isNativePlatform()) {
+      return; // only run this on web
     }
-    await run(async () => {
-      try {
-        Mixpanel.identify({ distinctId });
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+    const payload = {
+      token: ENV.analytics.mixpanelToken,
+      autotrack: true,
+      debug: false,
+    };
+    this.execMixpanelMethod('initialize', payload);
   }
 
-  async alias(alias: string, distinctId: string) {
-    if (this._shouldNotExecute()) {
-      return;
-    }
-    await run(async () => {
-      try {
-        Mixpanel.alias({ alias, distinctId });
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+  track(event: string, properties: object = {}): void {
+    this.execMixpanelMethod('track', { event, properties });
   }
 
-  async registerSuperProperties(properties = {}) {
-    if (this._shouldNotExecute()) {
-      return;
-    }
-    await run(async () => {
-      try {
-        Mixpanel.registerSuperProperties({ properties });
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+  identify(distinctId: string): void {
+    this.execMixpanelMethod('identify', { distinctId });
   }
 
-  async reset() {
-    if (this._shouldNotExecute()) {
-      return;
-    }
-    await run(async () => {
-      try {
-        Mixpanel.reset();
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+  alias(alias: string, distinctId: string): void {
+    this.execMixpanelMethod('alias', { alias, distinctId });
   }
 
-  async setProfile(properties = {}) {
-    if (this._shouldNotExecute()) {
-      return;
-    }
-    await run(async () => {
-      try {
-        Mixpanel.setProfile({ properties });
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+  registerSuperProperties(properties = {}): void {
+    this.execMixpanelMethod('registerSuperProperties', { properties });
   }
 
-  async trackCharge(amount: number, properties = {}) {
-    if (this._shouldNotExecute()) {
-      return;
-    }
-    await run(async () => {
-      try {
-        Mixpanel.trackCharge({ amount, properties });
-      } catch (e: unknown) {
-        this._debug(e as Error);
-      }
-    });
+  reset(): void {
+    this.execMixpanelMethod('reset');
   }
 
-  _debug(e: Error) {
+  setProfile(properties = {}): void {
+    this.execMixpanelMethod('setProfile', { properties });
+  }
+
+  trackCharge(amount: number, properties = {}): void {
+    this.execMixpanelMethod('trackCharge', { amount, properties });
+  }
+
+  private debug(e: Error): void {
     debug(`AnalyticsService - ${e}`);
   }
 
-  _shouldNotExecute() {
+  private get shouldNotExecute(): boolean {
     // @todo why did I have this not run if native?
     // return ENV.environment === 'test' || isNativePlatform();
     return ENV.environment === 'test';
