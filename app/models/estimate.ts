@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo, type AsyncBelongsTo } from '@ember-data/model';
 import { typeOf } from '@ember/utils';
 import { htmlSafe } from '@ember/template';
-import { SafeString } from '@ember/template/-private/handlebars';
+import SafeString from 'houseninja/lib/safe-string';
 
 import type WorkOrder from './work-order';
 
@@ -26,7 +26,7 @@ export default class EstimateModel extends Model {
   get formattedNotes(): SafeString {
     if (this.description) {
       const description: string = this.description.replace(/\n/g, '<br/>');
-      const safeDescription: SafeString = htmlSafe(description);
+      const safeDescription: SafeString = htmlSafe(description) as SafeString;
       return safeDescription;
     } else {
       return new SafeString('');
