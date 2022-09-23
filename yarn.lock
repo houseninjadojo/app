@@ -1632,9 +1632,9 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#ce1afcd":
-  version "4.0.0-beta.3"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/ce1afcd940337a88f39d8e6fde348ac1f0eb57b8"
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#ad95ff0":
+  version "4.0.0-beta.4"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/ad95ff0a8c11d6fb657619b98a6b605df68d3a0f"
 
 "@capacitor/action-sheet@^4.0.1":
   version "4.0.1"

@@ -3,16 +3,19 @@ import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
-import { task } from 'ember-concurrency';
+import { task, type Task } from 'ember-concurrency';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class IntercomService extends Service {
-  @service current;
-  @service analytics;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @service declare current: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @service declare analytics: any;
 
   unreadConversationCount = '';
   isOpen = false;
 
-  async setup() {
+  async setup(): Promise<void> {
     // hide launcher on mobile devices
     if (isNativePlatform()) {
       await Intercom.hideInAppMessages();
@@ -20,7 +23,8 @@ export default class IntercomService extends Service {
     }
   }
 
-  async registerUser(userId, email, hmac) {
+  // eslint-disable-next-line
+  async registerUser(userId: string, email: string, hmac: string): Promise<void> {
     if (isNativePlatform()) {
       await Intercom.setUserHash({ hmac });
       await Intercom.loginUser({
@@ -29,52 +33,57 @@ export default class IntercomService extends Service {
       });
     } else {
       await Intercom.boot({
-        appId: ENV.intercom.appId,
-        userId,
+        app_id: ENV.intercom.appId,
+        user_id: userId,
         email,
-        userHash: hmac,
+        user_hash: hmac,
       });
     }
   }
 
-  async setupListeners() {
+  async setupListeners(): Promise<void> {
     await Intercom.addListener('onUnreadCountChange', ({ value }) => {
-      this.unreadConversationCount = value;
+      this.unreadConversationCount = value ?? '';
     });
   }
 
-  showMessenger() {
+  showMessenger(): void {
     this._showMessenger.perform();
   }
 
-  @task({ drop: true }) *_showMessenger() {
+  _showMessenger: Task<void, []> = task(this, { drop: true }, async () => {
     this.isOpen = true;
     this.analytics.track('Intercom messenger opened', {});
-    yield Intercom.displayMessenger();
-  }
+    await Intercom.displayMessenger();
+  });
 
-  showComposer(message) {
+  showComposer(message: string): void {
     this._showComposer.perform(message);
   }
 
-  @task({ drop: true }) *_showComposer(message = '') {
+  // prettier-ignore
+  _showComposer: Task<void, [key: string]> = task(this, { drop: true }, async (message = '') => {
     this.isOpen = true;
     this.analytics.track('Intercom composer opened', {
       message,
     });
-    yield Intercom.displayMessageComposer({ message });
-  }
+    try {
+      await Intercom.displayMessageComposer({ message });
+    } catch (e: unknown) {
+      captureException(e as Error);
+    }
+  });
 
-  hide() {
+  hide(): void {
     this._hide.perform();
   }
 
-  @task({ drop: true }) *_hide() {
+  _hide: Task<void, []> = task(this, { drop: true }, async () => {
     this.isOpen = false;
-    yield Intercom.hideMessenger();
-  }
+    await Intercom.hideMessenger();
+  });
 
-  logout() {
+  logout(): void {
     if (this.isOpen) {
       this._hide.perform();
     }

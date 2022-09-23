@@ -7,8 +7,8 @@ import { debug } from '@ember/debug';
  * @method isNativePlatform
  * @return Bool
  */
-export default function isNativePlatform() {
-  const val = run(Capacitor, 'isNativePlatform');
+export default function isNativePlatform(): boolean {
+  const val: boolean = run(Capacitor, 'isNativePlatform');
   debug(`isNativePlatform() - ${val}`);
   return val;
 }
