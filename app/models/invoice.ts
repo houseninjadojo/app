@@ -54,13 +54,13 @@ export default class InvoiceModel extends Model {
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;
 
-  get formattedNotes(): string {
+  get formattedNotes(): SafeString {
     if (this.description) {
       const description: string = this.description.replace(/\n/g, '<br/>');
       const safeDescription: SafeString = htmlSafe(description);
-      return safeDescription.toString();
+      return safeDescription;
     } else {
-      return '';
+      return new SafeString('');
     }
   }
 }

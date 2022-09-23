@@ -23,13 +23,13 @@ export default class EstimateModel extends Model {
     return typeOf(this.approvedAt) === 'date';
   }
 
-  get formattedNotes(): string {
+  get formattedNotes(): SafeString {
     if (this.description) {
       const description: string = this.description.replace(/\n/g, '<br/>');
       const safeDescription: SafeString = htmlSafe(description);
-      return safeDescription.toString();
+      return safeDescription;
     } else {
-      return '';
+      return new SafeString('');
     }
   }
 }
