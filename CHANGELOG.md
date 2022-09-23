@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/houseninjadojo/app/compare/v1.21.4...v1.22.0) (2022-09-23)
+
+
+### Features
+
+* estimate approval ([#659](https://github.com/houseninjadojo/app/issues/659)) ([10f78b2](https://github.com/houseninjadojo/app/commit/10f78b2e94e5f9b7bc6767878cbe7382e188168b))
+
 ## [1.21.4](https://github.com/houseninjadojo/app/compare/v1.21.3...v1.21.4) (2022-09-22)
 
 
