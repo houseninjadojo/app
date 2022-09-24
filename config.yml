@@ -1,0 +1,82 @@
+vars:
+  APP_NAME:
+    default: House Ninja
+  APP_SCHEME:
+    default: co.houseninja.application
+  APP_VERSION:
+  CAPACITOR_APP_ID:
+    default: co.houseninja.application
+  CAPACITOR_SERVER_HOSTNAME:
+  CAPACITOR_SERVER_URL:
+  GOOGLE_SERVICES_PROJECT_ID:
+    default: houseninja-dev
+  INTERCOM_ANDROID_API_KEY:
+  INTERCOM_APP_ID:
+  INTERCOM_IOS_API_KEY:
+  NODE_ENV:
+    default: development
+  MIXPANEL_TOKEN:
+
+platforms:
+  android:
+    incrementVersionCode: true
+    packageName: $CAPACITOR_APP_ID
+    versionName: $APP_VERSION
+    gradle:
+      - file: app/build.gradle
+        target:
+        insert: |
+          try {
+              def servicesJSON = file('google-services.json')
+              if (servicesJSON.text) {
+                  apply plugin: 'com.google.gms.google-services'
+              }
+          } catch(Exception e) {
+              logger.warn("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+          }
+      - file: app/build.gradle
+        target:
+          android:
+            buildTypes:
+              release:
+                minifyEnabled:
+        replace:
+          minifyEnabled: false # true for production
+    json:
+      - file: app/google-services.json
+        set:
+          project_info:
+            project_id: houseninja-dev
+  ios:
+    buildVersion: 1
+    bundleId: $CAPACITOR_APP_ID
+    displayName: $APP_NAME
+    packageName: $CAPACITOR_APP_ID
+    productName: $APP_NAME
+    version: $APP_VERSION
+    entitlements:
+      - photos-library: true
+      - communication: true
+      - camera: true
+      - aps-environment: development
+      - associated-domains: [
+          'webcredentials:houseninja.co',
+          'applinks:app.houseninja.co',
+          'applinks:application.houseninja.co',
+          'applinks:houseninja.app.link',
+          'applinks:houseninja-alternate.app.link',
+          'applinks:hnja.app',
+          'applinks:w.hnja.app',
+          'applinks:hnja.io',
+          'applinks:w.hnja.io',
+          'applinks:houseninja-alternate.test-app.link',
+          'applinks:houseninja.test.app.link',
+          'applinks:url3237.hnja.io']
+
+    # targets:
+    #   App:
+    #     builds:
+    #       Debug:
+    #         # Operations for the App target and Debug build
+    #       Release:
+    #         # Operations for the App target and Release build

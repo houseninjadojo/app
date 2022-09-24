@@ -13,9 +13,9 @@ const base = {
   appId: process.env.CAPACITOR_APP_ID,
   appName: 'House Ninja',
   bundledWebRuntime: false,
-  loggingBehavior: 'debug',
   npmClient: 'yarn',
   webDir: 'dist',
+  loggingBehavior: 'debug',
 };
 
 const android = {
@@ -91,7 +91,7 @@ if (environment === 'sandbox') {
 }
 
 if (environment === 'test') {
-  config.server.url = null;
+  config.server.url = undefined;
 }
 
 if (environment === 'development') {

@@ -58,6 +58,7 @@
     "@sentry/ember": "7.12.1",
     "@sentry/integrations": "7.12.1",
     "@sentry/rrweb": "^0.3.3",
+    "@trapezedev/configure": "^5.0.5",
     "@tsconfig/ember": "^1.0.1",
     "@types/ember": "^4.0.1",
     "@types/ember-data": "^4.4.3",
@@ -159,7 +160,6 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@mineminemine/fcm": "^4.0.3",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#ad95ff0",
     "@capacitor/action-sheet": "^4.0.1",
     "@capacitor/app": "^4.0.1",
@@ -175,8 +175,9 @@
     "@capacitor/push-notifications": "^4.0.1",
     "@capacitor/share": "^4.0.1",
     "@capacitor/splash-screen": "^4.0.1",
-    "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
     "@capawesome/capacitor-file-picker": "^0.5.0",
+    "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
+    "@mineminemine/fcm": "^4.0.3",
     "capacitor-branch-deep-links": "^5.0.0",
     "capacitor-secure-storage-plugin": "^0.8.0",
     "lottie-web": "^5.9.6",
@@ -184,9 +185,9 @@
   },
   "peerDependencies": {
     "@sentry/core": "7.12.1",
-    "@sentry/tracing": "7.12.1",
-    "@sentry/utils": "7.12.1",
     "@sentry/hub": "7.12.1",
-    "@sentry/types": "7.12.1"
+    "@sentry/tracing": "7.12.1",
+    "@sentry/types": "7.12.1",
+    "@sentry/utils": "7.12.1"
   }
 }
