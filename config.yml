@@ -25,17 +25,6 @@ platforms:
     gradle:
       - file: app/build.gradle
         target:
-        insert: |
-          try {
-              def servicesJSON = file('google-services.json')
-              if (servicesJSON.text) {
-                  apply plugin: 'com.google.gms.google-services'
-              }
-          } catch(Exception e) {
-              logger.warn("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
-          }
-      - file: app/build.gradle
-        target:
           android:
             buildTypes:
               release:
@@ -44,7 +33,7 @@ platforms:
           minifyEnabled: false # true for production
     json:
       - file: app/google-services.json
-        set:
+        merge:
           project_info:
             project_id: houseninja-dev
   ios:
@@ -55,28 +44,23 @@ platforms:
     productName: $APP_NAME
     version: $APP_VERSION
     entitlements:
-      - photos-library: true
-      - communication: true
-      - camera: true
-      - aps-environment: development
-      - associated-domains: [
-          'webcredentials:houseninja.co',
-          'applinks:app.houseninja.co',
-          'applinks:application.houseninja.co',
-          'applinks:houseninja.app.link',
-          'applinks:houseninja-alternate.app.link',
-          'applinks:hnja.app',
-          'applinks:w.hnja.app',
-          'applinks:hnja.io',
-          'applinks:w.hnja.io',
-          'applinks:houseninja-alternate.test-app.link',
-          'applinks:houseninja.test.app.link',
-          'applinks:url3237.hnja.io']
-
-    # targets:
-    #   App:
-    #     builds:
-    #       Debug:
-    #         # Operations for the App target and Debug build
-    #       Release:
-    #         # Operations for the App target and Release build
+      replace: true
+      entries:
+        - com.apple.security.personal-information.photos-library: true
+        - com.apple.developer.usernotifications.communication: true
+        - com.apple.security.device.camera: true
+        - aps-environment: development
+        - com.apple.developer.associated-domains: [
+            'webcredentials:houseninja.co',
+            'applinks:houseninja.co',
+            'applinks:app.houseninja.co',
+            'applinks:application.houseninja.co',
+            'applinks:houseninja.app.link',
+            'applinks:houseninja-alternate.app.link',
+            'applinks:hnja.app',
+            'applinks:w.hnja.app',
+            'applinks:hnja.io',
+            'applinks:w.hnja.io',
+            'applinks:houseninja-alternate.test-app.link',
+            'applinks:houseninja.test.app.link',
+            'applinks:url3237.hnja.io']

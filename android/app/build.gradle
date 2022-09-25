@@ -6,8 +6,8 @@ android {
         applicationId "co.houseninja.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 190
+        versionName "1.22.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -43,11 +43,11 @@ dependencies {
 
 apply from: 'capacitor.build.gradle'
 
-// try {
-//     def servicesJSON = file('google-services.json')
-//     if (servicesJSON.text) {
-//         apply plugin: 'com.google.gms.google-services'
-//     }
-// } catch(Exception e) {
-//     logger.warn("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
-// }
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.warn("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

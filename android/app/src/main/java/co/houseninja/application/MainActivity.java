@@ -1,4 +1,4 @@
-package co.houseninja.app;
+package co.houseninja.application;
 
 import android.os.Bundle;
 import com.getcapacitor.BridgeActivity;
