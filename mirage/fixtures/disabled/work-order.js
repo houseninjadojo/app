@@ -2,10 +2,7 @@ import { faker } from '@faker-js/faker';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
 
 const getRandomProperty = (obj) => {
-  const keys = Object.keys(obj);
-  const randomKey = keys[Math.floor(Math.random() * keys.length)];
-
-  return obj[randomKey];
+  return faker.helpers.arrayElement(Object.values(obj));
 };
 
 export default [
@@ -16,8 +13,8 @@ export default [
     scheduledDate: '07/15/22',
     scheduledTime: '11:00AM',
     cost: '$100',
-    // status: getRandomProperty(WorkOrderStatus),
-    status: WorkOrderStatus.InvoiceSentToCustomer,
+    status: getRandomProperty(WorkOrderStatus),
+    // status: WorkOrderStatus.InvoiceSentToCustomer,
   },
   {
     id: faker.datatype.uuid(),
@@ -25,8 +22,8 @@ export default [
     vendor: 'Hydro Wash',
     scheduledDate: '09/15/22',
     scheduledTime: '10:00AM',
-    // status: getRandomProperty(WorkOrderStatus),
-    status: WorkOrderStatus.WorkScheduled,
+    status: getRandomProperty(WorkOrderStatus),
+    // status: WorkOrderStatus.WorkScheduled,
   },
   {
     id: faker.datatype.uuid(),
@@ -34,8 +31,8 @@ export default [
     vendor: 'American Electric',
     scheduledDate: '09/08/22',
     scheduledTime: '9:00AM - 12:00PM',
-    // status: getRandomProperty(WorkOrderStatus),
-    status: WorkOrderStatus.WorkScheduled,
+    status: getRandomProperty(WorkOrderStatus),
+    // status: WorkOrderStatus.WorkScheduled,
   },
   {
     id: faker.datatype.uuid(),
@@ -43,8 +40,8 @@ export default [
     vendor: 'Johnson Duct Cleaning',
     scheduledDate: '09/02/22',
     scheduledTime: '5:00PM',
-    // status: getRandomProperty(WorkOrderStatus),
-    status: WorkOrderStatus.WorkScheduled,
+    status: getRandomProperty(WorkOrderStatus),
+    // status: WorkOrderStatus.WorkScheduled,
   },
   {
     id: faker.datatype.uuid(),
@@ -52,8 +49,8 @@ export default [
     vendor: 'Elite Windows',
     scheduledDate: '09/01/22',
     scheduledTime: '8:00AM',
-    // status: getRandomProperty(WorkOrderStatus),
-    status: WorkOrderStatus.WorkScheduled,
+    status: getRandomProperty(WorkOrderStatus),
+    // status: WorkOrderStatus.WorkScheduled,
   },
   {
     id: faker.datatype.uuid(),
