@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/houseninjadojo/app/compare/v1.22.3...v1.23.0) (2022-09-27)
+
+
+### Features
+
+* scheduling in progress ui ([#1046](https://github.com/houseninjadojo/app/issues/1046)) ([b94922b](https://github.com/houseninjadojo/app/commit/b94922b65f824d7ed14c620dc1ab76b4b70b5bb6))
+
 ## [1.22.3](https://github.com/houseninjadojo/app/compare/v1.22.2...v1.22.3) (2022-09-27)
 
 
