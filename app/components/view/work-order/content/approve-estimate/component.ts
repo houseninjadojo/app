@@ -28,6 +28,7 @@ type ActionSheetOptions = Array<{
 export default class WorkOrderApproveEstimateViewContentComponent extends Component<Args> {
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
+  @service declare toast: any;
 
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -81,12 +82,15 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
     try {
       await this.estimate.save();
+      this.isDoneProcessing = true;
       this.estimateApproved = true;
     } catch (e: unknown) {
+      this.toast.showError(
+        'There was an error while approving this estimate. If this happens again, please contact us at hello@houseninja.co.'
+      );
       this.estimate.approvedAt = undefined;
-      captureException(e as Error);
-    } finally {
       this.toggleIsProcessing();
+      captureException(e as Error);
     }
   }
 
@@ -134,8 +138,4 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   get formattedTotal(): string | undefined {
     return this.estimate?.get('amount');
   }
-
-  // get estimateApproved(): boolean {
-  //   return this.args.model.estimate?.get('isApproved') === true;
-  // }
 }
