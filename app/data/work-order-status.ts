@@ -1,37 +1,3 @@
-/**
- * @deprecated
- */
-export const workOrderStatus = {
-  workRequestReceived: 'work_request_received',
-  workOrderInitiated: 'work_order_initiated',
-  vendorIdentified: 'vendor_identified',
-  schedulingInProgress: 'scheduling_in_progress',
-  onsiteEstimateScheduled: 'onsite_estimate_scheduled',
-  estimateSharedWithHomeowner: 'estimate_shared_with_homeowner',
-  estimateApproved: 'estimate_approved',
-  estimateNotApproved: 'estimate_not_approved',
-  workScheduled: 'work_scheduled',
-  workInProgress: 'work_in_progress',
-  changeOrderReceived: 'change_order_received',
-  workCompleted: 'work_completed',
-  problemReported: 'problem_reported',
-  problemBeingAddressed: 'problem_being_addressed',
-  problemResolved: 'problem_resolved',
-  vendorInvoiceReceived: 'vendor_invoice_received',
-  readyToInvoiceCustomer: 'ready_to_invoice_customer',
-  invoiceSentToCustomer: 'invoice_sent_to_customer',
-  invoicePaidByCustomer: 'invoice_paid_by_customer',
-  paymentFailed: 'payment_failed',
-  closed: 'closed',
-  paused: 'paused',
-  cancelled: 'cancelled',
-  canceled: 'canceled',
-  // referred: 'referred',
-  homeWalkthroughScheduled: 'home_walkthrough_scheduled',
-  walkthroughCompleted: 'walkthrough_completed',
-  walkthroughReportSent: 'walkthrough_report_sent',
-};
-
 export enum WorkOrderStatus {
   WorkRequestReceived = 'work_request_received',
   WorkOrderInitiated = 'work_order_initiated',
@@ -62,23 +28,6 @@ export enum WorkOrderStatus {
   WalkthroughCompleted = 'walkthrough_completed',
   WalkthroughReportSent = 'walkthrough_report_sent',
 }
-
-/**
- * @deprecated
- */
-export const WORK_ORDER_UI_LABEL = {
-  INITIATED: 'Initiated',
-  ESTIMATE: 'Estimate for Review',
-  SCHEDULED: 'Scheduled',
-  SCHEDULING: 'Scheduling in Progress',
-  COMPLETED: 'Completed',
-  PAYMENT_DUE: 'Payment Due',
-  CANCELED: 'Canceled',
-  PAUSED: 'Paused',
-  PAID: 'Paid',
-  CLOSED: 'Closed',
-};
-
 export enum WorkOrderUILabel {
   Initiated = 'Initiated',
   Estimate = 'Estimate for Review',
@@ -91,43 +40,6 @@ export enum WorkOrderUILabel {
   Paid = 'Paid',
   Closed = 'Closed',
 }
-
-/**
- * @deprecated
- */
-export const workOrderStatusLabels = {
-  [workOrderStatus.workRequestReceived]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.workOrderInitiated]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.vendorIdentified]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.schedulingInProgress]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.onsiteEstimateScheduled]: WORK_ORDER_UI_LABEL.INITIATED,
-  // [workOrderStatus.estimateSharedWithHomeowner]: 'Approve Estimate',
-  [workOrderStatus.estimateSharedWithHomeowner]: WORK_ORDER_UI_LABEL.ESTIMATE,
-  [workOrderStatus.estimateApproved]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.estimateNotApproved]: WORK_ORDER_UI_LABEL.INITIATED,
-  [workOrderStatus.workScheduled]: WORK_ORDER_UI_LABEL.SCHEDULED,
-  [workOrderStatus.workInProgress]: WORK_ORDER_UI_LABEL.SCHEDULED,
-  [workOrderStatus.changeOrderReceived]: WORK_ORDER_UI_LABEL.SCHEDULED,
-  [workOrderStatus.workCompleted]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.problemReported]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.problemBeingAddressed]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.problemResolved]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.vendorInvoiceReceived]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.readyToInvoiceCustomer]: WORK_ORDER_UI_LABEL.COMPLETED,
-  [workOrderStatus.invoiceSentToCustomer]: WORK_ORDER_UI_LABEL.PAYMENT_DUE,
-  // [workOrderStatus.invoicePaidByCustomer]: 'Review Vendor', // For when review feature is developed.
-  [workOrderStatus.invoicePaidByCustomer]: WORK_ORDER_UI_LABEL.PAID,
-  // [workOrderStatus.paymentFailed]: 'Payment Failed',
-  [workOrderStatus.paymentFailed]: WORK_ORDER_UI_LABEL.PAYMENT_DUE,
-  [workOrderStatus.closed]: WORK_ORDER_UI_LABEL.CLOSED,
-  [workOrderStatus.paused]: WORK_ORDER_UI_LABEL.PAUSED,
-  [workOrderStatus.cancelled]: WORK_ORDER_UI_LABEL.CANCELED,
-  [workOrderStatus.canceled]: WORK_ORDER_UI_LABEL.CANCELED,
-  // [workOrderStatus.referred]: 'Referred',
-  [workOrderStatus.homeWalkthroughScheduled]: WORK_ORDER_UI_LABEL.SCHEDULED,
-  // [workOrderStatus.walkthroughCompleted]: 'Creating Report',
-  [workOrderStatus.walkthroughReportSent]: WORK_ORDER_UI_LABEL.COMPLETED,
-};
 
 export const WorkOrderStatusLabel = {
   [WorkOrderStatus.WorkRequestReceived]: WorkOrderUILabel.Initiated,
