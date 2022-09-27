@@ -5,7 +5,7 @@ import {
   getWorkOrderTag,
   isActiveWorkOrder,
   filterWorkOrdersFor,
-  WORK_ORDER_STATE,
+  WorkOrderState,
 } from 'houseninja/utils/components/work-order/work-order-status';
 import moment from 'moment';
 export default class HandleItComponent extends Component {
@@ -60,7 +60,7 @@ export default class HandleItComponent extends Component {
 
   get paymentDueWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_STATE.PAYMENT_DUE,
+      WorkOrderState.PaymentDue,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return this.__newestToOldest(a, b);
@@ -69,7 +69,7 @@ export default class HandleItComponent extends Component {
 
   get estimateReviewWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_STATE.ESTIMATE,
+      WorkOrderState.Estimate,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return this.__newestToOldest(a, b);
@@ -77,22 +77,16 @@ export default class HandleItComponent extends Component {
   }
 
   get completedWorkOrders() {
-    return filterWorkOrdersFor(
-      WORK_ORDER_STATE.COMPLETED,
-      this.activeWorkOrders
-    );
+    return filterWorkOrdersFor(WorkOrderState.Completed, this.activeWorkOrders);
   }
 
   get scheduledWorkOrders() {
-    return filterWorkOrdersFor(
-      WORK_ORDER_STATE.SCHEDULED,
-      this.activeWorkOrders
-    );
+    return filterWorkOrdersFor(WorkOrderState.Scheduled, this.activeWorkOrders);
   }
 
   get schedulingWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_STATE.SCHEDULING,
+      WorkOrderState.Scheduling,
       this.activeWorkOrders
     );
   }
@@ -109,7 +103,7 @@ export default class HandleItComponent extends Component {
 
   get initiatedWorkOrders() {
     return filterWorkOrdersFor(
-      WORK_ORDER_STATE.INITITATED,
+      WorkOrderState.Initiated,
       this.activeWorkOrders
     )?.sort((a, b) => {
       return this.__newestToOldest(a, b, true);
