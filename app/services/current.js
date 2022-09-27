@@ -37,7 +37,7 @@ export default class CurrentService extends Service {
       'promo_code',
       'properties',
       'properties.work_orders',
-      'properties.work_orders.estimates',
+      'properties.work_orders.estimate',
       'subscription',
     ];
     this.user = yield this.store.findRecord('user', userId, {
