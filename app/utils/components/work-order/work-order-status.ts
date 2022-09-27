@@ -48,10 +48,14 @@ export const getWorkOrderTag = (status: WorkOrderStatus) => {
         label: getWorkOrderStatusLabel(status),
         type: 'secondary',
       };
+    case WorkOrderStatus.SchedulingInProgress:
+      return {
+        label: getWorkOrderStatusLabel(status),
+        // type: 'secondary',
+      };
     case WorkOrderStatus.EstimateNotApproved:
     case WorkOrderStatus.EstimateApproved:
     case WorkOrderStatus.OnsiteEstimateScheduled:
-    case WorkOrderStatus.SchedulingInProgress:
     case WorkOrderStatus.VendorIdentified:
     case WorkOrderStatus.WorkOrderInitiated:
     case WorkOrderStatus.WorkRequestReceived:
@@ -161,6 +165,7 @@ export const WORK_ORDER_STATE = {
   INITITATED: 'inititated',
   ESTIMATE: 'estimate',
   SCHEDULED: 'scheduled',
+  SCHEDULING: 'scheduling',
   PAYMENT_DUE: 'payment due',
   COMPLETED: 'completed',
   PAUSED: 'paused',
@@ -170,6 +175,7 @@ export enum WorkOrderState {
   Initiated = 'inititated',
   Estimate = 'estimate',
   Scheduled = 'scheduled',
+  Scheduling = 'scheduling',
   PaymentDue = 'payment due',
   Completed = 'completed',
   Paused = 'paused',
@@ -209,6 +215,13 @@ export const filterWorkOrdersFor = (
         (w) =>
           WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
           WorkOrderUILabel.Completed
+      );
+      break;
+    case WorkOrderState.Scheduling:
+      filteredWorkOrders = workOrders.filter(
+        (w) =>
+          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
+          WorkOrderUILabel.Scheduling
       );
       break;
     case WorkOrderState.Initiated:

@@ -90,10 +90,18 @@ export default class HandleItComponent extends Component {
     );
   }
 
-  get completedAndScheduledWorkOrders() {
+  get schedulingWorkOrders() {
+    return filterWorkOrdersFor(
+      WORK_ORDER_STATE.SCHEDULING,
+      this.activeWorkOrders
+    );
+  }
+
+  get completedAndScheduledAndSchedulingWorkOrders() {
     return [
       ...(this.completedWorkOrders ?? []),
       ...(this.scheduledWorkOrders ?? []),
+      ...(this.schedulingWorkOrders ?? []),
     ]?.sort((a, b) => {
       return this.__newestToOldest(a, b);
     });
@@ -112,7 +120,7 @@ export default class HandleItComponent extends Component {
     return [
       ...(this.paymentDueWorkOrders ?? []),
       ...(this.estimateReviewWorkOrders ?? []),
-      ...(this.completedAndScheduledWorkOrders ?? []),
+      ...(this.completedAndScheduledAndSchedulingWorkOrders ?? []),
       ...(this.initiatedWorkOrders ?? []),
     ];
   }

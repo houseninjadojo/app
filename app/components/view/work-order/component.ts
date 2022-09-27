@@ -11,6 +11,7 @@ import RouterService from '@ember/routing/router-service';
 enum WorkOrderViewContent {
   ApprovePayment = 'approve-payment',
   ApproveEstimate = 'approve-estimate',
+  Scheduling = 'scheduling',
   Closed = 'closed',
   Default = 'default',
 }
@@ -42,6 +43,8 @@ export default class WorkOrderViewComponent extends Component<Args> {
         return WorkOrderViewContent.ApprovePayment;
       case WorkOrderStatus.EstimateSharedWithHomeowner:
         return WorkOrderViewContent.ApproveEstimate;
+      case WorkOrderStatus.SchedulingInProgress:
+        return WorkOrderViewContent.Scheduling;
       case WorkOrderStatus.InvoicePaidByCustomer:
       case WorkOrderStatus.Closed:
         return WorkOrderViewContent.Closed;
