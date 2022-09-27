@@ -30,7 +30,8 @@ export enum WorkOrderStatus {
 }
 export enum WorkOrderUILabel {
   Initiated = 'Initiated',
-  Estimate = 'Review Estimate',
+  Estimate = 'Estimate for Review',
+  Scheduling = 'Scheduling in Progress',
   Scheduled = 'Scheduled',
   Completed = 'Completed',
   PaymentDue = 'Payment Due',
@@ -44,8 +45,8 @@ export const WorkOrderStatusLabel = {
   [WorkOrderStatus.WorkRequestReceived]: WorkOrderUILabel.Initiated,
   [WorkOrderStatus.WorkOrderInitiated]: WorkOrderUILabel.Initiated,
   [WorkOrderStatus.VendorIdentified]: WorkOrderUILabel.Initiated,
-  [WorkOrderStatus.SchedulingInProgress]: WorkOrderUILabel.Initiated,
   [WorkOrderStatus.OnsiteEstimateScheduled]: WorkOrderUILabel.Initiated,
+  [WorkOrderStatus.SchedulingInProgress]: WorkOrderUILabel.Scheduling,
   // [WorkOrderStatus.EstimateSharedWithHomeowner]: 'Approve Estimate',
   [WorkOrderStatus.EstimateSharedWithHomeowner]: WorkOrderUILabel.Estimate,
   [WorkOrderStatus.EstimateApproved]: WorkOrderUILabel.Initiated,
