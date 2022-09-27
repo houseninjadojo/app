@@ -1,3 +1,11 @@
+## [1.22.3](https://github.com/houseninjadojo/app/compare/v1.22.2...v1.22.3) (2022-09-27)
+
+
+### Bug Fixes
+
+* **current:** estimate instead of estimates ([#1044](https://github.com/houseninjadojo/app/issues/1044)) ([2bf598b](https://github.com/houseninjadojo/app/commit/2bf598b9bf96cb6af2aa5753c7787ccbe991f27b))
+* removed estimate fields ([#1045](https://github.com/houseninjadojo/app/issues/1045)) ([26595a8](https://github.com/houseninjadojo/app/commit/26595a8dbc9f8a446654e5c778dff613ab9a32b0))
+
 ## [1.22.2](https://github.com/houseninjadojo/app/compare/v1.22.1...v1.22.2) (2022-09-27)
 
 
