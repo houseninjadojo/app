@@ -1,3 +1,10 @@
+## [1.22.2](https://github.com/houseninjadojo/app/compare/v1.22.1...v1.22.2) (2022-09-27)
+
+
+### Bug Fixes
+
+* estimate processing feedback ([#1043](https://github.com/houseninjadojo/app/issues/1043)) ([fc99641](https://github.com/houseninjadojo/app/commit/fc9964167bcc80be99266e0f2ad4151248a28b18))
+
 ## [1.22.1](https://github.com/houseninjadojo/app/compare/v1.22.0...v1.22.1) (2022-09-23)
 
 
