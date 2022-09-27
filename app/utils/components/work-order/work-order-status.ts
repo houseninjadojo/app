@@ -158,19 +158,6 @@ export const isCompletedWorkOrder = (status: WorkOrderStatus): boolean => {
   }
 };
 
-/**
- * @deprecated
- */
-export const WORK_ORDER_STATE = {
-  INITITATED: 'inititated',
-  ESTIMATE: 'estimate',
-  SCHEDULED: 'scheduled',
-  SCHEDULING: 'scheduling',
-  PAYMENT_DUE: 'payment due',
-  COMPLETED: 'completed',
-  PAUSED: 'paused',
-};
-
 export enum WorkOrderState {
   Initiated = 'inititated',
   Estimate = 'estimate',
