@@ -18,16 +18,19 @@ jobs:
       environment: ${{ env.BUILD_ENV }}
   release-web:
     needs: build
+    if: success()
     uses: ./.github/workflows/release.web.yml
     with:
       environment: ${{ env.BUILD_ENV }}
   build-ios:
     needs: build
+    if: success()
     uses: ./.github/workflows/build.ios.yml
     with:
       environment: ${{ env.BUILD_ENV }}
   release-ios:
     needs: build-ios
+    if: success()
     uses: ./.github/workflows/release.ios.yml
     with:
       environment: ${{ env.BUILD_ENV }}

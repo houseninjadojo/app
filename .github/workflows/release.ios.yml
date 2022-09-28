@@ -22,8 +22,6 @@ env:
 
 jobs:
   ios:
-    needs: build
-    if: success()
     runs-on: macos-12
     name: release / ios
     timeout-minutes: 30
