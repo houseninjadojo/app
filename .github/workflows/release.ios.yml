@@ -40,9 +40,9 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-          working-directory: 'App'
+          working-directory: 'ios/App'
       - run: pod install --deployment
-        working-directory: 'App'
+        working-directory: 'ios/App'
 
       # install sentry-cli
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
@@ -53,4 +53,4 @@ jobs:
 
       # release
       - run: bundle exec fastlane ios testflight
-        working-directory: 'App'
+        working-directory: 'ios/App'

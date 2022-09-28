@@ -43,7 +43,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
-          working-directory: 'App'
+          working-directory: 'ios/App'
       - uses: actions/cache@v3
         with:
           path: ios/App/Pods
@@ -51,26 +51,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pods-
       - run: pod install --deployment
-        working-directory: 'App'
+        working-directory: 'ios/App'
 
       # build
       - run: bundle exec fastlane ios build
-        working-directory: 'App'
+        working-directory: 'ios/App'
 
       # stash artifacts
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: House Ninja.ipa
-          path: 'App/House Ninja.ipa'
+          path: 'ios/App/House Ninja.ipa'
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: House Ninja.app.dSYM.zip
-          path: 'App/House Ninja.app.dSYM.zip'
+          path: 'ios/App/House Ninja.app.dSYM.zip'
 
       # stash full build
-      - run: tar -czvf App.tar.gz App
+      - run: tar -czvf App.tar.gz ios/App/*
       - uses: actions/upload-artifact@v3
         if: success()
         with:
