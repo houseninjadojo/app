@@ -11,9 +11,3 @@ brew install yarn
 
 # Install node deps
 yarn install --frozen-lockfile
-
-# Build Ember
-yarn build --environment=production
-
-# Capacitor Sync
-npx cap sync ios
