@@ -23,6 +23,7 @@ env:
   AUTH_CONNECTION: ${{ secrets.AUTH_CONNECTION }}
   AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
   BRANCH_KEY: ${{ secrets.BRANCH_KEY }}
+  DOTENV_ENABLED: false
   INTERCOM_APP_ID: ${{ secrets.INTERCOM_APP_ID }}
   MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN }}
   NODE_ENV: ${{ inputs.environment }}
