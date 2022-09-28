@@ -7,7 +7,6 @@ on:
         required: false
         type: string
         default: production
-    secrets: inherit
 
 env:
   APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}

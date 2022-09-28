@@ -16,24 +16,28 @@ env:
 jobs:
   build:
     uses: ./.github/workflows/build.capacitor.yml
+    secrets: inherit
     with:
       environment: production
   release-web:
     needs: build
     if: success()
     uses: ./.github/workflows/release.web.yml
+    secrets: inherit
     with:
       environment: production
   build-ios:
     needs: build
     if: success()
     uses: ./.github/workflows/build.ios.yml
+    secrets: inherit
     with:
       environment: production
   release-ios:
     needs: build-ios
     if: success()
     uses: ./.github/workflows/release.ios.yml
+    secrets: inherit
     with:
       environment: production
   cleanup:

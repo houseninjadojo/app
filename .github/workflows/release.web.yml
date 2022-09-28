@@ -10,7 +10,6 @@ on:
       version:
         required: true
         type: string
-    secrets: inherit
 
 env:
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

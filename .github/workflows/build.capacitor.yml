@@ -11,7 +11,6 @@ on:
       version:
         description: The app version
         value: ${{ jobs.build.outputs.version }}
-    secrets: inherit
 
 env:
   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
