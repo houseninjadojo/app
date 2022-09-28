@@ -15,6 +15,7 @@ env:
   APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
   BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
   GHCR_PAT: ${{ secrets.GHCR_PAT }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
   NODE_ENV: ${{ inputs.environment }}
   RUBY_VERSION: 3.0.3
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
