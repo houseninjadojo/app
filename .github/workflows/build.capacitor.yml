@@ -83,8 +83,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
-          name: node_modules.tar.gz
-          path: node_modules.tar.gz
+          name: node_modules.tar
+          path: node_modules.tar
       - uses: actions/upload-artifact@v3
         if: success()
         with:
