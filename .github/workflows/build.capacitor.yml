@@ -74,16 +74,17 @@ jobs:
           tar -czvf web.tar.gz dist/*
           tar -czvf ios.tar.gz ios/*
           tar -czvf android.tar.gz android/*
+          tar -cvf node_modules.tar node_modules
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: package.json
           path: package.json
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: node_modules.tar.gz
-      #     path: node_modules.tar.gz
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: node_modules.tar.gz
+          path: node_modules.tar.gz
       - uses: actions/upload-artifact@v3
         if: success()
         with:

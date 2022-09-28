@@ -34,6 +34,11 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
+          name: node_modules.tar
+          path: .
+      - run: tar -xvf node_modules.tar
+      - uses: actions/download-artifact@v3
+        with:
           name: ios.tar.gz
           path: .
       - run: tar -xzvf ios.tar.gz
