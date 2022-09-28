@@ -11,32 +11,31 @@ on:
   #     - published
 
 env:
-  RUBY_VERSION: 3.0.3
   BUILD_ENV: production
 
 jobs:
   build:
     uses: ./.github/workflows/build.capacitor.yml
     with:
-      environment: ${{ env.BUILD_ENV }}
+      environment: production
   release-web:
     needs: build
     if: success()
     uses: ./.github/workflows/release.web.yml
     with:
-      environment: ${{ env.BUILD_ENV }}
+      environment: production
   build-ios:
     needs: build
     if: success()
     uses: ./.github/workflows/build.ios.yml
     with:
-      environment: ${{ env.BUILD_ENV }}
+      environment: production
   release-ios:
     needs: build-ios
     if: success()
     uses: ./.github/workflows/release.ios.yml
     with:
-      environment: ${{ env.BUILD_ENV }}
+      environment: production
   cleanup:
     needs: [release-web, release-ios]
     if: always()
