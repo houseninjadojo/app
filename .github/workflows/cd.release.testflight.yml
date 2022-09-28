@@ -3,9 +3,12 @@ name: cd / release
 concurrency: testflight-release-lock
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - improved-builds
+  # release:
+  #   types:
+  #     - published
 
 env:
   RUBY_VERSION: 3.0.3
