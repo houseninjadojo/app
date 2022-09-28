@@ -4,4 +4,4 @@
 yarn build --environment=production
 
 # Capacitor Sync
-npx cap sync ios
+yarn cap sync ios
