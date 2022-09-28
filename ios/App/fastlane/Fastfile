@@ -37,7 +37,7 @@ xcode_project_path      = "./App.xcodeproj"
 xcode_workspace          = "App.xcworkspace"
 
 # get version
-package      = load_json(json_path: "../package.json")
+package      = load_json(json_path: "../../package.json")
 version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
 
