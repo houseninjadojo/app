@@ -1,0 +1,102 @@
+name: build / capacitor
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: false
+        type: string
+        default: production
+    outputs:
+      version:
+        description: The app version
+        value: ${{ jobs.build.outputs.version }}
+    secrets: inherit
+
+env:
+  API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
+  API_HOST: ${{ secrets.API_HOST }}
+  APP_HOST: ${{ secrets.APP_HOST }}
+  APP_SCHEME: ${{ secrets.APP_SCHEME }}
+  AUTH_CLIENT_ID: ${{ secrets.AUTH_CLIENT_ID }}
+  AUTH_AUDIENCE: ${{ secrets.AUTH_AUDIENCE }}
+  AUTH_CONNECTION: ${{ secrets.AUTH_CONNECTION }}
+  AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+  BRANCH_KEY: ${{ secrets.BRANCH_KEY }}
+  INTERCOM_APP_ID: ${{ secrets.INTERCOM_APP_ID }}
+  MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN }}
+  NODE_ENV: ${{ inputs.environment }}
+  RUBY_VERSION: 3.0.3
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
+jobs:
+  web:
+    name: build / web
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ inputs.environment }}
+    outputs:
+      version: ${{ steps.package-version.outputs.current-version }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      # read version
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+
+      - run: yarn install --frozen-lockfile
+        env:
+          NODE_ENV: development # we need the build tools
+
+      # build ember app
+      - run: yarn build
+
+      # prepare capacitor environment
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - run: yarn cap sync --deployment
+
+      # stash dist
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: dist
+          path: dist
+
+      # stash for other jobs
+      - run: |
+          tar -czvf web.tar.gz dist/*
+          tar -czvf ios.tar.gz ios/*
+          tar -czvf android.tar.gz android/*
+          tar -czf node_modules.tar.gz node_modules/*
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: package.json
+          path: package.json
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: node_modules.tar.gz
+          path: node_modules.tar.gz
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: web.tar.gz
+          path: web.tar.gz
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: ios.tar.gz
+          path: ios.tar.gz
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: android.tar.gz
+          path: android.tar.gz

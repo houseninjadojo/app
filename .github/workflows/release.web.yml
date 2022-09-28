@@ -1,0 +1,56 @@
+name: cd / release / web
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: false
+        type: string
+        default: production
+      version:
+        required: true
+        type: string
+    secrets: inherit
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_ENV: ${{ inputs.environment }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: houseninja
+  SENTRY_PROJECT: app
+
+jobs:
+  web:
+    name: build / web
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ inputs.environment }}
+    steps:
+      # download build
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: .
+
+      # release to sentry
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        with:
+          environment: ${{ inputs.environment }}
+          sourcemaps: assets
+          version: co.houseninja.application@${{ inputs.version }}+1
+          url_prefix: ~/
+          finalize: false
+
+      # release to app.houseninja.co
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: houseninja
+          directory: .
+          gitHubToken: ${{ env.GITHUB_TOKEN }}
+          branch: main

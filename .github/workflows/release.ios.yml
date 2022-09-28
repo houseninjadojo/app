@@ -1,0 +1,59 @@
+name: cd / release / ios
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: false
+        type: string
+        default: production
+    secrets: inherit
+
+env:
+  APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+  APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+  APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+  APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+  BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+  GHCR_PAT: ${{ secrets.GHCR_PAT }}
+  NODE_ENV: ${{ inputs.environment }}
+  RUBY_VERSION: 3.0.3
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+jobs:
+  ios:
+    needs: build
+    if: success()
+    runs-on: macos-12
+    name: release / ios
+    timeout-minutes: 30
+    environment: ${{ inputs.environment }}
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
+    steps:
+      # fetch ios bundle
+      - uses: actions/download-artifact@v3
+        with:
+          name: App.tar.gz
+          path: .
+      - run: tar -xzvf App.tar.gz
+
+      # install cocoapods
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+          working-directory: 'App'
+      - run: pod install --deployment
+        working-directory: 'App'
+
+      # install sentry-cli
+      - uses: mathieu-bour/setup-sentry-cli@1.2.0
+        with:
+          token: ${{ env.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
+
+      # release
+      - run: bundle exec fastlane ios testflight
+        working-directory: 'App'

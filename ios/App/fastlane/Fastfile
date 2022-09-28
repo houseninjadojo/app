@@ -22,49 +22,45 @@ app_store_issuer_id     = ENV["APPSTORE_ISSUER_ID"]
 app_store_key_content   = "#{ENV["APPSTORE_PRIVATE_KEY"]}".gsub('\n', '\\n')
 apple_team_id           = ENV["APPLE_TEAM_ID"]
 build_number            = "1"
-bundle_identifier       = "co.houseninja.application"
+bundle_identifier       = ENV["BUNDLE_ID"]
 gh_user                 = "mileszim"
 gh_pat                  = ENV["GHCR_PAT"]
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
-provision_profile_name  = "match AppStore co.houseninja.application"
-scheme                  = "HouseNinja"
+provision_profile_name  = "match AppStore #{bundle_identifier}"
 sentry_auth_token       = ENV["SENTRY_AUTH_TOKEN"]
 sentry_deploy_name      = "testflight"
-sentry_env              = "sandbox"
+sentry_env              = ENV["NODE_ENV"]
 sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
+target                  = "HouseNinja"
 xcode_project_path      = "./App.xcodeproj"
 xcode_workspace          = "App.xcworkspace"
 
 # get version
-package      = load_json(json_path: "../../package.json")
+package      = load_json(json_path: "../package.json")
 version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
+
+# # output
+# output_dir  = "../../"
+# output_name = "HouseNinja-#{full_version}.ipa"
+
+# api key
 
 default_platform(:ios)
 
 platform :ios do
-  desc "Sandbox Release"
-  lane :sandbox do
-    sentry_create_release(
-      auth_token: sentry_auth_token,
-      org_slug: sentry_org_slug,
-      project_slug: sentry_project_slug,
-      version: version,
-      build: build_number,
-      app_identifier: bundle_identifier,
-      # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
-    )
-    start_time = Time.now.to_i
+  api_key = app_store_connect_api_key(
+    key_id: app_store_key_id,
+    issuer_id: app_store_issuer_id,
+    key_content: app_store_key_content,
+    is_key_content_base64: true,
+    duration: 1200,  # optional (maximum 1200)
+    in_house: false, # optional but may be required if using match/sigh
+  )
+
+  lane :build do
     setup_ci if ENV["CI"]
-    api_key = app_store_connect_api_key(
-      key_id: app_store_key_id,
-      issuer_id: app_store_issuer_id,
-      key_content: app_store_key_content,
-      is_key_content_base64: true,
-      duration: 1200,  # optional (maximum 1200)
-      in_house: false, # optional but may be required if using match/sigh
-    )
     sync_code_signing(
       api_key: api_key,
       type: "appstore",
@@ -79,16 +75,31 @@ platform :ios do
       bundle_identifier: bundle_identifier,
       profile_name: provision_profile_name,
     )
+    start_time = Time.now.to_i
     increment_version_number_in_xcodeproj(
       version_number: version,
       xcodeproj: xcode_project_path,
-      scheme: scheme,
+      target: target,
     )
     build_app(
-      scheme: scheme,
+      scheme: target,
       workspace: xcode_workspace,
+      # output_directory: output_dir,
+      # output_name: output_name
     )
     end_time = Time.now.to_i
+  end
+
+  lane :testflight do
+    sentry_create_release(
+      auth_token: sentry_auth_token,
+      org_slug: sentry_org_slug,
+      project_slug: sentry_project_slug,
+      version: version,
+      build: build_number,
+      app_identifier: bundle_identifier,
+      # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
+    )
     upload_to_testflight(
       api_key: api_key,
       skip_waiting_for_build_processing: true,
@@ -110,8 +121,6 @@ platform :ios do
       app_identifier: bundle_identifier,
       env: sentry_env,
       name: sentry_deploy_name,
-      started: start_time,
-      finished: end_time, # Optional unix timestamp when the deployment finished
     )
   end
 end
