@@ -26,6 +26,7 @@ jobs:
     secrets: inherit
     with:
       environment: production
+      version: ${{ needs.build.outputs.version }}
   build-ios:
     needs: build
     if: success()
