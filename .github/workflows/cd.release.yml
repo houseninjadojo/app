@@ -22,14 +22,12 @@ jobs:
           persist-credentials: false
       - uses: pnpm/action-setup@v2
         with:
-          version: 5.5.8
+          version: 6.32.11
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: pnpm
-      - run: |
-          pnpm install --prod --frozen-lockfile
-          pnpm install --dev --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
       - run: pnpm semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
