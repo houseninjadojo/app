@@ -36,9 +36,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:hbs
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint:hbs
   js:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -47,9 +47,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:js
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint:js
   css:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -58,6 +58,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:css
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint:css

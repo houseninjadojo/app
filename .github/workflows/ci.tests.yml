@@ -37,10 +37,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - run: mkdir -p tmp
-      - run: yarn test:ci -o tmp/app
+      - run: pnpm test:ci -o tmp/app
         env:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
