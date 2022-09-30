@@ -1696,10 +1696,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-4.0.1.tgz#b1d6812037da4cac4529d1d4916abfa15f8ec88e"
   integrity sha512-mHcTU+z2SiGL0azdr4Pn9Qzq+AHKBIoDzAOUVAco+OyFsASdMu/+d/DB2MipA4VvO2QNnbcvvtSFwDnCoyg+aw==
 
-"@capacitor/filesystem@^4.0.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-4.1.1.tgz#8a0b4d543d131cc8a421af2d22a21f4577f09fbe"
-  integrity sha512-qpXIR4kxW2age91EiDFOh5KpZ5SUFs1rgWmNrO60wo+AT3Ok0Dzfol2aLSqvNAenDGUilA44ThJPeE+ArRPVzg==
+"@capacitor/filesystem@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-4.1.2.tgz#f3cc63204aa241b25640e6b2dbc3c5d04a2abef3"
+  integrity sha512-akQTgNZBIRE5mN8IPagd4TUk9vx8c2xTllX8yBRzf4BhHHkQPzAnEVikmX+qB/114DvRMh3l2s8mtpXiWOg9NQ==
 
 "@capacitor/haptics@^4.0.1":
   version "4.0.1"
