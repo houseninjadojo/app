@@ -41,8 +41,8 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
       - run: |
-          pnpm install --dev --frozen-lockfile
           pnpm install --prod --frozen-lockfile
+          pnpm install --dev --frozen-lockfile
       - run: pnpm lint:hbs
   js:
     runs-on: ubuntu-latest
@@ -57,8 +57,8 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
       - run: |
-          pnpm install --dev --frozen-lockfile
           pnpm install --prod --frozen-lockfile
+          pnpm install --dev --frozen-lockfile
       - run: pnpm lint:js
   css:
     runs-on: ubuntu-latest
@@ -73,6 +73,6 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
       - run: |
-          pnpm install --dev --frozen-lockfile
           pnpm install --prod --frozen-lockfile
+          pnpm install --dev --frozen-lockfile
       - run: pnpm lint:css
