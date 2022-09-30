@@ -27,7 +27,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+      - run: |
+          pnpm install --dev --frozen-lockfile
+          pnpm install --prod --frozen-lockfile
       - run: pnpm semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}

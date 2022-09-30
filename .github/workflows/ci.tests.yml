@@ -41,7 +41,9 @@ jobs:
         with:
           node-version: '16'
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+      - run: |
+          pnpm install --dev --frozen-lockfile
+          pnpm install --prod --frozen-lockfile
       - run: mkdir -p tmp
       - run: pnpm test:ci -o tmp/app
         env:
