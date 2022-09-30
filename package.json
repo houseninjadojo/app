@@ -174,7 +174,7 @@
     "@capacitor/preferences": "^4.0.1",
     "@capacitor/push-notifications": "^4.0.1",
     "@capacitor/share": "^4.0.1",
-    "@capacitor/splash-screen": "^4.0.1",
+    "@capacitor/splash-screen": "^4.1.0",
     "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
     "@capawesome/capacitor-file-picker": "^0.5.0",
     "capacitor-branch-deep-links": "^5.0.0",
