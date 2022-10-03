@@ -4,19 +4,31 @@ import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import { set } from '@ember/object';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import type RouterService from '@ember/routing/router-service';
+
+interface History {
+  preserveredScrollPosition: {
+    route?: string;
+    position?: number;
+  };
+  preservedPreviousRoute: {
+    name: string;
+    params: { [key: string]: string | undefined };
+  }[];
+}
 
 export default class ViewService extends Service {
-  @service router;
+  @service declare router: RouterService;
 
-  @tracked history = {
-    preserveredScrollPosition: null,
+  @tracked history: History = {
+    preserveredScrollPosition: {},
     preservedPreviousRoute: [],
   };
 
   elSelector = 'main.hn.view';
 
   @action
-  preserveViewScrollPosition(router) {
+  preserveViewScrollPosition(router: RouterService) {
     const mainView = document.querySelector(this.elSelector);
     const position = mainView && mainView.scrollTop;
 
@@ -29,7 +41,7 @@ export default class ViewService extends Service {
   }
 
   @action
-  preservePreviousRoute(router) {
+  preservePreviousRoute(router: RouterService) {
     const { name, params } = router.currentRoute;
     const newHistory = [
       ...this.history.preservedPreviousRoute,
@@ -47,14 +59,14 @@ export default class ViewService extends Service {
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
     } else if (Object.keys(params).length && name) {
       // @todo There's got to be a better way to pass the an >1 paramter values, but I can't figure it out.
-      this.router.transitionTo(name, Object.values(params)[0]);
+      this.router.transitionTo(name, { queryParams: params });
     } else if (name) {
       this.router.transitionTo(name);
     }
   }
 
   @action
-  applyPreservedScrollPosition(router) {
+  applyPreservedScrollPosition(router: RouterService) {
     if (this.history.preserveredScrollPosition) {
       const mainView = document.querySelector(this.elSelector);
       const preserveredScrollPosition = this.history.preserveredScrollPosition;
@@ -63,10 +75,10 @@ export default class ViewService extends Service {
         mainView &&
         preserveredScrollPosition.route === router.currentRouteName
       ) {
-        mainView.scrollTop = preserveredScrollPosition.position;
+        mainView.scrollTop = preserveredScrollPosition.position as number;
       }
 
-      set(this.history, 'preserveredScrollPosition', null);
+      set(this.history, 'preserveredScrollPosition', {});
     }
   }
 }
