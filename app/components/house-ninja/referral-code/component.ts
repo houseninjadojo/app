@@ -1,16 +1,19 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Share } from '@capacitor/share';
 import { captureException } from 'houseninja/utils/sentry';
+import type RouterService from '@ember/routing/router-service';
+import type StoreService from '@ember-data/store';
 
 export default class ServiceAreaComponent extends Component {
-  @service current;
-  @service router;
-  @service store;
+  @service declare current: any;
+  @service declare router: RouterService;
+  @service declare store: StoreService;
 
-  @tracked promoCode = this.current.user.get('promoCode.code');
+  get promoCode() {
+    return this.current.user.get('promoCode.code');
+  }
 
   @action
   async handleClick() {
@@ -21,7 +24,7 @@ export default class ServiceAreaComponent extends Component {
         // url: '', // iOS appended to main content (text property), but doesn't work
         // dialogTitle: 'Share with buddies', //Android only. Not sure where it presents.
       });
-    } catch (e) {
+    } catch (e: any) {
       captureException(e);
     }
   }
