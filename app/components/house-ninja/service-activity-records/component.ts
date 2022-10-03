@@ -2,15 +2,19 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import type RouterService from '@ember/routing/router-service';
+import type IntercomService from 'houseninja/services/intercom';
+import type ViewService from 'houseninja/services/view';
+import type HapticsService from 'houseninja/services/haptics';
 
 export default class ServiceActivityRecordsComponent extends Component {
-  @service router;
-  @service view;
-  @service haptics;
-  @service intercom;
+  @service declare router: RouterService;
+  @service declare view: ViewService;
+  @service declare haptics: HapticsService;
+  @service declare intercom: IntercomService;
 
   @action
-  selectRoute(route) {
+  selectRoute(route: any) {
     this.haptics.giveFeedback();
 
     if (typeof route === 'object') {
