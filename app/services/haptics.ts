@@ -14,7 +14,7 @@ export default class HapticsService extends Service {
   @action
   async giveFeedback(turnOffHapticFeedback = false) {
     if (this.provideHapticFeedback && turnOffHapticFeedback !== true) {
-      isNativePlatform() && (await impact({ style: ImpactStyle.Light }));
+      isNativePlatform() && (await impact(ImpactStyle.Light));
     }
   }
 }
