@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/houseninjadojo/app/compare/v1.23.0...v1.23.1) (2022-10-05)
+
+
+### Bug Fixes
+
+* remove question button from estimate webview ([#1074](https://github.com/houseninjadojo/app/issues/1074)) ([4ef6e70](https://github.com/houseninjadojo/app/commit/4ef6e70db5111ea4678a6f829b5b7ab6020c6c54))
+
 # [1.23.0](https://github.com/houseninjadojo/app/compare/v1.22.3...v1.23.0) (2022-09-27)
 
 
