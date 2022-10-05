@@ -1,9 +1,11 @@
-<div class="actions">
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutEstimate}}>
-        I have a question
-    </Primitive::Button>
-</div>
-<hr/>
+{{#if this.isNativePlatform}}
+    <div class="actions">
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutEstimate}}>
+            I have a question
+        </Primitive::Button>
+    </div>
+    <hr/>
+{{/if}}
 <Primitive::Section>
     <div class="hn banner-message">
         <p class="hn">
