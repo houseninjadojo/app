@@ -55,7 +55,7 @@
     "@sentry/browser": "7.12.1",
     "@sentry/capacitor": "0.10.0",
     "@sentry/cli": "^2.6.0",
-    "@sentry/ember": "7.12.1",
+    "@sentry/ember": "7.14.2",
     "@sentry/integrations": "7.12.1",
     "@sentry/rrweb": "^0.3.3",
     "@tsconfig/ember": "^1.0.1",
