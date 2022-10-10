@@ -3,6 +3,7 @@ import { service } from '@ember/service';
 import type StoreService from '@ember-data/store';
 import type User from 'houseninja/models/user';
 import type Subscription from 'houseninja/models/subscription';
+import type CurrentService from 'houseninja/services/current';
 
 interface Model {
   user: User | undefined;
@@ -10,7 +11,7 @@ interface Model {
 }
 
 export default class CancelSubscriptionRoute extends Route {
-  @service declare current: any;
+  @service declare current: CurrentService;
   @service declare store: StoreService;
 
   async model() {
