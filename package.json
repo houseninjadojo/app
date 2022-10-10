@@ -113,7 +113,7 @@
     "ember-cli-typescript": "^5.1.1",
     "ember-concurrency": "^2.3.7",
     "ember-content-loader": "^3.0.0",
-    "ember-data": "~4.7.2",
+    "ember-data": "~4.7.3",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
     "ember-inflector": "^4.0.2",
