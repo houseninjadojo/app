@@ -1716,10 +1716,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-4.0.1.tgz#36cd5f8aa2ef87a722f318e525d1bda12e7811d1"
   integrity sha512-JZVci2v9jAKH0sIoNNZzmw/cWGXWf+KneLt0yDr/6YSs/2/tfuH10yOrUOhgrKFkR+fFj/rddTClQXUQ8Rqcrg==
 
-"@capacitor/local-notifications@^4.0.1":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-4.1.0.tgz#42d582cb5f3951440b7b8db9a964d830c17bfc94"
-  integrity sha512-bdbo3nGGdNhui7VL6wsU7N5pq7jScWNK08M1x3CcNALLXwHUgz1LRY5oD/LpW9d+/CswMQXWIM+krjS31+h+uQ==
+"@capacitor/local-notifications@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-4.1.1.tgz#a0ae05413102e235696d613a66e93f6ad7dcae53"
+  integrity sha512-0LEHfGO7i5rNNy45Lme10oaqcomi56BvbkEuN/jv7OgXDrJNKoHUgKxadhiXWCnsAq+qmPpsB/01cL1Wo2BUwQ==
 
 "@capacitor/preferences@^4.0.1":
   version "4.0.1"
