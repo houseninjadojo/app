@@ -1,22 +1,23 @@
 {{#if @paid}}
-    <div class="payment-confirmation {{if @isProcessing 'show'}}">
-        <p class="hn center strong">Thank you for approving payment.</p>
+    <div class="payment-confirmation show">
+        <p class="hn center strong">Thank you for approving payment</p>
         <br/>
         {{#if @isNativePlatform}}
-            <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>
+            <p class="hn center">This job has been marked as complete and can now be found in your History tab.</p>            
             <br/>
-            <br/>
-            <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" {{on "click" @selectRoute}}>
+            <HouseNinja::Rating @workOrder={{@workOrder}}/>
+            <br/>                        
+            <Primitive::Button @type="button" @size="md" @variant="floating" @semantic="accent" {{on "click" @selectRoute}}>
                 Back to Home
             </Primitive::Button>
         {{else}}
             <p class="hn center">This job has been marked as complete and can now be found in your History tab of your iOS app.</p>
-            <br/>
-            <p class="hn center">Please feel free to close this browser tab.</p>
-        {{/if}}
+            <br/>                        
+            <HouseNinja::Rating @workOrder={{@workOrder}}/>
+        {{/if}}        
     </div>
 {{else if @paymentFailed}}
-    <div class="payment-failed {{if @isProcessing 'show'}}">
+    <div class="payment-failed show">
         <h1 class="hn center strong">Your payment was not successful</h1>
         <br/>
         {{#if @isNativePlatform}}
