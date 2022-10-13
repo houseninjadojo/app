@@ -16,6 +16,7 @@ import type PaymentMethod from './payment-method';
 import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
+import type Rating from './rating';
 import type Subscription from './subscription';
 
 export default class UserModel extends Model {
@@ -30,6 +31,9 @@ export default class UserModel extends Model {
 
   @hasMany('invoice', { async: true, inverse: 'user' })
   declare invoices: AsyncHasMany<Invoice>;
+
+  @hasMany('ratings', { async: true, inverse: 'user' })
+  declare ratings: AsyncHasMany<Rating>;
 
   @hasMany('payment-method', {
     async: true,
