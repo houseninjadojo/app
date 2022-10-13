@@ -1,0 +1,19 @@
+<div class="rating-container star-rating-container">
+    <p class="hn strong center">How was your experience with {{@workOrder.vendor}}?</p>
+    <div class="rating-control stars-control">
+        {{#each this.starIterator as |star index|}}
+            {{#if (gt index 0)}}             
+                <input checked={{(eq index @vendorRating)}} type="radio" id={{concat index "-star"}} name="star-rating" class="star-rating" value={{index}} {{on "change" @handleVendorRating}}>
+                <label for={{concat index "-star"}}>
+                    {{#if (lte index @vendorRating)}}
+                        <img src="/assets/icons/star.svg" alt="star rating" class="star-rating-icon"/>
+                    {{else}}
+                        <img src="/assets/icons/star-outline.svg" alt="star rating" class="star-rating-icon"/>
+                    {{/if}}
+                </label>   
+            {{/if}}
+        {{/each}}            
+    </div>        
+    <p>Additional comments and feedback</p>
+    <textarea id="vendor" {{on "change" @handleTextAreaChange}}/>
+</div>

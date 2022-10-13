@@ -1,0 +1,29 @@
+{{#if (eq this.step 'finished')}}
+  <p class='hn center'>Thank you! Your feedback helps us improve our service.</p>
+  {{#unless this.isNativePlatform}}
+    <p class='hn center'>You may now close this browser tab.</p>
+  {{/unless}}
+{{else}}
+  <p class='hn center'>Please take a minute to let us know how it went.</p>
+{{/if}}
+<div class='hn ratings-component light'>
+  {{#if (not-eq this.step 'finished')}}
+    {{component
+      (concat 'house-ninja/rating/' this.step)
+      workOrder=@workOrder
+      vendorRating=this.vendorRating
+      handleVendorRating=this.handleVendorRating
+      handleNpsRating=this.handleNpsRating
+      handleTextAreaChange=this.handleTextAreaChange
+    }}
+    <Primitive::Button
+      @isLoading={{this.isProcessing}}
+      @disabled={{this.formIsInvalid}}
+      {{on 'click' this.handleSubmit}}
+      @type='button'
+      @size='lg'
+      @variant='solid'
+      @semantic='accent'
+    >Submit</Primitive::Button>
+  {{/if}}
+</div>

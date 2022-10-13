@@ -1,0 +1,11 @@
+<div class="rating-container nps-rating-container">
+    <p class="hn strong center">How likely are you to recommend House Ninja to your family and friends?</p>
+    <div class="rating-control nps-control">
+        <Primitive::Select            
+            @options={{this.npsOptions}}
+            @onChange={{@handleNpsRating}}
+        />
+    </div>
+    <p>Additional comments and feedback</p>
+    <textarea id="nps" {{on "change" @handleTextAreaChange}}/>
+</div>
