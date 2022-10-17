@@ -1,3 +1,10 @@
+## [1.23.3](https://github.com/houseninjadojo/app/compare/v1.23.2...v1.23.3) (2022-10-17)
+
+
+### Bug Fixes
+
+* **pods:** bump Podfile.lock ([#1097](https://github.com/houseninjadojo/app/issues/1097)) ([b464350](https://github.com/houseninjadojo/app/commit/b464350d544571d4303f022691364292b8576254))
+
 ## [1.23.2](https://github.com/houseninjadojo/app/compare/v1.23.1...v1.23.2) (2022-10-17)
 
 
