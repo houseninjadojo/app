@@ -27,9 +27,22 @@ export default class CurrentService extends Service {
 
   @task({ drop: true }) *_loadUser() {
     if (!this.session.isAuthenticated) {
+      Sentry.addBreadcrumb({
+        category: 'intercom',
+        message: 'load user: not authenticated',
+        level: 'info',
+      });
       return;
     }
     const userId = this.session?.data?.authenticated?.userinfo?.user_id;
+    Sentry.addBreadcrumb({
+      category: 'current',
+      message: 'load user',
+      data: {
+        user: { id: userId },
+      },
+      level: 'info',
+    });
     const includes = [
       'invoices',
       'payments',
@@ -65,6 +78,16 @@ export default class CurrentService extends Service {
         });
       }
 
+      Sentry.addBreadcrumb({
+        category: 'intercom',
+        message: 'registering device to user',
+        data: {
+          user: { id: this.user.id },
+          device: { id: device.id },
+        },
+        level: 'info',
+      });
+
       device.user = this.user;
 
       try {
@@ -90,6 +113,14 @@ export default class CurrentService extends Service {
       'email',
       'fullName'
     );
+    Sentry.addBreadcrumb({
+      category: 'current',
+      message: 'loading and tracking user',
+      data: {
+        user: { id, email },
+      },
+      level: 'info',
+    });
     Sentry.setUser({ email });
     yield this.analytics.identify(email);
     yield this.analytics.setProfile({

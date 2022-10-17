@@ -14,7 +14,7 @@ import {
   set as stash,
   clear as clearStash,
 } from 'houseninja/utils/secure-storage';
-import { captureException } from 'houseninja/utils/sentry';
+import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { Intercom } from '@capacitor-community/intercom';
 import { schedule } from '@ember/runloop';
 import { debug } from '@ember/debug';
@@ -47,6 +47,7 @@ const registrationHandler = async (token) => {
 const registerListenerHandlers = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
   let router = appInstance.lookup('service:router');
+  // let session = appInstance.lookup('service:session');
 
   // successful push notification registration
   addListener('registration', registrationHandler);
@@ -74,6 +75,12 @@ const registerListenerHandlers = async (appInstance) => {
   // @todo handle clicking a notification
   addListener('pushNotificationActionPerformed', ({ notification }) => {
     schedule('afterRender', appInstance, () => {
+      Sentry.addBreadcrumb({
+        category: 'push-notification',
+        message: 'Push Notification Action Performed',
+        data: notification,
+        level: 'info',
+      });
       debug(
         `From Native ->  PushNotifications actionPerformed ${notification.id}`
       );

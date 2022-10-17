@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Service from '@ember/service';
 import Evented from '@ember/object/evented';
+import Transition from '@ember/routing/transition';
 
 interface Data {
   authenticated: {
@@ -50,5 +51,8 @@ declare module 'ember-simple-auth/services/session' {
     authenticate(...args: any[]): Promise<any>;
     invalidate(...args: any): Promise<any>;
     authorize(...args: any[]): Promise<any>;
+    setup(): void;
+
+    requireAuthentication(transition: Transition, route: string): void;
   }
 }
