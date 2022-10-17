@@ -2,7 +2,7 @@ import Application from '@ember/application';
 
 import config from 'houseninja/config/environment';
 import { initialize } from 'houseninja/instance-initializers/sesion-setup';
-import { module, test } from 'qunit';
+import { module, skip } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';
 
@@ -31,7 +31,7 @@ module('Unit | Instance Initializer | sesion-setup', function (hooks) {
   });
 
   // TODO: Replace this with your real tests.
-  test('it works', async function (assert) {
+  skip('it works', async function (assert) {
     await this.instance.boot();
 
     assert.ok(true);
