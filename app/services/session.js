@@ -24,6 +24,11 @@ export default class SessionService extends BaseSessionService {
   }
 
   async setup() {
+    Sentry.addBreadcrumb({
+      category: 'session',
+      message: 'session setup invoked',
+      level: 'info',
+    });
     await super.setup();
     await this.loadIfPKCE();
   }

@@ -10,6 +10,7 @@ export function initialize(appInstance) {
 }
 
 export default {
+  after: 'session-setup',
   name: 'deep-links',
   initialize,
 };

@@ -22,6 +22,7 @@ import ENV from 'houseninja/config/environment';
 export default class DeepLinksService extends Service {
   @service router;
   @service analytics;
+  @service session;
 
   listener = null;
 
@@ -86,6 +87,12 @@ export default class DeepLinksService extends Service {
         return;
       }
       debug('non branch url: ' + event.url);
+      Sentry.addBreadcrumb({
+        category: 'deep-link',
+        message: 'deep link',
+        data: event,
+        level: 'info',
+      });
       const url = this.parseUrl(event.url);
       this.forwardRoute(url);
     });
