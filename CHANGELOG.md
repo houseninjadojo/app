@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/houseninjadojo/app/compare/v1.23.1...v1.23.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* **session:** boot session in an initializer ([#1096](https://github.com/houseninjadojo/app/issues/1096)) ([7e22666](https://github.com/houseninjadojo/app/commit/7e22666287c19365438327a86f26f12fa92d4867))
+
 ## [1.23.1](https://github.com/houseninjadojo/app/compare/v1.23.0...v1.23.1) (2022-10-05)
 
 
