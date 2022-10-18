@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/houseninjadojo/app/compare/v1.24.0...v1.24.1) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** update list of trace urls ([#1103](https://github.com/houseninjadojo/app/issues/1103)) ([6d9c64b](https://github.com/houseninjadojo/app/commit/6d9c64bdd7985677615b9b500a03db4e18d67261))
+
 # [1.24.0](https://github.com/houseninjadojo/app/compare/v1.23.3...v1.24.0) (2022-10-18)
 
 
