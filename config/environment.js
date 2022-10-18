@@ -83,7 +83,11 @@ module.exports = function (environment) {
       browserTracingOptions: {
         tracingOrigins: [
           'api.houseninja.co',
+          'api-origin.houseninja.co',
           'sandbox.api.houseninja.co',
+          'sandbox-origin.api.houseninja.co',
+          'tntmcgm6sar.live.verygoodproxy.com',
+          'tntefwmvax1.sandbox.verygoodproxy.com',
         ],
       }
     },
