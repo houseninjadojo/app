@@ -1,3 +1,10 @@
+## [1.24.2](https://github.com/houseninjadojo/app/compare/v1.24.1...v1.24.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** regex matching for trace headers ([#1105](https://github.com/houseninjadojo/app/issues/1105)) ([4c971d8](https://github.com/houseninjadojo/app/commit/4c971d8758b16a7dee7b5533e2f504a39bf2e7d4))
+
 ## [1.24.1](https://github.com/houseninjadojo/app/compare/v1.24.0...v1.24.1) (2022-10-18)
 
 
