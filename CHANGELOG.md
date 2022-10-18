@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/houseninjadojo/app/compare/v1.23.3...v1.24.0) (2022-10-18)
+
+
+### Features
+
+* decline estimate button ([#1098](https://github.com/houseninjadojo/app/issues/1098)) ([20d63d2](https://github.com/houseninjadojo/app/commit/20d63d2f663f3aebaff96fbd8fac7a22f9152873))
+
 ## [1.23.3](https://github.com/houseninjadojo/app/compare/v1.23.2...v1.23.3) (2022-10-17)
 
 
