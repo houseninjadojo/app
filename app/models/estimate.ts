@@ -16,6 +16,7 @@ export default class EstimateModel extends Model {
   @attr('string') declare vendorName: string;
 
   @attr('date') declare approvedAt?: Date;
+  @attr('date') declare declinedAt?: Date;
   @attr('date') declare scheduledWindowStart?: Date;
   @attr('date') declare scheduledWindowEnd?: Date;
 
