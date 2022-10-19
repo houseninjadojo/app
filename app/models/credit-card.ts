@@ -1,5 +1,14 @@
-import { attr } from '@ember-data/model';
-import PaymentMethod from './payment-method';
+import Model, {
+  AsyncBelongsTo,
+  AsyncHasMany,
+  attr,
+  belongsTo,
+  hasMany,
+} from '@ember-data/model';
+
+import type Payment from './payment';
+import type Subscription from './subscription';
+import type User from './user';
 
 interface CreditCardArgs {
   brand?: string;
@@ -12,7 +21,28 @@ interface CreditCardArgs {
   lastFour?: string;
 }
 
-export default class CreditCardModel extends PaymentMethod {
+export default class CreditCardModel extends Model {
+  @belongsTo('user', {
+    async: true,
+    inverse: 'paymentMethods',
+    as: 'paymentMethod',
+  })
+  declare user: AsyncBelongsTo<User>;
+
+  @belongsTo('subscription', {
+    async: true,
+    inverse: 'paymentMethod',
+    as: 'paymentMethod',
+  })
+  declare subscription: AsyncBelongsTo<Subscription>;
+
+  @hasMany('payments', {
+    async: true,
+    inverse: 'paymentMethod',
+    as: 'paymentMethod',
+  })
+  declare payments: AsyncHasMany<Payment>;
+
   @attr('string') declare brand?: string;
   @attr('string') declare country?: string;
   @attr('string') declare cvv?: string;

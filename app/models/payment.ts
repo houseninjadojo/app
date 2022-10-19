@@ -8,7 +8,11 @@ export default class PaymentModel extends Model {
   @belongsTo('invoice', { async: true, inverse: 'payment' })
   declare invoice: AsyncBelongsTo<Invoice>;
 
-  @belongsTo('payment-method', { async: true, inverse: 'payments' })
+  @belongsTo('payment-method', {
+    async: true,
+    polymorphic: true,
+    inverse: 'payments',
+  })
   declare paymentMethod: AsyncBelongsTo<PaymentMethod>;
 
   @belongsTo('user', { async: true, inverse: 'payments' })

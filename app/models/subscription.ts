@@ -6,15 +6,19 @@ import Model, {
   hasMany,
 } from '@ember-data/model';
 
-import type CreditCard from './credit-card';
+import type PaymentMethod from './payment-method';
 import type Invoice from './invoice';
 import type PromoCode from './promo-code';
 import type SubscriptionPlan from './subscription-plan';
 import type User from './user';
 
 export default class SubscriptionModel extends Model {
-  @belongsTo('credit-card', { async: true, inverse: 'subscriptions' })
-  declare paymentMethod: AsyncBelongsTo<CreditCard>;
+  @belongsTo('payment-method', {
+    async: true,
+    polymorphic: true,
+    inverse: 'subscriptions',
+  })
+  declare paymentMethod: AsyncBelongsTo<PaymentMethod>;
 
   @belongsTo('promo-code', { async: true, inverse: 'subscriptions' })
   declare promoCode: AsyncBelongsTo<PromoCode>;

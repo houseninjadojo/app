@@ -19,7 +19,11 @@ export default class PaymentMethodModel extends Model {
   @belongsTo('subscription', { async: true, inverse: 'paymentMethod' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
-  @belongsTo('user', { async: true, inverse: 'paymentMethods' })
+  @belongsTo('user', {
+    async: true,
+    inverse: 'paymentMethods',
+    as: 'paymentMethod',
+  })
   declare user: AsyncBelongsTo<User>;
 
   @hasMany('payments', { async: true, inverse: 'paymentMethod' })
