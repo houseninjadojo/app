@@ -1,3 +1,10 @@
+## [1.24.5](https://github.com/houseninjadojo/app/compare/v1.24.4...v1.24.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** load notification handler in application route ([#1117](https://github.com/houseninjadojo/app/issues/1117)) ([ee961ca](https://github.com/houseninjadojo/app/commit/ee961cab316b5010afb8393bfd7f3c101710538f))
+
 ## [1.24.4](https://github.com/houseninjadojo/app/compare/v1.24.3...v1.24.4) (2022-10-19)
 
 
