@@ -125,15 +125,17 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
   @action
   async declineEstimate(): Promise<void> {
+    this.toggleIsProcessing();
     this.estimate.declinedAt = new Date();
     try {
       await this.estimate.save();
+      this.isDoneProcessing = true;
     } catch (e: unknown) {
       this.toast.showError(
         'There was an error while declining this estimate. If this happens again, please contact us at hello@houseninja.co.'
       );
-
       captureException(e as Error);
+      this.estimate.declinedAt = undefined;
     } finally {
       this.toggleIsProcessing();
     }
