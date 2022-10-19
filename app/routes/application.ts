@@ -48,7 +48,8 @@ class ApplicationRoute extends Route {
     await this.session.setup();
     await this.analytics.setup();
     await this.analytics.track('Ember App Started');
-    this.deepLinks.setup();
+    await this.deepLinks.start();
+    await this.deepLinks.setup();
   }
 
   afterModel(): void {

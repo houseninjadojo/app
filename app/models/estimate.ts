@@ -24,6 +24,10 @@ export default class EstimateModel extends Model {
     return typeOf(this.approvedAt) === 'date';
   }
 
+  get isDeclined(): boolean {
+    return typeOf(this.declinedAt) === 'date';
+  }
+
   get formattedNotes(): SafeString {
     if (this.description) {
       const description: string = this.description.replace(/\n/g, '<br/>');
