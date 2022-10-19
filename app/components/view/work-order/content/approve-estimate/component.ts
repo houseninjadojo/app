@@ -130,6 +130,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     try {
       await this.estimate.save();
       this.isDoneProcessing = true;
+      this.selectRoute();
     } catch (e: unknown) {
       this.toast.showError(
         'There was an error while declining this estimate. If this happens again, please contact us at hello@houseninja.co.'
