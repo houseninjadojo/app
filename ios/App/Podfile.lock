@@ -40,7 +40,7 @@ PODS:
     - Capacitor
   - CapacitorSplashScreen (4.1.0):
     - Capacitor
-  - CapawesomeCapacitorFilePicker (0.5.0):
+  - CapawesomeCapacitorFilePicker (0.5.2):
     - Capacitor
   - Firebase/CoreOnly (9.6.0):
     - FirebaseCore (= 9.6.0)
@@ -231,7 +231,7 @@ SPEC CHECKSUMS:
   CapacitorSecureStoragePlugin: f4d8b50d96bebd71b21b6eb2322544cb1fd92bea
   CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
   CapacitorSplashScreen: b3086a7ce82aa92f9fa675cc02a4195f5078ba03
-  CapawesomeCapacitorFilePicker: d721be0300ec528fb6e18ce9d12560e9f55231b1
+  CapawesomeCapacitorFilePicker: a952b37c18e7fe752ca2970d34cdf04afa86f19d
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
   FirebaseCoreDiagnostics: 99a495094b10a57eeb3ae8efa1665700ad0bdaa6
