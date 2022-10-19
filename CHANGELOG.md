@@ -1,3 +1,10 @@
+## [1.24.4](https://github.com/houseninjadojo/app/compare/v1.24.3...v1.24.4) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** instrument push notifications ([#1116](https://github.com/houseninjadojo/app/issues/1116)) ([1dbb5b0](https://github.com/houseninjadojo/app/commit/1dbb5b0a5497a1edfa2e3b56d4fa83c34bb26ad0))
+
 ## [1.24.3](https://github.com/houseninjadojo/app/compare/v1.24.2...v1.24.3) (2022-10-19)
 
 
