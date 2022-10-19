@@ -1,3 +1,10 @@
+## [1.24.3](https://github.com/houseninjadojo/app/compare/v1.24.2...v1.24.3) (2022-10-19)
+
+
+### Bug Fixes
+
+* **sentry:** revert tracing origin list ([#1107](https://github.com/houseninjadojo/app/issues/1107)) ([5a1617c](https://github.com/houseninjadojo/app/commit/5a1617cf159e94035ce4597b464994d545af617a))
+
 ## [1.24.2](https://github.com/houseninjadojo/app/compare/v1.24.1...v1.24.2) (2022-10-18)
 
 
