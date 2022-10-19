@@ -90,7 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "autoprefixer": "^10.4.12",
-    "branch-sdk": "^2.65.0",
+    "branch-sdk": "^2.67.0",
     "broccoli-asset-rev": "^3.0.0",
     "canvas-confetti": "^1.5.1",
     "crypto-js": "^4.1.1",
