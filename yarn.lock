@@ -1741,10 +1741,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.1.0.tgz#c88cfd0ec3678fab2edebfe73797a7b452eeb27f"
   integrity sha512-b+IpnM+dhwHZ7zkXr8M9dgJauwSf8wyOweEkM38EDaw4XhZtZoBjJOby1fAeaxgK4iO2qoej95LgtOjcv6eGkg==
 
-"@capawesome/capacitor-file-picker@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@capawesome/capacitor-file-picker/-/capacitor-file-picker-0.5.0.tgz#013ded2b88f59f1f9d161c76ed30481313217d1e"
-  integrity sha512-72LZikX4U1sCI7Id3N3lNkrQe2nPDe8mR7VXRfbfsndYe1dJ0qrskNk6TRWpcWpXOq3zfrpbNAmeZskryDZrTQ==
+"@capawesome/capacitor-file-picker@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@capawesome/capacitor-file-picker/-/capacitor-file-picker-0.5.2.tgz#566a738acd5574df8556ca29e149a3e354c52e93"
+  integrity sha512-tJv3s0diZZf5+igsjWlsOBp9CQGs11lsEQ7+biimOCl61pr0GDcDieNWnsW7G+Ge9CzcWAHGffDW0QGiCR52XA==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
