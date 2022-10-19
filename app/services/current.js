@@ -61,7 +61,11 @@ export default class CurrentService extends Service {
   }
 
   async loadUser() {
-    await this._loadUser.perform();
+    try {
+      await this._loadUser.perform();
+    } catch {
+      // noop
+    }
   }
 
   async registerDeviceToUser() {
