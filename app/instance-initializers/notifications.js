@@ -32,12 +32,27 @@ import { isPresent } from '@ember/utils';
  * so we can send notifications to it later.
  */
 const registrationHandler = async (token) => {
+  Sentry.addBreadcrumb({
+    category: 'push-notification',
+    message: 'Push Notification Permission Granted',
+    level: 'info',
+  });
   schedule('afterRender', this, async () => {
+    const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+    let span;
+    if (transaction) {
+      span = transaction.startChild({
+        op: 'mobile.push-notification.registration',
+        description: 'registering push notification token',
+      });
+    }
     const pushToken = {
       apnsDeviceToken: token && token.value,
       fcmToken: await getToken(),
     };
     await stash('pushToken', pushToken);
+    span?.setTag('storage-key', 'pushToken');
+    span?.finish();
   });
 };
 
@@ -73,24 +88,56 @@ const registerListenerHandlers = async (appInstance) => {
   });
 
   // @todo handle clicking a notification
-  addListener('pushNotificationActionPerformed', ({ notification }) => {
-    schedule('afterRender', appInstance, () => {
-      Sentry.addBreadcrumb({
-        category: 'push-notification',
-        message: 'Push Notification Action Performed',
-        data: notification,
-        level: 'info',
+  addListener(
+    'pushNotificationActionPerformed',
+    ({ actionId, notification }) => {
+      schedule('afterRender', appInstance, () => {
+        const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+        let span;
+        if (transaction) {
+          span = transaction.startChild({
+            data: { notification },
+            op: 'mobile.push-notification.action',
+            description: `handling action: ${actionId}`,
+            tags: {
+              notification: notification.id,
+              action: actionId,
+            },
+          });
+        }
+        Sentry.addBreadcrumb({
+          category: 'push-notification',
+          message: 'Push Notification Action Performed',
+          data: notification,
+          level: 'info',
+        });
+        debug(
+          `From Native ->  PushNotifications actionPerformed ${notification.id}`
+        );
+        if (notification.data.intercom_push_type === 'notification') {
+          span?.setTag('intercom', true);
+          Sentry.addBreadcrumb({
+            category: 'push-notification',
+            message: 'Handling Intercom Push Notification',
+            data: notification,
+            level: 'info',
+          });
+          span?.finish();
+          Intercom.displayMessenger();
+        } else if (isPresent(notification.data.deeplink_path)) {
+          span?.setTag('deep-link', true);
+          Sentry.addBreadcrumb({
+            category: 'push-notification',
+            message: 'Handling Branch Push Notification',
+            data: notification,
+            level: 'info',
+          });
+          span?.finish();
+          router.transitionTo(notification.data.deeplink_path);
+        }
       });
-      debug(
-        `From Native ->  PushNotifications actionPerformed ${notification.id}`
-      );
-      if (notification.data.intercom_push_type === 'notification') {
-        Intercom.displayMessenger();
-      } else if (isPresent(notification.data.deeplink_path)) {
-        router.transitionTo(notification.data.deeplink_path);
-      }
-    });
-  });
+    }
+  );
 
   // addListener('tap', () => {
   //   // do nothing
@@ -122,8 +169,25 @@ const initializeLocalNotifications = async (appInstance) => {
 const initializePushNotifications = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
 
+  const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+  let span;
+  if (transaction) {
+    span = transaction.startChild({
+      op: 'mobile.push-notification.init',
+      description: 'initializing push notification handler',
+    });
+  }
+
+  Sentry.addBreadcrumb({
+    category: 'push-notification',
+    message: 'Initializing Push Notification Handlers',
+    level: 'info',
+  });
+
   // permissions check
   let remotePermissionState = await requestRemotePermissions();
+  span?.setTag('remote-permissions', remotePermissionState);
+  span?.finish();
   if (remotePermissionState === 'granted') {
     // we've been granted permission, so register
     await register();
