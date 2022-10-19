@@ -82,10 +82,12 @@ module.exports = function (environment) {
       release: `co.houseninja.application@${pkg.version}+1`,
       browserTracingOptions: {
         tracingOrigins: [
-          /^\//,
-          /.*houseninja.*/,
-          /.*hnja.*/,
-          /.*verygoodproxy.*/,
+          'api.houseninja.co',
+          'api-origin.houseninja.co',
+          'sandbox.api.houseninja.co',
+          'sandbox-origin.api.houseninja.co',
+          'tntmcgm6sar.live.verygoodproxy.com',
+          'tntefwmvax1.sandbox.verygoodproxy.com',
         ],
       }
     },
