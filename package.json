@@ -160,7 +160,7 @@
   },
   "dependencies": {
     "@mineminemine/fcm": "^4.0.3",
-    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#ad95ff0",
+    "@capacitor-community/intercom": "4.0.0",
     "@capacitor/action-sheet": "^4.0.1",
     "@capacitor/app": "^4.0.1",
     "@capacitor/browser": "^4.0.1",
