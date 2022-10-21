@@ -1,3 +1,10 @@
+## [1.24.6](https://github.com/houseninjadojo/app/compare/v1.24.5...v1.24.6) (2022-10-21)
+
+
+### Bug Fixes
+
+* **notifications/auth/sentry:** instrument PKCE auth subsystem tracing ([#1126](https://github.com/houseninjadojo/app/issues/1126)) ([147595a](https://github.com/houseninjadojo/app/commit/147595aa2a5a08b0288ddee27ec3ba648028d378))
+
 ## [1.24.5](https://github.com/houseninjadojo/app/compare/v1.24.4...v1.24.5) (2022-10-19)
 
 
