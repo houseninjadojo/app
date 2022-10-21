@@ -8,6 +8,7 @@ type JSONSerializable =
   | boolean
   | null
   | undefined
+  | Record<string, unknown>
   | JSONSerializable[]
   | { [key: string]: JSONSerializable };
 
