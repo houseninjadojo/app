@@ -11,7 +11,6 @@ import { debug } from '@ember/debug';
 import { Browser } from '@capacitor/browser';
 import { startSpan } from 'houseninja/utils/sentry';
 import { HttpResponse } from '@capacitor/core';
-
 import type { EmberRunTimer } from '@ember/runloop/types';
 
 type StashTokenPayload =
@@ -295,19 +294,24 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async authenticate(code: string, state: string): Promise<ModifiedAuthTokenResponse> {
-    const span = startSpan('auth.authenticate', {
+    const span = startSpan({
+      op: 'auth.authenticate',
       description: 'PKCE: authenticate',
     });
 
+    let error: Error | undefined = undefined;
+
     if (!code) {
-      span?.setStatus('error');
-      span?.finish();
-      throw new Error('authCode is missing');
+      error = new Error('authCode is missing');
     }
     if (!state || !this._isValidState(state)) {
+      error = new Error('state is missing or invalid');
+    }
+
+    if (error) {
       span?.setStatus('error');
       span?.finish();
-      throw new Error('state is missing or invalid');
+      throw error;
     }
 
     const stashToken: StashTokenPayload = (await SecureStorage.get(
@@ -330,13 +334,13 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     )) || {}) as AuthTokenResponse;
 
     if (isEmpty(res?.refresh_token)) {
-      span?.setStatus('error');
-      span?.finish();
       debug(
         `PKCEAuthenticator#authenticate - failed token exchange with params: ${JSON.stringify(
           params
         )}`
       );
+      span?.setStatus('error');
+      span?.finish();
       throw new Error('failed token exchange');
     }
 
@@ -382,7 +386,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async restore(data: ModifiedAuthTokenResponse): Promise<ModifiedAuthTokenResponse> {
-    const span = startSpan('auth.restore', {
+    const span = startSpan({
+      op: 'auth.restore',
       description: 'PKCE: restoring session',
     });
 
@@ -429,7 +434,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @public
    */
   async invalidate(data: ModifiedAuthTokenResponse): Promise<void> {
-    const span = startSpan('auth.invalidate', {
+    const span = startSpan({
+      op: 'auth.invalidate',
       description: 'PKCE: invalidating session',
     });
 
@@ -465,8 +471,20 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       await this._post(this.serverTokenEndpoint, params);
     }
 
+    span?.setStatus('success');
+    span?.finish();
+
     if (isNativePlatform()) {
+      startSpan({
+        op: 'browser.open',
+        description: `OPEN: ${this.logoutEndpoint}`,
+      })?.finish();
+
       Browser.addListener('browserPageLoaded', () => {
+        startSpan({
+          op: 'browser.close',
+          description: `CLOSE: ${this.logoutEndpoint}`,
+        })?.finish();
         Browser.close();
         Browser.removeAllListeners();
       });
@@ -476,9 +494,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         presentationStyle: 'popover',
       });
     }
-
-    span?.setStatus('success');
-    span?.finish();
 
     return;
   }
@@ -493,6 +508,11 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async _refresh(refresh_token: string /*, retryCount = 0 */): Promise<ModifiedAuthTokenResponse> {
+    const span = startSpan({
+      op: 'auth.refresh',
+      description: 'PKCE: refreshing token',
+    });
+
     // Stash
     const stashed_refresh_token = await SecureStorage.get(
       `${STASH_TOKEN}:refresh_token`
@@ -514,6 +534,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
     await this._scheduleRefresh(data.expires_in, data.refresh_token);
+    span?.setTag('expires_in', data.expires_in);
+    span?.finish();
     return data;
   }
 
@@ -527,6 +549,14 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async _scheduleRefresh(expires_in: number, refresh_token: string): Promise<void> {
+    startSpan({
+      op: 'auth.schedule_refresh',
+      description: 'PKCE: scheduling token refresh',
+      tags: {
+        expires_in,
+      },
+    })?.finish();
+
     // if token already expired, do nothing
     if (expires_in * 1000 <= new Date().getTime()) {
       return;
@@ -604,7 +634,13 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} accessToken The raw access token
    * @returns {Object} Object containing the user information
    */
+  // eslint-disable-next-line prettier/prettier
   async _getUserinfo(accessToken: string): Promise<AuthUserInfo> {
+    startSpan({
+      op: 'auth.user_info',
+      description: 'PKCE: fetching user info',
+    })?.finish();
+
     const headers = {
       Authorization: `Bearer ${accessToken}`,
       Accept: 'application/json',
@@ -632,6 +668,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} url
    * @param {Object} params
    */
+  // eslint-disable-next-line prettier/prettier
   async _post(url: string, params = {}): Promise<HttpResponse | void> {
     const headers = {
       Accept: 'application/json',

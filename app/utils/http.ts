@@ -1,7 +1,8 @@
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
-import { captureException, startSpan } from './sentry';
+import { getActiveTransaction } from '@sentry/ember';
+import { captureException } from './sentry';
 
-type HttpRes = Promise<HttpResponse | void>;
+type HttpRes = Promise<HttpResponse | undefined>;
 
 /**
  * GET request
@@ -10,19 +11,21 @@ type HttpRes = Promise<HttpResponse | void>;
  * @param {Object} [headers={}]
  * @return {RSVP.Promise<Object|String>} - the response body
  */
+// eslint-disable-next-line prettier/prettier
 export async function get(url: string, headers = {}): HttpRes {
-  const span = httpSpan('get', url, headers);
+  const span = httpSpan('get', url);
+  let res: HttpResponse | undefined;
   try {
     const response: HttpResponse = await CapacitorHttp.get({ url, headers });
-    span?.setStatus(response.status.toString());
-    span?.finish();
-    return response.data;
+    res = response.data;
+    span?.setStatus('ok');
   } catch (e) {
     span?.setStatus('error');
-    span?.finish();
     captureException(e as Error);
-    return;
+  } finally {
+    span?.finish();
   }
+  return res;
 }
 
 /**
@@ -35,19 +38,21 @@ export async function get(url: string, headers = {}): HttpRes {
  */
 // eslint-disable-next-line prettier/prettier
 export async function post(url: string, headers = {}, data?: unknown): HttpRes {
-  const span = httpSpan('post', url, headers, data);
+  const span = httpSpan('post', url);
   const options = { url, headers, data };
+  let res: HttpResponse | undefined;
   try {
-    const response: HttpResponse = await CapacitorHttp.post(options);
-    span?.setStatus(response.status.toString());
-    span?.finish();
-    return response.data;
+    const response = await CapacitorHttp.post(options);
+    res = response.data;
+    span?.setStatus('ok');
   } catch (e) {
     span?.setStatus('error');
-    span?.finish();
     captureException(e as Error);
-    return;
+    res = undefined;
+  } finally {
+    span?.finish();
   }
+  return res;
 }
 
 /**
@@ -80,15 +85,15 @@ export function encodeFormData(data: { [key: string]: string }) {
 /**
  * @private
  */
-function httpSpan(method: string, url: string, headers = {}, data?: unknown) {
-  const span = startSpan('http.client', {
+function httpSpan(method: string, url: string) {
+  const transaction = getActiveTransaction();
+  const span = transaction?.startChild({
+    op: 'http.client',
     description: `${method.toUpperCase()} ${url}`,
     tags: {
       capacitor: true,
       url,
       method,
-      headers,
-      data,
     },
   });
   return span;

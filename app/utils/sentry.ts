@@ -1,7 +1,8 @@
 import Sentry from 'houseninja/lib/sentry';
 import config from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
-import { Span, Transaction } from '@sentry/types';
+import { Span, SpanContext, Transaction } from '@sentry/types';
+import { getActiveTransaction } from '@sentry/ember';
 
 export default Sentry;
 
@@ -23,9 +24,10 @@ export function startTransaction(name: string, options = {}): Transaction {
   return transaction;
 }
 
-export function startSpan(op: string, params = {}): Span | undefined {
-  const transaction = currentTransaction();
+// eslint-disable-next-line prettier/prettier
+export function startSpan(params: SpanContext): Span | undefined {
+  const transaction = getActiveTransaction();
   if (transaction) {
-    return transaction.startChild({ op, ...params });
+    return transaction.startChild(params);
   }
 }
