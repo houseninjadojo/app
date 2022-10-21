@@ -9,6 +9,7 @@ import type { DeliveredNotificationSchema } from '@capacitor/local-notifications
 import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 type Notification = PushNotificationSchema | DeliveredNotificationSchema;
 
@@ -63,19 +64,19 @@ export default class NotificationsService extends Service {
     );
   }
 
-  remove(id: string) {
+  remove(id: string): void {
     this.queue.removeObject(this.find(id));
   }
 
-  findBy(keyId: string, key: string) {
+  findBy(keyId: string, key: string): Notification | unknown {
     return this.queue.findBy(keyId as never, key);
   }
 
-  find(id: string) {
+  find(id: string): Notification | unknown {
     return this.findBy('id', id);
   }
 
-  triggerEvent(notification: Notification) {
+  triggerEvent(notification: Notification): void {
     const span = startSpan({
       op: 'notification.event',
       description: `${notification.id}`,
@@ -113,7 +114,7 @@ export default class NotificationsService extends Service {
   }
 
   // eslint-disable-next-line prettier/prettier
-  notificationHandler({ actionId, notification }: { actionId: string; notification: Notification; }) {
+  notificationHandler({ actionId, notification }: { actionId: string; notification: Notification; }): void {
     startSpan({
       op: 'notification.action',
       description: `${actionId}`,
@@ -127,14 +128,16 @@ export default class NotificationsService extends Service {
     this.triggerEvent(notification);
   }
 
-  setup() {
-    startSpan({
-      op: 'notification.setup',
-      description: `setting up`,
-    })?.finish();
-    PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      this.notificationHandler.bind(this)
-    );
+  setup(): void {
+    if (isNativePlatform()) {
+      startSpan({
+        op: 'notification.setup',
+        description: `setting up`,
+      })?.finish();
+      PushNotifications.addListener(
+        'pushNotificationActionPerformed',
+        this.notificationHandler.bind(this)
+      );
+    }
   }
 }
