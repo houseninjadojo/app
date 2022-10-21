@@ -8,6 +8,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import type Transition from '@ember/routing/transition';
 import type AnalyticsService from 'houseninja/services/analytics';
 import type IntercomService from 'houseninja/services/intercom';
+import type NotificationService from 'houseninja/services/notifications';
 import type RouterService from '@ember/routing/router-service';
 import type StorageService from 'houseninja/services/storage';
 import type UserActivityService from 'ember-user-activity/addon/services/user-activity';
@@ -24,6 +25,7 @@ class ApplicationRoute extends Route {
   @service declare router: RouterService;
   @service declare loader: GenericService;
   @service declare storage: StorageService;
+  @service declare notifications: NotificationService;
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -50,6 +52,7 @@ class ApplicationRoute extends Route {
     await this.analytics.track('Ember App Started');
     await this.deepLinks.start();
     await this.deepLinks.setup();
+    await this.notifications.setup();
   }
 
   afterModel(): void {

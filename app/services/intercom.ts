@@ -4,7 +4,7 @@ import { Intercom } from '@capacitor-community/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
 import { task, type Task } from 'ember-concurrency';
-import Sentry, { captureException } from 'houseninja/utils/sentry';
+import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
 
 export default class IntercomService extends Service {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,6 +30,7 @@ export default class IntercomService extends Service {
 
   // eslint-disable-next-line
   async registerUser(userId: string, email: string, hmac: string): Promise<void> {
+    startSpan({ op: 'intercom.user.register' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom',
       message: 'attaching user',
@@ -65,6 +66,7 @@ export default class IntercomService extends Service {
   }
 
   _showMessenger: Task<void, []> = task(this, { drop: true }, async () => {
+    startSpan({ op: 'intercom.show.messenger' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom',
       message: 'showing messenger',
@@ -81,6 +83,7 @@ export default class IntercomService extends Service {
 
   // prettier-ignore
   _showComposer: Task<void, [key: string]> = task(this, { drop: true }, async (message = '') => {
+    startSpan({ op: 'intercom.show.composer' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom',
       message: 'showing composer',
@@ -105,6 +108,7 @@ export default class IntercomService extends Service {
   }
 
   _hide: Task<void, []> = task(this, { drop: true }, async () => {
+    startSpan({ op: 'intercom.hide' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom',
       message: 'hiding messenger',
@@ -115,6 +119,7 @@ export default class IntercomService extends Service {
   });
 
   logout(): void {
+    startSpan({ op: 'intercom.user.logout' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom',
       message: 'logging out',
