@@ -1,3 +1,10 @@
+## [1.24.7](https://github.com/houseninjadojo/app/compare/v1.24.6...v1.24.7) (2022-10-21)
+
+
+### Bug Fixes
+
+* remove unused app icon assets ([#1129](https://github.com/houseninjadojo/app/issues/1129)) ([ea6951b](https://github.com/houseninjadojo/app/commit/ea6951bbbaf22deb5eb9221246d201edf3cae69c))
+
 ## [1.24.6](https://github.com/houseninjadojo/app/compare/v1.24.5...v1.24.6) (2022-10-21)
 
 
