@@ -14,7 +14,7 @@ export default class CancelSubscriptionRoute extends Route {
   @service declare current: CurrentService;
   @service declare store: StoreService;
 
-  async model() {
+  async model(): Promise<Model> {
     const model: Model = {
       user: undefined,
       subscription: undefined,
@@ -23,10 +23,11 @@ export default class CancelSubscriptionRoute extends Route {
     await this.current.loadUser();
     model.user = this.current.user;
 
-    if (model.user?.subscription) {
+    const subscriptionId = model.user?.subscription?.get('id');
+    if (subscriptionId) {
       model.subscription = this.store.peekRecord(
         'subscription',
-        model.user.subscription.get('id') as string
+        subscriptionId
       );
     }
 

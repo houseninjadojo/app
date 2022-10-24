@@ -6,34 +6,38 @@ import { set } from '@ember/object';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import type RouterService from '@ember/routing/router-service';
 
+interface PreservedPreviousRoute {
+  name: string;
+  params: { [key: string]: string | undefined };
+}
+
+interface PreservedScrollPosition {
+  route?: string;
+  position?: number;
+}
+
 interface History {
-  preserveredScrollPosition: {
-    route?: string;
-    position?: number;
-  };
-  preservedPreviousRoute: {
-    name: string;
-    params: { [key: string]: string | undefined };
-  }[];
+  preservedScrollPosition: PreservedScrollPosition;
+  preservedPreviousRoute: Array<PreservedPreviousRoute>;
 }
 
 export default class ViewService extends Service {
   @service declare router: RouterService;
 
   @tracked history: History = {
-    preserveredScrollPosition: {},
+    preservedScrollPosition: {},
     preservedPreviousRoute: [],
   };
 
   elSelector = 'main.hn.view';
 
   @action
-  preserveViewScrollPosition(router: RouterService) {
-    const mainView = document.querySelector(this.elSelector);
+  preserveViewScrollPosition(router: RouterService): void {
+    const mainView: Element | null = document.querySelector(this.elSelector);
     const position = mainView && mainView.scrollTop;
 
     if (position) {
-      set(this.history, 'preserveredScrollPosition', {
+      set(this.history, 'preservedScrollPosition', {
         route: router.currentRouteName,
         position,
       });
@@ -41,7 +45,7 @@ export default class ViewService extends Service {
   }
 
   @action
-  preservePreviousRoute(router: RouterService) {
+  preservePreviousRoute(router: RouterService): void {
     const { name, params } = router.currentRoute;
     const newHistory = [
       ...this.history.preservedPreviousRoute,
@@ -51,8 +55,9 @@ export default class ViewService extends Service {
   }
 
   @action
-  transitionToPreviousRoute() {
-    const previousRoute = this.history.preservedPreviousRoute.pop();
+  transitionToPreviousRoute(): void {
+    const previousRoute: PreservedPreviousRoute | undefined =
+      this.history.preservedPreviousRoute.pop();
     const { name, params } = previousRoute || {};
 
     if (!name || !params) {
@@ -66,19 +71,20 @@ export default class ViewService extends Service {
   }
 
   @action
-  applyPreservedScrollPosition(router: RouterService) {
-    if (this.history.preserveredScrollPosition) {
-      const mainView = document.querySelector(this.elSelector);
-      const preserveredScrollPosition = this.history.preserveredScrollPosition;
+  applyPreservedScrollPosition(router: RouterService): void {
+    if (this.history.preservedScrollPosition) {
+      const mainView: Element | null = document.querySelector(this.elSelector);
+      const preservedScrollPosition: PreservedScrollPosition =
+        this.history.preservedScrollPosition;
 
       if (
         mainView &&
-        preserveredScrollPosition.route === router.currentRouteName
+        preservedScrollPosition.route === router.currentRouteName
       ) {
-        mainView.scrollTop = preserveredScrollPosition.position as number;
+        mainView.scrollTop = preservedScrollPosition.position as number;
       }
 
-      set(this.history, 'preserveredScrollPosition', {});
+      set(this.history, 'preservedScrollPosition', {});
     }
   }
 }
