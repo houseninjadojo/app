@@ -133,8 +133,7 @@ export default class PaymentMethodComponent extends Component {
     } catch (e) {
       Sentry.captureException(e);
     } finally {
-      this.promoCode =
-        promoCodes.length > 0 ? promoCodes.get('firstObject') : null;
+      this.promoCode = promoCodes.length > 0 ? promoCodes[0] : null;
       this.promoCodeAlert = signupPromoCodeAlert(
         this.promoCodeInput,
         this.promoCode

@@ -3,7 +3,8 @@ import { captureException } from 'houseninja/utils/sentry';
 
 export default class StoreService extends Store {
   async findFirst(modelName) {
-    return await this.findAll(modelName).get('firstObject');
+    const found = await this.findAll(modelName);
+    return found[0];
   }
 
   async queryRecord(modelName, query) {
@@ -14,13 +15,14 @@ export default class StoreService extends Store {
       captureException(e);
     }
     if (records.length == 1) {
-      return records.get('firstObject');
+      return records[0];
     } else {
       return null;
     }
   }
 
   peekFirst(modelName) {
-    return this.peekAll(modelName).get('firstObject');
+    const modelInstances = this.peekAll(modelName);
+    return modelInstances[0];
   }
 }

@@ -56,8 +56,10 @@ export default class CurrentService extends Service {
     this.user = yield this.store.findRecord('user', userId, {
       include: includes.join(','),
     });
-    this.paymentMethod = this.user.get('paymentMethods.firstObject');
-    this.property = this.user.get('properties.firstObject');
+    const paymentMethods = this.user.get('paymentMethods');
+    this.paymentMethod = paymentMethods[0];
+    const properties = this.user.get('properties');
+    this.property = properties[0];
   }
 
   async loadUser() {
@@ -74,7 +76,8 @@ export default class CurrentService extends Service {
         await this.loadUser();
       }
 
-      let device = this.store.peekAll('device').get('firstObject');
+      const devices = this.store.peekAll('device');
+      let device = devices[0];
       if (!device) {
         let stashedDevice = await unstash('device');
         device = this.store.createRecord('device', {

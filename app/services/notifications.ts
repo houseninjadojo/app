@@ -1,19 +1,18 @@
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { A } from '@ember/array';
+import { TrackedArray, TrackedMap } from 'tracked-built-ins';
 import EmberObject from '@ember/object';
 import Sentry, { startSpan } from 'houseninja/utils/sentry';
 import { PushNotifications } from '@capacitor/push-notifications';
-import type { PushNotificationSchema } from '@capacitor/push-notifications';
-import type { DeliveredNotificationSchema } from '@capacitor/local-notifications';
 import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
-type Notification = PushNotificationSchema | DeliveredNotificationSchema;
+import type Notification from 'houseninja/lib/notification';
+import Evented from '@ember/object/evented';
 
-export default class NotificationsService extends Service {
+export default class NotificationsService extends Service.extend(Evented) {
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
 
@@ -25,17 +24,16 @@ export default class NotificationsService extends Service {
   // @see app/instance-initializers/notifications.js
   canShowLocalNotifications = false;
 
-  @tracked queue = A();
-  @tracked events = A();
-
-  @tracked bootNotification: Notification | null = null;
+  queue = new TrackedArray<Notification>();
+  events = new TrackedArray<Notification>();
+  // bus = new TrackedMap<string, Notification>();
 
   /**
    * Add notification to the queue
    *
    * @param {Object} notification
    */
-  add(kind: string, state: string, notification: Notification) {
+  add(kind: string, state: string, notification: Notification): void {
     startSpan({
       op: 'notification.add',
       description: `${notification.id}`,
@@ -64,17 +62,17 @@ export default class NotificationsService extends Service {
     );
   }
 
-  remove(id: string): void {
-    this.queue.removeObject(this.find(id));
-  }
+  // remove(id: string): void {
+  //   this.queue.removeObject(this.find(id));
+  // }
 
-  findBy(keyId: string, key: string): Notification | unknown {
-    return this.queue.findBy(keyId as never, key);
-  }
+  // findBy(keyId: string, key: string): Notification | unknown {
+  //   return this.queue.findBy(keyId as never, key);
+  // }
 
-  find(id: string): Notification | unknown {
-    return this.findBy('id', id);
-  }
+  // find(id: string): Notification | unknown {
+  //   return this.findBy('id', id);
+  // }
 
   triggerEvent(notification: Notification): void {
     const span = startSpan({
@@ -134,8 +132,8 @@ export default class NotificationsService extends Service {
         op: 'notification.setup',
         description: `setting up`,
       })?.finish();
-      PushNotifications.addListener(
-        'pushNotificationActionPerformed',
+      this.on(
+        'push-notifications.push-notification-action-performed',
         this.notificationHandler.bind(this)
       );
     }

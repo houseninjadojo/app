@@ -129,6 +129,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
+    const creditCards = this.store.peekAll('credit-card') ?? [];
+    return creditCards[0];
   }
 }

@@ -90,7 +90,8 @@ export default class SetPasswordComponent extends Component {
     if (isPresent(this.args.user)) {
       user = this.args.user;
     } else {
-      user = await this.store.peekAll('user').get('firstObject');
+      const users = this.store.peekAll('user');
+      user = users[0];
     }
     if (user && !this.formIsInvalid) {
       user.password = this.passwords.password;

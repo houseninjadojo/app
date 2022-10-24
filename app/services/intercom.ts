@@ -5,14 +5,16 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
 import { task, type Task } from 'ember-concurrency';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
+import type EventBusService from './event-bus';
 
 export default class IntercomService extends Service {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare current: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare analytics: any;
+  @service declare eventBus: EventBusService;
 
-  unreadConversationCount = '';
+  unreadConversationCount = 0;
   isOpen = false;
 
   async setup(): Promise<void> {
@@ -26,6 +28,7 @@ export default class IntercomService extends Service {
       await Intercom.hideInAppMessages();
       await Intercom.hideLauncher();
     }
+    this.setupListeners();
   }
 
   // eslint-disable-next-line
@@ -56,9 +59,14 @@ export default class IntercomService extends Service {
   }
 
   async setupListeners(): Promise<void> {
-    await Intercom.addListener('onUnreadCountChange', ({ value }) => {
-      this.unreadConversationCount = value ?? '';
+    this.eventBus.on('intercom.on-unread-count-change', ({ value }) => {
+      this.unreadConversationCount = value ? parseInt(value) : 0;
     });
+  }
+
+  async getUnreadCount(): Promise<number> {
+    const { value } = await Intercom.unreadConversationCount();
+    return value ? parseInt(value) : 0;
   }
 
   showMessenger(): void {

@@ -12,6 +12,7 @@ import type NotificationService from 'houseninja/services/notifications';
 import type RouterService from '@ember/routing/router-service';
 import type StorageService from 'houseninja/services/storage';
 import type UserActivityService from 'ember-user-activity/addon/services/user-activity';
+import type EventBusService from 'houseninja/services/event-bus';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericService = any;
@@ -20,6 +21,7 @@ class ApplicationRoute extends Route {
   @service declare analytics: AnalyticsService;
   @service declare current: GenericService;
   @service declare deepLinks: GenericService;
+  @service declare eventBus: EventBusService;
   @service declare intercom: IntercomService;
   @service declare session: GenericService;
   @service declare router: RouterService;
@@ -51,8 +53,9 @@ class ApplicationRoute extends Route {
     await this.analytics.setup();
     await this.analytics.track('Ember App Started');
     await this.deepLinks.start();
-    await this.deepLinks.setup();
-    await this.notifications.setup();
+    // await this.deepLinks.setup();
+    // await this.notifications.setup();
+    await this.eventBus.setupListeners();
   }
 
   afterModel(): void {

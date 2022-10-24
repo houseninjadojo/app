@@ -1,8 +1,8 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { App as MobileApp } from '@capacitor/app';
+// import { App as MobileApp } from '@capacitor/app';
 import { debug } from '@ember/debug';
-import { BranchDeepLinks } from 'capacitor-branch-deep-links';
+// import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 import BranchWeb from 'branch-sdk';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import ENV from 'houseninja/config/environment';
@@ -23,6 +23,7 @@ export default class DeepLinksService extends Service {
   @service router;
   @service analytics;
   @service session;
+  @service eventBus;
 
   listener = null;
 
@@ -81,7 +82,7 @@ export default class DeepLinksService extends Service {
   }
 
   setupRouteHandler() {
-    this.listener = MobileApp.addListener('appUrlOpen', (event) => {
+    this.listener = this.eventBus.on('app.app-url-open', (event) => {
       const transaction = Sentry.getCurrentHub().getScope().getTransaction();
       let span;
       if (transaction) {
@@ -117,7 +118,7 @@ export default class DeepLinksService extends Service {
    * @see https://help.branch.io/developers-hub/docs/capacitor#initialize-branch
    */
   setupBranchHandlers() {
-    this.branchListener = BranchDeepLinks.addListener('init', (event) => {
+    this.branchListener = this.eventBus.on('branch.init', (event) => {
       if (this.isNonBranchLink(event)) {
         return;
       }
@@ -135,8 +136,8 @@ export default class DeepLinksService extends Service {
       const route = this.selectRouteFromBranchParams(referringParams);
       this.forwardRoute({ raw: route, name: route });
     });
-    this.branchErrorListener = BranchDeepLinks.addListener(
-      'initError',
+    this.branchErrorListener = this.eventBus.on(
+      'branch.init-error',
       (error) => {
         if (typeof error === 'string') {
           error = new Error(error);

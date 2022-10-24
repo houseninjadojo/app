@@ -119,6 +119,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   }
 
   get user() {
-    return this.store.peekAll('user').firstObject;
+    const users = this.store.peekAll('user');
+    return users[0];
   }
 }

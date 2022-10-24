@@ -11,6 +11,7 @@ export default class LoginRoute extends Route {
   @service session;
   @service router;
   @service analytics;
+  @service eventBus;
 
   async beforeModel() {
     if (this.session.data.authenticated.kind !== 'payment-approval') {
@@ -53,11 +54,10 @@ export default class LoginRoute extends Route {
   async nativeOpen(url) {
     debug(`Opening Login URL: ${url}`);
     if (isNativePlatform()) {
-      Browser.addListener('browserFinished', () => {
+      this.eventBus.one('browser.browser-finished', () => {
         debug(`Popover browser closed.`);
         debug(`Transitioning to /login-or-signup`);
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
-        Browser.removeAllListeners();
       });
       return await Browser.open({ url, presentationStyle: 'popover' });
     } else {

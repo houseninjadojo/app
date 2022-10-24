@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if isSimulator() {
           Branch.setUseTestBranchKey(true)
-          Branch.getInstance().enableLogging()
+          // Branch.getInstance().enableLogging()
         }
 
         // required for nativelink feature

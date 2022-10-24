@@ -129,7 +129,8 @@ export default class OnboardingService extends Service {
     // im not sure why, but `this.store.peekFirst(modelType);` does not work
     // while this does.
     try {
-      return this.store.peekAll(modelType).get('firstObject');
+      const modelInstances = this.store.peekAll(modelType);
+      return modelInstances[0];
     } catch (e) {
       captureException(e);
       return null;

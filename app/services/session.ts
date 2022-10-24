@@ -2,22 +2,28 @@ import BaseSessionService from 'ember-simple-auth/services/session';
 import { service } from '@ember/service';
 import { Browser } from '@capacitor/browser';
 import { SplashScreen } from '@capacitor/splash-screen';
-import Sentry from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
-import { startSpan, captureException } from 'houseninja/utils/sentry';
+import Sentry, { startSpan, captureException } from 'houseninja/utils/sentry';
+
+import type AnalyticsService from 'houseninja/services/analytics';
+// import type CurrentService from 'houseninja/services/current';
+import type IntercomService from 'houseninja/services/intercom';
+import type RouterService from '@ember/routing/router-service';
+import type StoreService from '@ember-data/store';
+
 /**
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
  */
 export default class SessionService extends BaseSessionService {
-  @service current;
-  @service analytics;
-  @service intercom;
-  @service router;
-  @service store;
+  @service declare analytics: AnalyticsService;
+  @service declare current: any;
+  @service declare intercom: IntercomService;
+  @service declare router: RouterService;
+  @service declare store: StoreService;
 
-  async handleAuthentication() {
-    if (this.data.authenticated.kind === 'payment-approval') {
+  async handleAuthentication(routerAfterAuthentication: string): Promise<void> {
+    if (this.data?.authenticated?.kind === 'payment-approval') {
       Sentry.addBreadcrumb({
         category: 'session',
         message: 'skipping payment-approval authentication',
@@ -25,11 +31,11 @@ export default class SessionService extends BaseSessionService {
       });
       return;
     }
-    super.handleAuthentication(...arguments);
+    super.handleAuthentication(routerAfterAuthentication);
     await this.loadIfPKCE();
   }
 
-  async setup() {
+  async setup(): Promise<void> {
     startSpan({
       op: 'session.setup',
       description: 'session setup',
@@ -43,13 +49,13 @@ export default class SessionService extends BaseSessionService {
     await this.loadIfPKCE();
   }
 
-  get authenticatedHeaders() {
+  get authenticatedHeaders(): Record<string, string> {
     return {
-      Authorization: `Bearer ${this.data.authenticated.access_token}`,
+      Authorization: `Bearer ${this.data?.authenticated?.access_token}`,
     };
   }
 
-  async loadIfPKCE() {
+  async loadIfPKCE(): Promise<void> {
     if (this.data?.authenticated?.authenticator === 'authenticator:pkce') {
       try {
         this.current.loadIdentifyAndTrack.perform();
@@ -59,7 +65,7 @@ export default class SessionService extends BaseSessionService {
     }
   }
 
-  async terminate(transition = null) {
+  async terminate(transition = null): Promise<void> {
     startSpan({
       op: 'session.terminate',
       description: 'session terminate',
@@ -89,7 +95,7 @@ export default class SessionService extends BaseSessionService {
     this.router.transitionTo('index');
   }
 
-  async _closeBrowser() {
+  async _closeBrowser(): Promise<void> {
     if (isNativePlatform()) {
       const span = startSpan({
         op: 'browser.close',
@@ -103,12 +109,11 @@ export default class SessionService extends BaseSessionService {
       });
 
       try {
-        Browser.removeAllListeners();
         await Browser.close();
         span?.setStatus('success');
       } catch (e) {
         span?.setStatus('error');
-        captureException(e);
+        captureException(e as Error);
       } finally {
         await SplashScreen.hide();
         span?.finish();
