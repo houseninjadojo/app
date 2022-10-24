@@ -1,3 +1,80 @@
+## [1.24.7](https://github.com/houseninjadojo/app/compare/v1.24.6...v1.24.7) (2022-10-21)
+
+
+### Bug Fixes
+
+* remove unused app icon assets ([#1129](https://github.com/houseninjadojo/app/issues/1129)) ([ea6951b](https://github.com/houseninjadojo/app/commit/ea6951bbbaf22deb5eb9221246d201edf3cae69c))
+
+## [1.24.6](https://github.com/houseninjadojo/app/compare/v1.24.5...v1.24.6) (2022-10-21)
+
+
+### Bug Fixes
+
+* **notifications/auth/sentry:** instrument PKCE auth subsystem tracing ([#1126](https://github.com/houseninjadojo/app/issues/1126)) ([147595a](https://github.com/houseninjadojo/app/commit/147595aa2a5a08b0288ddee27ec3ba648028d378))
+
+## [1.24.5](https://github.com/houseninjadojo/app/compare/v1.24.4...v1.24.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** load notification handler in application route ([#1117](https://github.com/houseninjadojo/app/issues/1117)) ([ee961ca](https://github.com/houseninjadojo/app/commit/ee961cab316b5010afb8393bfd7f3c101710538f))
+
+## [1.24.4](https://github.com/houseninjadojo/app/compare/v1.24.3...v1.24.4) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** instrument push notifications ([#1116](https://github.com/houseninjadojo/app/issues/1116)) ([1dbb5b0](https://github.com/houseninjadojo/app/commit/1dbb5b0a5497a1edfa2e3b56d4fa83c34bb26ad0))
+
+## [1.24.3](https://github.com/houseninjadojo/app/compare/v1.24.2...v1.24.3) (2022-10-19)
+
+
+### Bug Fixes
+
+* **sentry:** revert tracing origin list ([#1107](https://github.com/houseninjadojo/app/issues/1107)) ([5a1617c](https://github.com/houseninjadojo/app/commit/5a1617cf159e94035ce4597b464994d545af617a))
+
+## [1.24.2](https://github.com/houseninjadojo/app/compare/v1.24.1...v1.24.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** regex matching for trace headers ([#1105](https://github.com/houseninjadojo/app/issues/1105)) ([4c971d8](https://github.com/houseninjadojo/app/commit/4c971d8758b16a7dee7b5533e2f504a39bf2e7d4))
+
+## [1.24.1](https://github.com/houseninjadojo/app/compare/v1.24.0...v1.24.1) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** update list of trace urls ([#1103](https://github.com/houseninjadojo/app/issues/1103)) ([6d9c64b](https://github.com/houseninjadojo/app/commit/6d9c64bdd7985677615b9b500a03db4e18d67261))
+
+# [1.24.0](https://github.com/houseninjadojo/app/compare/v1.23.3...v1.24.0) (2022-10-18)
+
+
+### Features
+
+* decline estimate button ([#1098](https://github.com/houseninjadojo/app/issues/1098)) ([20d63d2](https://github.com/houseninjadojo/app/commit/20d63d2f663f3aebaff96fbd8fac7a22f9152873))
+
+## [1.23.3](https://github.com/houseninjadojo/app/compare/v1.23.2...v1.23.3) (2022-10-17)
+
+
+### Bug Fixes
+
+* **pods:** bump Podfile.lock ([#1097](https://github.com/houseninjadojo/app/issues/1097)) ([b464350](https://github.com/houseninjadojo/app/commit/b464350d544571d4303f022691364292b8576254))
+
+## [1.23.2](https://github.com/houseninjadojo/app/compare/v1.23.1...v1.23.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* **session:** boot session in an initializer ([#1096](https://github.com/houseninjadojo/app/issues/1096)) ([7e22666](https://github.com/houseninjadojo/app/commit/7e22666287c19365438327a86f26f12fa92d4867))
+
+## [1.23.1](https://github.com/houseninjadojo/app/compare/v1.23.0...v1.23.1) (2022-10-05)
+
+
+### Bug Fixes
+
+* remove question button from estimate webview ([#1074](https://github.com/houseninjadojo/app/issues/1074)) ([4ef6e70](https://github.com/houseninjadojo/app/commit/4ef6e70db5111ea4678a6f829b5b7ab6020c6c54))
+
 # [1.23.0](https://github.com/houseninjadojo/app/compare/v1.22.3...v1.23.0) (2022-09-27)
 
 

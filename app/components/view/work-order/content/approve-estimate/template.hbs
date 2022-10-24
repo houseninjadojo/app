@@ -1,9 +1,11 @@
-<div class="actions">
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutEstimate}}>
-        I have a question
-    </Primitive::Button>
-</div>
-<hr/>
+{{#if this.isNativePlatform}}
+    <div class="actions">
+        <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" this.inquireAboutEstimate}}>
+            I have a question
+        </Primitive::Button>
+    </div>
+    <hr/>
+{{/if}}
 <Primitive::Section>
     <div class="hn banner-message">
         <p class="hn">
@@ -19,7 +21,7 @@
         <p class="hn field"><span class="hn label">Scheduled Time: </span>{{if @model.scheduledTime @model.scheduledTime }}</p> --}}
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.estimate.description @model.estimate.formattedNotes}}</p>
     </div>
-    <Primitive::Button @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}} {{on "click" this.decline}}>
+    <Primitive::Button @class="mb-2" @size="md" @variant="outline" @semantic="primary" @disabled={{this.isProcessing}} {{on "click" this.handleDecline}}>
         Decline Estimate
     </Primitive::Button>
     <Primitive::Button @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
@@ -32,6 +34,11 @@
         @approveEstimate={{this.approveEstimate}}
         @amount={{@model.estimate.amount}}
     />
+<View::WorkOrder::Content::ApproveEstimate::DeclineWebDialog
+    @isVisible={{this.showWebDeclineDialog}}
+    @toggleDeclineWebDialog={{this.toggleDeclineWebDialog}}
+    @declineEstimate={{this.declineEstimate}}    
+/>
 <View::WorkOrder::Content::ApproveEstimate::Processing
     @isProcessing={{this.isProcessing}}
     @isDoneProcessing={{this.isDoneProcessing}}

@@ -5,6 +5,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import Sentry from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { startSpan, captureException } from 'houseninja/utils/sentry';
 /**
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
  */
@@ -17,6 +18,11 @@ export default class SessionService extends BaseSessionService {
 
   async handleAuthentication() {
     if (this.data.authenticated.kind === 'payment-approval') {
+      Sentry.addBreadcrumb({
+        category: 'session',
+        message: 'skipping payment-approval authentication',
+        level: 'info',
+      });
       return;
     }
     super.handleAuthentication(...arguments);
@@ -24,6 +30,15 @@ export default class SessionService extends BaseSessionService {
   }
 
   async setup() {
+    startSpan({
+      op: 'session.setup',
+      description: 'session setup',
+    })?.finish();
+    Sentry.addBreadcrumb({
+      category: 'session',
+      message: 'session setup invoked',
+      level: 'info',
+    });
     await super.setup();
     await this.loadIfPKCE();
   }
@@ -45,6 +60,11 @@ export default class SessionService extends BaseSessionService {
   }
 
   async terminate(transition = null) {
+    startSpan({
+      op: 'session.terminate',
+      description: 'session terminate',
+    })?.finish();
+
     if (isNativePlatform()) {
       SplashScreen.show({
         fadeInDuration: 0,
@@ -71,13 +91,27 @@ export default class SessionService extends BaseSessionService {
 
   async _closeBrowser() {
     if (isNativePlatform()) {
+      const span = startSpan({
+        op: 'browser.close',
+        description: 'CLOSE',
+      });
+
+      Sentry.addBreadcrumb({
+        category: 'session',
+        message: 'closing browser',
+        level: 'info',
+      });
+
       try {
         Browser.removeAllListeners();
         await Browser.close();
+        span?.setStatus('success');
       } catch (e) {
-        Sentry.captureException(e);
+        span?.setStatus('error');
+        captureException(e);
       } finally {
         await SplashScreen.hide();
+        span?.finish();
       }
     }
   }

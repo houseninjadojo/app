@@ -22,6 +22,7 @@ import ENV from 'houseninja/config/environment';
 export default class DeepLinksService extends Service {
   @service router;
   @service analytics;
+  @service session;
 
   listener = null;
 
@@ -81,11 +82,29 @@ export default class DeepLinksService extends Service {
 
   setupRouteHandler() {
     this.listener = MobileApp.addListener('appUrlOpen', (event) => {
-      // console.log(event);
+      const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+      let span;
+      if (transaction) {
+        span = transaction.startChild({
+          op: 'mobile.deep-link.event',
+          description: `Received appUrlOpen: ${event?.url}`,
+        });
+      }
       if (!this.isNonBranchLink(event)) {
+        span?.setTag('branch-link', true);
+        span?.finish();
         return;
       }
+      span?.setTag('branch-link', false);
+      span?.setTag('url', event?.url);
+      span?.finish();
       debug('non branch url: ' + event.url);
+      Sentry.addBreadcrumb({
+        category: 'deep-link',
+        message: 'deep link',
+        data: event,
+        level: 'info',
+      });
       const url = this.parseUrl(event.url);
       this.forwardRoute(url);
     });
@@ -99,7 +118,6 @@ export default class DeepLinksService extends Service {
    */
   setupBranchHandlers() {
     this.branchListener = BranchDeepLinks.addListener('init', (event) => {
-      // console.log(event);
       if (this.isNonBranchLink(event)) {
         return;
       }
@@ -120,7 +138,10 @@ export default class DeepLinksService extends Service {
     this.branchErrorListener = BranchDeepLinks.addListener(
       'initError',
       (error) => {
-        captureException(error);
+        if (typeof error === 'string') {
+          error = new Error(error);
+          captureException(error);
+        }
       }
     );
   }

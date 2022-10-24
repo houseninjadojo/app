@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import Sentry from 'houseninja/utils/sentry';
 
 export default class CameraService extends Service {
   @tracked image = null;
@@ -14,6 +15,11 @@ export default class CameraService extends Service {
   }
 
   async getImage(source) {
+    Sentry.addBreadcrumb({
+      category: 'camera',
+      message: 'taking a photo',
+      level: 'info',
+    });
     try {
       const image = await Camera.getPhoto({
         quality: 90,
