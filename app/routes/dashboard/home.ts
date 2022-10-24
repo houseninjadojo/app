@@ -20,11 +20,11 @@ export default class DashboardHomeRoute extends Route {
   }
 
   async model(): Promise<object> {
-    const userId = this.session?.data?.authenticated?.userinfo?.user_id;
+    const userId = this.session.data?.authenticated?.userinfo?.user_id;
     let user = null;
     let property = null;
 
-    if (isBlank(this.current.user)) {
+    if (userId && isBlank(this.current.user)) {
       user = await this.store.findRecord('user', userId, {
         include: 'properties',
       });
