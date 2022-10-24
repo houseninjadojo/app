@@ -6,9 +6,10 @@ import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import type SessionService from 'houseninja/services/session';
 import type StoreService from '@ember-data/store';
 import type Transition from '@ember/routing/transition';
+import type CurrentService from 'houseninja/services/current';
 
 export default class DashboardHomeRoute extends Route {
-  @service declare current: any;
+  @service declare current: CurrentService;
   @service declare session: SessionService;
   @service declare store: StoreService;
 
@@ -31,8 +32,8 @@ export default class DashboardHomeRoute extends Route {
       const properties = await user.get('properties');
       property = properties[0];
     } else {
-      const properties = await this.current.user.get('properties');
-      property = properties[0];
+      const properties = await this.current.user?.get('properties');
+      property = properties?.firstObject; // replace with [0] when type is fixed
     }
 
     return RSVP.hash({

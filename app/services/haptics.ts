@@ -8,12 +8,12 @@ export default class HapticsService extends Service {
   @tracked provideHapticFeedback = true;
 
   @action
-  toggleHaptics() {
+  toggleHaptics(): void {
     this.provideHapticFeedback = !this.provideHapticFeedback;
   }
 
   @action
-  async giveFeedback(turnOffHapticFeedback = false) {
+  async giveFeedback(turnOffHapticFeedback = false): Promise<void> {
     if (this.provideHapticFeedback && turnOffHapticFeedback !== true) {
       isNativePlatform() && (await impact(ImpactStyle.Light));
     }
