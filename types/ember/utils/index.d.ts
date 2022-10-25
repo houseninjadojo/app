@@ -1,10 +1,11 @@
 declare module '@ember/utils' {
-  import { TypeOf } from '@ember/utils/-private/types';
+  // import { TypeOf } from '@ember/utils/-private/types';
 
   type EmptyType = null | undefined | '' | false | 0 | [];
   type BlankType = null | undefined | '' | [] | '\n\t' | ' ';
   type NoneType = null | undefined;
   type TypeOfType =
+    | 'object'
     | 'string'
     | 'number'
     | 'boolean'
@@ -25,6 +26,6 @@ declare module '@ember/utils' {
   export function isEqual(a: unknown, b: unknown): boolean;
   export function isNone<T>(value: T): value is Extract<T, NoneType>;
   export function isPresent<T>(value: T): value is Exclude<T, EmptyType>;
-  export function typeOf<T>(value: T): value is Extract<T, TypeOfType>; // eslint-disable-line prettier/prettier
+  export function typeOf(value: unknown): TypeOfType;
   export function typeOf(): 'undefined';
 }
