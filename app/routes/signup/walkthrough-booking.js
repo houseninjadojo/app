@@ -6,10 +6,19 @@ import RSVP from 'rsvp';
 export default class SignupWalkthroughBookingRoute extends Route {
   @service onboarding;
 
-  model() {
+  async model() {
+    const property = this.onboarding.localModel('property');
+    let serviceArea = this.onboarding.localModel('service-area');
+    if (!serviceArea) {
+      serviceArea = await this.store.queryRecord('service-area', {
+        filter: {
+          zipcodes: [property.zipcode],
+        },
+      });
+    }
     return RSVP.hash({
-      property: this.onboarding.localModel('property'),
-      serviceArea: this.onboarding.localModel('service-area'),
+      property,
+      serviceArea,
       user: this.onboarding.localModel('user'),
     });
   }
