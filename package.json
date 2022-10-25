@@ -92,7 +92,7 @@
     "autoprefixer": "^10.4.12",
     "branch-sdk": "^2.65.0",
     "broccoli-asset-rev": "^3.0.0",
-    "canvas-confetti": "^1.5.1",
+    "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
     "dotenv-vault": "^1.15.0",
     "ember-auto-import": "^2.4.3",
