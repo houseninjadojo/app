@@ -6,6 +6,22 @@ import Transition from '@ember/routing/transition';
 interface Data {
   authenticated: {
     id: string;
+    access_token: string;
+    authenticator: string;
+    kind?: string;
+    userinfo?: {
+      user_id: string;
+      name?: string;
+      email?: string;
+      email_verified?: boolean;
+      sub?: string;
+      iss?: string;
+      aud?: string;
+      iat?: number;
+      exp?: number;
+      expires_at: number;
+      expires_in: number;
+    };
   };
 }
 
@@ -54,5 +70,7 @@ declare module 'ember-simple-auth/services/session' {
     setup(): void;
 
     requireAuthentication(transition: Transition, route: string): void;
+    handleAuthentication(routeAfterAuthentication: string): void;
+    handleInvalidation(routeAfterInvalidation: string): void;
   }
 }

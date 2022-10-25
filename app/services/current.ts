@@ -3,18 +3,20 @@ import { get as unstash } from 'houseninja/utils/secure-storage';
 import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
-import AnalyticsService from 'houseninja/services/analytics';
-import IntercomService from 'houseninja/services/intercom';
+
+import type AnalyticsService from 'houseninja/services/analytics';
+import type IntercomService from 'houseninja/services/intercom';
 import type StoreService from '@ember-data/store';
 import type User from 'houseninja/models/user';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
+import type SessionService from 'houseninja/services/session';
 
 export default class CurrentService extends Service {
   @service declare analytics: AnalyticsService;
   @service declare intercom: IntercomService;
   @service declare store: StoreService;
-  @service declare session: any;
+  @service declare session: SessionService;
 
   isLoadingUser = false;
 
@@ -43,9 +45,11 @@ export default class CurrentService extends Service {
       'properties.work_orders.estimate',
       'subscription',
     ];
-    this.user = await this.store.findRecord('user', userId, {
-      include: includes.join(','),
-    });
+    if (userId) {
+      this.user = await this.store.findRecord('user', userId, {
+        include: includes.join(','),
+      });
+    }
   });
 
   get paymentMethod(): PaymentMethod | undefined {
