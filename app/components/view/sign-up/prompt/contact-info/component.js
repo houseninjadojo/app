@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
 import { captureException } from 'houseninja/utils/sentry';
-import { isPresent } from '@ember/utils';
+import { isPresent, isEmpty } from '@ember/utils';
 import {
   PAYMENT_METHOD,
   CONTACT_INFO,
@@ -141,7 +141,9 @@ export default class ContactInfoComponent extends Component {
   @action
   async handlePrimaryClick() {
     const user = await this.saveContactInfo();
-    if (this.args.isOnboardingViaNativeApp) {
+    if (isEmpty(user)) {
+      return;
+    } else if (this.args.isOnboardingViaNativeApp) {
       this.args.toggleModal && this.args.toggleModal();
       return;
     } else if (user.shouldResumeOnboarding) {
