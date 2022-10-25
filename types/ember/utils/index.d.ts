@@ -25,6 +25,6 @@ declare module '@ember/utils' {
   export function isEqual(a: unknown, b: unknown): boolean;
   export function isNone<T>(value: T): value is Extract<T, NoneType>;
   export function isPresent<T>(value: T): value is Exclude<T, EmptyType>;
-  export function typeOf<T>(value: T): TypeOf<T> extends TypeOfType ? TypeOf<T> : 'object'; // eslint-disable-line prettier/prettier
+  export function typeOf<T>(value: T): value is Extract<T, TypeOfType>; // eslint-disable-line prettier/prettier
   export function typeOf(): 'undefined';
 }
