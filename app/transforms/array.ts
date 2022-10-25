@@ -1,4 +1,4 @@
-import Transform from '@ember-data/serializer/transform';
+import Transform from '@ember-data/serializer/addon';
 import { isArray } from '@ember/array';
 import { TrackedArray } from 'tracked-built-ins';
 

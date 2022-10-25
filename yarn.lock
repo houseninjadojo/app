@@ -3167,44 +3167,6 @@
   resolved "https://registry.yarnpkg.com/@types/css-font-loading-module/-/css-font-loading-module-0.0.7.tgz#2f98ede46acc0975de85c0b7b0ebe06041d24601"
   integrity sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==
 
-"@types/ember-data@*", "@types/ember-data@^4.4.4":
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/@types/ember-data/-/ember-data-4.4.4.tgz#0b76ac153cbf2b2cf9f129791bdbeed50fc73540"
-  integrity sha512-lu3JxrUdsRr8jeDUr9cWLr7lAj2XTefQ+3Slo1thY+xD2OwaQCRrSA5pjHx8wo0pK+QjLPMVDSCkEit6MBwqdQ==
-  dependencies:
-    "@types/ember" "*"
-    "@types/ember__error" "*"
-    "@types/ember__object" "*"
-    "@types/rsvp" "*"
-
-"@types/ember-data__adapter@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__adapter/-/ember-data__adapter-4.0.0.tgz#026acd53795cc81c49090ed5a033ffe40093b0dc"
-  integrity sha512-qyXYzNOEKDWk4RSYpwa1TG9WFvWb0bEDLNGW92zy/4hFDbV4LMz06XqWPZ2tDqhagz1uTvMKLXhTwKgVDEmFRw==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__model@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__model/-/ember-data__model-4.0.0.tgz#e6c145fd55bdabb6cc86a5013aabc35ea4268b17"
-  integrity sha512-2AYPQZWYrm5RS4qx5ajtkVs5nH4hADdKRV1l7+OoPTitXbXA4hNwvra68QhRcBR6cxM9ALlxkC/Fz84pDB2Oaw==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__serializer@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__serializer/-/ember-data__serializer-4.0.0.tgz#2e39804691fe89f3095b5d670b0afe6673c7ab15"
-  integrity sha512-hUq9c4XyVsHRSOjVevHdj7c1rG8o9OpC6qZJ4oGUZSvbRDIXHp2YTCUcbx0qqX+ryYyYpZlSeYKYtcVlLvJ4hg==
-  dependencies:
-    "@types/ember-data" "*"
-
-"@types/ember-data__store@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__store/-/ember-data__store-4.0.1.tgz#e2483b5171aa578fb23726902a2514f202872d91"
-  integrity sha512-lhFtKgyBli+bpvEvQBXpeSzPAEyi7xygpQvyvg0Mr9tScGG3NafR5WSPDrPrFDx71bqkrAH5J2K/Dj7E3tH4Yw==
-  dependencies:
-    "@types/ember-data" "*"
-
 "@types/ember-qunit@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@types/ember-qunit/-/ember-qunit-5.0.2.tgz#ea8b3959724c0b190213b748937e4e9ae11165a8"

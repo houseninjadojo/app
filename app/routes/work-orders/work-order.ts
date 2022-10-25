@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
 import type SessionService from 'ember-simple-auth/services/session';
-import type StoreService from '@ember-data/store';
+import type StoreService from '@ember-data/store/addon';
 
 import WorkOrder from 'houseninja/models/work-order';
 import Transition from '@ember/routing/transition';
