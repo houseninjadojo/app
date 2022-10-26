@@ -25,7 +25,7 @@ jobs:
           api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
-              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
       - uses: actions/checkout@v3
@@ -109,7 +109,7 @@ jobs:
           api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
-              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
 
@@ -128,7 +128,7 @@ jobs:
           api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
-              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
@@ -189,7 +189,7 @@ jobs:
           api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
-              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - finished ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
 
@@ -214,7 +214,7 @@ jobs:
                 - "ci.step:release"
                 - "ci.service:app"
                 - "status:failure"
-                - "env:test"
+                - "env:production"
       - name: Datadog
         if: failure()
         uses: masci/datadog@v1
@@ -231,7 +231,7 @@ jobs:
                 - "ci.step:release"
                 - "ci.service:app"
                 - "status:failure"
-                - "env:test"
+                - "env:production"
 
   cleanup:
     needs: [ios]
