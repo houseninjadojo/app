@@ -133,6 +133,7 @@ export default class OnboardingService extends Service {
     this.storage.setLocal('zipcode', zip, TTL_MINUTES);
   }
 
+  // eslint-disable-next-line prettier/prettier
   async fetchLocalModel<M>(modelType: string): Promise<M extends Model ? M : undefined> {
     const model = this.localModel(modelType);
     if (isEmpty(model)) {
