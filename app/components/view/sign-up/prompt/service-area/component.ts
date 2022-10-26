@@ -6,18 +6,27 @@ import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class ServiceAreaComponent extends Component {
-  @service current;
-  @service router;
-  @service onboarding;
-  @service store;
+import type CurrentService from 'houseninja/services/current';
+import type OnboardingService from 'houseninja/services/onboarding';
+import type RouterService from '@ember/routing/router-service';
+import type StoreService from 'houseninja/services/store';
+
+type Args = {
+  zipcode: string;
+};
+
+export default class ServiceAreaComponent extends Component<Args> {
+  @service declare current: CurrentService;
+  @service declare router: RouterService;
+  @service declare onboarding: OnboardingService;
+  @service declare store: StoreService;
 
   @tracked zipcode;
   @tracked formIsInvalid = true;
   @tracked isLoading = false;
 
-  constructor() {
-    super(...arguments);
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
     if (this.validZipcode(this.args.zipcode)) {
       this.zipcode = this.args.zipcode;
       this.formIsInvalid = false;
@@ -25,7 +34,7 @@ export default class ServiceAreaComponent extends Component {
   }
 
   @action
-  async checkServiceArea() {
+  async checkServiceArea(): Promise<void> {
     this.isLoading = true;
     let serviceArea;
     try {
@@ -35,12 +44,12 @@ export default class ServiceAreaComponent extends Component {
         },
       });
     } catch (e) {
-      captureException(e);
+      captureException(e as Error);
     } finally {
       this.isLoading = false;
     }
     if (isPresent(serviceArea)) {
-      this.onboarding.zipcode = this.zipcode;
+      this.onboarding.set('zipcode', this.zipcode);
       this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
     } else {
       this.current.signup.zipcode = this.zipcode;
@@ -49,8 +58,9 @@ export default class ServiceAreaComponent extends Component {
   }
 
   @action
-  validateForm(e) {
-    this.zipcode = e.target.value;
+  validateForm(e: Event): void {
+    const el = <HTMLInputElement>e.target;
+    this.zipcode = el?.value;
 
     if (this.validZipcode(this.zipcode)) {
       this.formIsInvalid = false;
@@ -59,7 +69,7 @@ export default class ServiceAreaComponent extends Component {
     }
   }
 
-  validZipcode(zipcode) {
+  validZipcode(zipcode: string): boolean {
     return zipcode?.length >= 5;
   }
 }

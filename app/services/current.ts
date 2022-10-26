@@ -3,12 +3,23 @@ import { get as unstash } from 'houseninja/utils/secure-storage';
 import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
-import AnalyticsService from 'houseninja/services/analytics';
-import IntercomService from 'houseninja/services/intercom';
+import { TrackedObject } from 'tracked-built-ins';
+
+import type AnalyticsService from 'houseninja/services/analytics';
+import type IntercomService from 'houseninja/services/intercom';
 import type StoreService from '@ember-data/store';
 import type User from 'houseninja/models/user';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
+import type SubscriptionPlan from 'houseninja/models/subscription-plan';
+import type Subscription from 'houseninja/models/subscription';
+
+type SignupObject = {
+  zipcode?: string;
+  selectedPlan?: SubscriptionPlan;
+  contactInfo?: object;
+  subscription?: Subscription;
+};
 
 export default class CurrentService extends Service {
   @service declare analytics: AnalyticsService;
@@ -21,12 +32,12 @@ export default class CurrentService extends Service {
   user?: User;
   device = null;
 
-  signup = {
-    zipcode: null,
-    selectedPlan: null,
+  signup: SignupObject = new TrackedObject({
+    zipcode: undefined,
+    selectedPlan: undefined,
     contactInfo: {},
-    subscription: null,
-  };
+    subscription: undefined,
+  });
 
   _loadUser: Task<void, []> = task(this, { drop: true }, async () => {
     if (!this.session.isAuthenticated) {

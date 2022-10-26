@@ -116,6 +116,7 @@ export default class ContactInfoComponent extends Component {
     if (isPresent(this.args.user)) {
       this.args.user.unloadRecord();
     }
+    const requestedZipcode = this.current.signup.zipcode;
     // get the onboarding step
     const onboardingStep = this.args.isOnboardingViaNativeApp
       ? ACCOUNT_SETUP
@@ -123,6 +124,7 @@ export default class ContactInfoComponent extends Component {
     // commit to memory
     const user = this.store.createRecord('user', {
       ...this.contactInfo,
+      requestedZipcode,
       onboardingStep,
     });
     try {
