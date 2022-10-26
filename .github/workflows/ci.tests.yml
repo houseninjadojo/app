@@ -75,6 +75,7 @@ jobs:
       #     filter-changed-files: true
       #     delete-old-comments: true
   reporter:
+    needs: test
     if: always()
     runs-on: ubuntu-latest
     steps:

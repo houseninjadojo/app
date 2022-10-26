@@ -158,6 +158,7 @@ jobs:
           path: 'ios/App/House Ninja.app.dSYM.zip'
 
   reporter:
+    needs: [web, ios]
     if: always()
     runs-on: ubuntu-latest
     steps:
