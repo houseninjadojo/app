@@ -19,6 +19,15 @@ jobs:
       contents: read
       deployments: write
     steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - starting web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -94,6 +103,15 @@ jobs:
         with:
           name: android.tar.gz
           path: android.tar.gz
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
 
   ios:
     needs: web
@@ -104,6 +122,15 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -156,6 +183,15 @@ jobs:
         with:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:ci-cd,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
 
   reporter:
     needs: [web, ios]
