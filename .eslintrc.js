@@ -37,6 +37,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
       ],
       parser: '@typescript-eslint/parser',
+      rules: {
+        // 'ember/no-array-prototype-extensions': 'error',
+      },
     },
     // node files
     {

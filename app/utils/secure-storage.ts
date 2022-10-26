@@ -9,6 +9,7 @@ type JSONSerializable =
   | null
   | undefined
   | JSONSerializable[]
+  | object
   | { [key: string]: JSONSerializable };
 
 type SetResult = Promise<{ value: boolean } | undefined>;
