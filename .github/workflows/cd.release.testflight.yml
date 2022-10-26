@@ -94,6 +94,7 @@ jobs:
         with:
           name: android.tar.gz
           path: android.tar.gz
+
   ios:
     needs: web
     if: success()
@@ -155,6 +156,46 @@ jobs:
         with:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
+
+  reporter:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datadog
+        if: success()
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          events: |
+            - title: "[ci/cd] app - Release Build Success - ${{ steps.package-version.outputs.current-version }}+1"
+              text: "Release build succeeded for version ${{ steps.package-version.outputs.current-version }}+1\n https://github.com/houseninjadojo/app/actions/runs/${{ github.run_id }}"
+              alert_type: "success"
+              source_type_name: github
+              tags:
+                - "service:github-actions"
+                - "source:github"
+                - "ci.step:release"
+                - "ci.service:app"
+                - "status:failure"
+                - "env:test"
+      - name: Datadog
+        if: failure()
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          events: |
+            - title: "[ci/cd] app - Release Build Failure: `${{ github.job }}` - ${{ steps.package-version.outputs.current-version }}+1"
+              text: "Release build failed for version ${{ steps.package-version.outputs.current-version }}+1\n https://github.com/houseninjadojo/app/actions/runs/${{ github.run_id }}"
+              alert_type: "error"
+              source_type_name: github
+              tags:
+                - "service:github-actions"
+                - "source:github"
+                - "ci.step:release"
+                - "ci.service:app"
+                - "status:failure"
+                - "env:test"
+
   cleanup:
     needs: [ios]
     if: always()

@@ -28,3 +28,16 @@ jobs:
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+  reporter:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:test,service:github-actions,source:github,ci.step:version-increment,ci.service:app,status:success"
+              message: "{\"message\":\"[ci/cd] app - trying to increment version\", \"level\":\"info\"}"
+              service: "github-actions"
