@@ -74,13 +74,9 @@ jobs:
       #     github-token: ${{ github.token }}
       #     filter-changed-files: true
       #     delete-old-comments: true
-  reporter:
-    needs: test
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
       - name: Datadog
         uses: masci/datadog@v1
+        if: always()
         with:
           api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
@@ -88,3 +84,4 @@ jobs:
               ddtags: "env:test,service:github-actions,source:github,ci.step:tests,ci.service:app,ci.branch:${{ github.ref_name }},status:${{ job.status }}"
               message: "{\"message\":\"[ci/cd] app - tests finished - ${{ job.status }}\", \"level\":\"${{ job.status }}\", \"ci.branch\":\"${{ github.ref_name }}\", \"ci.service\":\"app\", \"ci.step\":\"tests\"}"
               service: "github-actions"
+
