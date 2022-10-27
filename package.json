@@ -94,7 +94,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
-    "dotenv-vault": "^1.15.0",
+    "dotenv-vault": "^1.16.0",
     "ember-auto-import": "^2.4.3",
     "ember-cli": "~4.8.0",
     "ember-cli-app-version": "^5.0.0",

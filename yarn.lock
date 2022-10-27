@@ -7026,17 +7026,17 @@ dot-prop@^5.1.0, dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv-vault-core@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/dotenv-vault-core/-/dotenv-vault-core-0.4.0.tgz#c10b8def99541e5436a54f9a8919c3ee85f21369"
-  integrity sha512-jH2VD7f0r4ks0nw9I8Wr6hpFK2nbhRZGE1R4TPcokTyOGz+S1p38nABllotaOn/v9dvkPJ2SDITKByT2tUOnxQ==
+dotenv-vault-core@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/dotenv-vault-core/-/dotenv-vault-core-0.5.0.tgz#8060e83c40d917158e6a072405a1462f7b5a4b69"
+  integrity sha512-BEaQGttfYfHAYQDuF3I+g3RvutetLnEKl+7HD15pGLkb+vVCng16Ysm4T7MpZx/++sRSy9l0OV9vhWNtqTJzyA==
   dependencies:
     dotenv "^16.0.3"
 
-dotenv-vault@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/dotenv-vault/-/dotenv-vault-1.15.0.tgz#6118e9a2c62dbe0eed2ee87a46759bc6e57ff08b"
-  integrity sha512-0yv6Co3YWZ7H0CZCvu+gDMnbRG62174mH/NJ82wKQYoe2EzuUcAb1t3beK/rbMdLkHtg9HBsdRbwyEUMwLiktg==
+dotenv-vault@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/dotenv-vault/-/dotenv-vault-1.16.0.tgz#59c3c92a1926934be7a7b31a5ce87ffb1a4e1847"
+  integrity sha512-TSesHjOfp6kP98gDO2K88SxverbwzE+nyswfuTYCBOXy20Et0UP2v5ML+IcnQRZViWctcurqfomVu94/mZT7wA==
   dependencies:
     "@oclif/core" "^1"
     "@oclif/plugin-help" "^5.1.14"
@@ -7047,7 +7047,7 @@ dotenv-vault@^1.15.0:
     axios "^0.27.2"
     chalk "^4.1.2"
     dotenv "16.0.3"
-    dotenv-vault-core "^0.4.0"
+    dotenv-vault-core "^0.5.0"
 
 dotenv@16.0.3, dotenv@^16.0.3:
   version "16.0.3"
