@@ -10,6 +10,7 @@ import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { bind } from '@ember/runloop';
 
 type Notification = PushNotificationSchema | DeliveredNotificationSchema;
 
@@ -129,7 +130,7 @@ export default class NotificationsService extends Service {
       })?.finish();
       PushNotifications.addListener(
         'pushNotificationActionPerformed',
-        this.notificationHandler.bind(this)
+        bind(this, this.notificationHandler)
       );
     }
   }

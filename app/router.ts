@@ -1,13 +1,14 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'houseninja/config/environment';
-
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class Router extends EmberRouter {
+  rootURL = config.rootURL;
   // We need to use hash based location (`/#/some/page`) on mobile so that
   // app linking (`co.houseninja.application://#/some/page`) functions correctly
-  location = isNativePlatform() ? 'hash' : 'history';
-  rootURL = config.rootURL;
+  location = (isNativePlatform()
+    ? 'hash'
+    : 'history') as EmberRouter['location'];
 }
 
 Router.map(function () {
