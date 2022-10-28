@@ -6,6 +6,7 @@ import { captureException } from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { TrackedObject } from 'tracked-built-ins';
+import { APP_STORE_URL } from 'houseninja/data/app';
 
 import type { FieldSet } from 'houseninja/app/components';
 import type RouterService from '@ember/routing/router-service';
@@ -144,10 +145,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
 
   @action
   downloadFromAppStore(): void {
-    window.open(
-      'https://apps.apple.com/us/app/house-ninja/id1603710358',
-      '_blank'
-    );
+    window.open(APP_STORE_URL, '_blank');
   }
 
   get user(): User {

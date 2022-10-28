@@ -4,3 +4,10 @@ export const TOAST_TYPE = {
   ERROR: 'error',
   WARN: 'warn',
 };
+
+export enum ToastType {
+  Default = 'default',
+  Info = 'info',
+  Error = 'error',
+  Warn = 'warn',
+}

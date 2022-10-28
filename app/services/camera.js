@@ -16,9 +16,9 @@ export default class CameraService extends Service {
 
   async getImage(source) {
     Sentry.addBreadcrumb({
+      type: 'ui',
       category: 'camera',
       message: 'taking a photo',
-      level: 'info',
     });
     try {
       const image = await Camera.getPhoto({

@@ -33,7 +33,8 @@ import { schedule } from '@ember/runloop';
  */
 const registrationHandler = async (token) => {
   Sentry.addBreadcrumb({
-    category: 'push-notification',
+    type: 'info',
+    category: 'notifications.permissions',
     message: 'Push Notification Permission Granted',
     level: 'info',
   });
@@ -180,9 +181,9 @@ const initializePushNotifications = async (appInstance) => {
   }
 
   Sentry.addBreadcrumb({
-    category: 'push-notification',
+    type: 'info',
+    category: 'notifications.setup',
     message: 'Initializing Push Notification Handlers',
-    level: 'info',
   });
 
   // permissions check

@@ -100,10 +100,10 @@ export default class DeepLinksService extends Service {
       span?.finish();
       debug('non branch url: ' + event.url);
       Sentry.addBreadcrumb({
-        category: 'deep-link',
+        type: 'user',
+        category: 'deep-link.open',
         message: 'deep link',
         data: event,
-        level: 'info',
       });
       const url = this.parseUrl(event.url);
       this.forwardRoute(url);
@@ -125,10 +125,10 @@ export default class DeepLinksService extends Service {
       const referringParams = event.referringParams;
       this.analytics.track('Opened with Deep Link', referringParams);
       Sentry.addBreadcrumb({
-        category: 'deep-link',
+        type: 'user',
+        category: 'deep-link.open',
         message: 'Branch deep link',
         data: event,
-        level: 'info',
       });
       // Retrieve deeplink keys from 'referringParams' and evaluate the values to determine where to route the user
       // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
@@ -153,10 +153,10 @@ export default class DeepLinksService extends Service {
       } else {
         this.analytics.track('Opened with Web Link', data.data_parsed);
         Sentry.addBreadcrumb({
-          category: 'web-link',
+          type: 'user',
+          category: 'deep-link.open',
           message: 'Branch web link',
           data,
-          level: 'info',
         });
       }
     });

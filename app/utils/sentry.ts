@@ -1,7 +1,7 @@
 import Sentry from 'houseninja/lib/sentry';
 import config from 'houseninja/config/environment';
 import { debug } from '@ember/debug';
-import { Span, SpanContext, Transaction } from '@sentry/types';
+import { SeverityLevel, Span, SpanContext, Transaction } from '@sentry/types';
 import { getActiveTransaction } from '@sentry/ember';
 
 export default Sentry;
@@ -31,3 +31,21 @@ export function startSpan(params: SpanContext): Span | undefined {
     return transaction.startChild(params);
   }
 }
+
+// export const addBreadcrumb = Sentry.addBreadcrumb;
+
+export const addBreadcrumb = (
+  category: string,
+  message: string,
+  data: Record<string, unknown> | undefined,
+  type: 'navigation' | 'http' | 'user' | 'ui' | 'error' = 'ui',
+  level: SeverityLevel = 'info'
+) => {
+  Sentry.addBreadcrumb({
+    category,
+    message,
+    data,
+    type,
+    level,
+  });
+};

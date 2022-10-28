@@ -17,9 +17,8 @@ export default class IntercomService extends Service {
 
   async setup(): Promise<void> {
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.setup',
       message: 'setting up',
-      level: 'info',
     });
     // hide launcher on mobile devices
     if (isNativePlatform()) {
@@ -32,12 +31,11 @@ export default class IntercomService extends Service {
   async registerUser(userId: string, email: string, hmac: string): Promise<void> {
     startSpan({ op: 'intercom.user.register' })?.finish();
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.login',
       message: 'attaching user',
       data: {
         user: { id: userId, email },
       },
-      level: 'info',
     });
     if (isNativePlatform()) {
       await Intercom.setUserHash({ hmac });
@@ -68,9 +66,8 @@ export default class IntercomService extends Service {
   _showMessenger: Task<void, []> = task(this, { drop: true }, async () => {
     startSpan({ op: 'intercom.show.messenger' })?.finish();
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.show',
       message: 'showing messenger',
-      level: 'info',
     });
     this.isOpen = true;
     this.analytics.track('Intercom messenger opened', {});
@@ -85,12 +82,9 @@ export default class IntercomService extends Service {
   _showComposer: Task<void, [key: string]> = task(this, { drop: true }, async (message = '') => {
     startSpan({ op: 'intercom.show.composer' })?.finish();
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.show',
       message: 'showing composer',
-      data: {
-        message: message,
-      },
-      level: 'info',
+      data: { message },
     });
     this.isOpen = true;
     this.analytics.track('Intercom composer opened', {
@@ -110,9 +104,8 @@ export default class IntercomService extends Service {
   _hide: Task<void, []> = task(this, { drop: true }, async () => {
     startSpan({ op: 'intercom.hide' })?.finish();
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.hide',
       message: 'hiding messenger',
-      level: 'info',
     });
     this.isOpen = false;
     await Intercom.hideMessenger();
@@ -121,9 +114,8 @@ export default class IntercomService extends Service {
   logout(): void {
     startSpan({ op: 'intercom.user.logout' })?.finish();
     Sentry.addBreadcrumb({
-      category: 'intercom',
+      category: 'intercom.logout',
       message: 'logging out',
-      level: 'info',
     });
     if (this.isOpen) {
       this._hide.perform();
