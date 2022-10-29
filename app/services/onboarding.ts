@@ -68,13 +68,6 @@ export default class OnboardingService extends Service {
   async userFromOnboardingCode(onboardingCode: string): Promise<User> {
     return await this.store.queryRecord('user', {
       filter: { onboardingCode },
-      includes: [
-        'payment_methods',
-        'promo_code',
-        'properties',
-        'properties.service_area',
-        'subscription',
-      ].join(','),
     });
   }
 
