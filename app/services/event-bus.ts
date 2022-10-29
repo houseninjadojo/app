@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import Evented from '@ember/object/evented';
 import { TrackedMap } from 'tracked-built-ins';
 import { camelize } from '@ember/string';
+import { bind } from '@ember/runloop';
 
 import {
   Capacitor,
@@ -100,21 +101,24 @@ export default class EventBusService extends Service.extend(Evented) {
 
   subscribe(eventSlug: string): void {
     if (!Capacitor.addListener) {
-      console.error('Capacitor is not available');
+      debug('Capacitor is not available');
       return;
     }
     if (this.listeners.has(eventSlug)) {
-      console.warn(`Event ${eventSlug} is already subscribed`);
+      debug(`Event ${eventSlug} is already subscribed`);
       return;
     }
     const { plugin, event }: EventCall = eventCall(eventSlug);
     const listener: ListenerFunc = (event?: any): void => {
-      console.log(`Event ${eventSlug} fired`);
+      debug(`Event ${eventSlug} fired`);
       return this.trigger(eventSlug, event);
     };
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const handler: PluginListenerHandle = plugin.addListener(event, listener);
+    const handler: PluginListenerHandle = plugin.addListener(
+      event,
+      bind(this, listener)
+    );
     this.listeners.set(eventSlug, handler);
     console.log(`Event ${eventSlug} subscribed`);
   }

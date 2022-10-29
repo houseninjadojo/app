@@ -1,9 +1,7 @@
 import Service, { service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
-import { TrackedArray, TrackedMap } from 'tracked-built-ins';
+import { TrackedArray } from 'tracked-built-ins';
 import EmberObject from '@ember/object';
 import Sentry, { startSpan } from 'houseninja/utils/sentry';
-import { PushNotifications } from '@capacitor/push-notifications';
 import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
@@ -11,6 +9,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 import type Notification from 'houseninja/lib/notification';
 import Evented from '@ember/object/evented';
+import { bind } from '@ember/runloop';
 
 export default class NotificationsService extends Service.extend(Evented) {
   @service declare intercom: IntercomService;
@@ -134,7 +133,7 @@ export default class NotificationsService extends Service.extend(Evented) {
       })?.finish();
       this.on(
         'push-notifications.push-notification-action-performed',
-        this.notificationHandler.bind(this)
+        bind(this, this.notificationHandler)
       );
     }
   }
