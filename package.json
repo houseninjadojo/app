@@ -60,7 +60,7 @@
     "@sentry/rrweb": "^0.3.3",
     "@tsconfig/ember": "^1.0.1",
     "@types/ember": "^4.0.1",
-    "@types/ember-data": "^4.4.4",
+    "@types/ember-data": "^4.4.6",
     "@types/ember-data__adapter": "^4.0.0",
     "@types/ember-data__model": "^4.0.0",
     "@types/ember-data__serializer": "^4.0.1",
