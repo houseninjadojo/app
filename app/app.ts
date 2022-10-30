@@ -10,8 +10,8 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 init();
 
 export default class App extends Application {
-  constructor() {
-    super(...arguments);
+  constructor(properties: object | undefined) {
+    super(properties);
     if (isNativePlatform()) {
       Intercom.hideInAppMessages();
     }

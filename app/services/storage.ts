@@ -28,9 +28,8 @@ const addMinToCurrentEpoch = (minutes: number): number => {
 export default class StorageService extends Service {
   async setup() {
     Sentry.addBreadcrumb({
-      category: 'storage',
+      category: 'storage.setup',
       message: 'setting up',
-      level: 'info',
     });
     await setupLocal();
   }

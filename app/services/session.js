@@ -19,9 +19,8 @@ export default class SessionService extends BaseSessionService {
   async handleAuthentication() {
     if (this.data.authenticated.kind === 'payment-approval') {
       Sentry.addBreadcrumb({
-        category: 'session',
+        category: 'session.authentication.handler',
         message: 'skipping payment-approval authentication',
-        level: 'info',
       });
       return;
     }
@@ -35,9 +34,8 @@ export default class SessionService extends BaseSessionService {
       description: 'session setup',
     })?.finish();
     Sentry.addBreadcrumb({
-      category: 'session',
+      category: 'session.setup',
       message: 'session setup invoked',
-      level: 'info',
     });
     await super.setup();
     await this.loadIfPKCE();
@@ -97,7 +95,8 @@ export default class SessionService extends BaseSessionService {
       });
 
       Sentry.addBreadcrumb({
-        category: 'session',
+        type: 'ui',
+        category: 'browser.close',
         message: 'closing browser',
         level: 'info',
       });

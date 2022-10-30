@@ -1,20 +1,22 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { File, FilePicker } from '@capawesome/capacitor-file-picker';
+import { debug } from '@ember/debug';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class FileService extends Service {
-  @tracked file = null;
+  @tracked file: File | undefined;
 
-  clear() {
-    this.file = null;
+  clear(): void {
+    this.file = undefined;
   }
 
-  async setFileServiceFile() {
+  async setFileServiceFile(): Promise<void> {
+    debug(`Set File Service File: ${this.file?.path}`);
     this.file = await this.getFile();
-    console.log(this.file);
   }
 
-  async getFile() {
+  async getFile(): Promise<File | undefined> {
     try {
       const result = await FilePicker.pickFiles({
         types: ['application/pdf', 'image/png', 'image/jpg', 'image/jpg'],
@@ -25,7 +27,7 @@ export default class FileService extends Service {
         return result.files[0];
       }
     } catch (e) {
-      console.log(e);
+      captureException(e as Error);
     }
   }
 }

@@ -43,12 +43,12 @@ export default class AnalyticsService extends Service {
     }
     await run(async () => {
       Sentry.addBreadcrumb({
+        type: 'info',
         category: 'analytics',
         message: 'identifying user',
         data: {
           user: { id: distinctId },
         },
-        level: 'info',
       });
       try {
         Mixpanel.identify({ distinctId });

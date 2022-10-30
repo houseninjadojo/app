@@ -10,6 +10,7 @@ import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { bind } from '@ember/runloop';
 
 type Notification = PushNotificationSchema | DeliveredNotificationSchema;
 
@@ -46,14 +47,9 @@ export default class NotificationsService extends Service {
       },
     })?.finish();
     Sentry.addBreadcrumb({
-      category: 'notifications',
+      category: 'notifications.add',
       message: `Adding ${kind} notification to queue`,
-      level: 'info',
-      data: {
-        kind,
-        state,
-        notification,
-      },
+      data: { kind, state, notification },
     });
     this.queue.pushObject(
       EmberObject.create({
@@ -89,10 +85,9 @@ export default class NotificationsService extends Service {
     if (notification.data.intercom_push_type === 'notification') {
       span?.setTag('intercom', true);
       Sentry.addBreadcrumb({
-        category: 'push-notification',
+        category: 'notifications.handle',
         message: 'Handling Intercom Push Notification',
         data: notification,
-        level: 'info',
       });
       span?.finish();
       this.intercom.showMessenger();
@@ -100,10 +95,9 @@ export default class NotificationsService extends Service {
     } else if (isPresent(notification.data.deeplink_path)) {
       span?.setTag('deep-link', true);
       Sentry.addBreadcrumb({
-        category: 'push-notification',
+        category: 'notifications.handle',
         message: 'Handling Branch Push Notification',
         data: notification,
-        level: 'info',
       });
       span?.finish();
       this.router.transitionTo(notification.data.deeplink_path);
@@ -136,7 +130,7 @@ export default class NotificationsService extends Service {
       })?.finish();
       PushNotifications.addListener(
         'pushNotificationActionPerformed',
-        this.notificationHandler.bind(this)
+        bind(this, this.notificationHandler)
       );
     }
   }
