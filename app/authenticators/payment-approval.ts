@@ -1,13 +1,18 @@
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 
-export default class PaymentApprovalAuthenticator extends BaseAuthenticator {
-  access_token = null;
+type AuthenticationPayload = {
+  access_token: string;
+  kind: string;
+};
 
-  async restore(data) {
+export default class PaymentApprovalAuthenticator extends BaseAuthenticator {
+  access_token?: string;
+
+  async restore(data: any): Promise<any> {
     return data;
   }
 
-  async authenticate(access_token) {
+  async authenticate(access_token: string): Promise<AuthenticationPayload> {
     this.access_token = access_token;
     return {
       access_token,
@@ -15,8 +20,8 @@ export default class PaymentApprovalAuthenticator extends BaseAuthenticator {
     };
   }
 
-  async invalidate() {
-    this.access_token = null;
+  async invalidate(): Promise<void> {
+    this.access_token = undefined;
     return;
   }
 }

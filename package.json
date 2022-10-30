@@ -159,7 +159,6 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@mineminemine/fcm": "^4.0.3",
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#ad95ff0",
     "@capacitor/action-sheet": "^4.0.1",
     "@capacitor/app": "^4.1.0",
@@ -175,8 +174,9 @@
     "@capacitor/push-notifications": "^4.1.1",
     "@capacitor/share": "^4.0.1",
     "@capacitor/splash-screen": "^4.1.1",
-    "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
     "@capawesome/capacitor-file-picker": "^0.5.2",
+    "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
+    "@mineminemine/fcm": "^4.0.3",
     "capacitor-branch-deep-links": "^5.0.0",
     "capacitor-secure-storage-plugin": "^0.8.0",
     "lottie-web": "^5.9.6",
@@ -184,9 +184,9 @@
   },
   "peerDependencies": {
     "@sentry/core": "7.13.0",
-    "@sentry/tracing": "7.13.0",
-    "@sentry/utils": "7.13.0",
     "@sentry/hub": "7.13.0",
-    "@sentry/types": "7.13.0"
+    "@sentry/tracing": "7.13.0",
+    "@sentry/types": "7.13.0",
+    "@sentry/utils": "7.13.0"
   }
 }
