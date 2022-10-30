@@ -12,9 +12,10 @@ import type { FieldSet } from 'houseninja/app/components';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type PaymentMethod from 'houseninja/models/payment-method';
+import type ToastService from 'houseninja/services/toast';
+import type User from 'houseninja/models/user';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import DS from 'ember-data';
-import User from 'houseninja/models/user';
 
 type PaymentMethodInfo = {
   cardNumber?: string;
@@ -42,7 +43,7 @@ type Errors =
 export default class WorkOrderApprovePaymentWebDialogViewContentComponent extends Component<Args> {
   @service declare router: RouterService;
   @service declare store: StoreService;
-  @service declare toast: any;
+  @service declare toast: ToastService;
 
   @tracked paymentMethodFormIsInvalid = true;
   paymentMethod: PaymentMethodInfo = new TrackedObject({

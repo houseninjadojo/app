@@ -1,20 +1,25 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { Camera, CameraResultType } from '@capacitor/camera';
-import Sentry from 'houseninja/utils/sentry';
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  Photo,
+} from '@capacitor/camera';
+import Sentry, { captureException } from 'houseninja/utils/sentry';
 
 export default class CameraService extends Service {
-  @tracked image = null;
+  @tracked image: Photo | undefined;
 
-  clear() {
-    this.image = null;
+  clear(): void {
+    this.image = undefined;
   }
 
-  async setCameraServiceImage(source) {
+  async setCameraServiceImage(source: CameraSource): Promise<void> {
     this.image = await this.getImage(source);
   }
 
-  async getImage(source) {
+  async getImage(source: CameraSource): Promise<Photo | undefined> {
     Sentry.addBreadcrumb({
       type: 'ui',
       category: 'camera',
@@ -29,7 +34,7 @@ export default class CameraService extends Service {
       });
       return image;
     } catch (e) {
-      console.log(e);
+      captureException(e as Error);
     }
   }
 }
