@@ -1,3 +1,10 @@
+## [1.24.8](https://github.com/houseninjadojo/app/compare/v1.24.7...v1.24.8) (2022-10-25)
+
+
+### Bug Fixes
+
+* **onboarding:** shouldResume bug ([#1139](https://github.com/houseninjadojo/app/issues/1139)) ([7c725ca](https://github.com/houseninjadojo/app/commit/7c725cafc1bcf80399db8763d32b5fff4a96999f))
+
 ## [1.24.7](https://github.com/houseninjadojo/app/compare/v1.24.6...v1.24.7) (2022-10-21)
 
 
