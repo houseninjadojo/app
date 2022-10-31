@@ -3177,10 +3177,10 @@
     "@types/ember__object" "*"
     "@types/rsvp" "*"
 
-"@types/ember-data__adapter@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__adapter/-/ember-data__adapter-4.0.0.tgz#026acd53795cc81c49090ed5a033ffe40093b0dc"
-  integrity sha512-qyXYzNOEKDWk4RSYpwa1TG9WFvWb0bEDLNGW92zy/4hFDbV4LMz06XqWPZ2tDqhagz1uTvMKLXhTwKgVDEmFRw==
+"@types/ember-data__adapter@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/ember-data__adapter/-/ember-data__adapter-4.0.1.tgz#f8de80466120103793c131ea19aab224705aa2f1"
+  integrity sha512-+ZbfrZP1YTYM4/wbTaa6DN2AGJbeYeIYIC5Z95+aafcOfzMobbH6CwOc/tJc5O7eLVRA8PxNhDmQOJf89GDJ1Q==
   dependencies:
     "@types/ember-data" "*"
 
