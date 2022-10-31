@@ -69,6 +69,9 @@ const plugins = {
     iosToken: process.env.MIXPANEL_TOKEN,
     androidToken: process.env.MIXPANEL_TOKEN,
   },
+  FirebaseMessaging: {
+    presentationOptions: ['badge', 'sound', 'alert'],
+  },
 };
 
 const cordova = {};

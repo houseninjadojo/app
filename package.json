@@ -160,6 +160,7 @@
   },
   "dependencies": {
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#ad95ff0",
+    "@capacitor-firebase/messaging": "^1.1.0",
     "@capacitor/action-sheet": "^4.0.1",
     "@capacitor/app": "^4.1.0",
     "@capacitor/browser": "^4.0.1",
@@ -179,6 +180,7 @@
     "@mineminemine/fcm": "^4.0.3",
     "capacitor-branch-deep-links": "^5.0.0",
     "capacitor-secure-storage-plugin": "^0.8.0",
+    "firebase": "^9.13.0",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4"
   },
