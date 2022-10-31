@@ -39,7 +39,7 @@ export async function set(key: string, value: JSONSerializable): SetResult {
  * @param {String} key
  * @return {RSVP.Promise<String|Object>} the deserialized value
  */
-export async function get(key: string): Promise<JSONSerializable | undefined> {
+export async function get(key: string): Promise<any> {
   try {
     const encodedValue = await run(async () => {
       return await SecureStoragePlugin.get({ key });

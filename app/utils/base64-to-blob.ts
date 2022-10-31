@@ -1,9 +1,6 @@
-export default function base64ToBlob(
-  b64Data,
-  contentType = '',
-  sliceSize = 512
-) {
-  const byteCharacters = atob(b64Data);
+// eslint-disable-next-line prettier/prettier
+export default function base64ToBlob(b64Data: string, contentType = '', sliceSize = 512): Blob {
+  const byteCharacters: string = atob(b64Data);
   const byteArrays = [];
 
   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
