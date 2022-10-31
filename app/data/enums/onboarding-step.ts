@@ -40,10 +40,11 @@ export enum OnboardingStep {
   AccountSetup = 'account-setup', // this one is independent of the onboarding flow
 }
 
-export function nextStep(currentStep: OnboardingStep): OnboardingStep | null {
+// eslint-disable-next-line prettier/prettier
+export function nextStep(currentStep?: OnboardingStep): OnboardingStep | undefined {
   switch (currentStep) {
     case OnboardingStep.AreaNotification:
-      return null;
+      return undefined;
     case OnboardingStep.BookingConfirmation:
       return OnboardingStep.Completed;
     case OnboardingStep.ContactInfo:
@@ -63,8 +64,8 @@ export function nextStep(currentStep: OnboardingStep): OnboardingStep | null {
     case OnboardingStep.Welcome:
       return OnboardingStep.SetPassword;
     case OnboardingStep.Completed:
-      return null;
+      return undefined;
     default:
-      return null;
+      return undefined;
   }
 }

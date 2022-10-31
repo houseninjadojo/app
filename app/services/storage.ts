@@ -49,7 +49,7 @@ export default class StorageService extends Service {
   }
 
   // eslint-disable-next-line prettier/prettier
-  async setLocal(key: string, value: JSONSerializable, ttlMinutes = 0): Promise<void> {
+  async setLocal(key: string, value: any, ttlMinutes = 0): Promise<void> {
     const expiresAt = ttlMinutes > 0 ? addMinToCurrentEpoch(ttlMinutes) : 0;
     const item: JSONSerializable = {
       value,

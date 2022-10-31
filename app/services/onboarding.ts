@@ -1,9 +1,17 @@
 import Service, { service } from '@ember/service';
-import { task } from 'ember-concurrency';
+import { Task, task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
 import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { captureException } from 'houseninja/utils/sentry';
 import { pluralize } from 'ember-inflector';
+
+import type StorageService from 'houseninja/services/storage';
+import type AnalyticsService from 'houseninja/services/analytics';
+import type StoreService from '@ember-data/store';
+
+import type { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
+import type Model from '@ember-data/model';
+import type User from 'houseninja/models/user';
 
 const CACHED_MODELS = [
   'payment-method',
@@ -18,17 +26,17 @@ const CACHED_MODELS = [
 const TTL_MINUTES = 30;
 
 export default class OnboardingService extends Service {
-  @service storage;
-  @service store;
-  @service analytics;
+  @service declare storage: StorageService;
+  @service declare store: StoreService;
+  @service declare analytics: AnalyticsService;
 
-  currentStep = null;
+  currentStep: OnboardingStep | undefined;
 
-  get nextStep() {
+  get nextStep(): OnboardingStep | undefined {
     return nextOnboardingStep(this.currentStep);
   }
 
-  async completeStep(step) {
+  async completeStep(step: OnboardingStep): Promise<void> {
     this.currentStep = step;
     await this.storage.setLocal('current-step', this.nextStep, TTL_MINUTES);
     const user = this.localModel('user');
@@ -40,62 +48,63 @@ export default class OnboardingService extends Service {
     this.sendTrackingEvent(step, user);
   }
 
-  sendTrackingEvent(step, user) {
+  sendTrackingEvent(step: OnboardingStep, user?: User) {
     try {
       this.analytics.track(step, { user: user?.email });
     } catch (e) {
-      captureException(e);
+      captureException(e as Error);
     }
   }
 
-  cleanup() {
+  cleanup(): void {
     this.storage.clearLocal();
     this.storage.setLocal('current-step', null);
   }
 
-  routeFromStep(step) {
+  routeFromStep(step: OnboardingStep): string {
     return `signup.${step}`;
   }
 
-  async userFromOnboardingCode(onboardingCode) {
+  async userFromOnboardingCode(onboardingCode: string): Promise<User> {
     return await this.store.queryRecord('user', {
       filter: { onboardingCode },
     });
   }
 
-  @task({ drop: true }) *rehydrateFromRemote() {
+  rehydrateFromRemote: Task<void, []> = task(this, { drop: true }, async () => {
     const user = this.localModel('user');
     const includes = [
       'payment_methods',
       'promo_code',
       'properties',
+      'properties.service_area',
       'subscription',
     ];
-    yield this.store.findRecord('user', user.id, {
+    await this.store.findRecord('user', user.id, {
       include: includes.join(','),
     });
     this.currentStep = user.onboardingStep;
-  }
+  });
 
-  async rehydrateFromCache(modelType = 'user') {
+  async rehydrateFromCache(modelType = 'user'): Promise<void> {
     const cachedModel = await this.storage.getLocal(modelType);
     if (cachedModel) {
       try {
         this.store.pushPayload(cachedModel);
       } catch (e) {
-        captureException(e);
+        captureException(e as Error);
       }
     }
   }
 
-  async rehydrate() {
+  async rehydrate(): Promise<void> {
     CACHED_MODELS.forEach(async (modelName) => {
       const modelType = pluralize(modelName);
       await this.rehydrateFromCache(modelType);
     });
   }
 
-  async dehydrate() {
+  async dehydrate(): Promise<void> {
     const records = CACHED_MODELS.map((model) => {
       const record = this.localModel(model);
       if (isPresent(record)) {
@@ -117,7 +126,8 @@ export default class OnboardingService extends Service {
     this.storage.setLocal('zipcode', zip, TTL_MINUTES);
   }
 
-  async fetchLocalModel(modelType) {
+  // eslint-disable-next-line prettier/prettier
+  async fetchLocalModel<M>(modelType: string): Promise<M extends Model ? M : undefined> {
     const model = this.localModel(modelType);
     if (isEmpty(model)) {
       await this.rehydrateFromCache(modelType);
@@ -125,13 +135,13 @@ export default class OnboardingService extends Service {
     return this.localModel(modelType);
   }
 
-  localModel(modelType) {
+  localModel(modelType: string) {
     // im not sure why, but `this.store.peekFirst(modelType);` does not work
     // while this does.
     try {
       return this.store.peekAll(modelType).get('firstObject');
     } catch (e) {
-      captureException(e);
+      captureException(e as Error);
       return null;
     }
   }

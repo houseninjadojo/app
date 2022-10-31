@@ -12,6 +12,7 @@ import {
   ACCOUNT_SETUP,
 } from 'houseninja/data/enums/onboarding-step';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import { TrackedArray, TrackedObject } from 'tracked-built-ins';
 
 export default class ContactInfoComponent extends Component {
   @service current;
@@ -19,19 +20,19 @@ export default class ContactInfoComponent extends Component {
   @service onboarding;
   @service store;
 
-  @tracked errors = {
+  @tracked errors = new TrackedObject({
     firstName: [],
     lastName: [],
     phoneNumber: [],
     email: [],
-  };
+  });
 
-  @tracked contactInfo = {
+  contactInfo = new TrackedObject({
     firstName: null,
     lastName: null,
     phoneNumber: null,
     email: null,
-  };
+  });
 
   @tracked formIsInvalid = true;
   @tracked isLoading = false;
@@ -62,7 +63,7 @@ export default class ContactInfoComponent extends Component {
 
   howDidYouHearAboutUsLabel = 'howDidYouHearAboutUs';
 
-  @tracked fields = [
+  fields = new TrackedArray([
     ...(!this.args.isOnboardingViaNativeApp ? this.signupFields : []),
     {
       type: 'email',
@@ -83,7 +84,7 @@ export default class ContactInfoComponent extends Component {
           },
         ]
       : []),
-  ];
+  ]);
 
   constructor() {
     super(...arguments);
