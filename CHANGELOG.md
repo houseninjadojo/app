@@ -1,3 +1,10 @@
+## [1.24.9](https://github.com/houseninjadojo/app/compare/v1.24.8...v1.24.9) (2022-10-31)
+
+
+### Bug Fixes
+
+* **signup:** load service area with property before walkthrough booking ([#1160](https://github.com/houseninjadojo/app/issues/1160)) ([cbb1e5e](https://github.com/houseninjadojo/app/commit/cbb1e5e8b7390e8543f405948d0e524065e972bb))
+
 ## [1.24.8](https://github.com/houseninjadojo/app/compare/v1.24.7...v1.24.8) (2022-10-25)
 
 
