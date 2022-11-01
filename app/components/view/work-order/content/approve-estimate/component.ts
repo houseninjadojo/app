@@ -28,8 +28,10 @@ type ActionSheetOptions = Array<{
 export default class WorkOrderApproveEstimateViewContentComponent extends Component<Args> {
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
+  @service declare toast: any;
 
   @tracked showWebDialog = false;
+  @tracked showWebDeclineDialog = false;
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked estimateApproved = false;
@@ -81,18 +83,26 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
     try {
       await this.estimate.save();
+      this.isDoneProcessing = true;
       this.estimateApproved = true;
     } catch (e: unknown) {
+      this.toast.showError(
+        'There was an error while approving this estimate. If this happens again, please contact us at hello@houseninja.co.'
+      );
       this.estimate.approvedAt = undefined;
-      captureException(e as Error);
-    } finally {
       this.toggleIsProcessing();
+      captureException(e as Error);
     }
   }
 
   @action
   toggleWebDialog(): void {
     this.showWebDialog = !this.showWebDialog;
+  }
+
+  @action
+  toggleDeclineWebDialog(): void {
+    this.showWebDeclineDialog = !this.showWebDeclineDialog;
   }
 
   @action
@@ -105,8 +115,55 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   }
 
   @action
-  async decline(): Promise<void> {
-    console.log('Customer declined estimate');
+  async handleDecline(): Promise<void> {
+    if (isNativePlatform()) {
+      await this.declineNativeConfirmation();
+    } else {
+      this.toggleDeclineWebDialog();
+    }
+  }
+
+  @action
+  async declineEstimate(): Promise<void> {
+    this.toggleIsProcessing();
+    this.estimate.declinedAt = new Date();
+    try {
+      await this.estimate.save();
+      this.isDoneProcessing = true;
+      this.selectRoute();
+    } catch (e: unknown) {
+      this.toast.showError(
+        'There was an error while declining this estimate. If this happens again, please contact us at hello@houseninja.co.'
+      );
+      captureException(e as Error);
+      this.estimate.declinedAt = undefined;
+    } finally {
+      this.toggleIsProcessing();
+    }
+  }
+
+  async declineNativeConfirmation() {
+    const declineActionSheetOptions: ActionSheetOptions = [
+      {
+        title: 'Dismiss',
+        style: ActionSheetButtonStyle.Cancel,
+      },
+      {
+        title: 'I decline this estimate.',
+      },
+    ];
+    const result: ShowActionsResult = await ActionSheet.showActions({
+      title: `Do you decline this estimate?`,
+      options: declineActionSheetOptions,
+    });
+
+    const choice: string | undefined =
+      this.actionSheetOptions[result.index]?.title;
+    const confirmed: boolean = choice === this.actionSheetOptions[1]?.title;
+
+    if (confirmed) {
+      await this.declineEstimate();
+    }
   }
 
   @action
@@ -134,8 +191,4 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   get formattedTotal(): string | undefined {
     return this.estimate?.get('amount');
   }
-
-  // get estimateApproved(): boolean {
-  //   return this.args.model.estimate?.get('isApproved') === true;
-  // }
 }

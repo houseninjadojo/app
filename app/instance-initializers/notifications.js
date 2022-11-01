@@ -14,11 +14,11 @@ import {
   set as stash,
   clear as clearStash,
 } from 'houseninja/utils/secure-storage';
-import { captureException } from 'houseninja/utils/sentry';
-import { Intercom } from '@capacitor-community/intercom';
+import Sentry, { captureException } from 'houseninja/utils/sentry';
+// import { Intercom } from '@capacitor-community/intercom';
 import { schedule } from '@ember/runloop';
-import { debug } from '@ember/debug';
-import { isPresent } from '@ember/utils';
+// import { debug } from '@ember/debug';
+// import { isPresent } from '@ember/utils';
 
 /**
  * @todo
@@ -32,12 +32,28 @@ import { isPresent } from '@ember/utils';
  * so we can send notifications to it later.
  */
 const registrationHandler = async (token) => {
+  Sentry.addBreadcrumb({
+    type: 'info',
+    category: 'notifications.permissions',
+    message: 'Push Notification Permission Granted',
+    level: 'info',
+  });
   schedule('afterRender', this, async () => {
+    const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+    let span;
+    if (transaction) {
+      span = transaction.startChild({
+        op: 'mobile.push-notification.registration',
+        description: 'registering push notification token',
+      });
+    }
     const pushToken = {
       apnsDeviceToken: token && token.value,
       fcmToken: await getToken(),
     };
     await stash('pushToken', pushToken);
+    span?.setTag('storage-key', 'pushToken');
+    span?.finish();
   });
 };
 
@@ -46,7 +62,8 @@ const registrationHandler = async (token) => {
  */
 const registerListenerHandlers = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
-  let router = appInstance.lookup('service:router');
+  // let router = appInstance.lookup('service:router');
+  // let session = appInstance.lookup('service:session');
 
   // successful push notification registration
   addListener('registration', registrationHandler);
@@ -71,19 +88,58 @@ const registerListenerHandlers = async (appInstance) => {
     });
   });
 
-  // @todo handle clicking a notification
-  addListener('pushNotificationActionPerformed', ({ notification }) => {
-    schedule('afterRender', appInstance, () => {
-      debug(
-        `From Native ->  PushNotifications actionPerformed ${notification.id}`
-      );
-      if (notification.data.intercom_push_type === 'notification') {
-        Intercom.displayMessenger();
-      } else if (isPresent(notification.data.deeplink_path)) {
-        router.transitionTo(notification.data.deeplink_path);
-      }
-    });
-  });
+  // // @todo handle clicking a notification
+  // addListener(
+  //   'pushNotificationActionPerformed',
+  //   ({ actionId, notification }) => {
+  //     schedule('afterRender', appInstance, () => {
+  //       const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+  //       let span;
+  //       if (transaction) {
+  //         span = transaction.startChild({
+  //           data: { notification },
+  //           op: 'mobile.push-notification.action',
+  //           description: `handling action: ${actionId}`,
+  //           tags: {
+  //             notification: notification.id,
+  //             action: actionId,
+  //           },
+  //         });
+  //       }
+  //       Sentry.addBreadcrumb({
+  //         category: 'push-notification',
+  //         message: 'Push Notification Action Performed',
+  //         data: notification,
+  //         level: 'info',
+  //       });
+  //       debug(
+  //         `From Native ->  PushNotifications actionPerformed ${notification.id}`
+  //       );
+  //       if (notification.data.intercom_push_type === 'notification') {
+  //         span?.setTag('intercom', true);
+  //         Sentry.addBreadcrumb({
+  //           category: 'push-notification',
+  //           message: 'Handling Intercom Push Notification',
+  //           data: notification,
+  //           level: 'info',
+  //         });
+  //         span?.finish();
+  //         Intercom.displayMessenger();
+  //       } else if (isPresent(notification.data.deeplink_path)) {
+  //         span?.setTag('deep-link', true);
+  //         Sentry.addBreadcrumb({
+  //           category: 'push-notification',
+  //           message: 'Handling Branch Push Notification',
+  //           data: notification,
+  //           level: 'info',
+  //         });
+  //         span?.finish();
+  //         // router.transitionTo(notification.data.deeplink_path);
+  //         notifications.triggerEvent(notification);
+  //       }
+  //     });
+  //   }
+  // );
 
   // addListener('tap', () => {
   //   // do nothing
@@ -115,8 +171,25 @@ const initializeLocalNotifications = async (appInstance) => {
 const initializePushNotifications = async (appInstance) => {
   let notifications = appInstance.lookup('service:notifications');
 
+  const transaction = Sentry.getCurrentHub().getScope().getTransaction();
+  let span;
+  if (transaction) {
+    span = transaction.startChild({
+      op: 'mobile.push-notification.init',
+      description: 'initializing push notification handler',
+    });
+  }
+
+  Sentry.addBreadcrumb({
+    type: 'info',
+    category: 'notifications.setup',
+    message: 'Initializing Push Notification Handlers',
+  });
+
   // permissions check
   let remotePermissionState = await requestRemotePermissions();
+  span?.setTag('remote-permissions', remotePermissionState);
+  span?.finish();
   if (remotePermissionState === 'granted') {
     // we've been granted permission, so register
     await register();

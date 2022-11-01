@@ -6,7 +6,7 @@ import Model, {
   hasMany,
 } from '@ember-data/model';
 import { htmlSafe } from '@ember/template';
-import { SafeString } from '@ember/template/-private/handlebars';
+import SafeString from 'houseninja/lib/safe-string';
 
 import type Document from './document';
 import type LineItem from './line-item';
@@ -54,13 +54,13 @@ export default class InvoiceModel extends Model {
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;
 
-  get formattedNotes(): string {
+  get formattedNotes(): SafeString {
     if (this.description) {
       const description: string = this.description.replace(/\n/g, '<br/>');
-      const safeDescription: SafeString = htmlSafe(description);
-      return safeDescription.toString();
+      const safeDescription: SafeString = htmlSafe(description) as SafeString;
+      return safeDescription;
     } else {
-      return '';
+      return new SafeString('');
     }
   }
 }

@@ -1,46 +1,46 @@
 PODS:
   - Branch (1.43.2)
-  - Capacitor (4.3.0):
+  - Capacitor (4.4.0):
     - CapacitorCordova
   - CapacitorActionSheet (4.0.1):
     - Capacitor
-  - CapacitorApp (4.0.1):
+  - CapacitorApp (4.1.0):
     - Capacitor
   - CapacitorBranchDeepLinks (5.0.0):
     - Branch
     - Capacitor
   - CapacitorBrowser (4.0.1):
     - Capacitor
-  - CapacitorCamera (4.1.1):
+  - CapacitorCamera (4.1.3):
     - Capacitor
   - CapacitorCommunityIntercom (4.0.0-beta.4):
     - Capacitor
     - Intercom
-  - CapacitorCordova (4.3.0)
+  - CapacitorCordova (4.4.0)
   - CapacitorDevice (4.0.1):
     - Capacitor
   - CapacitorDialog (4.0.1):
     - Capacitor
-  - CapacitorFilesystem (4.1.1):
+  - CapacitorFilesystem (4.1.3):
     - Capacitor
   - CapacitorHaptics (4.0.1):
     - Capacitor
   - CapacitorKeyboard (4.0.1):
     - Capacitor
-  - CapacitorLocalNotifications (4.1.0):
+  - CapacitorLocalNotifications (4.1.2):
     - Capacitor
   - CapacitorPreferences (4.0.1):
     - Capacitor
-  - CapacitorPushNotifications (4.1.0):
+  - CapacitorPushNotifications (4.1.1):
     - Capacitor
   - CapacitorSecureStoragePlugin (0.8.0):
     - Capacitor
     - SwiftKeychainWrapper
   - CapacitorShare (4.0.1):
     - Capacitor
-  - CapacitorSplashScreen (4.0.1):
+  - CapacitorSplashScreen (4.1.1):
     - Capacitor
-  - CapawesomeCapacitorFilePicker (0.5.0):
+  - CapawesomeCapacitorFilePicker (0.5.2):
     - Capacitor
   - Firebase/CoreOnly (9.6.0):
     - FirebaseCore (= 9.6.0)
@@ -113,7 +113,7 @@ PODS:
   - Sentry (7.23.0):
     - Sentry/Core (= 7.23.0)
   - Sentry/Core (7.23.0)
-  - SentryCapacitor (0.10.0):
+  - SentryCapacitor (0.10.1):
     - Capacitor
     - Sentry (~> 7.23.0)
   - SwiftKeychainWrapper (4.0.1)
@@ -212,26 +212,26 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Branch: 74cc856025984f691833c8fa332834ac38a0cf4e
-  Capacitor: 5534f805df231c76164e1d63119bff7b4eac6cd5
+  Capacitor: 868367fcfeb3ba6bfabaefc63c072e6478bd046d
   CapacitorActionSheet: addfd7a5680c40ddba677c6a2a0896b644996fa2
-  CapacitorApp: 70ea773d069c24ab188ae7a01237b951920ffacf
+  CapacitorApp: 6e250f9e67560a340aac4078af357fb5e5c303e0
   CapacitorBranchDeepLinks: b89845501569ad98f54ee1b7015244b8bce7e021
   CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
-  CapacitorCamera: 0bdf42438683cdc89fd0fc674a2ee281293d4cb3
+  CapacitorCamera: 69ca2f87102e93757829cf350a85287035c153d3
   CapacitorCommunityIntercom: 6168568f3c8641938a10f00cd74a3a6f7e91fc88
-  CapacitorCordova: 19a82a3b91fbeb9bdd049729551edc3cd7e5e648
+  CapacitorCordova: 0c0b4edc7ce94fd560eadc3a6d36d5ee6453ada6
   CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
   CapacitorDialog: e979738675fcd964bfab54c705ff77abb985f5c9
-  CapacitorFilesystem: e36a560cb7013cba63cb90bccb04612026f3e3cd
+  CapacitorFilesystem: e0136871c89a0b69654de0729d35c0b4fd1b12d8
   CapacitorHaptics: 02d48e2efca06ccf3273dbb638b68b0e145f623a
   CapacitorKeyboard: 3b49a9d517641c123fb691713f99a89d6ebf3a37
-  CapacitorLocalNotifications: 216ef48caada97839b7641c2608fa3e7b5666d20
+  CapacitorLocalNotifications: 7b3aa4f89dbc02421466391f260c49c4239d2acf
   CapacitorPreferences: d365ea3b5023b2aac39e8f5ce18de141e39d2cae
-  CapacitorPushNotifications: afc6b4d3c7935a3fa6cb08bc78b344c282cafe91
+  CapacitorPushNotifications: 273549fe9e5fb641892b066e0debb16f7aed119b
   CapacitorSecureStoragePlugin: f4d8b50d96bebd71b21b6eb2322544cb1fd92bea
   CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
-  CapacitorSplashScreen: 4fc967486a75ae5ef6f0fe154f60f68fd83e5ac3
-  CapawesomeCapacitorFilePicker: d721be0300ec528fb6e18ce9d12560e9f55231b1
+  CapacitorSplashScreen: e1f56f45abbccd0dd4bb723195b52ed39f923680
+  CapawesomeCapacitorFilePicker: a952b37c18e7fe752ca2970d34cdf04afa86f19d
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
   FirebaseCoreDiagnostics: 99a495094b10a57eeb3ae8efa1665700ad0bdaa6
@@ -247,7 +247,7 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Sentry: a0d4563fa4ddacba31fdcc35daaa8573d87224d6
-  SentryCapacitor: da1721be0244bb90695b681f3e03521080b528e3
+  SentryCapacitor: 075a95f83c96e090ec47c561519fd9288c3aa686
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
 PODFILE CHECKSUM: 419b73a9cec02bb168d8cad7132b6712b5da9374

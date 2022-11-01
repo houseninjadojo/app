@@ -32,7 +32,5 @@ export default function (server) {
     lastName: 'Demo',
   });
 
-  server.createList('work-order', 5);
-
   server.loadFixtures();
 }

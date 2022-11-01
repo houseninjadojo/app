@@ -4,6 +4,7 @@ import { debug } from '@ember/debug';
 import { run } from '@ember/runloop';
 import { Mixpanel } from '@houseninja/capacitor-mixpanel';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import Sentry from 'houseninja/utils/sentry';
 
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
@@ -41,6 +42,14 @@ export default class AnalyticsService extends Service {
       return;
     }
     await run(async () => {
+      Sentry.addBreadcrumb({
+        type: 'info',
+        category: 'analytics',
+        message: 'identifying user',
+        data: {
+          user: { id: distinctId },
+        },
+      });
       try {
         Mixpanel.identify({ distinctId });
       } catch (e: unknown) {
