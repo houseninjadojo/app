@@ -1,87 +1,85 @@
-import { FCM } from '@mineminemine/fcm';
+import { FirebaseMessaging } from '@capacitor-firebase/messaging';
 import { run } from '@ember/runloop';
 
+type PermissionState =
+  | 'prompt'
+  | 'prompt-with-rationale'
+  | 'granted'
+  | 'denied';
+
 /**
- * @see https://github.com/capacitor-community/fcm
+ * @see https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/messaging
  *
- * Firebase Cloud Messaging (FCM) for Capacitor
+ * Capacitor plugin for Firebase Cloud Messaging (FCM).
  */
 
 /**
  * subscribe to fcm topic
  *
- * platforms: ios, android
+ * @platform ios, android
  *
  * @param {String} topic
  */
-export async function subscribeTo(topic: string): Promise<{ message: string }> {
+export async function subscribeTo(topic: string): Promise<void> {
   return await run(async () => {
-    return await FCM.subscribeTo({ topic });
+    return await FirebaseMessaging.subscribeToTopic({ topic });
   });
 }
 
 /**
  * unsubscribe to fcm topic
  *
- * platforms: ios, android
+ * @platform ios, android
  *
  * @param {String} topic
  */
 // eslint-disable-next-line prettier/prettier
-export async function unsubscribeFrom(topic: string): Promise<{ message: string }> {
+export async function unsubscribeFrom(topic: string): Promise<void> {
   return await run(async () => {
-    return await FCM.unsubscribeFrom({ topic });
+    return await FirebaseMessaging.unsubscribeFromTopic({ topic });
   });
 }
 
 /**
  * get fcm token to eventually use from a server
  *
- * platforms: ios, android
+ * @platform ios, android
  *
  * @return {String} token
  */
 export async function getToken(): Promise<string> {
   return await run(async () => {
-    const { token } = await FCM.getToken();
+    const { token } = await FirebaseMessaging.getToken();
     return token;
   });
 }
 
 /**
- * remove local fcm instance completely
- *
- * platforms: ios, android
+ * @platform ios, android
  */
-export async function deleteInstance(): Promise<boolean> {
+export async function checkPermissions(): Promise<PermissionState> {
   return await run(async () => {
-    return await FCM.deleteInstance();
+    const { receive } = await FirebaseMessaging.checkPermissions();
+    return receive;
   });
 }
 
 /**
- * enable the auto initialization of the library
- *
- * platforms: ios, android
- *
- * @param {Boolean} [enabled=true]
+ * @platform ios, android
  */
-export async function setAutoInit(enabled = true): Promise<void> {
+export async function requestPermissions(): Promise<PermissionState> {
   return await run(async () => {
-    return await FCM.setAutoInit({ enabled });
+    const { receive } = await FirebaseMessaging.requestPermissions();
+    return receive;
   });
 }
 
 /**
- * check whether auto initialization is enabled
- *
- * platforms: ios, android
- *
- * @return {Boolean} enabled
+ * @platform ios, android
  */
-export async function isAutoInitEnabled(): Promise<boolean> {
+export async function isSupported(): Promise<boolean> {
   return await run(async () => {
-    const { enabled } = await FCM.isAutoInitEnabled();
-    return enabled;
+    const { isSupported } = await FirebaseMessaging.isSupported();
+    return isSupported;
   });
 }
