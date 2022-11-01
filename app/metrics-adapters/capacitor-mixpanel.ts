@@ -18,14 +18,10 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   install(): void {
     const { token } = this.config;
-    if (isNativePlatform() || ENV.environment === 'test') {
-      return;
-    }
     assert(
       `[ember-metrics] You must pass a valid \`token\` to the ${this.toString()} adapter`,
       token
     );
-
     // only initialize if we are on the web
     if (!isNativePlatform()) {
       try {
