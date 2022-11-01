@@ -12,7 +12,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.setup is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -36,7 +36,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.track is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -57,7 +57,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.identify is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -86,7 +86,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.alias is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -107,7 +107,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.registerSuperProperties is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -128,7 +128,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.reset is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -149,7 +149,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.setProfile is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
@@ -170,7 +170,7 @@ export default class AnalyticsService extends Service {
     deprecate('AnalyticsService.trackCharge is deprecated', false, {
       id: 'service.analytics.use-metrics',
       for: 'houseninja',
-      until: '1.25.0',
+      until: '1.26.0',
       since: {
         available: '1.24.9',
       },
