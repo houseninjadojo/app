@@ -15,7 +15,6 @@ module.exports = function (environment) {
         'https://app.link',
         'https://api2.branch.io',
         '*.pages.cloudflare.dev',
-        '*.ingest.sentry.io',
         process.env.APP_HOST,
       ],
       'font-src': [
@@ -29,6 +28,7 @@ module.exports = function (environment) {
         '*.pages.cloudflare.dev',
         `https://${process.env.AUTH_DOMAIN}`,
         process.env.API_HOST,
+        '*.ingest.sentry.io',
       ],
       'img-src': ["'self'", 'data:', process.env.APP_HOST],
       'style-src': ["'self'", 'data:', process.env.APP_HOST],
