@@ -3203,10 +3203,10 @@
   dependencies:
     "@types/ember-data" "*"
 
-"@types/ember-data__store@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@types/ember-data__store/-/ember-data__store-4.0.1.tgz#e2483b5171aa578fb23726902a2514f202872d91"
-  integrity sha512-lhFtKgyBli+bpvEvQBXpeSzPAEyi7xygpQvyvg0Mr9tScGG3NafR5WSPDrPrFDx71bqkrAH5J2K/Dj7E3tH4Yw==
+"@types/ember-data__store@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@types/ember-data__store/-/ember-data__store-4.0.2.tgz#152f3976575da2c363be9833c051c1895ea628ae"
+  integrity sha512-G1viZWvcke+QGuTW0x18wY4bbXR/h4WVEcITY6RhG/DB6uZK7w7C5bC0AyFotBw5DrWBpuzz9r2TufFSisHFyA==
   dependencies:
     "@types/ember-data" "*"
 
