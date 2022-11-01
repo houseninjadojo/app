@@ -7295,10 +7295,10 @@ ember-cached-decorator-polyfill@^0.1.4:
     ember-cli-babel "^7.21.0"
     ember-cli-babel-plugin-helpers "^1.1.1"
 
-ember-classic-decorator@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ember-classic-decorator/-/ember-classic-decorator-3.0.0.tgz#9e31c50c40c060d23d15653cdf260f78b6cdef2a"
-  integrity sha512-nCCO3d06c27l1vj4P54xLYk8AwrzSlFFGX8MZmfFl/xZ9LDY0V8OphAmO9PsaYEbBkjmtUy+h9vG2Lg9qVij+g==
+ember-classic-decorator@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-classic-decorator/-/ember-classic-decorator-3.0.1.tgz#13acf53e5fdb1f867919765853eb3592380ed1ef"
+  integrity sha512-IoocHPX1cY93Sma7VeDGbF0M1+TkBWDJLus+RD01902eD+KHEL2+diwM+iayCyO+1/xaUzdzNGh35J+i+TCxoA==
   dependencies:
     "@embroider/macros" "^1.0.0"
     babel-plugin-filter-imports "^4.0.0"
@@ -8102,9 +8102,10 @@ ember-truth-helpers@^3.1.1:
 
 ember-user-activity@elwayman02/ember-user-activity:
   version "6.0.0"
-  resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/5d38bff11a3d3f704822b301ec830ec838b64586"
+  uid "10a4cb7fbddf1dbd60c41cf6a94f06a0c744c5e6"
+  resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/10a4cb7fbddf1dbd60c41cf6a94f06a0c744c5e6"
   dependencies:
-    ember-classic-decorator "^3.0.0"
+    ember-classic-decorator "^3.0.1"
     ember-cli-babel "^7.26.11"
 
 emoji-regex@^8.0.0:
