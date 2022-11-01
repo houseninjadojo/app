@@ -5090,10 +5090,10 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-branch-sdk@^2.65.0:
-  version "2.65.0"
-  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.65.0.tgz#cdb7733461c08905f52321aa29bdf9d590129496"
-  integrity sha512-EIFRRon3zjKO69KwsyBXKMwBXsnr4eyPSwZkXY1iNTfWJT2O3ZlwJjF3Vm+Wt8SQ0w3H2qLuSxGV9fp7e2/N6A==
+branch-sdk@^2.68.0:
+  version "2.68.0"
+  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.68.0.tgz#5cc72d69500b0f6367d24cc6c4551cab6624c9ac"
+  integrity sha512-s4Fjm1kO5TTAdUJCzFEDnF79TLUZR/geVXVmexWcF2aqh+qOGq1LNuA8vrfN3KE6l8RdeH3p+6I9v3rZescilA==
   dependencies:
     google-closure-compiler "^20220601.0.0"
     google-closure-deps "^20220502.0.0"
