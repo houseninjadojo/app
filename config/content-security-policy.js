@@ -15,6 +15,7 @@ module.exports = function (environment) {
         'https://app.link',
         'https://api2.branch.io',
         '*.pages.cloudflare.dev',
+        'https://static.cloudflareinsights.com/beacon.min.js',
         process.env.APP_HOST,
       ],
       'font-src': [
