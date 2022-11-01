@@ -26,9 +26,11 @@ module.exports = function (environment) {
       'connect-src': [
         "'self'",
         '*.pages.cloudflare.dev',
+        '*.ingest.sentry.io',
+        'https://api-js.mixpanel.com',
+        'https://api2.branch.io',
         `https://${process.env.AUTH_DOMAIN}`,
         process.env.API_HOST,
-        '*.ingest.sentry.io',
       ],
       'img-src': ["'self'", 'data:', process.env.APP_HOST],
       'style-src': ["'self'", 'data:', process.env.APP_HOST],
