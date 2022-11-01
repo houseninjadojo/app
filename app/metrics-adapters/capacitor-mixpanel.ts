@@ -4,6 +4,7 @@ import { assert } from '@ember/debug';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { isPresent } from '@ember/utils';
 import { captureException } from 'houseninja/utils/sentry';
+import ENV from 'houseninja/config/environment';
 
 export default class CapacitorMixpanel extends BaseAdapter {
   toStringExtension(): string {
@@ -17,7 +18,9 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   install(): void {
     const { token } = this.config;
-
+    if (isNativePlatform() || ENV.environment === 'test') {
+      return;
+    }
     assert(
       `[ember-metrics] You must pass a valid \`token\` to the ${this.toString()} adapter`,
       token

@@ -77,7 +77,7 @@ module.exports = function (environment) {
     metricsAdapters: [
       {
         name: 'CapacitorMixpanel',
-        environments: ['all'],
+        environments: ['sandbox', 'production'],
         config: {
           token: process.env.MIXPANEL_TOKEN,
         },
