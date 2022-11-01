@@ -4,10 +4,10 @@ import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class ApplicationController extends Controller {
-  @tracked showLoader = isNativePlatform();
+  @tracked showLoader: boolean = isNativePlatform();
 
   @action
-  toggleLoading() {
+  toggleLoading(): void {
     this.showLoader = false;
   }
 }
