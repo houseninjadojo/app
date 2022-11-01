@@ -74,6 +74,16 @@ module.exports = function (environment) {
       },
     },
 
+    metricsAdapters: [
+      {
+        name: 'CapacitorMixpanel',
+        environments: ['all'],
+        config: {
+          token: process.env.MIXPANEL_TOKEN,
+        },
+      },
+    ],
+
     sentry: {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 1.0,

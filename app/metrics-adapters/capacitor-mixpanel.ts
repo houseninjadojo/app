@@ -80,12 +80,16 @@ export default class CapacitorMixpanel extends BaseAdapter {
     }
   }
 
-  uninstall(): void {
+  reset(): void {
     try {
       Mixpanel.reset();
     } catch (e) {
       captureException(e as Error);
     }
+  }
+
+  uninstall(): void {
+    this.reset();
   }
 
   willDestroy(): void {

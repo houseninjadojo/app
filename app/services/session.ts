@@ -7,7 +7,7 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import { startSpan, captureException } from 'houseninja/utils/sentry';
 
-import type AnalyticsService from 'houseninja/services/analytics';
+import type MetricsService from 'houseninja/services/metrics';
 import type CurrentService from 'houseninja/services/current';
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
@@ -18,7 +18,7 @@ import type Transition from '@ember/routing/transition';
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
  */
 export default class SessionService extends BaseSessionService {
-  @service declare analytics: AnalyticsService;
+  @service declare metrics: MetricsService;
   @service declare current: CurrentService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
@@ -87,9 +87,9 @@ export default class SessionService extends BaseSessionService {
       );
     }
 
-    await this.analytics.track('Logout');
+    await this.metrics.trackEvent({ event: 'Logout' });
     await this.invalidate();
-    await this.analytics.reset();
+    await this.metrics.reset();
     await this.intercom.logout();
     await this._closeBrowser();
     this.router.transitionTo('index');
