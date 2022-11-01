@@ -8,5 +8,5 @@ export default class SignupController extends Controller {
     },
   ];
 
-  @tracked onboardingCode = null;
+  @tracked onboardingCode?: string = undefined;
 }

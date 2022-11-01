@@ -27,3 +27,19 @@ export const ALL = [
   LEAD,
   SERVICE_AREA_REQUESTED,
 ];
+
+export enum ContactType {
+  Vendor = 'Vendor',
+  Customer = 'Customer',
+  CustomerSpouse = 'Customer - Spouse',
+  CustomerAssistant = 'Customer - Assistant',
+  RealtorBroker = 'Realtor/Broker',
+  PropertyOwner = 'Property Owner',
+  Tenant = 'Tenant',
+  ChannelPartner = 'Channel Partner',
+  Investor = 'Investor',
+  Connector = 'Connector',
+  Realtor = 'Realtor',
+  Lead = 'Lead',
+  ServiceAreaRequested = 'Service Area Requested',
+}

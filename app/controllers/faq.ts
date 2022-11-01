@@ -2,8 +2,10 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 
+import type ViewService from 'houseninja/services/view';
+
 export default class FaqController extends Controller {
-  @service view;
+  @service declare view: ViewService;
 
   @action
   selectRoute() {

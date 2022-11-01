@@ -1,4 +1,5 @@
 import JSONAPISerializer from '@ember-data/serializer/json-api';
+import { Snapshot } from '@ember-data/store';
 import { underscore } from '@ember/string';
 import { isPresent } from '@ember/utils';
 
@@ -9,7 +10,7 @@ export default class ApplicationSerializer extends JSONAPISerializer {
    * @example
    *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
    */
-  keyForAttribute(attr /* , method */) {
+  keyForAttribute(attr: string /* , method */): string {
     return underscore(attr);
   }
 
@@ -19,7 +20,7 @@ export default class ApplicationSerializer extends JSONAPISerializer {
    * @example
    *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
    */
-  keyForRelationship(key /* , relationship, method */) {
+  keyForRelationship(key: string /* , relationship, method */): string {
     return underscore(key);
   }
 
@@ -29,9 +30,14 @@ export default class ApplicationSerializer extends JSONAPISerializer {
    * @example
    *   { "a": "b", "c": null } => { "a": "b" }
    */
-  serializeAttribute(snapshot, _, key) {
+  serializeAttribute(
+    snapshot: Snapshot,
+    json: Record<string, unknown>,
+    key: string,
+    attributes: Record<string, unknown>
+  ): void {
     if (isPresent(snapshot.attr(key))) {
-      super.serializeAttribute(...arguments);
+      super.serializeAttribute(snapshot, json, key, attributes);
     }
   }
 }

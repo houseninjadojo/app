@@ -15,6 +15,8 @@ import SecureStorage from 'houseninja/utils/secure-storage';
  * @public
  */
 export default class CapacitorSecureStorageStore extends BaseStore {
+  private lastData: object = {};
+
   /**
    * The `SecureStorage` key the store persists data in.
    *
@@ -33,10 +35,10 @@ export default class CapacitorSecureStorageStore extends BaseStore {
    * @return {Promise} A promise that resolves when the data has successfully been persisted and rejects otherwise.
    * @public
    */
-  async persist(data) {
-    this._lastData = data;
-    data = JSON.stringify(data || {});
-    return await SecureStorage.set(this.key, data);
+  async persist(data: object): Promise<{ value: boolean } | undefined> {
+    this.lastData = data;
+    const dataString = JSON.stringify(data || {});
+    return await SecureStorage.set(this.key, dataString);
   }
 
   /**
@@ -46,7 +48,7 @@ export default class CapacitorSecureStorageStore extends BaseStore {
    * @return {Promise} A promise that resolves with the data currently persisted in the store when the data has been restored successfully and rejects otherwise.
    * @public
    */
-  async restore() {
+  async restore(): Promise<unknown> {
     const data = await SecureStorage.get(this.key);
     return JSON.parse(data || {});
   }
@@ -59,8 +61,8 @@ export default class CapacitorSecureStorageStore extends BaseStore {
    * @return {Promise} A promise that resolves when the store has been cleared successfully and rejects otherwise.
    * @public
    */
-  async clear() {
-    this._lastData = {};
+  async clear(): Promise<void> {
+    this.lastData = {};
     return await SecureStorage.clear(this.key);
   }
 }

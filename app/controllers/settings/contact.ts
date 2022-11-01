@@ -5,20 +5,39 @@ import { service } from '@ember/service';
 import { captureException } from 'houseninja/utils/sentry';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
+import { tracked as track } from 'tracked-built-ins';
+
+import type IntercomService from 'houseninja/services/intercom';
+import type RouterService from '@ember/routing/router-service';
+import type ViewService from 'houseninja/services/view';
+import type { FieldSet } from 'houseninja/app/components';
+import type User from 'houseninja/models/user';
+import type { ModelFrom } from 'houseninja';
+import type SettingsContactRoute from 'houseninja/routes/settings/contact';
+
+type ContactInfo = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
+};
+type TargetId = 'firstName' | 'lastName' | 'email' | 'phoneNumber';
 
 export default class SettingsContactController extends Controller {
-  @service intercom;
-  @service router;
-  @service view;
+  declare model: ModelFrom<SettingsContactRoute>;
+
+  @service declare intercom: IntercomService;
+  @service declare router: RouterService;
+  @service declare view: ViewService;
 
   @tracked formIsInvalid = true;
-  @tracked contactInfo = {
+  @tracked contactInfo = track({
     firstName: this.model.firstName,
     lastName: this.model.lastName,
     phoneNumber: this.model.phoneNumber,
     email: this.model.email,
-  };
-  @tracked fields = [
+  });
+  @tracked fields: FieldSet = [
     {
       id: 'firstName',
       required: true,
@@ -56,7 +75,7 @@ export default class SettingsContactController extends Controller {
   ];
 
   @action
-  resetForm() {
+  resetForm(): void {
     this.contactInfo.firstName = this.model.firstName;
     this.contactInfo.lastName = this.model.lastName;
     this.contactInfo.phoneNumber = this.model.phoneNumber;
@@ -65,29 +84,36 @@ export default class SettingsContactController extends Controller {
   }
 
   @action
-  async saveAction() {
-    this.model?.setProperties(this.contactInfo);
-    if (this.model?.hasDirtyAttributes) {
+  async saveAction(): Promise<void> {
+    this.model.setProperties(this.contactInfo as Pick<User, keyof User>);
+    if (this.model.get('hasDirtyAttributes')) {
       try {
         await this.model.save();
         await this.resetForm();
         this.view.transitionToPreviousRoute();
       } catch (e) {
-        captureException(e);
+        captureException(e as Error);
       }
     }
   }
 
   @action
-  validateForm(e) {
-    if (e.target.id === 'phoneNumber') {
-      this.contactInfo[e.target.id] = e.target.value.replace(/\D/g, '');
-      formatPhoneNumber(e.target);
-      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+  validateForm(e: Event): void {
+    const target = <HTMLInputElement>e.target;
+    const targetId: keyof ContactInfo = target.id as TargetId;
+    if (targetId === 'phoneNumber') {
+      this.contactInfo[targetId] = target.value.replace(/\D/g, '');
+      formatPhoneNumber(target);
+      const field = this.fields.find((f) => f.id === targetId);
+      if (field) {
+        field.value = target.value;
+      }
     } else {
-      this.contactInfo[e.target.id] = e.target.value;
-      this.fields.filter((f) => f.id === e.target.id)[0].value =
-        this.contactInfo[e.target.id];
+      this.contactInfo[targetId] = target.value;
+      const field = this.fields.find((f) => f.id === targetId);
+      if (field) {
+        field.value = this.contactInfo[targetId];
+      }
     }
 
     this.formIsInvalid = inputValidation(this.fields, [
@@ -99,7 +125,7 @@ export default class SettingsContactController extends Controller {
   }
 
   @action
-  openChatModal() {
+  openChatModal(): void {
     this.intercom.showComposer(
       'I need to make a change to my account information.'
     );

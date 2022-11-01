@@ -6,7 +6,7 @@ export default class OnboardingContactInfoController extends Controller {
   @tracked showDialog = false;
 
   @action
-  toggleModal() {
+  toggleModal(): void {
     this.showDialog = !this.showDialog;
   }
 }

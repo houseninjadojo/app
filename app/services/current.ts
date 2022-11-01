@@ -3,9 +3,12 @@ import { get as unstash } from 'houseninja/utils/secure-storage';
 import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
-import AnalyticsService from 'houseninja/services/analytics';
-import IntercomService from 'houseninja/services/intercom';
+import { TrackedObject } from 'tracked-built-ins';
+
+import type AnalyticsService from 'houseninja/services/analytics';
+import type IntercomService from 'houseninja/services/intercom';
 import type StoreService from '@ember-data/store';
+import type SessionService from 'houseninja/services/session';
 import type User from 'houseninja/models/user';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
@@ -14,25 +17,25 @@ export default class CurrentService extends Service {
   @service declare analytics: AnalyticsService;
   @service declare intercom: IntercomService;
   @service declare store: StoreService;
-  @service declare session: any;
+  @service declare session: SessionService;
 
   isLoadingUser = false;
 
   user?: User;
   device = null;
 
-  signup = {
+  signup = new TrackedObject({
     zipcode: null,
     selectedPlan: null,
     contactInfo: {},
     subscription: null,
-  };
+  });
 
   _loadUser: Task<void, []> = task(this, { drop: true }, async () => {
-    if (!this.session.isAuthenticated) {
+    if (!this.session.data?.authenticated?.userinfo) {
       return;
     }
-    const userId = this.session?.data?.authenticated?.userinfo?.user_id;
+    const userId = this.session.data.authenticated.userinfo.user_id;
     const includes = [
       'invoices',
       'payments',
