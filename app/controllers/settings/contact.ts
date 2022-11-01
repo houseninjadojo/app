@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { captureException } from 'houseninja/utils/sentry';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import { TrackedObject } from 'tracked-built-ins';
+import { tracked as track } from 'tracked-built-ins';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
@@ -31,7 +31,7 @@ export default class SettingsContactController extends Controller {
   @service declare view: ViewService;
 
   @tracked formIsInvalid = true;
-  contactInfo: ContactInfo = new TrackedObject({
+  @tracked contactInfo = track({
     firstName: this.model.firstName,
     lastName: this.model.lastName,
     phoneNumber: this.model.phoneNumber,
