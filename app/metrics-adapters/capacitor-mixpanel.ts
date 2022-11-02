@@ -1,4 +1,6 @@
-import BaseAdapter from 'ember-metrics/metrics-adapters/base';
+import BaseAdapter, {
+  IdentifyOptions,
+} from 'ember-metrics/metrics-adapters/base';
 import { Mixpanel } from '@houseninja/capacitor-mixpanel';
 import { assert } from '@ember/debug';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -34,15 +36,15 @@ export default class CapacitorMixpanel extends BaseAdapter {
     }
   }
 
-  identify(options: { distinctId: string; profile: object }): void {
-    const { distinctId, profile } = options;
+  identify(options: IdentifyOptions): void {
+    const { distinctId, email, name } = options;
     try {
       Mixpanel.identify({ distinctId });
     } catch (e) {
       captureException(e as Error);
     }
-    if (isPresent(profile)) {
-      this.setProfile({ properties: profile });
+    if (isPresent(email) || isPresent(name)) {
+      this.setProfile({ properties: { $email: email, $name: name } });
     }
   }
 

@@ -9,7 +9,6 @@ import { startSpan, captureException } from 'houseninja/utils/sentry';
 
 import type MetricsService from 'houseninja/services/metrics';
 import type CurrentService from 'houseninja/services/current';
-import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type Transition from '@ember/routing/transition';
@@ -20,7 +19,6 @@ import type Transition from '@ember/routing/transition';
 export default class SessionService extends BaseSessionService {
   @service declare metrics: MetricsService;
   @service declare current: CurrentService;
-  @service declare intercom: IntercomService;
   @service declare router: RouterService;
   @service declare store: StoreService;
 
@@ -90,7 +88,6 @@ export default class SessionService extends BaseSessionService {
     await this.metrics.trackEvent({ event: 'Logout' });
     await this.invalidate();
     await this.metrics.reset();
-    await this.intercom.logout();
     await this._closeBrowser();
     this.router.transitionTo('index');
   }

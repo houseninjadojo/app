@@ -3,7 +3,6 @@ import { service } from '@ember/service';
 import { Intercom } from '@capacitor-community/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
-import { task, type Task } from 'ember-concurrency';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
 
 import type CurrentService from 'houseninja/services/current';
@@ -23,13 +22,16 @@ export default class IntercomService extends Service {
     });
     // hide launcher on mobile devices
     if (isNativePlatform()) {
-      await Intercom.hideInAppMessages();
-      await Intercom.hideLauncher();
+      try {
+        await Intercom.hideInAppMessages();
+        await Intercom.hideLauncher();
+      } catch (e) {
+        captureException(e as Error);
+      }
     }
   }
 
-  // eslint-disable-next-line
-  async registerUser(userId: string, email: string, hmac: string): Promise<void> {
+  async loginUser(userId: string, email: string, hmac: string): Promise<void> {
     startSpan({ op: 'intercom.user.register' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.login',
@@ -39,18 +41,36 @@ export default class IntercomService extends Service {
       },
     });
     if (isNativePlatform()) {
+      await this.loginUserNative(userId, email, hmac);
+    } else {
+      await this.loginUserWeb(userId, email, hmac);
+    }
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  private async loginUserNative(userId: string, email: string, hmac: string): Promise<void> {
+    try {
       await Intercom.setUserHash({ hmac });
       await Intercom.loginUser({
         userId,
         email,
       });
-    } else {
+    } catch (e) {
+      captureException(e as Error);
+    }
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  private async loginUserWeb(userId: string, email: string, hmac: string): Promise<void> {
+    try {
       await Intercom.boot({
         app_id: ENV.intercom.appId,
         user_id: userId,
         email,
         user_hash: hmac,
       });
+    } catch (e) {
+      captureException(e as Error);
     }
   }
 
@@ -60,11 +80,7 @@ export default class IntercomService extends Service {
     });
   }
 
-  showMessenger(): void {
-    this._showMessenger.perform();
-  }
-
-  _showMessenger: Task<void, []> = task(this, { drop: true }, async () => {
+  async showMessenger(): Promise<void> {
     startSpan({ op: 'intercom.show.messenger' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.show',
@@ -72,15 +88,14 @@ export default class IntercomService extends Service {
     });
     this.isOpen = true;
     this.metrics.trackEvent({ event: 'Intercom messenger opened' });
-    await Intercom.displayMessenger();
-  });
-
-  showComposer(message: string): void {
-    this._showComposer.perform(message);
+    try {
+      await Intercom.displayMessenger();
+    } catch (e) {
+      captureException(e as Error);
+    }
   }
 
-  // prettier-ignore
-  _showComposer: Task<void, [key: string]> = task(this, { drop: true }, async (message = '') => {
+  async showComposer(message: string): Promise<void> {
     startSpan({ op: 'intercom.show.composer' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.show',
@@ -94,34 +109,52 @@ export default class IntercomService extends Service {
     });
     try {
       await Intercom.displayMessageComposer({ message });
-    } catch (e: unknown) {
+    } catch (e) {
       captureException(e as Error);
     }
-  });
-
-  hide(): void {
-    this._hide.perform();
   }
 
-  _hide: Task<void, []> = task(this, { drop: true }, async () => {
+  async hide(): Promise<void> {
     startSpan({ op: 'intercom.hide' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.hide',
       message: 'hiding messenger',
     });
     this.isOpen = false;
-    await Intercom.hideMessenger();
-  });
+    try {
+      await Intercom.hideMessenger();
+    } catch (e) {
+      captureException(e as Error);
+    }
+  }
 
-  logout(): void {
+  async logout(): Promise<void> {
     startSpan({ op: 'intercom.user.logout' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.logout',
       message: 'logging out',
     });
     if (this.isOpen) {
-      this._hide.perform();
+      await this.hide();
     }
-    Intercom.logout();
+    try {
+      await Intercom.logout();
+    } catch (e) {
+      captureException(e as Error);
+    }
+  }
+
+  async logEvent(name: string, data?: Record<string, unknown>): Promise<void> {
+    startSpan({ op: 'intercom.event.log' })?.finish();
+    Sentry.addBreadcrumb({
+      category: 'intercom.event',
+      message: 'logging event',
+      data: { name, data },
+    });
+    try {
+      await Intercom.logEvent({ name, data });
+    } catch (e) {
+      captureException(e as Error);
+    }
   }
 }
