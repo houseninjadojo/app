@@ -1,8 +1,6 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { App as MobileApp } from '@capacitor/app';
 import { debug } from '@ember/debug';
-import { BranchDeepLinks } from 'capacitor-branch-deep-links';
 import BranchWeb from 'branch-sdk';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import ENV from 'houseninja/config/environment';
