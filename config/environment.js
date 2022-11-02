@@ -76,6 +76,13 @@ module.exports = function (environment) {
 
     metricsAdapters: [
       {
+        name: 'CapacitorIntercom',
+        environments: ['development', 'sandbox', 'production'],
+        config: {
+          appId: process.env.INTERCOM_APP_ID,
+        }
+      },
+      {
         name: 'CapacitorMixpanel',
         environments: ['sandbox', 'production'],
         config: {

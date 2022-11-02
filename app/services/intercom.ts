@@ -4,6 +4,7 @@ import { Intercom } from '@capacitor-community/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
+import { tracked } from '@glimmer/tracking';
 
 import type CurrentService from 'houseninja/services/current';
 import type MetricsService from 'houseninja/services/metrics';
@@ -12,8 +13,8 @@ export default class IntercomService extends Service {
   @service declare current: CurrentService;
   @service declare metrics: MetricsService;
 
-  unreadConversationCount = '';
-  isOpen = false;
+  @tracked unreadConversationCount = '';
+  @tracked isOpen = false;
 
   async setup(): Promise<void> {
     Sentry.addBreadcrumb({
@@ -29,6 +30,7 @@ export default class IntercomService extends Service {
         captureException(e as Error);
       }
     }
+    this.setupListeners();
   }
 
   async loginUser(userId: string, email: string, hmac: string): Promise<void> {
@@ -78,6 +80,12 @@ export default class IntercomService extends Service {
     await Intercom.addListener('onUnreadCountChange', ({ value }) => {
       this.unreadConversationCount = value ?? '';
     });
+
+    await Intercom.addListener('windowDidHide', () => {
+      this.metrics.trackEvent({
+        event: 'intercom.close',
+      });
+    });
   }
 
   async showMessenger(): Promise<void> {
@@ -87,7 +95,7 @@ export default class IntercomService extends Service {
       message: 'showing messenger',
     });
     this.isOpen = true;
-    this.metrics.trackEvent({ event: 'Intercom messenger opened' });
+    this.metrics.trackEvent({ event: 'intercom.open' });
     try {
       await Intercom.displayMessenger();
     } catch (e) {
@@ -104,7 +112,7 @@ export default class IntercomService extends Service {
     });
     this.isOpen = true;
     this.metrics.trackEvent({
-      event: 'Intercom composer opened',
+      event: 'intercom.open',
       properties: { message },
     });
     try {
@@ -156,5 +164,15 @@ export default class IntercomService extends Service {
     } catch (e) {
       captureException(e as Error);
     }
+  }
+
+  async fetchUnreadConversationCount(): Promise<number> {
+    try {
+      const { value } = await Intercom.unreadConversationCount();
+      return Number(value);
+    } catch (e) {
+      captureException(e as Error);
+    }
+    return 0;
   }
 }

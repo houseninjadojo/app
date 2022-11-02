@@ -29,6 +29,7 @@ export default class CapacitorIntercom extends BaseAdapter {
   // eslint-disable-next-line prettier/prettier
   trackEvent(options: { event: string; properties?: Record<string, unknown> }): void {
     const { event, properties } = options;
+    if (event.includes('intercom.') || event.includes('click')) return;
     this.intercom.logEvent(event, properties);
   }
 
