@@ -130,13 +130,11 @@ export default class CurrentService extends Service {
       });
       Sentry.setUser({ email });
       this.metrics.identify({
-        distinctId: email,
-        profile: {
-          $email: email,
-          $name: fullName,
-        },
+        distinctId: id,
+        email,
+        name: fullName,
+        hmac: intercomHash,
       });
-      await this.intercom.registerUser(id, email, intercomHash as string);
       this.isLoadingUser = false;
     }
   });

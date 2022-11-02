@@ -1,4 +1,11 @@
 declare module 'ember-metrics/metrics-adapters/base' {
+  export interface IdentifyOptions {
+    distinctId: string;
+    email?: string;
+    name?: string;
+    hmac?: string;
+  }
+
   export default class BaseAdapter {
     static supportsFastBoot: boolean;
 

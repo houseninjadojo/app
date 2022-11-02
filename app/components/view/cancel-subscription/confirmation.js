@@ -39,7 +39,7 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
 
   @action
   goodbye() {
-    this.session.terminate();
+    this.session.invalidate();
   }
 
   @action

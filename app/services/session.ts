@@ -9,10 +9,10 @@ import { startSpan, captureException } from 'houseninja/utils/sentry';
 
 import type MetricsService from 'houseninja/services/metrics';
 import type CurrentService from 'houseninja/services/current';
-import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type Transition from '@ember/routing/transition';
+import { Span } from '@sentry/types';
 
 /**
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
@@ -20,7 +20,6 @@ import type Transition from '@ember/routing/transition';
 export default class SessionService extends BaseSessionService {
   @service declare metrics: MetricsService;
   @service declare current: CurrentService;
-  @service declare intercom: IntercomService;
   @service declare router: RouterService;
   @service declare store: StoreService;
 
@@ -37,14 +36,7 @@ export default class SessionService extends BaseSessionService {
   }
 
   async setup(): Promise<void> {
-    startSpan({
-      op: 'session.setup',
-      description: 'session setup',
-    })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'session.setup',
-      message: 'session setup invoked',
-    });
+    this.logSentry('setup');
     await super.setup();
     await this.loadIfPKCE();
   }
@@ -66,11 +58,7 @@ export default class SessionService extends BaseSessionService {
   }
 
   async terminate(transition?: Transition): Promise<void> {
-    startSpan({
-      op: 'session.terminate',
-      description: 'session terminate',
-    })?.finish();
-
+    this.logSentry('terminate');
     if (isNativePlatform()) {
       SplashScreen.show({
         fadeInDuration: 0,
@@ -79,36 +67,44 @@ export default class SessionService extends BaseSessionService {
         autoHide: false,
       });
     }
-
     if (transition) {
       this.requireAuthentication(
         transition,
         NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
       );
     }
-
-    await this.metrics.trackEvent({ event: 'Logout' });
-    await this.invalidate();
-    await this.metrics.reset();
-    await this.intercom.logout();
-    await this._closeBrowser();
+    await super.invalidate();
     this.router.transitionTo('index');
+  }
+
+  async invalidate(): Promise<void> {
+    this.logSentry('invalidate', 'logging out');
+    if (isNativePlatform()) {
+      SplashScreen.show({
+        fadeInDuration: 0,
+        fadeOutDuration: 1000,
+        showDuration: 1000,
+        autoHide: false,
+      });
+    }
+    await super.invalidate();
+  }
+
+  async handleInvalidation(routeAfterInvalidation: string): Promise<void> {
+    await this.metrics.trackEvent({ event: 'Logout' });
+    await this.metrics.reset();
+    await this._closeBrowser();
+    super.handleInvalidation(routeAfterInvalidation);
   }
 
   async _closeBrowser(): Promise<void> {
     if (isNativePlatform()) {
-      const span = startSpan({
-        op: 'browser.close',
-        description: 'CLOSE',
-      });
-
-      Sentry.addBreadcrumb({
-        type: 'ui',
-        category: 'browser.close',
-        message: 'closing browser',
-        level: 'info',
-      });
-
+      const span = this.logSentry(
+        'browser.close',
+        'closing browser',
+        'ui',
+        false
+      );
       try {
         Browser.removeAllListeners();
         await Browser.close();
@@ -120,6 +116,28 @@ export default class SessionService extends BaseSessionService {
         await SplashScreen.hide();
         span?.finish();
       }
+    }
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  private logSentry(action: string, message?: string, type?: string, finish = true): Span | void {
+    const tag = action.includes('.') ? action : `session.${action}`;
+    const msg = message ?? `{action} session`;
+    const span = startSpan({
+      op: tag,
+      description: msg,
+    });
+    Sentry.addBreadcrumb({
+      type,
+      category: tag,
+      message: msg,
+      level: 'info',
+    });
+    if (finish) {
+      span?.finish();
+      return;
+    } else {
+      return span;
     }
   }
 }

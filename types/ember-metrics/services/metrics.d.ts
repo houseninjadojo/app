@@ -7,6 +7,13 @@ declare module 'ember-metrics/services/metrics' {
     config: any;
   }
 
+  export interface IdentifyOptions {
+    distinctId: string;
+    email?: string;
+    name?: string;
+    hmac?: string;
+  }
+
   export default class MetricsService extends Service {
     context: any;
     enabled: boolean;
@@ -14,7 +21,7 @@ declare module 'ember-metrics/services/metrics' {
 
     activateAdapters(adapterOptions: AdapterOption[]): void;
 
-    identify(options: { distinctId: string; profile: object }): void;
+    identify(options: IdentifyOptions): void;
     trackEvent(options: { event: string; properties?: object }): void;
     trackPage(options: { page: string; title: string }): void;
     alias(options: { alias: string; distinctId: string }): void;

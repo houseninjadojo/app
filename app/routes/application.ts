@@ -77,7 +77,7 @@ class ApplicationRoute extends Route {
     const id: string = target.id;
     const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
     this.metrics.trackEvent({
-      event: 'Click',
+      event: 'click',
       properties: { selector },
     });
   }
