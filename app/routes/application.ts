@@ -6,21 +6,21 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
 
 import type Transition from '@ember/routing/transition';
-import type AnalyticsService from 'houseninja/services/analytics';
 import type IntercomService from 'houseninja/services/intercom';
 import type NotificationService from 'houseninja/services/notifications';
 import type RouterService from '@ember/routing/router-service';
 import type StorageService from 'houseninja/services/storage';
 import type UserActivityService from 'ember-user-activity/addon/services/user-activity';
+import type MetricsService from 'houseninja/services/metrics';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericService = any;
 
 class ApplicationRoute extends Route {
-  @service declare analytics: AnalyticsService;
   @service declare current: GenericService;
   @service declare deepLinks: GenericService;
   @service declare intercom: IntercomService;
+  @service declare metrics: MetricsService;
   @service declare session: GenericService;
   @service declare router: RouterService;
   @service declare loader: GenericService;
@@ -48,8 +48,6 @@ class ApplicationRoute extends Route {
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
-    await this.analytics.setup();
-    await this.analytics.track('Ember App Started');
     await this.deepLinks.start();
     await this.deepLinks.setup();
     await this.notifications.setup();
@@ -64,7 +62,7 @@ class ApplicationRoute extends Route {
   async _trackPage(): Promise<void> {
     const page: string = this.router.currentURL;
     const title: string = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('Page Visit', { page, title });
+    this.metrics.trackPage({ page, title });
   }
 
   /**
@@ -77,9 +75,10 @@ class ApplicationRoute extends Route {
     const tag: string = target.localName;
     const classNames: string = target.className.replaceAll(' ', '.');
     const id: string = target.id;
-    const queryString = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    await this.analytics.track('Click', {
-      selector: queryString,
+    const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
+    this.metrics.trackEvent({
+      event: 'click',
+      properties: { selector },
     });
   }
 

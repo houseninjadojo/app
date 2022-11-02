@@ -5,8 +5,8 @@ import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 
-import type AnalyticsService from 'houseninja/services/analytics';
 import type IntercomService from 'houseninja/services/intercom';
+import type MetricsService from 'houseninja/services/metrics';
 import type StoreService from '@ember-data/store';
 import type SessionService from 'houseninja/services/session';
 import type User from 'houseninja/models/user';
@@ -14,8 +14,8 @@ import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
 
 export default class CurrentService extends Service {
-  @service declare analytics: AnalyticsService;
   @service declare intercom: IntercomService;
+  @service declare metrics: MetricsService;
   @service declare store: StoreService;
   @service declare session: SessionService;
 
@@ -129,12 +129,12 @@ export default class CurrentService extends Service {
         data: { user: { id, email } },
       });
       Sentry.setUser({ email });
-      await this.analytics.identify(email);
-      await this.analytics.setProfile({
-        $email: email,
-        $name: fullName,
+      this.metrics.identify({
+        distinctId: id,
+        email,
+        name: fullName,
+        hmac: intercomHash,
       });
-      await this.intercom.registerUser(id, email, intercomHash as string);
       this.isLoadingUser = false;
     }
   });

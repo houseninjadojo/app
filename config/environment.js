@@ -74,6 +74,23 @@ module.exports = function (environment) {
       },
     },
 
+    metricsAdapters: [
+      {
+        name: 'CapacitorIntercom',
+        environments: ['development', 'sandbox', 'production'],
+        config: {
+          appId: process.env.INTERCOM_APP_ID,
+        }
+      },
+      {
+        name: 'CapacitorMixpanel',
+        environments: ['sandbox', 'production'],
+        config: {
+          token: process.env.MIXPANEL_TOKEN,
+        },
+      },
+    ],
+
     sentry: {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 1.0,

@@ -1,3 +1,17 @@
+## [1.25.1](https://github.com/houseninjadojo/app/compare/v1.25.0...v1.25.1) (2022-11-02)
+
+
+### Bug Fixes
+
+* **metrics:** consolidate intercom calls into metrics adapter ([#1196](https://github.com/houseninjadojo/app/issues/1196)) ([a6b9812](https://github.com/houseninjadojo/app/commit/a6b9812c3a40d5db5f74e1559b8afa322d92317b))
+
+# [1.25.0](https://github.com/houseninjadojo/app/compare/v1.24.9...v1.25.0) (2022-11-02)
+
+
+### Features
+
+* ember-metrics ([#1195](https://github.com/houseninjadojo/app/issues/1195)) ([e3fc808](https://github.com/houseninjadojo/app/commit/e3fc808b454a57c08221ca67c704a86d6fefe35b))
+
 ## [1.24.9](https://github.com/houseninjadojo/app/compare/v1.24.8...v1.24.9) (2022-10-31)
 
 

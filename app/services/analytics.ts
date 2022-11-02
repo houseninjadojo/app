@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import ENV from 'houseninja/config/environment';
-import { debug } from '@ember/debug';
+import { debug, deprecate } from '@ember/debug';
 import { run } from '@ember/runloop';
 import { Mixpanel } from '@houseninja/capacitor-mixpanel';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -9,6 +9,14 @@ import Sentry from 'houseninja/utils/sentry';
 // https://github.com/samzilverberg/cordova-mixpanel-plugin/blob/master/typings/mixpanel.d.ts
 export default class AnalyticsService extends Service {
   async setup() {
+    deprecate('AnalyticsService.setup is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (!isNativePlatform() && ENV.environment !== 'test') {
       const token = ENV.analytics.mixpanelToken;
       const options = {
@@ -25,6 +33,14 @@ export default class AnalyticsService extends Service {
   }
 
   async track(event: string, properties: object = {}) {
+    deprecate('AnalyticsService.track is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -38,6 +54,14 @@ export default class AnalyticsService extends Service {
   }
 
   async identify(distinctId: string) {
+    deprecate('AnalyticsService.identify is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -59,6 +83,14 @@ export default class AnalyticsService extends Service {
   }
 
   async alias(alias: string, distinctId: string) {
+    deprecate('AnalyticsService.alias is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -72,6 +104,14 @@ export default class AnalyticsService extends Service {
   }
 
   async registerSuperProperties(properties = {}) {
+    deprecate('AnalyticsService.registerSuperProperties is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -85,6 +125,14 @@ export default class AnalyticsService extends Service {
   }
 
   async reset() {
+    deprecate('AnalyticsService.reset is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -98,6 +146,14 @@ export default class AnalyticsService extends Service {
   }
 
   async setProfile(properties = {}) {
+    deprecate('AnalyticsService.setProfile is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
@@ -111,6 +167,14 @@ export default class AnalyticsService extends Service {
   }
 
   async trackCharge(amount: number, properties = {}) {
+    deprecate('AnalyticsService.trackCharge is deprecated', false, {
+      id: 'service.analytics.use-metrics',
+      for: 'houseninja',
+      until: '1.26.0',
+      since: {
+        available: '1.24.9',
+      },
+    });
     if (this._shouldNotExecute()) {
       return;
     }
