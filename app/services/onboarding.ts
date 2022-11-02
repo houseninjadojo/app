@@ -6,7 +6,7 @@ import { captureException } from 'houseninja/utils/sentry';
 import { pluralize } from 'ember-inflector';
 
 import type StorageService from 'houseninja/services/storage';
-import type AnalyticsService from 'houseninja/services/analytics';
+import type MetricsService from 'houseninja/services/metrics';
 import type StoreService from '@ember-data/store';
 
 import type { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
@@ -28,7 +28,7 @@ const TTL_MINUTES = 30;
 export default class OnboardingService extends Service {
   @service declare storage: StorageService;
   @service declare store: StoreService;
-  @service declare analytics: AnalyticsService;
+  @service declare metrics: MetricsService;
 
   currentStep: OnboardingStep | undefined;
 
@@ -50,7 +50,10 @@ export default class OnboardingService extends Service {
 
   sendTrackingEvent(step: OnboardingStep, user?: User) {
     try {
-      this.analytics.track(step, { user: user?.email });
+      this.metrics.trackEvent({
+        event: step,
+        properties: { user: user?.email },
+      });
     } catch (e) {
       captureException(e as Error);
     }

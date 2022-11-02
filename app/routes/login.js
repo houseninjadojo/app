@@ -10,7 +10,7 @@ import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 export default class LoginRoute extends Route {
   @service session;
   @service router;
-  @service analytics;
+  @service metrics;
 
   async beforeModel() {
     if (this.session.data.authenticated.kind !== 'payment-approval') {
@@ -31,7 +31,7 @@ export default class LoginRoute extends Route {
       await SecureStorage.clear('login');
       await SecureStorage.set('login', { state: 'active' });
       let url = await pkce.generateAuthorizationURL();
-      await this.analytics.track('Login');
+      this.metrics.trackEvent({ event: 'Login' });
       await this.nativeOpen(url);
     }
 

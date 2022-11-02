@@ -6,11 +6,12 @@ import ENV from 'houseninja/config/environment';
 import { task, type Task } from 'ember-concurrency';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
 
+import type CurrentService from 'houseninja/services/current';
+import type MetricsService from 'houseninja/services/metrics';
+
 export default class IntercomService extends Service {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare current: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare analytics: any;
+  @service declare current: CurrentService;
+  @service declare metrics: MetricsService;
 
   unreadConversationCount = '';
   isOpen = false;
@@ -70,7 +71,7 @@ export default class IntercomService extends Service {
       message: 'showing messenger',
     });
     this.isOpen = true;
-    this.analytics.track('Intercom messenger opened', {});
+    this.metrics.trackEvent({ event: 'Intercom messenger opened' });
     await Intercom.displayMessenger();
   });
 
@@ -87,8 +88,9 @@ export default class IntercomService extends Service {
       data: { message },
     });
     this.isOpen = true;
-    this.analytics.track('Intercom composer opened', {
-      message,
+    this.metrics.trackEvent({
+      event: 'Intercom composer opened',
+      properties: { message },
     });
     try {
       await Intercom.displayMessageComposer({ message });
