@@ -20,6 +20,7 @@ import ENV from 'houseninja/config/environment';
  * are routed the same way.
  */
 export default class DeepLinksService extends Service {
+  @service eventBus;
   @service router;
   @service metrics;
   @service session;
@@ -81,7 +82,7 @@ export default class DeepLinksService extends Service {
   }
 
   setupRouteHandler() {
-    this.listener = MobileApp.addListener('appUrlOpen', (event) => {
+    this.eventBus.on('app.app-url-open', (event) => {
       const transaction = Sentry.getCurrentHub().getScope().getTransaction();
       let span;
       if (transaction) {
@@ -117,7 +118,7 @@ export default class DeepLinksService extends Service {
    * @see https://help.branch.io/developers-hub/docs/capacitor#initialize-branch
    */
   setupBranchHandlers() {
-    this.branchListener = BranchDeepLinks.addListener('init', (event) => {
+    this.branchListener = this.eventBus.on('branch.init', (event) => {
       if (this.isNonBranchLink(event)) {
         return;
       }
@@ -138,8 +139,8 @@ export default class DeepLinksService extends Service {
       const route = this.selectRouteFromBranchParams(referringParams);
       this.forwardRoute({ raw: route, name: route });
     });
-    this.branchErrorListener = BranchDeepLinks.addListener(
-      'initError',
+    this.branchErrorListener = this.eventBus.on(
+      'branch.init-error',
       (error) => {
         if (typeof error === 'string') {
           error = new Error(error);

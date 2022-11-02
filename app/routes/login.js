@@ -8,6 +8,7 @@ import { debug } from '@ember/debug';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class LoginRoute extends Route {
+  @service eventBus;
   @service session;
   @service router;
   @service metrics;
@@ -53,11 +54,10 @@ export default class LoginRoute extends Route {
   async nativeOpen(url) {
     debug(`Opening Login URL: ${url}`);
     if (isNativePlatform()) {
-      Browser.addListener('browserFinished', () => {
+      this.eventBus.on('browser.browser-finished', () => {
         debug(`Popover browser closed.`);
         debug(`Transitioning to /login-or-signup`);
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
-        Browser.removeAllListeners();
       });
       return await Browser.open({ url, presentationStyle: 'popover' });
     } else {

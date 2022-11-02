@@ -3,18 +3,26 @@ import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
 import EmberObject from '@ember/object';
 import Sentry, { startSpan } from 'houseninja/utils/sentry';
-import { PushNotifications } from '@capacitor/push-notifications';
+// import { PushNotifications } from '@capacitor/push-notifications';
 import type { PushNotificationSchema } from '@capacitor/push-notifications';
 import type { DeliveredNotificationSchema } from '@capacitor/local-notifications';
 import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
 import RouterService from '@ember/routing/router-service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { bind } from '@ember/runloop';
+// import { bind } from '@ember/runloop';
+import type EventBusService from 'houseninja/services/event-bus';
 
 type Notification = PushNotificationSchema | DeliveredNotificationSchema;
+// const PushNotificationEvents = [
+//   'push-notifications.registration',
+//   'push-notifications.registration-error',
+//   'push-notifications.push-notification-received',
+//   'push-notifications.push-notification-action-performed',
+// ];
 
 export default class NotificationsService extends Service {
+  @service declare eventBus: EventBusService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
 
@@ -128,10 +136,14 @@ export default class NotificationsService extends Service {
         op: 'notification.setup',
         description: `setting up`,
       })?.finish();
-      PushNotifications.addListener(
-        'pushNotificationActionPerformed',
-        bind(this, this.notificationHandler)
-      );
+      this.setupListeners();
     }
+  }
+
+  setupListeners(): void {
+    this.eventBus.on(
+      'push-notifications.push-notification-action-performed',
+      this.notificationHandler.bind(this)
+    );
   }
 }

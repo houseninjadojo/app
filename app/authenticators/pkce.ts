@@ -12,6 +12,8 @@ import { Browser } from '@capacitor/browser';
 import { startSpan } from 'houseninja/utils/sentry';
 import { HttpResponse } from '@capacitor/core';
 import type { EmberRunTimer } from '@ember/runloop/types';
+import type EventBusService from 'houseninja/services/event-bus';
+import { service } from '@ember/service';
 
 type StashTokenPayload =
   | {
@@ -97,6 +99,8 @@ async function generateCodeChallenge(codeVerifier: string): Promise<string> {
  * @extends BaseAuthenticator
  */
 export default class PKCEAuthenticator extends BaseAuthenticator {
+  @service declare eventBus: EventBusService;
+
   /**
    * The client_id to be sent to the authentication server (see
    * https://tools.ietf.org/html/rfc6749#appendix-A.1). __This should only be
@@ -480,13 +484,12 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         description: `OPEN: ${this.logoutEndpoint}`,
       })?.finish();
 
-      Browser.addListener('browserPageLoaded', () => {
+      this.eventBus.on('browser.browser-page-loaded', () => {
         startSpan({
           op: 'browser.close',
           description: `CLOSE: ${this.logoutEndpoint}`,
         })?.finish();
         Browser.close();
-        Browser.removeAllListeners();
       });
 
       await Browser.open({

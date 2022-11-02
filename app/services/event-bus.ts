@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import Evented from '@ember/object/evented';
-import { TrackedMap } from 'tracked-built-ins';
+import { TrackedMap, TrackedWeakSet } from 'tracked-built-ins';
 import { camelize } from '@ember/string';
 import { bind } from '@ember/runloop';
 
@@ -18,13 +18,17 @@ import {
   BackButtonListener,
   AppState,
 } from '@capacitor/app';
+import { PluginImplementations } from '@capacitor/core';
 import { PushNotifications } from '@capacitor/push-notifications';
 import { Browser } from '@capacitor/browser';
 import {
   Intercom,
   UnreadConversationCount,
 } from '@capacitor-community/intercom';
-import { BranchDeepLinks } from 'capacitor-branch-deep-links';
+import {
+  BranchDeepLinks,
+  BranchDeepLinksPlugin,
+} from 'capacitor-branch-deep-links';
 import { PluginListenerHandle } from '@capacitor/core';
 import { debug } from '@ember/debug';
 
@@ -60,9 +64,13 @@ const eventCall = (eventSlug: string): EventCall => {
   };
 };
 
+type BranchLinks = BranchDeepLinksPlugin & {
+  removeAllListeners: () => void;
+};
+
 const pluginMap = {
   app: App,
-  branch: BranchDeepLinks,
+  branch: BranchDeepLinks as BranchLinks,
   browser: Browser,
   intercom: Intercom,
   'push-notifications': PushNotifications,
@@ -79,7 +87,16 @@ const eventsList = [
   'branch.init-error',
   'browser.browser-page-loaded',
   'browser.browser-finished',
+  'intercom.did-start-new-conversation',
+  'intercom.help-center-will-show',
+  'intercom.help-center-did-show',
+  'intercom.help-center-will-hide',
+  'intercom.help-center-did-hide',
   'intercom.on-unread-count-change',
+  'intercom.window-will-show',
+  'intercom.window-did-show',
+  'intercom.window-will-hide',
+  'intercom.window-did-hide',
   'push-notifications.registration',
   'push-notifications.registration-error',
   'push-notifications.push-notification-received',
@@ -99,17 +116,26 @@ export default class EventBusService extends Service.extend(Evented) {
   //   this.setupListeners();
   // }
 
+  setup(): void {
+    this.teardownListeners();
+    this.setupListeners();
+  }
+
   subscribe(eventSlug: string): void {
     const { plugin, event }: EventCall = eventCall(eventSlug);
     const listener: ListenerFunc = (event?: any): void => {
       debug(`Event ${eventSlug} fired`);
       return this.trigger(eventSlug, event);
     };
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore PluginListenerHandle
-    const handler = plugin.addListener(event, bind(this, listener));
-    this.listeners.set(eventSlug, handler);
-    debug(`Event ${eventSlug} subscribed`);
+    try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore PluginListenerHandle
+      const handler = plugin.addListener(event, bind(this, listener));
+      this.listeners.set(eventSlug, handler);
+      debug(`Event ${eventSlug} subscribed`);
+    } catch (e) {
+      debug(`Event ${eventSlug} failed to subscribe`);
+    }
   }
 
   setupListeners(): void {
@@ -131,6 +157,9 @@ export default class EventBusService extends Service.extend(Evented) {
       debug(`Event ${eventSlug} unsubscribed`);
       handler.remove();
       this.listeners.delete(eventSlug);
+    });
+    Object.values(pluginMap).forEach((plugin) => {
+      plugin.removeAllListeners();
     });
   }
 }
