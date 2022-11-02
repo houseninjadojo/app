@@ -21,7 +21,9 @@ export default class TopBarDashboardContentComponent extends Component {
 
   @action
   async getUnreadConversationCount() {
-    return await this.intercom.fetchUnreadConversationCount();
+    this.unreadConversationCount =
+      await this.intercom.fetchUnreadConversationCount();
+    return this.unreadConversationCount;
   }
 
   @action
