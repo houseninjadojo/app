@@ -13,7 +13,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   // eslint-disable-next-line ember/classic-decorator-hooks
   init(): void {
-    if (ENV.environment !== 'test') return;
+    if (ENV.environment === 'test') return;
     this.install();
   }
 
