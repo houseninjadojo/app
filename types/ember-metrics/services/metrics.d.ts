@@ -24,5 +24,7 @@ declare module 'ember-metrics/services/metrics' {
     invoke(methodName: string): void;
 
     willDestroy(): void;
+
+    _adaptersForEnv(adapterOptions: AdapterOption[]): void;
   }
 }

@@ -13,11 +13,13 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   // eslint-disable-next-line ember/classic-decorator-hooks
   init(): void {
+    if (ENV.environment !== 'test') return;
     this.install();
   }
 
   install(): void {
     const { token } = this.config;
+    if (!token) return;
     assert(
       `[ember-metrics] You must pass a valid \`token\` to the ${this.toString()} adapter`,
       token
