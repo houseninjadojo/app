@@ -1,5 +1,4 @@
-import {
-  Branch as BranchWeb,
+import type {
   BranchError,
   InitOptions,
   JourneyEvent,
@@ -128,7 +127,7 @@ export default class Branch {
       });
     } else {
       const { eventName, metaData } = options;
-      const { customerEventAlias, ...rest } = metaData || {};
+      const { customerEventAlias, ...rest } = metaData || {}; // eslint-disable-line @typescript-eslint/no-unused-vars
       const newOptions = { eventName, metaData: rest };
       return await BranchDeepLinks.sendBranchEvent(newOptions);
     }

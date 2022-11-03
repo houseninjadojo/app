@@ -8,7 +8,6 @@ import HTTP, { encodeFormData } from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
-import { Browser } from '@capacitor/browser';
 import { startSpan } from 'houseninja/utils/sentry';
 import { HttpResponse } from '@capacitor/core';
 import type { EmberRunTimer } from '@ember/runloop/types';

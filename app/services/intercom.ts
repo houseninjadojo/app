@@ -97,28 +97,40 @@ export default class IntercomService extends Service {
   }
 
   setupListeners(): void {
-    if (!this.listeners.has(this.handleUnreadConvoCount)) {
-      this.eventBus.on(
-        'intercom.on-unread-count-change',
-        bind(this, this.handleUnreadConvoCount)
-      );
-      this.listeners.add(this.handleUnreadConvoCount);
-    }
-    if (!this.listeners.has(this.handleWindowDidHide)) {
-      this.eventBus.on(
-        'intercom.window-did-hide',
-        bind(this, this.handleWindowDidHide)
-      );
-      this.listeners.add(this.handleWindowDidHide);
-    }
+    this.eventBus.on(
+      'intercom.on-unread-count-change',
+      bind(this, this.handleUnreadConvoCount)
+    );
+    this.eventBus.on(
+      'intercom.window-did-hide',
+      bind(this, this.handleWindowDidHide)
+    );
+    // if (!this.listeners.has(this.handleUnreadConvoCount)) {
+    //   this.eventBus.on(
+    //     'intercom.on-unread-count-change',
+    //     bind(this, this.handleUnreadConvoCount)
+    //   );
+    //   this.listeners.add(this.handleUnreadConvoCount);
+    // }
+    // if (!this.listeners.has(this.handleWindowDidHide)) {
+    //   this.eventBus.on(
+    //     'intercom.window-did-hide',
+    //     bind(this, this.handleWindowDidHide)
+    //   );
+    //   this.listeners.add(this.handleWindowDidHide);
+    // }
   }
 
   teardownListeners(): void {
-    this.eventBus.off(
-      'intercom.on-unread-count-change',
-      this.handleUnreadConvoCount
-    );
-    this.eventBus.off('intercom.window-did-hide', this.handleWindowDidHide);
+    // if (this.eventBus.has('intercom.on-unread-count-change')) {
+    //   this.eventBus.off(
+    //     'intercom.on-unread-count-change',
+    //     this.handleUnreadConvoCount
+    //   );
+    // }
+    // if (this.eventBus.has('intercom.window-did-hide')) {
+    //   this.eventBus.off('intercom.window-did-hide', this.handleWindowDidHide);
+    // }
     this.removeAllListeners();
   }
 

@@ -151,10 +151,10 @@ export default class NotificationsService extends Service {
   }
 
   async teardownListeners(): Promise<void> {
-    this.eventBus.off(
-      'push-notifications.push-notification-action-performed',
-      this.notificationHandler.bind(this)
-    );
+    // this.eventBus.off(
+    //   'push-notifications.push-notification-action-performed',
+    //   this.notificationHandler.bind(this)
+    // );
     await this.removeAllListeners();
   }
 
@@ -175,6 +175,8 @@ export default class NotificationsService extends Service {
   }
 
   async removeAllListeners(): Promise<void> {
-    await PushNotifications.removeAllListeners();
+    if (isNativePlatform()) {
+      await PushNotifications.removeAllListeners();
+    }
   }
 }

@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { ToastType } from 'houseninja/data/enums/toast-type';
-import Sentry, { addBreadcrumb } from 'houseninja/utils/sentry';
+import Sentry from 'houseninja/utils/sentry';
 import { SeverityLevel } from '@sentry/types';
 import { later } from '@ember/runloop';
 
