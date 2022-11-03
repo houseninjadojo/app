@@ -4,7 +4,10 @@ import { A } from '@ember/array';
 import EmberObject from '@ember/object';
 import Sentry, { startSpan } from 'houseninja/utils/sentry';
 // import { PushNotifications } from '@capacitor/push-notifications';
-import type { PushNotificationSchema } from '@capacitor/push-notifications';
+import {
+  PushNotifications,
+  type PushNotificationSchema,
+} from '@capacitor/push-notifications';
 import type { DeliveredNotificationSchema } from '@capacitor/local-notifications';
 import type IntercomService from 'houseninja/services/intercom';
 import { isPresent } from '@ember/utils';
@@ -145,5 +148,33 @@ export default class NotificationsService extends Service {
       'push-notifications.push-notification-action-performed',
       this.notificationHandler.bind(this)
     );
+  }
+
+  teardownListeners(): void {
+    this.eventBus.off(
+      'push-notifications.push-notification-action-performed',
+      this.notificationHandler.bind(this)
+    );
+    this.removeAllListeners();
+  }
+
+  registerEvents(): void {
+    const pushNotificationEvents = [
+      'registration',
+      'registrationError',
+      'pushNotificationReceived',
+      'pushNotificationActionPerformed',
+    ];
+    if (isNativePlatform()) {
+      this.eventBus.registerEvents(
+        PushNotifications,
+        'PushNotifications',
+        pushNotificationEvents
+      );
+    }
+  }
+
+  removeAllListeners(): void {
+    PushNotifications.removeAllListeners();
   }
 }

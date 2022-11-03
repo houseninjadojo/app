@@ -21,6 +21,20 @@ export default class IntercomService extends Service {
   @tracked isOpen = false;
 
   listeners = new TrackedWeakSet();
+  plugin = Intercom;
+  pluginName = 'Intercom';
+  events = [
+    'didStartNewConversation',
+    'helpCenterWillShow',
+    'helpCenterDidShow',
+    'helpCenterWillHide',
+    'helpCenterDidHide',
+    'onUnreadCountChange',
+    'windowWillShow',
+    'windowDidShow',
+    'windowWillHide',
+    'windowDidHide',
+  ];
 
   async setup(): Promise<void> {
     Sentry.addBreadcrumb({
@@ -88,12 +102,14 @@ export default class IntercomService extends Service {
         'intercom.on-unread-count-change',
         bind(this, this.handleUnreadConvoCount)
       );
+      this.listeners.add(this.handleUnreadConvoCount);
     }
     if (!this.listeners.has(this.handleWindowDidHide)) {
       this.eventBus.on(
         'intercom.window-did-hide',
         bind(this, this.handleWindowDidHide)
       );
+      this.listeners.add(this.handleWindowDidHide);
     }
   }
 
@@ -103,6 +119,7 @@ export default class IntercomService extends Service {
       this.handleUnreadConvoCount
     );
     this.eventBus.off('intercom.window-did-hide', this.handleWindowDidHide);
+    this.removeAllListeners();
   }
 
   async showMessenger(): Promise<void> {
@@ -199,5 +216,14 @@ export default class IntercomService extends Service {
 
   private handleWindowDidHide(): void {
     this.metrics.trackEvent({ event: 'intercom.close' });
+  }
+
+  registerEvents(): void {
+    this.removeAllListeners();
+    this.eventBus.registerEvents(this.plugin, this.pluginName, this.events);
+  }
+
+  private removeAllListeners(): void {
+    Intercom.removeAllListeners();
   }
 }

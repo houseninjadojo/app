@@ -12,6 +12,7 @@ import { Browser } from '@capacitor/browser';
 import { startSpan } from 'houseninja/utils/sentry';
 import { HttpResponse } from '@capacitor/core';
 import type { EmberRunTimer } from '@ember/runloop/types';
+import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
 import { service } from '@ember/service';
 
@@ -99,6 +100,7 @@ async function generateCodeChallenge(codeVerifier: string): Promise<string> {
  * @extends BaseAuthenticator
  */
 export default class PKCEAuthenticator extends BaseAuthenticator {
+  @service declare browser: BrowserService;
   @service declare eventBus: EventBusService;
 
   /**
@@ -484,15 +486,15 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         description: `OPEN: ${this.logoutEndpoint}`,
       })?.finish();
 
-      this.eventBus.on('browser.browser-page-loaded', () => {
+      this.eventBus.one('browser.browser-page-loaded', () => {
         startSpan({
           op: 'browser.close',
           description: `CLOSE: ${this.logoutEndpoint}`,
         })?.finish();
-        Browser.close();
+        this.browser.close();
       });
 
-      await Browser.open({
+      await this.browser.open({
         url: this.logoutEndpoint,
         presentationStyle: 'popover',
       });
