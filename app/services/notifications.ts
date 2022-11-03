@@ -150,15 +150,15 @@ export default class NotificationsService extends Service {
     );
   }
 
-  teardownListeners(): void {
+  async teardownListeners(): Promise<void> {
     this.eventBus.off(
       'push-notifications.push-notification-action-performed',
       this.notificationHandler.bind(this)
     );
-    this.removeAllListeners();
+    await this.removeAllListeners();
   }
 
-  registerEvents(): void {
+  async registerEvents(): Promise<void> {
     const pushNotificationEvents = [
       'registration',
       'registrationError',
@@ -166,7 +166,7 @@ export default class NotificationsService extends Service {
       'pushNotificationActionPerformed',
     ];
     if (isNativePlatform()) {
-      this.eventBus.registerEvents(
+      await this.eventBus.registerEvents(
         PushNotifications,
         'PushNotifications',
         pushNotificationEvents
@@ -174,7 +174,7 @@ export default class NotificationsService extends Service {
     }
   }
 
-  removeAllListeners(): void {
-    PushNotifications.removeAllListeners();
+  async removeAllListeners(): Promise<void> {
+    await PushNotifications.removeAllListeners();
   }
 }

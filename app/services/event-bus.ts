@@ -92,11 +92,11 @@ export default class EventBusService extends Service.extend(Evented) {
     super.willDestroy();
   }
 
-  setup(): void {
-    this.browser.registerEvents();
-    this.capacitor.registerEvents();
-    this.intercom.registerEvents();
-    this.notifications.registerEvents();
+  async setup(): Promise<void> {
+    await this.browser.registerEvents();
+    await this.capacitor.registerEvents();
+    await this.intercom.registerEvents();
+    await this.notifications.registerEvents();
   }
 
   hasSubscription(pluginName: string, eventName: string): boolean {
@@ -109,10 +109,10 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   // eslint-disable-next-line prettier/prettier
-  registerEvents(plugin: PluginInstance, pluginName: string, events: string[]): void {
-    events.forEach((eventName) => {
+  async registerEvents(plugin: PluginInstance, pluginName: string, events: string[]): Promise<void> {
+    events.forEach(async (eventName) => {
       if (!this.hasSubscription(pluginName, eventName)) {
-        this.subscribe(plugin, pluginName, eventName);
+        await this.subscribe(plugin, pluginName, eventName);
       }
     });
   }
@@ -125,7 +125,7 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   // eslint-disable-next-line prettier/prettier
-  subscribe(plugin: PluginInstance, pluginName: string, eventName: string): void {
+  async subscribe(plugin: PluginInstance, pluginName: string, eventName: string): Promise<void> {
     const eventSlug = this.eventSlug(pluginName, eventName);
     if (this.hasSubscription(pluginName, eventName)) {
       debug(`EventBusService: Already subscribed to ${eventSlug}`);
@@ -135,7 +135,7 @@ export default class EventBusService extends Service.extend(Evented) {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore PluginListenerHandle
-      const handler = plugin.addListener(eventName, bind(this, listener));
+      const handler = await plugin.addListener(eventName, bind(this, listener));
       this.listeners.set(eventSlug, handler);
       this.eventSubscriptions.add({ plugin, pluginName, eventName });
       debug(`Event ${eventSlug} subscribed`);
@@ -144,15 +144,15 @@ export default class EventBusService extends Service.extend(Evented) {
     }
   }
 
-  teardownListeners(): void {
-    this.listeners.forEach((handler, eventSlug) => {
+  async teardownListeners(): Promise<void> {
+    await this.listeners.forEach((handler, eventSlug) => {
       debug(`Event ${eventSlug} unsubscribed`);
       handler.remove();
       this.listeners.delete(eventSlug);
     });
-    this.browser.teardownListeners();
-    this.capacitor.teardownListeners();
-    this.intercom.teardownListeners();
-    this.notifications.teardownListeners();
+    await this.browser.teardownListeners();
+    await this.capacitor.teardownListeners();
+    await this.intercom.teardownListeners();
+    await this.notifications.teardownListeners();
   }
 }

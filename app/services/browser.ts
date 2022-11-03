@@ -40,12 +40,16 @@ export default class BrowserService extends Service {
     return await Browser.close();
   }
 
-  registerEvents(): void {
-    this.removeAllListeners();
-    this.eventBus.registerEvents(this.plugin, this.pluginName, this.events);
+  async registerEvents(): Promise<void> {
+    await this.removeAllListeners();
+    await this.eventBus.registerEvents(
+      this.plugin,
+      this.pluginName,
+      this.events
+    );
   }
 
-  private removeAllListeners(): void {
-    Browser.removeAllListeners();
+  private async removeAllListeners(): Promise<void> {
+    await Browser.removeAllListeners();
   }
 }

@@ -67,12 +67,16 @@ export default class CapacitorService extends Service {
     return await App.minimizeApp();
   }
 
-  registerEvents(): void {
-    this.removeAllListeners();
-    this.eventBus.registerEvents(this.plugin, this.pluginName, this.events);
+  async registerEvents(): Promise<void> {
+    await this.removeAllListeners();
+    await this.eventBus.registerEvents(
+      this.plugin,
+      this.pluginName,
+      this.events
+    );
   }
 
-  private removeAllListeners(): void {
-    App.removeAllListeners();
+  private async removeAllListeners(): Promise<void> {
+    await App.removeAllListeners();
   }
 }

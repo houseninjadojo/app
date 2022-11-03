@@ -218,12 +218,16 @@ export default class IntercomService extends Service {
     this.metrics.trackEvent({ event: 'intercom.close' });
   }
 
-  registerEvents(): void {
-    this.removeAllListeners();
-    this.eventBus.registerEvents(this.plugin, this.pluginName, this.events);
+  async registerEvents(): Promise<void> {
+    await this.removeAllListeners();
+    await this.eventBus.registerEvents(
+      this.plugin,
+      this.pluginName,
+      this.events
+    );
   }
 
-  private removeAllListeners(): void {
-    Intercom.removeAllListeners();
+  private async removeAllListeners(): Promise<void> {
+    await Intercom.removeAllListeners();
   }
 }
