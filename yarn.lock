@@ -3121,6 +3121,11 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/branch-sdk@^2.53.3":
+  version "2.53.3"
+  resolved "https://registry.yarnpkg.com/@types/branch-sdk/-/branch-sdk-2.53.3.tgz#0e7a3b2e754a5670f1e4c9fdb99e78470f476071"
+  integrity sha512-qEQEU8Iot5zejumdgwiO3ARpd75KEV1XBe/BJJvWDSke40HJcjA92LnAHyVM1aiDOUk4ZokuWQlo1cc5t8cQbw==
+
 "@types/broccoli-plugin@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/broccoli-plugin/-/broccoli-plugin-3.0.0.tgz#290fda2270c47a568edfd0cefab8bb840d8bb7b2"

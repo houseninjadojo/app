@@ -1,18 +1,17 @@
 import Service, { service } from '@ember/service';
 import Evented from '@ember/object/evented';
 import { TrackedMap } from 'tracked-built-ins';
-import { camelize, dasherize } from '@ember/string';
+import { dasherize } from '@ember/string';
 import { bind } from '@ember/runloop';
-
-import { PluginResultData, PluginResultError } from '@capacitor/core';
+import Branch from 'houseninja/lib/branch';
 
 import {
   App,
-  // StateChangeListener,
+  StateChangeListener,
   URLOpenListener,
   RestoredListener,
   BackButtonListener,
-  AppState,
+  // AppState,
 } from '@capacitor/app';
 import { PushNotifications } from '@capacitor/push-notifications';
 import { Browser } from '@capacitor/browser';
@@ -20,10 +19,6 @@ import {
   Intercom,
   UnreadConversationCount,
 } from '@capacitor-community/intercom';
-import {
-  BranchDeepLinks,
-  BranchDeepLinksPlugin,
-} from 'capacitor-branch-deep-links';
 import { PluginListenerHandle } from '@capacitor/core';
 import { debug } from '@ember/debug';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
@@ -32,11 +27,12 @@ import type BrowserService from 'houseninja/services/browser';
 import type CapacitorService from 'houseninja/services/capacitor';
 import type IntercomService from 'houseninja/services/intercom';
 import type NotificationsService from 'houseninja/services/notifications';
+import type BranchService from './branch';
 
 type PluginInstance = typeof pluginMap[keyof typeof pluginMap];
 
 type UnreadCountChangeListener = (event: UnreadConversationCount) => void;
-type StateChangeListener = (event: AppState) => void;
+// type StateChangeListener = (event: AppState) => void;
 
 type ListenerFunc =
   | StateChangeListener
@@ -45,19 +41,9 @@ type ListenerFunc =
   | BackButtonListener
   | UnreadCountChangeListener;
 
-export type EventPayload = {
-  readonly name: string;
-  data?: PluginResultData;
-  error?: PluginResultError;
-};
-
-type BranchLinks = BranchDeepLinksPlugin & {
-  removeAllListeners: () => void;
-};
-
 const sharedPlugins = {
   app: App,
-  branch: BranchDeepLinks as BranchLinks,
+  branch: Branch,
   browser: Browser,
   intercom: Intercom,
 };
@@ -71,14 +57,8 @@ const pluginMap = {
   ...(isNativePlatform() ? mobilePlugins : {}),
 };
 
-const sharedEventsList = [
-  'branch.init',
-  'branch.init-error',
-  // 'browser.browser-page-loaded',
-  // 'browser.browser-finished',
-];
-
 export default class EventBusService extends Service.extend(Evented) {
+  @service declare branch: BranchService;
   @service declare browser: BrowserService;
   @service declare capacitor: CapacitorService;
   @service declare intercom: IntercomService;
@@ -93,6 +73,7 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   async setup(): Promise<void> {
+    await this.branch.registerEvents();
     await this.browser.registerEvents();
     await this.capacitor.registerEvents();
     await this.intercom.registerEvents();
@@ -150,6 +131,7 @@ export default class EventBusService extends Service.extend(Evented) {
       handler.remove();
       this.listeners.delete(eventSlug);
     });
+    await this.branch.teardownListeners();
     await this.browser.teardownListeners();
     await this.capacitor.teardownListeners();
     await this.intercom.teardownListeners();
