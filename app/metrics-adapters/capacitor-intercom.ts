@@ -3,6 +3,7 @@ import BaseAdapter, {
 } from 'ember-metrics/metrics-adapters/base';
 import { service } from '@ember/service';
 import type IntercomService from 'houseninja/services/intercom';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 interface IntercomOptions extends IdentifyOptions {
   email: string;
@@ -28,6 +29,7 @@ export default class CapacitorIntercom extends BaseAdapter {
 
   // eslint-disable-next-line prettier/prettier
   trackEvent(options: { event: string; properties?: Record<string, unknown> }): void {
+    if (!isNativePlatform()) return;
     const { event, properties } = options;
     if (event.includes('intercom.') || event.includes('click')) return;
     this.intercom.logEvent(event, properties);

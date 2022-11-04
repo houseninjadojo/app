@@ -144,20 +144,15 @@ export default class NotificationsService extends Service {
   async setup(): Promise<void> {
     if (!isNativePlatform()) return;
     makeSpan('setup', { desc: 'setting up' });
-    this.setupListeners();
+    await this.setupListeners();
     await this.registerPermissions();
   }
 
   setupListeners(): void {
-    const handlers = {
-      'push-notification-received': this.receivedHandler,
-      'push-notification-action-performed': this.actionHandler,
-      registration: this.registrationHandler,
-      'registration-error': this.registrationErrHandler,
-    };
-    Object.entries(handlers).forEach(([event, handler]) => {
-      this.eventBus.on(event, bind(this, handler));
-    });
+    this.eventBus.on('push-notifications.push-notification-received', bind(this, this.receivedHandler)); // eslint-disable-line prettier/prettier
+    this.eventBus.on('push-notifications.push-notification-action-performed', bind(this, this.actionHandler)); // eslint-disable-line prettier/prettier
+    this.eventBus.on('push-notifications.registration', bind(this, this.registrationHandler)); // eslint-disable-line prettier/prettier
+    this.eventBus.on('push-notifications.registration-error', bind(this, this.registrationErrHandler)); // eslint-disable-line prettier/prettier
   }
 
   async teardownListeners(): Promise<void> {
@@ -197,10 +192,6 @@ export default class NotificationsService extends Service {
     makeCrumb('permissions', undefined, 'registering push notifications');
     if (!isNativePlatform()) {
       debug('[notifications] not a native platform, not registering');
-      return;
-    }
-    if (!(await this.canRequestPermissions())) {
-      debug('[notifications] cannot request permissions');
       return;
     }
     const state = await requestPermissions();
