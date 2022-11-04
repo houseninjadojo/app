@@ -1,8 +1,6 @@
 import Service, { service } from '@ember/service';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { debug } from '@ember/debug';
 import Sentry from 'houseninja/utils/sentry';
-// import { isEqual, compare } from '@ember/utils';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -31,11 +29,11 @@ export default class DeepLinksService extends Service {
 
   // only web for now
   setup() {
-    if (isNativePlatform()) {
-      // @todo figure out why this takes precedence over branch
-      this.setupRouteHandler();
-      // this.setupBranchHandlers();
-    }
+    // if (isNativePlatform()) {
+    //   // @todo figure out why this takes precedence over branch
+    //   this.setupRouteHandler();
+    //   // this.setupBranchHandlers();
+    // }
   }
 
   forwardRoute(url) {

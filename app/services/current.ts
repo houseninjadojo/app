@@ -1,5 +1,5 @@
 import Service, { service } from '@ember/service';
-import { get as unstash } from 'houseninja/utils/secure-storage';
+import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
 import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
@@ -12,6 +12,7 @@ import type SessionService from 'houseninja/services/session';
 import type User from 'houseninja/models/user';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
+import type DeviceModel from 'houseninja/models/device';
 
 export default class CurrentService extends Service {
   @service declare intercom: IntercomService;
@@ -22,7 +23,7 @@ export default class CurrentService extends Service {
   isLoadingUser = false;
 
   user?: User;
-  device = null;
+  device?: DeviceModel;
 
   signup = new TrackedObject({
     zipcode: null,
@@ -30,6 +31,17 @@ export default class CurrentService extends Service {
     contactInfo: {},
     subscription: null,
   });
+
+  // eslint-disable-next-line prettier/prettier
+  async setDeviceTokens(tokens: { apns?: string; fcm?: string }): Promise<void> {
+    const { apns, fcm } = tokens;
+    const pushToken = { apnsDeviceToken: apns, fcmToken: fcm };
+    await stash('pushToken', pushToken);
+    if (this.device) {
+      this.device.setProperties(pushToken);
+      await this.device.save();
+    }
+  }
 
   _loadUser: Task<void, []> = task(this, { drop: true }, async () => {
     if (!this.session.data?.authenticated?.userinfo) {

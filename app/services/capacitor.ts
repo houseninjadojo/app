@@ -1,5 +1,7 @@
 import Service, { service } from '@ember/service';
+import { bind } from '@ember/runloop';
 import { Capacitor } from '@capacitor/core';
+import Sentry, { startSpan } from 'houseninja/utils/sentry';
 import {
   App,
   type AppState,
@@ -8,9 +10,12 @@ import {
 } from '@capacitor/app';
 
 import type EventBusService from 'houseninja/services/event-bus';
+import type RouterService from '@ember/routing/router-service';
+import { captureMessage } from '@sentry/hub';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
+  @service declare router: RouterService;
 
   plugin = App;
   pluginName = 'App';
@@ -23,13 +28,9 @@ export default class CapacitorService extends Service {
     'backButton',
   ];
 
-  setupListeners() {
-    // no-op
-  }
-
-  teardownListeners() {
-    this.removeAllListeners();
-  }
+  /**
+   * Helpers
+   */
 
   convertFileSrc(filePath: string): string {
     return Capacitor.convertFileSrc(filePath);
@@ -67,6 +68,38 @@ export default class CapacitorService extends Service {
     return await App.minimizeApp();
   }
 
+  /**
+   * Handlers
+   */
+
+  handleAppUrlOpen(event: AppLaunchUrl) {
+    const { url } = event;
+    logUrlOpen(url);
+    const { raw } = parseUrl(url);
+    const route = this.router.recognize(raw);
+    if (!route) {
+      captureMessage(`Could not recognize route: ${raw}`);
+      return;
+    }
+    if (route?.name === 'login.callback') {
+      this.router.transitionTo(raw);
+    } else {
+      this.router.transitionTo(raw);
+    }
+  }
+
+  /**
+   * Listeners
+   */
+
+  setupListeners() {
+    this.eventBus.on('app.app-url-open', bind(this, this.handleAppUrlOpen));
+  }
+
+  teardownListeners() {
+    this.removeAllListeners();
+  }
+
   async registerEvents(): Promise<void> {
     await this.removeAllListeners();
     await this.eventBus.registerEvents(
@@ -80,3 +113,36 @@ export default class CapacitorService extends Service {
     await App.removeAllListeners();
   }
 }
+
+/**
+ * utils
+ */
+
+const parseUrl = (url: string) => {
+  const parsed = new URL(url);
+  const queryParams = Object.fromEntries(parsed.searchParams.entries());
+  const pathName =
+    parsed.hash.length > 0 ? parsed.hash.replace('#', '') : parsed.pathname;
+  return {
+    raw: `${pathName}${parsed.search}`,
+    name: pathName,
+    model: null, // perhaps later
+    options: {
+      queryParams,
+    },
+  };
+};
+
+const logUrlOpen = (url: string) => {
+  startSpan({
+    op: 'app.url.open',
+    description: `opening app with url: ${url}`,
+    tags: { url },
+  })?.finish();
+  Sentry.addBreadcrumb({
+    type: 'user',
+    category: 'app.url.open',
+    message: 'opening app with url',
+    data: { url },
+  });
+};
