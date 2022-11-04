@@ -50,13 +50,13 @@ class ApplicationRoute extends Route {
 
   async beforeModel(): Promise<void> {
     await this.eventBus.setup();
-    await this.branch.setup();
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
     await this.deepLinks.start();
-    await this.deepLinks.setup();
+    // await this.deepLinks.setup();
     await this.notifications.setup();
+    await this.branch.setup();
   }
 
   afterModel(): void {
