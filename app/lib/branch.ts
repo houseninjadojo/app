@@ -8,8 +8,9 @@ import * as branch from 'branch-sdk';
 import {
   BranchDeepLinks,
   BranchReferringParamsResponse,
-} from 'capacitor-branch-deep-links';
+} from '@houseninja/capacitor-branch';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { tracked } from 'tracked-built-ins';
 
 import { PluginListenerHandle } from '@capacitor/core';
 
@@ -17,20 +18,39 @@ type ListenerEvent = JourneyEvent | CapacitorEvent;
 type CapacitorEvent = 'initError' | 'init';
 
 export default class Branch {
+  static sessionData = tracked({});
+
   static async init(
     branch_key?: string,
-    options?: InitOptions | undefined,
-    callback?:
-      | ((err: BranchError, data: SessionData | null) => void)
-      | undefined
+    options?: InitOptions | undefined
   ): Promise<void> {
+    const cb = (err: BranchError, data: SessionData | null) => {
+      if (err) {
+        BranchDeepLinks.notifyListeners('initError', err);
+      } else {
+        BranchDeepLinks.notifyListeners('init', data);
+      }
+    };
     if (!isNativePlatform() && branch_key) {
-      branch.init(branch_key, options, callback);
+      branch.init(branch_key, options, cb);
+    }
+  }
+
+  static async data(): Promise<object | undefined> {
+    if (!isNativePlatform()) {
+      return new Promise((resolve, reject) => {
+        branch.data((err, data) => {
+          if (err) reject(err);
+          else resolve({ ...data });
+        });
+      });
+    } else {
+      return Promise.resolve(Branch.sessionData);
     }
   }
 
   static async addListener(
-    eventName: ListenerEvent,
+    eventName: ListenerEvent | string,
     listenerFunc: (event: any) => void
   ): Promise<PluginListenerHandle> {
     if (!isNativePlatform()) {
@@ -93,11 +113,8 @@ export default class Branch {
     if (!isNativePlatform()) {
       return new Promise((resolve, reject) => {
         branch.logout((err) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve({ logged_out: true });
-          }
+          if (err) reject(err);
+          else resolve({ logged_out: true });
         });
       });
     } else {

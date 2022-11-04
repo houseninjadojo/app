@@ -13,11 +13,13 @@ import type StorageService from 'houseninja/services/storage';
 import type UserActivityService from 'ember-user-activity/addon/services/user-activity';
 import type MetricsService from 'houseninja/services/metrics';
 import type EventBusService from 'houseninja/services/event-bus';
+import type BranchService from 'houseninja/services/branch';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericService = any;
 
 class ApplicationRoute extends Route {
+  @service declare branch: BranchService;
   @service declare current: GenericService;
   @service declare deepLinks: GenericService;
   @service declare eventBus: EventBusService;
@@ -48,6 +50,7 @@ class ApplicationRoute extends Route {
 
   async beforeModel(): Promise<void> {
     await this.eventBus.setup();
+    await this.branch.setup();
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();

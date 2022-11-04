@@ -12,8 +12,7 @@ export default class BrowserService extends Service {
   events = ['browserPageLoaded', 'browserFinished'];
 
   setupListeners() {
-    this.removeAllListeners();
-    this.registerEvents();
+    // no-op
   }
 
   teardownListeners() {

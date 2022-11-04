@@ -159,6 +159,7 @@ export default class NotificationsService extends Service {
   }
 
   async registerEvents(): Promise<void> {
+    this.removeAllListeners();
     const pushNotificationEvents = [
       'registration',
       'registrationError',

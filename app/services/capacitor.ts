@@ -24,7 +24,7 @@ export default class CapacitorService extends Service {
   ];
 
   setupListeners() {
-    this.registerEvents();
+    // no-op
   }
 
   teardownListeners() {
