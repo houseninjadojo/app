@@ -2055,10 +2055,10 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
-"@houseninja/capacitor-branch@5.1.0-beta.0":
-  version "5.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-branch/-/capacitor-branch-5.1.0-beta.0.tgz#28022706e9a6203640c6460d79f19e7a76777486"
-  integrity sha512-7XaeBJ+xlTrbeZyDZHSiMxXbT2/CyEMtgaLhEWj/kolntuZfT64Bnnr+uVzewgmA06TgiuUKac15mCoOA6haxQ==
+"@houseninja/capacitor-branch@5.1.0-beta.1":
+  version "5.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-branch/-/capacitor-branch-5.1.0-beta.1.tgz#252d922cf17e8da388d76d88f7f994e1eff501e6"
+  integrity sha512-UvtOEfQUS03jPkMnktE4CrfXUhyD39cGyFwNlhsR94IUjAeogAcVF3D/r+wSM9mJqA1dt9urYL4xazyl3WnVHg==
 
 "@houseninja/capacitor-mixpanel@^1.0.0-beta.2":
   version "1.0.0-beta.2"
