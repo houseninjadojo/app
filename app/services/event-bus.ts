@@ -27,7 +27,7 @@ import type BrowserService from 'houseninja/services/browser';
 import type CapacitorService from 'houseninja/services/capacitor';
 import type IntercomService from 'houseninja/services/intercom';
 import type NotificationsService from 'houseninja/services/notifications';
-import type BranchService from './branch';
+import type BranchService from 'houseninja/services/branch';
 
 type PluginInstance = typeof pluginMap[keyof typeof pluginMap];
 
