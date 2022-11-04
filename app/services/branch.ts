@@ -5,9 +5,10 @@ import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 
-import type { InitOptions } from 'branch-sdk';
+import type { BranchError, InitOptions, SessionData } from 'branch-sdk';
 import type EventBusService from 'houseninja/services/event-bus';
 import type MetricsService from 'houseninja/services/metrics';
+import { getOwner } from '@ember/application';
 
 export default class BranchService extends Service {
   @service declare eventBus: EventBusService;
@@ -34,7 +35,7 @@ export default class BranchService extends Service {
   }
 
   async initialize(options?: InitOptions): Promise<void> {
-    await Branch.init(ENV.branch.key, options);
+    await Branch.init(this.eventBus, ENV.branch.key, options);
   }
 
   async data(): Promise<object | undefined> {
@@ -81,7 +82,6 @@ export default class BranchService extends Service {
   }
 
   private handleInitError(error: any): void {
-    console.log('asdfsad');
     captureException(error);
   }
 }

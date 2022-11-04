@@ -101,7 +101,6 @@ export default class EventBusService extends Service.extend(Evented) {
   listenerFor(eventSlug: string): ListenerFunc {
     return (event?: any): void => {
       debug(`Event ${eventSlug} fired`);
-      console.log(`Event ${eventSlug} fired`);
       return this.trigger(eventSlug, event);
     };
   }
@@ -121,7 +120,6 @@ export default class EventBusService extends Service.extend(Evented) {
       this.listeners.set(eventSlug, handler);
       this.eventSubscriptions.add({ plugin, pluginName, eventName });
       debug(`Event ${eventSlug} subscribed`);
-      console.log(`Event ${eventSlug} subscribed`);
     } catch (e) {
       debug(`Event ${eventSlug} failed to subscribe`);
     }

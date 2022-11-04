@@ -11,40 +11,29 @@ import {
 } from '@houseninja/capacitor-branch';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { tracked } from 'tracked-built-ins';
-import { service } from '@ember/service';
-import { getOwner } from '@ember/application';
 
 import type { PluginListenerHandle } from '@capacitor/core';
 import type EventBusService from 'houseninja/services/event-bus';
+import { debug } from '@ember/debug';
 
 type ListenerEvent = JourneyEvent | CapacitorEvent;
 type CapacitorEvent = 'initError' | 'init';
 
-declare global {
-  interface Window {
-    Houseninja: any;
-  }
-}
-
 export default class Branch {
-  // @service declare static eventBus: EventBusService;
-
   static sessionData = tracked({});
 
   static async init(
+    eventBus: EventBusService,
     branch_key?: string,
     options?: InitOptions | undefined
   ): Promise<void> {
     const cb = (err: BranchError, data: SessionData | null) => {
-      const eventBus = getOwner(window.Houseninja)?.lookup(
-        'service:event-bus'
-      ) as EventBusService;
       if (err) {
-        eventBus?.trigger('branch.init-error', err);
-        BranchDeepLinks.notifyListeners('initError', err);
+        debug(`Event branch.init-error fired`);
+        eventBus.trigger('branch.init-error', err);
       } else {
-        eventBus?.trigger('branch.init', data);
-        BranchDeepLinks.notifyListeners('init', data);
+        debug(`Event branch.init fired`);
+        eventBus.trigger('branch.init', data);
       }
     };
     if (!isNativePlatform() && branch_key) {
