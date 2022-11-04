@@ -53,8 +53,7 @@ class ApplicationRoute extends Route {
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
-    await this.deepLinks.start();
-    // await this.deepLinks.setup();
+    await this.deepLinks.setup();
     await this.notifications.setup();
     await this.branch.setup();
   }

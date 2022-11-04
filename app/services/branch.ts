@@ -3,13 +3,15 @@ import Branch from 'houseninja/lib/branch';
 import { tracked } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
+import Sentry, { captureException } from 'houseninja/utils/sentry';
 
 import type { InitOptions } from 'branch-sdk';
 import type EventBusService from 'houseninja/services/event-bus';
-import { captureException } from 'houseninja/utils/sentry';
+import type MetricsService from 'houseninja/services/metrics';
 
 export default class BranchService extends Service {
   @service declare eventBus: EventBusService;
+  @service declare metrics: MetricsService;
 
   plugin = Branch;
   pluginName = 'Branch';
@@ -65,7 +67,16 @@ export default class BranchService extends Service {
   }
 
   private handleInit(data: any): void {
-    console.log('a');
+    this.metrics.trackEvent({
+      event: 'Opened with branch Link',
+      properties: data.data_parsed,
+    });
+    Sentry.addBreadcrumb({
+      type: 'user',
+      category: 'deep-link.open',
+      message: 'Branch deeo link link',
+      data,
+    });
     this.sessionData = data;
   }
 

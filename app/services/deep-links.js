@@ -1,9 +1,7 @@
 import Service, { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { debug } from '@ember/debug';
-import BranchWeb from 'branch-sdk';
-import Sentry, { captureException } from 'houseninja/utils/sentry';
-import ENV from 'houseninja/config/environment';
+import Sentry from 'houseninja/utils/sentry';
 // import { isEqual, compare } from '@ember/utils';
 
 /**
@@ -25,14 +23,6 @@ export default class DeepLinksService extends Service {
 
   listener = null;
 
-  start() {
-    if (isNativePlatform()) {
-      // @todo figure out why this takes precedence over branch
-      this.setupRouteHandler();
-      this.setupBranchHandlers();
-    }
-  }
-
   stop() {
     this.listener = null;
     this.branchListener = null;
@@ -41,8 +31,10 @@ export default class DeepLinksService extends Service {
 
   // only web for now
   setup() {
-    if (!isNativePlatform()) {
-      this.setupWebHandler();
+    if (isNativePlatform()) {
+      // @todo figure out why this takes precedence over branch
+      this.setupRouteHandler();
+      // this.setupBranchHandlers();
     }
   }
 
@@ -136,34 +128,6 @@ export default class DeepLinksService extends Service {
       // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
       const route = this.selectRouteFromBranchParams(referringParams);
       this.forwardRoute({ raw: route, name: route });
-    });
-    this.branchErrorListener = this.eventBus.on(
-      'branch.init-error',
-      (error) => {
-        if (typeof error === 'string') {
-          error = new Error(error);
-          captureException(error);
-        }
-      }
-    );
-  }
-
-  setupWebHandler() {
-    BranchWeb.init(ENV.branch.key, (err, data) => {
-      if (err) {
-        captureException(err);
-      } else {
-        this.metrics.trackEvent({
-          event: 'Opened with Web Link',
-          properties: data.data_parsed,
-        });
-        Sentry.addBreadcrumb({
-          type: 'user',
-          category: 'deep-link.open',
-          message: 'Branch web link',
-          data,
-        });
-      }
     });
   }
 
