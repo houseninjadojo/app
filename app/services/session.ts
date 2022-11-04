@@ -122,7 +122,7 @@ export default class SessionService extends BaseSessionService {
   // eslint-disable-next-line prettier/prettier
   private logSentry(action: string, message?: string, type?: string, finish = true): Span | void {
     const tag = action.includes('.') ? action : `session.${action}`;
-    const msg = message ?? `{action} session`;
+    const msg = message ?? `${action} session`;
     const span = startSpan({
       op: tag,
       description: msg,

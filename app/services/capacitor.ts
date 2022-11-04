@@ -92,6 +92,10 @@ export default class CapacitorService extends Service {
    * Listeners
    */
 
+  async setup() {
+    this.setupListeners();
+  }
+
   setupListeners() {
     this.eventBus.on('app.app-url-open', bind(this, this.handleAppUrlOpen));
   }

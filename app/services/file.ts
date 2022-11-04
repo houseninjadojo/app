@@ -3,8 +3,13 @@ import { tracked } from '@glimmer/tracking';
 import { File, FilePicker } from '@capawesome/capacitor-file-picker';
 import { debug } from '@ember/debug';
 import { captureException } from 'houseninja/utils/sentry';
+import { service } from '@ember/service';
+
+import type MetricsService from 'houseninja/services/metrics';
 
 export default class FileService extends Service {
+  @service declare metrics: MetricsService;
+
   @tracked file: File | undefined;
 
   clear(): void {
@@ -23,8 +28,14 @@ export default class FileService extends Service {
         multiple: false,
         readData: true,
       });
-      if (result?.files.length !== 0) {
-        return result.files[0];
+      const file = result.files[0];
+      if (file) {
+        const { name, mimeType, size, path } = file;
+        this.metrics.trackEvent({
+          event: 'file.opened',
+          properties: { name, mimeType, size, path },
+        });
+        return file;
       }
     } catch (e) {
       captureException(e as Error);

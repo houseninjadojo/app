@@ -142,9 +142,10 @@ export default class NotificationsService extends Service {
    */
 
   async setup(): Promise<void> {
-    if (isNativePlatform()) return;
+    if (!isNativePlatform()) return;
     makeSpan('setup', { desc: 'setting up' });
     this.setupListeners();
+    await this.registerPermissions();
   }
 
   setupListeners(): void {
@@ -194,8 +195,14 @@ export default class NotificationsService extends Service {
     debug(`[notifications] trying to register permissions`);
     makeSpan('permissions.register', { desc: 'registering permissions' });
     makeCrumb('permissions', undefined, 'registering push notifications');
-    if (!isNativePlatform()) return;
-    if (!this.canRequestPermissions()) return;
+    if (!isNativePlatform()) {
+      debug('[notifications] not a native platform, not registering');
+      return;
+    }
+    if (!(await this.canRequestPermissions())) {
+      debug('[notifications] cannot request permissions');
+      return;
+    }
     const state = await requestPermissions();
     if (state === 'granted') {
       await PushNotifications.register();
