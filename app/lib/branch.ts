@@ -87,7 +87,9 @@ export default class Branch {
   }
 
   static async removeAllListeners(): Promise<void> {
-    // no-op
+    if (isNativePlatform()) {
+      BranchDeepLinks.removeAllListeners();
+    }
   }
 
   static async setIdentity(options: {

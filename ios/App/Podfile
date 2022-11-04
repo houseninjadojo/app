@@ -29,7 +29,7 @@ def capacitor_pods
   pod 'CapawesomeCapacitorFilePicker', :path => '../../node_modules/@capawesome/capacitor-file-picker'
   pod 'HouseninjaCapacitorMixpanel', :path => '../../node_modules/@houseninja/capacitor-mixpanel'
   pod 'MineminemineFcm', :path => '../../node_modules/@mineminemine/fcm'
-  pod 'CapacitorBranchDeepLinks', :path => '../../node_modules/capacitor-branch-deep-links'
+  pod 'HouseninjaCapacitorBranch', :path => '../../node_modules/@houseninja/capacitor-branch'
   pod 'CapacitorSecureStoragePlugin', :path => '../../node_modules/capacitor-secure-storage-plugin'
   pod 'SentryCapacitor', :path => '../../node_modules/@sentry/capacitor'
 end

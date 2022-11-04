@@ -69,16 +69,18 @@ export default class BranchService extends Service {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private handleInit(data: any): void {
-    this.metrics.trackEvent({
-      event: 'Opened with branch Link',
-      properties: data.data_parsed,
-    });
-    Sentry.addBreadcrumb({
-      type: 'user',
-      category: 'deep-link.open',
-      message: 'Branch deeo link link',
-      data,
-    });
+    if (data.referringParams['$deeplink_path']) {
+      this.metrics.trackEvent({
+        event: 'opened with branch Link',
+        properties: data,
+      });
+      Sentry.addBreadcrumb({
+        type: 'user',
+        category: 'deep-link.open',
+        message: 'opened branch deep link',
+        data,
+      });
+    }
     this.sessionData = data;
   }
 

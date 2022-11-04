@@ -175,7 +175,7 @@ export default class NotificationsService extends Service {
   }
 
   async removeAllListeners(): Promise<void> {
-    if (isNativePlatform()) return;
+    if (!isNativePlatform()) return;
     await PushNotifications.removeAllListeners();
   }
 
