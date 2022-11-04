@@ -2,6 +2,7 @@ import Service, { service } from '@ember/service';
 import Branch from 'houseninja/lib/branch';
 import { tracked } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
+import ENV from 'houseninja/config/environment';
 
 import type { InitOptions } from 'branch-sdk';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -18,6 +19,7 @@ export default class BranchService extends Service {
 
   async setup() {
     this.setupListeners();
+    this.initialize();
   }
 
   setupListeners() {
@@ -29,8 +31,8 @@ export default class BranchService extends Service {
     this.removeAllListeners();
   }
 
-  async initialize(branch_key?: string, options?: InitOptions): Promise<void> {
-    await Branch.init(branch_key, options);
+  async initialize(options?: InitOptions): Promise<void> {
+    await Branch.init(ENV.branch.key, options);
   }
 
   async data(): Promise<object | undefined> {
