@@ -56,7 +56,7 @@ export default class Branch {
 
   static async addListener(
     eventName: ListenerEvent | string,
-    listenerFunc: (event: any) => void
+    listenerFunc: (event: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<PluginListenerHandle> {
     if (!isNativePlatform()) {
       branch.addListener(eventName as JourneyEvent, listenerFunc);
@@ -79,7 +79,7 @@ export default class Branch {
 
   static async removeListener(
     eventName: string,
-    listenerFunc: (event: any) => void
+    listenerFunc: (event: any) => void // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<void> {
     if (!isNativePlatform()) {
       branch.removeListener(listenerFunc);
@@ -129,7 +129,7 @@ export default class Branch {
 
   static async sendBranchEvent(options: {
     eventName: string;
-    metaData?: { customerEventAlias?: string; [key: string]: any };
+    metaData?: { customerEventAlias?: string; [key: string]: any }; // eslint-disable-line @typescript-eslint/no-explicit-any
   }): Promise<void> {
     if (!isNativePlatform()) {
       return new Promise((resolve, reject) => {

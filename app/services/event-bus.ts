@@ -3,25 +3,23 @@ import Evented from '@ember/object/evented';
 import { TrackedMap } from 'tracked-built-ins';
 import { dasherize } from '@ember/string';
 import { bind } from '@ember/runloop';
-import Branch from 'houseninja/lib/branch';
+import { debug } from '@ember/debug';
 
+import type { PluginListenerHandle } from '@capacitor/core';
 import {
   App,
   StateChangeListener,
   URLOpenListener,
   RestoredListener,
   BackButtonListener,
-  // AppState,
 } from '@capacitor/app';
-import { PushNotifications } from '@capacitor/push-notifications';
+import type Branch from 'houseninja/lib/branch';
 import { Browser } from '@capacitor/browser';
-import {
+import type {
   Intercom,
   UnreadConversationCount,
 } from '@capacitor-community/intercom';
-import { PluginListenerHandle } from '@capacitor/core';
-import { debug } from '@ember/debug';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
+import type { PushNotifications } from '@capacitor/push-notifications';
 
 import type BrowserService from 'houseninja/services/browser';
 import type CapacitorService from 'houseninja/services/capacitor';
@@ -29,10 +27,14 @@ import type IntercomService from 'houseninja/services/intercom';
 import type NotificationsService from 'houseninja/services/notifications';
 import type BranchService from 'houseninja/services/branch';
 
-type PluginInstance = typeof pluginMap[keyof typeof pluginMap];
+type PluginInstance =
+  | typeof App
+  | typeof Branch
+  | typeof Browser
+  | typeof Intercom
+  | typeof PushNotifications;
 
 type UnreadCountChangeListener = (event: UnreadConversationCount) => void;
-// type StateChangeListener = (event: AppState) => void;
 
 type ListenerFunc =
   | StateChangeListener
@@ -40,22 +42,6 @@ type ListenerFunc =
   | RestoredListener
   | BackButtonListener
   | UnreadCountChangeListener;
-
-const sharedPlugins = {
-  app: App,
-  branch: Branch,
-  browser: Browser,
-  intercom: Intercom,
-};
-
-const mobilePlugins = {
-  'push-notifications': PushNotifications,
-};
-
-const pluginMap = {
-  ...sharedPlugins,
-  ...(isNativePlatform() ? mobilePlugins : {}),
-};
 
 export default class EventBusService extends Service.extend(Evented) {
   @service declare branch: BranchService;
@@ -99,6 +85,7 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   listenerFor(eventSlug: string): ListenerFunc {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (event?: any): void => {
       debug(`Event ${eventSlug} fired`);
       return this.trigger(eventSlug, event);

@@ -5,10 +5,9 @@ import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 
-import type { BranchError, InitOptions, SessionData } from 'branch-sdk';
+import type { InitOptions } from 'branch-sdk';
 import type EventBusService from 'houseninja/services/event-bus';
 import type MetricsService from 'houseninja/services/metrics';
-import { getOwner } from '@ember/application';
 
 export default class BranchService extends Service {
   @service declare eventBus: EventBusService;
@@ -50,6 +49,7 @@ export default class BranchService extends Service {
     await Branch.logout();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async track(eventName: string, metaData?: any): Promise<void> {
     await Branch.sendBranchEvent({ eventName, metaData });
   }
@@ -67,6 +67,7 @@ export default class BranchService extends Service {
     await Branch.removeAllListeners();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private handleInit(data: any): void {
     this.metrics.trackEvent({
       event: 'Opened with branch Link',
@@ -81,6 +82,7 @@ export default class BranchService extends Service {
     this.sessionData = data;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private handleInitError(error: any): void {
     captureException(error);
   }

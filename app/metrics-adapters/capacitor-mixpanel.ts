@@ -96,7 +96,6 @@ export default class CapacitorMixpanel extends BaseAdapter {
   }
 
   willDestroy(): void {
-    super.willDestroy();
     this.uninstall();
   }
 }
