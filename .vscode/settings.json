@@ -2,18 +2,5 @@
   "gitlens.showWelcomeOnInstall": false,
   "eslint.packageManager": "yarn",
   "eslint.lintTask.enable": true,
-  "dotenv.enableAutocloaking": false,
-  "[typescript]": {
-    "typescript.preferences.importModuleSpecifier": "non-relative"
-  },
-  "eslint.codeActionsOnSave.mode": "problems",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.codeActionsOnSave.rules": {
-    "source.fixAll.eslint": true
-  }
+  "dotenv.enableAutocloaking": false
 }
