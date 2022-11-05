@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/houseninjadojo/app/compare/v1.25.1...v1.26.0) (2022-11-05)
+
+
+### Features
+
+* releasing build ([900f126](https://github.com/houseninjadojo/app/commit/900f1261cbcb31a8616225efeea497b524caab5a))
+
 ## [1.25.1](https://github.com/houseninjadojo/app/compare/v1.25.0...v1.25.1) (2022-11-02)
 
 
