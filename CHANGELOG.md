@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/houseninjadojo/app/compare/v1.26.0...v1.26.1) (2022-11-05)
+
+
+### Bug Fixes
+
+* login dashboard userId bug ([#1212](https://github.com/houseninjadojo/app/issues/1212)) ([c999f89](https://github.com/houseninjadojo/app/commit/c999f89da07537416fa06fe60b3fb79363515532))
+
 # [1.26.0](https://github.com/houseninjadojo/app/compare/v1.25.1...v1.26.0) (2022-11-05)
 
 
