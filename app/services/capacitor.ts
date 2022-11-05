@@ -12,6 +12,7 @@ import {
 import type EventBusService from 'houseninja/services/event-bus';
 import type RouterService from '@ember/routing/router-service';
 import { captureMessage } from '@sentry/hub';
+import { tracked } from '@glimmer/tracking';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
@@ -27,6 +28,15 @@ export default class CapacitorService extends Service {
     'resume',
     'backButton',
   ];
+
+  @tracked isNative: boolean;
+  @tracked platform: string;
+
+  constructor(properties?: object) {
+    super(properties);
+    this.isNative = this.isNativePlatform();
+    this.platform = this.getPlatform();
+  }
 
   /**
    * Helpers
@@ -52,8 +62,12 @@ export default class CapacitorService extends Service {
     return await App.exitApp();
   }
 
-  async getInfo(): Promise<AppInfo> {
-    return await App.getInfo();
+  async getInfo(): Promise<AppInfo | object> {
+    try {
+      return await App.getInfo();
+    } catch (e) {
+      return {};
+    }
   }
 
   async getState(): Promise<AppState> {

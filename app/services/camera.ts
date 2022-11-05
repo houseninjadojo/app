@@ -8,6 +8,7 @@ import {
 } from '@capacitor/camera';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { service } from '@ember/service';
+import { debug } from '@ember/debug';
 import type MetricsService from 'houseninja/services/metrics';
 
 export default class CameraService extends Service {
@@ -24,6 +25,7 @@ export default class CameraService extends Service {
   }
 
   async getImage(source: CameraSource): Promise<Photo | undefined> {
+    debug('[camera] getting image');
     Sentry.addBreadcrumb({
       type: 'ui',
       category: 'camera',

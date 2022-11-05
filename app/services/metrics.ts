@@ -1,7 +1,7 @@
 import { default as BaseMetricsService } from 'ember-metrics/services/metrics';
 
 export default class MetricsService extends BaseMetricsService {
-  reset(): void {
+  async reset(): Promise<void> {
     this.context = {};
     this.invoke('reset');
   }

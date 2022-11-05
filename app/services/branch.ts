@@ -4,6 +4,7 @@ import { tracked } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
+import { debug } from '@ember/debug';
 
 import type { InitOptions } from 'branch-sdk';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -34,6 +35,7 @@ export default class BranchService extends Service {
   }
 
   async initialize(options?: InitOptions): Promise<void> {
+    debug('[intercom] setup');
     await Branch.init(this.eventBus, ENV.branch.key, options);
   }
 
@@ -42,10 +44,12 @@ export default class BranchService extends Service {
   }
 
   async identify(identity: string): Promise<void> {
+    debug('[intercom] identifying user');
     await Branch.setIdentity({ newIdentity: identity });
   }
 
   async logout(): Promise<void> {
+    debug('[intercom] logging out user');
     await Branch.logout();
   }
 

@@ -17,11 +17,12 @@ export default class FileService extends Service {
   }
 
   async setFileServiceFile(): Promise<void> {
-    debug(`Set File Service File: ${this.file?.path}`);
     this.file = await this.getFile();
+    debug(`[file] setting file service file: ${this.file?.path}`);
   }
 
   async getFile(): Promise<File | undefined> {
+    debug(`[file] getting file: ${this.file?.path}`);
     try {
       const result = await FilePicker.pickFiles({
         types: ['application/pdf', 'image/png', 'image/jpg', 'image/jpg'],

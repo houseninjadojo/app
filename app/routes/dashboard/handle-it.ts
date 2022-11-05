@@ -1,17 +1,11 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import type StoreService from 'houseninja/services/store';
 
 export default class DashboardHandleItRoute extends Route {
-  @service store;
+  @service declare store: StoreService;
 
   async model() {
-    // // @todo replace wtih actual query
-    // let query = {
-    //   status: 'open',
-    // };
-    // return await this.store.query('work-order', {
-    //   filter: query,
-    // });
     return await this.store.findAll('work-order', {
       backgroundReload: true,
       include: 'estimate,invoice',

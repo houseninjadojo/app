@@ -3,7 +3,6 @@ import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { getOwner } from '@ember/application';
 import SecureStorage from 'houseninja/utils/secure-storage';
-import { debug } from '@ember/debug';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class LoginRoute extends Route {
@@ -52,11 +51,8 @@ export default class LoginRoute extends Route {
   }
 
   async nativeOpen(url) {
-    debug(`Opening Login URL: ${url}`);
     if (isNativePlatform()) {
-      this.eventBus.on('browser.browser-finished', () => {
-        debug(`Popover browser closed.`);
-        debug(`Transitioning to /login-or-signup`);
+      this.eventBus.one('browser.browser-finished', () => {
         this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP);
       });
       return await this.browser.open({ url, presentationStyle: 'popover' });

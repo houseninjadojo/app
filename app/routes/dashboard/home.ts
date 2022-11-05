@@ -4,12 +4,19 @@ import { isBlank } from '@ember/utils';
 import RSVP from 'rsvp';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class DashboarHomeRoute extends Route {
-  @service current;
-  @service session;
-  @service store;
+import type CurrentService from 'houseninja/services/current';
+import type SessionService from 'houseninja/services/session';
+import type StoreService from 'houseninja/services/store';
+import type Transition from '@ember/routing/transition';
+import type UserModel from 'houseninja/models/user';
+import type PropertyModel from 'houseninja/models/property';
 
-  beforeModel(transition) {
+export default class DashboarHomeRoute extends Route {
+  @service declare current: CurrentService;
+  @service declare session: SessionService;
+  @service declare store: StoreService;
+
+  beforeModel(transition: Transition) {
     this.session.requireAuthentication(
       transition,
       NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
@@ -18,16 +25,18 @@ export default class DashboarHomeRoute extends Route {
 
   async model() {
     const userId = this.session?.data?.authenticated?.userinfo?.user_id;
-    let user = null;
-    let property = null;
+    let user: UserModel | undefined;
+    let property: PropertyModel | undefined;
 
-    if (isBlank(this.current.user)) {
+    if (isBlank(this.current.user) && userId) {
       user = await this.store.findRecord('user', userId, {
         include: 'properties',
       });
-      property = user.get('properties.firstObject');
+      const properties = await user?.properties;
+      property = properties?.firstObject;
     } else {
-      property = this.current.user.get('properties.firstObject');
+      const properties = await this.current.user?.properties;
+      property = properties?.firstObject;
     }
 
     return RSVP.hash({
