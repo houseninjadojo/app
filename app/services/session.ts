@@ -1,25 +1,29 @@
 import BaseSessionService from 'ember-simple-auth/services/session';
 import { service } from '@ember/service';
-import { Browser } from '@capacitor/browser';
 import { SplashScreen } from '@capacitor/splash-screen';
 import Sentry from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
-import { startSpan, captureException } from 'houseninja/utils/sentry';
+import { startSpan } from 'houseninja/utils/sentry';
+import { debug } from '@ember/debug';
 
+import type BrowserService from 'houseninja/services/browser';
+import type EventBusService from 'houseninja/services/event-bus';
 import type MetricsService from 'houseninja/services/metrics';
 import type CurrentService from 'houseninja/services/current';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type Transition from '@ember/routing/transition';
-import { Span } from '@sentry/types';
+import type { Span } from '@sentry/types';
 
 /**
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
  */
 export default class SessionService extends BaseSessionService {
+  @service declare browser: BrowserService;
   @service declare metrics: MetricsService;
   @service declare current: CurrentService;
+  @service declare eventBus: EventBusService;
   @service declare router: RouterService;
   @service declare store: StoreService;
 
@@ -60,7 +64,7 @@ export default class SessionService extends BaseSessionService {
   async terminate(transition?: Transition): Promise<void> {
     this.logSentry('terminate');
     if (isNativePlatform()) {
-      SplashScreen.show({
+      await SplashScreen.show({
         fadeInDuration: 0,
         fadeOutDuration: 1000,
         showDuration: 1000,
@@ -80,7 +84,7 @@ export default class SessionService extends BaseSessionService {
   async invalidate(): Promise<void> {
     this.logSentry('invalidate', 'logging out');
     if (isNativePlatform()) {
-      SplashScreen.show({
+      await SplashScreen.show({
         fadeInDuration: 0,
         fadeOutDuration: 1000,
         showDuration: 1000,
@@ -93,34 +97,16 @@ export default class SessionService extends BaseSessionService {
   async handleInvalidation(routeAfterInvalidation: string): Promise<void> {
     await this.metrics.trackEvent({ event: 'Logout' });
     await this.metrics.reset();
-    await this._closeBrowser();
-    super.handleInvalidation(routeAfterInvalidation);
-  }
-
-  async _closeBrowser(): Promise<void> {
-    if (isNativePlatform()) {
-      const span = this.logSentry(
-        'browser.close',
-        'closing browser',
-        'ui',
-        false
-      );
-      try {
-        Browser.removeAllListeners();
-        await Browser.close();
-        span?.setStatus('success');
-      } catch (e) {
-        span?.setStatus('error');
-        captureException(e as Error);
-      } finally {
-        await SplashScreen.hide();
-        span?.finish();
-      }
-    }
+    await this.browser.close();
+    await SplashScreen.hide();
+    const redirection =
+      routeAfterInvalidation ?? NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP;
+    this.router.transitionTo(redirection);
   }
 
   // eslint-disable-next-line prettier/prettier
   private logSentry(action: string, message?: string, type?: string, finish = true): Span | void {
+    debug(`[session] ${action} ${message ?? ''}`);
     const tag = action.includes('.') ? action : `session.${action}`;
     const msg = message ?? `${action} session`;
     const span = startSpan({

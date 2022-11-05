@@ -51,7 +51,7 @@ export default class CapacitorIntercom extends BaseAdapter {
     this.reset();
   }
 
-  willDestroy() {
+  willDestroy(): void {
     this.reset();
   }
 }

@@ -1,15 +1,16 @@
-import Model, { AsyncBelongsTo, attr, belongsTo } from '@ember-data/model';
-import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
 import {
   WorkOrderStatus,
   WorkOrderUILabel,
 } from 'houseninja/data/work-order-status';
+import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
 
-import type Estimate from './estimate';
+import Model, { AsyncBelongsTo, attr, belongsTo } from '@ember-data/model';
+
+import type Estimate from 'houseninja/models/estimate';
 import type Invoice from './invoice';
 import type Property from './property';
 
-export default class WorkOrderModel extends Model {
+export default class WorkOrder extends Model {
   @belongsTo('estimate', { async: false, inverse: 'workOrder' })
   declare estimate: Estimate;
 

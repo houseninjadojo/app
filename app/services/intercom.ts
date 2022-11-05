@@ -11,6 +11,7 @@ import { bind } from '@ember/runloop';
 import type CurrentService from 'houseninja/services/current';
 import type MetricsService from 'houseninja/services/metrics';
 import type EventBusService from 'houseninja/services/event-bus';
+import { debug } from '@ember/debug';
 
 export default class IntercomService extends Service {
   @service declare current: CurrentService;
@@ -37,6 +38,7 @@ export default class IntercomService extends Service {
   ];
 
   async setup(): Promise<void> {
+    debug('[intercom] setup');
     Sentry.addBreadcrumb({
       category: 'intercom.setup',
       message: 'setting up',
@@ -54,6 +56,7 @@ export default class IntercomService extends Service {
   }
 
   async loginUser(userId: string, email: string, hmac: string): Promise<void> {
+    debug('[intercom] logging in user');
     startSpan({ op: 'intercom.user.register' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.login',
@@ -112,6 +115,7 @@ export default class IntercomService extends Service {
   }
 
   async showMessenger(): Promise<void> {
+    debug('[intercom] showing messenger');
     startSpan({ op: 'intercom.show.messenger' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.show',
@@ -127,6 +131,7 @@ export default class IntercomService extends Service {
   }
 
   async showComposer(message: string): Promise<void> {
+    debug('[intercom] showing composer');
     startSpan({ op: 'intercom.show.composer' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.show',
@@ -146,6 +151,7 @@ export default class IntercomService extends Service {
   }
 
   async hide(): Promise<void> {
+    debug('[intercom] hiding messenger');
     startSpan({ op: 'intercom.hide' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.hide',
@@ -160,6 +166,7 @@ export default class IntercomService extends Service {
   }
 
   async logout(): Promise<void> {
+    debug('[intercom] logging out user');
     startSpan({ op: 'intercom.user.logout' })?.finish();
     Sentry.addBreadcrumb({
       category: 'intercom.logout',

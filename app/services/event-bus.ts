@@ -87,7 +87,7 @@ export default class EventBusService extends Service.extend(Evented) {
   listenerFor(eventSlug: string): ListenerFunc {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (event?: any): void => {
-      debug(`Event ${eventSlug} fired`);
+      debug(`[event-bus] ${eventSlug} fired`);
       return this.trigger(eventSlug, event);
     };
   }
@@ -96,7 +96,7 @@ export default class EventBusService extends Service.extend(Evented) {
   async subscribe(plugin: PluginInstance, pluginName: string, eventName: string): Promise<void> {
     const eventSlug = this.eventSlug(pluginName, eventName);
     if (this.hasSubscription(pluginName, eventName)) {
-      debug(`EventBusService: Already subscribed to ${eventSlug}`);
+      debug(`[event-bus] already subscribed to ${eventSlug}`);
       return;
     }
     const listener = this.listenerFor(eventSlug);
@@ -106,15 +106,15 @@ export default class EventBusService extends Service.extend(Evented) {
       const handler = await plugin.addListener(eventName, bind(this, listener));
       this.listeners.set(eventSlug, handler);
       this.eventSubscriptions.add({ plugin, pluginName, eventName });
-      debug(`Event ${eventSlug} subscribed`);
+      debug(`[event-bus] ${eventSlug} subscribed`);
     } catch (e) {
-      debug(`Event ${eventSlug} failed to subscribe`);
+      debug(`[event-bus] ${eventSlug} failed to subscribe`);
     }
   }
 
   async teardownListeners(): Promise<void> {
     await this.listeners.forEach((handler, eventSlug) => {
-      debug(`Event ${eventSlug} unsubscribed`);
+      debug(`[event-bus] ${eventSlug} unsubscribed`);
       handler.remove();
       this.listeners.delete(eventSlug);
     });

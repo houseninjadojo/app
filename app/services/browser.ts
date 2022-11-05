@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 import type EventBusService from 'houseninja/services/event-bus';
 import type MetricsService from './metrics';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class BrowserService extends Service {
   @service declare eventBus: EventBusService;
@@ -37,26 +38,34 @@ export default class BrowserService extends Service {
     closeButtonText?: string;
     backButtonCanClose?: boolean;
   }): Promise<void> {
-    debug(`Browser open: ${options.url}`);
-    this.metrics.trackEvent({
-      event: 'browser.open',
-      properties: options,
-    });
-    this.currentUrl = options.url;
-    this.isBrowserOpen = true;
-    return await Browser.open(options);
+    try {
+      await Browser.open(options);
+      this.currentUrl = options.url;
+      this.isBrowserOpen = true;
+      this.metrics.trackEvent({
+        event: 'browser.opened',
+        properties: options,
+      });
+      debug(`[browser] opened: ${options.url}`);
+    } catch (e) {
+      captureException(e as Error);
+    }
   }
 
   async close(): Promise<void> {
-    debug('Browser close');
-    this.metrics.trackEvent({
-      event: 'browser.close',
-      properties: { url: this.currentUrl },
-    });
-    this.isBrowserOpen = false;
-    this.lastUrl = this.currentUrl;
-    this.currentUrl = undefined;
-    return await Browser.close();
+    try {
+      await Browser.close();
+      this.isBrowserOpen = false;
+      this.lastUrl = this.currentUrl;
+      this.currentUrl = undefined;
+      this.metrics.trackEvent({
+        event: 'browser.closed',
+        properties: { url: this.currentUrl },
+      });
+      debug('[browser] closed');
+    } catch (e) {
+      captureException(e as Error);
+    }
   }
 
   async registerEvents(): Promise<void> {
