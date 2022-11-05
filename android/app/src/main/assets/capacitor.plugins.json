@@ -72,7 +72,7 @@
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
-		"pkg": "capacitor-branch-deep-links",
+		"pkg": "@houseninja/capacitor-branch",
 		"classpath": "co.boundstate.BranchDeepLinks"
 	},
 	{

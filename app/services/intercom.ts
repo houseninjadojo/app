@@ -5,16 +5,36 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
 import { tracked } from '@glimmer/tracking';
+import { TrackedWeakSet } from 'tracked-built-ins';
+import { bind } from '@ember/runloop';
 
 import type CurrentService from 'houseninja/services/current';
 import type MetricsService from 'houseninja/services/metrics';
+import type EventBusService from 'houseninja/services/event-bus';
 
 export default class IntercomService extends Service {
   @service declare current: CurrentService;
+  @service declare eventBus: EventBusService;
   @service declare metrics: MetricsService;
 
-  @tracked unreadConversationCount = '';
+  @tracked unreadConversationCount = 0;
   @tracked isOpen = false;
+
+  listeners = new TrackedWeakSet();
+  plugin = Intercom;
+  pluginName = 'Intercom';
+  events = [
+    'didStartNewConversation',
+    'helpCenterWillShow',
+    'helpCenterDidShow',
+    'helpCenterWillHide',
+    'helpCenterDidHide',
+    'onUnreadCountChange',
+    'windowWillShow',
+    'windowDidShow',
+    'windowWillHide',
+    'windowDidHide',
+  ];
 
   async setup(): Promise<void> {
     Sentry.addBreadcrumb({
@@ -76,16 +96,19 @@ export default class IntercomService extends Service {
     }
   }
 
-  async setupListeners(): Promise<void> {
-    await Intercom.addListener('onUnreadCountChange', ({ value }) => {
-      this.unreadConversationCount = value ?? '';
-    });
+  setupListeners(): void {
+    this.eventBus.on(
+      'intercom.on-unread-count-change',
+      bind(this, this.handleUnreadConvoCount)
+    );
+    this.eventBus.on(
+      'intercom.window-did-hide',
+      bind(this, this.handleWindowDidHide)
+    );
+  }
 
-    await Intercom.addListener('windowDidHide', () => {
-      this.metrics.trackEvent({
-        event: 'intercom.close',
-      });
-    });
+  teardownListeners(): void {
+    this.removeAllListeners();
   }
 
   async showMessenger(): Promise<void> {
@@ -174,5 +197,26 @@ export default class IntercomService extends Service {
       captureException(e as Error);
     }
     return 0;
+  }
+
+  private handleUnreadConvoCount({ value }: { value: string }): void {
+    this.unreadConversationCount = value ? parseInt(value) : 0;
+  }
+
+  private handleWindowDidHide(): void {
+    this.metrics.trackEvent({ event: 'intercom.close' });
+  }
+
+  async registerEvents(): Promise<void> {
+    await this.removeAllListeners();
+    await this.eventBus.registerEvents(
+      this.plugin,
+      this.pluginName,
+      this.events
+    );
+  }
+
+  private async removeAllListeners(): Promise<void> {
+    await Intercom.removeAllListeners();
   }
 }

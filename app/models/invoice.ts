@@ -20,7 +20,7 @@ export default class InvoiceModel extends Model {
   @belongsTo('document', { async: false, inverse: 'invoice' })
   declare document: Document;
 
-  @belongsTo('document', { async: false, inverse: 'invoice' })
+  @belongsTo('document', { async: false })
   declare receipt: Document;
 
   @belongsTo('payment', { async: true, inverse: 'invoice' })

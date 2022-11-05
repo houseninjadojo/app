@@ -7,8 +7,12 @@ import {
   Photo,
 } from '@capacitor/camera';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
+import { service } from '@ember/service';
+import type MetricsService from 'houseninja/services/metrics';
 
 export default class CameraService extends Service {
+  @service declare metrics: MetricsService;
+
   @tracked image: Photo | undefined;
 
   clear(): void {
@@ -23,15 +27,20 @@ export default class CameraService extends Service {
     Sentry.addBreadcrumb({
       type: 'ui',
       category: 'camera',
-      message: 'taking a photo',
+      message: 'capturing image',
     });
     try {
-      const image = await Camera.getPhoto({
+      const options = {
         quality: 90,
         allowEditing: true,
         resultType: CameraResultType.Uri,
         source,
+      };
+      this.metrics.trackEvent({
+        event: 'camera.capture',
+        properties: options,
       });
+      const image = await Camera.getPhoto(options);
       return image;
     } catch (e) {
       captureException(e as Error);

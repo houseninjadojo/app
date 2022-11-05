@@ -1,7 +1,13 @@
-import { PushNotifications } from '@capacitor/push-notifications';
+import { type Channel, PushNotifications } from '@capacitor/push-notifications';
 import { run } from '@ember/runloop';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
+
+type EventName =
+  | 'registraation'
+  | 'registrationError'
+  | 'pushNotificationReceived'
+  | 'pushNotificationActionPerformed';
 
 /**
  * @see https://capacitorjs.com/docs/apis/push-notifications#register
@@ -27,8 +33,8 @@ export async function register() {
  */
 export async function getDeliveredNotifications() {
   return await run(async () => {
-    let result = await PushNotifications.getDeliveredNotifications();
-    let notifications = result.notifications.map((n) => {
+    const result = await PushNotifications.getDeliveredNotifications();
+    const notifications = result.notifications.map((n) => {
       return new EmberObject(n);
     });
     return A(notifications);
@@ -42,10 +48,11 @@ export async function getDeliveredNotifications() {
  *
  * @param {Object[]} notifications PushNotificationSchema[]
  */
-export async function removeDeliveredNotifications(notifications) {
+// eslint-disable-next-line prettier/prettier
+export async function removeDeliveredNotifications(notifications: any[]) {
   return await run(async () => {
     return await PushNotifications.removeDeliveredNotifications({
-      delivered: notifications,
+      notifications,
     });
   });
 }
@@ -69,7 +76,7 @@ export async function removeAllDeliveredNotifications() {
  *
  * @param {Object} @see https://capacitorjs.com/docs/apis/push-notifications#channel
  */
-export async function createChannel(channel) {
+export async function createChannel(channel: Channel) {
   return await run(async () => {
     return await PushNotifications.createChannel(channel);
   });
@@ -83,7 +90,7 @@ export async function createChannel(channel) {
  *
  * @param {Object} @see https://capacitorjs.com/docs/apis/push-notifications#channel
  */
-export async function deleteChannel(channel) {
+export async function deleteChannel(channel: Channel) {
   return await run(async () => {
     return await PushNotifications.deleteChannel(channel);
   });
@@ -99,7 +106,7 @@ export async function deleteChannel(channel) {
  */
 export async function listChannels() {
   return await run(async () => {
-    let result = await PushNotifications.listChannels();
+    const result = await PushNotifications.listChannels();
     return result.channels;
   });
 }
@@ -117,7 +124,7 @@ export async function listChannels() {
  */
 export async function checkPermissions() {
   return await run(async () => {
-    let result = await PushNotifications.checkPermissions();
+    const result = await PushNotifications.checkPermissions();
     return result.receive;
   });
 }
@@ -138,7 +145,7 @@ export async function checkPermissions() {
  */
 export async function requestPermissions() {
   return await run(async () => {
-    let result = await PushNotifications.requestPermissions();
+    const result = await PushNotifications.requestPermissions();
     return result.receive;
   });
 }
@@ -196,7 +203,8 @@ export async function requestPermissions() {
  * @param {Function} callback
  * @return {Promise<Object>} { remove: () => Promise<void> } call `remove()` to remove listener
  */
-export async function addListener(eventName, listenerFunc) {
+// eslint-disable-next-line prettier/prettier
+export async function addListener(eventName: any, listenerFunc: (data: any) => void) {
   return await run(async () => {
     return await PushNotifications.addListener(eventName, listenerFunc);
   });

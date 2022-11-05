@@ -1,12 +1,6 @@
 import Service, { service } from '@ember/service';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { App as MobileApp } from '@capacitor/app';
 import { debug } from '@ember/debug';
-import { BranchDeepLinks } from 'capacitor-branch-deep-links';
-import BranchWeb from 'branch-sdk';
-import Sentry, { captureException } from 'houseninja/utils/sentry';
-import ENV from 'houseninja/config/environment';
-// import { isEqual, compare } from '@ember/utils';
+import Sentry from 'houseninja/utils/sentry';
 
 /**
  * This service registers a listener to pick up incoming deep links.
@@ -20,19 +14,12 @@ import ENV from 'houseninja/config/environment';
  * are routed the same way.
  */
 export default class DeepLinksService extends Service {
+  @service eventBus;
   @service router;
   @service metrics;
   @service session;
 
   listener = null;
-
-  start() {
-    if (isNativePlatform()) {
-      // @todo figure out why this takes precedence over branch
-      this.setupRouteHandler();
-      this.setupBranchHandlers();
-    }
-  }
 
   stop() {
     this.listener = null;
@@ -42,9 +29,11 @@ export default class DeepLinksService extends Service {
 
   // only web for now
   setup() {
-    if (!isNativePlatform()) {
-      this.setupWebHandler();
-    }
+    // if (isNativePlatform()) {
+    //   // @todo figure out why this takes precedence over branch
+    //   this.setupRouteHandler();
+    //   // this.setupBranchHandlers();
+    // }
   }
 
   forwardRoute(url) {
@@ -81,7 +70,7 @@ export default class DeepLinksService extends Service {
   }
 
   setupRouteHandler() {
-    this.listener = MobileApp.addListener('appUrlOpen', (event) => {
+    this.eventBus.on('app.app-url-open', (event) => {
       const transaction = Sentry.getCurrentHub().getScope().getTransaction();
       let span;
       if (transaction) {
@@ -117,7 +106,7 @@ export default class DeepLinksService extends Service {
    * @see https://help.branch.io/developers-hub/docs/capacitor#initialize-branch
    */
   setupBranchHandlers() {
-    this.branchListener = BranchDeepLinks.addListener('init', (event) => {
+    this.branchListener = this.eventBus.on('branch.init', (event) => {
       if (this.isNonBranchLink(event)) {
         return;
       }
@@ -137,34 +126,6 @@ export default class DeepLinksService extends Service {
       // Check '+clicked_branch_link' before deciding whether to use your Branch routing logic
       const route = this.selectRouteFromBranchParams(referringParams);
       this.forwardRoute({ raw: route, name: route });
-    });
-    this.branchErrorListener = BranchDeepLinks.addListener(
-      'initError',
-      (error) => {
-        if (typeof error === 'string') {
-          error = new Error(error);
-          captureException(error);
-        }
-      }
-    );
-  }
-
-  setupWebHandler() {
-    BranchWeb.init(ENV.branch.key, (err, data) => {
-      if (err) {
-        captureException(err);
-      } else {
-        this.metrics.trackEvent({
-          event: 'Opened with Web Link',
-          properties: data.data_parsed,
-        });
-        Sentry.addBreadcrumb({
-          type: 'user',
-          category: 'deep-link.open',
-          message: 'Branch web link',
-          data,
-        });
-      }
     });
   }
 

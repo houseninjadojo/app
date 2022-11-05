@@ -1115,9 +1115,9 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#070dec8":
-  version "4.0.2-beta.2"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/070dec84ec58849219a3e1e2554db3fca25bc29f"
+"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#a905381":
+  version "4.0.4-beta.0"
+  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/a905381fe2bc66254c570ec5d8e04200bfccd206"
 
 "@capacitor/action-sheet@^4.0.1":
   version "4.0.1"
@@ -2054,6 +2054,11 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
+
+"@houseninja/capacitor-branch@5.1.0-beta.6":
+  version "5.1.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-branch/-/capacitor-branch-5.1.0-beta.6.tgz#a471de30540ec4f998fc69342b24fd29e010fd5e"
+  integrity sha512-PxvOPanbibEdvjFSrnrYsnA5ARFRiNZQ/x4MNlWebO8bWCs0PflkQDdb8NRhmdYuqDeTQVxgBf7T8D9kAOpFBA==
 
 "@houseninja/capacitor-mixpanel@^1.0.0-beta.2":
   version "1.0.0-beta.2"
@@ -3120,6 +3125,11 @@
   dependencies:
     "@types/connect" "*"
     "@types/node" "*"
+
+"@types/branch-sdk@^2.53.3":
+  version "2.53.3"
+  resolved "https://registry.yarnpkg.com/@types/branch-sdk/-/branch-sdk-2.53.3.tgz#0e7a3b2e754a5670f1e4c9fdb99e78470f476071"
+  integrity sha512-qEQEU8Iot5zejumdgwiO3ARpd75KEV1XBe/BJJvWDSke40HJcjA92LnAHyVM1aiDOUk4ZokuWQlo1cc5t8cQbw==
 
 "@types/broccoli-plugin@^3.0.0":
   version "3.0.0"
@@ -5893,11 +5903,6 @@ canvas-confetti@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.6.0.tgz#193f71aa8f38fc850a5ba94f59091a7afdb43ead"
   integrity sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==
-
-capacitor-branch-deep-links@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/capacitor-branch-deep-links/-/capacitor-branch-deep-links-5.0.0.tgz#efc5e3bacabd8fb0ce01e03ca07c1525b2ceacc1"
-  integrity sha512-/UBHzloa7nFtPlz7wH3GqsYAIjMBjQWyJNCSiS5LNZ64uoN8u3Qgg1rexQaoKRN3IQqiGyFFiYmrIATUvW4yoQ==
 
 capacitor-secure-storage-plugin@^0.8.0:
   version "0.8.0"

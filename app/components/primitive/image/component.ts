@@ -1,18 +1,24 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-export default class PrimitiveImageComponent extends Component {
-  el = null;
-  image = null;
-  width = null;
-  height = null;
-  src = null;
+type Args = {
+  width: number;
+  height: number;
+  src: string;
+};
+
+export default class PrimitiveImageComponent extends Component<Args> {
+  el?: HTMLImageElement;
+  image?: HTMLImageElement;
+  width: number;
+  height: number;
+  src: string;
 
   isLoading = true;
   isLoaded = false;
   hasError = false;
 
-  constructor(owner, args) {
+  constructor(owner: unknown, args: Args) {
     super(owner, args);
 
     this.width = args.width;
@@ -21,7 +27,7 @@ export default class PrimitiveImageComponent extends Component {
   }
 
   @action
-  loadImage(element) {
+  loadImage(element: HTMLImageElement) {
     this.image = new Image(this.width, this.height);
     this.image.addEventListener('load', this.onLoad.bind(this));
     this.image.addEventListener('error', this.onError.bind(this));
@@ -33,7 +39,9 @@ export default class PrimitiveImageComponent extends Component {
     this.isLoading = false;
     this.isLoaded = true;
     this.hasError = false;
-    this.el.replaceWith(this.image);
+    if (this.image) {
+      this.el?.replaceWith(this.image);
+    }
   }
 
   onError() {
@@ -43,10 +51,10 @@ export default class PrimitiveImageComponent extends Component {
   }
 
   willDestroy() {
-    super.willDestroy(...arguments);
-    this.image.removeEventListener('load', this.onLoad.bind(this));
-    this.image.removeEventListener('error', this.onError.bind(this));
-    this.image = null;
-    this.el = null;
+    super.willDestroy();
+    this.image?.removeEventListener('load', this.onLoad.bind(this));
+    this.image?.removeEventListener('error', this.onError.bind(this));
+    this.image = undefined;
+    this.el = undefined;
   }
 }

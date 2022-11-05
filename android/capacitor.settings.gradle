@@ -56,8 +56,8 @@ project(':houseninja-capacitor-mixpanel').projectDir = new File('../node_modules
 include ':mineminemine-fcm'
 project(':mineminemine-fcm').projectDir = new File('../node_modules/@mineminemine/fcm/android')
 
-include ':capacitor-branch-deep-links'
-project(':capacitor-branch-deep-links').projectDir = new File('../node_modules/capacitor-branch-deep-links/android')
+include ':houseninja-capacitor-branch'
+project(':houseninja-capacitor-branch').projectDir = new File('../node_modules/@houseninja/capacitor-branch/android')
 
 include ':capacitor-secure-storage-plugin'
 project(':capacitor-secure-storage-plugin').projectDir = new File('../node_modules/capacitor-secure-storage-plugin/android')
