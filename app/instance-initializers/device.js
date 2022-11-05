@@ -59,5 +59,4 @@ export async function initialize(appInstance) {
 
 export default {
   initialize,
-  after: 'notifications',
 };
