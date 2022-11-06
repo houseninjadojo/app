@@ -15,9 +15,9 @@ import Property from 'houseninja/models/property';
 
 type Args = {
   isOnboardingViaNativeApp: boolean;
-  user: User;
-  property: Property;
-  calendarUrl: string;
+  user?: User;
+  property?: Property;
+  calendarUrl?: string;
 };
 
 export default class WalkthroughBookingComponent extends Component<Args> {
@@ -54,14 +54,14 @@ export default class WalkthroughBookingComponent extends Component<Args> {
   get calendarParams(): string {
     const queryParams: Record<string, string> = compact({
       firstName: this.args.user?.firstName,
-      lastName: this.args.user.lastName,
-      email: this.args.user.email,
-      phone: this.args.user.phoneNumber,
-      address: this.args.property.streetAddress1,
-      address_2: this.args.property.streetAddress2,
+      lastName: this.args.user?.lastName,
+      email: this.args.user?.email,
+      phone: this.args.user?.phoneNumber,
+      address: this.args.property?.streetAddress1,
+      address_2: this.args.property?.streetAddress2,
       city: 'Austin', // this.args.property.city,
       state_new: 'Texas', // this.args.property.state,
-      zip: this.args.property.zipcode,
+      zip: this.args.property?.zipcode,
     });
     return new URLSearchParams(queryParams).toString();
   }
