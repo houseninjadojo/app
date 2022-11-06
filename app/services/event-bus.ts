@@ -41,7 +41,8 @@ type ListenerFunc =
   | URLOpenListener
   | RestoredListener
   | BackButtonListener
-  | UnreadCountChangeListener;
+  | UnreadCountChangeListener
+  | WindowEventHandlers['onmessage'];
 
 export default class EventBusService extends Service.extend(Evented) {
   @service declare branch: BranchService;
@@ -50,6 +51,7 @@ export default class EventBusService extends Service.extend(Evented) {
   @service declare intercom: IntercomService;
   @service declare notifications: NotificationsService;
 
+  windowListeners = new TrackedMap<string, WindowEventHandlers['onmessage']>();
   listeners = new TrackedMap<string, PluginListenerHandle>();
   eventSubscriptions = new Set();
 
@@ -64,6 +66,7 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.capacitor.registerEvents();
     await this.intercom.registerEvents();
     await this.notifications.registerEvents();
+    await this.subscribeWindowEvents();
   }
 
   hasSubscription(pluginName: string, eventName: string): boolean {
@@ -112,6 +115,28 @@ export default class EventBusService extends Service.extend(Evented) {
     }
   }
 
+  async subscribeWindowEvents(): Promise<void> {
+    const listener = (event: MessageEvent): void => {
+      debug(`[event-bus] window message event fired`);
+      return this.trigger('window.message', event);
+    };
+    const handler = bind(this, listener);
+    this.windowListeners.set('message', handler);
+    window.addEventListener('message', handler);
+  }
+
+  async unsubscribeWindowEvents(): Promise<void> {
+    await this.windowListeners.forEach((handler, eventSlug) => {
+      debug(`[event-bus] ${eventSlug} unsubscribed`);
+      const event = eventSlug.split('.')[1] as keyof WindowEventMap;
+      window.removeEventListener(
+        event,
+        handler as EventListenerOrEventListenerObject
+      );
+      this.windowListeners.delete(eventSlug);
+    });
+  }
+
   async teardownListeners(): Promise<void> {
     await this.listeners.forEach((handler, eventSlug) => {
       debug(`[event-bus] ${eventSlug} unsubscribed`);
@@ -123,5 +148,6 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.capacitor.teardownListeners();
     await this.intercom.teardownListeners();
     await this.notifications.teardownListeners();
+    await this.unsubscribeWindowEvents();
   }
 }

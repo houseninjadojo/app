@@ -1,6 +1,8 @@
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 import { getActiveTransaction } from '@sentry/ember';
-import { captureException } from './sentry';
+import { Span } from '@sentry/types';
+import compact from 'houseninja/utils/compact';
+import { captureException } from 'houseninja/utils/sentry';
 
 type HttpRes = Promise<HttpResponse | undefined>;
 
@@ -11,8 +13,10 @@ type HttpRes = Promise<HttpResponse | undefined>;
  * @param {Object} [headers={}]
  * @return {RSVP.Promise<Object|String>} - the response body
  */
-// eslint-disable-next-line prettier/prettier
-export async function get(url: string, headers = {}): HttpRes {
+export async function get(
+  url: string,
+  headers: { [key: string]: string } = {}
+): HttpRes {
   const span = httpSpan('get', url);
   let res: HttpResponse | undefined;
   try {
@@ -36,8 +40,11 @@ export async function get(url: string, headers = {}): HttpRes {
  * @param {Object|String} [data=null]
  * @return {RSVP.Promise<Object>}
  */
-// eslint-disable-next-line prettier/prettier
-export async function post(url: string, headers = {}, data?: unknown): HttpRes {
+export async function post(
+  url: string,
+  headers: { [key: string]: string } = {},
+  data?: unknown
+): HttpRes {
   const span = httpSpan('post', url);
   const options = { url, headers, data };
   let res: HttpResponse | undefined;
@@ -76,7 +83,7 @@ export default {
  * @param {Object} data
  * @return {String}
  */
-export function encodeFormData(data: { [key: string]: string }) {
+export function encodeFormData(data: { [key: string]: string }): string {
   return Object.keys(data)
     .map((k) => `${k}=${data[k]}`)
     .join('&');
@@ -85,7 +92,7 @@ export function encodeFormData(data: { [key: string]: string }) {
 /**
  * @private
  */
-function httpSpan(method: string, url: string) {
+function httpSpan(method: string, url: string): Span | undefined {
   const transaction = getActiveTransaction();
   const span = transaction?.startChild({
     op: 'http.client',

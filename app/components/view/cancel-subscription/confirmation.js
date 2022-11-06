@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { captureException } from 'houseninja/utils/sentry';
+import { runInDebug } from '@ember/debug';
+
 export default class CancelSubscriptionConfirmationViewComponent extends Component {
   @service session;
   @service store;
@@ -67,9 +69,11 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
 
     if (reason.length === 1) {
       try {
-        console.log('Saving survey...', {
-          reason: reason[0],
-          additionalFeedback: this.additionalFeedback,
+        runInDebug(() => {
+          console.log('Saving survey...', {
+            reason: reason[0],
+            additionalFeedback: this.additionalFeedback,
+          });
         });
       } catch (e) {
         captureException(e);

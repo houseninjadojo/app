@@ -5,13 +5,13 @@ import {
   SIGNUP_ROUTE,
   NATIVE_MOBILE_ROUTE,
 } from 'houseninja/data/enums/routes';
-import { addEventListener } from 'ember-lifeline';
 import { debug } from '@ember/debug';
 import { inject } from './script';
 import compact from 'houseninja/utils/compact';
 import RouterService from '@ember/routing/router-service';
 import User from 'houseninja/models/user';
 import Property from 'houseninja/models/property';
+import EventBusService from 'houseninja/services/event-bus';
 
 type Args = {
   isOnboardingViaNativeApp: boolean;
@@ -21,16 +21,30 @@ type Args = {
 };
 
 export default class WalkthroughBookingComponent extends Component<Args> {
+  @service declare eventBus: EventBusService;
   @service declare router: RouterService;
-
-  constructor(owner: unknown, args: Args) {
-    super(owner, args);
-    addEventListener(this, window, 'message', this.receiveWindowMessage);
-  }
 
   @action
   injectScript(): void {
     inject();
+  }
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.setupListeners();
+  }
+
+  willDestroy(): void {
+    super.willDestroy();
+    this.teardownListeners();
+  }
+
+  setupListeners(): void {
+    this.eventBus.on('window.message', this, this.receiveWindowMessage);
+  }
+
+  teardownListeners(): void {
+    this.eventBus.off('window.message', this, this.receiveWindowMessage);
   }
 
   receiveWindowMessage(event: MessageEvent): void {
@@ -52,7 +66,7 @@ export default class WalkthroughBookingComponent extends Component<Args> {
   }
 
   get calendarParams(): string {
-    const queryParams: Record<string, string> = compact({
+    const queryParams = compact({
       firstName: this.args.user?.firstName,
       lastName: this.args.user?.lastName,
       email: this.args.user?.email,
