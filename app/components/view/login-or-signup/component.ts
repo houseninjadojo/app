@@ -14,7 +14,7 @@ export default class LoginOrSignupViewComponent extends Component {
   @service declare view: ViewService;
 
   @action
-  async openSignUpViewInSystemBrowser() {
+  async openSignUpViewInSystemBrowser(): Promise<void> {
     await this.browser.open({
       url: `${ENV.appHost}/signup`,
       presentationStyle: 'popover',
@@ -22,18 +22,18 @@ export default class LoginOrSignupViewComponent extends Component {
   }
 
   @action
-  onboardUser() {
+  onboardUser(): void {
     this.view.preservePreviousRoute(this.router);
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.ONBOARDING.CONTACT_INFO);
   }
 
   @action
-  login() {
+  login(): void {
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN);
   }
 
   @action
-  show(e: HTMLElement) {
+  show(e: HTMLElement): void {
     runTask(
       this,
       () => {

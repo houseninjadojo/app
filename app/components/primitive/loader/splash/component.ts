@@ -15,7 +15,7 @@ export default class SplashLoaderComponent extends Component<Args> {
   @tracked isFinished = false;
 
   @action
-  video(video: HTMLVideoElement) {
+  video(video: HTMLVideoElement): void {
     addEventListener(this, video, 'ended', () => {
       this.isFinished = true;
       runTask(this, this.args.toggle, 100);
@@ -23,7 +23,7 @@ export default class SplashLoaderComponent extends Component<Args> {
   }
 
   @action
-  showLoader(container: HTMLElement) {
+  showLoader(container: HTMLElement): void {
     const defaultOptions = {
       container,
       renderer: 'svg' as RendererType,
@@ -34,10 +34,8 @@ export default class SplashLoaderComponent extends Component<Args> {
       loop: false,
       animationData: splashLoader,
     };
-
     const animation = lottieWeb.loadAnimation(startOptions) as AnimationTarget;
     animation.setSpeed(1);
-
     addEventListener(this, animation, 'complete', () => {
       runTask(this, this.args.toggle, 100);
     });

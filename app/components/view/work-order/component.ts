@@ -1,14 +1,16 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { WorkOrderStatus } from 'houseninja/data/work-order-status';
+import { WorkOrderStatus as Status } from 'houseninja/data/work-order-status';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 import WorkOrder from 'houseninja/models/work-order';
 import IntercomService from 'houseninja/services/intercom';
 import RouterService from '@ember/routing/router-service';
+import LoaderService from 'houseninja/services/loader';
+import ViewService from 'houseninja/services/view';
 
-enum WorkOrderViewContent {
+enum ContentType {
   ApprovePayment = 'approve-payment',
   ApproveEstimate = 'approve-estimate',
   Scheduling = 'scheduling',
@@ -21,41 +23,39 @@ type Args = {
 };
 
 export default class WorkOrderViewComponent extends Component<Args> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare loader: any;
+  @service declare loader: LoaderService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare view: any;
+  @service declare view: ViewService;
 
   paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
 
-  get isLoading() {
+  get isLoading(): boolean {
     return this.loader.isLoading;
   }
 
   get contentType(): string {
     const status = this.args.model?.status ?? '';
     switch (status) {
-      case WorkOrderStatus.InvoiceSentToCustomer:
-      case WorkOrderStatus.PaymentFailed:
-        return WorkOrderViewContent.ApprovePayment;
-      case WorkOrderStatus.EstimateSharedWithHomeowner:
-        return WorkOrderViewContent.ApproveEstimate;
-      case WorkOrderStatus.SchedulingInProgress:
-        return WorkOrderViewContent.Scheduling;
-      case WorkOrderStatus.InvoicePaidByCustomer:
-      case WorkOrderStatus.Closed:
-        return WorkOrderViewContent.Closed;
+      case Status.InvoiceSentToCustomer:
+      case Status.PaymentFailed:
+        return ContentType.ApprovePayment;
+      case Status.EstimateSharedWithHomeowner:
+        return ContentType.ApproveEstimate;
+      case Status.SchedulingInProgress:
+        return ContentType.Scheduling;
+      case Status.InvoicePaidByCustomer:
+      case Status.Closed:
+        return ContentType.Closed;
       default:
-        return WorkOrderViewContent.Default;
+        return ContentType.Default;
     }
   }
 
   @action
   selectRoute(route: string | WorkOrder): void {
-    if (typeof route === 'object') {
+    if (route instanceof WorkOrder) {
       this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
     } else {
       if (route === this.paymentRoute) {

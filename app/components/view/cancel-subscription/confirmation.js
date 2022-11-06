@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 export default class CancelSubscriptionConfirmationViewComponent extends Component {
   @service session;
   @service store;
@@ -72,7 +72,7 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
           additionalFeedback: this.additionalFeedback,
         });
       } catch (e) {
-        Sentry.captureException(e);
+        captureException(e);
       } finally {
         this.goodbye();
       }

@@ -15,7 +15,7 @@ export default class LogoutRoute extends Route {
     );
   }
 
-  async model() {
+  async model(): Promise<void> {
     await this.session.terminate();
   }
 }
