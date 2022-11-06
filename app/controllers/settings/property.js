@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
+import { runTask } from 'ember-lifeline';
 
 export default class SettingsPropertyController extends Controller {
   @service current;
@@ -69,7 +70,7 @@ export default class SettingsPropertyController extends Controller {
   @action
   shouldShowPropertyDialog() {
     if (isBlank(this.current?.property?.streetAddress1)) {
-      setTimeout(() => this.toggleModal(), 500);
+      runTask(this, this.toggleModal, 500);
     }
   }
 

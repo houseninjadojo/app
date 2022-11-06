@@ -11,7 +11,7 @@ import type ServiceArea from './service-area';
 import type User from './user';
 import type WorkOrder from './work-order';
 
-export default class PropertyModel extends Model {
+export default class Property extends Model {
   @belongsTo('service-area', { async: true, inverse: 'properties' })
   declare serviceArea: AsyncBelongsTo<ServiceArea>;
 

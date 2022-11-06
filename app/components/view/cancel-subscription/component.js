@@ -3,8 +3,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
-
-import Sentry from 'houseninja/utils/sentry';
+import { runTask } from 'ember-lifeline';
+import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
@@ -48,19 +48,22 @@ export default class CancelSubscriptionViewComponent extends Component {
         this.hasProcessed = true;
       }
     } catch (e) {
-      Sentry.captureException(e);
+      captureException(e);
     } finally {
       if (this.hasProcessed) {
-        new Promise((resolve) => {
-          setTimeout(() => {
-            this.isProcessing = false;
-            resolve();
-          }, 2000);
-        }).then(() => {
-          this.router.transitionTo(
-            NATIVE_MOBILE_ROUTE.CANCEL_SUBSCRIPTION.CONFIRMATION
+        await new Promise((resolve) => {
+          runTask(
+            this,
+            () => {
+              this.isProcessing = false;
+              resolve();
+            },
+            2000
           );
         });
+        this.router.transitionTo(
+          NATIVE_MOBILE_ROUTE.CANCEL_SUBSCRIPTION.CONFIRMATION
+        );
       } else {
         this.isProcessing = false;
       }

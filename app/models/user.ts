@@ -18,7 +18,7 @@ import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
 
-export default class UserModel extends Model {
+export default class User extends Model {
   @hasMany('document', { async: true, inverse: 'user' })
   declare documents: AsyncHasMany<Document>;
 

@@ -119,6 +119,7 @@
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
     "ember-inflector": "^4.0.2",
+    "ember-lifeline": "^6.0.2",
     "ember-load-initializers": "^2.1.2",
     "ember-metrics": "^1.5.2",
     "ember-page-title": "^7.0.0",
@@ -178,9 +179,9 @@
     "@capacitor/share": "^4.0.1",
     "@capacitor/splash-screen": "^4.1.1",
     "@capawesome/capacitor-file-picker": "^0.5.2",
+    "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
     "@mineminemine/fcm": "^4.0.3",
-    "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "capacitor-secure-storage-plugin": "^0.8.0",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4"
