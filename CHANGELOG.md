@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/houseninjadojo/app/compare/v1.26.1...v1.26.2) (2022-11-07)
+
+
+### Bug Fixes
+
+* phone input ([#1214](https://github.com/houseninjadojo/app/issues/1214)) ([3791abe](https://github.com/houseninjadojo/app/commit/3791abeee93618e264f07a3573a7fbe4dfa6ee51))
+
 ## [1.26.1](https://github.com/houseninjadojo/app/compare/v1.26.0...v1.26.1) (2022-11-05)
 
 
