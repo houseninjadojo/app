@@ -18,7 +18,7 @@ import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
 
-export default class UserModel extends Model {
+export default class User extends Model {
   @hasMany('document', { async: true, inverse: 'user' })
   declare documents: AsyncHasMany<Document>;
 
@@ -67,8 +67,9 @@ export default class UserModel extends Model {
   @attr('string') declare intercomHash?: string;
 
   @attr('string') declare contactType?: string;
-  @attr('string') declare onboardingStep?: OnboardingStep;
   @attr('string') declare onboardingCode?: string;
+  @attr('string', { defaultValue: OnboardingStep.ServiceArea })
+  declare onboardingStep: OnboardingStep;
 
   @attr('string') declare howDidYouHearAboutUs?: string;
 
