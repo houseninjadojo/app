@@ -4,9 +4,9 @@ import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import ENV from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import SecureStorage from 'houseninja/utils/secure-storage';
-import HTTP, { encodeFormData } from 'houseninja/utils/http';
+import HTTP from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
-import { later, cancel } from '@ember/runloop';
+import { later, cancel, bind } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { startSpan } from 'houseninja/utils/sentry';
 import { HttpResponse } from '@capacitor/core';
@@ -585,7 +585,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       this,
       // callback function
       async (refresh_token) => {
-        this.trigger('sessionDataUpdated', await this.refresh(refresh_token));
+        this.trigger(
+          'sessionDataUpdated',
+          bind(this, async () => await this.refresh(refresh_token))
+        );
       },
       // pass the refresh_token into the callback function
       refresh_token,
