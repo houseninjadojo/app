@@ -20,6 +20,7 @@ import type CapacitorService from 'houseninja/services/capacitor';
 type GenericService = any;
 
 class ApplicationRoute extends Route {
+  logger: any;
   @service declare branch: BranchService;
   @service declare capacitor: CapacitorService;
   @service declare current: GenericService;
@@ -51,6 +52,7 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel(): Promise<void> {
+    this.logger.info('ApplicationRoute::beforeModel');
     await this.eventBus.setup();
     await this.capacitor.setup();
     await this.storage.setup();
