@@ -1,5 +1,4 @@
 import { datadogLogs, type LogsInitConfiguration } from '@datadog/browser-logs';
-import ApplicationInstance from '@ember/application/instance';
 import ENV from 'houseninja/config/environment';
 
 const options: LogsInitConfiguration = {
@@ -12,7 +11,7 @@ const options: LogsInitConfiguration = {
 };
 
 export function initialize() {
-  if (ENV.environment === 'test') return;
+  if (['test', 'development'].includes(ENV.environment)) return;
   datadogLogs.init(options);
   datadogLogs.setLoggerGlobalContext({ env: ENV.environment });
   datadogLogs.setGlobalContextProperty('env', ENV.environment);
