@@ -5,6 +5,7 @@ import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 import DeviceModel from 'houseninja/models/device';
+import { datadogRum } from '@datadog/browser-rum';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type MetricsService from 'houseninja/services/metrics';
@@ -148,6 +149,11 @@ export default class CurrentService extends Service {
         email,
         name: fullName,
         hmac: intercomHash,
+      });
+      datadogRum.setUser({
+        id,
+        email,
+        name: fullName,
       });
       this.isLoadingUser = false;
     }
