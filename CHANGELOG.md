@@ -1,3 +1,10 @@
+## [1.26.4](https://github.com/houseninjadojo/app/compare/v1.26.3...v1.26.4) (2022-11-08)
+
+
+### Bug Fixes
+
+* contact info validation ([#1232](https://github.com/houseninjadojo/app/issues/1232)) ([4ad8649](https://github.com/houseninjadojo/app/commit/4ad8649887f29d138a703cfba246be50a8da15c1))
+
 ## [1.26.3](https://github.com/houseninjadojo/app/compare/v1.26.2...v1.26.3) (2022-11-08)
 
 
