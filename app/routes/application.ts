@@ -52,7 +52,6 @@ class ApplicationRoute extends Route {
   }
 
   async beforeModel(): Promise<void> {
-    this.logger.info('ApplicationRoute::beforeModel');
     await this.eventBus.setup();
     await this.capacitor.setup();
     await this.storage.setup();
