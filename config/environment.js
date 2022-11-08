@@ -54,6 +54,7 @@ module.exports = function (environment) {
     },
 
     datadog: {
+      applicationId: process.env.DATADOG_RUM_APP_ID,
       clientToken: process.env.DATADOG_CLIENT_TOKEN,
       side: 'datadoghq.com',
       service: 'app',

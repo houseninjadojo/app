@@ -39,6 +39,7 @@ declare const config: {
     key: string;
   };
   datadog: {
+    applicationId: string;
     clientToken: string;
     env: string;
     forwardErrorsToLogs: boolean;

@@ -7,6 +7,13 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface Array<T> extends Ember.ArrayPrototypeExtensions<T> {}
   // interface Function extends Ember.FunctionPrototypeExtensions {}
+
+  namespace NodeJS {
+    interface ProcessEnv {
+      DATADOG_RUM_APP_ID: string;
+      readonly [key: string]: string | undefined;
+    }
+  }
 }
 
 export {};
