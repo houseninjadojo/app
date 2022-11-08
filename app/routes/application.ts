@@ -4,8 +4,6 @@ import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { getOwner } from '@ember/application';
-import { datadogLogs } from '@datadog/browser-logs';
 
 import type Transition from '@ember/routing/transition';
 import type IntercomService from 'houseninja/services/intercom';

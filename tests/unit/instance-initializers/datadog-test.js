@@ -20,7 +20,7 @@ module('Unit | Instance Initializer | datadog', function (hooks) {
     });
 
     this.application = this.TestApplication.create({
-      autoboot: false
+      autoboot: false,
     });
 
     this.instance = this.application.buildInstance();
