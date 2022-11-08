@@ -1430,6 +1430,18 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz#1bfafe4b7ed0f3e4105837e056e0a89b108ebe36"
   integrity sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==
 
+"@datadog/browser-core@4.23.3":
+  version "4.23.3"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.23.3.tgz#843f6787eff5a4d06bb0f9eb93eb54ece687e631"
+  integrity sha512-XaZTE9M8mngVaPLZmZAlwY+OWxGh1fQwaIMezsbwUreK3Itnz0BgGU9UBksPQXFRvQysV2/BDtV0nonu++Psxw==
+
+"@datadog/browser-logs@^4.23.3":
+  version "4.23.3"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-logs/-/browser-logs-4.23.3.tgz#804809ae5f6c3046ee72621d9934095afce5f9bc"
+  integrity sha512-YCTIfTFiwH+ZpaZ+I5LwTPZ5H2dUWCEUUeP6m0nRVp0bYDSTxla/mXXh2DS109w+Kv7ZXvhpLMHtSaTAm6W80Q==
+  dependencies:
+    "@datadog/browser-core" "4.23.3"
+
 "@ember-data/adapter@4.7.3":
   version "4.7.3"
   resolved "https://registry.yarnpkg.com/@ember-data/adapter/-/adapter-4.7.3.tgz#a6b35a2c5068378d1de11a1bc8f6b053733e76e7"

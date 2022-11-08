@@ -178,9 +178,10 @@
     "@capacitor/share": "^4.0.1",
     "@capacitor/splash-screen": "^4.1.1",
     "@capawesome/capacitor-file-picker": "^0.5.2",
+    "@datadog/browser-logs": "^4.23.3",
+    "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "@houseninja/capacitor-mixpanel": "^1.0.0-beta.2",
     "@mineminemine/fcm": "^4.0.3",
-    "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "capacitor-secure-storage-plugin": "^0.8.0",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4"

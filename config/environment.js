@@ -53,6 +53,13 @@ module.exports = function (environment) {
       key: process.env.BRANCH_KEY,
     },
 
+    datadog: {
+      clientToken: process.env.DATADOG_CLIENT_TOKEN,
+      side: 'datadoghq.com',
+      service: 'app',
+      version: pkg.version,
+    },
+
     'ember-active-storage': {
       url: process.env.API_ACTIVE_STORAGE_HOST,
     },
