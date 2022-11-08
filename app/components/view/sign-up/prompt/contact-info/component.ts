@@ -181,15 +181,18 @@ export default class ContactInfoComponent extends Component<Args> {
     const target = e.target as HTMLInputElement;
     const targetId = target.id as keyof ContactInfo;
     const field = this.fields.find((f) => f.id === targetId);
+
     if (targetId === 'phoneNumber') {
       target.value = target.value.replace(/\D/g, '');
       formatPhoneNumber(target);
       this.contactInfo.phoneNumber = target.value;
-      if (field) field.value = target.value;
     } else {
       this.contactInfo[targetId] = target.value;
-      if (field) this.contactInfo[targetId];
     }
+
+    // Update the field presentation regardless for actual validation
+    if (field) field.value = target.value;
+
     this.formIsInvalid = inputValidation(this.fields, [
       ...(!this.args.isOnboardingViaNativeApp ? ['phoneIsValid'] : []),
       'emailIsValid',
