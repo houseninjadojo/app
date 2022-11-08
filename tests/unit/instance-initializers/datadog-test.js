@@ -1,12 +1,12 @@
 import Application from '@ember/application';
 
 import config from 'houseninja/config/environment';
-import { initialize } from 'houseninja/initializers/datadog';
+import { initialize } from 'houseninja/instance-initializers/datadog';
 import { module, test } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';
 
-module('Unit | Initializer | datadog', function (hooks) {
+module('Unit | Instance Initializer | datadog', function (hooks) {
   hooks.beforeEach(function () {
     this.TestApplication = class TestApplication extends Application {
       modulePrefix = config.modulePrefix;
@@ -14,23 +14,25 @@ module('Unit | Initializer | datadog', function (hooks) {
       Resolver = Resolver;
     };
 
-    this.TestApplication.initializer({
+    this.TestApplication.instanceInitializer({
       name: 'initializer under test',
       initialize,
     });
 
     this.application = this.TestApplication.create({
-      autoboot: false,
+      autoboot: false
     });
-  });
 
+    this.instance = this.application.buildInstance();
+  });
   hooks.afterEach(function () {
+    run(this.instance, 'destroy');
     run(this.application, 'destroy');
   });
 
   // TODO: Replace this with your real tests.
   test('it works', async function (assert) {
-    await this.application.boot();
+    await this.instance.boot();
 
     assert.ok(true);
   });
