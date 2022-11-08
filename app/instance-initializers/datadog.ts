@@ -12,6 +12,7 @@ const options: LogsInitConfiguration = {
 
 export function initialize() {
   if (['test', 'development'].includes(ENV.environment)) return;
+  if (!ENV.datadog.clientToken) return;
   datadogLogs.init(options);
   datadogLogs.setLoggerGlobalContext({ env: ENV.environment });
   datadogLogs.setGlobalContextProperty('env', ENV.environment);
