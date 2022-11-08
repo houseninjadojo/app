@@ -1,3 +1,10 @@
+## [1.26.3](https://github.com/houseninjadojo/app/compare/v1.26.2...v1.26.3) (2022-11-08)
+
+
+### Bug Fixes
+
+* datadog rum ([#1231](https://github.com/houseninjadojo/app/issues/1231)) ([033146e](https://github.com/houseninjadojo/app/commit/033146e6413ebef7e65086f041b7ee0297fba6a6))
+
 ## [1.26.2](https://github.com/houseninjadojo/app/compare/v1.26.1...v1.26.2) (2022-11-07)
 
 
