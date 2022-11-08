@@ -13,7 +13,7 @@ const options: LogsInitConfiguration = {
 
 export function initialize(app: Application) {
   datadogLogs.init(options);
-  app.register('logger:main', datadogLogs.logger, { instantiate: false });
+  app.register('logger:main', datadogLogs.logger);
   app.inject('route', 'logger', 'logger:main');
 }
 
