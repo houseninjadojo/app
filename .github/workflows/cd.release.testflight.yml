@@ -9,6 +9,7 @@ on:
 
 env:
   RUBY_VERSION: 3.0.3
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
 jobs:
   web:
@@ -55,6 +56,12 @@ jobs:
           version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
           url_prefix: ~/
           finalize: false
+      - name: upload datadog sourcemaps
+        run: |
+          npx @datadog/datadog-ci sourcemaps upload dist/assets \
+            --service app \
+            --release-version ${{ steps.package-version.outputs.current-version }}+1 \
+            --minified-path-prefix https://app.houseninja.co/
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:

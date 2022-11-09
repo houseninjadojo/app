@@ -48,6 +48,15 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - name: upload datadog sourcemaps
+        run: |
+          npx @datadog/datadog-ci sourcemaps upload dist/assets \
+            --service app \
+            --release-version ${{ steps.package-version.outputs.current-version }}+1 \
+            --minified-path-prefix https://app.houseninja.co/
+        env:
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app
         env:
