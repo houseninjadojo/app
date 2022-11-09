@@ -60,7 +60,7 @@ jobs:
         run: |
           npx @datadog/datadog-ci sourcemaps upload dist \
             --service app \
-            --release-version 1.26.5+1 \
+            --release-version ${{ steps.package-version.outputs.current-version }}+1 \
             --minified-path-prefix https://app.houseninja.co/
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
