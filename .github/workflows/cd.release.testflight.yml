@@ -58,7 +58,7 @@ jobs:
           finalize: false
       - name: upload datadog sourcemaps
         run: |
-          npx @datadog/datadog-ci sourcemaps upload dist/assets \
+          npx @datadog/datadog-ci sourcemaps upload ./dist \
             --service app \
             --release-version ${{ steps.package-version.outputs.current-version }}+1 \
             --minified-path-prefix https://app.houseninja.co/
