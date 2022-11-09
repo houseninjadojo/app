@@ -17,6 +17,7 @@ import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
+import type { IdentifyOptions } from 'ember-metrics/metrics-adapters/base';
 
 export default class User extends Model {
   @hasMany('document', { async: true, inverse: 'user' })
@@ -85,7 +86,7 @@ export default class User extends Model {
     return isEmpty(this.onboardingStep);
   }
 
-  get metricsParams(): { [key: string]: string | undefined } {
+  get metricsParams(): IdentifyOptions {
     return {
       distinctId: this.id,
       email: this.email,

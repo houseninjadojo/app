@@ -130,11 +130,9 @@ export default class CurrentService extends Service {
     await this._loadUser.perform();
     await this.registerDeviceToUser();
     if (this.user) {
-      const { id, intercomHash, email, fullName } = this.user.getProperties(
+      const { id, email } = this.user.getProperties(
         'id',
-        'intercomHash',
         'email',
-        'fullName'
       );
       Sentry.addBreadcrumb({
         type: 'info',
@@ -143,12 +141,7 @@ export default class CurrentService extends Service {
         data: { user: { id, email } },
       });
       Sentry.setUser({ email });
-      this.metrics.identify({
-        distinctId: id,
-        email,
-        name: fullName,
-        hmac: intercomHash,
-      });
+      this.metrics.identify(this.user.metricsParams);
       this.isLoadingUser = false;
     }
   });
