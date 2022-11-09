@@ -1,3 +1,10 @@
+## [1.26.6](https://github.com/houseninjadojo/app/compare/v1.26.5...v1.26.6) (2022-11-09)
+
+
+### Bug Fixes
+
+* **metrics:** use datadog metrics adapters ([#1241](https://github.com/houseninjadojo/app/issues/1241)) ([c1cf707](https://github.com/houseninjadojo/app/commit/c1cf7073c93e6fc1f2a50b5eca8eed8971435f3f))
+
 ## [1.26.5](https://github.com/houseninjadojo/app/compare/v1.26.4...v1.26.5) (2022-11-09)
 
 
