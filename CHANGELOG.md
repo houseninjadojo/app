@@ -1,3 +1,10 @@
+## [1.26.5](https://github.com/houseninjadojo/app/compare/v1.26.4...v1.26.5) (2022-11-09)
+
+
+### Bug Fixes
+
+* **datadog:** set user on browser logs ([#1240](https://github.com/houseninjadojo/app/issues/1240)) ([4ce5689](https://github.com/houseninjadojo/app/commit/4ce56896b1cb33573c28d00cd4f5e4989ff3d10a))
+
 ## [1.26.4](https://github.com/houseninjadojo/app/compare/v1.26.3...v1.26.4) (2022-11-08)
 
 
