@@ -85,11 +85,12 @@ export default class User extends Model {
     return isEmpty(this.onboardingStep);
   }
 
-  get datadogParams(): { [key: string]: string } {
+  get metricsParams(): { [key: string]: string | undefined } {
     return {
-      id: this.id,
+      distinctId: this.id,
       email: this.email,
       name: this.fullName,
+      hmac: this.intercomHash,
     };
   }
 }

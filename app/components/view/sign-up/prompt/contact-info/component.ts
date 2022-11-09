@@ -13,11 +13,10 @@ import {
 } from 'houseninja/data/enums/onboarding-step';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 import { TrackedArray, TrackedObject } from 'tracked-built-ins';
-import { datadogRum } from '@datadog/browser-rum';
-import { datadogLogs } from '@datadog/browser-logs';
 
 import type CurrentService from 'houseninja/services/current';
 import type RouterService from '@ember/routing/router-service';
+import type MetricsService from 'houseninja/services/metrics';
 import type OnboardingService from 'houseninja/services/onboarding';
 import type StoreService from 'houseninja/services/store';
 import type User from 'houseninja/models/user';
@@ -38,6 +37,7 @@ type ContactInfo = {
 
 export default class ContactInfoComponent extends Component<Args> {
   @service declare current: CurrentService;
+  @service declare metrics: MetricsService;
   @service declare router: RouterService;
   @service declare onboarding: OnboardingService;
   @service declare store: StoreService;
@@ -148,8 +148,7 @@ export default class ContactInfoComponent extends Component<Args> {
     });
     try {
       await user.save(); // save to the server
-      datadogRum.setUser(user.datadogParams);
-      datadogLogs.setUser(user.datadogParams);
+      this.metrics.identify(user.metricsParams);
     } catch (e) {
       this.errors = user.errors;
       captureException(e as Error);
