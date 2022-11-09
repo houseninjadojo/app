@@ -151,13 +151,8 @@ export default class CurrentService extends Service {
         name: fullName,
         hmac: intercomHash,
       });
-      const ddUser = {
-        id,
-        email,
-        name: fullName,
-      }
-      datadogRum.setUser(ddUser);
-      datadogLogs.setUser(ddUser);
+      datadogRum.setUser(this.user.datadogParams);
+      datadogLogs.setUser(this.user.datadogParams);
       this.isLoadingUser = false;
     }
   });

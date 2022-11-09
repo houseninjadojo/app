@@ -84,4 +84,12 @@ export default class User extends Model {
   get shouldContinueOnboarding(): boolean {
     return isEmpty(this.onboardingStep);
   }
+
+  get datadogParams(): { [key: string]: string } {
+    return {
+      id: this.id,
+      email: this.email,
+      name: this.fullName,
+    };
+  }
 }

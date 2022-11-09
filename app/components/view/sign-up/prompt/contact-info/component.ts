@@ -13,6 +13,8 @@ import {
 } from 'houseninja/data/enums/onboarding-step';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 import { TrackedArray, TrackedObject } from 'tracked-built-ins';
+import { datadogRum } from '@datadog/browser-rum';
+import { datadogLogs } from '@datadog/browser-logs';
 
 import type CurrentService from 'houseninja/services/current';
 import type RouterService from '@ember/routing/router-service';
@@ -146,6 +148,8 @@ export default class ContactInfoComponent extends Component<Args> {
     });
     try {
       await user.save(); // save to the server
+      datadogRum.setUser(user.datadogParams);
+      datadogLogs.setUser(user.datadogParams);
     } catch (e) {
       this.errors = user.errors;
       captureException(e as Error);
