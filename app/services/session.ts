@@ -6,8 +6,6 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import { startSpan } from 'houseninja/utils/sentry';
 import { debug } from '@ember/debug';
-import { datadogRum } from '@datadog/browser-rum';
-import { datadogLogs } from '@datadog/browser-logs';
 
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -97,8 +95,6 @@ export default class SessionService extends BaseSessionService {
   }
 
   async handleInvalidation(routeAfterInvalidation: string): Promise<void> {
-    datadogRum.clearUser();
-    datadogLogs.clearUser();
     await this.metrics.trackEvent({ event: 'Logout' });
     await this.metrics.reset();
     await this.browser.close();

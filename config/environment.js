@@ -97,6 +97,16 @@ module.exports = function (environment) {
           token: process.env.MIXPANEL_TOKEN,
         },
       },
+      {
+        name: 'DatadogRum',
+        environments: ['sandbox', 'production'],
+        config: {},
+      },
+      {
+        name: 'DatadogLogs',
+        environments: ['sandbox', 'production'],
+        config: {},
+      },
     ],
 
     sentry: {

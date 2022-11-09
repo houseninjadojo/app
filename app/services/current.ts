@@ -5,8 +5,6 @@ import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 import DeviceModel from 'houseninja/models/device';
-import { datadogRum } from '@datadog/browser-rum';
-import { datadogLogs } from '@datadog/browser-logs';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type MetricsService from 'houseninja/services/metrics';
@@ -132,11 +130,9 @@ export default class CurrentService extends Service {
     await this._loadUser.perform();
     await this.registerDeviceToUser();
     if (this.user) {
-      const { id, intercomHash, email, fullName } = this.user.getProperties(
+      const { id, email } = this.user.getProperties(
         'id',
-        'intercomHash',
         'email',
-        'fullName'
       );
       Sentry.addBreadcrumb({
         type: 'info',
@@ -145,14 +141,7 @@ export default class CurrentService extends Service {
         data: { user: { id, email } },
       });
       Sentry.setUser({ email });
-      this.metrics.identify({
-        distinctId: id,
-        email,
-        name: fullName,
-        hmac: intercomHash,
-      });
-      datadogRum.setUser(this.user.datadogParams);
-      datadogLogs.setUser(this.user.datadogParams);
+      this.metrics.identify(this.user.metricsParams);
       this.isLoadingUser = false;
     }
   });
