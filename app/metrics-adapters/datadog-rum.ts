@@ -43,6 +43,7 @@ export default class DatadogRum extends BaseAdapter {
   }): void {
     if (!this.enabled) return;
     const { event, properties } = options;
+    if (event.includes('click')) return;
     datadogRum.addAction(event, properties);
   }
 
