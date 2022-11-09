@@ -58,9 +58,9 @@ jobs:
           finalize: false
       - name: upload datadog sourcemaps
         run: |
-          npx @datadog/datadog-ci sourcemaps upload ./dist \
+          npx @datadog/datadog-ci sourcemaps upload dist \
             --service app \
-            --release-version ${{ steps.package-version.outputs.current-version }}+1 \
+            --release-version 1.26.5+1 \
             --minified-path-prefix https://app.houseninja.co/
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
