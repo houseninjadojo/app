@@ -7,7 +7,7 @@ import { datadogRum } from '@datadog/browser-rum';
 export default class DatadogRum extends BaseAdapter {
   enabled = true;
 
-  toStringExtension() {
+  toStringExtension(): string {
     return 'DatadogRum';
   }
 
@@ -54,7 +54,7 @@ export default class DatadogRum extends BaseAdapter {
     // no-op
   }
 
-  willDestroy() {
+  willDestroy(): void {
     if (!this.enabled) return;
     datadogRum.clearUser();
   }

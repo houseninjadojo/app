@@ -7,7 +7,7 @@ import { datadogLogs } from '@datadog/browser-logs';
 export default class DatadogLogs extends BaseAdapter {
   enabled = true;
 
-  toStringExtension() {
+  toStringExtension(): string {
     return 'DatadogLogs';
   }
 
@@ -57,7 +57,7 @@ export default class DatadogLogs extends BaseAdapter {
     // no-op
   }
 
-  willDestroy() {
+  willDestroy(): void {
     if (!this.enabled) return;
     datadogLogs.clearUser();
   }
