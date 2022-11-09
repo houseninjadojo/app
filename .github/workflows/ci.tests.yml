@@ -51,7 +51,7 @@ jobs:
       - run: yarn build
       - name: upload datadog sourcemaps
         run: |
-          npx @datadog/datadog-ci sourcemaps upload dist \
+          yarn run upload:sourcemaps:datadog \
             --service app \
             --release-version 1.26.5+1 \
             --minified-path-prefix https://app.houseninja.co/
