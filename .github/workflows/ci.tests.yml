@@ -50,12 +50,11 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - name: upload datadog sourcemaps
-        run: |
-          yarn run upload:sourcemaps:datadog \
-            --service app \
-            --release-version 1.26.5+1 \
-            --minified-path-prefix https://app.houseninja.co/
+        run: yarn run upload:sourcemaps:datadog
         env:
+          SERVICE: app
+          VERSION: 1.26.5
+          DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
           DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app

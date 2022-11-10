@@ -28,7 +28,7 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "test:ci": "percy exec -- ember test",
-    "upload:sourcemaps:datadog": "datadog-ci sourcemaps upload dist"
+    "upload:sourcemaps:datadog": "datadog-ci sourcemaps upload dist --service $SERVICE --release-version $VERSION --minified-path-prefix $DD_SOURCEMAP_PREFIX"
   },
   "devDependencies": {
     "@algonauti/ember-active-storage": "^2.2.0",
@@ -97,6 +97,7 @@
     "autoprefixer": "^10.4.13",
     "branch-sdk": "^2.69.0",
     "broccoli-asset-rev": "^3.0.0",
+    "broccoli-terser-sourcemap": "camerondubas/broccoli-terser-sourcemap#fix/append-map-extension",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
     "dotenv-vault": "^1.16.3",
