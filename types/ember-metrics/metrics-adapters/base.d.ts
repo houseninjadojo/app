@@ -6,11 +6,15 @@ declare module 'ember-metrics/metrics-adapters/base' {
     hmac?: string;
   }
 
+  export type Config = object;
+
   export default class BaseAdapter {
     static supportsFastBoot: boolean;
 
     config: any;
     metrics: any;
+
+    constructor(config: Config);
 
     toStringExtension(): string;
     init(): void;

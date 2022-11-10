@@ -53,6 +53,14 @@ module.exports = function (environment) {
       key: process.env.BRANCH_KEY,
     },
 
+    datadog: {
+      applicationId: process.env.DATADOG_RUM_APP_ID,
+      clientToken: process.env.DATADOG_CLIENT_TOKEN,
+      side: 'datadoghq.com',
+      service: 'app',
+      version: pkg.version,
+    },
+
     'ember-active-storage': {
       url: process.env.API_ACTIVE_STORAGE_HOST,
     },
@@ -88,6 +96,16 @@ module.exports = function (environment) {
         config: {
           token: process.env.MIXPANEL_TOKEN,
         },
+      },
+      {
+        name: 'DatadogRum',
+        environments: ['sandbox', 'production'],
+        config: {},
+      },
+      {
+        name: 'DatadogLogs',
+        environments: ['sandbox', 'production'],
+        config: {},
       },
     ],
 

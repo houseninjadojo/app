@@ -1,3 +1,45 @@
+## [1.26.6](https://github.com/houseninjadojo/app/compare/v1.26.5...v1.26.6) (2022-11-09)
+
+
+### Bug Fixes
+
+* **metrics:** use datadog metrics adapters ([#1241](https://github.com/houseninjadojo/app/issues/1241)) ([c1cf707](https://github.com/houseninjadojo/app/commit/c1cf7073c93e6fc1f2a50b5eca8eed8971435f3f))
+
+## [1.26.5](https://github.com/houseninjadojo/app/compare/v1.26.4...v1.26.5) (2022-11-09)
+
+
+### Bug Fixes
+
+* **datadog:** set user on browser logs ([#1240](https://github.com/houseninjadojo/app/issues/1240)) ([4ce5689](https://github.com/houseninjadojo/app/commit/4ce56896b1cb33573c28d00cd4f5e4989ff3d10a))
+
+## [1.26.4](https://github.com/houseninjadojo/app/compare/v1.26.3...v1.26.4) (2022-11-08)
+
+
+### Bug Fixes
+
+* contact info validation ([#1232](https://github.com/houseninjadojo/app/issues/1232)) ([4ad8649](https://github.com/houseninjadojo/app/commit/4ad8649887f29d138a703cfba246be50a8da15c1))
+
+## [1.26.3](https://github.com/houseninjadojo/app/compare/v1.26.2...v1.26.3) (2022-11-08)
+
+
+### Bug Fixes
+
+* datadog rum ([#1231](https://github.com/houseninjadojo/app/issues/1231)) ([033146e](https://github.com/houseninjadojo/app/commit/033146e6413ebef7e65086f041b7ee0297fba6a6))
+
+## [1.26.2](https://github.com/houseninjadojo/app/compare/v1.26.1...v1.26.2) (2022-11-07)
+
+
+### Bug Fixes
+
+* phone input ([#1214](https://github.com/houseninjadojo/app/issues/1214)) ([3791abe](https://github.com/houseninjadojo/app/commit/3791abeee93618e264f07a3573a7fbe4dfa6ee51))
+
+## [1.26.1](https://github.com/houseninjadojo/app/compare/v1.26.0...v1.26.1) (2022-11-05)
+
+
+### Bug Fixes
+
+* login dashboard userId bug ([#1212](https://github.com/houseninjadojo/app/issues/1212)) ([c999f89](https://github.com/houseninjadojo/app/commit/c999f89da07537416fa06fe60b3fb79363515532))
+
 # [1.26.0](https://github.com/houseninjadojo/app/compare/v1.25.1...v1.26.0) (2022-11-05)
 
 

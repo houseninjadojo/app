@@ -38,6 +38,16 @@ declare const config: {
   branch: {
     key: string;
   };
+  datadog: {
+    applicationId: string;
+    clientToken: string;
+    env: string;
+    forwardErrorsToLogs: boolean;
+    sampleRate: number;
+    service: string;
+    site: string;
+    trackInteractions: boolean;
+  };
   'ember-active-storage': {
     url: string;
   };

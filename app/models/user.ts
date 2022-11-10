@@ -17,6 +17,7 @@ import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
+import type { IdentifyOptions } from 'ember-metrics/metrics-adapters/base';
 
 export default class User extends Model {
   @hasMany('document', { async: true, inverse: 'user' })
@@ -67,8 +68,9 @@ export default class User extends Model {
   @attr('string') declare intercomHash?: string;
 
   @attr('string') declare contactType?: string;
-  @attr('string') declare onboardingStep?: OnboardingStep;
   @attr('string') declare onboardingCode?: string;
+  @attr('string', { defaultValue: OnboardingStep.ServiceArea })
+  declare onboardingStep: OnboardingStep;
 
   @attr('string') declare howDidYouHearAboutUs?: string;
 
@@ -82,5 +84,14 @@ export default class User extends Model {
 
   get shouldContinueOnboarding(): boolean {
     return isEmpty(this.onboardingStep);
+  }
+
+  get metricsParams(): IdentifyOptions {
+    return {
+      distinctId: this.id,
+      email: this.email,
+      name: this.fullName,
+      hmac: this.intercomHash,
+    };
   }
 }

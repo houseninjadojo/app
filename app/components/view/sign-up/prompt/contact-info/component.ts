@@ -14,11 +14,33 @@ import {
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 import { TrackedArray, TrackedObject } from 'tracked-built-ins';
 
-export default class ContactInfoComponent extends Component {
-  @service current;
-  @service router;
-  @service onboarding;
-  @service store;
+import type CurrentService from 'houseninja/services/current';
+import type RouterService from '@ember/routing/router-service';
+import type MetricsService from 'houseninja/services/metrics';
+import type OnboardingService from 'houseninja/services/onboarding';
+import type StoreService from 'houseninja/services/store';
+import type User from 'houseninja/models/user';
+import type { Field } from 'houseninja/app/components';
+
+type Args = {
+  isOnboardingViaNativeApp: boolean;
+  user: User;
+  toggleModal?: () => void;
+};
+
+type ContactInfo = {
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  email?: string;
+};
+
+export default class ContactInfoComponent extends Component<Args> {
+  @service declare current: CurrentService;
+  @service declare metrics: MetricsService;
+  @service declare router: RouterService;
+  @service declare onboarding: OnboardingService;
+  @service declare store: StoreService;
 
   @tracked errors = new TrackedObject({
     firstName: [],
@@ -27,43 +49,43 @@ export default class ContactInfoComponent extends Component {
     email: [],
   });
 
-  contactInfo = new TrackedObject({
-    firstName: null,
-    lastName: null,
-    phoneNumber: null,
-    email: null,
+  contactInfo: ContactInfo = new TrackedObject({
+    firstName: undefined,
+    lastName: undefined,
+    phoneNumber: undefined,
+    email: undefined,
   });
 
   @tracked formIsInvalid = true;
   @tracked isLoading = false;
 
-  signupFields = [
+  signupFields: Field[] = [
     {
       id: 'firstName',
       required: true,
       label: 'First Name',
       placeholder: '',
-      value: null,
+      value: undefined,
     },
     {
       id: 'lastName',
       required: true,
       label: 'Last Name',
       placeholder: '',
-      value: null,
+      value: undefined,
     },
     {
       type: 'tel',
       id: 'phoneNumber',
       required: true,
       label: 'Phone',
-      value: null,
+      value: undefined,
     },
   ];
 
   howDidYouHearAboutUsLabel = 'howDidYouHearAboutUs';
 
-  fields = new TrackedArray([
+  fields: Field[] = new TrackedArray([
     ...(!this.args.isOnboardingViaNativeApp ? this.signupFields : []),
     {
       type: 'email',
@@ -71,7 +93,7 @@ export default class ContactInfoComponent extends Component {
       required: true,
       label: 'Email',
       placeholder: '',
-      value: null,
+      value: undefined,
     },
     ...(!this.args.isOnboardingViaNativeApp
       ? [
@@ -79,29 +101,27 @@ export default class ContactInfoComponent extends Component {
             id: this.howDidYouHearAboutUsLabel,
             required: false,
             hideLabel: true,
-            value: null,
+            value: undefined,
             placeholder: '(Optional)',
           },
         ]
       : []),
   ]);
 
-  constructor() {
-    super(...arguments);
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
 
     if (isPresent(this.args.user)) {
-      this.contactInfo = this.args.user.getProperties(
-        'email',
-        'phoneNumber',
-        'firstName',
-        'lastName'
-      );
+      this.contactInfo.firstName = this.args.user.firstName;
+      this.contactInfo.lastName = this.args.user.lastName;
+      this.contactInfo.phoneNumber = this.args.user.phoneNumber;
+      this.contactInfo.email = this.args.user.email;
       this.formIsInvalid = false;
     }
   }
 
   @action
-  async onboardUser(user) {
+  async onboardUser(user: User): Promise<void> {
     this.onboarding.rehydrateFromRemote.perform();
     let route = this.onboarding.routeFromStep(user.onboardingStep);
     if (user.onboardingStep === CONTACT_INFO) {
@@ -111,7 +131,7 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
-  async saveContactInfo() {
+  async saveContactInfo(): Promise<User | undefined> {
     this.isLoading = true;
     // get rid of anything in memory
     if (isPresent(this.args.user)) {
@@ -127,11 +147,11 @@ export default class ContactInfoComponent extends Component {
       onboardingStep,
     });
     try {
-      // save to the server
-      await user.save();
+      await user.save(); // save to the server
+      this.metrics.identify(user.metricsParams);
     } catch (e) {
       this.errors = user.errors;
-      captureException(e);
+      captureException(e as Error);
       return;
     } finally {
       this.isLoading = false;
@@ -140,7 +160,7 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
-  async handlePrimaryClick() {
+  async handlePrimaryClick(): Promise<void> {
     const user = await this.saveContactInfo();
     if (isEmpty(user)) {
       return;
@@ -155,21 +175,26 @@ export default class ContactInfoComponent extends Component {
   }
 
   @action
-  goBack() {
+  goBack(): void {
     this.router.transitionTo(SIGNUP_ROUTE.INDEX);
   }
 
   @action
-  validateForm(e) {
-    if (e.target.id === 'phoneNumber') {
-      this.contactInfo[e.target.id] = e.target.value.replace(/\D/g, '');
-      formatPhoneNumber(e.target);
-      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+  validateForm(e: InputEvent): void {
+    const target = e.target as HTMLInputElement;
+    const targetId = target.id as keyof ContactInfo;
+    const field = this.fields.find((f) => f.id === targetId);
+
+    if (targetId === 'phoneNumber') {
+      target.value = target.value.replace(/\D/g, '');
+      formatPhoneNumber(target);
+      this.contactInfo.phoneNumber = target.value;
     } else {
-      this.contactInfo[e.target.id] = e.target.value;
-      this.fields.filter((f) => f.id === e.target.id)[0].value =
-        this.contactInfo[e.target.id];
+      this.contactInfo[targetId] = target.value;
     }
+
+    // Update the field presentation regardless for actual validation
+    if (field) field.value = target.value;
 
     this.formIsInvalid = inputValidation(this.fields, [
       ...(!this.args.isOnboardingViaNativeApp ? ['phoneIsValid'] : []),
