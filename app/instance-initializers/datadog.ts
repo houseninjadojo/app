@@ -1,14 +1,32 @@
 import { datadogLogs, type LogsInitConfiguration } from '@datadog/browser-logs';
-import { datadogRum, RumEvent } from '@datadog/browser-rum';
+import {
+  datadogRum,
+  RumEvent,
+  RumEventDomainContext,
+  RumFetchResourceEventDomainContext,
+} from '@datadog/browser-rum';
 import ENV from 'houseninja/config/environment';
 
-const beforeSend = (event: RumEvent): boolean => {
+const beforeSend = (
+  event: RumEvent,
+  context: RumEventDomainContext
+): boolean => {
   if (event.type === 'resource') {
+    // drop resource events for other sdks
     const blacklist = ['cloudflareinsights', 'sentry', 'mixpanel', 'intercom'];
     for (const domain of blacklist) {
       if (event.resource.url.includes(domain)) {
         return false;
       }
+    }
+    // collect a RUM resource's response headers
+    if (event.resource.type === 'fetch') {
+      const ctx = context as RumFetchResourceEventDomainContext;
+      event.context = {
+        ...event.context,
+        response_headers: ctx.response?.headers,
+        request_headers: ctx.requestInit?.headers,
+      };
     }
   }
   return true;

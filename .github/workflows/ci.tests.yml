@@ -48,21 +48,13 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - name: upload datadog sourcemaps
-        run: yarn run upload:sourcemaps:datadog
-        env:
-          SERVICE: app
-          VERSION: 1.26.5
-          DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
-          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app
         env:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           DOTENV_ENABLED: false
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: app
           path: tmp/app/

@@ -60,8 +60,9 @@ jobs:
         run: yarn run upload:sourcemaps:datadog
         env:
           SERVICE: app
-          VERSION: ${{ steps.package-version.outputs.current-version }}+1
+          VERSION: ${{ steps.package-version.outputs.current-version }}
           DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
