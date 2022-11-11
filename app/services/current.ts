@@ -141,7 +141,7 @@ export default class CurrentService extends Service {
         data: { user: { id, email } },
       });
       Sentry.setUser({ email });
-      this.metrics.identify(this.user.metricsParams);
+      this.user.identifyToMetrics();
       this.isLoadingUser = false;
     }
   });
