@@ -11,11 +11,13 @@ import {
 
 import type EventBusService from 'houseninja/services/event-bus';
 import type RouterService from '@ember/routing/router-service';
+import type MetricsService from 'ember-metrics/services/metrics';
 import { captureMessage } from '@sentry/hub';
 import { tracked } from '@glimmer/tracking';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
+  @service declare metrics: MetricsService;
   @service declare router: RouterService;
 
   plugin = App;
@@ -102,6 +104,14 @@ export default class CapacitorService extends Service {
     }
   }
 
+  handleAppStateChange(event: AppState) {
+    const { isActive } = event;
+    this.metrics.trackEvent({
+      event: 'app.state',
+      properties: { isActive },
+    });
+  }
+
   /**
    * Listeners
    */
@@ -112,6 +122,7 @@ export default class CapacitorService extends Service {
 
   setupListeners() {
     this.eventBus.on('app.app-url-open', bind(this, this.handleAppUrlOpen));
+    this.eventBus.on('app.app-state-change', bind(this, this.handleAppStateChange)); // eslint-disable-line
   }
 
   teardownListeners() {
