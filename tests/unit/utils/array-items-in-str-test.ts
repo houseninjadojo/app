@@ -4,7 +4,8 @@ import { module, test } from 'qunit';
 module('Unit | Utility | array-items-in-str', function () {
   // TODO: Replace this with your real tests.
   test('it works', function (assert) {
-    const result = arrayItemsInStr();
+    const arr = ['a', 'b', 'c'];
+    const result = arrayItemsInStr(arr, 'asdf');
     assert.ok(result);
   });
 });
