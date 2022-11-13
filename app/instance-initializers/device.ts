@@ -36,7 +36,7 @@ export async function initialize(
     deviceId: id,
   };
 
-  debug(`initializing device id=${id}`);
+  debug(`[device] initializing device id=${id}`);
 
   try {
     let device;
