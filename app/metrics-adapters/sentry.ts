@@ -3,6 +3,7 @@ import BaseAdapter, {
   IdentifyOptions,
 } from 'ember-metrics/metrics-adapters/base';
 import ENV from 'houseninja/config/environment';
+import arrayItemsInStr from 'houseninja/utils/array-items-in-str';
 import {
   default as SentryInstance,
   addBreadcrumb,
@@ -59,7 +60,7 @@ export default class Sentry extends BaseAdapter {
   }): void {
     if (!this.enabled) return;
     const { event, properties, breadcrumb } = options;
-    if (this.excludedEvents.includes(event)) return;
+    if (arrayItemsInStr(this.excludedEvents, event)) return;
     if (!breadcrumb) return;
     this.addBreadcrumb({
       ...breadcrumb,
