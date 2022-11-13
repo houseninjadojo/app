@@ -82,8 +82,11 @@ export default class Sentry extends BaseAdapter {
     addBreadcrumb(category, message, data, type, level);
   }
 
+  reset(): void {
+    this.uninstall();
+  }
+
   willDestroy(): void {
-    if (!this.enabled) return;
-    SentryInstance.setUser(null);
+    this.reset();
   }
 }
