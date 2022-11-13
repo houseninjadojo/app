@@ -5,6 +5,7 @@ import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 import DeviceModel from 'houseninja/models/device';
 import { UnauthorizedError } from '@ember-data/adapter/error';
+import { debug } from '@ember/debug';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type MetricsService from 'houseninja/services/metrics';
@@ -13,7 +14,6 @@ import type SessionService from 'houseninja/services/session';
 import type User from 'houseninja/models/user';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type Property from 'houseninja/models/property';
-import { debug } from 'console';
 
 export default class CurrentService extends Service {
   @service declare intercom: IntercomService;
