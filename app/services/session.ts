@@ -101,7 +101,7 @@ export default class SessionService extends BaseSessionService {
   }
 
   get isExternalSession(): boolean {
-    return this.session.data.authenticated.kind === 'payment-approval';
+    return this.session.data?.authenticated?.kind === 'payment-approval';
   }
 
   // eslint-disable-next-line prettier/prettier
