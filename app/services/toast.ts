@@ -27,13 +27,13 @@ export default class ToastService extends Service {
   @tracked isVisible = false;
 
   @action
-  showError(message: string, title = 'Error') {
+  showError(message: string, title = 'Error'): void {
     addToastBreadcrumb(message, title, ToastType.Error);
     this.show(title, message, ToastType.Error);
   }
 
   @action
-  show(title: string, message: string, type = ToastType.Default) {
+  show(title: string, message: string, type = ToastType.Default): void {
     addToastBreadcrumb(message, title, type);
     this.type = type;
     this.title = title;
@@ -44,7 +44,7 @@ export default class ToastService extends Service {
     later(this, this.resetToast, 5000);
   }
 
-  resetToast() {
+  resetToast(): void {
     this.type = ToastType.Default;
     this.title = undefined;
     this.message = undefined;

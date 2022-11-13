@@ -20,22 +20,22 @@ export default class BranchService extends Service {
 
   private sessionData = tracked({});
 
-  async setup() {
+  async setup(): Promise<void> {
     this.setupListeners();
     this.initialize();
   }
 
-  setupListeners() {
+  setupListeners(): void {
     this.eventBus.on('branch.init', bind(this, this.handleInit));
     this.eventBus.on('branch.init-error', bind(this, this.handleInitError));
   }
 
-  teardownListeners() {
+  teardownListeners(): void {
     this.removeAllListeners();
   }
 
   async initialize(options?: InitOptions): Promise<void> {
-    debug('[intercom] setup');
+    debug('[branch] setup');
     await Branch.init(this.eventBus, ENV.branch.key, options);
   }
 
@@ -44,12 +44,12 @@ export default class BranchService extends Service {
   }
 
   async identify(identity: string): Promise<void> {
-    debug('[intercom] identifying user');
+    debug('[branch] identifying user');
     await Branch.setIdentity({ newIdentity: identity });
   }
 
   async logout(): Promise<void> {
-    debug('[intercom] logging out user');
+    debug('[branch] logging out user');
     await Branch.logout();
   }
 

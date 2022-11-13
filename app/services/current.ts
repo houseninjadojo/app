@@ -1,6 +1,5 @@
 import Service, { service } from '@ember/service';
 import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
-import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
@@ -113,8 +112,7 @@ export default class CurrentService extends Service {
 
       try {
         await device.save();
-      } catch (e: unknown) {
-        debug(e as string);
+      } catch (e) {
         captureException(e as Error);
       }
     }
@@ -141,7 +139,7 @@ export default class CurrentService extends Service {
         data: { user: { id, email } },
       });
       Sentry.setUser({ email });
-      this.metrics.identify(this.user.metricsParams);
+      this.user.identifyToMetrics();
       this.isLoadingUser = false;
     }
   });

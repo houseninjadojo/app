@@ -72,5 +72,6 @@ declare module 'ember-simple-auth/services/session' {
     requireAuthentication(transition: Transition, route: string): void;
     handleAuthentication(routeAfterAuthentication: string): void;
     handleInvalidation(routeAfterInvalidation: string): void;
+    prohibitAuthentication(route: string): void;
   }
 }

@@ -6,6 +6,7 @@ import { datadogLogs } from '@datadog/browser-logs';
 
 export default class DatadogLogs extends BaseAdapter {
   enabled = true;
+  excludedEvents: string[] = ['click.', 'signup.'];
 
   toStringExtension(): string {
     return 'DatadogLogs';
@@ -43,7 +44,7 @@ export default class DatadogLogs extends BaseAdapter {
   }): void {
     if (!this.enabled) return;
     const { event, properties } = options;
-    if (event.includes('click')) return;
+    if (this.excludedEvents.includes(event)) return;
     datadogLogs.logger.debug(`[metrics] datadog event: ${event}`, properties);
   }
 

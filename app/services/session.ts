@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 import { SplashScreen } from '@capacitor/splash-screen';
 import Sentry from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { DefaultRoute } from 'houseninja/data/enums/routes';
 import { startSpan } from 'houseninja/utils/sentry';
 import { debug } from '@ember/debug';
 
@@ -72,10 +72,7 @@ export default class SessionService extends BaseSessionService {
       });
     }
     if (transition) {
-      this.requireAuthentication(
-        transition,
-        NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
-      );
+      this.requireAuthentication(transition, DefaultRoute.SignedOut);
     }
     await super.invalidate();
     this.router.transitionTo('index');
@@ -99,9 +96,12 @@ export default class SessionService extends BaseSessionService {
     await this.metrics.reset();
     await this.browser.close();
     await SplashScreen.hide();
-    const redirection =
-      routeAfterInvalidation ?? NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP;
+    const redirection = routeAfterInvalidation ?? DefaultRoute.SignedOut;
     this.router.transitionTo(redirection);
+  }
+
+  get isExternalSession(): boolean {
+    return this.session.data?.authenticated?.kind === 'payment-approval';
   }
 
   // eslint-disable-next-line prettier/prettier

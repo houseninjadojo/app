@@ -148,7 +148,7 @@ export default class ContactInfoComponent extends Component<Args> {
     });
     try {
       await user.save(); // save to the server
-      this.metrics.identify(user.metricsParams);
+      user.identifyToMetrics();
     } catch (e) {
       this.errors = user.errors;
       captureException(e as Error);

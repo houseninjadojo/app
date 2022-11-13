@@ -4,7 +4,7 @@ import { captureException } from 'houseninja/utils/sentry';
 import type Model from '@ember-data/model';
 
 export default class StoreService extends Store {
-  async findFirst(modelName: string) {
+  async findFirst(modelName: string): Promise<void> {
     return await this.findAll(modelName).get('firstObject');
   }
 

@@ -51,7 +51,7 @@ export default class OnboardingService extends Service {
   sendTrackingEvent(step: OnboardingStep, user?: User) {
     try {
       this.metrics.trackEvent({
-        event: step,
+        event: `signup.${step}`,
         properties: { user: user?.email },
       });
     } catch (e) {

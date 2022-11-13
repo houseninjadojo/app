@@ -9,6 +9,8 @@ import { captureException } from 'houseninja/utils/sentry';
 import ENV from 'houseninja/config/environment';
 
 export default class CapacitorMixpanel extends BaseAdapter {
+  excludedEvents: string[] = [];
+
   toStringExtension(): string {
     return 'CapacitorMixpanel';
   }
@@ -50,6 +52,7 @@ export default class CapacitorMixpanel extends BaseAdapter {
 
   trackEvent(options: { event: string; properties: object }): void {
     const { event, properties } = options;
+    if (this.excludedEvents.includes(event)) return;
     try {
       Mixpanel.track({ event, properties });
     } catch (e) {

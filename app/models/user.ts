@@ -7,6 +7,7 @@ import Model, {
 } from '@ember-data/model';
 import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { isEmpty } from '@ember/utils';
+import { service } from '@ember/service';
 
 import type Device from './device';
 import type Document from './document';
@@ -17,9 +18,11 @@ import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
-import type { IdentifyOptions } from 'ember-metrics/metrics-adapters/base';
+import type MetricsService from 'houseninja/services/metrics';
 
 export default class User extends Model {
+  @service declare metrics: MetricsService;
+
   @hasMany('document', { async: true, inverse: 'user' })
   declare documents: AsyncHasMany<Document>;
 
@@ -86,12 +89,14 @@ export default class User extends Model {
     return isEmpty(this.onboardingStep);
   }
 
-  get metricsParams(): IdentifyOptions {
-    return {
+  /** Actions */
+
+  identifyToMetrics(): void {
+    this.metrics.identify({
       distinctId: this.id,
       email: this.email,
       name: this.fullName,
       hmac: this.intercomHash,
-    };
+    });
   }
 }
