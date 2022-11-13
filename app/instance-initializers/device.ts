@@ -3,7 +3,7 @@ import { debug } from '@ember/debug';
 import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
 import ENV from 'houseninja/config/environment';
 import { UnauthorizedError } from '@ember-data/adapter/error';
-import { captureException } from '@sentry/hub';
+import { captureException } from 'houseninja/utils/sentry';
 import ApplicationInstance from '@ember/application/instance';
 import StoreService from 'houseninja/services/store';
 import CurrentService from 'houseninja/services/current';
@@ -59,7 +59,7 @@ export async function initialize(
     if (e instanceof UnauthorizedError) {
       debug('[device] unauthorized, skipping device registration');
     } else {
-      captureException(e);
+      captureException(e as Error);
     }
   }
 

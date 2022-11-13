@@ -45,7 +45,10 @@ export default class DatadogLogs extends BaseAdapter {
     if (!this.enabled) return;
     const { event, properties } = options;
     if (this.excludedEvents.includes(event)) return;
-    datadogLogs.logger.debug(`[metrics] datadog event: ${event}`, properties);
+    datadogLogs.logger.debug(
+      `DEBUG: [metrics] datadog event: ${event}`,
+      properties
+    );
   }
 
   trackPage(): void {
