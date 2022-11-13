@@ -60,8 +60,11 @@ export default class DatadogLogs extends BaseAdapter {
     // no-op
   }
 
+  reset(): void {
+    this.uninstall();
+  }
+
   willDestroy(): void {
-    if (!this.enabled) return;
-    datadogLogs.clearUser();
+    this.reset();
   }
 }

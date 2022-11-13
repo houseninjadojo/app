@@ -57,8 +57,11 @@ export default class DatadogRum extends BaseAdapter {
     // no-op
   }
 
+  reset(): void {
+    this.uninstall();
+  }
+
   willDestroy(): void {
-    if (!this.enabled) return;
-    datadogRum.clearUser();
+    this.reset();
   }
 }
