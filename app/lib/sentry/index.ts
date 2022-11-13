@@ -18,14 +18,14 @@ const sentryOptions = {
     /browser-intake-datadoghq\.com/,
   ],
   ignoreErrors: [
-    'DEPRECATION',
-    'Error in API: 0',
-    'window.Intercom is not a function',
-    'BranchDeepLinks',
-    'Capacitor WebPlugin',
-    "Cannot read properties of undefined (reading 'disable_all_events')",
-    'Illegal invocation',
-    'Not implemented on web.',
+    /DEPRECATION/,
+    /Error in API: 0/,
+    /window.Intercom is not a function/,
+    /BranchDeepLinks/,
+    /Capacitor WebPlugin/,
+    /Cannot read properties of undefined (reading 'disable_all_events')/,
+    /Illegal invocation/,
+    /Not implemented on web\./,
   ],
 };
 
