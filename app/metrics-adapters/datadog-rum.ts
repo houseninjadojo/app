@@ -6,6 +6,7 @@ import { datadogRum } from '@datadog/browser-rum';
 
 export default class DatadogRum extends BaseAdapter {
   enabled = true;
+  excludedEvents: string[] = ['click.', 'signup.'];
 
   toStringExtension(): string {
     return 'DatadogRum';
@@ -43,7 +44,7 @@ export default class DatadogRum extends BaseAdapter {
   }): void {
     if (!this.enabled) return;
     const { event, properties } = options;
-    if (event.includes('click')) return;
+    if (this.excludedEvents.includes(event)) return;
     datadogRum.addAction(event, properties);
   }
 

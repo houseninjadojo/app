@@ -19,11 +19,11 @@ export default class BrowserService extends Service {
   @tracked currentUrl?: string;
   @tracked lastUrl?: string;
 
-  setupListeners() {
+  setupListeners(): void {
     // no-op
   }
 
-  teardownListeners() {
+  teardownListeners(): void {
     this.removeAllListeners();
   }
 

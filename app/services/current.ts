@@ -1,6 +1,5 @@
 import Service, { service } from '@ember/service';
 import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
-import { debug } from '@ember/debug';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';

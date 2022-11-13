@@ -88,7 +88,7 @@ export default class CapacitorService extends Service {
    * Handlers
    */
 
-  handleAppUrlOpen(event: AppLaunchUrl) {
+  handleAppUrlOpen(event: AppLaunchUrl): void {
     const { url } = event;
     logUrlOpen(url);
     const { raw } = parseUrl(url);
@@ -104,7 +104,7 @@ export default class CapacitorService extends Service {
     }
   }
 
-  handleAppStateChange(event: AppState) {
+  handleAppStateChange(event: AppState): void {
     const { isActive } = event;
     const action = isActive ? 'resumed' : 'paused';
     this.metrics.trackEvent({
@@ -119,16 +119,16 @@ export default class CapacitorService extends Service {
    * Listeners
    */
 
-  async setup() {
+  async setup(): Promise<void> {
     this.setupListeners();
   }
 
-  setupListeners() {
+  setupListeners(): void {
     this.eventBus.on('app.app-url-open', bind(this, this.handleAppUrlOpen));
     this.eventBus.on('app.app-state-change', bind(this, this.handleAppStateChange)); // eslint-disable-line
   }
 
-  teardownListeners() {
+  teardownListeners(): void {
     this.removeAllListeners();
   }
 

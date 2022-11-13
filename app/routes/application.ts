@@ -4,6 +4,8 @@ import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { bind } from '@ember/runloop';
+import { htmlTreeAsString } from '@sentry/utils';
 
 import type Transition from '@ember/routing/transition';
 import type IntercomService from 'houseninja/services/intercom';
@@ -38,16 +40,10 @@ class ApplicationRoute extends Route {
   @service('ember-user-activity@user-activity')
   declare userActivity: UserActivityService;
 
-  constructor() {
-    // eslint-disable-next-line
-    super(...arguments);
-    this.router.on('routeDidChange', async () => {
-      await this._trackPage();
-    });
-
-    this.userActivity.on('touchstart', this, async (event: TouchEvent) => {
-      await this._trackClick(event);
-    });
+  constructor(properties?: object | undefined) {
+    super(properties);
+    this.router.on('routeDidChange', bind(this, this.trackPage));
+    this.userActivity.on('touchstart', this, this.trackClick);
   }
 
   async beforeModel(): Promise<void> {
@@ -67,7 +63,13 @@ class ApplicationRoute extends Route {
     }
   }
 
-  async _trackPage(): Promise<void> {
+  @action
+  loading(transition: Transition): boolean {
+    this.loader.setApplicationLoader(transition);
+    return true;
+  }
+
+  private async trackPage(): Promise<void> {
     const page: string = this.router.currentURL;
     const title: string = this.router.currentRouteName || 'unknown';
     this.metrics.trackPage({ page, title });
@@ -78,22 +80,13 @@ class ApplicationRoute extends Route {
    * from the triggering DOM element and create an analytics event.
    * <div id="a" class="b c"></div> => `div.b.c#a`
    */
-  async _trackClick(event: TouchEvent): Promise<void> {
+  private async trackClick(event: TouchEvent): Promise<void> {
     const target: HTMLElement = event.target as HTMLElement;
-    const tag: string = target.localName;
-    const classNames: string = target.className.replaceAll(' ', '.');
-    const id: string = target.id;
-    const selector = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
+    const selector: string = htmlTreeAsString(target);
     this.metrics.trackEvent({
       event: 'click',
       properties: { selector },
     });
-  }
-
-  @action
-  loading(transition: Transition): boolean {
-    this.loader.setApplicationLoader(transition);
-    return true;
   }
 }
 

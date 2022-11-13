@@ -18,7 +18,6 @@ import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
-import type { IdentifyOptions } from 'ember-metrics/metrics-adapters/base';
 import type MetricsService from 'houseninja/services/metrics';
 
 export default class User extends Model {

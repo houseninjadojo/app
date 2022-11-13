@@ -13,6 +13,8 @@ interface IntercomOptions extends IdentifyOptions {
 export default class CapacitorIntercom extends BaseAdapter {
   @service declare intercom: IntercomService;
 
+  excludedEvents: string[] = ['intercom.', 'click.'];
+
   toStringExtension() {
     return 'CapacitorIntercom';
   }
@@ -31,7 +33,7 @@ export default class CapacitorIntercom extends BaseAdapter {
   trackEvent(options: { event: string; properties?: Record<string, unknown> }): void {
     if (!isNativePlatform()) return;
     const { event, properties } = options;
-    if (event.includes('intercom.') || event.includes('click')) return;
+    if (this.excludedEvents.includes(event)) return;
     this.intercom.logEvent(event, properties);
   }
 
