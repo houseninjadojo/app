@@ -1,3 +1,10 @@
+## [1.26.7](https://github.com/houseninjadojo/app/compare/v1.26.6...v1.26.7) (2022-11-13)
+
+
+### Bug Fixes
+
+* **telemetry:** improve sentry collection and filter events ([#1256](https://github.com/houseninjadojo/app/issues/1256)) ([6db4f9e](https://github.com/houseninjadojo/app/commit/6db4f9e1b9eab71f6e1a8a273f2f270554e61b0b))
+
 ## [1.26.6](https://github.com/houseninjadojo/app/compare/v1.26.5...v1.26.6) (2022-11-09)
 
 
