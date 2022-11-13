@@ -106,9 +106,12 @@ export default class CapacitorService extends Service {
 
   handleAppStateChange(event: AppState) {
     const { isActive } = event;
+    const action = isActive ? 'resumed' : 'paused';
     this.metrics.trackEvent({
-      event: 'app.state',
-      properties: { isActive },
+      event: `app.state.${action}`,
+      properties: {
+        active: isActive,
+      },
     });
   }
 

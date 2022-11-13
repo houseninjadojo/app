@@ -113,8 +113,7 @@ export default class CurrentService extends Service {
 
       try {
         await device.save();
-      } catch (e: unknown) {
-        debug(e as string);
+      } catch (e) {
         captureException(e as Error);
       }
     }
