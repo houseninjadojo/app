@@ -1,3 +1,10 @@
+## [1.26.8](https://github.com/houseninjadojo/app/compare/v1.26.7...v1.26.8) (2022-11-13)
+
+
+### Bug Fixes
+
+* **metrics:** fix reset invokation for handlers ([#1257](https://github.com/houseninjadojo/app/issues/1257)) ([d79d749](https://github.com/houseninjadojo/app/commit/d79d74996f867ff38dc30b5ea40fbb583ac37589))
+
 ## [1.26.7](https://github.com/houseninjadojo/app/compare/v1.26.6...v1.26.7) (2022-11-13)
 
 
