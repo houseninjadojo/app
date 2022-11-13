@@ -29,10 +29,10 @@ export default class Branch {
   ): Promise<void> {
     const cb = (err: BranchError, data: SessionData | null) => {
       if (err) {
-        debug(`Event branch.init-error fired`);
+        debug(`[branch] event branch.init-error fired`);
         eventBus.trigger('branch.init-error', err);
       } else {
-        debug(`Event branch.init fired`);
+        debug(`[branch] event branch.init fired`);
         eventBus.trigger('branch.init', data);
       }
     };
