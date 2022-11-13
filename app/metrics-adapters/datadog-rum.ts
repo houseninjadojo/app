@@ -3,6 +3,7 @@ import BaseAdapter, {
 } from 'ember-metrics/metrics-adapters/base';
 import ENV from 'houseninja/config/environment';
 import { datadogRum } from '@datadog/browser-rum';
+import arrayItemsInStr from 'houseninja/utils/array-items-in-str';
 
 export default class DatadogRum extends BaseAdapter {
   enabled = true;
@@ -44,7 +45,7 @@ export default class DatadogRum extends BaseAdapter {
   }): void {
     if (!this.enabled) return;
     const { event, properties } = options;
-    if (this.excludedEvents.includes(event)) return;
+    if (arrayItemsInStr(this.excludedEvents, event)) return;
     datadogRum.addAction(event, properties);
   }
 

@@ -2,12 +2,11 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import {
   inputValidation,
   passwordValidation,
 } from 'houseninja/utils/components/input-validation';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import {
   NATIVE_MOBILE_ROUTE,
@@ -105,8 +104,7 @@ export default class SetPasswordComponent extends Component {
         }
       } catch (e) {
         this.errors = user.errors;
-        debug(e);
-        Sentry.captureException(e);
+        captureException(e);
       } finally {
         this.isLoading = false;
       }

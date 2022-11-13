@@ -4,6 +4,7 @@ import BaseAdapter, {
 import { service } from '@ember/service';
 import type IntercomService from 'houseninja/services/intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
+import { arrayItemsInStr } from 'houseninja/utils/array-items-in-str';
 
 interface IntercomOptions extends IdentifyOptions {
   email: string;
@@ -33,7 +34,7 @@ export default class CapacitorIntercom extends BaseAdapter {
   trackEvent(options: { event: string; properties?: Record<string, unknown> }): void {
     if (!isNativePlatform()) return;
     const { event, properties } = options;
-    if (this.excludedEvents.includes(event)) return;
+    if (arrayItemsInStr(this.excludedEvents, event)) return;
     this.intercom.logEvent(event, properties);
   }
 

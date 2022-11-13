@@ -4,6 +4,8 @@ import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 import DeviceModel from 'houseninja/models/device';
+import { UnauthorizedError } from '@ember-data/adapter/error';
+import { debug } from '@ember/debug';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type MetricsService from 'houseninja/services/metrics';
@@ -99,7 +101,7 @@ export default class CurrentService extends Service {
 
       Sentry.addBreadcrumb({
         type: 'info',
-        category: 'intercom',
+        category: 'device.register',
         message: 'registering device to user',
         data: {
           user: { id: this.user?.id },
@@ -113,7 +115,11 @@ export default class CurrentService extends Service {
       try {
         await device.save();
       } catch (e) {
-        captureException(e as Error);
+        if (e instanceof UnauthorizedError) {
+          debug('[device] not authorized to register this device');
+        } else {
+          captureException(e as Error);
+        }
       }
     }
   }
@@ -128,17 +134,6 @@ export default class CurrentService extends Service {
     await this._loadUser.perform();
     await this.registerDeviceToUser();
     if (this.user) {
-      const { id, email } = this.user.getProperties(
-        'id',
-        'email',
-      );
-      Sentry.addBreadcrumb({
-        type: 'info',
-        category: 'current',
-        message: 'loading and tracking user',
-        data: { user: { id, email } },
-      });
-      Sentry.setUser({ email });
       this.user.identifyToMetrics();
       this.isLoadingUser = false;
     }

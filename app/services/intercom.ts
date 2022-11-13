@@ -117,12 +117,14 @@ export default class IntercomService extends Service {
   async showMessenger(): Promise<void> {
     debug('[intercom] showing messenger');
     startSpan({ op: 'intercom.show.messenger' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.show',
-      message: 'showing messenger',
-    });
     this.isOpen = true;
-    this.metrics.trackEvent({ event: 'intercom.open' });
+    this.metrics.trackEvent({
+      event: 'intercom.open',
+      breadcrumb: {
+        type: 'ui',
+        message: 'showing messenger',
+      },
+    });
     try {
       await Intercom.displayMessenger();
     } catch (e) {
@@ -133,15 +135,14 @@ export default class IntercomService extends Service {
   async showComposer(message: string): Promise<void> {
     debug('[intercom] showing composer');
     startSpan({ op: 'intercom.show.composer' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.show',
-      message: 'showing composer',
-      data: { message },
-    });
     this.isOpen = true;
     this.metrics.trackEvent({
       event: 'intercom.open',
       properties: { message },
+      breadcrumb: {
+        type: 'ui',
+        message: 'showing composer',
+      },
     });
     try {
       await Intercom.displayMessageComposer({ message });
@@ -153,9 +154,12 @@ export default class IntercomService extends Service {
   async hide(): Promise<void> {
     debug('[intercom] hiding messenger');
     startSpan({ op: 'intercom.hide' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.hide',
-      message: 'hiding messenger',
+    this.metrics.trackEvent({
+      event: 'intercom.hide',
+      breadcrumb: {
+        type: 'ui',
+        message: 'hiding messenger',
+      },
     });
     this.isOpen = false;
     try {
