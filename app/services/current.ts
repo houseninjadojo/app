@@ -99,7 +99,7 @@ export default class CurrentService extends Service {
 
       Sentry.addBreadcrumb({
         type: 'info',
-        category: 'intercom',
+        category: 'device.register',
         message: 'registering device to user',
         data: {
           user: { id: this.user?.id },
@@ -128,17 +128,6 @@ export default class CurrentService extends Service {
     await this._loadUser.perform();
     await this.registerDeviceToUser();
     if (this.user) {
-      const { id, email } = this.user.getProperties(
-        'id',
-        'email',
-      );
-      Sentry.addBreadcrumb({
-        type: 'info',
-        category: 'current',
-        message: 'loading and tracking user',
-        data: { user: { id, email } },
-      });
-      Sentry.setUser({ email });
       this.user.identifyToMetrics();
       this.isLoadingUser = false;
     }

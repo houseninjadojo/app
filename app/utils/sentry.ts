@@ -35,10 +35,10 @@ export function startSpan(params: SpanContext): Span | undefined {
 // export const addBreadcrumb = Sentry.addBreadcrumb;
 
 export const addBreadcrumb = (
-  category: string,
-  message: string,
-  data: Record<string, unknown> | undefined,
-  type: 'navigation' | 'http' | 'user' | 'ui' | 'error' = 'ui',
+  category?: string,
+  message?: string,
+  data?: Record<string, unknown>,
+  type: string | 'navigation' | 'http' | 'user' | 'ui' | 'error' = 'ui',
   level: SeverityLevel = 'info'
 ) => {
   Sentry.addBreadcrumb({

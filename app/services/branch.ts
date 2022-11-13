@@ -3,7 +3,7 @@ import Branch from 'houseninja/lib/branch';
 import { tracked } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
-import Sentry, { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { debug } from '@ember/debug';
 
 import type { InitOptions } from 'branch-sdk';
@@ -75,14 +75,12 @@ export default class BranchService extends Service {
   private handleInit(data: any): void {
     if (data.referringParams['$deeplink_path']) {
       this.metrics.trackEvent({
-        event: 'opened with branch Link',
+        event: 'branch.deeplink.opened',
         properties: data,
-      });
-      Sentry.addBreadcrumb({
-        type: 'user',
-        category: 'deep-link.open',
-        message: 'opened branch deep link',
-        data,
+        breadcrumb: {
+          type: 'user',
+          message: 'user opened app from deeplink',
+        },
       });
     }
     this.sessionData = data;

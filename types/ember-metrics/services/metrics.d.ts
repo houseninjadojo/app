@@ -22,7 +22,11 @@ declare module 'ember-metrics/services/metrics' {
     activateAdapters(adapterOptions: AdapterOption[]): void;
 
     identify(options: IdentifyOptions): void;
-    trackEvent(options: { event: string; properties?: object }): void;
+    trackEvent(options: {
+      event: string;
+      properties?: object;
+      breadcrumb?: object;
+    }): void;
     trackPage(options: { page: string; title: string }): void;
     alias(options: { alias: string; distinctId: string }): void;
     setProfile(options: { properties: object }): void;
