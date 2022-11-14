@@ -1,3 +1,10 @@
+## [1.26.9](https://github.com/houseninjadojo/app/compare/v1.26.8...v1.26.9) (2022-11-14)
+
+
+### Bug Fixes
+
+* **metrics:** click handler ([#1258](https://github.com/houseninjadojo/app/issues/1258)) ([26fc897](https://github.com/houseninjadojo/app/commit/26fc897c247632a0d65ffd353288177c866c1583))
+
 ## [1.26.8](https://github.com/houseninjadojo/app/compare/v1.26.7...v1.26.8) (2022-11-13)
 
 
