@@ -2,7 +2,6 @@ import Service, { service } from '@ember/service';
 import Evented from '@ember/object/evented';
 import { TrackedMap } from 'tracked-built-ins';
 import { dasherize } from '@ember/string';
-import { bind } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
 import { PluginListenerHandle } from '@capacitor/core';

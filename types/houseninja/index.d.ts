@@ -2,7 +2,7 @@
 
 import Ember from 'ember';
 import Route from '@ember/routing/route';
-import UserActivityService from 'ember-user-activity/addon/services/user-activity';
+import UserActivityService from 'houseninja/services/user-activity';
 
 declare global {
   // Prevents ESLint from "fixing" this via its auto-fix to turn it into a type
