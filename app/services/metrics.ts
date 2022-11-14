@@ -3,8 +3,9 @@ import { service } from '@ember/service';
 import { htmlTreeAsString } from '@sentry/utils';
 import { default as BaseMetricsService } from 'ember-metrics/services/metrics';
 import UserActivityService from 'houseninja/services/user-activity';
-import EventBusService from 'houseninja/services/event-bus';
-import { ListenableEvented } from 'houseninja';
+import EventBusService, {
+  ListenableEvented,
+} from 'houseninja/services/event-bus';
 
 export default class MetricsService extends BaseMetricsService {
   @service declare eventBus: EventBusService;
@@ -22,7 +23,6 @@ export default class MetricsService extends BaseMetricsService {
 
   setupListeners(): void {
     this.eventBus.on('router.route-did-change', this, this.onRouteChanged);
-    // this.eventBus.on('user-activity.touchstart', this, this.onClick);
     this.eventBus.on('user-activity.pointerdown', this, this.onClick);
   }
 
@@ -57,7 +57,6 @@ export default class MetricsService extends BaseMetricsService {
       'Router',
       'routeDidChange'
     );
-    // this.eventBus.subscribe(this.userActivity, 'UserActivity', 'touchstart');
     this.eventBus.subscribe(this.userActivity, 'UserActivity', 'pointerdown');
   }
 

@@ -7,7 +7,7 @@ import { arrayItemsInStr } from 'houseninja/utils/array-items-in-str';
 
 export default class DatadogLogs extends BaseAdapter {
   enabled = true;
-  excludedEvents: string[] = ['click.', 'signup.'];
+  excludedEvents: string[] = ['click', 'signup.'];
 
   toStringExtension(): string {
     return 'DatadogLogs';

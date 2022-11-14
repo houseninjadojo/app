@@ -14,7 +14,7 @@ interface IntercomOptions extends IdentifyOptions {
 export default class CapacitorIntercom extends BaseAdapter {
   @service declare intercom: IntercomService;
 
-  excludedEvents: string[] = ['intercom.', 'click.'];
+  excludedEvents: string[] = ['intercom', 'click'];
 
   toStringExtension() {
     return 'CapacitorIntercom';
