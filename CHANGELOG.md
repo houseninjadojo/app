@@ -1,3 +1,10 @@
+## [1.26.10](https://github.com/houseninjadojo/app/compare/v1.26.9...v1.26.10) (2022-11-14)
+
+
+### Bug Fixes
+
+* **event-bus:** clicks and structure ([#1261](https://github.com/houseninjadojo/app/issues/1261)) ([5b63f3c](https://github.com/houseninjadojo/app/commit/5b63f3cd547ea6b9f013e6246cb52708f7ce5baf))
+
 ## [1.26.9](https://github.com/houseninjadojo/app/compare/v1.26.8...v1.26.9) (2022-11-14)
 
 
