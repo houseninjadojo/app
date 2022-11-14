@@ -23,6 +23,7 @@ import type EventBusService from 'houseninja/services/event-bus';
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
 import { debug } from '@ember/debug';
+import { ListenablePlugin } from 'houseninja';
 
 type ActionPayload = {
   actionId: string;
@@ -163,7 +164,7 @@ export default class NotificationsService extends Service {
     this.removeAllListeners();
     if (isNativePlatform()) {
       await this.eventBus.registerEvents(
-        this.plugin,
+        this.plugin as ListenablePlugin,
         this.pluginName,
         this.events
       );

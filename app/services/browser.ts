@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 import type EventBusService from 'houseninja/services/event-bus';
 import type MetricsService from './metrics';
 import { captureException } from 'houseninja/utils/sentry';
+import { ListenablePlugin } from 'houseninja';
 
 export default class BrowserService extends Service {
   @service declare eventBus: EventBusService;
@@ -71,7 +72,7 @@ export default class BrowserService extends Service {
   async registerEvents(): Promise<void> {
     await this.removeAllListeners();
     await this.eventBus.registerEvents(
-      this.plugin,
+      this.plugin as ListenablePlugin,
       this.pluginName,
       this.events
     );
