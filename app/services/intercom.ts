@@ -12,6 +12,7 @@ import type CurrentService from 'houseninja/services/current';
 import type MetricsService from 'houseninja/services/metrics';
 import type EventBusService from 'houseninja/services/event-bus';
 import { debug } from '@ember/debug';
+import { ListenablePlugin } from 'houseninja';
 
 export default class IntercomService extends Service {
   @service declare current: CurrentService;
@@ -22,7 +23,7 @@ export default class IntercomService extends Service {
   @tracked isOpen = false;
 
   listeners = new TrackedWeakSet();
-  plugin = Intercom;
+  plugin: typeof Intercom = Intercom;
   pluginName = 'Intercom';
   events = [
     'didStartNewConversation',
@@ -221,7 +222,7 @@ export default class IntercomService extends Service {
   async registerEvents(): Promise<void> {
     await this.removeAllListeners();
     await this.eventBus.registerEvents(
-      this.plugin,
+      this.plugin as ListenablePlugin,
       this.pluginName,
       this.events
     );

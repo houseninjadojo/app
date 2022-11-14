@@ -14,6 +14,7 @@ import type RouterService from '@ember/routing/router-service';
 import type MetricsService from 'ember-metrics/services/metrics';
 import { captureMessage } from '@sentry/hub';
 import { tracked } from '@glimmer/tracking';
+import { ListenablePlugin } from 'houseninja';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
@@ -135,7 +136,7 @@ export default class CapacitorService extends Service {
   async registerEvents(): Promise<void> {
     await this.removeAllListeners();
     await this.eventBus.registerEvents(
-      this.plugin,
+      this.plugin as ListenablePlugin,
       this.pluginName,
       this.events
     );

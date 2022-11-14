@@ -5,7 +5,7 @@ import { dasherize } from '@ember/string';
 import { bind } from '@ember/runloop';
 import { debug } from '@ember/debug';
 
-import type { PluginListenerHandle } from '@capacitor/core';
+import { PluginListenerHandle } from '@capacitor/core';
 import {
   App,
   StateChangeListener,
@@ -25,7 +25,13 @@ import type BrowserService from 'houseninja/services/browser';
 import type CapacitorService from 'houseninja/services/capacitor';
 import type IntercomService from 'houseninja/services/intercom';
 import type NotificationsService from 'houseninja/services/notifications';
+import type MetricsService from 'houseninja/services/metrics';
 import type BranchService from 'houseninja/services/branch';
+import type {
+  Listenable,
+  ListenablePlugin,
+  ListenableEvented,
+} from 'houseninja';
 
 type PluginInstance =
   | typeof App
@@ -41,16 +47,31 @@ type ListenerFunc =
   | URLOpenListener
   | RestoredListener
   | BackButtonListener
-  | UnreadCountChangeListener;
+  | UnreadCountChangeListener
+  | ((event: any) => any); // eslint-disable-line @typescript-eslint/no-explicit-any
+
+type HandlerFn = PluginListenerHandle | unknown;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isPluginListener = (handler: any): handler is PluginListenerHandle => {
+  return typeof handler?.remove === 'function';
+};
+
+const isListenablePlugin = (
+  plugin: any // eslint-disable-line @typescript-eslint/no-explicit-any
+): plugin is PluginInstance & ListenablePlugin => {
+  return typeof plugin.addListener === 'function';
+};
 
 export default class EventBusService extends Service.extend(Evented) {
   @service declare branch: BranchService;
   @service declare browser: BrowserService;
   @service declare capacitor: CapacitorService;
   @service declare intercom: IntercomService;
+  @service declare metrics: MetricsService;
   @service declare notifications: NotificationsService;
 
-  listeners = new TrackedMap<string, PluginListenerHandle>();
+  listeners = new TrackedMap<string, HandlerFn>();
   eventSubscriptions = new Set();
 
   willDestroy() {
@@ -63,6 +84,7 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.browser.registerEvents();
     await this.capacitor.registerEvents();
     await this.intercom.registerEvents();
+    await this.metrics.registerEvents();
     await this.notifications.registerEvents();
   }
 
@@ -76,7 +98,7 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   // eslint-disable-next-line prettier/prettier
-  async registerEvents(plugin: PluginInstance, pluginName: string, events: string[]): Promise<void> {
+  async registerEvents(plugin: Listenable, pluginName: string, events: string[]): Promise<void> {
     events.forEach(async (eventName) => {
       if (!this.hasSubscription(pluginName, eventName)) {
         await this.subscribe(plugin, pluginName, eventName);
@@ -84,28 +106,37 @@ export default class EventBusService extends Service.extend(Evented) {
     });
   }
 
-  listenerFor(eventSlug: string): ListenerFunc {
+  listenerFor = (eventSlug: string): ListenerFunc => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (event?: any): void => {
       debug(`[event-bus] ${eventSlug} fired`);
       return this.trigger(eventSlug, event);
     };
-  }
+  };
 
-  // eslint-disable-next-line prettier/prettier
-  async subscribe(plugin: PluginInstance, pluginName: string, eventName: string): Promise<void> {
-    const eventSlug = this.eventSlug(pluginName, eventName);
-    if (this.hasSubscription(pluginName, eventName)) {
+  async subscribe(
+    instance: Listenable,
+    instanceName: string,
+    eventName: string
+  ): Promise<void> {
+    const eventSlug = this.eventSlug(instanceName, eventName);
+    if (this.hasSubscription(instanceName, eventName)) {
       debug(`[event-bus] already subscribed to ${eventSlug}`);
       return;
     }
     const listener = this.listenerFor(eventSlug);
     try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore PluginListenerHandle
-      const handler = await plugin.addListener(eventName, bind(this, listener));
+      let handler;
+      if (isListenablePlugin(instance)) {
+        handler = await instance.addListener(eventName, bind(this, listener));
+      } else {
+        handler = (instance as ListenableEvented).on(
+          eventName,
+          bind(this, listener)
+        );
+      }
       this.listeners.set(eventSlug, handler);
-      this.eventSubscriptions.add({ plugin, pluginName, eventName });
+      this.eventSubscriptions.add({ instance, instanceName, eventName });
       debug(`[event-bus] ${eventSlug} subscribed`);
     } catch (e) {
       debug(`[event-bus] ${eventSlug} failed to subscribe`);
@@ -115,13 +146,14 @@ export default class EventBusService extends Service.extend(Evented) {
   async teardownListeners(): Promise<void> {
     await this.listeners.forEach((handler, eventSlug) => {
       debug(`[event-bus] ${eventSlug} unsubscribed`);
-      handler.remove();
+      if (isPluginListener(handler)) handler.remove();
       this.listeners.delete(eventSlug);
     });
     await this.branch.teardownListeners();
     await this.browser.teardownListeners();
     await this.capacitor.teardownListeners();
     await this.intercom.teardownListeners();
+    await this.metrics.teardownListeners();
     await this.notifications.teardownListeners();
   }
 }
