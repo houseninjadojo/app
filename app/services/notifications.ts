@@ -17,13 +17,13 @@ import {
   NotificationType,
   type NotificationSchema,
 } from 'houseninja/lib/notification';
-
 import type CurrentService from './current';
-import type EventBusService from 'houseninja/services/event-bus';
+import EventBusService, {
+  ListenablePlugin,
+} from 'houseninja/services/event-bus';
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
 import { debug } from '@ember/debug';
-import { ListenablePlugin } from 'houseninja';
 
 type ActionPayload = {
   actionId: string;

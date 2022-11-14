@@ -8,13 +8,13 @@ import {
   type AppInfo,
   type AppLaunchUrl,
 } from '@capacitor/app';
-
-import type EventBusService from 'houseninja/services/event-bus';
+import EventBusService, {
+  ListenablePlugin,
+} from 'houseninja/services/event-bus';
 import type RouterService from '@ember/routing/router-service';
 import type MetricsService from 'ember-metrics/services/metrics';
 import { captureMessage } from '@sentry/hub';
 import { tracked } from '@glimmer/tracking';
-import { ListenablePlugin } from 'houseninja';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
