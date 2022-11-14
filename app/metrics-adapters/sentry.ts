@@ -19,7 +19,7 @@ type BreadcrumbOptions = {
 
 export default class Sentry extends BaseAdapter {
   enabled = true;
-  excludedEvents: string[] = ['click.', 'signup.'];
+  excludedEvents: string[] = ['click', 'signup.'];
 
   toStringExtension(): string {
     return 'Sentry';

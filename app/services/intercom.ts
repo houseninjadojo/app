@@ -10,9 +10,10 @@ import { bind } from '@ember/runloop';
 
 import type CurrentService from 'houseninja/services/current';
 import type MetricsService from 'houseninja/services/metrics';
-import type EventBusService from 'houseninja/services/event-bus';
+import EventBusService, {
+  ListenablePlugin,
+} from 'houseninja/services/event-bus';
 import { debug } from '@ember/debug';
-import { ListenablePlugin } from 'houseninja';
 
 export default class IntercomService extends Service {
   @service declare current: CurrentService;

@@ -3,10 +3,11 @@ import { Browser } from '@capacitor/browser';
 import { debug } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 
-import type EventBusService from 'houseninja/services/event-bus';
+import EventBusService, {
+  ListenablePlugin,
+} from 'houseninja/services/event-bus';
 import type MetricsService from './metrics';
 import { captureException } from 'houseninja/utils/sentry';
-import { ListenablePlugin } from 'houseninja';
 
 export default class BrowserService extends Service {
   @service declare eventBus: EventBusService;
