@@ -52,17 +52,6 @@ type ListenerFunc =
 
 type HandlerFn = PluginListenerHandle | unknown;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isPluginListener = (handler: any): handler is PluginListenerHandle => {
-  return typeof handler?.remove === 'function';
-};
-
-const isListenablePlugin = (
-  plugin: any // eslint-disable-line @typescript-eslint/no-explicit-any
-): plugin is PluginInstance & ListenablePlugin => {
-  return typeof plugin.addListener === 'function';
-};
-
 export default class EventBusService extends Service.extend(Evented) {
   @service declare branch: BranchService;
   @service declare browser: BrowserService;
@@ -71,10 +60,9 @@ export default class EventBusService extends Service.extend(Evented) {
   @service declare metrics: MetricsService;
   @service declare notifications: NotificationsService;
 
-  listeners = new TrackedMap<string, HandlerFn>();
-  eventSubscriptions = new Set();
+  manager = new Manager();
 
-  willDestroy() {
+  willDestroy(): void {
     this.teardownListeners();
     super.willDestroy();
   }
@@ -88,55 +76,26 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.notifications.registerEvents();
   }
 
-  hasSubscription(pluginName: string, eventName: string): boolean {
-    const slug = this.eventSlug(pluginName, eventName);
-    return this.listeners.has(slug);
-  }
-
-  eventSlug(pluginName: string, eventName: string): string {
-    return `${dasherize(pluginName)}.${dasherize(eventName)}`;
-  }
-
   // eslint-disable-next-line prettier/prettier
   async registerEvents(plugin: Listenable, pluginName: string, events: string[]): Promise<void> {
     events.forEach(async (eventName) => {
-      if (!this.hasSubscription(pluginName, eventName)) {
-        await this.subscribe(plugin, pluginName, eventName);
-      }
+      await this.subscribe(plugin, pluginName, eventName);
     });
   }
-
-  listenerFor = (eventSlug: string): ListenerFunc => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (event?: any): void => {
-      debug(`[event-bus] ${eventSlug} fired`);
-      return this.trigger(eventSlug, event);
-    };
-  };
 
   async subscribe(
     instance: Listenable,
     instanceName: string,
     eventName: string
   ): Promise<void> {
-    const eventSlug = this.eventSlug(instanceName, eventName);
-    if (this.hasSubscription(instanceName, eventName)) {
+    const eventSlug = getEventSlug(instanceName, eventName);
+    if (this.manager.hasHandler(eventSlug)) {
       debug(`[event-bus] already subscribed to ${eventSlug}`);
       return;
     }
-    const listener = this.listenerFor(eventSlug);
     try {
-      let handler;
-      if (isListenablePlugin(instance)) {
-        handler = await instance.addListener(eventName, bind(this, listener));
-      } else {
-        handler = (instance as ListenableEvented).on(
-          eventName,
-          bind(this, listener)
-        );
-      }
-      this.listeners.set(eventSlug, handler);
-      this.eventSubscriptions.add({ instance, instanceName, eventName });
+      const handler = Handler.from(instance, instanceName, eventName, this);
+      this.manager.addHandler(eventSlug, handler);
       debug(`[event-bus] ${eventSlug} subscribed`);
     } catch (e) {
       debug(`[event-bus] ${eventSlug} failed to subscribe`);
@@ -144,16 +103,155 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   async teardownListeners(): Promise<void> {
-    await this.listeners.forEach((handler, eventSlug) => {
-      debug(`[event-bus] ${eventSlug} unsubscribed`);
-      if (isPluginListener(handler)) handler.remove();
-      this.listeners.delete(eventSlug);
-    });
+    await this.manager.removeHandlers();
     await this.branch.teardownListeners();
     await this.browser.teardownListeners();
     await this.capacitor.teardownListeners();
     await this.intercom.teardownListeners();
     await this.metrics.teardownListeners();
     await this.notifications.teardownListeners();
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isPluginListener = (handler: any): handler is PluginListenerHandle => {
+  return typeof handler?.remove === 'function';
+};
+
+const isListenablePlugin = (
+  plugin: any // eslint-disable-line @typescript-eslint/no-explicit-any
+): plugin is PluginInstance & ListenablePlugin => {
+  return typeof plugin.addListener === 'function';
+};
+
+const getEventSlug = (pluginName: string, eventName: string): string => {
+  return `${dasherize(pluginName)}.${dasherize(eventName)}`;
+};
+
+/**
+ * Listener
+ *
+ * A listener is a function that is called when an event is triggered.
+ */
+const listenerFor = (
+  context: EventBusService,
+  eventSlug: string
+): ListenerFunc => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (event?: any): void => {
+    debug(`[event-bus] ${eventSlug} fired`);
+    return context.trigger(eventSlug, event);
+  };
+};
+
+/**
+ * Handler
+ *
+ * A handler is a wrapper around a plugin listener. It is responsible for
+ * subscribing to a plugin event and unsubscribing from it when the handler is
+ * removed.
+ */
+class Handler {
+  handler: HandlerFn;
+  instance: Listenable;
+  instanceName: string;
+  eventName: string;
+  eventSlug: string;
+
+  constructor(instance: Listenable, instanceName: string, eventName: string) {
+    this.instance = instance;
+    this.instanceName = instanceName;
+    this.eventName = eventName;
+    this.eventSlug = getEventSlug(instanceName, eventName);
+  }
+
+  addListener(eventSlug: string, handler: HandlerFn): Handler {
+    this.eventSlug = eventSlug;
+    this.handler = handler;
+    return this;
+  }
+
+  static fromPlugin(
+    instance: ListenablePlugin,
+    instanceName: string,
+    eventName: string,
+    context: EventBusService
+  ): Handler {
+    const handler = new Handler(instance, instanceName, eventName);
+    const listener = listenerFor(context, handler.eventSlug);
+    const handlerFn = instance.addListener(eventName, listener);
+    return handler.addListener(handler.eventSlug, handlerFn);
+  }
+
+  static fromEvented(
+    instance: ListenableEvented,
+    instanceName: string,
+    eventName: string,
+    context: EventBusService
+  ): Handler {
+    const eventSlug = getEventSlug(instanceName, eventName);
+    const listener = listenerFor(context, eventSlug);
+    return new Handler(instance, instanceName, eventName).addListener(
+      eventSlug,
+      instance.on(eventName, listener)
+    );
+  }
+
+  static from(
+    instance: Listenable,
+    instanceName: string,
+    eventName: string,
+    context: EventBusService
+  ): Handler {
+    if (isListenablePlugin(instance)) {
+      return Handler.fromPlugin(instance, instanceName, eventName, context);
+    } else {
+      return Handler.fromEvented(
+        instance as ListenableEvented,
+        instanceName,
+        eventName,
+        context
+      );
+    }
+  }
+
+  remove(): void {
+    if (isPluginListener(this.handler)) {
+      this.handler.remove();
+    } else if (typeof this.handler === 'function') {
+      this.instance.off(this.handler);
+    }
+    debug(`[event-bus] ${this.eventSlug} unsubscribed`);
+  }
+}
+
+/**
+ * Manager
+ *
+ * A manager is responsible for managing a collection of handlers. It is
+ * responsible for adding and removing handlers.
+ */
+class Manager {
+  private handlers = new TrackedMap<string, Handler>();
+
+  addHandler(eventSlug: string, handler: Handler): void {
+    if (this.handlers.has(eventSlug)) {
+      this.handlers.get(eventSlug)?.remove();
+    }
+    this.handlers.set(eventSlug, handler);
+  }
+
+  removeHandler(eventSlug: string): void {
+    this.handlers.get(eventSlug)?.remove();
+    this.handlers.delete(eventSlug);
+  }
+
+  removeHandlers(): void {
+    this.handlers.forEach((handler) => handler.remove());
+    this.handlers.clear();
+  }
+
+  hasHandler(eventSlug: string): boolean {
+    return this.handlers.has(eventSlug);
   }
 }

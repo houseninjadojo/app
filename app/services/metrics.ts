@@ -47,7 +47,6 @@ export default class MetricsService extends BaseMetricsService {
   private async onClick(event: TouchEvent): Promise<void> {
     const target: HTMLElement = event.target as HTMLElement;
     const selector: string = htmlTreeAsString(target);
-    console.log(selector);
     this.trackEvent({
       event: 'click',
       properties: { selector },
