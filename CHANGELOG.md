@@ -1,3 +1,10 @@
+## [1.26.11](https://github.com/houseninjadojo/app/compare/v1.26.10...v1.26.11) (2022-11-16)
+
+
+### Bug Fixes
+
+* handle 404 ([#1266](https://github.com/houseninjadojo/app/issues/1266)) ([b6a9861](https://github.com/houseninjadojo/app/commit/b6a9861c6e188fe9d1ad4bcfd83d393d09384a41))
+
 ## [1.26.10](https://github.com/houseninjadojo/app/compare/v1.26.9...v1.26.10) (2022-11-14)
 
 
