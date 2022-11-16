@@ -1,15 +1,7 @@
 {{#if @linkToRoot}}
   <LinkTo @route="index">
-    <img
-      src="/assets/images/logo.white.no-icon.svg"
-      alt="House Ninja"
-      class="logo z-40 w-5/12 mx-auto"
-    />
+    {{svg-jar "logo.white.no-icon" class="logo z-40 w-5/12 mx-auto" alt="House Ninja"}}
   </LinkTo>
 {{else}}
-  <img
-    src="/assets/images/logo.white.no-icon.svg"
-    alt="House Ninja"
-    class="logo z-40 w-5/12 mx-auto"
-  />
+  {{svg-jar "logo.white.no-icon" class="logo z-40 w-5/12 mx-auto" alt="House Ninja"}}
 {{/if}}

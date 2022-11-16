@@ -1,4 +1,4 @@
-<div class="content">        
+<div class="content">
     <Primitive::Section>
         <div class="prompt">
             <p class="primary">What is your zip code?</p>
@@ -22,12 +22,12 @@
             @isLoading={{this.isLoading}}
             {{on 'click' this.checkServiceArea}}
             >
-                Next <img src="/assets/icons/right-arrow.svg" alt="right" class="icon"/>
+                Next {{svg-jar "right-arrow.svg" alt="right" class="icon"}}
             </Primitive::Button>
         </div>
     </Primitive::Section>
     <Primitive::Section>
-        <div class="hero">                
+        <div class="hero">
             <p class="hn strong mt-4 mb-4">Managing your home is a hassle—let House Ninja handle it.</p>
             <div class="mb-4">
                 <p class="hn accent">For just $29/mo, you get:</p>
@@ -38,7 +38,7 @@
                     <li>24/7 availability for your home needs</li>
                     <li>Automated home maintenance</li>
                     <li>An app to track all of your home data</li>
-                </ul>                    
+                </ul>
             </div>
             <p>To get started, enter the zip code of your property.</p>
         </div>

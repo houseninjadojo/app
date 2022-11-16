@@ -1,13 +1,12 @@
-<Primitive::Button {{on "click" this.toggleSettingsViewVisibility}} @variant="plain" @class="action">      
-    <img src="/assets/icons/hamboyga.svg" alt="hamburger menu"/>
+<Primitive::Button {{on "click" this.toggleSettingsViewVisibility}} @variant="plain" @class="action">
+    {{svg-jar "hamboyga.svg" alt="hamburger menu" }}
 </Primitive::Button>
-<img src="/assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>    
-<Primitive::Button {{on "click" this.showIntercom}} @variant="plain" @class="action right">    
-    <img src="/assets/icons/message.svg" alt="messenger" {{did-insert this.getUnreadConversationCount}}/>      
+{{svg-jar "logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"}}
+<Primitive::Button {{on "click" this.showIntercom}} @variant="plain" @class="action right">
+    {{svg-jar "message.svg" alt="messenger"}}
     {{#if (gt this.unreadConversationCount 0)}}
         <div class="hn-notification-count">
         <span>{{this.unreadConversationCount}}</span>
         </div>
     {{/if}}
-</Primitive::Button>      
-    
+</Primitive::Button>

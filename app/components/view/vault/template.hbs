@@ -1,4 +1,4 @@
-<div class="hn document-vault">    
+<div class="hn document-vault">
     <div class="actions">
         <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" (fn this.selectRoute this.vaultGroupAddRoute null)}}>
             Add Category
@@ -9,8 +9,8 @@
     </div>
     <Primitive::Section>
         <h1 class="hn center">Document Vault</h1>
-        <p class="hn center">Store and categorize all of your important home documents</p>    
-    </Primitive::Section>    
+        <p class="hn center">Store and categorize all of your important home documents</p>
+    </Primitive::Section>
     <Primitive::Section @label="Categories" @allowCollapse={{true}}>
         <HouseNinja::DocumentVaultRecords @records={{@model.groups}} @onRecordClick={{this.handleRecordClick}} @ifEmpty={{hash message="You have not added any categories." actionText="Add Category"}} @onIfEmptyButtonClick={{(fn this.selectRoute this.vaultGroupAddRoute)}}/>
     </Primitive::Section>
@@ -23,7 +23,7 @@
                 <li class="hn-sheet-menu-option">
                     <Primitive::Button @variant="plain" {{on "click" (fn option.select option)}}>
                         {{option.label}}
-                        <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                        {{svg-jar "greater-than.svg" alt="right arrow" class="menu-item-icon"}}
                     </Primitive::Button>
                 </li>
             {{/each}}

@@ -1,11 +1,11 @@
 <Primitive::Modal::Dialog @toggleModal={{@toggleWebDialog}} @isVisible={{@isVisible}}>
-    <img class="mb-8" src="/assets/images/logo+black+teal.svg" alt="House Ninja" />
+    {{svg-jar "logo+black+teal.svg" alt="House Ninja" class="mb-8"}}
     <div class="hn app-download-encouragement">
         <p class="hn center mb-4">House Ninja is introducing a seamless new payment approval process. Download the House Ninja app to make one-tap payments and store multiple payment methods to your account.</p>
         <button class="hn ios-download" type="button" {{on "click" this.downloadFromAppStore}}>
-            <img src="/assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg" class="" alt="apple store download"/>
+            {{svg-jar "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917 1.svg" class="" alt="apple store download"}}
         </button>
-    </div>    
+    </div>
     <p class="hn center strong underline">Or simply use the payment form below to pay for your service</p>
     {{!-- <p class="hn center strong underline">Please enter your payment method on file</p> --}}
     <div>
@@ -33,6 +33,6 @@
                 I approve this payment
             </Primitive::Button>
         </div>
-        <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>            
-    </div>    
+        <p class="hn center mb-4">If you have any questions please contact us at <a href="mailto:hello@houseninja.co">hello@houseninja.co</a> or <a href="tel:888-326-4652">888-32-NINJA (64652)</a></p>
+    </div>
 </Primitive::Modal::Dialog>
