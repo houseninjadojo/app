@@ -3012,18 +3012,6 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/cli@^2.8.1":
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-2.8.1.tgz#b7803572e6d5ce727329c70459a6ef0fcd2aff33"
-  integrity sha512-V/Mzy/ooZaICBFC8OvSrhUg3Anw1vlEzQQKwUtXEH0EQmcKDJMGkgfo2hXlpoR6lybODjkXDlMkajKcspdF4RA==
-  dependencies:
-    https-proxy-agent "^5.0.0"
-    node-fetch "^2.6.7"
-    npmlog "^6.0.1"
-    progress "^2.0.3"
-    proxy-from-env "^1.1.0"
-    which "^2.0.2"
-
 "@sentry/core@7.13.0":
   version "7.13.0"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.13.0.tgz#65597d71f8bfa1186f34009803e03ca9edb3adee"
@@ -8323,7 +8311,7 @@ ember-user-activity@elwayman02/ember-user-activity:
   version "6.0.0"
   resolved "https://codeload.github.com/elwayman02/ember-user-activity/tar.gz/10a4cb7fbddf1dbd60c41cf6a94f06a0c744c5e6"
   dependencies:
-    ember-classic-decorator "^3.0.0"
+    ember-classic-decorator "^3.0.1"
     ember-cli-babel "^7.26.11"
 
 emoji-regex@^8.0.0:
