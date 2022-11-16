@@ -33,7 +33,7 @@ export enum SignupRoute {
 export enum DashboardRoute {
   Index = 'dashboard.index',
   Home = 'dashboard.home',
-  History = 'dashboard.history',
+  History = 'dashboard.work-history',
   HandleIt = 'dashboard.handle-it',
 }
 

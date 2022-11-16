@@ -30,7 +30,7 @@
               {{#if @showIcon}}
                 {{#if record.iconUri}}
                   <span class='icon'>
-                    <img src={{record.iconUri}} alt={{record.type}} />
+                    {{svg-jar record.iconUri alt=record.type}}
                   </span>
                 {{/if}}
               {{/if}}

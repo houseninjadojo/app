@@ -43,7 +43,7 @@
   filter: invert(56%) sepia(88%) saturate(1163%) hue-rotate(133deg) brightness(90%) contrast(100%);
 }
 
-.nav-menu-item button img { width: 32px; }
+.nav-menu-item button :is(img,svg) { width: 32px; }
 
 .hn.nav-bar > button {
   margin-bottom: 8px;

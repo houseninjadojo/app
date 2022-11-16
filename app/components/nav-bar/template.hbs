@@ -5,19 +5,19 @@
   <ul class="nav-menu">
     <li class="nav-menu-item">
       <Primitive::Button {{on "click" (fn this.selectRoute this.dashboardHomeRoute)}} @variant="plain" @class={{this.isHomeActive}}>
-        {{svg-jar "property.svg" alt="home icon" class="nav-menu-item-icon"}}
+        {{svg-jar "property" alt="home icon" class="nav-menu-item-icon"}}
         Home
       </Primitive::Button>
     </li>
     <li class="nav-menu-item">
       <Primitive::Button  {{on "click" (fn this.selectRoute this.dashboardHandleItRoute)}} @variant="plain" @class={{this.isHandleItActive}}>
-        {{svg-jar "tools.svg" alt="handle it icon" class="nav-menu-item-icon"}}
+        {{svg-jar "tools" alt="handle it icon" class="nav-menu-item-icon"}}
         Handle It
       </Primitive::Button>
     </li>
     <li class="nav-menu-item">
       <Primitive::Button  {{on "click" (fn this.selectRoute this.dashboardHistoryRoute)}} @variant="plain" @class={{this.isWorkHistoryActive}}>
-        {{svg-jar "activity.svg" alt="history icon" class="nav-menu-item-icon"}}
+        {{svg-jar "activity" alt="history icon" class="nav-menu-item-icon"}}
         History
       </Primitive::Button>
     </li>

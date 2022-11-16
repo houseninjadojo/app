@@ -36,7 +36,7 @@
                     @semantic='primary'
                     {{on 'click' this.goBack}}
                 >
-                        {{svg-jar "left-arrow.svg" alt="previous" class="icon left"}} Previous
+                        {{svg-jar "left-arrow" alt="previous" class="icon left"}} Previous
                 </Primitive::Button>
             {{/unless}}
             <Primitive::Button
@@ -49,7 +49,7 @@
             >
                 {{if @isOnboardingViaNativeApp "Submit" "Next"}}
                 {{#unless @isOnboardingViaNativeApp}}
-                    {{svg-jar "right-arrow.svg" alt="right" class="icon"}}
+                    {{svg-jar "right-arrow" alt="right" class="icon"}}
                 {{/unless}}
             </Primitive::Button>
         </div>
