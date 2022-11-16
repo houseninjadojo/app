@@ -78,4 +78,7 @@ Router.map(function () {
     this.route('index');
     this.route('work-order', { path: '/:work_order_id' });
   });
+
+  // 404
+  this.route('not-found', { path: '/*path' });
 });

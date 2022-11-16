@@ -1,1 +1,15 @@
-<img src="/assets/images/logo.white.no-icon.svg" alt="House Ninja" class="logo z-40 w-5/12 mx-auto"/>            
+{{#if @linkToRoot}}
+  <LinkTo @route="index">
+    <img
+      src="/assets/images/logo.white.no-icon.svg"
+      alt="House Ninja"
+      class="logo z-40 w-5/12 mx-auto"
+    />
+  </LinkTo>
+{{else}}
+  <img
+    src="/assets/images/logo.white.no-icon.svg"
+    alt="House Ninja"
+    class="logo z-40 w-5/12 mx-auto"
+  />
+{{/if}}
