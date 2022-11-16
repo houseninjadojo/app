@@ -6059,10 +6059,10 @@ canvas-confetti@^1.6.0:
   resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.6.0.tgz#193f71aa8f38fc850a5ba94f59091a7afdb43ead"
   integrity sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==
 
-capacitor-secure-storage-plugin@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.8.0.tgz#2edcb0a190d49b9c61c68498903c7f0ee733855b"
-  integrity sha512-iYzQtsiHBxKUOonvtHR6stKdDyZM+xV6rZAmQZFU+NOCEHgwAbtvFKADmb/Ujkik/bkIeVe8R8jUtmVQ/B/vxQ==
+capacitor-secure-storage-plugin@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/capacitor-secure-storage-plugin/-/capacitor-secure-storage-plugin-0.8.1.tgz#515528c0821de28c43066d74701e2d26c1cafd70"
+  integrity sha512-PvTMZsjh5NAopdabp7b+zpu6N/zboBfB1dMldI7wbdCGSaH4LZo8cZLp9U2V1i2Y0V3JI1oWR3iysUrG0m7uPQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
