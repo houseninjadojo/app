@@ -1,3 +1,10 @@
+## [1.26.13](https://github.com/houseninjadojo/app/compare/v1.26.12...v1.26.13) (2022-11-17)
+
+
+### Bug Fixes
+
+* capacitor sync ([#1275](https://github.com/houseninjadojo/app/issues/1275)) ([0ce2f48](https://github.com/houseninjadojo/app/commit/0ce2f488ddd9723a2812574e4fac175395669486))
+
 ## [1.26.12](https://github.com/houseninjadojo/app/compare/v1.26.11...v1.26.12) (2022-11-17)
 
 
