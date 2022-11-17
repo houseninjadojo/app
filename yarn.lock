@@ -1174,10 +1174,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/device@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-4.0.1.tgz#4bf1e79aeba6d1ae07c7db0df44331bf18515887"
-  integrity sha512-D0jJFQYifmsgcz4X9MEEKH5E36ARK2CJcUCXJbcuFTChHSxK+ly7Kd6PZC73Y5GkEZIjpebWAWo5F3w9S4hsYQ==
+"@capacitor/device@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-4.1.0.tgz#b9f73368f6f6f1194181bcd7bc4b8a021c67f33e"
+  integrity sha512-BlcYb6e6m+vC1SxeyUDIUGfuNXdKEcpFPDCs/kxk2SByFc/BkvXeoy4NjY4qmTderGELofX9bta5Iy9JV7rGUg==
 
 "@capacitor/dialog@^4.0.1":
   version "4.0.1"
@@ -7493,7 +7493,7 @@ ember-cached-decorator-polyfill@^0.1.4:
     ember-cli-babel "^7.21.0"
     ember-cli-babel-plugin-helpers "^1.1.1"
 
-ember-classic-decorator@^3.0.0:
+ember-classic-decorator@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ember-classic-decorator/-/ember-classic-decorator-3.0.1.tgz#13acf53e5fdb1f867919765853eb3592380ed1ef"
   integrity sha512-IoocHPX1cY93Sma7VeDGbF0M1+TkBWDJLus+RD01902eD+KHEL2+diwM+iayCyO+1/xaUzdzNGh35J+i+TCxoA==
