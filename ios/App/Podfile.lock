@@ -39,6 +39,7 @@ PODS:
     - Capacitor
   - CapawesomeCapacitorFilePicker (0.5.2):
     - Capacitor
+  - DatadogSDK (1.13.0)
   - Firebase/CoreOnly (9.6.0):
     - FirebaseCore (= 9.6.0)
   - Firebase/Messaging (9.6.0):
@@ -138,6 +139,7 @@ DEPENDENCIES:
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
   - "CapawesomeCapacitorFilePicker (from `../../node_modules/@capawesome/capacitor-file-picker`)"
+  - DatadogSDK
   - Firebase/Messaging
   - "HouseninjaCapacitorBranch (from `../../node_modules/@houseninja/capacitor-branch`)"
   - "HouseninjaCapacitorMixpanel (from `../../node_modules/@houseninja/capacitor-mixpanel`)"
@@ -147,6 +149,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Branch
+    - DatadogSDK
     - Firebase
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -231,6 +234,7 @@ SPEC CHECKSUMS:
   CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
   CapacitorSplashScreen: e1f56f45abbccd0dd4bb723195b52ed39f923680
   CapawesomeCapacitorFilePicker: a952b37c18e7fe752ca2970d34cdf04afa86f19d
+  DatadogSDK: f0e6d65f5a26f2fe3530c657a86a2118240d3995
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
   FirebaseCoreDiagnostics: 99a495094b10a57eeb3ae8efa1665700ad0bdaa6
@@ -250,6 +254,6 @@ SPEC CHECKSUMS:
   SentryCapacitor: 075a95f83c96e090ec47c561519fd9288c3aa686
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: c939924a78ff56a9fff3106084328be2e1fa2f2e
+PODFILE CHECKSUM: bea05332de25eb3005bf9a9d4a4315b4ef850044
 
 COCOAPODS: 1.11.3

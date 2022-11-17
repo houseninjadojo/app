@@ -38,6 +38,7 @@ target 'House Ninja' do
   capacitor_pods
   # Add your Pods here
   pod 'Firebase/Messaging'
+  pod 'DatadogSDK'
 end
 
 post_install do |installer|

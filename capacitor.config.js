@@ -44,8 +44,8 @@ const server = {
 
 const plugins = {
   SplashScreen: {
-    launchShowDuration: 1,
-    launchAutoHide: false,
+    launchShowDuration: 0,
+    launchAutoHide: true,
     backgroundColor: '#000000',
   },
   Keyboard: {
