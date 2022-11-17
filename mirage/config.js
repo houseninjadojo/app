@@ -124,6 +124,26 @@ function routes() {
   // this.resource('user', { path: '/users', except: ['index', 'create'] });
 
   this.resource('work-order', { path: '/work-orders' });
+  this.get('/work-orders/:id', (schema, request) => {
+    request.queryParams = request.queryParams || {};
+    const id = request.params.id;
+    if (id === INVOICE_ACCESS_TOKEN) {
+      if (!request.queryParams.include) {
+        request.queryParams.include = [
+          'invoice',
+          'invoice.payment',
+          'property',
+          'property.user',
+          'property.user.payment_methods',
+        ];
+      }
+      const user = schema.users.first();
+      const property = schema.properties.create({ user });
+      return schema.workOrders.create({ property });
+    } else {
+      return schema.workOrders.find(id);
+    }
+  });
   this.resource('document-group', { path: '/document-groups' });
   this.resource('document', { path: '/documents' });
 
