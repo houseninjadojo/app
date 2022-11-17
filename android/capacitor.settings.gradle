@@ -50,14 +50,14 @@ project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capa
 include ':capawesome-capacitor-file-picker'
 project(':capawesome-capacitor-file-picker').projectDir = new File('../node_modules/@capawesome/capacitor-file-picker/android')
 
+include ':houseninja-capacitor-branch'
+project(':houseninja-capacitor-branch').projectDir = new File('../node_modules/@houseninja/capacitor-branch/android')
+
 include ':houseninja-capacitor-mixpanel'
 project(':houseninja-capacitor-mixpanel').projectDir = new File('../node_modules/@houseninja/capacitor-mixpanel/android')
 
 include ':mineminemine-fcm'
 project(':mineminemine-fcm').projectDir = new File('../node_modules/@mineminemine/fcm/android')
-
-include ':houseninja-capacitor-branch'
-project(':houseninja-capacitor-branch').projectDir = new File('../node_modules/@houseninja/capacitor-branch/android')
 
 include ':capacitor-secure-storage-plugin'
 project(':capacitor-secure-storage-plugin').projectDir = new File('../node_modules/capacitor-secure-storage-plugin/android')

@@ -25,9 +25,9 @@ dependencies {
     implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
     implementation project(':capawesome-capacitor-file-picker')
+    implementation project(':houseninja-capacitor-branch')
     implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':mineminemine-fcm')
-    implementation project(':houseninja-capacitor-branch')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
 

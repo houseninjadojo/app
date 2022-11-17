@@ -30,7 +30,7 @@ PODS:
     - Capacitor
   - CapacitorPushNotifications (4.1.1):
     - Capacitor
-  - CapacitorSecureStoragePlugin (0.8.0):
+  - CapacitorSecureStoragePlugin (0.8.1):
     - Capacitor
     - SwiftKeychainWrapper
   - CapacitorShare (4.0.1):
@@ -227,7 +227,7 @@ SPEC CHECKSUMS:
   CapacitorLocalNotifications: 7b3aa4f89dbc02421466391f260c49c4239d2acf
   CapacitorPreferences: d365ea3b5023b2aac39e8f5ce18de141e39d2cae
   CapacitorPushNotifications: 273549fe9e5fb641892b066e0debb16f7aed119b
-  CapacitorSecureStoragePlugin: f4d8b50d96bebd71b21b6eb2322544cb1fd92bea
+  CapacitorSecureStoragePlugin: e616d090177dfbf9754dd1bdb515a8f23855bf4e
   CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
   CapacitorSplashScreen: e1f56f45abbccd0dd4bb723195b52ed39f923680
   CapawesomeCapacitorFilePicker: a952b37c18e7fe752ca2970d34cdf04afa86f19d

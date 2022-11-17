@@ -64,16 +64,16 @@
 		"classpath": "io.capawesome.capacitorjs.plugins.filepicker.FilePickerPlugin"
 	},
 	{
+		"pkg": "@houseninja/capacitor-branch",
+		"classpath": "co.boundstate.BranchDeepLinks"
+	},
+	{
 		"pkg": "@houseninja/capacitor-mixpanel",
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
 	{
 		"pkg": "@mineminemine/fcm",
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
-	},
-	{
-		"pkg": "@houseninja/capacitor-branch",
-		"classpath": "co.boundstate.BranchDeepLinks"
 	},
 	{
 		"pkg": "capacitor-secure-storage-plugin",
