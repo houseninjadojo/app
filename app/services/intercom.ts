@@ -74,33 +74,6 @@ export default class IntercomService extends Service {
     }
   }
 
-  // eslint-disable-next-line prettier/prettier
-  private async loginUserNative(userId: string, email: string, hmac: string): Promise<void> {
-    try {
-      await Intercom.setUserHash({ hmac });
-      await Intercom.loginUser({
-        userId,
-        email,
-      });
-    } catch (e) {
-      captureException(e as Error);
-    }
-  }
-
-  // eslint-disable-next-line prettier/prettier
-  private async loginUserWeb(userId: string, email: string, hmac: string): Promise<void> {
-    try {
-      await Intercom.boot({
-        app_id: ENV.intercom.appId,
-        user_id: userId,
-        email,
-        user_hash: hmac,
-      });
-    } catch (e) {
-      captureException(e as Error);
-    }
-  }
-
   setupListeners(): void {
     this.eventBus.on(
       'intercom.on-unread-count-change',
@@ -212,14 +185,6 @@ export default class IntercomService extends Service {
     return 0;
   }
 
-  private handleUnreadConvoCount({ value }: { value: string }): void {
-    this.unreadConversationCount = value ? parseInt(value) : 0;
-  }
-
-  private handleWindowDidHide(): void {
-    this.metrics.trackEvent({ event: 'intercom.close' });
-  }
-
   async registerEvents(): Promise<void> {
     await this.removeAllListeners();
     await this.eventBus.registerEvents(
@@ -229,7 +194,42 @@ export default class IntercomService extends Service {
     );
   }
 
+  private handleUnreadConvoCount({ value }: { value: string }): void {
+    this.unreadConversationCount = value ? parseInt(value) : 0;
+  }
+
+  private handleWindowDidHide(): void {
+    this.metrics.trackEvent({ event: 'intercom.close' });
+  }
+
   private async removeAllListeners(): Promise<void> {
     await Intercom.removeAllListeners();
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  private async loginUserNative(userId: string, email: string, hmac: string): Promise<void> {
+    try {
+      await Intercom.setUserHash({ hmac });
+      await Intercom.loginUser({
+        userId,
+        email,
+      });
+    } catch (e) {
+      captureException(e as Error);
+    }
+  }
+
+  // eslint-disable-next-line prettier/prettier
+  private async loginUserWeb(userId: string, email: string, hmac: string): Promise<void> {
+    try {
+      await Intercom.boot({
+        app_id: ENV.intercom.appId,
+        user_id: userId,
+        email,
+        user_hash: hmac,
+      });
+    } catch (e) {
+      captureException(e as Error);
+    }
   }
 }

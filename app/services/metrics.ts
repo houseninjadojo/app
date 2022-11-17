@@ -30,6 +30,16 @@ export default class MetricsService extends BaseMetricsService {
     this.removeAllListeners();
   }
 
+  async registerEvents(): Promise<void> {
+    // await this.removeAllListeners();
+    this.eventBus.subscribe(
+      this.router as ListenableEvented,
+      'Router',
+      'routeDidChange'
+    );
+    this.eventBus.subscribe(this.userActivity, 'UserActivity', 'pointerdown');
+  }
+
   private onRouteChanged(): void {
     const page: string = this.router.currentURL;
     const title: string = this.router.currentRouteName || 'unknown';
@@ -48,16 +58,6 @@ export default class MetricsService extends BaseMetricsService {
       event: 'click',
       properties: { selector },
     });
-  }
-
-  async registerEvents(): Promise<void> {
-    // await this.removeAllListeners();
-    this.eventBus.subscribe(
-      this.router as ListenableEvented,
-      'Router',
-      'routeDidChange'
-    );
-    this.eventBus.subscribe(this.userActivity, 'UserActivity', 'pointerdown');
   }
 
   private async removeAllListeners(): Promise<void> {
