@@ -2,16 +2,31 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
+import {
+  ActionSheet,
+  ActionSheetButton,
+  ActionSheetButtonStyle,
+} from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { DashboardRoute } from 'houseninja/data/enums/routes';
+import IntercomService from 'houseninja/services/intercom';
+import RouterService from '@ember/routing/router-service';
+import StoreService from 'houseninja/services/store';
+import ToastService from 'houseninja/services/toast';
+import WorkOrder from 'houseninja/models/work-order';
+import { ValidationError } from '@ember-data/adapter/error';
+import Invoice from 'houseninja/models/invoice';
 
-export default class WorkOrderApprovePaymentViewContentComponent extends Component {
-  @service intercom;
-  @service router;
-  @service store;
-  @service toast;
+type Args = {
+  model: WorkOrder;
+};
+
+export default class WorkOrderApprovePaymentViewContentComponent extends Component<Args> {
+  @service declare intercom: IntercomService;
+  @service declare router: RouterService;
+  @service declare store: StoreService;
+  @service declare toast: ToastService;
 
   @tracked showWebDialog = false;
   @tracked isProcessing = false;
@@ -19,7 +34,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked paid = false;
   @tracked paymentFailed = false;
 
-  actionSheetOptions = [
+  actionSheetOptions: ActionSheetButton[] = [
     {
       title: 'Dismiss',
       style: ActionSheetButtonStyle.Cancel,
@@ -29,32 +44,33 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     },
   ];
 
-  async _nativeConfirmation() {
-    const total = this.args.model.get('invoice.formattedTotal');
+  private async nativeConfirmation(): Promise<void> {
+    const invoice = await this.args.model.invoice;
+    const total = invoice.formattedTotal;
     const result = await ActionSheet.showActions({
       title: `Amount Due ${total}`,
       message: 'Do you approve this payment?',
       options: this.actionSheetOptions,
     });
 
-    const choice = this.actionSheetOptions[result.index].title;
-    const confirmed = choice === this.actionSheetOptions[1].title;
+    const choice = this.actionSheetOptions[result.index]?.title;
+    const confirmed = choice === this.actionSheetOptions[1]?.title;
     if (confirmed) {
       await this.approvePayment();
     }
   }
 
-  _webConfirmation() {
+  private webConfirmation(): void {
     this.toggleWebDialog();
   }
 
   @action
-  toggleIsProcessing() {
+  toggleIsProcessing(): void {
     this.isProcessing = !this.isProcessing;
   }
 
   @action
-  async approvePayment() {
+  async approvePayment(): Promise<void> {
     this.toggleIsProcessing();
 
     const payment = this.store.createRecord('payment', {
@@ -65,70 +81,68 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
       await payment.save(); // this will be long running (probably)
       this.paid = true;
     } catch (e) {
-      if (!this.payment) {
+      if (!this.paid) {
         const hasGenericError =
-          payment.errors?.messages.filter((e) => e.attribute === null).length >
-          0;
-
+          payment.errors?.content.filter(
+            (e: ValidationError) => e.attribute === null
+          ).length > 0;
         if (hasGenericError) {
           this.toast.showError(
             'Your payment was unsuccessful. If this happens again, please contact us at hello@houseninja.co.'
           );
         }
-
         this.toggleIsProcessing();
       }
-
-      captureException(e);
+      captureException(e as Error);
     }
   }
 
   @action
-  toggleWebDialog() {
+  toggleWebDialog(): void {
     this.showWebDialog = !this.showWebDialog;
   }
 
   @action
-  async confirm() {
+  async confirm(): Promise<void> {
     if (isNativePlatform()) {
-      this._nativeConfirmation();
+      this.nativeConfirmation();
     } else {
-      this._webConfirmation();
+      this.webConfirmation();
     }
   }
 
   @action
-  requestDifferentPayment() {
+  requestDifferentPayment(): void {
     this.intercom.showComposer('I would like to update my payment method.');
   }
 
   @action
-  inquireAboutInvoice() {
+  inquireAboutInvoice(): void {
     this.intercom.showComposer(
       `I have a question about the invoice for the ${this.args.model?.description} service request.`
     );
   }
 
   @action
-  selectRoute() {
+  selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
-    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    this.router.transitionTo(DashboardRoute.Home);
   }
 
-  get isNativePlatform() {
+  get isNativePlatform(): boolean {
     return isNativePlatform();
   }
 
-  get invoice() {
+  get invoice(): Invoice | undefined {
     return this.args.model.invoice;
   }
 
-  get formattedTotal() {
+  get formattedTotal(): string | undefined {
     return this.invoice?.formattedTotal;
   }
 
-  get creditCard() {
+  get creditCard(): string {
     return this.store.peekAll('credit-card').firstObject;
   }
 }

@@ -102,16 +102,17 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   validatePaymentMethodForm(e: Event): void {
     const target = e.target as HTMLInputElement;
     const targetId: PMITarget = target.id as PMITarget;
+    const field = this.fields.find((f) => f.id === targetId);
     if (targetId === 'cardNumber') {
-      this.paymentMethod[targetId] = target.value.replace(/\D/g, '');
+      target.value = target.value.replace(/\D/g, '');
       formatCreditCardNumberElement(target);
-      const field = this.fields.find((f) => f.id === targetId);
-      field?.value ? (field.value = target.value) : null;
+      this.paymentMethod.cardNumber = target.value;
     } else {
       this.paymentMethod[targetId] = target.value;
-      const field = this.fields.find((f) => f.id === targetId);
-      field?.value ? (field.value = this.paymentMethod[targetId]) : null;
     }
+
+    // Update the field presentation regardless for actual validation
+    if (field) field.value = target.value;
 
     this.paymentMethodFormIsInvalid = inputValidation(this.fields, [
       'cardIsValid',
