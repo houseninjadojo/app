@@ -1,3 +1,10 @@
+## [1.26.12](https://github.com/houseninjadojo/app/compare/v1.26.11...v1.26.12) (2022-11-17)
+
+
+### Bug Fixes
+
+* payment approval input validation ([#1273](https://github.com/houseninjadojo/app/issues/1273)) ([80599d7](https://github.com/houseninjadojo/app/commit/80599d78cf49f840a78887194a53611af346a0d2))
+
 ## [1.26.11](https://github.com/houseninjadojo/app/compare/v1.26.10...v1.26.11) (2022-11-16)
 
 
