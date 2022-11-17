@@ -1219,10 +1219,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/push-notifications/-/push-notifications-4.1.1.tgz#6ef24939d8e6e8f1277c01589516c8cd8a78674a"
   integrity sha512-x7LihJJgSOSSH7CzJTVM9PwaYp6CxRT+/Xv9YX0XWHr55pFiWTPYC85vBz0CtFXi4u7UfBDvQWqIU3ThMTdEiw==
 
-"@capacitor/share@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-4.0.1.tgz#71471eba1f193e1d73c5a507cd8f4b836999f68f"
-  integrity sha512-czqYavgW+rMrlcgZkLHJ4Xwr+7E/T2YxxZ5tVtdqxANlKCw/qUL2tpNx3wphiC8lWj9wLUWFjgrBBDeZSlPYdQ==
+"@capacitor/share@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-4.1.0.tgz#00e2b9dcd86a7a9691fc758ffbffe65b884b3253"
+  integrity sha512-Gh/cgy7Ee+9fkhw+Q4+9s2S4HiC34/eLoaohqRg1ahtpqvTQ3qdInoEJ23FdILq5cLj2ZPpx2VuEXjpLKX1Z5A==
 
 "@capacitor/splash-screen@^4.1.1":
   version "4.1.1"

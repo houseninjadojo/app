@@ -178,7 +178,7 @@
     "@capacitor/local-notifications": "^4.1.2",
     "@capacitor/preferences": "^4.0.1",
     "@capacitor/push-notifications": "^4.1.1",
-    "@capacitor/share": "^4.0.1",
+    "@capacitor/share": "^4.1.0",
     "@capacitor/splash-screen": "^4.1.1",
     "@capawesome/capacitor-file-picker": "^0.5.2",
     "@datadog/browser-logs": "^4.24.0",
