@@ -1179,10 +1179,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/device/-/device-4.1.0.tgz#b9f73368f6f6f1194181bcd7bc4b8a021c67f33e"
   integrity sha512-BlcYb6e6m+vC1SxeyUDIUGfuNXdKEcpFPDCs/kxk2SByFc/BkvXeoy4NjY4qmTderGELofX9bta5Iy9JV7rGUg==
 
-"@capacitor/dialog@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-4.0.1.tgz#b1d6812037da4cac4529d1d4916abfa15f8ec88e"
-  integrity sha512-mHcTU+z2SiGL0azdr4Pn9Qzq+AHKBIoDzAOUVAco+OyFsASdMu/+d/DB2MipA4VvO2QNnbcvvtSFwDnCoyg+aw==
+"@capacitor/dialog@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/dialog/-/dialog-4.1.0.tgz#a66a3ec01d7209aa1bec04fdf9d51213a58710cf"
+  integrity sha512-Uej4+WE6Ec445iTzLVD22fmsPfu8nW+IJyiixtzP5+ZLNhdJ5mjbMUUTUrZTbDUK8hViFRsfLo90qbeGzgMTVA==
 
 "@capacitor/filesystem@^4.1.4":
   version "4.1.4"
