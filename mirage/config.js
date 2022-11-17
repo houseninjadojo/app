@@ -127,8 +127,6 @@ function routes() {
   this.get('/work-orders/:id', (schema, request) => {
     request.queryParams = request.queryParams || {};
     const id = request.params.id;
-    const user = schema.users.first();
-    const property = schema.properties.create({ user });
     if (id === INVOICE_ACCESS_TOKEN) {
       if (!request.queryParams.include) {
         request.queryParams.include = [
@@ -139,7 +137,11 @@ function routes() {
           'property.user.payment_methods',
         ];
       }
+      const user = schema.users.first();
+      const property = schema.properties.create({ user });
       return schema.workOrders.create({ property });
+    } else {
+      return schema.workOrders.find(id);
     }
   });
   this.resource('document-group', { path: '/document-groups' });
