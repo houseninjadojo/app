@@ -1119,10 +1119,10 @@
   version "4.0.4-beta.0"
   resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/a905381fe2bc66254c570ec5d8e04200bfccd206"
 
-"@capacitor/action-sheet@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.0.1.tgz#58a0c2b6dfaa7de06d20a31af726cf6c65f8917a"
-  integrity sha512-8F4TT05KCvSccGZjezEXPgiRvjuwQRpVUApTTVNQaEgHP9vPhuzfQB9hp9NByR8IfuHMwAlJGSnoFp7fZ6xHuw==
+"@capacitor/action-sheet@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.1.0.tgz#6ce5b849fff52bf45a6e6832d5de00ff6fc2b97a"
+  integrity sha512-q3gRV3iTOHMuN+ihvNgk0G2dJNNnjkBBXS1tdf1rn9tMdX6BUE9Hi2GmXLI9otKkmJ5JIiURnJURtrn3bp8a+Q==
 
 "@capacitor/android@4.4.0":
   version "4.4.0"

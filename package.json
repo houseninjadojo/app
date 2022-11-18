@@ -166,7 +166,7 @@
   },
   "dependencies": {
     "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#a905381",
-    "@capacitor/action-sheet": "^4.0.1",
+    "@capacitor/action-sheet": "^4.1.0",
     "@capacitor/app": "^4.1.0",
     "@capacitor/browser": "^4.0.1",
     "@capacitor/camera": "^4.1.3",
