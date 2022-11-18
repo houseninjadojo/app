@@ -1209,10 +1209,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/local-notifications/-/local-notifications-4.1.3.tgz#42caf9bd9f13eeb80cab753d2782a9a834bf1748"
   integrity sha512-bJSk+j0w1dOHoD+Ff+NtByysw1SsM9VHlmcSndERqqMjvEEMDIVez+MJ3itWqUr2L3OXtYTtgmlj94RZVtwyAw==
 
-"@capacitor/preferences@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/preferences/-/preferences-4.0.1.tgz#fd56f24fe2cde1222cf5c3057d52cd55fd033e7b"
-  integrity sha512-FffJjKS4XcodUj/rtFtWizQ9q/oYDSn5opZ+JYwj/EkjiMWMhY/Pk9lN3vwQfp+VJrTt3hjr+bwKXjhTbYBqKw==
+"@capacitor/preferences@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/preferences/-/preferences-4.0.2.tgz#83bee8cadb3456a4f2a89118b8351d488c20ec77"
+  integrity sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==
 
 "@capacitor/push-notifications@^4.1.1":
   version "4.1.1"
