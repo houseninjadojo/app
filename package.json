@@ -38,7 +38,7 @@
     "@capacitor/android": "4.4.0",
     "@capacitor/cli": "4.5.0",
     "@capacitor/core": "4.5.0",
-    "@capacitor/ios": "4.4.0",
+    "@capacitor/ios": "4.5.0",
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@commitlint/prompt-cli": "^17.2.0",
