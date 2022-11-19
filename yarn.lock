@@ -1139,10 +1139,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/browser/-/browser-4.1.0.tgz#909f384a8e2a7b70c328d2664834735f675300b1"
   integrity sha512-WKAZDc9ECYQesEXlVhJu5/qbqkL5rj15wg9yBqSC0RXYsOU7aDiTMjXIu+Vu68jA8IQqIuNIp8slDvDQa+U/Kw==
 
-"@capacitor/camera@^4.1.3":
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-4.1.3.tgz#4418fc0a167537b38944a5685626701d8618d240"
-  integrity sha512-XhOMsdrRelKns/+X9W8uY2Qy0o2NPrY13gzLujxGuMZIuIzIZD4JvRUq373cIq1e2gfX/8r1Vux5QCamWM/e0A==
+"@capacitor/camera@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-4.1.4.tgz#5d019f88d1f3547b537270e35bcb96084eb48df6"
+  integrity sha512-7f4n7PlnstYsdGyxc0Kc4hIyS6csFLOjXvffm7pJsuy9pSo+kfdOPdYgGg360QwbUAmA+Yv+J1ZW1eFIwgvWrQ==
 
 "@capacitor/cli@4.5.0":
   version "4.5.0"
