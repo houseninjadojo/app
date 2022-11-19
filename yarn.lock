@@ -1462,10 +1462,10 @@
     "@datadog/browser-core" "4.24.0"
     "@datadog/browser-rum-core" "4.24.0"
 
-"@datadog/datadog-ci@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@datadog/datadog-ci/-/datadog-ci-2.0.0.tgz#ae6d22bbea7c87548928b961017484b8af719f26"
-  integrity sha512-7T88P5jSznblwMz/C6ymQnVjDyTbdYQggREawjG5z+3JR6H9xF18ePH/YuyrP5AJUN4pxEUr2NfC0ACV0FjNBg==
+"@datadog/datadog-ci@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@datadog/datadog-ci/-/datadog-ci-2.1.0.tgz#61345e33f6fe564fda6d00e2a90eaa3eef5158c7"
+  integrity sha512-JQZWHlcWuNdsW66e6ZtvM5C9vdfZyYiBvDEqCQ4snV1qfHItVFWqUKAqgpN0QPGm0/Zi935c320hMd1U8okzUQ==
   dependencies:
     "@types/datadog-metrics" "0.6.1"
     async-retry "1.3.1"
