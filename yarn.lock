@@ -1435,12 +1435,17 @@
   resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.24.0.tgz#a089deb20eafe6628199e94c41d1e59bcedb2c5a"
   integrity sha512-HTPrt+lOu7ineq3cWT91Lcsf3ihbu0I7YssT0bdt/4vjqmCW12fW3koGGq9B5MpcBwpp7uc1rg6vZiC9GRlGEw==
 
-"@datadog/browser-logs@^4.24.0":
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-logs/-/browser-logs-4.24.0.tgz#7d2a7e93f189f40a696fafd23d93f9fa03cd7a7d"
-  integrity sha512-PrulQvy3rEqfhUjUT/PkmBdgTi18z2GKYnIwZxeaEtPNIneb8cVE7M2Mdu8vAGAWVjS19QOe/FOJLlmpC7SbNA==
+"@datadog/browser-core@4.24.1":
+  version "4.24.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.24.1.tgz#770e21dd91c35fa1959a55c06e82ac743165262b"
+  integrity sha512-ADrMhFjD75STecEa+vQmuutoyKu6EVSj+EsFzOpqdfit24c7ZnyyydHIpCUtKjXGQdI1WMX0/2Xf/dM4zMCYgA==
+
+"@datadog/browser-logs@^4.24.1":
+  version "4.24.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-logs/-/browser-logs-4.24.1.tgz#5d2ad9aec71f46206a9e60d15a4c7ca1988caa5d"
+  integrity sha512-0J7o8+yFFk4z2nNAie3ufJWhldm4a5f2ToeGR1FrWooH4+tfi3YWB9obSxF4R1LDB+ybSQOuFw1QDcMm3pWnyA==
   dependencies:
-    "@datadog/browser-core" "4.24.0"
+    "@datadog/browser-core" "4.24.1"
 
 "@datadog/browser-rum-core@4.24.0":
   version "4.24.0"
