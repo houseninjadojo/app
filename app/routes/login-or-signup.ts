@@ -15,10 +15,11 @@ export default class LoginOrSignupRoute extends Route {
     if (!this.session.isExternalSession) {
       this.session.prohibitAuthentication(DefaultRoute.SignedIn);
     }
-    if (!isNativePlatform()) {
+    if (isNativePlatform()) {
+      this.router.transitionTo(DefaultRoute.SignedOut);
+    } else {
       this.router.transitionTo(DefaultRoute.Signup);
     }
-    this.router.transitionTo(DefaultRoute.SignedOut);
   }
 
   async model(): Promise<CurrentService> {

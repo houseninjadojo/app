@@ -21,15 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
 
-//        if isSimulator() {
-//          Branch.setUseTestBranchKey(true)
-//          Branch.getInstance().enableLogging()
-//        }
-//
-//        // required for nativelink feature
-//        // @see https://help.branch.io/developers-hub/docs/ios-advanced-features#options-for-implementation
-//        Branch.getInstance().checkPasteboardOnInstall() // enable pasteboard check
-//        Branch.getInstance().initSession(launchOptions: launchOptions)
+        if isSimulator() {
+          Branch.setUseTestBranchKey(true)
+          Branch.getInstance().enableLogging()
+        }
+
+        // required for nativelink feature
+         // @see https://help.branch.io/developers-hub/docs/ios-advanced-features#options-for-implementation
+        Branch.getInstance().checkPasteboardOnInstall() // enable pasteboard check
+        Branch.getInstance().initSession(launchOptions: launchOptions)
         
         // Initialize Firebase
         Datadog.initialize(
@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .trackBackgroundEvents()
                 .enableLogging(true)
                 .enableTracing(true)
+                .set(sessionReplaySampleRate: 100)
                 .build()
         )
         Global.rum = RUMMonitor.initialize()
@@ -89,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the app was launched with an activity, including Universal Links.
         // Feel free to add additional processing here, but if you want the App API to support
         // tracking app url opens, make sure to keep this call
-//        Branch.getInstance().continue(userActivity)
+        Branch.getInstance().continue(userActivity)
         return ApplicationDelegateProxy.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
 
@@ -104,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        Branch.getInstance().handlePushNotification(userInfo)
+        Branch.getInstance().handlePushNotification(userInfo)
     }
 
     private func isSimulatorOrTestFlight() -> Bool {

@@ -25,6 +25,7 @@ const android = {
 const ios = {
   contentInset: 'never',
   scrollEnabled: 'false',
+  limitsNavigationsToAppBoundDomains: true,
 };
 
 const server = {
@@ -33,16 +34,19 @@ const server = {
   androidScheme: process.env.APP_SCHEME,
   cleartext: false,
   url: process.env.CAPACITOR_SERVER_URL,
-  allowNavigation: [
-    // 'localhost:3000',
-    'auth.houseninja.co',
-    'sandbox.auth.houseninja.co',
-    'houseninja.co',
-    '*.houseninja.co',
-  ],
+  // allowNavigation: [
+  //   'localhost',
+  //   'auth.houseninja.co',
+  //   'sandbox.auth.houseninja.co',
+  //   'houseninja.co',
+  //   '*.houseninja.co',
+  // ],
 };
 
 const plugins = {
+  CapacitorCookies: {
+    enabled: true,
+  },
   SplashScreen: {
     launchShowDuration: 0,
     launchAutoHide: true,
