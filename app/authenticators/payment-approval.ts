@@ -8,6 +8,7 @@ type AuthenticationPayload = {
 export default class PaymentApprovalAuthenticator extends BaseAuthenticator {
   access_token?: string;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async restore(data: any): Promise<any> {
     return data;
   }
