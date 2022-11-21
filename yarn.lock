@@ -1129,10 +1129,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.5.0.tgz#081ca5025aa7df467281b032961c34d2c5b88a02"
   integrity sha512-GRoQ0Q1XOupU4pK3aipWfwCGXRuAq32IHpOoNSZm3Enu1/FhoOlIvHMlnnIQTpq6sBye/cqBIuYsOpPBMi3VNg==
 
-"@capacitor/app@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-4.1.0.tgz#377f5c334f69b2a2c027ca9bc8f343d97e372142"
-  integrity sha512-QPZh+fnndlL1fT8jUmx8R7KPaWZDNJf/Aj1BiU867AxHnQNnM0a6wwDdQKGhA7OOniudekHEdrJAzHnPnKtLNg==
+"@capacitor/app@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-4.1.1.tgz#47329e19ecc080bc2934be86566a7673e0f94e5c"
+  integrity sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==
 
 "@capacitor/browser@^4.1.0":
   version "4.1.0"
@@ -1224,10 +1224,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-4.1.0.tgz#00e2b9dcd86a7a9691fc758ffbffe65b884b3253"
   integrity sha512-Gh/cgy7Ee+9fkhw+Q4+9s2S4HiC34/eLoaohqRg1ahtpqvTQ3qdInoEJ23FdILq5cLj2ZPpx2VuEXjpLKX1Z5A==
 
-"@capacitor/splash-screen@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.1.1.tgz#7e7935991d9bacc9ec5508c07168cfba65b0904b"
-  integrity sha512-cOwp9aAdTOknfISSZcQBVPbKkG57v85HQZdbtl86FfEPFXOs9aJF2OQYBYl1UA03qByEnRQvDNYSn4gFf6THrg==
+"@capacitor/splash-screen@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.1.2.tgz#45f3bfd7653bed63a0a931550a1e891a03b789e8"
+  integrity sha512-uw37mfFtpXH6lBG0Lz6/ZRvbnn1XZ0lVOL7UHylvW4C/BUJRKHqPloCXNMeSBGuBkf5WdW7sdmKdGdp4J5fU9g==
 
 "@capawesome/capacitor-file-picker@^0.5.2":
   version "0.5.2"
@@ -1430,11 +1430,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz#1bfafe4b7ed0f3e4105837e056e0a89b108ebe36"
   integrity sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==
 
-"@datadog/browser-core@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.24.0.tgz#a089deb20eafe6628199e94c41d1e59bcedb2c5a"
-  integrity sha512-HTPrt+lOu7ineq3cWT91Lcsf3ihbu0I7YssT0bdt/4vjqmCW12fW3koGGq9B5MpcBwpp7uc1rg6vZiC9GRlGEw==
-
 "@datadog/browser-core@4.24.1":
   version "4.24.1"
   resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.24.1.tgz#770e21dd91c35fa1959a55c06e82ac743165262b"
@@ -1447,20 +1442,20 @@
   dependencies:
     "@datadog/browser-core" "4.24.1"
 
-"@datadog/browser-rum-core@4.24.0":
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-4.24.0.tgz#25d5eb34b5703fa4722c85ff4a30df7d16399937"
-  integrity sha512-R+1W9eb4galThh4T4DwR8gny+LECPv6Qcsdor66Orl2K873t4gNcghp3ITkDl75pn4fq2bzA97eE/FhZcmGQDw==
+"@datadog/browser-rum-core@4.24.1":
+  version "4.24.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-4.24.1.tgz#dfc793eca5b590b794c9827240ede727ee17b6c8"
+  integrity sha512-yvGMfR99kHCJt2s87uC67B9JQGtvS1fpH08Tx9w7WI5FmrzLFIBeVOVVhORO1/t6m47ZJEa8NJsJnepZ6gQeuw==
   dependencies:
-    "@datadog/browser-core" "4.24.0"
+    "@datadog/browser-core" "4.24.1"
 
-"@datadog/browser-rum@^4.24.0":
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-4.24.0.tgz#18e4e2d92925fa762d8067c2089d4c7181acec43"
-  integrity sha512-Iei7YU1d+nMMs5ntbLPrp5jmjQw923344r5CToe+Cf8nEeeeEFjRcgKLftSzpjreN6RDoFjhtpkqPlaN8cv2FQ==
+"@datadog/browser-rum@^4.24.1":
+  version "4.24.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-4.24.1.tgz#429b8f9b224efc0471178d2a632f3fe1dc3ba4b6"
+  integrity sha512-Zt6LVqpr9Qb2Rer5nvMGHrukWiao12DrLmbO4IQs9CqmykGmejp8TEGaMqQC6dp5krgu8YCifADL4Bvj8/GlDA==
   dependencies:
-    "@datadog/browser-core" "4.24.0"
-    "@datadog/browser-rum-core" "4.24.0"
+    "@datadog/browser-core" "4.24.1"
+    "@datadog/browser-rum-core" "4.24.1"
 
 "@datadog/datadog-ci@^2.1.0":
   version "2.1.0"
@@ -5210,10 +5205,10 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-branch-sdk@^2.70.0:
-  version "2.70.0"
-  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.70.0.tgz#cc081af1356d4bfc481b63b148fee38343475c5e"
-  integrity sha512-yNWk+KqRN2D6QXw6cew7ZCs16YVQxZxLu3oNMDEqlS/rHo8VrUAlCdgnmgf9maIR8+37VRo48OylZZuTdLyZBg==
+branch-sdk@^2.71.0:
+  version "2.71.0"
+  resolved "https://registry.yarnpkg.com/branch-sdk/-/branch-sdk-2.71.0.tgz#bb1305eb14cbbbe721403aeeb01275655de27334"
+  integrity sha512-wxnz1m77gFAues7b7R7KXnvqcM2Hgg5c6HKY2kSePN6MQ+KkbGzEj3IHvyyEsSVsAAwIc45K345SMJVdWJxX6A==
   dependencies:
     google-closure-compiler "^20220601.0.0"
     google-closure-deps "^20220502.0.0"
@@ -8647,10 +8642,10 @@ eslint-visitor-keys@^3.3.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@^8.27.0:
-  version "8.27.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.27.0.tgz#d547e2f7239994ad1faa4bb5d84e5d809db7cf64"
-  integrity sha512-0y1bfG2ho7mty+SiILVf9PfuRA49ek4Nc60Wmmu62QlobNR+CeXa4xXIJgcuwSQgZiWaPH+5BDsctpIW0PR/wQ==
+eslint@^8.28.0:
+  version "8.28.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.28.0.tgz#81a680732634677cc890134bcdd9fdfea8e63d6e"
+  integrity sha512-S27Di+EVyMxcHiwDrFzk8dJYAaD+/5SoWKxL1ri/71CRHsnJnRDPNt2Kzj24+MT9FDupf4aqqyqPrvI8MvQ4VQ==
   dependencies:
     "@eslint/eslintrc" "^1.3.3"
     "@humanwhocodes/config-array" "^0.11.6"
