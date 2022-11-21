@@ -12,6 +12,7 @@
               @value={{mut @value}}
               disabled={{@disabled}}
               aria-label={{@label}}
+              aria-placeholder={{@placeholder}}
               {{on 'input' this.handleInput}}
               {{on 'paste' this.handlePaste}}
             />
@@ -19,7 +20,7 @@
             <label class="hn-input-label" for={{@id}}>
                 {{@label}}
                 {{#if @placeholder}}
-                    <span class="hn-input-placeholder" aria-placeholder={{@placeholder}}>{{@placeholder}}</span>
+                    <span class="hn-input-placeholder">{{@placeholder}}</span>
                 {{/if}}
                 </label>
             <Input
@@ -31,6 +32,8 @@
               placeholder={{@placeholder}}
               @value={{mut @value}}
               disabled={{@disabled}}
+              aria-label={{@label}}
+              aria-placeholder={{@placeholder}}
               {{on 'input' this.handleInput}}
               {{on 'paste' this.handlePaste}}
               {{on 'focus' this.handleFocus}}
@@ -40,13 +43,13 @@
     </div>
     {{#if @errors}}
         {{#each @errors as |error|}}
-        <div class="hn hn-input-description-container">        
-            <span class="hn strong icon" aria-role="icon">!</span>
+        <div class="hn hn-input-description-container">
+            <span class="hn strong icon" role="img">!</span>
             <span class="hn-input-description">{{error.message}}</span>
         </div>
         {{/each}}
     {{else if this.descriptionText}}
-        <div class="hn hn-input-description-container">        
+        <div class="hn hn-input-description-container">
             <span class="hn hn-input-description">{{this.descriptionText}}</span>
         </div>
     {{/if}}
