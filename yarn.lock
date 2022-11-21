@@ -1224,10 +1224,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/share/-/share-4.1.0.tgz#00e2b9dcd86a7a9691fc758ffbffe65b884b3253"
   integrity sha512-Gh/cgy7Ee+9fkhw+Q4+9s2S4HiC34/eLoaohqRg1ahtpqvTQ3qdInoEJ23FdILq5cLj2ZPpx2VuEXjpLKX1Z5A==
 
-"@capacitor/splash-screen@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.1.1.tgz#7e7935991d9bacc9ec5508c07168cfba65b0904b"
-  integrity sha512-cOwp9aAdTOknfISSZcQBVPbKkG57v85HQZdbtl86FfEPFXOs9aJF2OQYBYl1UA03qByEnRQvDNYSn4gFf6THrg==
+"@capacitor/splash-screen@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-4.1.2.tgz#45f3bfd7653bed63a0a931550a1e891a03b789e8"
+  integrity sha512-uw37mfFtpXH6lBG0Lz6/ZRvbnn1XZ0lVOL7UHylvW4C/BUJRKHqPloCXNMeSBGuBkf5WdW7sdmKdGdp4J5fU9g==
 
 "@capawesome/capacitor-file-picker@^0.5.2":
   version "0.5.2"
