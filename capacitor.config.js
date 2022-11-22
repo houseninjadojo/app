@@ -43,6 +43,9 @@ const server = {
 };
 
 const plugins = {
+  CapacitorCookies: {
+    enabled: false,
+  },
   SplashScreen: {
     launchShowDuration: 1,
     launchAutoHide: false,

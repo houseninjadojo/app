@@ -391,8 +391,6 @@ export class Notification implements Notification {
     switch (true) {
       case Notification.isLocal(n):
         return NotificationType.Local;
-      case Notification.isRemote(n):
-        return NotificationType.Remote;
       case Notification.isIntercom(n):
         return NotificationType.Intercom;
       case Notification.isBranch(n):

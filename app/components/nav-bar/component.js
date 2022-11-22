@@ -31,7 +31,7 @@ export default class NavBarComponent extends Component {
 
   @action
   async openChatModal() {
-    this.intercom.showMessenger();
+    this.intercom.show();
   }
 
   @action
