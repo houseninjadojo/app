@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/houseninjadojo/app/compare/v1.26.14...v1.27.0) (2022-11-22)
+
+
+### Features
+
+* intercom messenger ([#1318](https://github.com/houseninjadojo/app/issues/1318)) ([7c2ae55](https://github.com/houseninjadojo/app/commit/7c2ae55a7e5ad878bdb23db807873213e2d9990f))
+
 ## [1.26.14](https://github.com/houseninjadojo/app/compare/v1.26.13...v1.26.14) (2022-11-22)
 
 
