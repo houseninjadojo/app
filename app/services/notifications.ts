@@ -24,6 +24,7 @@ import EventBusService, {
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
 import { debug } from '@ember/debug';
+import MetricsService from 'ember-metrics/services/metrics';
 
 type ActionPayload = {
   actionId: string;
@@ -43,6 +44,7 @@ export default class NotificationsService extends Service {
   @service declare current: CurrentService;
   @service declare eventBus: EventBusService;
   @service declare intercom: IntercomService;
+  @service declare metrics: MetricsService;
   @service declare router: RouterService;
 
   plugin = PushNotifications;
@@ -84,7 +86,7 @@ export default class NotificationsService extends Service {
     switch (n.type) {
       case NotificationType.Intercom:
         span?.setTag('intercom', true) && span?.finish();
-        this.intercom.showMessenger();
+        this.intercom.show();
         return;
       case NotificationType.Branch:
         span?.setTag('branch', true) && span?.finish();
@@ -110,6 +112,10 @@ export default class NotificationsService extends Service {
     debug(`[notifications] handling action: ${actionId}`);
     makeCrumb('opened', n, 'notification opened');
     makeSpan('opened', { n, actionId });
+    this.metrics.trackEvent({
+      event: 'notification.opened',
+      properties: { actionId, notification },
+    });
     this.eventLog.push(n);
     this.triggerEvent(n);
   }
@@ -117,6 +123,10 @@ export default class NotificationsService extends Service {
   private receivedHandler(payload: NotificationSchema): void {
     const n = new Notification(payload, NotificationState.Received);
     debug(`[notifications] received notification: ${n.id}`);
+    this.metrics.trackEvent({
+      event: 'notification.received',
+      properties: { payload },
+    });
     makeSpan('received', { n });
     this.heap.set(n.id, n);
   }

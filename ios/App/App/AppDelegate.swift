@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Clear keychain on first run in case of reinstallation
         if UserDefaults.standard.bool(forKey: "FirstRun") == false {
-            clearKeychain()
+            var _ = clearKeychain()
             // Delete values from keychain here
             UserDefaults.standard.set(true, forKey: "FirstRun")
             UserDefaults.standard.synchronize()
@@ -81,7 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        Branch.getInstance().handlePushNotification(userInfo)
+        //Add any custom push handling for your own app here
+        if (Intercom.isIntercomPushNotification(userInfo)) {
+            Intercom.handlePushNotification(userInfo)
+        } else {
+            Branch.getInstance().handlePushNotification(userInfo)
+        }
+        completionHandler(.noData)
     }
 
     private func isSimulatorOrTestFlight() -> Bool {

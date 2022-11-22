@@ -1115,10 +1115,6 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@capacitor-community/intercom@houseninjadojo/capacitor-intercom#bc73f3d":
-  version "4.1.0-beta.1"
-  resolved "https://codeload.github.com/houseninjadojo/capacitor-intercom/tar.gz/bc73f3d21768c6e011e0a53e92ed73d3923caf0d"
-
 "@capacitor/action-sheet@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.1.0.tgz#6ce5b849fff52bf45a6e6832d5de00ff6fc2b97a"
@@ -2162,6 +2158,11 @@
   version "5.1.0-beta.6"
   resolved "https://registry.yarnpkg.com/@houseninja/capacitor-branch/-/capacitor-branch-5.1.0-beta.6.tgz#a471de30540ec4f998fc69342b24fd29e010fd5e"
   integrity sha512-PxvOPanbibEdvjFSrnrYsnA5ARFRiNZQ/x4MNlWebO8bWCs0PflkQDdb8NRhmdYuqDeTQVxgBf7T8D9kAOpFBA==
+
+"@houseninja/capacitor-intercom@4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-intercom/-/capacitor-intercom-4.2.1.tgz#b513f859b2d322b97449513883c574c36920f406"
+  integrity sha512-Dyw4Tp0kDuCdY5orjvOnxp9MM3jU5M1AetXvpU4Kexq5PL1gw3amh4O1p7YE1MUJ9BQH5+4v3kdcRv6tO0Bmng==
 
 "@houseninja/capacitor-mixpanel@^1.0.0-beta.2":
   version "1.0.0-beta.2"

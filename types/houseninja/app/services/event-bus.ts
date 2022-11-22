@@ -14,7 +14,7 @@ import { Browser } from '@capacitor/browser';
 import type {
   Intercom,
   UnreadConversationCount,
-} from '@capacitor-community/intercom';
+} from '@houseninja/capacitor-intercom';
 import type { PushNotifications } from '@capacitor/push-notifications';
 
 declare module 'houseninja/services/event-bus' {

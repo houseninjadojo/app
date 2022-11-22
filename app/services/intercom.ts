@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { service } from '@ember/service';
-import { Intercom } from '@capacitor-community/intercom';
+import { Intercom } from '@houseninja/capacitor-intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
 import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
@@ -48,8 +48,8 @@ export default class IntercomService extends Service {
     // hide launcher on mobile devices
     if (isNativePlatform()) {
       try {
-        await Intercom.hideInAppMessages();
-        await Intercom.hideLauncher();
+        await Intercom.disableMessengerPopups();
+        await Intercom.disableLauncher();
       } catch (e) {
         captureException(e as Error);
       }
@@ -116,7 +116,7 @@ export default class IntercomService extends Service {
     this.removeAllListeners();
   }
 
-  async showMessenger(): Promise<void> {
+  async show(): Promise<void> {
     debug('[intercom] showing messenger');
     startSpan({ op: 'intercom.show.messenger' })?.finish();
     this.isOpen = true;
@@ -128,7 +128,7 @@ export default class IntercomService extends Service {
       },
     });
     try {
-      await Intercom.displayMessenger();
+      await Intercom.show();
     } catch (e) {
       captureException(e as Error);
     }
@@ -165,7 +165,7 @@ export default class IntercomService extends Service {
     });
     this.isOpen = false;
     try {
-      await Intercom.hideMessenger();
+      await Intercom.hide();
     } catch (e) {
       captureException(e as Error);
     }
