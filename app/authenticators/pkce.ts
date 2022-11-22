@@ -14,6 +14,7 @@ import type { EmberRunTimer } from '@ember/runloop/types';
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
 import { service } from '@ember/service';
+import compact from 'houseninja/utils/compact';
 
 type StashTokenPayload =
   | {
@@ -326,10 +327,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     const params = {
       grant_type: 'authorization_code',
-      client_id: encodeURIComponent(this.clientId),
+      client_id: this.clientId,
       code_verifier: code_verifier,
       code: code,
-      redirect_uri: encodeURIComponent(this.redirectUri),
+      redirect_uri: this.redirectUri,
     };
 
     // fetch token data
@@ -677,7 +678,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       Accept: 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
     };
-    params = new URLSearchParams(params).toString();
+    params = new URLSearchParams(compact(params)).toString();
     return await HTTP.post(url, headers, params);
   }
 }
