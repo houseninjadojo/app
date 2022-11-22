@@ -25,7 +25,8 @@
   align-items: center;
 }
 
-.hn.top-bar .action-container .logo {
+.hn.top-bar .action-container .logo,
+.hn.top-bar .action-container a .logo {
   /* width: 32px; */
   height: 32px;
   display: flex;
