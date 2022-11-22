@@ -1,15 +1,19 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import RouterService from '@ember/routing/router-service';
+import IntercomService from 'houseninja/services/intercom';
+import ViewService from 'houseninja/services/view';
 
 export default class TopBarDashboardContentComponent extends Component {
-  @service router;
-  @service intercom;
-  @service view;
+  @service declare router: RouterService;
+  @service declare intercom: IntercomService;
+  @service declare view: ViewService;
 
-  @tracked unreadConversationCount = 0;
+  get unreadConversationCount() {
+    return this.intercom.unreadConversationCount;
+  }
 
   @action
   toggleSettingsViewVisibility() {
@@ -17,13 +21,6 @@ export default class TopBarDashboardContentComponent extends Component {
     this.view.preservePreviousRoute(this.router);
 
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.SETTINGS.INDEX);
-  }
-
-  @action
-  async getUnreadConversationCount() {
-    this.unreadConversationCount =
-      await this.intercom.fetchUnreadConversationCount();
-    return this.unreadConversationCount;
   }
 
   @action

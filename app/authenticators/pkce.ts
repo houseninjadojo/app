@@ -4,7 +4,7 @@ import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import ENV from 'houseninja/config/environment';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import SecureStorage from 'houseninja/utils/secure-storage';
-import HTTP, { encodeFormData } from 'houseninja/utils/http';
+import HTTP from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
@@ -14,6 +14,7 @@ import type { EmberRunTimer } from '@ember/runloop/types';
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
 import { service } from '@ember/service';
+import compact from 'houseninja/utils/compact';
 
 type StashTokenPayload =
   | {
@@ -240,11 +241,11 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   /**
    * Property to store scheduled refresh
    *
-   * @property _upcomingRefresh
+   * @property #upcomingRefresh
    * @type {Function}
    * @private
    */
-  _upcomingRefresh: EmberRunTimer | undefined;
+  #upcomingRefresh: EmberRunTimer | undefined;
 
   /**
    * Generate an authorization URL for logging in
@@ -309,7 +310,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     if (!code) {
       error = new Error('authCode is missing');
     }
-    if (!state || !this._isValidState(state)) {
+    if (!state || !this.#isValidState(state)) {
       error = new Error('state is missing or invalid');
     }
 
@@ -326,14 +327,14 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     const params = {
       grant_type: 'authorization_code',
-      client_id: encodeURIComponent(this.clientId),
+      client_id: this.clientId,
       code_verifier: code_verifier,
       code: code,
-      redirect_uri: encodeURIComponent(this.redirectUri),
+      redirect_uri: this.redirectUri,
     };
 
     // fetch token data
-    const res: AuthTokenResponse = ((await this._post(
+    const res: AuthTokenResponse = ((await this.#post(
       this.serverTokenEndpoint,
       params
     )) || {}) as AuthTokenResponse;
@@ -362,10 +363,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     data.expires_at = expires_at;
 
     // schedule token refresh for later
-    await this._scheduleRefresh(data.expires_in, data.refresh_token);
+    await this.#scheduleRefresh(data.expires_in, data.refresh_token);
 
     // fetch user info
-    data.userinfo = await this._getUserinfo(data.access_token);
+    data.userinfo = await this.#getUserinfo(data.access_token);
 
     // set kind
     data.kind = 'pkce';
@@ -408,16 +409,16 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     if (expires_at && expires_at <= new Date().getTime()) {
       span?.setStatus('expired');
       span?.finish();
-      return await this._refresh(refresh_token);
+      return await this.#refresh(refresh_token);
     }
 
     // schedule token refresh for later
-    this._scheduleRefresh(expires_in, refresh_token);
+    this.#scheduleRefresh(expires_in, refresh_token);
 
     span?.setTag('expires_in', expires_in);
 
     // fetch user info
-    data.userinfo = await this._getUserinfo(data.access_token);
+    data.userinfo = await this.#getUserinfo(data.access_token);
 
     span?.setStatus('success');
     span?.finish();
@@ -447,7 +448,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     await SecureStorage.clear(`${STASH_TOKEN}:refresh_token`);
 
     // cancel any scheduled future token refresh
-    cancel(this._upcomingRefresh);
+    cancel(this.#upcomingRefresh);
 
     // if no revocation endpoint, do nothing
     if (isEmpty(this.serverTokenRevocationEndpoint)) {
@@ -464,7 +465,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         token_type_hint: 'access_token',
         token: access_token,
       };
-      await this._post(this.serverTokenEndpoint, params);
+      await this.#post(this.serverTokenEndpoint, params);
     }
 
     // invalidate the refresh token if it exists
@@ -473,7 +474,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
         token_type_hint: 'refresh_token',
         token: refresh_token,
       };
-      await this._post(this.serverTokenEndpoint, params);
+      await this.#post(this.serverTokenEndpoint, params);
     }
 
     span?.setStatus('success');
@@ -505,13 +506,13 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
   /**
    * Refresh the access token
    *
-   * @method _refresh
+   * @method refresh
    * @param {String} refresh_token The refresh token
    * @returns {Object} The parsed response data
    * @private
    */
   // eslint-disable-next-line prettier/prettier
-  async _refresh(refresh_token: string /*, retryCount = 0 */): Promise<ModifiedAuthTokenResponse> {
+  async #refresh(refresh_token: string /*, retryCount = 0 */): Promise<ModifiedAuthTokenResponse> {
     const span = startSpan({
       op: 'auth.refresh',
       description: 'PKCE: refreshing token',
@@ -528,7 +529,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       refresh_token: refresh_token || stashed_refresh_token,
     };
 
-    const res = ((await this._post(this.serverTokenEndpoint, params)) ??
+    const res = ((await this.#post(this.serverTokenEndpoint, params)) ??
       {}) as AuthTokenResponse;
     const data: ModifiedAuthTokenResponse = {
       ...res,
@@ -537,7 +538,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     const expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
-    await this._scheduleRefresh(data.expires_in, data.refresh_token);
+    await this.#scheduleRefresh(data.expires_in, data.refresh_token);
     span?.setTag('expires_in', data.expires_in);
     span?.finish();
     return data;
@@ -552,7 +553,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} token The refresh token
    */
   // eslint-disable-next-line prettier/prettier
-  async _scheduleRefresh(expires_in: number, refresh_token: string): Promise<void> {
+  async #scheduleRefresh(expires_in: number, refresh_token: string): Promise<void> {
     startSpan({
       op: 'auth.schedule_refresh',
       description: 'PKCE: scheduling token refresh',
@@ -567,8 +568,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     }
 
     // if a token refresh is already scheduled, cancel it
-    if (this._upcomingRefresh) {
-      cancel(this._upcomingRefresh);
+    if (this.#upcomingRefresh) {
+      cancel(this.#upcomingRefresh);
     }
 
     // Stash
@@ -579,12 +580,12 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       (expires_in - this.refreshLeeway) * 1000 - new Date().getTime();
 
     // schedule token refresh for later
-    this._upcomingRefresh = later(
+    this.#upcomingRefresh = later(
       // context this callback function will run in
       this,
       // callback function
       async (refresh_token) => {
-        this.trigger('sessionDataUpdated', await this._refresh(refresh_token));
+        this.trigger('sessionDataUpdated', await this.#refresh(refresh_token));
       },
       // pass the refresh_token into the callback function
       refresh_token,
@@ -614,14 +615,15 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
   /**
    * @private
-   * @method _isValidState
+   * @method isValidState
    *
    * Validate the state param against storage
    *
    * @param {String} state
    * @return {Boolean}
    */
-  async _isValidState(state: string): Promise<boolean> {
+  async #isValidState(state?: string): Promise<boolean> {
+    if (!state) return Promise.resolve(false);
     const loginStash = (await SecureStorage.get(
       STASH_TOKEN
     )) as StashTokenPayload;
@@ -631,7 +633,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
   /**
    * @private
-   * @method _getUserinfo
+   * @method getUserinfo
    *
    * Request user information from the openid userinfo endpoint
    *
@@ -639,7 +641,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @returns {Object} Object containing the user information
    */
   // eslint-disable-next-line prettier/prettier
-  async _getUserinfo(accessToken: string): Promise<AuthUserInfo> {
+  async #getUserinfo(accessToken: string): Promise<AuthUserInfo> {
     startSpan({
       op: 'auth.user_info',
       description: 'PKCE: fetching user info',
@@ -665,20 +667,18 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
   /**
    * @private
-   * @method _post
    *
    * HTTP Request for appropriate platform (native mobile or web)
    *
    * @param {String} url
    * @param {Object} params
    */
-  // eslint-disable-next-line prettier/prettier
-  async _post(url: string, params = {}): Promise<HttpResponse | void> {
+  async #post(url: string, params = {}): Promise<HttpResponse | void> {
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
     };
-    params = encodeFormData(params);
+    params = new URLSearchParams(compact(params)).toString();
     return await HTTP.post(url, headers, params);
   }
 }

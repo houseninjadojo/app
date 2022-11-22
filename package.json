@@ -165,7 +165,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#a905381",
+    "@capacitor-community/intercom": "houseninjadojo/capacitor-intercom#bc73f3d",
     "@capacitor/action-sheet": "^4.1.0",
     "@capacitor/app": "^4.1.1",
     "@capacitor/browser": "^4.1.0",

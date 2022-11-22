@@ -1,95 +1,89 @@
 PODS:
-  - Branch (1.43.2)
-  - Capacitor (4.4.0):
+  - Branch (1.44.0)
+  - Capacitor (4.5.0):
     - CapacitorCordova
-  - CapacitorActionSheet (4.0.1):
+  - CapacitorActionSheet (4.1.0):
     - Capacitor
-  - CapacitorApp (4.1.0):
+  - CapacitorApp (4.1.1):
     - Capacitor
-  - CapacitorBrowser (4.0.1):
+  - CapacitorBrowser (4.1.0):
     - Capacitor
-  - CapacitorCamera (4.1.3):
+  - CapacitorCamera (4.1.4):
     - Capacitor
-  - CapacitorCommunityIntercom (4.0.4-beta.0):
+  - CapacitorCommunityIntercom (4.1.0-beta.1):
     - Capacitor
     - Intercom
-  - CapacitorCordova (4.4.0)
-  - CapacitorDevice (4.0.1):
+  - CapacitorCordova (4.5.0)
+  - CapacitorDevice (4.1.0):
     - Capacitor
-  - CapacitorDialog (4.0.1):
+  - CapacitorDialog (4.1.0):
     - Capacitor
-  - CapacitorFilesystem (4.1.3):
+  - CapacitorFilesystem (4.1.4):
     - Capacitor
-  - CapacitorHaptics (4.0.1):
+  - CapacitorHaptics (4.1.0):
     - Capacitor
-  - CapacitorKeyboard (4.0.1):
+  - CapacitorKeyboard (4.1.0):
     - Capacitor
-  - CapacitorLocalNotifications (4.1.2):
+  - CapacitorLocalNotifications (4.1.3):
     - Capacitor
-  - CapacitorPreferences (4.0.1):
+  - CapacitorPreferences (4.0.2):
     - Capacitor
-  - CapacitorPushNotifications (4.1.1):
+  - CapacitorPushNotifications (4.1.2):
     - Capacitor
   - CapacitorSecureStoragePlugin (0.8.1):
     - Capacitor
     - SwiftKeychainWrapper
-  - CapacitorShare (4.0.1):
+  - CapacitorShare (4.1.0):
     - Capacitor
-  - CapacitorSplashScreen (4.1.1):
+  - CapacitorSplashScreen (4.1.2):
     - Capacitor
   - CapawesomeCapacitorFilePicker (0.5.2):
     - Capacitor
-  - Firebase/CoreOnly (9.6.0):
-    - FirebaseCore (= 9.6.0)
-  - Firebase/Messaging (9.6.0):
+  - Firebase/CoreOnly (10.2.0):
+    - FirebaseCore (= 10.2.0)
+  - Firebase/Messaging (10.2.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 9.6.0)
-  - FirebaseCore (9.6.0):
-    - FirebaseCoreDiagnostics (~> 9.0)
-    - FirebaseCoreInternal (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/Logger (~> 7.7)
-  - FirebaseCoreDiagnostics (9.6.0):
-    - GoogleDataTransport (< 10.0.0, >= 9.1.4)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/Logger (~> 7.7)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseCoreInternal (9.6.0):
-    - "GoogleUtilities/NSData+zlib (~> 7.7)"
-  - FirebaseInstallations (9.6.0):
-    - FirebaseCore (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/UserDefaults (~> 7.7)
+    - FirebaseMessaging (~> 10.2.0)
+  - FirebaseCore (10.2.0):
+    - FirebaseCoreInternal (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Logger (~> 7.8)
+  - FirebaseCoreInternal (10.2.0):
+    - "GoogleUtilities/NSData+zlib (~> 7.8)"
+  - FirebaseInstallations (10.2.0):
+    - FirebaseCore (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessaging (9.6.0):
-    - FirebaseCore (~> 9.0)
-    - FirebaseInstallations (~> 9.0)
-    - GoogleDataTransport (< 10.0.0, >= 9.1.4)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
-    - GoogleUtilities/Environment (~> 7.7)
-    - GoogleUtilities/Reachability (~> 7.7)
-    - GoogleUtilities/UserDefaults (~> 7.7)
+  - FirebaseMessaging (10.2.0):
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Reachability (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - GoogleDataTransport (9.2.0):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.8.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.10.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.8.0):
+  - GoogleUtilities/Environment (7.10.0):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.8.0):
+  - GoogleUtilities/Logger (7.10.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/Network (7.8.0):
+  - GoogleUtilities/Network (7.10.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.8.0)"
-  - GoogleUtilities/Reachability (7.8.0):
+  - "GoogleUtilities/NSData+zlib (7.10.0)"
+  - GoogleUtilities/Reachability (7.10.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.8.0):
+  - GoogleUtilities/UserDefaults (7.10.0):
     - GoogleUtilities/Logger
   - HouseninjaCapacitorBranch (5.1.0-beta.6):
     - Branch
@@ -97,7 +91,7 @@ PODS:
   - HouseninjaCapacitorMixpanel (1.0.0-beta.2):
     - Capacitor
     - Mixpanel-swift
-  - Intercom (13.0.0)
+  - Intercom (14.0.1)
   - MineminemineFcm (4.0.3):
     - Capacitor
     - Firebase/Messaging
@@ -149,7 +143,6 @@ SPEC REPOS:
     - Branch
     - Firebase
     - FirebaseCore
-    - FirebaseCoreDiagnostics
     - FirebaseCoreInternal
     - FirebaseInstallations
     - FirebaseMessaging
@@ -211,37 +204,36 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@sentry/capacitor"
 
 SPEC CHECKSUMS:
-  Branch: 74cc856025984f691833c8fa332834ac38a0cf4e
-  Capacitor: 868367fcfeb3ba6bfabaefc63c072e6478bd046d
-  CapacitorActionSheet: addfd7a5680c40ddba677c6a2a0896b644996fa2
-  CapacitorApp: 6e250f9e67560a340aac4078af357fb5e5c303e0
-  CapacitorBrowser: dd60215f52e232cb209459b0b77cea56ea2e8ade
-  CapacitorCamera: 69ca2f87102e93757829cf350a85287035c153d3
-  CapacitorCommunityIntercom: 57700db2180f4239a7258cd507ef411535243ced
-  CapacitorCordova: 0c0b4edc7ce94fd560eadc3a6d36d5ee6453ada6
-  CapacitorDevice: 70e6a1993d309d5e77c47072ba144e2dd3d5a503
-  CapacitorDialog: e979738675fcd964bfab54c705ff77abb985f5c9
-  CapacitorFilesystem: e0136871c89a0b69654de0729d35c0b4fd1b12d8
-  CapacitorHaptics: 02d48e2efca06ccf3273dbb638b68b0e145f623a
-  CapacitorKeyboard: 3b49a9d517641c123fb691713f99a89d6ebf3a37
-  CapacitorLocalNotifications: 7b3aa4f89dbc02421466391f260c49c4239d2acf
-  CapacitorPreferences: d365ea3b5023b2aac39e8f5ce18de141e39d2cae
-  CapacitorPushNotifications: 273549fe9e5fb641892b066e0debb16f7aed119b
+  Branch: 7ef075130253915439cec12fa99027f587a72d00
+  Capacitor: 94ea746d6b460711feb030f0f6585680fd4599ad
+  CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
+  CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
+  CapacitorBrowser: 05b68799d62b7b864974f59a5af3e4ddcce953f1
+  CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
+  CapacitorCommunityIntercom: 7933dde2f061e27b51f5450a7a13dbd846888f11
+  CapacitorCordova: 1ba7a0509217944974297afab40fec6093e93848
+  CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
+  CapacitorDialog: c8a6558d29767e76a32a056bb5e0fc9104b985b0
+  CapacitorFilesystem: 3d665e5b3719d9f6e240480a7468861b0bb35f93
+  CapacitorHaptics: 213b3a1f3efd6dbf6e6b76a1b2bb0399cf43b213
+  CapacitorKeyboard: 3c14461fb337847524357151edbbe4229bda83c8
+  CapacitorLocalNotifications: 25de6516db2d67baf27a664676b97bf701983f49
+  CapacitorPreferences: 1d66dc32299f55ed632c5611f312878979275ea5
+  CapacitorPushNotifications: b59c99fb4041a4f2c450f9287d158cca48a788f0
   CapacitorSecureStoragePlugin: e616d090177dfbf9754dd1bdb515a8f23855bf4e
-  CapacitorShare: d5da7b440281d2eaef9c4af7e913548fb060a7bc
-  CapacitorSplashScreen: e1f56f45abbccd0dd4bb723195b52ed39f923680
+  CapacitorShare: d81b40de329187f4669ad8a40ce90fe2bbe3eecd
+  CapacitorSplashScreen: 58602bb275ecbc4a7957b4cdf93497db24ae2289
   CapawesomeCapacitorFilePicker: a952b37c18e7fe752ca2970d34cdf04afa86f19d
-  Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
-  FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
-  FirebaseCoreDiagnostics: 99a495094b10a57eeb3ae8efa1665700ad0bdaa6
-  FirebaseCoreInternal: bca76517fe1ed381e989f5e7d8abb0da8d85bed3
-  FirebaseInstallations: 0a115432c4e223c5ab20b0dbbe4cbefa793a0e8e
-  FirebaseMessaging: a4d7910e4af663c9cbfc1071c5bef34651690949
+  Firebase: a3ea7eba4382afd83808376edb99acdaff078dcf
+  FirebaseCore: 813838072b797b64f529f3c2ee35e696e5641dd1
+  FirebaseCoreInternal: 091bde13e47bb1c5e9fe397634f3593dc390430f
+  FirebaseInstallations: 004915af170935e3a583faefd5f8bc851afc220f
+  FirebaseMessaging: cc9f40f5b7494680f3844d08e517e92aa4e8d9f7
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
-  GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
+  GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
   HouseninjaCapacitorMixpanel: c7ec7bbe3df11b2b84f701741c8b34698b4cf5f0
-  Intercom: 196dda51614ef24ce0ffdb03fbc229276bc9910b
+  Intercom: 4b93e75b58fdfd8ec92fb39343f4963dc12f0b33
   MineminemineFcm: c5da7f364c3221b1bca61bf6b1c5cb0167bc3a5c
   Mixpanel-swift: 91fc28834402720682f4cce760e95571fbb388c3
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
