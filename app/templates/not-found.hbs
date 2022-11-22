@@ -1,11 +1,13 @@
 {{page-title "404 Not Found"}}
 
-<TopBar @content="logo-only" @class="browser-version" @linkToRoot={{true}} />
-<View @class="hn work-order public" @topBar={{true}}>
+<TopBar @content="logo-only" @class="browser-version" @linkToMarketingSite={{true}} />
+<View @class="hn work-order public" @topBar={{true}} @hideLogo={{true}}>
     <div class="position">
         <div class="constraint">
-            <strong>404</strong>
-            <p>The page you are looking for could not be found.</p>
-        </div>
+            <div class="not-found">
+                <p class="hn strong center text-6xl">404</p>
+                <h1 class="hn center text-2xl">The page you are looking for could not be found</h1>
+            </div>
+        </div>    
     </div>
 </View>
