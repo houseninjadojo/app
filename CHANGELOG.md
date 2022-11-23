@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/houseninjadojo/app/compare/v1.27.1...v1.27.2) (2022-11-23)
+
+
+### Bug Fixes
+
+* **ios:** remove extra notification entitlement ([#1321](https://github.com/houseninjadojo/app/issues/1321)) ([7abf694](https://github.com/houseninjadojo/app/commit/7abf694cdb13d8e99f7cf54965252441dfbbe288))
+
 ## [1.27.1](https://github.com/houseninjadojo/app/compare/v1.27.0...v1.27.1) (2022-11-23)
 
 
