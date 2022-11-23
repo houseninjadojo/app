@@ -4,7 +4,6 @@ import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { datadogRum } from '@datadog/browser-rum';
 
 import type Transition from '@ember/routing/transition';
 import type IntercomService from 'houseninja/services/intercom';
@@ -33,11 +32,6 @@ class ApplicationRoute extends Route {
   @service declare storage: StorageService;
   @service declare notifications: NotificationService;
   @service declare telemetry: TelemetryService;
-
-  constructor() {
-    super();
-    datadogRum.startSessionReplayRecording();
-  }
 
   async beforeModel(): Promise<void> {
     await this.eventBus.setup();

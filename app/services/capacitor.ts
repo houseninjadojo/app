@@ -116,15 +116,10 @@ export default class CapacitorService extends Service {
         active: isActive,
       },
     });
-    switch (action) {
-      case 'resumed':
-        this.telemetry.startRecording();
-        break;
-      case 'paused':
-        this.telemetry.stopRecording();
-        break;
-      default:
-        break;
+    if (isActive) {
+      this.telemetry.startRecording();
+    } else {
+      this.telemetry.stopRecording();
     }
   }
 

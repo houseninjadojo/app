@@ -6,7 +6,6 @@ import {
   RumFetchResourceEventDomainContext,
 } from '@datadog/browser-rum';
 import ENV from 'houseninja/config/environment';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 const beforeSend = (
   event: RumEvent,
@@ -28,6 +27,10 @@ const beforeSend = (
         response_headers: ctx.response?.headers,
         request_headers: ctx.requestInit?.headers,
       };
+    }
+  } else if (event.type === 'error') {
+    if (event.error?.message?.includes('Item with given key does not exist')) {
+      return false;
     }
   }
   return true;
@@ -77,9 +80,6 @@ export function initializeRum() {
   if (['test', 'development'].includes(ENV.environment)) return;
   if (!ENV.datadog.clientToken || !ENV.datadog.applicationId) return;
   datadogRum.init(rumOptions);
-  // if (!isNativePlatform()) {
-  // datadogRum.startSessionReplayRecording();
-  // }
 }
 
 export function initialize() {
