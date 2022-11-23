@@ -17,6 +17,7 @@ import type CapacitorService from 'houseninja/services/capacitor';
 import type CurrentService from 'houseninja/services/current';
 import type SessionService from 'houseninja/services/session';
 import type LoaderService from 'houseninja/services/loader';
+import type TelemetryService from 'houseninja/services/telemetry';
 
 class ApplicationRoute extends Route {
   @service declare branch: BranchService;
@@ -30,6 +31,12 @@ class ApplicationRoute extends Route {
   @service declare loader: LoaderService;
   @service declare storage: StorageService;
   @service declare notifications: NotificationService;
+  @service declare telemetry: TelemetryService;
+
+  constructor() {
+    super();
+    this.telemetry.startRecording();
+  }
 
   async beforeModel(): Promise<void> {
     await this.eventBus.setup();

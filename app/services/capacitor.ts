@@ -15,11 +15,13 @@ import type RouterService from '@ember/routing/router-service';
 import type MetricsService from 'ember-metrics/services/metrics';
 import { captureMessage } from '@sentry/hub';
 import { tracked } from '@glimmer/tracking';
+import type TelemetryService from 'houseninja/services/telemetry';
 
 export default class CapacitorService extends Service {
   @service declare eventBus: EventBusService;
   @service declare metrics: MetricsService;
   @service declare router: RouterService;
+  @service declare telemetry: TelemetryService;
 
   plugin = App;
   pluginName = 'App';
@@ -114,6 +116,16 @@ export default class CapacitorService extends Service {
         active: isActive,
       },
     });
+    switch (action) {
+      case 'resumed':
+        this.telemetry.startRecording();
+        break;
+      case 'paused':
+        this.telemetry.stopRecording();
+        break;
+      default:
+        break;
+    }
   }
 
   /**

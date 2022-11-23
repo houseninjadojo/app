@@ -78,7 +78,7 @@ export function initializeRum() {
   if (!ENV.datadog.clientToken || !ENV.datadog.applicationId) return;
   datadogRum.init(rumOptions);
   // if (!isNativePlatform()) {
-  datadogRum.startSessionReplayRecording();
+  // datadogRum.startSessionReplayRecording();
   // }
 }
 
