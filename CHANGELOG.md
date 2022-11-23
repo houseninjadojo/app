@@ -1,3 +1,10 @@
+## [1.27.3](https://github.com/houseninjadojo/app/compare/v1.27.2...v1.27.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* 404 template update ([#1319](https://github.com/houseninjadojo/app/issues/1319)) ([0c0c2c9](https://github.com/houseninjadojo/app/commit/0c0c2c9af3ccee87b6e104c2fcc54c36a4e8678f))
+
 ## [1.27.2](https://github.com/houseninjadojo/app/compare/v1.27.1...v1.27.2) (2022-11-23)
 
 
