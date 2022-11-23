@@ -25,6 +25,7 @@ export default class PaymentMethodModel extends Model {
   @hasMany('payments', { async: true, inverse: 'paymentMethod' })
   declare payments: AsyncHasMany<Payment>;
 
+  @attr('boolean') declare isDefault: boolean;
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;
 }

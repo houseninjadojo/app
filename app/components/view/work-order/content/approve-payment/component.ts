@@ -18,6 +18,9 @@ import WorkOrder from 'houseninja/models/work-order';
 import { ValidationError } from '@ember-data/adapter/error';
 import Invoice from 'houseninja/models/invoice';
 
+import type Property from 'houseninja/models/property';
+import type PaymentMethod from 'houseninja/models/payment-method';
+
 // const cardsStub = [
 //   {
 //     id: 'asdf',
@@ -51,7 +54,9 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked creditCard = this.allPaymentMethods().filter((c) => c.isDefault)[0];
+  @tracked creditCard = this.allPaymentMethods.filter(
+    (c: PaymentMethod) => c.isDefault
+  )[0];
 
   actionSheetOptions: ActionSheetButton[] = [
     {
@@ -81,6 +86,14 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   private webConfirmation(): void {
     this.toggleWebDialog();
+  }
+
+  get allPaymentMethods(): PaymentMethod[] {
+    return this.property.user.paymentMethods;
+  }
+
+  get property(): any {
+    return this.args.model.property;
   }
 
   @action
@@ -162,7 +175,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return this.invoice?.formattedTotal;
   }
 
-  get creditCard() {
-    return this.store.peekAll('credit-card').firstObject;
-  }
+  // get creditCard() {
+  //   return this.store.peekAll('credit-card').firstObject;
+  // }
 }
