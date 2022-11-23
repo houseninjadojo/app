@@ -5,7 +5,7 @@
     {{else if (eq @content 'focused')}}
       <TopBar::Content::Focused @hideHome={{@hideHome}} />
     {{else if (eq @content 'logo-only')}}
-      <TopBar::Content::LogoOnly @linkToRoot={{@linkToRoot}} />
+      <TopBar::Content::LogoOnly @linkToMarketingSite={{@linkToMarketingSite}} />
     {{/if}}
   </div>
   <Primitive::Loader::Global @topBar={{true}}/>
