@@ -40,6 +40,8 @@ const options: LogsInitConfiguration = {
   forwardConsoleLogs: 'all',
   forwardReports: 'all',
   sampleRate: 100,
+  trackSessionAcrossSubdomains: true,
+  useCrossSiteSessionCookie: true,
 };
 
 const rumOptions = {
@@ -57,6 +59,8 @@ const rumOptions = {
     /https:\/\/.*\.houseninja\.co/,
   ],
   beforeSend,
+  trackSessionAcrossSubdomains: true,
+  useCrossSiteSessionCookie: true,
 };
 
 export function initializeLogs() {
@@ -73,9 +77,9 @@ export function initializeRum() {
   if (['test', 'development'].includes(ENV.environment)) return;
   if (!ENV.datadog.clientToken || !ENV.datadog.applicationId) return;
   datadogRum.init(rumOptions);
-  if (!isNativePlatform()) {
-    datadogRum.startSessionReplayRecording();
-  }
+  // if (!isNativePlatform()) {
+  datadogRum.startSessionReplayRecording();
+  // }
 }
 
 export function initialize() {
