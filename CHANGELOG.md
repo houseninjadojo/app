@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/houseninjadojo/app/compare/v1.27.0...v1.27.1) (2022-11-23)
+
+
+### Bug Fixes
+
+* ruby build error ([#1320](https://github.com/houseninjadojo/app/issues/1320)) ([585c449](https://github.com/houseninjadojo/app/commit/585c44972e8a645c36e426378ce303968efbd44d))
+
 # [1.27.0](https://github.com/houseninjadojo/app/compare/v1.26.14...v1.27.0) (2022-11-22)
 
 
