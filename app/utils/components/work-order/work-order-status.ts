@@ -1,6 +1,6 @@
 import {
   WorkOrderStatus,
-  WorkOrderUIState,
+  WorkOrderUILabel,
   WorkOrderStatusLabel,
 } from 'houseninja/data/work-order-status';
 
@@ -43,16 +43,19 @@ export const getWorkOrderTag = (status: WorkOrderStatus) => {
         label: getWorkOrderStatusLabel(status),
         type: 'primary',
       };
-    // case WorkOrderStatus.EstimateSharedWithHomeowner:
-    // return {
-    //   label: getWorkOrderStatusLabel(status),
-    //   type: 'secondary-outline',
-    // };
     case WorkOrderStatus.EstimateSharedWithHomeowner:
+      return {
+        label: getWorkOrderStatusLabel(status),
+        type: 'secondary',
+      };
+    case WorkOrderStatus.SchedulingInProgress:
+      return {
+        label: getWorkOrderStatusLabel(status),
+        // type: 'secondary',
+      };
     case WorkOrderStatus.EstimateNotApproved:
     case WorkOrderStatus.EstimateApproved:
     case WorkOrderStatus.OnsiteEstimateScheduled:
-    case WorkOrderStatus.SchedulingInProgress:
     case WorkOrderStatus.VendorIdentified:
     case WorkOrderStatus.WorkOrderInitiated:
     case WorkOrderStatus.WorkRequestReceived:
@@ -67,7 +70,7 @@ export const getWorkOrderTag = (status: WorkOrderStatus) => {
 
 export const getWorkOrderStatusLabel = (
   status: WorkOrderStatus
-): WorkOrderUIState => {
+): WorkOrderUILabel => {
   return WorkOrderStatusLabel[status as WorkOrderStatusLabel];
 };
 
@@ -155,66 +158,72 @@ export const isCompletedWorkOrder = (status: WorkOrderStatus): boolean => {
   }
 };
 
-/**
- * @deprecated
- */
-export const WORK_ORDER_FILTER = {
-  INITITATED: 'inititated',
-  SCHEDULED: 'scheduled',
-  PAYMENT_DUE: 'payment due',
-  COMPLETED: 'completed',
-  PAUSED: 'paused',
-};
-
-export enum WorkOrderFilter {
+export enum WorkOrderState {
   Initiated = 'inititated',
+  Estimate = 'estimate',
   Scheduled = 'scheduled',
+  Scheduling = 'scheduling',
   PaymentDue = 'payment due',
   Completed = 'completed',
   Paused = 'paused',
 }
 
 export const filterWorkOrdersFor = (
-  filter: WorkOrderFilter,
+  filter: WorkOrderState,
   workOrders: WorkOrder[] = []
 ): WorkOrder[] => {
   let filteredWorkOrders: WorkOrder[] = [];
   switch (filter) {
-    case WorkOrderFilter.PaymentDue:
+    case WorkOrderState.PaymentDue:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
           WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
-          WorkOrderUIState.PaymentDue
+          WorkOrderUILabel.PaymentDue
         );
       });
       break;
-    case WorkOrderFilter.Scheduled:
-      filteredWorkOrders = workOrders.filter(
-        (w) =>
-          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
-          WorkOrderUIState.Scheduled
-      );
-      break;
-    case WorkOrderFilter.Completed:
-      filteredWorkOrders = workOrders.filter(
-        (w) =>
-          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
-          WorkOrderUIState.Completed
-      );
-      break;
-    case WorkOrderFilter.Initiated:
+    case WorkOrderState.Estimate:
       filteredWorkOrders = workOrders.filter((w) => {
         return (
           WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
-          WorkOrderUIState.Initiated
+          WorkOrderUILabel.Estimate
         );
       });
       break;
-    case WorkOrderFilter.Paused:
+    case WorkOrderState.Scheduled:
       filteredWorkOrders = workOrders.filter(
         (w) =>
           WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
-          WorkOrderUIState.Paused
+          WorkOrderUILabel.Scheduled
+      );
+      break;
+    case WorkOrderState.Completed:
+      filteredWorkOrders = workOrders.filter(
+        (w) =>
+          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
+          WorkOrderUILabel.Completed
+      );
+      break;
+    case WorkOrderState.Scheduling:
+      filteredWorkOrders = workOrders.filter(
+        (w) =>
+          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
+          WorkOrderUILabel.Scheduling
+      );
+      break;
+    case WorkOrderState.Initiated:
+      filteredWorkOrders = workOrders.filter((w) => {
+        return (
+          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
+          WorkOrderUILabel.Initiated
+        );
+      });
+      break;
+    case WorkOrderState.Paused:
+      filteredWorkOrders = workOrders.filter(
+        (w) =>
+          WorkOrderStatusLabel[w.status as WorkOrderStatusLabel] ===
+          WorkOrderUILabel.Paused
       );
       break;
   }

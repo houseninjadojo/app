@@ -53,6 +53,14 @@ module.exports = function (environment) {
       key: process.env.BRANCH_KEY,
     },
 
+    datadog: {
+      applicationId: process.env.DATADOG_RUM_APP_ID,
+      clientToken: process.env.DATADOG_CLIENT_TOKEN,
+      side: 'datadoghq.com',
+      service: 'app',
+      version: pkg.version,
+    },
+
     'ember-active-storage': {
       url: process.env.API_ACTIVE_STORAGE_HOST,
     },
@@ -74,6 +82,33 @@ module.exports = function (environment) {
       },
     },
 
+    metricsAdapters: [
+      {
+        name: 'CapacitorIntercom',
+        environments: ['development', 'sandbox', 'production'],
+        config: {
+          appId: process.env.INTERCOM_APP_ID,
+        }
+      },
+      {
+        name: 'CapacitorMixpanel',
+        environments: ['sandbox', 'production'],
+        config: {
+          token: process.env.MIXPANEL_TOKEN,
+        },
+      },
+      {
+        name: 'DatadogRum',
+        environments: ['sandbox', 'production'],
+        config: {},
+      },
+      {
+        name: 'DatadogLogs',
+        environments: ['sandbox', 'production'],
+        config: {},
+      },
+    ],
+
     sentry: {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 1.0,
@@ -83,7 +118,11 @@ module.exports = function (environment) {
       browserTracingOptions: {
         tracingOrigins: [
           'api.houseninja.co',
+          'api-origin.houseninja.co',
           'sandbox.api.houseninja.co',
+          'sandbox-origin.api.houseninja.co',
+          'tntmcgm6sar.live.verygoodproxy.com',
+          'tntefwmvax1.sandbox.verygoodproxy.com',
         ],
       }
     },

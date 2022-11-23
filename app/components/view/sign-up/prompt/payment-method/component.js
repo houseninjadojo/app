@@ -2,11 +2,10 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 import {
@@ -131,7 +130,7 @@ export default class PaymentMethodComponent extends Component {
         },
       });
     } catch (e) {
-      Sentry.captureException(e);
+      captureException(e);
     } finally {
       this.promoCode =
         promoCodes.length > 0 ? promoCodes.get('firstObject') : null;
@@ -190,8 +189,7 @@ export default class PaymentMethodComponent extends Component {
       if (isPresent(paymentMethod)) {
         this.errors = paymentMethod.errors;
       }
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
     } finally {
       this.isLoading = false;
     }

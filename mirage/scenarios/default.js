@@ -33,7 +33,6 @@ export default function (server) {
   });
 
   server.createList('payment-method', 5);
-  // server.createList('work-order', 50);
 
   server.loadFixtures();
 }

@@ -1,13 +1,13 @@
 <div class="hn breadcrumbs">
     <ul class="hn trail">
-        {{#each @breadcrumbs as |crumb index|}}            
-            <View::SignUp::Breadcrumbs::Crumb 
-                @label={{crumb}} 
+        {{#each @breadcrumbs as |crumb index|}}
+            <View::SignUp::Breadcrumbs::Crumb
+                @label={{crumb}}
                 @position={{index}}
-                @isLastOrOnly={{eq crumb @breadcrumbs.lastObject}}                                 
+                @isLastOrOnly={{eq crumb (get @breadcrumbs 0)}}
                 @activeIndex={{@activeIndex}}
                 @index={{index}}
-            />            
+            />
         {{/each}}
     </ul>
-</div> 
+</div>

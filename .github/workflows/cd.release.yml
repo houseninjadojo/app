@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: '16'
           cache: 'yarn'
@@ -28,3 +28,17 @@ jobs:
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+  reporter:
+    needs: semantic-release
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:version-increment,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - trying to increment version\", \"level\":\"info\", \"ci.branch\":\"${{ github.ref_name }}\", \"ci.service\":\"app\", \"ci.step\":\"version-bump\"}"
+              service: "github-actions"

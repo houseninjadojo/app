@@ -1,8 +1,9 @@
 import Component from '@glimmer/component';
+import { debug } from '@ember/debug';
 
 export default class BreadcrumbsComponent extends Component {
   isLastOrOnly(curr) {
-    console.log(this.args.breadcrumbs.length === curr - 1);
+    debug(`isLastOrOnly: ${this.args.breadcrumbs.length === curr - 1}`);
     return this.args.breadcrumbs.length === curr - 1;
   }
 }

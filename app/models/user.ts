@@ -7,6 +7,7 @@ import Model, {
 } from '@ember-data/model';
 import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { isEmpty } from '@ember/utils';
+import { service } from '@ember/service';
 
 import type Device from './device';
 import type Document from './document';
@@ -17,8 +18,11 @@ import type Payment from './payment';
 import type Property from './property';
 import type PromoCode from './promo-code';
 import type Subscription from './subscription';
+import type MetricsService from 'houseninja/services/metrics';
 
-export default class UserModel extends Model {
+export default class User extends Model {
+  @service declare metrics: MetricsService;
+
   @hasMany('document', { async: true, inverse: 'user' })
   declare documents: AsyncHasMany<Document>;
 
@@ -67,8 +71,9 @@ export default class UserModel extends Model {
   @attr('string') declare intercomHash?: string;
 
   @attr('string') declare contactType?: string;
-  @attr('string') declare onboardingStep?: OnboardingStep;
   @attr('string') declare onboardingCode?: string;
+  @attr('string', { defaultValue: OnboardingStep.ServiceArea })
+  declare onboardingStep: OnboardingStep;
 
   @attr('string') declare howDidYouHearAboutUs?: string;
 
@@ -82,5 +87,16 @@ export default class UserModel extends Model {
 
   get shouldContinueOnboarding(): boolean {
     return isEmpty(this.onboardingStep);
+  }
+
+  /** Actions */
+
+  identifyToMetrics(): void {
+    this.metrics.identify({
+      distinctId: this.id,
+      email: this.email,
+      name: this.fullName,
+      hmac: this.intercomHash,
+    });
   }
 }

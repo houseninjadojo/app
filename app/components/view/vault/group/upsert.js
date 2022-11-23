@@ -8,6 +8,7 @@ import { debug } from '@ember/debug';
 import { isPresent } from '@ember/utils';
 import { captureException } from 'houseninja/utils/sentry';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { impact, ImpactStyle } from 'houseninja/utils/native/haptics';
 
 export default class VaultGroupUpsertComponent extends Component {
   @service current;
@@ -75,7 +76,7 @@ export default class VaultGroupUpsertComponent extends Component {
   @action
   save() {
     if (this.formIsInvalid) {
-      this.haptics.impact({ style: 'heavy' });
+      impact({ style: ImpactStyle.Heavy });
       return;
     }
 
