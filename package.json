@@ -56,7 +56,7 @@
     "@semantic-release/git": "^10.0.1",
     "@sentry/browser": "7.13.0",
     "@sentry/capacitor": "0.10.1",
-    "@sentry/ember": "7.13.0",
+    "@sentry/ember": "7.21.0",
     "@sentry/integrations": "7.13.0",
     "@sentry/rrweb": "^0.3.3",
     "@tsconfig/ember": "^1.0.1",
