@@ -11,8 +11,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 def capacitor_pods
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
-  pod 'MineminemineFcm', :path => '../../node_modules/@mineminemine/fcm'
-  pod 'CapacitorCommunityIntercom', :path => '../../node_modules/@capacitor-community/intercom'
+  pod 'HouseninjaCapacitorIntercom', :path => '../../node_modules/@houseninja/capacitor-intercom'
   pod 'CapacitorActionSheet', :path => '../../node_modules/@capacitor/action-sheet'
   pod 'CapacitorApp', :path => '../../node_modules/@capacitor/app'
   pod 'CapacitorBrowser', :path => '../../node_modules/@capacitor/browser'
@@ -27,9 +26,10 @@ def capacitor_pods
   pod 'CapacitorPushNotifications', :path => '../../node_modules/@capacitor/push-notifications'
   pod 'CapacitorShare', :path => '../../node_modules/@capacitor/share'
   pod 'CapacitorSplashScreen', :path => '../../node_modules/@capacitor/splash-screen'
-  pod 'HouseninjaCapacitorMixpanel', :path => '../../node_modules/@houseninja/capacitor-mixpanel'
   pod 'CapawesomeCapacitorFilePicker', :path => '../../node_modules/@capawesome/capacitor-file-picker'
-  pod 'CapacitorBranchDeepLinks', :path => '../../node_modules/capacitor-branch-deep-links'
+  pod 'HouseninjaCapacitorBranch', :path => '../../node_modules/@houseninja/capacitor-branch'
+  pod 'HouseninjaCapacitorMixpanel', :path => '../../node_modules/@houseninja/capacitor-mixpanel'
+  pod 'MineminemineFcm', :path => '../../node_modules/@mineminemine/fcm'
   pod 'CapacitorSecureStoragePlugin', :path => '../../node_modules/capacitor-secure-storage-plugin'
   pod 'SentryCapacitor', :path => '../../node_modules/@sentry/capacitor'
 end

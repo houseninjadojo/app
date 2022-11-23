@@ -3,10 +3,10 @@
     {{#if (eq @content 'dashboard')}}
       <TopBar::Content::Dashboard />
     {{else if (eq @content 'focused')}}
-      <TopBar::Content::Focused @hideHome={{@hideHome}}/>
+      <TopBar::Content::Focused @hideHome={{@hideHome}} />
     {{else if (eq @content 'logo-only')}}
-      <TopBar::Content::LogoOnly />
-    {{/if}}        
+      <TopBar::Content::LogoOnly @linkToMarketingSite={{@linkToMarketingSite}} />
+    {{/if}}
   </div>
   <Primitive::Loader::Global @topBar={{true}}/>
 </div>

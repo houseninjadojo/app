@@ -2,10 +2,9 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class SettingsPaymentController extends Controller {
   @service router;
@@ -93,8 +92,7 @@ export default class SettingsPaymentController extends Controller {
       await this.resetForm();
       this.view.transitionToPreviousRoute();
     } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e);
     }
   }
 }

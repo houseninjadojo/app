@@ -2,10 +2,10 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { Browser } from '@capacitor/browser';
 import { isPresent } from '@ember/utils';
 
 export default class PreventativeMaintenanceThumbnailComponent extends Component {
+  @service browser;
   @service store;
   @tracked dialogIsVisible = false;
 
@@ -27,7 +27,7 @@ export default class PreventativeMaintenanceThumbnailComponent extends Component
     const doc = await this.prevantativeMaintenanceReport();
 
     if (isPresent(doc) && isPresent(doc.url)) {
-      await Browser.open({
+      await this.browser.open({
         url: doc.url,
         presentationStyle: 'popover',
       });

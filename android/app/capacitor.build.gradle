@@ -9,8 +9,7 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
-    implementation project(':mineminemine-fcm')
-    implementation project(':capacitor-community-intercom')
+    implementation project(':houseninja-capacitor-intercom')
     implementation project(':capacitor-action-sheet')
     implementation project(':capacitor-app')
     implementation project(':capacitor-browser')
@@ -25,9 +24,10 @@ dependencies {
     implementation project(':capacitor-push-notifications')
     implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
-    implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':capawesome-capacitor-file-picker')
-    implementation project(':capacitor-branch-deep-links')
+    implementation project(':houseninja-capacitor-branch')
+    implementation project(':houseninja-capacitor-mixpanel')
+    implementation project(':mineminemine-fcm')
     implementation project(':capacitor-secure-storage-plugin')
     implementation project(':sentry-capacitor')
 

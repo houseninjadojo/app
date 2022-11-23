@@ -1,3 +1,234 @@
+## [1.27.3](https://github.com/houseninjadojo/app/compare/v1.27.2...v1.27.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* 404 template update ([#1319](https://github.com/houseninjadojo/app/issues/1319)) ([0c0c2c9](https://github.com/houseninjadojo/app/commit/0c0c2c9af3ccee87b6e104c2fcc54c36a4e8678f))
+
+## [1.27.2](https://github.com/houseninjadojo/app/compare/v1.27.1...v1.27.2) (2022-11-23)
+
+
+### Bug Fixes
+
+* **ios:** remove extra notification entitlement ([#1321](https://github.com/houseninjadojo/app/issues/1321)) ([7abf694](https://github.com/houseninjadojo/app/commit/7abf694cdb13d8e99f7cf54965252441dfbbe288))
+
+## [1.27.1](https://github.com/houseninjadojo/app/compare/v1.27.0...v1.27.1) (2022-11-23)
+
+
+### Bug Fixes
+
+* ruby build error ([#1320](https://github.com/houseninjadojo/app/issues/1320)) ([585c449](https://github.com/houseninjadojo/app/commit/585c44972e8a645c36e426378ce303968efbd44d))
+
+# [1.27.0](https://github.com/houseninjadojo/app/compare/v1.26.14...v1.27.0) (2022-11-22)
+
+
+### Features
+
+* intercom messenger ([#1318](https://github.com/houseninjadojo/app/issues/1318)) ([7c2ae55](https://github.com/houseninjadojo/app/commit/7c2ae55a7e5ad878bdb23db807873213e2d9990f))
+
+## [1.26.14](https://github.com/houseninjadojo/app/compare/v1.26.13...v1.26.14) (2022-11-22)
+
+
+### Bug Fixes
+
+* misc corrections ([#1307](https://github.com/houseninjadojo/app/issues/1307)) ([a4c0d8b](https://github.com/houseninjadojo/app/commit/a4c0d8bed0e16d1f4f92bb01927a284aea467b52))
+
+## [1.26.13](https://github.com/houseninjadojo/app/compare/v1.26.12...v1.26.13) (2022-11-17)
+
+
+### Bug Fixes
+
+* capacitor sync ([#1275](https://github.com/houseninjadojo/app/issues/1275)) ([0ce2f48](https://github.com/houseninjadojo/app/commit/0ce2f488ddd9723a2812574e4fac175395669486))
+
+## [1.26.12](https://github.com/houseninjadojo/app/compare/v1.26.11...v1.26.12) (2022-11-17)
+
+
+### Bug Fixes
+
+* payment approval input validation ([#1273](https://github.com/houseninjadojo/app/issues/1273)) ([80599d7](https://github.com/houseninjadojo/app/commit/80599d78cf49f840a78887194a53611af346a0d2))
+
+## [1.26.11](https://github.com/houseninjadojo/app/compare/v1.26.10...v1.26.11) (2022-11-16)
+
+
+### Bug Fixes
+
+* handle 404 ([#1266](https://github.com/houseninjadojo/app/issues/1266)) ([b6a9861](https://github.com/houseninjadojo/app/commit/b6a9861c6e188fe9d1ad4bcfd83d393d09384a41))
+
+## [1.26.10](https://github.com/houseninjadojo/app/compare/v1.26.9...v1.26.10) (2022-11-14)
+
+
+### Bug Fixes
+
+* **event-bus:** clicks and structure ([#1261](https://github.com/houseninjadojo/app/issues/1261)) ([5b63f3c](https://github.com/houseninjadojo/app/commit/5b63f3cd547ea6b9f013e6246cb52708f7ce5baf))
+
+## [1.26.9](https://github.com/houseninjadojo/app/compare/v1.26.8...v1.26.9) (2022-11-14)
+
+
+### Bug Fixes
+
+* **metrics:** click handler ([#1258](https://github.com/houseninjadojo/app/issues/1258)) ([26fc897](https://github.com/houseninjadojo/app/commit/26fc897c247632a0d65ffd353288177c866c1583))
+
+## [1.26.8](https://github.com/houseninjadojo/app/compare/v1.26.7...v1.26.8) (2022-11-13)
+
+
+### Bug Fixes
+
+* **metrics:** fix reset invokation for handlers ([#1257](https://github.com/houseninjadojo/app/issues/1257)) ([d79d749](https://github.com/houseninjadojo/app/commit/d79d74996f867ff38dc30b5ea40fbb583ac37589))
+
+## [1.26.7](https://github.com/houseninjadojo/app/compare/v1.26.6...v1.26.7) (2022-11-13)
+
+
+### Bug Fixes
+
+* **telemetry:** improve sentry collection and filter events ([#1256](https://github.com/houseninjadojo/app/issues/1256)) ([6db4f9e](https://github.com/houseninjadojo/app/commit/6db4f9e1b9eab71f6e1a8a273f2f270554e61b0b))
+
+## [1.26.6](https://github.com/houseninjadojo/app/compare/v1.26.5...v1.26.6) (2022-11-09)
+
+
+### Bug Fixes
+
+* **metrics:** use datadog metrics adapters ([#1241](https://github.com/houseninjadojo/app/issues/1241)) ([c1cf707](https://github.com/houseninjadojo/app/commit/c1cf7073c93e6fc1f2a50b5eca8eed8971435f3f))
+
+## [1.26.5](https://github.com/houseninjadojo/app/compare/v1.26.4...v1.26.5) (2022-11-09)
+
+
+### Bug Fixes
+
+* **datadog:** set user on browser logs ([#1240](https://github.com/houseninjadojo/app/issues/1240)) ([4ce5689](https://github.com/houseninjadojo/app/commit/4ce56896b1cb33573c28d00cd4f5e4989ff3d10a))
+
+## [1.26.4](https://github.com/houseninjadojo/app/compare/v1.26.3...v1.26.4) (2022-11-08)
+
+
+### Bug Fixes
+
+* contact info validation ([#1232](https://github.com/houseninjadojo/app/issues/1232)) ([4ad8649](https://github.com/houseninjadojo/app/commit/4ad8649887f29d138a703cfba246be50a8da15c1))
+
+## [1.26.3](https://github.com/houseninjadojo/app/compare/v1.26.2...v1.26.3) (2022-11-08)
+
+
+### Bug Fixes
+
+* datadog rum ([#1231](https://github.com/houseninjadojo/app/issues/1231)) ([033146e](https://github.com/houseninjadojo/app/commit/033146e6413ebef7e65086f041b7ee0297fba6a6))
+
+## [1.26.2](https://github.com/houseninjadojo/app/compare/v1.26.1...v1.26.2) (2022-11-07)
+
+
+### Bug Fixes
+
+* phone input ([#1214](https://github.com/houseninjadojo/app/issues/1214)) ([3791abe](https://github.com/houseninjadojo/app/commit/3791abeee93618e264f07a3573a7fbe4dfa6ee51))
+
+## [1.26.1](https://github.com/houseninjadojo/app/compare/v1.26.0...v1.26.1) (2022-11-05)
+
+
+### Bug Fixes
+
+* login dashboard userId bug ([#1212](https://github.com/houseninjadojo/app/issues/1212)) ([c999f89](https://github.com/houseninjadojo/app/commit/c999f89da07537416fa06fe60b3fb79363515532))
+
+# [1.26.0](https://github.com/houseninjadojo/app/compare/v1.25.1...v1.26.0) (2022-11-05)
+
+
+### Features
+
+* releasing build ([900f126](https://github.com/houseninjadojo/app/commit/900f1261cbcb31a8616225efeea497b524caab5a))
+
+## [1.25.1](https://github.com/houseninjadojo/app/compare/v1.25.0...v1.25.1) (2022-11-02)
+
+
+### Bug Fixes
+
+* **metrics:** consolidate intercom calls into metrics adapter ([#1196](https://github.com/houseninjadojo/app/issues/1196)) ([a6b9812](https://github.com/houseninjadojo/app/commit/a6b9812c3a40d5db5f74e1559b8afa322d92317b))
+
+# [1.25.0](https://github.com/houseninjadojo/app/compare/v1.24.9...v1.25.0) (2022-11-02)
+
+
+### Features
+
+* ember-metrics ([#1195](https://github.com/houseninjadojo/app/issues/1195)) ([e3fc808](https://github.com/houseninjadojo/app/commit/e3fc808b454a57c08221ca67c704a86d6fefe35b))
+
+## [1.24.9](https://github.com/houseninjadojo/app/compare/v1.24.8...v1.24.9) (2022-10-31)
+
+
+### Bug Fixes
+
+* **signup:** load service area with property before walkthrough booking ([#1160](https://github.com/houseninjadojo/app/issues/1160)) ([cbb1e5e](https://github.com/houseninjadojo/app/commit/cbb1e5e8b7390e8543f405948d0e524065e972bb))
+
+## [1.24.8](https://github.com/houseninjadojo/app/compare/v1.24.7...v1.24.8) (2022-10-25)
+
+
+### Bug Fixes
+
+* **onboarding:** shouldResume bug ([#1139](https://github.com/houseninjadojo/app/issues/1139)) ([7c725ca](https://github.com/houseninjadojo/app/commit/7c725cafc1bcf80399db8763d32b5fff4a96999f))
+
+## [1.24.7](https://github.com/houseninjadojo/app/compare/v1.24.6...v1.24.7) (2022-10-21)
+
+
+### Bug Fixes
+
+* remove unused app icon assets ([#1129](https://github.com/houseninjadojo/app/issues/1129)) ([ea6951b](https://github.com/houseninjadojo/app/commit/ea6951bbbaf22deb5eb9221246d201edf3cae69c))
+
+## [1.24.6](https://github.com/houseninjadojo/app/compare/v1.24.5...v1.24.6) (2022-10-21)
+
+
+### Bug Fixes
+
+* **notifications/auth/sentry:** instrument PKCE auth subsystem tracing ([#1126](https://github.com/houseninjadojo/app/issues/1126)) ([147595a](https://github.com/houseninjadojo/app/commit/147595aa2a5a08b0288ddee27ec3ba648028d378))
+
+## [1.24.5](https://github.com/houseninjadojo/app/compare/v1.24.4...v1.24.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** load notification handler in application route ([#1117](https://github.com/houseninjadojo/app/issues/1117)) ([ee961ca](https://github.com/houseninjadojo/app/commit/ee961cab316b5010afb8393bfd7f3c101710538f))
+
+## [1.24.4](https://github.com/houseninjadojo/app/compare/v1.24.3...v1.24.4) (2022-10-19)
+
+
+### Bug Fixes
+
+* **push-notifications:** instrument push notifications ([#1116](https://github.com/houseninjadojo/app/issues/1116)) ([1dbb5b0](https://github.com/houseninjadojo/app/commit/1dbb5b0a5497a1edfa2e3b56d4fa83c34bb26ad0))
+
+## [1.24.3](https://github.com/houseninjadojo/app/compare/v1.24.2...v1.24.3) (2022-10-19)
+
+
+### Bug Fixes
+
+* **sentry:** revert tracing origin list ([#1107](https://github.com/houseninjadojo/app/issues/1107)) ([5a1617c](https://github.com/houseninjadojo/app/commit/5a1617cf159e94035ce4597b464994d545af617a))
+
+## [1.24.2](https://github.com/houseninjadojo/app/compare/v1.24.1...v1.24.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** regex matching for trace headers ([#1105](https://github.com/houseninjadojo/app/issues/1105)) ([4c971d8](https://github.com/houseninjadojo/app/commit/4c971d8758b16a7dee7b5533e2f504a39bf2e7d4))
+
+## [1.24.1](https://github.com/houseninjadojo/app/compare/v1.24.0...v1.24.1) (2022-10-18)
+
+
+### Bug Fixes
+
+* **sentry:** update list of trace urls ([#1103](https://github.com/houseninjadojo/app/issues/1103)) ([6d9c64b](https://github.com/houseninjadojo/app/commit/6d9c64bdd7985677615b9b500a03db4e18d67261))
+
+# [1.24.0](https://github.com/houseninjadojo/app/compare/v1.23.3...v1.24.0) (2022-10-18)
+
+
+### Features
+
+* decline estimate button ([#1098](https://github.com/houseninjadojo/app/issues/1098)) ([20d63d2](https://github.com/houseninjadojo/app/commit/20d63d2f663f3aebaff96fbd8fac7a22f9152873))
+
+## [1.23.3](https://github.com/houseninjadojo/app/compare/v1.23.2...v1.23.3) (2022-10-17)
+
+
+### Bug Fixes
+
+* **pods:** bump Podfile.lock ([#1097](https://github.com/houseninjadojo/app/issues/1097)) ([b464350](https://github.com/houseninjadojo/app/commit/b464350d544571d4303f022691364292b8576254))
+
+## [1.23.2](https://github.com/houseninjadojo/app/compare/v1.23.1...v1.23.2) (2022-10-17)
+
+
+### Bug Fixes
+
+* **session:** boot session in an initializer ([#1096](https://github.com/houseninjadojo/app/issues/1096)) ([7e22666](https://github.com/houseninjadojo/app/commit/7e22666287c19365438327a86f26f12fa92d4867))
+
 ## [1.23.1](https://github.com/houseninjadojo/app/compare/v1.23.0...v1.23.1) (2022-10-05)
 
 

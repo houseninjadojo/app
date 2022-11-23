@@ -2,8 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { debug } from '@ember/debug';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class SettingsSecurityController extends Controller {
   @service router;
@@ -62,8 +61,7 @@ export default class SettingsSecurityController extends Controller {
         await this.model.reload();
         this.view.transitionToPreviousRoute();
       } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
+        captureException(e);
       }
     }
   }

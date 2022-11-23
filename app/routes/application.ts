@@ -6,77 +6,46 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
 
 import type Transition from '@ember/routing/transition';
-import type AnalyticsService from 'houseninja/services/analytics';
 import type IntercomService from 'houseninja/services/intercom';
+import type NotificationService from 'houseninja/services/notifications';
 import type RouterService from '@ember/routing/router-service';
 import type StorageService from 'houseninja/services/storage';
-import type UserActivityService from 'ember-user-activity/addon/services/user-activity';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type GenericService = any;
+import type MetricsService from 'houseninja/services/metrics';
+import type EventBusService from 'houseninja/services/event-bus';
+import type BranchService from 'houseninja/services/branch';
+import type CapacitorService from 'houseninja/services/capacitor';
+import type CurrentService from 'houseninja/services/current';
+import type SessionService from 'houseninja/services/session';
+import type LoaderService from 'houseninja/services/loader';
 
 class ApplicationRoute extends Route {
-  @service declare analytics: AnalyticsService;
-  @service declare current: GenericService;
-  @service declare deepLinks: GenericService;
+  @service declare branch: BranchService;
+  @service declare capacitor: CapacitorService;
+  @service declare current: CurrentService;
+  @service declare eventBus: EventBusService;
   @service declare intercom: IntercomService;
-  @service declare session: GenericService;
+  @service declare metrics: MetricsService;
+  @service declare session: SessionService;
   @service declare router: RouterService;
-  @service declare loader: GenericService;
+  @service declare loader: LoaderService;
   @service declare storage: StorageService;
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  @service('ember-user-activity@user-activity')
-  declare userActivity: UserActivityService;
-
-  constructor() {
-    // eslint-disable-next-line
-    super(...arguments);
-    this.router.on('routeDidChange', async () => {
-      await this._trackPage();
-    });
-
-    this.userActivity.on('touchstart', this, async (event: TouchEvent) => {
-      await this._trackClick(event);
-    });
-  }
+  @service declare notifications: NotificationService;
 
   async beforeModel(): Promise<void> {
+    await this.eventBus.setup();
+    await this.capacitor.setup();
+    await this.metrics.setup();
     await this.storage.setup();
     await this.intercom.setup();
     await this.session.setup();
-    await this.analytics.setup();
-    await this.analytics.track('Ember App Started');
-    this.deepLinks.setup();
+    await this.notifications.setup();
+    await this.branch.setup();
   }
 
   afterModel(): void {
     if (isNativePlatform()) {
       SplashScreen.hide();
     }
-  }
-
-  async _trackPage(): Promise<void> {
-    const page: string = this.router.currentURL;
-    const title: string = this.router.currentRouteName || 'unknown';
-    await this.analytics.track('Page Visit', { page, title });
-  }
-
-  /**
-   * For every click or touchevent, generate a query selector
-   * from the triggering DOM element and create an analytics event.
-   * <div id="a" class="b c"></div> => `div.b.c#a`
-   */
-  async _trackClick(event: TouchEvent): Promise<void> {
-    const target: HTMLElement = event.target as HTMLElement;
-    const tag: string = target.localName;
-    const classNames: string = target.className.replaceAll(' ', '.');
-    const id: string = target.id;
-    const queryString = `${tag}.${classNames}${id.length > 0 ? '#' + id : ''}`;
-    await this.analytics.track('Click', {
-      selector: queryString,
-    });
   }
 
   @action

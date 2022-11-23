@@ -16,11 +16,11 @@ import type Subscription from './subscription';
 import type User from './user';
 import type WorkOrder from './work-order';
 
-export default class InvoiceModel extends Model {
+export default class Invoice extends Model {
   @belongsTo('document', { async: false, inverse: 'invoice' })
   declare document: Document;
 
-  @belongsTo('document', { async: false, inverse: 'invoice' })
+  @belongsTo('document', { async: false, inverse: null })
   declare receipt: Document;
 
   @belongsTo('payment', { async: true, inverse: 'invoice' })

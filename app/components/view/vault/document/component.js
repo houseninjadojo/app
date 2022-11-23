@@ -1,17 +1,17 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { action } from '@ember/object';
-import { Browser } from '@capacitor/browser';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class VaultDocumentComponent extends Component {
+  @service browser;
   @service router;
   @service view;
 
   @action
   openBrowser() {
     if (this.args.model) {
-      Browser.open({
+      this.browser.open({
         url: `${this.args.model.url}`,
         presentationStyle: 'popover',
       });

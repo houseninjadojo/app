@@ -1,10 +1,10 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-@import "./variables.css";
-@import "./elements.css";
-@import "./utilities.css";
-@import "./components/components.css";
+@import url("tailwindcss/base");
+@import url("tailwindcss/components");
+@import url("tailwindcss/utilities");
+@import url("./variables.css");
+@import url("./elements.css");
+@import url("./utilities.css");
+@import url("./components/components.css");
 
 @font-face {
   font-family: Campton-Light;

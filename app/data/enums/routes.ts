@@ -11,6 +11,76 @@ export const SIGNUP_ROUTE = {
   BOOKING_CONFIRMATION: 'signup.booking-confirmation',
 };
 
+export enum DefaultRoute {
+  SignedIn = 'dashboard.home',
+  SignedOut = 'login-or-signup',
+  Signup = 'signup.index',
+}
+
+export enum SignupRoute {
+  Index = 'signup.index',
+  AreaNotification = 'signup.area-notification',
+  PlanSelection = 'signup.plan-selection',
+  ContactInfo = 'signup.contact-info',
+  PaymentMethod = 'signup.payment-method',
+  SetPassword = 'signup.set-password',
+  Welcome = 'signup.welcome',
+  PropertyInfo = 'signup.property-info',
+  WalkthroughBooking = 'signup.walkthrough-booking',
+  BookingConfirmation = 'signup.booking-confirmation',
+}
+
+export enum DashboardRoute {
+  Index = 'dashboard.index',
+  Home = 'dashboard.home',
+  History = 'dashboard.work-history',
+  HandleIt = 'dashboard.handle-it',
+}
+
+export enum AuthRoute {
+  LoginOrSignup = 'login-or-signup',
+  Login = 'login',
+  Signup = 'signup',
+}
+
+export enum OnboardingRoute {
+  Index = 'onboarding.index',
+  ContactInfo = 'onboarding.contact-info',
+  SetPassword = 'onboarding.set-password',
+  Welcome = 'onboarding.welcome',
+  PropertyInfo = 'onboarding.property-info',
+  WalkthroughBooking = 'onboarding.walkthrough-booking',
+  BookingConfirmation = 'onboarding.booking-confirmation',
+}
+
+export enum SettingsRoute {
+  Index = 'settings.index',
+  Contact = 'settings.contact',
+  Payment = 'settings.payment',
+  Security = 'settings.security',
+  Property = 'settings.property',
+}
+
+export enum SubscriptionRoute {
+  Cancel = 'cancel-subscription.index',
+  CancelConfirmation = 'cancel-subscription.confirmation',
+}
+
+export enum VaultRoute {
+  Index = 'vault.index',
+  ShowDocument = 'vault.documents.document',
+  NewDocument = 'vault.documents.new',
+  EditDocument = 'vault.documents.document.edit',
+  ShowGroup = 'vault.groups.group',
+  NewGroup = 'vault.groups.new',
+  EditGroup = 'vault.groups.group.edit',
+}
+
+export enum WorkOrderRoute {
+  Index = 'work-orders.index',
+  Show = 'work-orders.work-order',
+}
+
 export const NATIVE_MOBILE_ROUTE = {
   DASHBOARD: {
     INDEX: 'dashboard',

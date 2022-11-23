@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
 
 export default class AreaNotificationComponent extends Component {
   @service current;
@@ -28,7 +28,7 @@ export default class AreaNotificationComponent extends Component {
       return;
     } catch (e) {
       debug(e);
-      Sentry.captureException(e);
+      captureException(e);
       return false;
     } finally {
       this.isLoading = false;

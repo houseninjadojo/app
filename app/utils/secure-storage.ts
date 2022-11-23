@@ -29,7 +29,7 @@ export async function set(key: string, value: JSONSerializable): SetResult {
       });
     });
   } catch (e) {
-    debug(e as string);
+    debug(`[storage] ${e as string}`);
   }
 }
 
@@ -39,14 +39,15 @@ export async function set(key: string, value: JSONSerializable): SetResult {
  * @param {String} key
  * @return {RSVP.Promise<String|Object>} the deserialized value
  */
-export async function get(key: string): Promise<JSONSerializable | undefined> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function get(key: string): Promise<any> {
   try {
     const encodedValue = await run(async () => {
       return await SecureStoragePlugin.get({ key });
     });
     return JSON.parse(encodedValue.value);
   } catch (e) {
-    debug(e as string);
+    debug(`[storage] ${e as string}`);
     return {};
   }
 }
@@ -62,7 +63,9 @@ export async function clear(key: string): Promise<void> {
     try {
       await SecureStoragePlugin.remove({ key });
     } catch {
-      debug(`SecureStorage: Unable to clear contents of key '${key}'`);
+      debug(
+        `[storage] SecureStorage: Unable to clear contents of key '${key}'`
+      );
     }
   });
   return;

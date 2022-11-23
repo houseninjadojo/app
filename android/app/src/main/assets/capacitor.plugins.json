@@ -1,10 +1,6 @@
 [
 	{
-		"pkg": "@mineminemine/fcm",
-		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
-	},
-	{
-		"pkg": "@capacitor-community/intercom",
+		"pkg": "@houseninja/capacitor-intercom",
 		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
 	},
 	{
@@ -64,16 +60,20 @@
 		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
 	},
 	{
-		"pkg": "@houseninja/capacitor-mixpanel",
-		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
-	},
-	{
 		"pkg": "@capawesome/capacitor-file-picker",
 		"classpath": "io.capawesome.capacitorjs.plugins.filepicker.FilePickerPlugin"
 	},
 	{
-		"pkg": "capacitor-branch-deep-links",
+		"pkg": "@houseninja/capacitor-branch",
 		"classpath": "co.boundstate.BranchDeepLinks"
+	},
+	{
+		"pkg": "@houseninja/capacitor-mixpanel",
+		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
+	},
+	{
+		"pkg": "@mineminemine/fcm",
+		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
 		"pkg": "capacitor-secure-storage-plugin",

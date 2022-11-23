@@ -11,6 +11,22 @@ const sentryOptions = {
   ...sentryConfig,
   integrations,
   environment: config.environment,
+  denyUrls: [
+    /localhost/,
+    /127\.0\.0\.1/,
+    /api2\.branch\.io/,
+    /browser-intake-datadoghq\.com/,
+  ],
+  ignoreErrors: [
+    /DEPRECATION/,
+    /Error in API: 0/,
+    /window.Intercom is not a function/,
+    /BranchDeepLinks/,
+    /Capacitor WebPlugin/,
+    /Cannot read properties of undefined (reading 'disable_all_events')/,
+    /Illegal invocation/,
+    /Not implemented on web\./,
+  ],
 };
 
 export function init() {

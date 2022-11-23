@@ -4,7 +4,7 @@
             <p>TRY HOUSE NINJA FREE TODAY WITH CODE <strong>HELPMYHOUSE</strong></p>
         </Primitive::PageBanner>
     {{/if}}
-    <TopBar @content="logo-only" @class="browser-version" />
+    <TopBar @content="logo-only" @class="browser-version" @linkToMarketingSite={{true}} />
     <View @hideLogo={{true}} @class="light">
         <View::SignUp::Wrapper>
             {{yield}}

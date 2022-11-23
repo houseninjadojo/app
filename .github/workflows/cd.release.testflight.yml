@@ -9,6 +9,7 @@ on:
 
 env:
   RUBY_VERSION: 3.0.3
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
 jobs:
   web:
@@ -19,6 +20,15 @@ jobs:
       contents: read
       deployments: write
     steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - starting web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -46,6 +56,13 @@ jobs:
           version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
           url_prefix: ~/
           finalize: false
+      - name: upload datadog sourcemaps
+        run: yarn run upload:sourcemaps:datadog
+        env:
+          SERVICE: app
+          VERSION: ${{ steps.package-version.outputs.current-version }}
+          DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
@@ -94,6 +111,16 @@ jobs:
         with:
           name: android.tar.gz
           path: android.tar.gz
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
+
   ios:
     needs: web
     if: success()
@@ -103,6 +130,15 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
       - uses: mathieu-bour/setup-sentry-cli@1.2.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -155,6 +191,56 @@ jobs:
         with:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
+
+  reporter:
+    needs: [web, ios]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datadog
+        if: success()
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          events: |
+            - title: "[ci/cd] app - Release Build Success - ${{ steps.package-version.outputs.current-version }}+1"
+              text: "Release build succeeded for version ${{ steps.package-version.outputs.current-version }}+1\n https://github.com/houseninjadojo/app/actions/runs/${{ github.run_id }}"
+              alert_type: "success"
+              source_type_name: github
+              tags:
+                - "service:github-actions"
+                - "source:github"
+                - "ci.step:release"
+                - "ci.service:app"
+                - "status:failure"
+                - "env:production"
+      - name: Datadog
+        if: failure()
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          events: |
+            - title: "[ci/cd] app - Release Build Failure: `${{ github.job }}` - ${{ steps.package-version.outputs.current-version }}+1"
+              text: "Release build failed for version ${{ steps.package-version.outputs.current-version }}+1\n https://github.com/houseninjadojo/app/actions/runs/${{ github.run_id }}"
+              alert_type: "error"
+              source_type_name: github
+              tags:
+                - "service:github-actions"
+                - "source:github"
+                - "ci.step:release"
+                - "ci.service:app"
+                - "status:failure"
+                - "env:production"
+
   cleanup:
     needs: [ios]
     if: always()
