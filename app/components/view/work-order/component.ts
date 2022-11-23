@@ -28,7 +28,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare view: any;
 
-  paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
+  paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT_METHODS.INDEX;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
 
   get isLoading() {
