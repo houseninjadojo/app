@@ -2,3 +2,7 @@
   height: 70%;
   object-fit: cover;
 }
+
+.hn.teal-600 {
+  color: var(--teal-600);
+}
