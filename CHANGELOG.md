@@ -1,3 +1,10 @@
+## [1.27.4](https://github.com/houseninjadojo/app/compare/v1.27.3...v1.27.4) (2022-11-24)
+
+
+### Bug Fixes
+
+* datadog rum on capacitor ([#1322](https://github.com/houseninjadojo/app/issues/1322)) ([5e696ad](https://github.com/houseninjadojo/app/commit/5e696ad164885ce7c56345643be65c1eec909f08))
+
 ## [1.27.3](https://github.com/houseninjadojo/app/compare/v1.27.2...v1.27.3) (2022-11-23)
 
 
