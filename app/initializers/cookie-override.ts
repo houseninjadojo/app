@@ -2,6 +2,7 @@
 
 import { Capacitor } from '@capacitor/core';
 
+const storage = sessionStorage; // or localStorage
 const cookieDesc =
   Object.getOwnPropertyDescriptor(Document.prototype, 'cookie') ||
   Object.getOwnPropertyDescriptor(HTMLDocument.prototype, 'cookie');
@@ -11,11 +12,11 @@ const inject = () => {
     Object.defineProperty(document, 'cookie', {
       get: function () {
         const res: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
-        Object.keys(localStorage).forEach((key) => {
+        Object.keys(storage).forEach((key) => {
           if (key.startsWith('cookie-')) {
-            const item = JSON.parse(localStorage.getItem(key) ?? '{}');
+            const item = JSON.parse(storage.getItem(key) ?? '{}');
             if (item.expiry && new Date(item.expiry) < new Date()) {
-              localStorage.removeItem(key);
+              storage.removeItem(key);
             } else {
               res.push(key.replace('cookie-', '') + '=' + item.value);
             }
@@ -29,7 +30,7 @@ const inject = () => {
         );
         const matches = regex.exec(val) ?? [];
         cookieDesc.set?.call(document, val);
-        localStorage.setItem(
+        storage.setItem(
           'cookie-' + matches[1],
           JSON.stringify({ value: matches[2], expiry: matches[4] })
         );
