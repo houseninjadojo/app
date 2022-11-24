@@ -6,7 +6,6 @@ import {
   RumFetchResourceEventDomainContext,
 } from '@datadog/browser-rum';
 import ENV from 'houseninja/config/environment';
-import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 const beforeSend = (
   event: RumEvent,
@@ -29,6 +28,10 @@ const beforeSend = (
         request_headers: ctx.requestInit?.headers,
       };
     }
+  } else if (event.type === 'error') {
+    if (event.error?.message?.includes('Item with given key does not exist')) {
+      return false;
+    }
   }
   return true;
 };
@@ -40,6 +43,8 @@ const options: LogsInitConfiguration = {
   forwardConsoleLogs: 'all',
   forwardReports: 'all',
   sampleRate: 100,
+  trackSessionAcrossSubdomains: true,
+  useCrossSiteSessionCookie: true,
 };
 
 const rumOptions = {
@@ -57,6 +62,8 @@ const rumOptions = {
     /https:\/\/.*\.houseninja\.co/,
   ],
   beforeSend,
+  trackSessionAcrossSubdomains: true,
+  useCrossSiteSessionCookie: true,
 };
 
 export function initializeLogs() {
@@ -73,9 +80,6 @@ export function initializeRum() {
   if (['test', 'development'].includes(ENV.environment)) return;
   if (!ENV.datadog.clientToken || !ENV.datadog.applicationId) return;
   datadogRum.init(rumOptions);
-  if (!isNativePlatform()) {
-    datadogRum.startSessionReplayRecording();
-  }
 }
 
 export function initialize() {
