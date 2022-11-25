@@ -85,7 +85,7 @@ PODS:
   - HouseninjaCapacitorBranch (5.1.0-beta.6):
     - Branch
     - Capacitor
-  - HouseninjaCapacitorIntercom (4.2.1):
+  - HouseninjaCapacitorIntercom (4.2.3):
     - Capacitor
     - Intercom
   - HouseninjaCapacitorMixpanel (1.0.0-beta.2):
@@ -231,7 +231,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
-  HouseninjaCapacitorIntercom: 3a0878fc65ae85a2c4b680782986729f71010baf
+  HouseninjaCapacitorIntercom: 810d8c63ffaced696ea3b4ba7bee272eafa4560f
   HouseninjaCapacitorMixpanel: c7ec7bbe3df11b2b84f701741c8b34698b4cf5f0
   Intercom: 4b93e75b58fdfd8ec92fb39343f4963dc12f0b33
   MineminemineFcm: c5da7f364c3221b1bca61bf6b1c5cb0167bc3a5c
