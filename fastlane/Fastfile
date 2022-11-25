@@ -33,15 +33,32 @@ sentry_deploy_name      = "testflight"
 sentry_env              = "sandbox"
 sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
-xcode_project_path      = "./App.xcodeproj"
+xcode_project_path      = "../ios/App/App.xcodeproj"
 xcode_workspace          = "App.xcworkspace"
 
 # get version
-package      = load_json(json_path: "../../package.json")
+package      = load_json(json_path: "./package.json")
 version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
 
+# android
+android_project_dir = "android"
+# gradle_path         = "android"
+
 default_platform(:ios)
+
+platform :android do
+  desc "Build app"
+  lane :build do
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      project_dir: android_project_dir,
+      # gradle_path: gradle_path,
+      print_command: true,
+    )
+  end
+end
 
 platform :ios do
   desc "Sandbox Release"
