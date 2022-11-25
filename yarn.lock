@@ -2121,10 +2121,10 @@
   resolved "https://registry.yarnpkg.com/@houseninja/capacitor-branch/-/capacitor-branch-5.1.0-beta.6.tgz#a471de30540ec4f998fc69342b24fd29e010fd5e"
   integrity sha512-PxvOPanbibEdvjFSrnrYsnA5ARFRiNZQ/x4MNlWebO8bWCs0PflkQDdb8NRhmdYuqDeTQVxgBf7T8D9kAOpFBA==
 
-"@houseninja/capacitor-intercom@4.2.3":
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-intercom/-/capacitor-intercom-4.2.3.tgz#80e35b34b99ea327d2b6ba967eecd949bc6a6e5f"
-  integrity sha512-ieQlk4TXGNO5SliJuFUgC6J46TFAR+YiFih4+lczqyw01Iw+4VQmoL3+rVa4Th9Nc1WYJLPXCI0I1Iho0ZwcwA==
+"@houseninja/capacitor-intercom@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@houseninja/capacitor-intercom/-/capacitor-intercom-4.3.0.tgz#60af8c2aae8885f683f95eceb08f7543745efb15"
+  integrity sha512-aIW+wuJDerqGMp2F2NXqNUSzByFZto2098UihttN7+AiXkghu9x+8bKSlDCB8FKHRXm58TW9Dri+J6KIUw9cmA==
 
 "@houseninja/capacitor-mixpanel@^1.0.0-beta.2":
   version "1.0.0-beta.2"
