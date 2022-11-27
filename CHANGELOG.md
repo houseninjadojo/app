@@ -1,3 +1,10 @@
+## [1.27.5](https://github.com/houseninjadojo/app/compare/v1.27.4...v1.27.5) (2022-11-27)
+
+
+### Bug Fixes
+
+* **signup:** handle walkthrough booking input error ([#1339](https://github.com/houseninjadojo/app/issues/1339)) ([9016da4](https://github.com/houseninjadojo/app/commit/9016da4fa517d1de096c3f9e081a33da4455fdf6))
+
 ## [1.27.4](https://github.com/houseninjadojo/app/compare/v1.27.3...v1.27.4) (2022-11-24)
 
 
