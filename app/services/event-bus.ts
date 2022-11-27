@@ -34,6 +34,7 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.intercom.registerEvents();
     await this.metrics.registerEvents();
     await this.notifications.registerEvents();
+    await this.subscribeWindowEvents();
   }
 
   // eslint-disable-next-line prettier/prettier
@@ -67,5 +68,16 @@ export default class EventBusService extends Service.extend(Evented) {
     await this.intercom.teardownListeners();
     await this.metrics.teardownListeners();
     await this.notifications.teardownListeners();
+    await this.unsubscribeWindowEvents();
+  }
+
+  /** Window Events */
+
+  async subscribeWindowEvents(): Promise<void> {
+    await this.subscribe(window, 'window', 'message');
+  }
+
+  async unsubscribeWindowEvents(): Promise<void> {
+    await this.manager.removeHandler('window.message');
   }
 }
