@@ -14,6 +14,8 @@ import type StoreService from '@ember-data/store';
 import type PaymentMethod from 'houseninja/models/payment-method';
 import type ToastService from 'houseninja/services/toast';
 import type User from 'houseninja/models/user';
+import type MetricsService from 'houseninja/services/metrics';
+
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import DS from 'ember-data';
 
@@ -42,6 +44,7 @@ type Errors =
 
 export default class WorkOrderApprovePaymentWebDialogViewContentComponent extends Component<Args> {
   @service declare router: RouterService;
+  @service declare metrics: MetricsService;
   @service declare store: StoreService;
   @service declare toast: ToastService;
 
@@ -142,6 +145,12 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
         }
       }
       captureException(e as Error);
+      this.metrics.trackEvent({
+        event: 'external.payment-approval.error',
+        properties: {
+          step: 'payment-method',
+        },
+      });
     }
   }
 

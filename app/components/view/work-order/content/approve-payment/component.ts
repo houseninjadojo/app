@@ -17,6 +17,7 @@ import ToastService from 'houseninja/services/toast';
 import WorkOrder from 'houseninja/models/work-order';
 import { ValidationError } from '@ember-data/adapter/error';
 import Invoice from 'houseninja/models/invoice';
+import MetricsService from 'houseninja/services/metrics';
 
 type Args = {
   model: WorkOrder;
@@ -25,6 +26,7 @@ type Args = {
 export default class WorkOrderApprovePaymentViewContentComponent extends Component<Args> {
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
+  @service declare metrics: MetricsService;
   @service declare store: StoreService;
   @service declare toast: ToastService;
 
@@ -33,6 +35,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isDoneProcessing = false;
   @tracked paid = false;
   @tracked paymentFailed = false;
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.metrics.trackEvent({ event: 'external.payment-approval.session' });
+  }
 
   actionSheetOptions: ActionSheetButton[] = [
     {
@@ -80,6 +87,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     try {
       await payment.save(); // this will be long running (probably)
       this.paid = true;
+      this.metrics.trackEvent({ event: 'external.payment-approval.success' });
     } catch (e) {
       if (!this.paid) {
         const hasGenericError =
@@ -93,6 +101,12 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
         }
         this.toggleIsProcessing();
       }
+      this.metrics.trackEvent({
+        event: 'external.payment-approval.error',
+        properties: {
+          step: 'payment',
+        },
+      });
       captureException(e as Error);
     }
   }
