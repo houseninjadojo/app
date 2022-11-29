@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/houseninjadojo/app/compare/v1.27.5...v1.28.0) (2022-11-29)
+
+
+### Features
+
+* subscribe to window events ([#1340](https://github.com/houseninjadojo/app/issues/1340)) ([61c9eb9](https://github.com/houseninjadojo/app/commit/61c9eb964d935571fc8523a0d2f75e883277204c))
+
 ## [1.27.5](https://github.com/houseninjadojo/app/compare/v1.27.4...v1.27.5) (2022-11-27)
 
 
