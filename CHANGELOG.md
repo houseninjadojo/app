@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/houseninjadojo/app/compare/v1.28.0...v1.28.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* **payment-approval:** metrics ([#1344](https://github.com/houseninjadojo/app/issues/1344)) ([c098d82](https://github.com/houseninjadojo/app/commit/c098d829cc716b7af4b61df6b7ad237c22745fc4))
+
 # [1.28.0](https://github.com/houseninjadojo/app/compare/v1.27.5...v1.28.0) (2022-11-29)
 
 
