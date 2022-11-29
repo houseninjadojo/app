@@ -37,7 +37,10 @@ declare module 'houseninja/services/event-bus' {
     | UnreadCountChangeListener
     | ((event: any) => any);
 
-  export type HandlerFn = PluginListenerHandle | unknown;
+  export type HandlerFn =
+    | PluginListenerHandle
+    | EventListenerOrEventListenerObject
+    | unknown;
 
   export interface ListenablePlugin {
     addListener: (
@@ -63,8 +66,19 @@ declare module 'houseninja/services/event-bus' {
     [key: string]: any;
   }
 
+  export interface ListenableWindow {
+    addEventListener: (
+      eventName: string,
+      listenerFunc: (event: any) => any,
+      options?: boolean | AddEventListenerOptions,
+      useCapture?: boolean
+    ) => void;
+    [key: string]: any;
+  }
+
   export type Listenable =
     | ListenablePlugin
     | ListenableEvented
+    | ListenableWindow
     | UserActivityService;
 }
