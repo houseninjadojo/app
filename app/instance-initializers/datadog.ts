@@ -73,7 +73,7 @@ export function initializeLogs() {
   datadogLogs.setLoggerGlobalContext({ env: ENV.environment });
   datadogLogs.setGlobalContextProperty('env', ENV.environment);
   datadogLogs.logger.setHandler(['console', 'http']);
-  datadogLogs.logger.info('Datadog initialized');
+  datadogLogs.logger.info('datadog initialized');
 }
 
 export function initializeRum() {
