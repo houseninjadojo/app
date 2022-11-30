@@ -11,13 +11,14 @@ export default class DashboardRoute extends Route {
   @service declare session: SessionService;
 
   async beforeModel(transition: Transition): Promise<void> {
-    if (this.session.isExternalSession) {
+    if (this.session.isAuthenticated && this.session.isExternalSession) {
       this.session.invalidate();
       this.router.transitionTo(AuthRoute.LoginOrSignup);
+    } else {
+      await this.session.requireAuthentication(
+        transition,
+        AuthRoute.LoginOrSignup
+      );
     }
-    await this.session.requireAuthentication(
-      transition,
-      AuthRoute.LoginOrSignup
-    );
   }
 }
