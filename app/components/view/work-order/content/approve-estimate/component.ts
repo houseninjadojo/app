@@ -51,6 +51,11 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     },
   ];
 
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.sendMetrics('session');
+  }
+
   private async nativeConfirmation(): Promise<void> {
     const total: string = this.estimate.amount;
     const result: ShowActionsResult = await ActionSheet.showActions({
