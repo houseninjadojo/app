@@ -6,6 +6,7 @@ import type Transition from '@ember/routing/transition';
 import type SessionService from 'houseninja/services/session';
 import type RouterService from '@ember/routing/router-service';
 import { debug } from '@ember/debug';
+import isNativePlatform from 'houseninja/utils/is-native-platform';
 
 export default class DashboardRoute extends Route {
   @service declare router: RouterService;
@@ -15,11 +16,11 @@ export default class DashboardRoute extends Route {
     debug(
       `trying to access dashboard. authenticated=${this.session.isAuthenticated}`
     );
-    if (this.session.isAuthenticated && this.session.isExternalSession) {
+    if (!isNativePlatform()) {
       debug(
         'external session tried to access dashboard. invalidating & redirecting...'
       );
-      this.session.invalidate();
+      if (this.session?.isAuthenticated) await this.session.invalidate();
       this.router.transitionTo(AuthRoute.LoginOrSignup);
     }
     await this.session.requireAuthentication(
