@@ -12,7 +12,7 @@ export default class DashboardRoute extends Route {
 
   async beforeModel(transition: Transition): Promise<void> {
     if (this.session.isExternalSession) {
-      await this.session.invalidate();
+      this.session.invalidate();
       this.router.transitionTo(AuthRoute.LoginOrSignup);
     }
     await this.session.requireAuthentication(
