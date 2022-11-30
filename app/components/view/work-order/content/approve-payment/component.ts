@@ -138,7 +138,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
-    if (this.isNativePlatform) {
+    if (!this.isNativePlatform) {
       this.session.invalidate();
     }
     this.router.transitionTo(DashboardRoute.Home);
@@ -161,7 +161,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   sendMetrics(event: string, step?: string): void {
-    if (this.isNativePlatform) {
+    if (!this.isNativePlatform) {
       this.metrics.trackEvent({
         event: `external.payment-approval.${event}`,
         properties: { step },

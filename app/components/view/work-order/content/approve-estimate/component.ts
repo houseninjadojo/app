@@ -186,7 +186,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
-    if (this.isNativePlatform) {
+    if (!this.isNativePlatform) {
       this.session.invalidate();
     }
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
@@ -205,7 +205,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   }
 
   sendMetrics(event: string, step?: string): void {
-    if (this.isNativePlatform) {
+    if (!this.isNativePlatform) {
       this.metrics.trackEvent({
         event: `external.estimate-approval.${event}`,
         properties: { step },
