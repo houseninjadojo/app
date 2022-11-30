@@ -20,7 +20,6 @@ export default class DashboardRoute extends Route {
       debug(
         'external session tried to access dashboard. invalidating & redirecting...'
       );
-      if (this.session?.isAuthenticated) await this.session.invalidate();
       this.router.transitionTo(AuthRoute.LoginOrSignup);
     }
     await this.session.requireAuthentication(
