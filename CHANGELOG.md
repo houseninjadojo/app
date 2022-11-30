@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/houseninjadojo/app/compare/v1.28.1...v1.28.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* **external:** invalidate session after submission ([#1352](https://github.com/houseninjadojo/app/issues/1352)) ([0a23ae8](https://github.com/houseninjadojo/app/commit/0a23ae8411b68d9dbe40b60d8265017e0dadb8e4))
+
 ## [1.28.1](https://github.com/houseninjadojo/app/compare/v1.28.0...v1.28.1) (2022-11-29)
 
 
