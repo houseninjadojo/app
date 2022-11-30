@@ -9,7 +9,7 @@ import {
 } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { DashboardRoute } from 'houseninja/data/enums/routes';
 
 import type Estimate from 'houseninja/models/estimate';
 import type WorkOrder from 'houseninja/models/work-order';
@@ -194,7 +194,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     if (!this.isNativePlatform) {
       this.session.invalidate();
     }
-    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    this.router.transitionTo(DashboardRoute.Home);
   }
 
   get isNativePlatform(): boolean {
