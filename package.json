@@ -91,7 +91,7 @@
     "@types/node": "^18.11.9",
     "@types/qunit": "^2.19.3",
     "@types/rsvp": "^4.0.4",
-    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "autoprefixer": "^10.4.13",
     "branch-sdk": "^2.71.0",
