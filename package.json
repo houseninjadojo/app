@@ -88,7 +88,7 @@
     "@types/ember__test-helpers": "^2.8.2",
     "@types/ember__utils": "^4.0.2",
     "@types/jquery": "^3.5.14",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.10",
     "@types/qunit": "^2.19.3",
     "@types/rsvp": "^4.0.4",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
