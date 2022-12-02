@@ -19,7 +19,13 @@ export default class PaymentMethodModel extends Model {
   @belongsTo('subscription', { async: true, inverse: 'paymentMethod' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
-  @belongsTo('user', { async: true, inverse: 'paymentMethods' })
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  @belongsTo('user', {
+    async: true,
+    inverse: 'paymentMethods',
+    as: 'payment-method',
+  })
   declare user: AsyncBelongsTo<User>;
 
   @hasMany('payments', { async: true, inverse: 'paymentMethod' })
