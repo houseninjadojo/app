@@ -1120,10 +1120,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/action-sheet/-/action-sheet-4.1.0.tgz#6ce5b849fff52bf45a6e6832d5de00ff6fc2b97a"
   integrity sha512-q3gRV3iTOHMuN+ihvNgk0G2dJNNnjkBBXS1tdf1rn9tMdX6BUE9Hi2GmXLI9otKkmJ5JIiURnJURtrn3bp8a+Q==
 
-"@capacitor/android@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.5.0.tgz#081ca5025aa7df467281b032961c34d2c5b88a02"
-  integrity sha512-GRoQ0Q1XOupU4pK3aipWfwCGXRuAq32IHpOoNSZm3Enu1/FhoOlIvHMlnnIQTpq6sBye/cqBIuYsOpPBMi3VNg==
+"@capacitor/android@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-4.6.0.tgz#0731c086638296c02d666a1f902e6ca5e6e064a6"
+  integrity sha512-damKRxtkAs7GHdPwQqKyUZjjsbIyOoJWoshG2I1/Lc8cDkfGKw2WntWx3hyUPho0BmM7wnbsjeZtYbMdGm0zIQ==
 
 "@capacitor/app@^4.1.1":
   version "4.1.1"
@@ -1140,10 +1140,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-4.1.4.tgz#5d019f88d1f3547b537270e35bcb96084eb48df6"
   integrity sha512-7f4n7PlnstYsdGyxc0Kc4hIyS6csFLOjXvffm7pJsuy9pSo+kfdOPdYgGg360QwbUAmA+Yv+J1ZW1eFIwgvWrQ==
 
-"@capacitor/cli@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-4.5.0.tgz#4902358b8e7149bc591b096daf13e00c269fbe5e"
-  integrity sha512-GwWE5Ef6LsdD7DzVrdzVMtU+UZbpLjKR7uNsuSA44MaSlxqMuq2Njdl0nWYp5Oj/kacOsHKC6USbLzwe4S5caw==
+"@capacitor/cli@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-4.6.0.tgz#f0cb132c62a22681545ebd5e7554f6eaf8394fad"
+  integrity sha512-/u+Hjt2+pnKfjQxNHpBJxbL1SPXOzgy/bYjKuDBErYYDwBtMd4zxmVTch/PeyjefjWRiOjNbbs9YGAqfwhgbJg==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.5"
     "@ionic/utils-fs" "^3.1.6"
@@ -1163,10 +1163,10 @@
     tslib "^2.4.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.5.0.tgz#06b861bdc6a28b336de81e0ca0e4298343ecb5ca"
-  integrity sha512-afx+hvQIrPcHbTdsBIryE96JlfSt1Rw8cWhb1J34v6Exje6zQZQa3fQZ6gcgkON+zkDIK8u3yRcIps0xMUdsMQ==
+"@capacitor/core@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-4.6.0.tgz#25e816d75160571e24233afe3bda350f33ce9aef"
+  integrity sha512-P8PfJB5rFSBU2wDZ5wVHTVFZxKweFrxz554+Fl/ymhhAxlxFJuF5nFIZyQgVq+A1yp/nCLzWOyPMC5OPD/um0g==
   dependencies:
     tslib "^2.1.0"
 
@@ -1190,10 +1190,10 @@
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-4.1.0.tgz#29b082c3b90c920477717a0754017f5d4e43ed15"
   integrity sha512-gAIFy50e1VZPdokRFLkl8Y+yZYB3e4brd5yu9DRShbWbheruwU34TxtG5C1NANvq4mbXd3tMXzBi59Q5JFyTHA==
 
-"@capacitor/ios@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.5.0.tgz#44087d9aa87d4c4a96e77f588d104a786206cb6f"
-  integrity sha512-2E7hqKqZOXPKEQqvdp2g68KtfjIkGEPmLpM0vRTUug08l4C/XoPufPnHiT1Y6dEXk8c02NdnilxarfbyaajQvg==
+"@capacitor/ios@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-4.6.0.tgz#fe4eb729993585e974b1fd40d6ba3de4a97b789d"
+  integrity sha512-OrB1pYWDZJ0O0lAlqVM5DgVWxx2/As9vXBY72ndQhI+HYY41fIYFt5YHxp5rubqzV38UKmP2ZgdK7Q33ZmjDyw==
 
 "@capacitor/keyboard@^4.1.0":
   version "4.1.0"
