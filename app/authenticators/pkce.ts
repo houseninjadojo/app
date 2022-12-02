@@ -339,14 +339,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     )) || {}) as AuthTokenResponse;
 
     if (isEmpty(res?.refresh_token)) {
-      debug(
-        `PKCEAuthenticator#authenticate - failed token exchange with params: ${JSON.stringify(
-          params
-        )}`
-      );
       span?.setStatus('error');
       span?.finish();
-      throw new Error('failed token exchange');
+      throw new Error('pkce#authenticate - failed token exchange');
     }
 
     const data: ModifiedAuthTokenResponse = {
@@ -527,8 +522,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     if (!refresh_token) {
       span?.setStatus('error');
       span?.finish();
-      debug('[session] #refresh: no refresh token');
-      throw new TypeError('No refresh token');
+      throw new TypeError('pkce#refresh - No refresh token');
     }
 
     const params = {
@@ -588,8 +582,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       (expires_in - this.refreshLeeway) * 1000 - new Date().getTime();
 
     if (isNaN(expiry)) {
-      debug('[session] #scheduleRefresh: expiry is NaN');
-      throw new TypeError('Expiry is NaN');
+      throw new TypeError('#scheduleRefresh: Expiry is NaN');
     }
 
     // schedule token refresh for later
@@ -606,7 +599,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       expiry
     );
 
-    debug(`auth - token refresh scheduled for ${expiry}`);
+    debug(`[session] pkce - token refresh scheduled for ${expiry}`);
   }
 
   /**
@@ -700,8 +693,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       >;
       return res;
     } catch (e) {
-      debug(`[session] #post: error: ${e}`);
-      throw e;
+      throw new TypeError(`pkce#post - ${e}`);
     }
   }
 }
