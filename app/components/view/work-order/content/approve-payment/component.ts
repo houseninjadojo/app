@@ -17,6 +17,8 @@ import ToastService from 'houseninja/services/toast';
 import WorkOrder from 'houseninja/models/work-order';
 import { ValidationError } from '@ember-data/adapter/error';
 import Invoice from 'houseninja/models/invoice';
+import MetricsService from 'houseninja/services/metrics';
+import SessionService from 'houseninja/services/session';
 
 type Args = {
   model: WorkOrder;
@@ -25,6 +27,8 @@ type Args = {
 export default class WorkOrderApprovePaymentViewContentComponent extends Component<Args> {
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
+  @service declare metrics: MetricsService;
+  @service declare session: SessionService;
   @service declare store: StoreService;
   @service declare toast: ToastService;
 
@@ -33,6 +37,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isDoneProcessing = false;
   @tracked paid = false;
   @tracked paymentFailed = false;
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.sendMetrics('session');
+  }
 
   actionSheetOptions: ActionSheetButton[] = [
     {
@@ -80,6 +89,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     try {
       await payment.save(); // this will be long running (probably)
       this.paid = true;
+      this.sendMetrics('success');
     } catch (e) {
       if (!this.paid) {
         const hasGenericError =
@@ -93,6 +103,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
         }
         this.toggleIsProcessing();
       }
+      this.sendMetrics('error', 'payment');
       captureException(e as Error);
     }
   }
@@ -127,6 +138,9 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
+    if (!this.isNativePlatform) {
+      this.session.invalidate();
+    }
     this.router.transitionTo(DashboardRoute.Home);
   }
 
@@ -144,5 +158,14 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   get creditCard(): string {
     return this.store.peekAll('credit-card').firstObject;
+  }
+
+  sendMetrics(event: string, step?: string): void {
+    if (!this.isNativePlatform) {
+      this.metrics.trackEvent({
+        event: `external.payment-approval.${event}`,
+        properties: { step },
+      });
+    }
   }
 }

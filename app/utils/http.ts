@@ -2,7 +2,8 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 import { getActiveTransaction } from '@sentry/ember';
 import { captureException } from './sentry';
 
-type HttpRes = Promise<HttpResponse | undefined>;
+type ResponsePayload = HttpResponse | Record<string, unknown> | undefined;
+type HttpRes = Promise<ResponsePayload>;
 
 /**
  * GET request
@@ -14,7 +15,7 @@ type HttpRes = Promise<HttpResponse | undefined>;
 // eslint-disable-next-line prettier/prettier
 export async function get(url: string, headers = {}): HttpRes {
   const span = httpSpan('get', url);
-  let res: HttpResponse | undefined;
+  let res: HttpRes;
   try {
     const response: HttpResponse = await CapacitorHttp.get({ url, headers });
     res = response.data;
@@ -22,6 +23,7 @@ export async function get(url: string, headers = {}): HttpRes {
   } catch (e) {
     span?.setStatus('error');
     captureException(e as Error);
+    res = Promise.reject(e);
   } finally {
     span?.finish();
   }
@@ -40,7 +42,7 @@ export async function get(url: string, headers = {}): HttpRes {
 export async function post(url: string, headers = {}, data?: unknown): HttpRes {
   const span = httpSpan('post', url);
   const options = { url, headers, data };
-  let res: HttpResponse | undefined;
+  let res: HttpRes;
   try {
     const response = await CapacitorHttp.post(options);
     res = response.data;
@@ -48,7 +50,7 @@ export async function post(url: string, headers = {}, data?: unknown): HttpRes {
   } catch (e) {
     span?.setStatus('error');
     captureException(e as Error);
-    res = undefined;
+    res = Promise.reject(e);
   } finally {
     span?.finish();
   }

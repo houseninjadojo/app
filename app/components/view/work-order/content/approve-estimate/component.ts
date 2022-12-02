@@ -9,12 +9,15 @@ import {
 } from '@capacitor/action-sheet';
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { DashboardRoute } from 'houseninja/data/enums/routes';
 
 import type Estimate from 'houseninja/models/estimate';
 import type WorkOrder from 'houseninja/models/work-order';
 import type RouterService from '@ember/routing/router-service';
 import type IntercomService from 'houseninja/services/intercom';
+import type SessionService from 'houseninja/services/session';
+import type ToastService from 'houseninja/services/toast';
+import type MetricsService from 'houseninja/services/metrics';
 
 interface Args {
   model: WorkOrder;
@@ -27,8 +30,10 @@ type ActionSheetOptions = Array<{
 
 export default class WorkOrderApproveEstimateViewContentComponent extends Component<Args> {
   @service declare intercom: IntercomService;
+  @service declare metrics: MetricsService;
   @service declare router: RouterService;
-  @service declare toast: any;
+  @service declare session: SessionService;
+  @service declare toast: ToastService;
 
   @tracked showWebDialog = false;
   @tracked showWebDeclineDialog = false;
@@ -45,6 +50,11 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       title: 'I approve this estimate',
     },
   ];
+
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+    this.sendMetrics('session');
+  }
 
   private async nativeConfirmation(): Promise<void> {
     const total: string = this.estimate.amount;
@@ -85,12 +95,14 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       await this.estimate.save();
       this.isDoneProcessing = true;
       this.estimateApproved = true;
+      this.sendMetrics('success', 'approve');
     } catch (e: unknown) {
       this.toast.showError(
         'There was an error while approving this estimate. If this happens again, please contact us at hello@houseninja.co.'
       );
       this.estimate.approvedAt = undefined;
       this.toggleIsProcessing();
+      this.sendMetrics('error', 'approve');
       captureException(e as Error);
     }
   }
@@ -130,12 +142,14 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
     try {
       await this.estimate.save();
       this.isDoneProcessing = true;
+      this.sendMetrics('success', 'decline');
       this.selectRoute();
     } catch (e: unknown) {
       this.toast.showError(
         'There was an error while declining this estimate. If this happens again, please contact us at hello@houseninja.co.'
       );
       captureException(e as Error);
+      this.sendMetrics('error', 'decline');
       this.estimate.declinedAt = undefined;
     } finally {
       this.toggleIsProcessing();
@@ -177,7 +191,10 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   selectRoute(): void {
     this.isProcessing = false;
     this.args.model.reload();
-    this.router.transitionTo(NATIVE_MOBILE_ROUTE.DASHBOARD.HOME);
+    if (!this.isNativePlatform) {
+      this.session.invalidate();
+    }
+    this.router.transitionTo(DashboardRoute.Home);
   }
 
   get isNativePlatform(): boolean {
@@ -190,5 +207,14 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
 
   get formattedTotal(): string | undefined {
     return this.estimate?.get('amount');
+  }
+
+  sendMetrics(event: string, step?: string): void {
+    if (!this.isNativePlatform) {
+      this.metrics.trackEvent({
+        event: `external.estimate-approval.${event}`,
+        properties: { step },
+      });
+    }
   }
 }

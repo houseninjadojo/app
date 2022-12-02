@@ -72,8 +72,7 @@ const plugins = {
     iosAppId: process.env.INTERCOM_APP_ID,
   },
   Mixpanel: {
-    iosToken: process.env.MIXPANEL_TOKEN,
-    androidToken: process.env.MIXPANEL_TOKEN,
+    token: process.env.MIXPANEL_TOKEN,
   },
 };
 

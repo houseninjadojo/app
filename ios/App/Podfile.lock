@@ -1,6 +1,6 @@
 PODS:
-  - Branch (1.44.0)
-  - Capacitor (4.5.0):
+  - Branch (1.45.0)
+  - Capacitor (4.6.0):
     - CapacitorCordova
   - CapacitorActionSheet (4.1.0):
     - Capacitor
@@ -10,7 +10,7 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.4):
     - Capacitor
-  - CapacitorCordova (4.5.0)
+  - CapacitorCordova (4.6.0)
   - CapacitorDevice (4.1.0):
     - Capacitor
   - CapacitorDialog (4.1.0):
@@ -88,10 +88,10 @@ PODS:
   - HouseninjaCapacitorIntercom (4.3.0):
     - Capacitor
     - Intercom
-  - HouseninjaCapacitorMixpanel (1.0.0-beta.2):
+  - HouseninjaCapacitorMixpanel (2.0.0):
     - Capacitor
     - Mixpanel-swift
-  - Intercom (14.0.1)
+  - Intercom (14.0.3)
   - MineminemineFcm (4.0.3):
     - Capacitor
     - Firebase/Messaging
@@ -204,13 +204,13 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@sentry/capacitor"
 
 SPEC CHECKSUMS:
-  Branch: 7ef075130253915439cec12fa99027f587a72d00
-  Capacitor: 94ea746d6b460711feb030f0f6585680fd4599ad
+  Branch: ef0aa28182506c63a50618a0862f63a0f7b3fe9d
+  Capacitor: e5d04bcfb7b1b227b5c36fb930a109cff079b368
   CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
   CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
   CapacitorBrowser: 05b68799d62b7b864974f59a5af3e4ddcce953f1
   CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
-  CapacitorCordova: 1ba7a0509217944974297afab40fec6093e93848
+  CapacitorCordova: 0440dd7ffdc96172d5dd35d7a37e221cb60df472
   CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
   CapacitorDialog: c8a6558d29767e76a32a056bb5e0fc9104b985b0
   CapacitorFilesystem: 3d665e5b3719d9f6e240480a7468861b0bb35f93
@@ -232,8 +232,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
   HouseninjaCapacitorIntercom: 31246e27d64d1ee1234a3b45b8db869b42dbb804
-  HouseninjaCapacitorMixpanel: c7ec7bbe3df11b2b84f701741c8b34698b4cf5f0
-  Intercom: 4b93e75b58fdfd8ec92fb39343f4963dc12f0b33
+  HouseninjaCapacitorMixpanel: d15eddaf6e391e3ed416260b58b2dc7c2847bbaa
+  Intercom: 068fcc987d68814d4a590b8f7cde11cac90318f3
   MineminemineFcm: c5da7f364c3221b1bca61bf6b1c5cb0167bc3a5c
   Mixpanel-swift: 91fc28834402720682f4cce760e95571fbb388c3
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431

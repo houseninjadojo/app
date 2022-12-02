@@ -8,5 +8,6 @@ self.deprecationWorkflow.config = {
     { handler: "silence", matchId: "ember-data:default-serializer" },
     { handler: "silence", matchId: "ember-data:deprecate-array-like" },
     { handler: "silence", matchId: "ember-data:deprecate-promise-many-array-behaviors"},
+    { handler: "silence", matchId: "ember-data:deprecate-promise-proxies" },
   ]
 };

@@ -2,6 +2,8 @@ import { debug } from '@ember/debug';
 import {
   getEventSlug,
   isListenablePlugin,
+  isListenableWindow,
+  isWindowListener,
   isPluginListener,
 } from 'houseninja/utils/event-bus';
 
@@ -11,6 +13,7 @@ import type {
   Listenable,
   ListenablePlugin,
   ListenableEvented,
+  ListenableWindow,
   ListenerFunc,
 } from 'houseninja/services/event-bus';
 
@@ -84,6 +87,20 @@ export default class Handler {
     );
   }
 
+  static fromWindow(
+    instance: ListenableWindow,
+    instanceName: string,
+    eventName: string,
+    context: EventBusService
+  ): Handler {
+    const eventSlug = getEventSlug(instanceName, eventName);
+    const listener = listenerFor(context, eventSlug);
+    return new Handler(instance, instanceName, eventName).addListener(
+      eventSlug,
+      instance.addEventListener(eventName, listener)
+    );
+  }
+
   static from(
     instance: Listenable,
     instanceName: string,
@@ -92,6 +109,8 @@ export default class Handler {
   ): Handler {
     if (isListenablePlugin(instance)) {
       return Handler.fromPlugin(instance, instanceName, eventName, context);
+    } else if (isListenableWindow(instance)) {
+      return Handler.fromWindow(instance, instanceName, eventName, context);
     } else {
       return Handler.fromEvented(
         instance as ListenableEvented,
@@ -105,6 +124,11 @@ export default class Handler {
   remove(): void {
     if (isPluginListener(this.handler)) {
       this.handler.remove();
+    } else if (isWindowListener(this.instance)) {
+      window.removeEventListener(
+        this.eventName,
+        this.handler as EventListenerOrEventListenerObject
+      );
     } else if (typeof this.handler === 'function') {
       this.instance.off(this.handler);
     }
