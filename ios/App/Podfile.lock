@@ -1,5 +1,5 @@
 PODS:
-  - Branch (1.44.0)
+  - Branch (1.45.0)
   - Capacitor (4.5.0):
     - CapacitorCordova
   - CapacitorActionSheet (4.1.0):
@@ -88,10 +88,10 @@ PODS:
   - HouseninjaCapacitorIntercom (4.3.0):
     - Capacitor
     - Intercom
-  - HouseninjaCapacitorMixpanel (1.0.0-beta.2):
+  - HouseninjaCapacitorMixpanel (2.0.0):
     - Capacitor
     - Mixpanel-swift
-  - Intercom (14.0.1)
+  - Intercom (14.0.2)
   - MineminemineFcm (4.0.3):
     - Capacitor
     - Firebase/Messaging
@@ -204,7 +204,7 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@sentry/capacitor"
 
 SPEC CHECKSUMS:
-  Branch: 7ef075130253915439cec12fa99027f587a72d00
+  Branch: ef0aa28182506c63a50618a0862f63a0f7b3fe9d
   Capacitor: 94ea746d6b460711feb030f0f6585680fd4599ad
   CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
   CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
@@ -232,8 +232,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
   HouseninjaCapacitorIntercom: 31246e27d64d1ee1234a3b45b8db869b42dbb804
-  HouseninjaCapacitorMixpanel: c7ec7bbe3df11b2b84f701741c8b34698b4cf5f0
-  Intercom: 4b93e75b58fdfd8ec92fb39343f4963dc12f0b33
+  HouseninjaCapacitorMixpanel: d15eddaf6e391e3ed416260b58b2dc7c2847bbaa
+  Intercom: eb296d5c73deb0be78bcbf6c7cd3f30bf0c9ba80
   MineminemineFcm: c5da7f364c3221b1bca61bf6b1c5cb0167bc3a5c
   Mixpanel-swift: 91fc28834402720682f4cce760e95571fbb388c3
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
