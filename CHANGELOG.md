@@ -1,3 +1,10 @@
+## [1.28.3](https://github.com/houseninjadojo/app/compare/v1.28.2...v1.28.3) (2022-12-02)
+
+
+### Bug Fixes
+
+* **auth:** bug in authenticator causing infinite loop ([#1374](https://github.com/houseninjadojo/app/issues/1374)) ([8713dc5](https://github.com/houseninjadojo/app/commit/8713dc569370387dd3e557df5ff7ce3543203d52))
+
 ## [1.28.2](https://github.com/houseninjadojo/app/compare/v1.28.1...v1.28.2) (2022-11-30)
 
 
