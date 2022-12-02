@@ -9,7 +9,6 @@ import { isEqual, isEmpty } from '@ember/utils';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
 import { startSpan } from 'houseninja/utils/sentry';
-import { HttpResponse } from '@capacitor/core';
 import type { EmberRunTimer } from '@ember/runloop/types';
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -340,14 +339,9 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     )) || {}) as AuthTokenResponse;
 
     if (isEmpty(res?.refresh_token)) {
-      debug(
-        `PKCEAuthenticator#authenticate - failed token exchange with params: ${JSON.stringify(
-          params
-        )}`
-      );
       span?.setStatus('error');
       span?.finish();
-      throw new Error('failed token exchange');
+      throw new Error('pkce#authenticate - failed token exchange');
     }
 
     const data: ModifiedAuthTokenResponse = {
@@ -399,10 +393,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     const { refresh_token, expires_at, expires_in } = data;
 
-    if (!refresh_token) {
+    if (typeof refresh_token !== 'string') {
       span?.setStatus('error');
       span?.finish();
-      throw new Error('Refresh token is missing');
+      throw new TypeError('Refresh token is missing');
     }
 
     // if the token has expired already, try to refresh it
@@ -523,10 +517,18 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       `${STASH_TOKEN}:refresh_token`
     );
 
+    refresh_token ||= stashed_refresh_token;
+
+    if (!refresh_token) {
+      span?.setStatus('error');
+      span?.finish();
+      throw new TypeError('pkce#refresh - No refresh token');
+    }
+
     const params = {
       grant_type: 'refresh_token',
       client_id: this.clientId,
-      refresh_token: refresh_token || stashed_refresh_token,
+      refresh_token,
     };
 
     const res = ((await this.#post(this.serverTokenEndpoint, params)) ??
@@ -579,6 +581,10 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const expiry: number =
       (expires_in - this.refreshLeeway) * 1000 - new Date().getTime();
 
+    if (isNaN(expiry)) {
+      throw new TypeError('#scheduleRefresh: Expiry is NaN');
+    }
+
     // schedule token refresh for later
     this.#upcomingRefresh = later(
       // context this callback function will run in
@@ -593,7 +599,7 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       expiry
     );
 
-    debug(`auth - token refresh scheduled for ${expiry}`);
+    debug(`[session] pkce - token refresh scheduled for ${expiry}`);
   }
 
   /**
@@ -673,12 +679,21 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @param {String} url
    * @param {Object} params
    */
-  async #post(url: string, params = {}): Promise<HttpResponse | void> {
+  // eslint-disable-next-line prettier/prettier
+  async #post(url: string, params = {}): Promise<Record<string, unknown> | boolean | void> {
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
     };
     params = new URLSearchParams(compact(params)).toString();
-    return await HTTP.post(url, headers, params);
+    try {
+      const res = (await HTTP.post(url, headers, params)) as Record<
+        string,
+        unknown
+      >;
+      return res;
+    } catch (e) {
+      throw new TypeError(`pkce#post - ${e}`);
+    }
   }
 }
