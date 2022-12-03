@@ -1,9 +1,5 @@
 [
 	{
-		"pkg": "@houseninja/capacitor-intercom",
-		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
-	},
-	{
 		"pkg": "@capacitor/action-sheet",
 		"classpath": "com.capacitorjs.plugins.actionsheet.ActionSheetPlugin"
 	},
@@ -68,6 +64,10 @@
 		"classpath": "co.boundstate.BranchDeepLinks"
 	},
 	{
+		"pkg": "@houseninja/capacitor-intercom",
+		"classpath": "com.getcapacitor.community.intercom.IntercomPlugin"
+	},
+	{
 		"pkg": "@houseninja/capacitor-mixpanel",
 		"classpath": "co.houseninja.plugins.mixpanel.MixpanelPlugin"
 	},
@@ -76,11 +76,11 @@
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
-		"pkg": "capacitor-secure-storage-plugin",
-		"classpath": "com.whitestein.securestorage.SecureStoragePluginPlugin"
-	},
-	{
 		"pkg": "@sentry/capacitor",
 		"classpath": "io.sentry.capacitor.SentryCapacitor"
+	},
+	{
+		"pkg": "capacitor-secure-storage-plugin",
+		"classpath": "com.whitestein.securestorage.SecureStoragePluginPlugin"
 	}
 ]
