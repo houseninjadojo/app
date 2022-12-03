@@ -33,11 +33,11 @@ sentry_deploy_name      = "testflight"
 sentry_env              = "sandbox"
 sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
-xcode_project_path      = "../ios/App/App.xcodeproj"
-xcode_workspace          = "App.xcworkspace"
+xcode_project_path      = "ios/App/App.xcodeproj"
+xcode_workspace         = "ios/App/App.xcworkspace"
 
 # get version
-package      = load_json(json_path: "./package.json")
+package      = load_json(json_path: "package.json")
 version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
 
@@ -61,19 +61,39 @@ platform :android do
 end
 
 platform :ios do
+  desc "build app"
+  lane :build do
+    build_app(
+      scheme: scheme,
+      workspace: xcode_workspace,
+    )
+  end
+
+  desc "upload to testflight"
+  lane :upload do |options|
+    upload_to_testflight(
+      api_key: options[:api_key],
+      skip_waiting_for_build_processing: true,
+      notify_external_testers: false,
+      app_identifier: bundle_identifier,
+    )
+  end
+
   desc "Sandbox Release"
   lane :sandbox do
-    sentry_create_release(
-      auth_token: sentry_auth_token,
-      org_slug: sentry_org_slug,
-      project_slug: sentry_project_slug,
-      version: version,
-      build: build_number,
-      app_identifier: bundle_identifier,
-      # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
-    )
+    initialize_sentry
     start_time = Time.now.to_i
     setup_ci if ENV["CI"]
+    api_key = fetch_api_key
+    sign_code(api_key: api_key)
+    increment_version
+    build
+    end_time = Time.now.to_i
+    upload(api_key: api_key)
+    finalize_sentry(start_time: start_time, end_time: end_time)
+  end
+
+  private_lane :fetch_api_key do
     api_key = app_store_connect_api_key(
       key_id: app_store_key_id,
       issuer_id: app_store_issuer_id,
@@ -82,8 +102,12 @@ platform :ios do
       duration: 1200,  # optional (maximum 1200)
       in_house: false, # optional but may be required if using match/sigh
     )
+    api_key
+  end
+
+  private_lane :sign_code do |options|
     sync_code_signing(
-      api_key: api_key,
+      api_key: options[:api_key],
       type: "appstore",
       app_identifier: bundle_identifier,
       readonly: false,
@@ -96,27 +120,34 @@ platform :ios do
       bundle_identifier: bundle_identifier,
       profile_name: provision_profile_name,
     )
+  end
+
+  private_lane :increment_version do
     increment_version_number_in_xcodeproj(
       version_number: version,
       xcodeproj: xcode_project_path,
       scheme: scheme,
     )
-    build_app(
-      scheme: scheme,
-      workspace: xcode_workspace,
-    )
-    end_time = Time.now.to_i
-    upload_to_testflight(
-      api_key: api_key,
-      skip_waiting_for_build_processing: true,
-      notify_external_testers: false,
+  end
+
+  private_lane :initialize_sentry do
+    sentry_create_release(
+      auth_token: sentry_auth_token,
+      org_slug: sentry_org_slug,
+      project_slug: sentry_project_slug,
+      version: version,
+      build: build_number,
       app_identifier: bundle_identifier,
+      # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
     )
+  end
+
+  private_lane :finalize_sentry do |options|
     sentry_upload_dif(
       auth_token: sentry_auth_token,
       org_slug: sentry_org_slug,
       project_slug: sentry_project_slug,
-      path: ".",
+      path: "ios/App",
     )
     sentry_create_deploy(
       auth_token: sentry_auth_token,
@@ -127,8 +158,8 @@ platform :ios do
       app_identifier: bundle_identifier,
       env: sentry_env,
       name: sentry_deploy_name,
-      started: start_time,
-      finished: end_time, # Optional unix timestamp when the deployment finished
+      started: options[:start_time],
+      finished: options[:end_time], # Optional unix timestamp when the deployment finished
     )
   end
 end

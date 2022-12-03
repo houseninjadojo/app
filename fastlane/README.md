@@ -28,6 +28,22 @@ Build app
 
 ## iOS
 
+### ios build
+
+```sh
+[bundle exec] fastlane ios build
+```
+
+build app
+
+### ios upload
+
+```sh
+[bundle exec] fastlane ios upload
+```
+
+upload to testflight
+
 ### ios sandbox
 
 ```sh
