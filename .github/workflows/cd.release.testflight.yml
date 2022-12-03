@@ -158,10 +158,10 @@ jobs:
         with:
           name: package.json
           path: .
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: node_modules.tar.gz
-      #     path: .
+      - uses: actions/download-artifact@v3
+        with:
+          name: node_modules.tar.gz
+          path: .
       - uses: actions/download-artifact@v3
         with:
           name: fastlane.tar.gz
@@ -171,6 +171,7 @@ jobs:
           name: ios.tar.gz
           path: .
       - run: |
+          tar -xzf node_modules.tar.gz
           tar -xzvf ios.tar.gz
           tar -xzvf fastlane.tar.gz
       - uses: ruby/setup-ruby@v1
