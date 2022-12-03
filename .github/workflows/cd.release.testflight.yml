@@ -3,9 +3,12 @@ name: cd / release
 concurrency: testflight-release-lock
 
 on:
-  release:
-    types:
-      - published
+  pull_request:
+    branches:
+      - android
+  # release:
+  #   types:
+  #     - published
 
 env:
   RUBY_VERSION: 3.0.3
@@ -176,11 +179,16 @@ jobs:
         with:
           node-version: '16'
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
-        working-directory: 'ios/App'
+        working-directory: 'fastlane'
         env:
           DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+          working-directory: 'fastlane'
       - run: bundle exec fastlane ios sandbox
-        working-directory: 'ios/App'
+        working-directory: 'fastlane'
       - uses: actions/upload-artifact@v3
         if: success()
         with:
