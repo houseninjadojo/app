@@ -98,6 +98,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
+          name: yarn.lock
+          path: yarn.lock
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
           name: web.tar.gz
           path: web.tar.gz
       - uses: actions/upload-artifact@v3
@@ -151,6 +156,10 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: package.json
+          path: .
+      - uses: actions/download-artifact@v3
+        with:
+          name: yarn.lock
           path: .
       - uses: actions/download-artifact@v3
         with:
