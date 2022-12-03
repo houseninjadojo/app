@@ -90,17 +90,11 @@ jobs:
           tar -czvf ios.tar.gz ios
           tar -czvf android.tar.gz android
           tar -czvf fastlane.tar.gz fastlane
-          tar -czf node_modules.tar.gz node_modules
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: package.json
           path: package.json
-      - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: node_modules.tar.gz
-          path: node_modules.tar.gz
       - uses: actions/upload-artifact@v3
         if: success()
         with:
@@ -160,10 +154,6 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules.tar.gz
-          path: .
-      - uses: actions/download-artifact@v3
-        with:
           name: fastlane.tar.gz
           path: .
       - uses: actions/download-artifact@v3
@@ -171,9 +161,12 @@ jobs:
           name: ios.tar.gz
           path: .
       - run: |
-          tar -xzf node_modules.tar.gz
           tar -xzvf ios.tar.gz
           tar -xzvf fastlane.tar.gz
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: yarn install --prod --frozen-lockfile
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -187,9 +180,6 @@ jobs:
             ${{ runner.os }}-pods-
       - run: pod install --deployment
         working-directory: 'ios/App'
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'fastlane/'
         env:
