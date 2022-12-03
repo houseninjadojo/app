@@ -3,7 +3,7 @@ name: cd / release
 concurrency: testflight-release-lock
 
 on:
-  pull_request:
+  push:
     branches:
       - android
   # release:
