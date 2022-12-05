@@ -94,7 +94,7 @@
     "autoprefixer": "^10.4.13",
     "branch-sdk": "^2.71.0",
     "broccoli-asset-rev": "^3.0.0",
-    "broccoli-terser-sourcemap": "houseninjadojo/broccoli-terser-sourcemap#9b4213b",
+    "broccoli-terser-sourcemap": "https://github.com/houseninjadojo/broccoli-terser-sourcemap#9b4213b",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
     "dotenv-vault": "^1.16.3",
@@ -109,14 +109,14 @@
     "ember-cli-dotenv": "^3.1.0",
     "ember-cli-htmlbars": "^6.1.1",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-mirage": "kiwi-josh/ember-cli-mirage#fix/deprecation-early-static",
+    "ember-cli-mirage": "https://github.com/kiwi-josh/ember-cli-mirage#fix/deprecation-early-static",
     "ember-cli-postcss": "^8.2.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-cli-typescript": "^5.2.1",
     "ember-concurrency": "^2.3.7",
     "ember-content-loader": "^3.0.0",
-    "ember-data": "~4.7.3",
+    "ember-data": "~4.9.1",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
     "ember-inflector": "^4.0.2",
@@ -130,7 +130,7 @@
     "ember-source": "~4.9.1",
     "ember-template-lint": "^5.1.1",
     "ember-truth-helpers": "^3.1.1",
-    "ember-user-activity": "elwayman02/ember-user-activity",
+    "ember-user-activity": "https://github.com/elwayman02/ember-user-activity",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-ember": "^11.2.1",
@@ -196,5 +196,8 @@
     "@sentry/tracing": "7.13.0",
     "@sentry/types": "7.13.0",
     "@sentry/utils": "7.13.0"
+  },
+  "resolutions": {
+    "@embroider/macros": "1.10.0"
   }
 }
