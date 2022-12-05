@@ -196,5 +196,8 @@
     "@sentry/tracing": "7.13.0",
     "@sentry/types": "7.13.0",
     "@sentry/utils": "7.13.0"
+  },
+  "resolutions": {
+    "@embroider/macros": "1.10.0"
   }
 }
