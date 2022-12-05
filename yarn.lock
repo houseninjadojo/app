@@ -5727,9 +5727,9 @@ broccoli-templater@^2.0.1:
     rimraf "^2.6.2"
     walk-sync "^0.3.3"
 
-broccoli-terser-sourcemap@^4.1.0, broccoli-terser-sourcemap@houseninjadojo/broccoli-terser-sourcemap#9b4213b:
+broccoli-terser-sourcemap@^4.1.0, "broccoli-terser-sourcemap@https://github.com/houseninjadojo/broccoli-terser-sourcemap#9b4213b":
   version "4.1.0"
-  resolved "git+ssh://git@github.com/houseninjadojo/broccoli-terser-sourcemap.git#9b4213b207d57ae214cf285f4fcecafc6ed0a3d1"
+  resolved "https://github.com/houseninjadojo/broccoli-terser-sourcemap#9b4213b207d57ae214cf285f4fcecafc6ed0a3d1"
   dependencies:
     async-promise-queue "^1.0.5"
     broccoli-plugin "^4.0.7"

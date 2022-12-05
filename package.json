@@ -94,7 +94,7 @@
     "autoprefixer": "^10.4.13",
     "branch-sdk": "^2.71.0",
     "broccoli-asset-rev": "^3.0.0",
-    "broccoli-terser-sourcemap": "houseninjadojo/broccoli-terser-sourcemap#9b4213b",
+    "broccoli-terser-sourcemap": "https://github.com/houseninjadojo/broccoli-terser-sourcemap#9b4213b",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
     "dotenv-vault": "^1.16.3",
