@@ -7718,9 +7718,9 @@ ember-cli-lodash-subset@^2.0.1:
   resolved "https://registry.npmjs.org/ember-cli-lodash-subset/-/ember-cli-lodash-subset-2.0.1.tgz"
   integrity sha1-IMtop5D+D94kiN39jvu332/nZvI=
 
-ember-cli-mirage@kiwi-josh/ember-cli-mirage#fix/deprecation-early-static:
+"ember-cli-mirage@https://github.com/kiwi-josh/ember-cli-mirage#fix/deprecation-early-static":
   version "2.4.0"
-  resolved "git+ssh://git@github.com/kiwi-josh/ember-cli-mirage.git#d303abad86a491d99ca3af69536943dd77204676"
+  resolved "https://github.com/kiwi-josh/ember-cli-mirage#d303abad86a491d99ca3af69536943dd77204676"
   dependencies:
     "@embroider/macros" "^0.41.0"
     broccoli-file-creator "^2.1.1"
@@ -8351,9 +8351,9 @@ ember-truth-helpers@^3.1.1:
   dependencies:
     ember-cli-babel "^7.22.1"
 
-ember-user-activity@elwayman02/ember-user-activity:
+"ember-user-activity@https://github.com/elwayman02/ember-user-activity":
   version "6.0.0"
-  resolved "git+ssh://git@github.com/elwayman02/ember-user-activity.git#bdfd1e77cf370b518918ee6d1cf0a70c3657d823"
+  resolved "https://github.com/elwayman02/ember-user-activity#bdee04cd01b7746841a54359b41ad412c521b6a6"
   dependencies:
     ember-classic-decorator "^3.0.1"
     ember-cli-babel "^7.26.11"
