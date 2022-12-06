@@ -20,6 +20,9 @@ const base = {
 
 const android = {
   allowMixedContent: false,
+  buildOptions: {
+    releaseType: 'APK',
+  },
 };
 
 const ios = {
@@ -31,10 +34,10 @@ const server = {
   hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
   iosScheme: process.env.APP_SCHEME,
   androidScheme: process.env.APP_SCHEME,
-  cleartext: false,
+  cleartext: environment === 'development',
   url: process.env.CAPACITOR_SERVER_URL,
   allowNavigation: [
-    // 'localhost:3000',
+    'localhost:4200',
     'auth.houseninja.co',
     'sandbox.auth.houseninja.co',
     'houseninja.co',
@@ -47,8 +50,8 @@ const plugins = {
     enabled: false,
   },
   SplashScreen: {
-    launchShowDuration: 1,
-    launchAutoHide: false,
+    launchShowDuration: 0,
+    launchAutoHide: true,
     backgroundColor: '#000000',
   },
   Keyboard: {
@@ -69,8 +72,7 @@ const plugins = {
     iosAppId: process.env.INTERCOM_APP_ID,
   },
   Mixpanel: {
-    iosToken: process.env.MIXPANEL_TOKEN,
-    androidToken: process.env.MIXPANEL_TOKEN,
+    token: process.env.MIXPANEL_TOKEN,
   },
 };
 

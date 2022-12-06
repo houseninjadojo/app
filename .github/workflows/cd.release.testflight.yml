@@ -81,11 +81,12 @@ jobs:
       - run: |
           cp .env.vault ios/App/.env.vault
           cp .env.vault android/app/.env.vault
+          cp .env.vault fastlane/.env.vault
       - run: |
           tar -czvf web.tar.gz dist
           tar -czvf ios.tar.gz ios
           tar -czvf android.tar.gz android
-          tar -czf node_modules.tar.gz node_modules
+          tar -czvf fastlane.tar.gz fastlane
       - uses: actions/upload-artifact@v3
         if: success()
         with:
@@ -94,8 +95,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
-          name: node_modules.tar.gz
-          path: node_modules.tar.gz
+          name: yarn.lock
+          path: yarn.lock
       - uses: actions/upload-artifact@v3
         if: success()
         with:
@@ -111,6 +112,11 @@ jobs:
         with:
           name: android.tar.gz
           path: android.tar.gz
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: fastlane.tar.gz
+          path: fastlane.tar.gz
       - name: Datadog
         uses: masci/datadog@v1
         with:
@@ -150,7 +156,11 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
-          name: node_modules.tar.gz
+          name: yarn.lock
+          path: .
+      - uses: actions/download-artifact@v3
+        with:
+          name: fastlane.tar.gz
           path: .
       - uses: actions/download-artifact@v3
         with:
@@ -158,7 +168,12 @@ jobs:
           path: .
       - run: |
           tar -xzvf ios.tar.gz
-          tar -xzf node_modules.tar.gz
+          tar -xzvf fastlane.tar.gz
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --prod --frozen-lockfile
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -172,15 +187,17 @@ jobs:
             ${{ runner.os }}-pods-
       - run: pod install --deployment
         working-directory: 'ios/App'
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
-        working-directory: 'ios/App'
+        working-directory: 'fastlane/'
         env:
           DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+          working-directory: 'fastlane/'
       - run: bundle exec fastlane ios sandbox
-        working-directory: 'ios/App'
+        working-directory: 'fastlane/'
       - uses: actions/upload-artifact@v3
         if: success()
         with:

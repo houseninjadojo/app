@@ -1,3 +1,45 @@
+## [1.28.3](https://github.com/houseninjadojo/app/compare/v1.28.2...v1.28.3) (2022-12-02)
+
+
+### Bug Fixes
+
+* **auth:** bug in authenticator causing infinite loop ([#1374](https://github.com/houseninjadojo/app/issues/1374)) ([8713dc5](https://github.com/houseninjadojo/app/commit/8713dc569370387dd3e557df5ff7ce3543203d52))
+
+## [1.28.2](https://github.com/houseninjadojo/app/compare/v1.28.1...v1.28.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* **external:** invalidate session after submission ([#1352](https://github.com/houseninjadojo/app/issues/1352)) ([0a23ae8](https://github.com/houseninjadojo/app/commit/0a23ae8411b68d9dbe40b60d8265017e0dadb8e4))
+
+## [1.28.1](https://github.com/houseninjadojo/app/compare/v1.28.0...v1.28.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* **payment-approval:** metrics ([#1344](https://github.com/houseninjadojo/app/issues/1344)) ([c098d82](https://github.com/houseninjadojo/app/commit/c098d829cc716b7af4b61df6b7ad237c22745fc4))
+
+# [1.28.0](https://github.com/houseninjadojo/app/compare/v1.27.5...v1.28.0) (2022-11-29)
+
+
+### Features
+
+* subscribe to window events ([#1340](https://github.com/houseninjadojo/app/issues/1340)) ([61c9eb9](https://github.com/houseninjadojo/app/commit/61c9eb964d935571fc8523a0d2f75e883277204c))
+
+## [1.27.5](https://github.com/houseninjadojo/app/compare/v1.27.4...v1.27.5) (2022-11-27)
+
+
+### Bug Fixes
+
+* **signup:** handle walkthrough booking input error ([#1339](https://github.com/houseninjadojo/app/issues/1339)) ([9016da4](https://github.com/houseninjadojo/app/commit/9016da4fa517d1de096c3f9e081a33da4455fdf6))
+
+## [1.27.4](https://github.com/houseninjadojo/app/compare/v1.27.3...v1.27.4) (2022-11-24)
+
+
+### Bug Fixes
+
+* datadog rum on capacitor ([#1322](https://github.com/houseninjadojo/app/issues/1322)) ([5e696ad](https://github.com/houseninjadojo/app/commit/5e696ad164885ce7c56345643be65c1eec909f08))
+
 ## [1.27.3](https://github.com/houseninjadojo/app/compare/v1.27.2...v1.27.3) (2022-11-23)
 
 

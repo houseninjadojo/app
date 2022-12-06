@@ -1,17 +1,18 @@
 import Sentry from 'houseninja/lib/sentry';
 import config from 'houseninja/config/environment';
-import { debug } from '@ember/debug';
 import { SeverityLevel, Span, SpanContext, Transaction } from '@sentry/types';
 import { getActiveTransaction } from '@sentry/ember';
+import { datadogRum } from '@datadog/browser-rum';
 
 export default Sentry;
 
 export function captureException(ex: Error): void {
   if (config.environment === 'development') {
     console.error(ex);
+  } else {
+    datadogRum.addError(ex);
+    Sentry.captureException(ex);
   }
-  debug(ex.message);
-  Sentry.captureException(ex);
 }
 
 export function currentTransaction(): Transaction | undefined {

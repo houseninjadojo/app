@@ -1,7 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">houseninja</string>
-    <string name="title_activity_main">houseninja</string>
-    <string name="package_name">co.houseninja.app</string>
-    <string name="custom_url_scheme">co.houseninja.app</string>
+    <string name="app_name">House Ninja</string>
+    <string name="title_activity_main">House Ninja</string>
+    <string name="package_name">co.houseninja.application</string>
+    <string name="custom_url_scheme">co.houseninja.application</string>
+
+    <string name="applink_host">w.hnja.io</string>
+    <string name="applink_host_alternate">houseninja-alternate.app.link</string>
+    <string name="deeplink_scheme">co.houseninja.application</string>
+    <string name="branch_key">key_live_am2NwPVSjgO1OyefXDS6ghphBxnYYNHt</string>
+    <string name="branch_test_key">key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI</string>
+    <bool name="branch_test_mode">false</bool>
+    <!-- set above to "true" to use test key -->
 </resources>
