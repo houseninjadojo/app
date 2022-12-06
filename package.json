@@ -60,7 +60,7 @@
     "@tsconfig/ember": "^1.1.0",
     "@types/branch-sdk": "^2.53.3",
     "@types/crypto-js": "^4.1.1",
-    "@types/ember": "^4.0.2",
+    "@types/ember": "^4.0.3",
     "@types/ember-data": "^4.4.6",
     "@types/ember-data__adapter": "^4.0.1",
     "@types/ember-data__model": "^4.0.0",
