@@ -2,21 +2,30 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { debug } from '@ember/debug';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumber } from 'houseninja/utils/components/formatting';
-import Sentry from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/utils/sentry';
+import RouterService from '@ember/routing/router-service';
+import ViewService from 'houseninja/services/view';
+import StoreService from 'houseninja/services/store';
+import CurrentService from 'houseninja/services/current';
+import { Field } from 'houseninja/app/components';
+import CreditCard from 'houseninja/models/credit-card';
+
+type PMITarget = 'cardNumber' | 'cvv' | 'expMonth' | 'expYear' | 'zipcode';
 
 export default class SettingsPaymentMethodsEditController extends Controller {
-  @service router;
-  @service view;
-  @service store;
-  @service current;
+  declare model: CreditCard;
+
+  @service declare router: RouterService;
+  @service declare view: ViewService;
+  @service declare store: StoreService;
+  @service declare current: CurrentService;
 
   @tracked formIsInvalid = true;
 
-  get fields() {
+  get fields(): Field[] {
     return [
       {
         id: 'cardNumber',
@@ -57,9 +66,11 @@ export default class SettingsPaymentMethodsEditController extends Controller {
   }
 
   @action
-  handleInput(e) {
-    if (e.target.id !== 'cardNumber') {
-      this.model.set(e.target.id, e.target.value);
+  handleInput(e: InputEvent) {
+    const target = e.target as HTMLInputElement;
+    const targetId = target.id as PMITarget;
+    if (targetId !== 'cardNumber') {
+      this.model.set(targetId, target.value);
     }
 
     this.__validateForm();
@@ -75,20 +86,19 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       await model.save();
       this.view.transitionToPreviousRoute();
     } catch (e) {
-      debug(e);
-      Sentry.captureException(e);
+      captureException(e as Error);
     }
   }
 
   @action
-  handleSetAsDefault() {
+  handleSetAsDefault(): void {
     this.model.isDefault = !this.model.isDefault;
 
     this.__validateForm();
   }
 
   @action
-  async handleRemoveAction() {
+  async handleRemoveAction(): Promise<void> {
     const actionSheetOptions = [
       {
         title: 'Keep this payment method',
@@ -105,27 +115,26 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       options: actionSheetOptions,
     });
 
-    const choice = actionSheetOptions[result.index].title;
-    const confirmed = choice === actionSheetOptions[1].title;
+    const choice = actionSheetOptions[result.index]?.title;
+    const confirmed = choice === actionSheetOptions[1]?.title;
 
     if (confirmed) {
       try {
         await this.model.destroyRecord();
         this.view.transitionToPreviousRoute();
       } catch (e) {
-        debug(e);
-        Sentry.captureException(e);
+        captureException(e as Error);
       }
     }
   }
 
   @action
-  resetForm() {
+  resetForm(): void {
     this.formIsInvalid = true;
   }
 
-  __validateForm() {
-    const fields = this.fields.map((f) => {
+  __validateForm(): void {
+    const fields: Field[] = this.fields.map((f) => {
       if (f.id === 'cardNumber') {
         return {
           ...f,
@@ -139,7 +148,7 @@ export default class SettingsPaymentMethodsEditController extends Controller {
       } else {
         return {
           ...f,
-          value: this.model.get(f.id),
+          value: this.model.get(f.id as PMITarget),
         };
       }
     });

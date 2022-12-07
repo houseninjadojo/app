@@ -14,7 +14,7 @@ interface CreditCardArgs {
   lastFour?: string;
 }
 
-export default class CreditCardModel extends PaymentMethod {
+export default class CreditCard extends PaymentMethod {
   @attr('string') declare brand?: string;
   @attr('string') declare country?: string;
   @attr('string') declare cvv?: string;
