@@ -156,7 +156,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
-  requestDifferentPayment() {
+  requestDifferentPayment(): void {
     this.intercom.showComposer('I would like to update my payment method.');
   }
 
@@ -177,7 +177,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.router.transitionTo(DashboardRoute.Home);
   }
 
-  get isNativePlatform() {
+  get isNativePlatform(): boolean {
     return isNativePlatform();
   }
 

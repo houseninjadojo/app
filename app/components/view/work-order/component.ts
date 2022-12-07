@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { WorkOrderRoute, SettingsRoute } from 'houseninja/data/enums/routes';
 
 import WorkOrder from 'houseninja/models/work-order';
 import IntercomService from 'houseninja/services/intercom';
@@ -28,7 +28,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare view: any;
 
-  paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT_METHODS.INDEX;
+  paymentRoute: string = SettingsRoute.PaymentMethods;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
 
   get isLoading() {
@@ -56,7 +56,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
   @action
   selectRoute(route: string | WorkOrder): void {
     if (typeof route === 'object') {
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
+      this.router.transitionTo(WorkOrderRoute.Show, route.id);
     } else {
       if (route === this.paymentRoute) {
         this.view.preservePreviousRoute(this.router);

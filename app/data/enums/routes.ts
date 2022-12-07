@@ -59,6 +59,14 @@ export enum SettingsRoute {
   Payment = 'settings.payment',
   Security = 'settings.security',
   Property = 'settings.property',
+  PaymentMethods = 'settings.payment-methods',
+}
+
+export enum PaymentMethodsSettingsRoute {
+  Index = 'settings.payment-methods.index',
+  New = 'settings.payment-methods.new',
+  PaymentMethod = 'settings.payment-methods.payment-method',
+  EditPaymentMethod = 'settings.payment-methods.payment-method.edit',
 }
 
 export enum SubscriptionRoute {
