@@ -175,7 +175,7 @@
     "@capacitor/dialog": "^4.1.0",
     "@capacitor/filesystem": "^4.1.4",
     "@capacitor/haptics": "^4.1.0",
-    "@capacitor/ios": "4.6.0",
+    "@capacitor/ios": "4.6.1",
     "@capacitor/keyboard": "^4.1.0",
     "@capacitor/local-notifications": "^4.1.4",
     "@capacitor/preferences": "^4.0.2",
