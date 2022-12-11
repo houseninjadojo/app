@@ -6,10 +6,6 @@ import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { bind } from '@ember/runloop';
 import { TrackedArray, TrackedMap, tracked } from 'tracked-built-ins';
 import { getToken } from 'houseninja/utils/native/fcm';
-import {
-  checkPermissions,
-  requestPermissions,
-} from 'houseninja/utils/native/push-notifications';
 
 import {
   Notification,
@@ -192,7 +188,7 @@ export default class NotificationsService extends Service {
 
   async canRequestPermissions(): Promise<boolean> {
     if (!isNativePlatform()) return false;
-    const state = await checkPermissions();
+    const { receive: state } = await PushNotifications.checkPermissions();
     debug(`[notifications] permissions state: ${state}`);
     return state === 'prompt' || state === 'prompt-with-rationale';
   }
@@ -205,7 +201,7 @@ export default class NotificationsService extends Service {
       debug('[notifications] not a native platform, not registering');
       return;
     }
-    const state = await requestPermissions();
+    const { receive: state } = await PushNotifications.requestPermissions();
     if (state === 'granted') {
       await PushNotifications.register();
     }

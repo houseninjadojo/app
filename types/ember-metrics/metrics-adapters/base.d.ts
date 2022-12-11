@@ -1,3 +1,5 @@
+/*  */
+
 declare module 'ember-metrics/metrics-adapters/base' {
   export interface IdentifyOptions {
     distinctId: string;
@@ -11,18 +13,18 @@ declare module 'ember-metrics/metrics-adapters/base' {
   export default class BaseAdapter {
     static supportsFastBoot: boolean;
 
-    config: any;
-    metrics: any;
+    config: unknown;
+    metrics: unknown;
 
     constructor(config: Config);
 
     toStringExtension(): string;
     init(): void;
-    identify(options: any): void;
-    trackEvent(options: any): void;
-    trackPage(options: any): void;
-    alias(options: any): void;
-    setProfile(options: any): void;
+    identify(options: unknown): void;
+    trackEvent(options: unknown): void;
+    trackPage(options: unknown): void;
+    alias(options: unknown): void;
+    setProfile(options: unknown): void;
     uninstall(): void;
     willDestroy(): void;
     toString(): string;
