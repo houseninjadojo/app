@@ -21,7 +21,7 @@ PODS:
     - Capacitor
   - CapacitorKeyboard (4.1.0):
     - Capacitor
-  - CapacitorLocalNotifications (4.1.3):
+  - CapacitorLocalNotifications (4.1.4):
     - Capacitor
   - CapacitorPreferences (4.0.2):
     - Capacitor
@@ -216,7 +216,7 @@ SPEC CHECKSUMS:
   CapacitorFilesystem: 3d665e5b3719d9f6e240480a7468861b0bb35f93
   CapacitorHaptics: 213b3a1f3efd6dbf6e6b76a1b2bb0399cf43b213
   CapacitorKeyboard: 3c14461fb337847524357151edbbe4229bda83c8
-  CapacitorLocalNotifications: 25de6516db2d67baf27a664676b97bf701983f49
+  CapacitorLocalNotifications: 5937199b3df1ef0cfe9e579882ca4f5fc4b31ff4
   CapacitorPreferences: 1d66dc32299f55ed632c5611f312878979275ea5
   CapacitorPushNotifications: b59c99fb4041a4f2c450f9287d158cca48a788f0
   CapacitorSecureStoragePlugin: e616d090177dfbf9754dd1bdb515a8f23855bf4e

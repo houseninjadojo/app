@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { DefaultRoute } from 'houseninja/data/enums/routes';
 
 import type CurrentService from 'houseninja/services/current';
 import type StoreService from '@ember-data/store';
@@ -16,14 +16,14 @@ export default class SettingsContactRoute extends Route {
   async beforeModel(transition: Transition): Promise<void> {
     return this.session.requireAuthentication(
       transition,
-      NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
+      DefaultRoute.SignedOut
     );
   }
 
   async model(): Promise<User> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const userId = this.current.user.id;
+    const userId = this.session.data.authenticated.userinfo.user_id;
     return await this.store.findRecord('user', userId, {
       backgroundReload: true,
     });
