@@ -61,24 +61,24 @@ export default class Handler {
     return this;
   }
 
-  static fromPlugin(
+  static async fromPlugin(
     instance: ListenablePlugin,
     instanceName: string,
     eventName: string,
     context: EventBusService
-  ): Handler {
+  ): Promise<Handler> {
     const handler = new Handler(instance, instanceName, eventName);
     const listener = listenerFor(context, handler.eventSlug);
-    const handlerFn = instance.addListener(eventName, listener);
+    const handlerFn = await instance.addListener(eventName, listener);
     return handler.addListener(handler.eventSlug, handlerFn);
   }
 
-  static fromEvented(
+  static async fromEvented(
     instance: ListenableEvented,
     instanceName: string,
     eventName: string,
     context: EventBusService
-  ): Handler {
+  ): Promise<Handler> {
     const eventSlug = getEventSlug(instanceName, eventName);
     const listener = listenerFor(context, eventSlug);
     return new Handler(instance, instanceName, eventName).addListener(
@@ -87,12 +87,12 @@ export default class Handler {
     );
   }
 
-  static fromWindow(
+  static async fromWindow(
     instance: ListenableWindow,
     instanceName: string,
     eventName: string,
     context: EventBusService
-  ): Handler {
+  ): Promise<Handler> {
     const eventSlug = getEventSlug(instanceName, eventName);
     const listener = listenerFor(context, eventSlug);
     return new Handler(instance, instanceName, eventName).addListener(
@@ -101,18 +101,28 @@ export default class Handler {
     );
   }
 
-  static from(
+  static async from(
     instance: Listenable,
     instanceName: string,
     eventName: string,
     context: EventBusService
-  ): Handler {
+  ): Promise<Handler> {
     if (isListenablePlugin(instance)) {
-      return Handler.fromPlugin(instance, instanceName, eventName, context);
+      return await Handler.fromPlugin(
+        instance,
+        instanceName,
+        eventName,
+        context
+      );
     } else if (isListenableWindow(instance)) {
-      return Handler.fromWindow(instance, instanceName, eventName, context);
+      return await Handler.fromWindow(
+        instance,
+        instanceName,
+        eventName,
+        context
+      );
     } else {
-      return Handler.fromEvented(
+      return await Handler.fromEvented(
         instance as ListenableEvented,
         instanceName,
         eventName,
@@ -121,9 +131,9 @@ export default class Handler {
     }
   }
 
-  remove(): void {
+  async remove(): Promise<void> {
     if (isPluginListener(this.handler)) {
-      this.handler.remove();
+      await this.handler.remove();
     } else if (isWindowListener(this.instance)) {
       window.removeEventListener(
         this.eventName,
