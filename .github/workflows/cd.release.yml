@@ -164,10 +164,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: yarn
-          path: |
-            yarn.lock
-            .yarnrc.yml
-            .yarn/
+          path: .
       - uses: actions/download-artifact@v3
         with:
           name: fastlane.tar.gz
@@ -256,10 +253,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: yarn
-          path: |
-            yarn.lock
-            .yarnrc.yml
-            .yarn/
+          path: .
       - uses: actions/download-artifact@v3
         with:
           name: fastlane.tar.gz
