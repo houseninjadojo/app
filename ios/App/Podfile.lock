@@ -1,6 +1,6 @@
 PODS:
   - Branch (1.45.0)
-  - Capacitor (4.6.0):
+  - Capacitor (4.6.1):
     - CapacitorCordova
   - CapacitorActionSheet (4.1.0):
     - Capacitor
@@ -10,7 +10,7 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.4):
     - Capacitor
-  - CapacitorCordova (4.6.0)
+  - CapacitorCordova (4.6.1)
   - CapacitorDevice (4.1.0):
     - Capacitor
   - CapacitorDialog (4.1.0):
@@ -205,12 +205,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Branch: ef0aa28182506c63a50618a0862f63a0f7b3fe9d
-  Capacitor: e5d04bcfb7b1b227b5c36fb930a109cff079b368
+  Capacitor: 6b8848492d0b4fec76f53c1504089228d00645bf
   CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
   CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
   CapacitorBrowser: 05b68799d62b7b864974f59a5af3e4ddcce953f1
   CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
-  CapacitorCordova: 0440dd7ffdc96172d5dd35d7a37e221cb60df472
+  CapacitorCordova: 48a0f6863177473356a4aecb4ee69e2b865202e7
   CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
   CapacitorDialog: c8a6558d29767e76a32a056bb5e0fc9104b985b0
   CapacitorFilesystem: 3d665e5b3719d9f6e240480a7468861b0bb35f93
