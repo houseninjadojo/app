@@ -75,6 +75,11 @@ module.exports = function (defaults) {
                 name: 'sentry',
                 chunks: 'all',
               },
+              sentry: {
+                test: /[\\/]node_modules[\\/](@sentry|rrweb)/,
+                name: 'sentry',
+                chunks: 'all',
+              },
               dev: {
                 test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js)/,
                 name: 'development',
