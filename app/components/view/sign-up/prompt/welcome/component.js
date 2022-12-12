@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
-import confetti from 'canvas-confetti';
+// import confetti from 'canvas-confetti';
 
 export default class WelcomeComponent extends Component {
   @service router;
@@ -23,7 +23,7 @@ export default class WelcomeComponent extends Component {
       return Math.random() * (max - min) + min;
     }
 
-    var interval = setInterval(function () {
+    var interval = setInterval(async function () {
       var timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
@@ -32,6 +32,9 @@ export default class WelcomeComponent extends Component {
 
       var particleCount = 50 * (timeLeft / duration);
       // since particles fall down, start a bit higher than random
+
+      const confetti = await import('canvas-confetti');
+
       confetti(
         Object.assign({}, defaults, {
           particleCount,
