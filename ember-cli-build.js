@@ -47,6 +47,36 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    autoImport: {
+      webpack: {
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              capacitor: {
+                test: /[\\/]node_modules[\\/](@capacitor|@capawesome|@ionic|capacitor-secure-storage-plugin|@houseninja\/capacitor-[\w+]|@mineminemine)/,
+                name: 'capacitor',
+                chunks: 'all',
+              },
+              telemetry: {
+                test: /[\\/]node_modules[\\/](@datadog|@sentry|mixpanel-browser|rrweb)/,
+                name: 'telemetry',
+                chunks: 'all',
+              },
+              dev: {
+                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage)/,
+                name: 'development',
+                chunks: 'all',
+              },
+              animations: {
+                test: /[\\/]node_modules[\\/](canvas-confetti|lottie-web)/,
+                name: 'animations',
+                chunks: 'all',
+              },
+            },
+          },
+        },
+      },
+    },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
     babel: {
