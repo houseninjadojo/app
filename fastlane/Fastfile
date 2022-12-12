@@ -97,7 +97,7 @@ platform :ios do
 
   desc "Sandbox Release"
   lane :sandbox do
-    # initialize_sentry
+    initialize_sentry
     start_time = Time.now.to_i
     setup_ci if ENV["CI"]
     api_key = fetch_api_key
@@ -105,8 +105,8 @@ platform :ios do
     increment_version
     build
     end_time = Time.now.to_i
-    # upload(api_key: api_key)
-    # finalize_sentry(start_time: start_time, end_time: end_time)
+    upload(api_key: api_key)
+    finalize_sentry(start_time: start_time, end_time: end_time)
   end
 
   private_lane :fetch_api_key do
