@@ -58,12 +58,12 @@ module.exports = function (defaults) {
                 chunks: 'all',
               },
               telemetry: {
-                test: /[\\/]node_modules[\\/](@datadog|@sentry|mixpanel-browser|rrweb)/,
+                test: /[\\/]node_modules[\\/](@datadog|@sentry|mixpanel-browser|rrweb|branch-sdk)/,
                 name: 'telemetry',
                 chunks: 'all',
               },
               dev: {
-                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage)/,
+                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js)/,
                 name: 'development',
                 chunks: 'all',
               },
