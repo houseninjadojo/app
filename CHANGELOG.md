@@ -1,3 +1,10 @@
+## [1.28.4](https://github.com/houseninjadojo/app/compare/v1.28.3...v1.28.4) (2022-12-12)
+
+
+### Bug Fixes
+
+* **data:** polyfill crypto.randomUUID ([#1410](https://github.com/houseninjadojo/app/issues/1410)) ([2b57fd4](https://github.com/houseninjadojo/app/commit/2b57fd469fdc376491d0e88c222b9ee7544d6328))
+
 ## [1.28.3](https://github.com/houseninjadojo/app/compare/v1.28.2...v1.28.3) (2022-12-02)
 
 
