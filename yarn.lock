@@ -123,7 +123,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-create-class-features-plugin@npm:^7.18.6, @babel/helper-create-class-features-plugin@npm:^7.20.2, @babel/helper-create-class-features-plugin@npm:^7.20.5, @babel/helper-create-class-features-plugin@npm:^7.5.5":
+"@babel/helper-create-class-features-plugin@npm:^7.18.6, @babel/helper-create-class-features-plugin@npm:^7.20.2, @babel/helper-create-class-features-plugin@npm:^7.20.5, @babel/helper-create-class-features-plugin@npm:^7.5.5, @babel/helper-create-class-features-plugin@npm:^7.8.3":
   version: 7.20.5
   resolution: "@babel/helper-create-class-features-plugin@npm:7.20.5"
   dependencies:
@@ -497,7 +497,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-nullish-coalescing-operator@npm:^7.18.6":
+"@babel/plugin-proposal-nullish-coalescing-operator@npm:^7.18.6, @babel/plugin-proposal-nullish-coalescing-operator@npm:^7.4.4":
   version: 7.18.6
   resolution: "@babel/plugin-proposal-nullish-coalescing-operator@npm:7.18.6"
   dependencies:
@@ -548,7 +548,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-optional-chaining@npm:^7.18.9":
+"@babel/plugin-proposal-optional-chaining@npm:^7.18.9, @babel/plugin-proposal-optional-chaining@npm:^7.6.0":
   version: 7.18.9
   resolution: "@babel/plugin-proposal-optional-chaining@npm:7.18.9"
   dependencies:
@@ -775,7 +775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-typescript@npm:^7.2.0, @babel/plugin-syntax-typescript@npm:^7.20.0":
+"@babel/plugin-syntax-typescript@npm:^7.2.0, @babel/plugin-syntax-typescript@npm:^7.20.0, @babel/plugin-syntax-typescript@npm:^7.8.3":
   version: 7.20.0
   resolution: "@babel/plugin-syntax-typescript@npm:7.20.0"
   dependencies:
@@ -1192,6 +1192,19 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: a7a60f461e41db07dd04728c18b1ee9d5ba889f3666f8e209437b4007c2c02fe556ea03c70550077206ca3ac3f70f8da76d0f6a62eed1a9466249a5a1a316a81
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-transform-typescript@npm:~7.8.0":
+  version: 7.8.7
+  resolution: "@babel/plugin-transform-typescript@npm:7.8.7"
+  dependencies:
+    "@babel/helper-create-class-features-plugin": ^7.8.3
+    "@babel/helper-plugin-utils": ^7.8.3
+    "@babel/plugin-syntax-typescript": ^7.8.3
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: a6a0a85e79acd154573fddaa589da053109f334413c2bcc2fcac03b77385c174070b0ddcbe4d3086676b4ad7a9e4fb3ea27a499635e9472e244ccbef43d1ea08
   languageName: node
   linkType: hard
 
@@ -9957,6 +9970,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ember-cli-typescript@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "ember-cli-typescript@npm:3.1.4"
+  dependencies:
+    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.4.4
+    "@babel/plugin-proposal-optional-chaining": ^7.6.0
+    "@babel/plugin-transform-typescript": ~7.8.0
+    ansi-to-html: ^0.6.6
+    broccoli-stew: ^3.0.0
+    debug: ^4.0.0
+    ember-cli-babel-plugin-helpers: ^1.0.0
+    execa: ^3.0.0
+    fs-extra: ^8.0.0
+    resolve: ^1.5.0
+    rsvp: ^4.8.1
+    semver: ^6.3.0
+    stagehand: ^1.0.0
+    walk-sync: ^2.0.0
+  checksum: 775c20caadcca5a071728bad1a388297e3c9acfea342b654901c334a2d158fc2d78ebac7b785e718051f1ed8de584741545d2c6c35c4a72b4ddb3fbc1618666f
+  languageName: node
+  linkType: hard
+
 "ember-cli-typescript@npm:^4.1.0, ember-cli-typescript@npm:^4.2.1":
   version: 4.2.1
   resolution: "ember-cli-typescript@npm:4.2.1"
@@ -10288,6 +10323,17 @@ __metadata:
   dependencies:
     ember-cli-babel: ^7.26.5
   checksum: 0433146a7a093cf0f5e1454f3820c773d5f4ee7ca069df0eddc712f39d45a52bb699f8e44cd163815fb0c5abe75480b8511a947647b0f3cb38768147f457adae
+  languageName: node
+  linkType: hard
+
+"ember-lifeline@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "ember-lifeline@npm:6.0.2"
+  dependencies:
+    ember-cli-babel: ^7.23.0
+    ember-cli-typescript: ^3.1.4
+    ember-destroyable-polyfill: ^2.0.2
+  checksum: a289fc525953f924e81c3b80fa5a1e58229f78a2fccc804fb60d52fe9c64b2fe5f94909438b52c2df8b2229e8a2b79f646407bd08d977428cc3a40e8126d3b69
   languageName: node
   linkType: hard
 
@@ -11256,6 +11302,24 @@ __metadata:
     signal-exit: ^3.0.2
     strip-final-newline: ^2.0.0
   checksum: 93af9b816a555d0944e0876f4ccd97e0f4593d2049e713518fd5458a7699836449c516c6bb7e6357e11431ec40cce3150625b86d1b1254180faaa0d744265eca
+  languageName: node
+  linkType: hard
+
+"execa@npm:^3.0.0":
+  version: 3.4.0
+  resolution: "execa@npm:3.4.0"
+  dependencies:
+    cross-spawn: ^7.0.0
+    get-stream: ^5.0.0
+    human-signals: ^1.1.1
+    is-stream: ^2.0.0
+    merge-stream: ^2.0.0
+    npm-run-path: ^4.0.0
+    onetime: ^5.1.0
+    p-finally: ^2.0.0
+    signal-exit: ^3.0.2
+    strip-final-newline: ^2.0.0
+  checksum: 72832ff72f79f9082dc3567775cbb52f4682452f7d8015714d924e476a37c36a98183fd669317327ed2e7800ffe7ec2a7be4bfe704a2173ef22ae00109fe9123
   languageName: node
   linkType: hard
 
@@ -13253,6 +13317,7 @@ __metadata:
     ember-export-application-global: ^2.0.1
     ember-fetch: ^8.1.1
     ember-inflector: ^4.0.2
+    ember-lifeline: ^6.0.2
     ember-load-initializers: ^2.1.2
     ember-metrics: ^1.5.2
     ember-page-title: ^7.0.0

@@ -7,6 +7,8 @@ declare module 'houseninja/app/components' {
     type?: string;
     value?: string | number | boolean;
     disabled?: boolean;
+    isSelect?: boolean;
+    options?: { value: string; label: string; selected: boolean }[];
   }
 
   export type FieldSet = Field[];

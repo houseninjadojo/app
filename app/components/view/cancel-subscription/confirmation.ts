@@ -3,10 +3,14 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { captureException } from 'houseninja/utils/sentry';
+import { runInDebug } from '@ember/debug';
+
+import SessionService from 'houseninja/services/session';
+import StoreService from 'houseninja/services/store';
 
 export default class CancelSubscriptionConfirmationViewComponent extends Component {
-  @service session;
-  @service store;
+  @service declare session: SessionService;
+  @service declare store: StoreService;
 
   @tracked surveyOptions = [
     {
@@ -39,12 +43,12 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
   @tracked additionalFeedback = '';
 
   @action
-  goodbye() {
+  goodbye(): void {
     this.session.invalidate();
   }
 
   @action
-  handleSurveyChange({ value }) {
+  handleSurveyChange({ value }: { value: string }): void {
     this.surveyOptions = this.surveyOptions.map((o) => {
       if (o.value === value && !o.checked) {
         o.checked = true;
@@ -57,23 +61,26 @@ export default class CancelSubscriptionConfirmationViewComponent extends Compone
   }
 
   @action
-  handleTextAreaInput(e) {
-    this.additionalFeedback = e.target.value;
+  handleTextAreaInput(e: InputEvent): void {
+    const target = e.target as HTMLTextAreaElement;
+    this.additionalFeedback = target.value;
   }
 
   @action
-  handleSubmit() {
-    const reason = this.surveyOptions.filter((o) => o.checked);
+  handleSubmit(): void {
+    const reason = this.surveyOptions.find((o) => o.checked);
     this.additionalFeedback;
 
-    if (reason.length === 1) {
+    if (reason) {
       try {
-        console.log('Saving survey...', {
-          reason: reason[0],
-          additionalFeedback: this.additionalFeedback,
+        runInDebug(() => {
+          console.log('Saving survey...', {
+            reason: reason,
+            additionalFeedback: this.additionalFeedback,
+          });
         });
       } catch (e) {
-        captureException(e);
+        captureException(e as Error);
       } finally {
         this.goodbye();
       }
