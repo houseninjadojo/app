@@ -302,7 +302,7 @@ jobs:
               service: "github-actions"
 
   reporter:
-    needs: [web, ios]
+    needs: [web, ios, android]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -342,7 +342,7 @@ jobs:
                 - "env:production"
 
   cleanup:
-    needs: [ios]
+    needs: [ios, android]
     if: always()
     runs-on: ubuntu-latest
     name: cleanup
