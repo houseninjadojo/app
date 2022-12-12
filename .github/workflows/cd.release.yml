@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: yarn env:load
         env:
           DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
@@ -177,7 +177,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --prod --frozen-lockfile
+      - run: yarn workspaces focus --production
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -266,7 +266,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --prod --frozen-lockfile
+      - run: yarn workspaces focus --production
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'fastlane/'
         env:
