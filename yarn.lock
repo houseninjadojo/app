@@ -3770,6 +3770,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/browser@npm:7.24.2":
+  version: 7.24.2
+  resolution: "@sentry/browser@npm:7.24.2"
+  dependencies:
+    "@sentry/core": 7.24.2
+    "@sentry/types": 7.24.2
+    "@sentry/utils": 7.24.2
+    tslib: ^1.9.3
+  checksum: d30ea261ac313a6fef23914017ff4fd9c569487320d950eb247d1fda08d816042ce6e840e9292e645cb2d2897ee6b2482808b4b7e0930d0b155f6b16437cc24d
+  languageName: node
+  linkType: hard
+
 "@sentry/capacitor@npm:0.10.1":
   version: 0.10.1
   resolution: "@sentry/capacitor@npm:0.10.1"
@@ -3825,6 +3837,17 @@ __metadata:
     "@sentry/utils": 7.13.0
     tslib: ^1.9.3
   checksum: 8fd5b0eab630a54ea1beec1b3fe7deb388e95ca3312c1f0eaffa32090882ca7792287b5e7d157fc1c408a0ec1bfb769ac45a77a5385068dcd8fc6f3e6949f8a1
+  languageName: node
+  linkType: hard
+
+"@sentry/core@npm:7.24.2":
+  version: 7.24.2
+  resolution: "@sentry/core@npm:7.24.2"
+  dependencies:
+    "@sentry/types": 7.24.2
+    "@sentry/utils": 7.24.2
+    tslib: ^1.9.3
+  checksum: b8d8ae16590eee8c2a2e67c931609e55f6dc39218d43b23ccf6c5555a8dfcd8fd6f9c3e3e8bab83eb990c83b20c94158f6bfab5394ab59fcf3170639ccb3786c
   languageName: node
   linkType: hard
 
@@ -3897,6 +3920,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.24.2":
+  version: 7.24.2
+  resolution: "@sentry/types@npm:7.24.2"
+  checksum: d272217660190e9bf7944de8d9b2f8d2b1ebb712d1ca15771e5b18b0e872eb3ea0929ff845305cc323802ecbadf8aa4fcaa685490746743583f7c74c4c1d6ef0
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/utils@npm:7.13.0"
@@ -3904,6 +3934,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.24.2":
+  version: 7.24.2
+  resolution: "@sentry/utils@npm:7.24.2"
+  dependencies:
+    "@sentry/types": 7.24.2
+    tslib: ^1.9.3
+  checksum: bd32d7f26804ea44226af0100a9f3fdc1a6330f06aeee9cca820439b5addae3531fcc3926737c4682bbf83f16a625adaa57e62543c72187f8ff0cd0dc8478e02
   languageName: node
   linkType: hard
 
@@ -13177,7 +13217,7 @@ __metadata:
     "@percy/ember": ^4.0.0
     "@semantic-release/changelog": ^6.0.2
     "@semantic-release/git": ^10.0.1
-    "@sentry/browser": 7.13.0
+    "@sentry/browser": 7.24.2
     "@sentry/capacitor": 0.10.1
     "@sentry/core": 7.13.0
     "@sentry/ember": 7.13.0
