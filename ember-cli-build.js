@@ -1,5 +1,7 @@
 'use strict';
 
+const webpack = require('webpack');
+
 /**
  * PostCSS Plugins
  * Format is:
@@ -49,6 +51,12 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
       webpack: {
+        plugins: [
+          new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$/,
+            contextRegExp: /moment$/,
+          }),
+        ],
         optimization: {
           splitChunks: {
             cacheGroups: {
@@ -58,8 +66,13 @@ module.exports = function (defaults) {
                 chunks: 'all',
               },
               telemetry: {
-                test: /[\\/]node_modules[\\/](@datadog|@sentry|mixpanel-browser|rrweb|branch-sdk)/,
+                test: /[\\/]node_modules[\\/](@datadog|mixpanel-browser|branch-sdk)/,
                 name: 'telemetry',
+                chunks: 'all',
+              },
+              sentry: {
+                test: /[\\/]node_modules[\\/](@sentry|rrweb)/,
+                name: 'sentry',
                 chunks: 'all',
               },
               dev: {
