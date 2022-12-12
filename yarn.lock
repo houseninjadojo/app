@@ -1882,9 +1882,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/datadog-ci@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@datadog/datadog-ci@npm:2.1.0"
+"@datadog/datadog-ci@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@datadog/datadog-ci@npm:2.2.0"
   dependencies:
     "@types/datadog-metrics": 0.6.1
     async-retry: 1.3.1
@@ -1898,14 +1898,14 @@ __metadata:
     form-data: 3.0.0
     fuzzy: ^0.1.3
     glob: 7.1.4
-    inquirer: 8.2.0
+    inquirer: ^8.2.5
     inquirer-checkbox-plus-prompt: ^1.0.1
     js-yaml: 3.13.1
     ora: 5.4.1
     proxy-agent: 5.0.0
     rimraf: ^3.0.2
     semver: ^7.3.7
-    simple-git: 3.5.0
+    simple-git: 3.15.0
     ssh2: 1.9.0
     ssh2-streams: 0.4.10
     sshpk: 1.16.1
@@ -1915,7 +1915,7 @@ __metadata:
     yamux-js: 0.1.1
   bin:
     datadog-ci: dist/cli.js
-  checksum: 3c91e66e8430208d3dec221c88c262430c5653c93f4c3450cedcf271b9c7e5e65fb2dc7daeaad0c145567a612c344bc5a5d7ce3a0d22557f2c1603d4d6369f0f
+  checksum: 516192fc226eeabeadf771add3286d5c3f689053b359a2f129a21a2216e414253e6a4d41a891d447d7186c4018cf908a6e4770aefe5601a6a6a6ac5ee9b31669
   languageName: node
   linkType: hard
 
@@ -13161,7 +13161,7 @@ __metadata:
     "@commitlint/prompt-cli": ^17.3.0
     "@datadog/browser-logs": ^4.26.0
     "@datadog/browser-rum": ^4.25.0
-    "@datadog/datadog-ci": ^2.1.0
+    "@datadog/datadog-ci": ^2.2.0
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
     "@ember/render-modifiers": ^2.0.4
@@ -13695,28 +13695,6 @@ __metadata:
   peerDependencies:
     inquirer: ^8.2.5
   checksum: 51428c3a2e0bb9040147e5fbb957b485d656261b4e939632aed2ccbaedadf9f529a4eb58dd9a3f1b03537315b65387231166d4f7f71f2c6b352ad39d9aea8703
-  languageName: node
-  linkType: hard
-
-"inquirer@npm:8.2.0":
-  version: 8.2.0
-  resolution: "inquirer@npm:8.2.0"
-  dependencies:
-    ansi-escapes: ^4.2.1
-    chalk: ^4.1.1
-    cli-cursor: ^3.1.0
-    cli-width: ^3.0.0
-    external-editor: ^3.0.3
-    figures: ^3.0.0
-    lodash: ^4.17.21
-    mute-stream: 0.0.8
-    ora: ^5.4.1
-    run-async: ^2.4.0
-    rxjs: ^7.2.0
-    string-width: ^4.1.0
-    strip-ansi: ^6.0.0
-    through: ^2.3.6
-  checksum: 861d1a9324ae933b49126b3541d94e4d6a2f2a25411b3f3cc00c34bf1bdab34146362d702cf289efe6d8034900dc5905bcf2ea716092a02b6fc390e5986dd236
   languageName: node
   linkType: hard
 
@@ -19624,7 +19602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^7.2.0, rxjs@npm:^7.5.5":
+"rxjs@npm:^7.5.5":
   version: 7.6.0
   resolution: "rxjs@npm:7.6.0"
   dependencies:
@@ -20082,14 +20060,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:3.5.0":
-  version: 3.5.0
-  resolution: "simple-git@npm:3.5.0"
+"simple-git@npm:3.15.0":
+  version: 3.15.0
+  resolution: "simple-git@npm:3.15.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
-    debug: ^4.3.3
-  checksum: be078d9e898d1dea99bb15d4f6927c0f61aafde73114c7423fb0efca6d6f99012da2a2f43b5e2151a1707994cc9c75139bc12e3d307dd25da48ed1dce1167748
+    debug: ^4.3.4
+  checksum: 4733d1b769965a7608254c3a5b27532e02e60d4369bc9b397ce47159dd153344a3774739fd2602f693947ed64631b30145b970988fb007b5b779459e9abcdee8
   languageName: node
   linkType: hard
 
