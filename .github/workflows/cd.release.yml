@@ -99,13 +99,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
-          name: yarn.lock
-          path: yarn.lock
-      - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: .yarnrc.yml
-          path: .yarnrc.yml
+          name: yarn
+          path: |
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
       - uses: actions/upload-artifact@v3
         if: success()
         with:
@@ -165,12 +163,11 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
-          name: yarn.lock
-          path: .
-      - uses: actions/download-artifact@v3
-        with:
-          name: .yarnrc.yml
-          path: .
+          name: yarn
+          path: |
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
       - uses: actions/download-artifact@v3
         with:
           name: fastlane.tar.gz
@@ -258,12 +255,11 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
-          name: yarn.lock
-          path: .
-      - uses: actions/download-artifact@v3
-        with:
-          name: .yarnrc.yml
-          path: .
+          name: yarn
+          path: |
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
       - uses: actions/download-artifact@v3
         with:
           name: fastlane.tar.gz
