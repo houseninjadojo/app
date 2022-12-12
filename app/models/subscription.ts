@@ -12,7 +12,7 @@ import type PromoCode from './promo-code';
 import type SubscriptionPlan from './subscription-plan';
 import type User from './user';
 
-export default class SubscriptionModel extends Model {
+export default class Subscription extends Model {
   @belongsTo('credit-card', { async: true, inverse: 'subscriptions' })
   declare paymentMethod: AsyncBelongsTo<CreditCard>;
 

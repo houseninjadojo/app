@@ -27,7 +27,7 @@ export default class PrimitiveImageComponent extends Component<Args> {
   }
 
   @action
-  loadImage(element: HTMLImageElement) {
+  loadImage(element: HTMLImageElement): void {
     this.image = new Image(this.width, this.height);
     this.image.addEventListener('load', this.onLoad.bind(this));
     this.image.addEventListener('error', this.onError.bind(this));
@@ -35,7 +35,7 @@ export default class PrimitiveImageComponent extends Component<Args> {
     this.el = element;
   }
 
-  onLoad() {
+  onLoad(): void {
     this.isLoading = false;
     this.isLoaded = true;
     this.hasError = false;
@@ -44,13 +44,13 @@ export default class PrimitiveImageComponent extends Component<Args> {
     }
   }
 
-  onError() {
+  onError(): void {
     this.isLoading = false;
     this.isLoaded = false;
     this.hasError = true;
   }
 
-  willDestroy() {
+  willDestroy(): void {
     super.willDestroy();
     this.image?.removeEventListener('load', this.onLoad.bind(this));
     this.image?.removeEventListener('error', this.onError.bind(this));
