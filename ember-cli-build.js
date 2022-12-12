@@ -52,6 +52,14 @@ module.exports = function (defaults) {
     babel: {
       plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
     },
+    // Polyfill crypto.randomUUID
+    '@embroider/macros': {
+      setConfig: {
+        '@ember-data/store': {
+          polyfillUUID: true
+        },
+      },
+    },
     // PostCSS Configuration
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
     postcssOptions: {
