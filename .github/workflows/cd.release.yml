@@ -104,6 +104,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
+          name: .yarnrc.yml
+          path: .yarnrc.yml
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
           name: web.tar.gz
           path: web.tar.gz
       - uses: actions/upload-artifact@v3
@@ -164,6 +169,10 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
+          name: .yarnrc.yml
+          path: .
+      - uses: actions/download-artifact@v3
+        with:
           name: fastlane.tar.gz
           path: .
       - uses: actions/download-artifact@v3
@@ -177,9 +186,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: |
-          yarn plugin import workspace-tools
-          yarn workspaces focus --production
+      - run: yarn workspaces focus --production
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -255,6 +262,10 @@ jobs:
           path: .
       - uses: actions/download-artifact@v3
         with:
+          name: .yarnrc.yml
+          path: .
+      - uses: actions/download-artifact@v3
+        with:
           name: fastlane.tar.gz
           path: .
       - uses: actions/download-artifact@v3
@@ -268,9 +279,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: |
-          yarn plugin import workspace-tools
-          yarn workspaces focus --production
+      - run: yarn workspaces focus --production
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'fastlane/'
         env:
