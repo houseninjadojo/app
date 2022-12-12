@@ -2,14 +2,10 @@ name: cd / release
 
 concurrency: app-release-lock
 
-# on:
-#   release:
-#     types:
-#       - published
 on:
-  push:
-    branches:
-      - improve-android
+  release:
+    types:
+      - published
 
 env:
   RUBY_VERSION: 3.0.3
@@ -48,18 +44,18 @@ jobs:
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
-      # - name: Create Sentry release
-      #   uses: getsentry/action-release@v1
-      #   env:
-      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      #     SENTRY_ORG: houseninja
-      #     SENTRY_PROJECT: app
-      #   with:
-      #     environment: production
-      #     sourcemaps: dist/assets
-      #     version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
-      #     url_prefix: ~/
-      #     finalize: false
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: production
+          sourcemaps: dist/assets
+          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+          url_prefix: ~/
+          finalize: false
       - name: upload datadog sourcemaps
         run: yarn run upload:sourcemaps:datadog
         env:
@@ -67,15 +63,15 @@ jobs:
           VERSION: ${{ steps.package-version.outputs.current-version }}
           DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
           DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-      # - name: Publish to Cloudflare Pages
-      #   uses: cloudflare/pages-action@1
-      #   with:
-      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      #     projectName: houseninja
-      #     directory: dist
-      #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: main
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: houseninja
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -152,11 +148,11 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      # - uses: mathieu-bour/setup-sentry-cli@1.2.0
-      #   with:
-      #     token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      #     organization: houseninja
-      #     project: app
+      - uses: mathieu-bour/setup-sentry-cli@1.2.0
+        with:
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
       - uses: actions/download-artifact@v3
         with:
           name: package.json
@@ -241,11 +237,11 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting android build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      # - uses: mathieu-bour/setup-sentry-cli@1.2.0
-      #   with:
-      #     token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      #     organization: houseninja
-      #     project: app
+      - uses: mathieu-bour/setup-sentry-cli@1.2.0
+        with:
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
       - uses: actions/download-artifact@v3
         with:
           name: package.json
@@ -281,16 +277,16 @@ jobs:
           working-directory: 'fastlane/'
       - run: bundle exec fastlane android release
         working-directory: 'fastlane/'
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: House Ninja.ipa
-      #     path: 'ios/App/House Ninja.ipa'
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: House Ninja.app.dSYM.zip
-      #     path: 'ios/App/House Ninja.app.dSYM.zip'
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: House Ninja.ipa
+          path: 'ios/App/House Ninja.ipa'
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: House Ninja.app.dSYM.zip
+          path: 'ios/App/House Ninja.app.dSYM.zip'
       - name: Datadog
         uses: masci/datadog@v1
         with:
