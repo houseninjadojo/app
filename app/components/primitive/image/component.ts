@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { addEventListener, removeEventListener } from 'ember-lifeline';
 
 type Args = {
   width: number;
@@ -29,8 +30,8 @@ export default class PrimitiveImageComponent extends Component<Args> {
   @action
   loadImage(element: HTMLImageElement): void {
     this.image = new Image(this.width, this.height);
-    this.image.addEventListener('load', this.onLoad.bind(this));
-    this.image.addEventListener('error', this.onError.bind(this));
+    addEventListener(this, this.image, 'load', this.onLoad);
+    addEventListener(this, this.image, 'error', this.onError);
     this.image.src = this.src;
     this.el = element;
   }
@@ -52,8 +53,10 @@ export default class PrimitiveImageComponent extends Component<Args> {
 
   willDestroy(): void {
     super.willDestroy();
-    this.image?.removeEventListener('load', this.onLoad.bind(this));
-    this.image?.removeEventListener('error', this.onError.bind(this));
+    if (this.image instanceof Image) {
+      removeEventListener(this, this.image, 'load', this.onLoad);
+      removeEventListener(this, this.image, 'error', this.onError);
+    }
     this.image = undefined;
     this.el = undefined;
   }
