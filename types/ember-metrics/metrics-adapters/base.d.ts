@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 declare module 'ember-metrics/metrics-adapters/base' {
   export interface IdentifyOptions {
     distinctId: string;

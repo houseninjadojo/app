@@ -6,26 +6,14 @@
     // work with TypeScript.
     "baseUrl": ".",
     "paths": {
-      "houseninja/tests/*": [
-        "tests/*"
-      ],
-      "houseninja/mirage/*": [
-        "mirage/*"
-      ],
-      "houseninja/*": [
-        "app/*"
-      ],
-      "*": [
-        "types/*"
-      ]
-    }
+      "houseninja/tests/*": ["tests/*"],
+      "houseninja/mirage/*": ["mirage/*"],
+      "houseninja/*": ["app/*"],
+      "*": ["types/*"]
+    },
+    "skipLibCheck": true
   },
-  "include": [
-    "app/**/*",
-    "tests/**/*",
-    "types/**/*",
-    "mirage/**/*"
-  ],
+  "include": ["app/**/*", "tests/**/*", "types/**/*", "mirage/**/*"],
   "glint": {
     "environment": "ember-loose"
   }

@@ -52,7 +52,12 @@ export default class EventBusService extends Service.extend(Evented) {
       return;
     }
     try {
-      const handler = Handler.from(instance, instanceName, eventName, this);
+      const handler = await Handler.from(
+        instance,
+        instanceName,
+        eventName,
+        this
+      );
       this.manager.addHandler(eventSlug, handler);
       debug(`[event-bus] ${eventSlug} subscribed`);
     } catch (e) {
