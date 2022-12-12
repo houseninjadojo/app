@@ -10,6 +10,7 @@ import {
 import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DashboardRoute } from 'houseninja/data/enums/routes';
+import { findAll } from 'ember-data-resources';
 import IntercomService from 'houseninja/services/intercom';
 import RouterService from '@ember/routing/router-service';
 import StoreService from 'houseninja/services/store';
@@ -19,6 +20,8 @@ import { ValidationError } from '@ember-data/adapter/error';
 import Invoice from 'houseninja/models/invoice';
 import MetricsService from 'houseninja/services/metrics';
 import SessionService from 'houseninja/services/session';
+import CreditCard from 'houseninja/models/credit-card';
+import ArrayProxy from '@ember/array/proxy';
 
 type Args = {
   model: WorkOrder;
@@ -37,6 +40,8 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isDoneProcessing = false;
   @tracked paid = false;
   @tracked paymentFailed = false;
+
+  creditCards = findAll(this, 'credit-card');
 
   constructor(owner: unknown, args: Args) {
     super(owner, args);
@@ -156,8 +161,9 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     return this.invoice?.formattedTotal;
   }
 
-  get creditCard(): string {
-    return this.store.peekAll('credit-card').firstObject;
+  get creditCard(): CreditCard {
+    const cards = this.creditCards.records as ArrayProxy<CreditCard>;
+    return cards?.firstObject as CreditCard;
   }
 
   sendMetrics(event: string, step?: string): void {

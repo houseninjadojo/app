@@ -1337,7 +1337,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.8.4":
   version: 7.20.6
   resolution: "@babel/runtime@npm:7.20.6"
   dependencies:
@@ -2174,7 +2174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ember/test-waiters@npm:^3.0.0":
+"@ember/test-waiters@npm:^3.0.0, @ember/test-waiters@npm:^3.0.2":
   version: 3.0.2
   resolution: "@ember/test-waiters@npm:3.0.2"
   dependencies:
@@ -2183,6 +2183,17 @@ __metadata:
     ember-cli-version-checker: ^5.1.2
     semver: ^7.3.5
   checksum: 4ad673fd6c2edc45d7fe378c318dd7f86eabb74eabded5e36b073baa580e2fa2cbb74b52037a2af94a2de98777335129d236b9a33bd33efd30927b0f5e706eaf
+  languageName: node
+  linkType: hard
+
+"@embroider/addon-shim@npm:^1.2.0":
+  version: 1.8.4
+  resolution: "@embroider/addon-shim@npm:1.8.4"
+  dependencies:
+    "@embroider/shared-internals": ^2.0.0
+    broccoli-funnel: ^3.0.8
+    semver: ^7.3.8
+  checksum: 107220e97bbd46ead81dfbbfc6cf7daa61731096a6e81b989659a9a0b29b48b3c97ebdd446b6dc0636c4be369f3744e514b7f5e5c0fdc54c1c0e026f54404cc2
   languageName: node
   linkType: hard
 
@@ -10188,6 +10199,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ember-data-resources@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "ember-data-resources@npm:4.0.4"
+  dependencies:
+    "@ember/test-waiters": ^3.0.2
+    "@glimmer/tracking": ^1.1.2
+    ember-auto-import: ^2.4.2
+    ember-cli-babel: ^7.26.11
+    ember-cli-htmlbars: ^6.0.1
+    ember-cli-typescript: ^5.1.0
+    ember-resources: ^5.3.0
+  peerDependencies:
+    ember-data: ^3.25.0 || ^4.0.0
+  checksum: d0018b6f76c89bbeeb17d1e3c6d9c16151039d1cf66b3d425e51a5960d17ba873296e07e64bec917a27516a67101222491f86eceb859e676265adc0899fc003d
+  languageName: node
+  linkType: hard
+
 "ember-data@npm:~4.9.1":
   version: 4.9.1
   resolution: "ember-data@npm:4.9.1"
@@ -10363,6 +10391,31 @@ __metadata:
     ember-cli-version-checker: ^5.1.2
     resolve: ^1.20.0
   checksum: 510c48a3318b5b2884bfc4322767dfe66980ffd50f4e44e90d4228e91bd34a04876367c78dc987857d645eec6252e86c91e1050237c112ed27a3a4914e452fd2
+  languageName: node
+  linkType: hard
+
+"ember-resources@npm:^5.3.0":
+  version: 5.6.0
+  resolution: "ember-resources@npm:5.6.0"
+  dependencies:
+    "@babel/runtime": ^7.17.8
+    "@embroider/addon-shim": ^1.2.0
+    "@embroider/macros": ^1.2.0
+  peerDependencies:
+    "@ember/test-waiters": ^3.0.0
+    "@glimmer/component": ^1.1.2
+    "@glimmer/tracking": ^1.1.2
+    "@glint/template": ">= 0.8.3"
+    ember-concurrency: ^2.0.0
+    ember-source: ">= 3.28.0"
+  peerDependenciesMeta:
+    "@ember/test-waiters":
+      optional: true
+    "@glimmer/component":
+      optional: true
+    ember-concurrency:
+      optional: true
+  checksum: 4eb7528777acee5bc1324aa172114bb42c32ed69e28eeb60f34d8a8ee931af1cf010f7f5b2b8f3ee9e63ef2e2c646bb6dfb81c0d3b6f9c09092e0a44d75f505b
   languageName: node
   linkType: hard
 
@@ -13250,6 +13303,7 @@ __metadata:
     ember-concurrency: ^2.3.7
     ember-content-loader: ^3.0.0
     ember-data: ~4.9.1
+    ember-data-resources: ^4.0.4
     ember-export-application-global: ^2.0.1
     ember-fetch: ^8.1.1
     ember-inflector: ^4.0.2

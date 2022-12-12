@@ -1,11 +1,10 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { captureException } from 'houseninja/utils/sentry';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import { tracked as track } from 'tracked-built-ins';
+import { tracked } from 'tracked-built-ins';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type RouterService from '@ember/routing/router-service';
@@ -31,13 +30,13 @@ export default class SettingsContactController extends Controller {
   @service declare view: ViewService;
 
   @tracked formIsInvalid = true;
-  @tracked contactInfo = track({
+  contactInfo: ContactInfo = tracked({
     firstName: this.model.firstName,
     lastName: this.model.lastName,
     phoneNumber: this.model.phoneNumber,
     email: this.model.email,
   });
-  @tracked fields: FieldSet = [
+  fields: FieldSet = tracked([
     {
       id: 'firstName',
       required: true,
@@ -72,7 +71,7 @@ export default class SettingsContactController extends Controller {
       value: this.model.email,
       disabled: true,
     },
-  ];
+  ]);
 
   @action
   resetForm(): void {
@@ -98,9 +97,9 @@ export default class SettingsContactController extends Controller {
   }
 
   @action
-  validateForm(e: Event): void {
-    const target = <HTMLInputElement>e.target;
-    const targetId: keyof ContactInfo = target.id as TargetId;
+  validateForm(e: InputEvent): void {
+    const target = e.target as HTMLInputElement;
+    const targetId = target.id as TargetId;
     if (targetId === 'phoneNumber') {
       this.contactInfo[targetId] = target.value.replace(/\D/g, '');
       formatPhoneNumber(target);
@@ -125,8 +124,8 @@ export default class SettingsContactController extends Controller {
   }
 
   @action
-  openChatModal(): void {
-    this.intercom.showComposer(
+  async openChatModal(): Promise<void> {
+    await this.intercom.showComposer(
       'I need to make a change to my account information.'
     );
   }
