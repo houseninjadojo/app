@@ -41,7 +41,7 @@
     "@commitlint/prompt-cli": "^17.3.0",
     "@datadog/browser-logs": "^4.26.0",
     "@datadog/browser-rum": "^4.25.0",
-    "@datadog/datadog-ci": "^2.1.0",
+    "@datadog/datadog-ci": "^2.2.0",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.4",
