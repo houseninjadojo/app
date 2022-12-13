@@ -1,4 +1,4 @@
-name: ci / lint
+name: ci / bundlewatch
 
 on:
   pull_request:
@@ -6,9 +6,6 @@ on:
       - opened
       - reopened
       - synchronize
-  push:
-    branches:
-      - main
 
 env:
   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
@@ -28,7 +25,7 @@ env:
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
 jobs:
-  hbs:
+  bundlewatch:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -38,26 +35,4 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --immutable
-      - run: yarn lint:hbs
-  js:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --immutable
-      - run: yarn lint:js
-  css:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --immutable
-      - run: yarn lint:css
+      - run: yarn build
