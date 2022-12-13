@@ -13,7 +13,7 @@
   "scripts": {
     "build": "ember build --environment=production",
     "build:env": "ember build --environment=$NODE_ENV",
-    "bundlewatch": "bundlewatch --config bundle.config.js",
+    "bundlewatch": "bundlewatch --config bundlewatch.config.js",
     "commit": "commit",
     "env:load": "dotenv-vault pull --dotenvMe $DOTENV_IT_TOKEN",
     "env:push:ci": "dotenv-vault push ci",
