@@ -4,9 +4,12 @@ import { service } from '@ember/service';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 import confetti from 'canvas-confetti';
+import RouterService from '@ember/routing/router-service';
 
 export default class WelcomeComponent extends Component {
-  @service router;
+  @service declare router: RouterService;
+
+  interval?: NodeJS.Timer;
 
   @action
   nextStep() {
@@ -15,22 +18,22 @@ export default class WelcomeComponent extends Component {
 
   @action
   throwConfetti() {
-    var duration = 3 * 1000;
-    var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const duration = 3 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    function randomInRange(min, max) {
+    const randomInRange = (min: number, max: number) => {
       return Math.random() * (max - min) + min;
-    }
+    };
 
-    var interval = setInterval(async function () {
-      var timeLeft = animationEnd - Date.now();
+    this.interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
-        return clearInterval(interval);
+        return clearInterval(this.interval);
       }
 
-      var particleCount = 50 * (timeLeft / duration);
+      const particleCount = 50 * (timeLeft / duration);
       // since particles fall down, start a bit higher than random
 
       confetti(
@@ -48,5 +51,10 @@ export default class WelcomeComponent extends Component {
         })
       );
     }, 250);
+  }
+
+  willDestroy() {
+    super.willDestroy();
+    clearInterval(this.interval);
   }
 }
