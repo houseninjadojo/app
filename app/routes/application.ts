@@ -58,25 +58,25 @@ class ApplicationRoute extends Route {
 
   async #prebootBrowser(): Promise<void> {
     if (isNativePlatform()) return;
-    await this.eventBus.setup();
-    await this.storage.setup();
-    await this.session.setup();
+    this.eventBus.setup();
+    this.session.setup();
   }
 
   async #postbootBrowser(): Promise<void> {
     if (isNativePlatform()) return;
-    await this.capacitor.setup();
-    await this.notifications.setup();
-    await this.metrics.setup();
-    await this.intercom.setup();
-    await this.branch.setup();
+    this.storage.setup();
+    this.capacitor.setup();
+    this.notifications.setup();
+    this.metrics.setup();
+    this.intercom.setup();
+    this.branch.setup();
   }
 
   async #prebootDevice(): Promise<void> {
     if (!isNativePlatform()) return;
-    await this.eventBus.setup();
-    await this.session.setup();
-    await this.notifications.setup();
+    this.eventBus.setup();
+    this.session.setup();
+    this.notifications.setup();
   }
 
   async #postbootDevice(): Promise<void> {

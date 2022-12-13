@@ -28,13 +28,13 @@ export default class EventBusService extends Service.extend(Evented) {
   }
 
   async setup(): Promise<void> {
-    await this.branch.registerEvents();
-    await this.browser.registerEvents();
-    await this.capacitor.registerEvents();
-    await this.intercom.registerEvents();
-    await this.metrics.registerEvents();
-    await this.notifications.registerEvents();
-    await this.subscribeWindowEvents();
+    this.branch.registerEvents();
+    this.browser.registerEvents();
+    this.capacitor.registerEvents();
+    this.intercom.registerEvents();
+    this.metrics.registerEvents();
+    this.notifications.registerEvents();
+    this.subscribeWindowEvents();
   }
 
   // eslint-disable-next-line prettier/prettier
