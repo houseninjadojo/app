@@ -34,19 +34,19 @@ class ApplicationRoute extends Route {
   @service declare telemetry: TelemetryService;
 
   async beforeModel(): Promise<void> {
-    await this.eventBus.setup();
-    await this.capacitor.setup();
-    await this.metrics.setup();
-    await this.storage.setup();
-    await this.intercom.setup();
-    await this.session.setup();
-    await this.notifications.setup();
-    await this.branch.setup();
+    if (isNativePlatform()) {
+      await this.#prebootDevice();
+    } else {
+      await this.#prebootBrowser();
+    }
   }
 
-  afterModel(): void {
+  async afterModel(): Promise<void> {
     if (isNativePlatform()) {
+      await this.#postbootDevice();
       SplashScreen.hide();
+    } else {
+      await this.#postbootBrowser();
     }
   }
 
@@ -54,6 +54,38 @@ class ApplicationRoute extends Route {
   loading(transition: Transition): boolean {
     this.loader.setApplicationLoader(transition);
     return true;
+  }
+
+  async #prebootBrowser(): Promise<void> {
+    if (isNativePlatform()) return;
+    await this.eventBus.setup();
+    await this.storage.setup();
+    await this.session.setup();
+  }
+
+  async #postbootBrowser(): Promise<void> {
+    if (isNativePlatform()) return;
+    await this.capacitor.setup();
+    await this.notifications.setup();
+    await this.metrics.setup();
+    await this.intercom.setup();
+    await this.branch.setup();
+  }
+
+  async #prebootDevice(): Promise<void> {
+    if (!isNativePlatform()) return;
+    await this.eventBus.setup();
+    await this.session.setup();
+    await this.notifications.setup();
+  }
+
+  async #postbootDevice(): Promise<void> {
+    if (!isNativePlatform()) return;
+    await this.capacitor.setup();
+    await this.storage.setup();
+    await this.metrics.setup();
+    await this.intercom.setup();
+    await this.branch.setup();
   }
 }
 
