@@ -1,6 +1,8 @@
 'use strict';
 
+const path = require('path');
 const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 /**
  * PostCSS Plugins
@@ -56,6 +58,15 @@ module.exports = function (defaults) {
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/,
           }),
+          // localhost:8888
+          new BundleAnalyzerPlugin({
+            generateStatsFile: true,
+            openAnalyzer: false,
+            statsFilename: path.join(
+              process.cwd(),
+              'bundles.json',
+            ),
+          }),
         ],
         optimization: {
           splitChunks: {
@@ -68,11 +79,6 @@ module.exports = function (defaults) {
               capacitor: {
                 test: /[\\/]node_modules[\\/](@capacitor|@capawesome|@ionic|capacitor-secure-storage-plugin|@houseninja\/capacitor-[\w+]|@mineminemine)/,
                 name: 'capacitor',
-                chunks: 'all',
-              },
-              sentry: {
-                test: /[\\/]node_modules[\\/](@sentry|rrweb)/,
-                name: 'sentry',
                 chunks: 'all',
               },
               sentry: {
