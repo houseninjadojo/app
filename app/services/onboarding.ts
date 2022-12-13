@@ -29,6 +29,7 @@ export default class OnboardingService extends Service {
   @service declare storage: StorageService;
   @service declare store: StoreService;
   @service declare metrics: MetricsService;
+  @service declare fastboot: any;
 
   currentStep: OnboardingStep | undefined;
 
@@ -90,6 +91,9 @@ export default class OnboardingService extends Service {
   });
 
   async rehydrateFromCache(modelType = 'user'): Promise<void> {
+    if (this.fastboot.isFastBoot) {
+      return;
+    }
     const cachedModel = await this.storage.getLocal(modelType);
     if (cachedModel) {
       try {

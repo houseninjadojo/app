@@ -113,6 +113,7 @@
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-deprecation-workflow": "^2.1.0",
     "ember-cli-dotenv": "^3.1.0",
+    "ember-cli-fastboot": "^3.3.2",
     "ember-cli-htmlbars": "^6.1.1",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-mirage": "https://github.com/kiwi-josh/ember-cli-mirage#fix/deprecation-early-static",
@@ -199,5 +200,8 @@
   "resolutions": {
     "@embroider/macros": "1.10.0"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "fastbootDependencies": [
+    "crypto"
+  ]
 }

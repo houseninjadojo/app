@@ -32,21 +32,22 @@ class ApplicationRoute extends Route {
   @service declare storage: StorageService;
   @service declare notifications: NotificationService;
   @service declare telemetry: TelemetryService;
+  @service declare fastboot: any;
 
   async beforeModel(): Promise<void> {
     if (isNativePlatform()) {
-      await this.#prebootDevice();
+      // await this.#prebootDevice();
     } else {
-      await this.#prebootBrowser();
+      // await this.#prebootBrowser();
     }
   }
 
   async afterModel(): Promise<void> {
     if (isNativePlatform()) {
-      await this.#postbootDevice();
+      // await this.#postbootDevice();
       SplashScreen.hide();
     } else {
-      await this.#postbootBrowser();
+      // await this.#postbootBrowser();
     }
   }
 
@@ -64,12 +65,14 @@ class ApplicationRoute extends Route {
 
   async #postbootBrowser(): Promise<void> {
     if (isNativePlatform()) return;
-    this.storage.setup();
+    if (this.fastboot.isFastBoot) {
+      this.storage.setup();
+    }
     this.capacitor.setup();
     this.notifications.setup();
     this.metrics.setup();
     this.intercom.setup();
-    this.branch.setup();
+    // this.branch.setup();
   }
 
   async #prebootDevice(): Promise<void> {
@@ -85,7 +88,7 @@ class ApplicationRoute extends Route {
     await this.storage.setup();
     await this.metrics.setup();
     await this.intercom.setup();
-    await this.branch.setup();
+    // await this.branch.setup();
     await this.current.syncDevice();
   }
 }
