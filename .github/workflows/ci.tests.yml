@@ -48,8 +48,7 @@ jobs:
           node-version: '16'
           cache: 'yarn'
       - run: yarn install --immutable
-      - run: mkdir -p tmp
-      - run: yarn test:ci -o tmp/app
+      - run: yarn test:ci
         env:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
@@ -58,7 +57,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: app
-          path: tmp/app/
+          path: dist
       - uses: slavcodev/coverage-monitor-action@v1
         if: contains(github.event.pull_request.user.login, 'dependabot[bot]') == false
         with:
