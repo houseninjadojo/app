@@ -1,6 +1,8 @@
 'use strict';
 
+const path = require('path');
 const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 /**
  * PostCSS Plugins
@@ -56,18 +58,27 @@ module.exports = function (defaults) {
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/,
           }),
+          // localhost:8888
+          new BundleAnalyzerPlugin({
+            generateStatsFile: true,
+            openAnalyzer: false,
+            statsFilename: path.join(
+              process.cwd(),
+              'bundles.json',
+            ),
+          }),
         ],
         optimization: {
           splitChunks: {
             cacheGroups: {
+              telemetry: {
+                test: /[\\/]node_modules[\\/](@datadog|mixpanel-browser|@houseninja\/capacitor-mixpanel|branch-sdk)/,
+                name: 'telemetry',
+                chunks: 'all',
+              },
               capacitor: {
                 test: /[\\/]node_modules[\\/](@capacitor|@capawesome|@ionic|capacitor-secure-storage-plugin|@houseninja\/capacitor-[\w+]|@mineminemine)/,
                 name: 'capacitor',
-                chunks: 'all',
-              },
-              telemetry: {
-                test: /[\\/]node_modules[\\/](@datadog|mixpanel-browser|branch-sdk)/,
-                name: 'telemetry',
                 chunks: 'all',
               },
               sentry: {
@@ -93,7 +104,9 @@ module.exports = function (defaults) {
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
     babel: {
-      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+      plugins: [
+        ...require('ember-cli-code-coverage').buildBabelPlugin(),
+      ],
     },
     // Polyfill crypto.randomUUID
     '@embroider/macros': {
