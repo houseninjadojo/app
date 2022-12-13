@@ -4069,6 +4069,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@types/canvas-confetti@npm:1.6.0"
+  checksum: e1bd2bc81e4d6ec6241982a4087ed90a3c21f858390dda7cb68e8aeb1df5573fc7c263ea4272397d2b39f0e78dcd192e8ba4a93c182ff29f80ea74073aaee496
+  languageName: node
+  linkType: hard
+
 "@types/chai-as-promised@npm:^7.1.2":
   version: 7.1.5
   resolution: "@types/chai-as-promised@npm:7.1.5"
@@ -13191,6 +13198,7 @@ __metadata:
     "@sentry/utils": 7.13.0
     "@tsconfig/ember": ^1.1.0
     "@types/branch-sdk": ^2.53.3
+    "@types/canvas-confetti": ^1.6.0
     "@types/crypto-js": ^4.1.1
     "@types/ember": ^4.0.3
     "@types/ember-data": ^4.4.6
