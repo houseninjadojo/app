@@ -1,8 +1,6 @@
 'use strict';
 
-const path = require('path');
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 /**
  * PostCSS Plugins
@@ -57,15 +55,6 @@ module.exports = function (defaults) {
           new webpack.IgnorePlugin({
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/,
-          }),
-          // localhost:8888
-          new BundleAnalyzerPlugin({
-            generateStatsFile: true,
-            openAnalyzer: false,
-            statsFilename: path.join(
-              process.cwd(),
-              'bundles.json',
-            ),
           }),
         ],
         optimization: {
