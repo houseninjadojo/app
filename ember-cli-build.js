@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -58,14 +57,9 @@ module.exports = function (defaults) {
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/,
           }),
-          // localhost:8888
           new BundleAnalyzerPlugin({
             generateStatsFile: true,
-            openAnalyzer: false,
-            statsFilename: path.join(
-              process.cwd(),
-              'bundles.json',
-            ),
+            openAnalyzer: false,  // localhost:8888
           }),
         ],
         optimization: {

@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import { SignupRoute } from 'houseninja/data/enums/routes';
 
 import confetti from 'canvas-confetti';
 import RouterService from '@ember/routing/router-service';
@@ -13,7 +13,7 @@ export default class WelcomeComponent extends Component {
 
   @action
   nextStep() {
-    this.router.transitionTo(SIGNUP_ROUTE.PROPERTY_INFO);
+    this.router.transitionTo(SignupRoute.PropertyInfo);
   }
 
   @action
