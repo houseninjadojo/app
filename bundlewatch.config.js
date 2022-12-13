@@ -42,7 +42,7 @@ const bundlewatchConfig = {
     // githubAccessToken: ciEnv.githubAccessToken,
     // repoOwner: 'houseninjadojo',
     // repoName: 'app',
-    repoCurrentBranch: 'main',
+    // repoCurrentBranch: 'main',
     repoBranchBase: 'main', // Branch PR is being merged into
     // commitSha: ciEnv.commitSha,
     trackBranches: ['main'],
