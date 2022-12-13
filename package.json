@@ -101,6 +101,7 @@
     "branch-sdk": "^2.71.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-terser-sourcemap": "https://github.com/houseninjadojo/broccoli-terser-sourcemap",
+    "bundlewatch": "^0.3.3",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
     "dotenv-vault": "^1.16.3",
@@ -162,6 +163,7 @@
     "tracked-built-ins": "^3.1.0",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
+    "webpack-bundle-analyzer": "^4.7.0",
     "whatwg-url": "11.0.0"
   },
   "engines": {

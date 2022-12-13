@@ -52,6 +52,7 @@ module.exports = {
         './lib/*/index.js',
         './server/**/*.js',
         './capacitor.config.js',
+        './bundlewatch.config.js',
         './lib/utils.js',
       ],
       parserOptions: {
