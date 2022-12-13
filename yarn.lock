@@ -3868,6 +3868,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/integrations@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/integrations@npm:7.25.0"
+  dependencies:
+    "@sentry/types": 7.25.0
+    "@sentry/utils": 7.25.0
+    localforage: ^1.8.1
+    tslib: ^1.9.3
+  checksum: e147f4939b4b84a12fcda83b9829563907112002fe38f1212d51124ac54e2c7aea0422dcef40b3df0743e363fc7853c01f81263079dc98c0bb9a3a596d7a68bc
+  languageName: node
+  linkType: hard
+
 "@sentry/rrweb@npm:^0.3.3":
   version: 0.3.3
   resolution: "@sentry/rrweb@npm:0.3.3"
@@ -3897,6 +3909,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/types@npm:7.25.0"
+  checksum: 47ddda6b3fa73310f85bf11b3bbe92ceae8dbf705cbcab6168dbfb4a44affcab3eb9f901b13d6c76af535a23775217589d43b6dd0d39d995bbc2c10b79d117bf
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/utils@npm:7.13.0"
@@ -3904,6 +3923,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/utils@npm:7.25.0"
+  dependencies:
+    "@sentry/types": 7.25.0
+    tslib: ^1.9.3
+  checksum: 2dd0c75751e909c8886367961bba63e295d50bb71ea09da56f97aed70657f706772cc708ea1e4bbcf47767b4face478dcf5a816d48cf9b4cee5edc498910495a
   languageName: node
   linkType: hard
 
@@ -13191,7 +13220,7 @@ __metadata:
     "@sentry/core": 7.13.0
     "@sentry/ember": 7.13.0
     "@sentry/hub": 7.13.0
-    "@sentry/integrations": 7.13.0
+    "@sentry/integrations": 7.25.0
     "@sentry/rrweb": ^0.3.3
     "@sentry/tracing": 7.13.0
     "@sentry/types": 7.13.0
