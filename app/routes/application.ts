@@ -86,6 +86,7 @@ class ApplicationRoute extends Route {
     await this.metrics.setup();
     await this.intercom.setup();
     await this.branch.setup();
+    await this.current.syncDevice();
   }
 }
 
