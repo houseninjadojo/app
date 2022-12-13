@@ -26,7 +26,7 @@ const bundlewatchConfig = {
     },
     {
       path: './dist/assets/houseninja.js',
-      maxSize: '160kb',
+      maxSize: '350kb',
     },
     {
       path: './dist/assets/vendor.js',
