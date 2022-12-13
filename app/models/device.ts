@@ -2,7 +2,7 @@ import Model, { attr, belongsTo, type AsyncBelongsTo } from '@ember-data/model';
 
 import type User from './user';
 
-export default class DeviceModel extends Model {
+export default class Device extends Model {
   @belongsTo('user', { async: true, inverse: 'devices' })
   declare user: AsyncBelongsTo<User>;
 
