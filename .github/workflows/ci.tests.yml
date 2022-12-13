@@ -54,6 +54,7 @@ jobs:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           DOTENV_ENABLED: false
+      - run: yarn bundlewatch
       - uses: actions/upload-artifact@v3
         with:
           name: app

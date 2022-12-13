@@ -57,10 +57,10 @@ module.exports = function (defaults) {
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/,
           }),
-          new BundleAnalyzerPlugin({
-            generateStatsFile: true,
-            openAnalyzer: false,  // localhost:8888
-          }),
+          // new BundleAnalyzerPlugin({
+          //   generateStatsFile: true,
+          //   openAnalyzer: false,  // localhost:8888
+          // }),
         ],
         optimization: {
           splitChunks: {
