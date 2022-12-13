@@ -51,6 +51,7 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
       webpack: {
+        target: 'web',
         plugins: [
           new webpack.IgnorePlugin({
             resourceRegExp: /^\.\/locale$/,
