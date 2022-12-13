@@ -3828,6 +3828,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/core@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/core@npm:7.25.0"
+  dependencies:
+    "@sentry/types": 7.25.0
+    "@sentry/utils": 7.25.0
+    tslib: ^1.9.3
+  checksum: 82ad84bbf0948fa44f3471e268d7e8be9225a9057291f7c51e66b631b930b9767f265fef25e9fb3bb5757731595e561930d5fb29881a5c0349b693926ab8c6f5
+  languageName: node
+  linkType: hard
+
 "@sentry/ember@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/ember@npm:7.13.0"
@@ -3890,10 +3901,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/tracing@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/tracing@npm:7.25.0"
+  dependencies:
+    "@sentry/core": 7.25.0
+    "@sentry/types": 7.25.0
+    "@sentry/utils": 7.25.0
+    tslib: ^1.9.3
+  checksum: 0e353312d96e1c7debe80a88171a262b69b402a1bf1aa1f92985cee83f8595ed8784ca12c4e1218fc496842469dfb84fd05e6468ff8f72e6e9cc0b8e58033193
+  languageName: node
+  linkType: hard
+
 "@sentry/types@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/types@npm:7.13.0"
   checksum: 8bd94d1cf735af61a3cea77e7e925e487dc84b925fa1e1a0aa9a566096e5d99d3bb72c6ea2f03c20d7894824f35edbb8b25352b3a1c78e62729a77a93a1abf71
+  languageName: node
+  linkType: hard
+
+"@sentry/types@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/types@npm:7.25.0"
+  checksum: 47ddda6b3fa73310f85bf11b3bbe92ceae8dbf705cbcab6168dbfb4a44affcab3eb9f901b13d6c76af535a23775217589d43b6dd0d39d995bbc2c10b79d117bf
   languageName: node
   linkType: hard
 
@@ -3904,6 +3934,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.25.0":
+  version: 7.25.0
+  resolution: "@sentry/utils@npm:7.25.0"
+  dependencies:
+    "@sentry/types": 7.25.0
+    tslib: ^1.9.3
+  checksum: 2dd0c75751e909c8886367961bba63e295d50bb71ea09da56f97aed70657f706772cc708ea1e4bbcf47767b4face478dcf5a816d48cf9b4cee5edc498910495a
   languageName: node
   linkType: hard
 
@@ -13193,7 +13233,7 @@ __metadata:
     "@sentry/hub": 7.13.0
     "@sentry/integrations": 7.13.0
     "@sentry/rrweb": ^0.3.3
-    "@sentry/tracing": 7.13.0
+    "@sentry/tracing": 7.25.0
     "@sentry/types": 7.13.0
     "@sentry/utils": 7.13.0
     "@tsconfig/ember": ^1.1.0
