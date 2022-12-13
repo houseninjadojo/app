@@ -10443,9 +10443,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-source@npm:~4.9.1":
-  version: 4.9.1
-  resolution: "ember-source@npm:4.9.1"
+"ember-source@npm:~4.9.2":
+  version: 4.9.2
+  resolution: "ember-source@npm:4.9.2"
   dependencies:
     "@babel/helper-module-imports": ^7.16.7
     "@babel/plugin-transform-block-scoping": ^7.16.0
@@ -10475,7 +10475,7 @@ __metadata:
     silent-error: ^1.1.1
   peerDependencies:
     "@glimmer/component": ^1.1.2
-  checksum: 6f1a10764c84254c08ff6ccfc28467b412d83d969c44733e590bc0248da98ae8aea1a28677dad0d41975eeec95add5e0fb03e94be28a53425c64302fc4e3b541
+  checksum: 7eaad714e342be150f1ceee57bd871a362404fa2c456e6acbc28ef2fcc278b5bafc72f044484172e6690d743a54eeb29b127853c80ef52486a0f006c8ba6e5c6
   languageName: node
   linkType: hard
 
@@ -13268,7 +13268,7 @@ __metadata:
     ember-resolver: ^8.0.3
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^6.0.0
-    ember-source: ~4.9.1
+    ember-source: ~4.9.2
     ember-template-lint: ^5.1.1
     ember-truth-helpers: ^3.1.1
     ember-user-activity: "https://github.com/elwayman02/ember-user-activity"
