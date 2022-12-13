@@ -1,3 +1,10 @@
+## [1.28.5](https://github.com/houseninjadojo/app/compare/v1.28.4...v1.28.5) (2022-12-13)
+
+
+### Bug Fixes
+
+* **build:** be specific about asset bundling split ([#1412](https://github.com/houseninjadojo/app/issues/1412)) ([52a57e5](https://github.com/houseninjadojo/app/commit/52a57e5540bda32862429e3aeaae7cfb92bc93bd))
+
 ## [1.28.4](https://github.com/houseninjadojo/app/compare/v1.28.3...v1.28.4) (2022-12-12)
 
 
