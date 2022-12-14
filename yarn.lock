@@ -3266,7 +3266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-help@npm:^5.1.14":
+"@oclif/plugin-help@npm:^5.1.19":
   version: 5.1.20
   resolution: "@oclif/plugin-help@npm:5.1.20"
   dependencies:
@@ -3275,7 +3275,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-not-found@npm:^2.3.3":
+"@oclif/plugin-not-found@npm:^2.3.9":
   version: 2.3.9
   resolution: "@oclif/plugin-not-found@npm:2.3.9"
   dependencies:
@@ -3287,7 +3287,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-update@npm:^3.0.2":
+"@oclif/plugin-update@npm:^3.0.7":
   version: 3.0.8
   resolution: "@oclif/plugin-update@npm:3.0.8"
   dependencies:
@@ -3307,7 +3307,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-warn-if-update-available@npm:^2.0.6":
+"@oclif/plugin-warn-if-update-available@npm:^2.0.14":
   version: 2.0.16
   resolution: "@oclif/plugin-warn-if-update-available@npm:2.0.16"
   dependencies:
@@ -5219,14 +5219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abortcontroller-polyfill@npm:1.7.3":
-  version: 1.7.3
-  resolution: "abortcontroller-polyfill@npm:1.7.3"
-  checksum: 55739d7f0c9bd6afa2aabb3148778967c4dd4dcff91f6b9259df38da34f9882d3f7730b0954e9767a19cc16a8dd9a58915da4e8a50220300d45af3817d7557b1
-  languageName: node
-  linkType: hard
-
-"abortcontroller-polyfill@npm:^1.7.3":
+"abortcontroller-polyfill@npm:1.7.5, abortcontroller-polyfill@npm:^1.7.3":
   version: 1.7.5
   resolution: "abortcontroller-polyfill@npm:1.7.5"
   checksum: daf4169f4228ae0e4f4dbcfa782e501b923667f2666b7c55bd3b7664e5d6b100e333a93371173985fdf21f65d7dfba15bdb2e6031bdc9e57e4ce0297147da3aa
@@ -9314,23 +9307,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-vault@npm:^1.16.3":
-  version: 1.16.3
-  resolution: "dotenv-vault@npm:1.16.3"
+"dotenv-vault@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "dotenv-vault@npm:1.17.0"
   dependencies:
     "@oclif/core": ^1
-    "@oclif/plugin-help": ^5.1.14
-    "@oclif/plugin-not-found": ^2.3.3
-    "@oclif/plugin-update": ^3.0.2
-    "@oclif/plugin-warn-if-update-available": ^2.0.6
-    abortcontroller-polyfill: 1.7.3
+    "@oclif/plugin-help": ^5.1.19
+    "@oclif/plugin-not-found": ^2.3.9
+    "@oclif/plugin-update": ^3.0.7
+    "@oclif/plugin-warn-if-update-available": ^2.0.14
+    abortcontroller-polyfill: 1.7.5
     axios: ^0.27.2
     chalk: ^4.1.2
     dotenv: 16.0.3
     dotenv-vault-core: 0.6.1
   bin:
     dotenv-vault: bin/run
-  checksum: 811ea2fa1819b4bc9f517aa4cc528d86ba0297ea722c328f8dd76a10ed55850c0956a2b595ccfa0d3bb6341b4e3f1e50c29c900fcd168835177684bec0f6748e
+  checksum: 69968af775560b8de23e6b9c7c662145809f96b11fcf3628a0cee8b0cd44df8b0c62a4d8cabcdf43bc197e1a014bfdeade3c33058c6e537d9ab68e487e8743e0
   languageName: node
   linkType: hard
 
@@ -13238,7 +13231,7 @@ __metadata:
     canvas-confetti: ^1.6.0
     capacitor-secure-storage-plugin: ^0.8.1
     crypto-js: ^4.1.1
-    dotenv-vault: ^1.16.3
+    dotenv-vault: ^1.17.0
     ember-auto-import: ^2.5.0
     ember-cli: ~4.9.1
     ember-cli-app-version: ^5.0.0
