@@ -10042,9 +10042,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli@npm:~4.9.1":
-  version: 4.9.1
-  resolution: "ember-cli@npm:4.9.1"
+"ember-cli@npm:~4.9.2":
+  version: 4.9.2
+  resolution: "ember-cli@npm:4.9.2"
   dependencies:
     "@babel/core": ^7.19.3
     "@babel/plugin-transform-modules-amd": ^7.18.6
@@ -10142,7 +10142,7 @@ __metadata:
     yam: ^1.0.0
   bin:
     ember: bin/ember
-  checksum: a1512d7fc5882704c158a405b019a1fc1d28526307e096a4bd03e73a6714f3b02c081632f244f28a0239c87a6b91e8ee0a883b7e03c5e8e40e46f444bea55397
+  checksum: e7b6d07e5fbe7eec73afa25fae26b9685d1b9cc8cab37113750b3246be56db0db269b54b95db8391f40f9f18d9c456aae61bc65c97ecf69e955c306381eabb1c
   languageName: node
   linkType: hard
 
@@ -13240,7 +13240,7 @@ __metadata:
     crypto-js: ^4.1.1
     dotenv-vault: ^1.17.0
     ember-auto-import: ^2.5.0
-    ember-cli: ~4.9.1
+    ember-cli: ~4.9.2
     ember-cli-app-version: ^5.0.0
     ember-cli-babel: ^7.26.11
     ember-cli-capacitor: ^0.1.1
