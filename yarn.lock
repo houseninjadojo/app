@@ -2163,21 +2163,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ember/test-helpers@npm:^2.8.1":
-  version: 2.8.1
-  resolution: "@ember/test-helpers@npm:2.8.1"
+"@ember/test-helpers@npm:^2.9.1":
+  version: 2.9.1
+  resolution: "@ember/test-helpers@npm:2.9.1"
   dependencies:
     "@ember/test-waiters": ^3.0.0
-    "@embroider/macros": ^1.6.0
-    "@embroider/util": ^1.6.0
+    "@embroider/macros": ^1.10.0
+    "@embroider/util": ^1.9.0
     broccoli-debug: ^0.6.5
     broccoli-funnel: ^3.0.8
-    ember-cli-babel: ^7.26.6
-    ember-cli-htmlbars: ^5.7.1
+    ember-cli-babel: ^7.26.11
+    ember-cli-htmlbars: ^6.1.1
     ember-destroyable-polyfill: ^2.0.3
   peerDependencies:
     ember-source: ">=3.8.0"
-  checksum: 396c20c297f3279fad6693c7c66d9ed16de910a9cb1aff406bb128bba36d4f6a122fad99474e183d9dc2f2e2820aadc44c31431f33d3d8501a50dc58c9150f60
+  checksum: be0f147f97d7d707fb3b8fc23a88a3ad5a7d5607c8445333ad2a845ce1bd09764de5eb87083d66e771d6e11a9e4fd621cb0d6de57e733028bfa6fc6de4d08bee
   languageName: node
   linkType: hard
 
@@ -2359,7 +2359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@embroider/util@npm:^1.6.0":
+"@embroider/util@npm:^1.9.0":
   version: 1.9.0
   resolution: "@embroider/util@npm:1.9.0"
   dependencies:
@@ -13181,7 +13181,7 @@ __metadata:
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
     "@ember/render-modifiers": ^2.0.4
-    "@ember/test-helpers": ^2.8.1
+    "@ember/test-helpers": ^2.9.1
     "@faker-js/faker": ^7.6.0
     "@glimmer/component": ^1.1.2
     "@glimmer/tracking": ^1.1.2
