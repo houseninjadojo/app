@@ -1844,6 +1844,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@datadog/browser-core@npm:4.28.1":
+  version: 4.28.1
+  resolution: "@datadog/browser-core@npm:4.28.1"
+  checksum: d4eed86af95a63ef6d68da71c16367b2f879d3bfeb18c1f81609102d3abbf716c491e6ec2e770f8fb0227e0cc8b66468a824bac1beaa05e6f3d3dc64821b44f6
+  languageName: node
+  linkType: hard
+
 "@datadog/browser-logs@npm:^4.26.0":
   version: 4.26.0
   resolution: "@datadog/browser-logs@npm:4.26.0"
@@ -1858,27 +1865,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-rum-core@npm:4.26.0":
-  version: 4.26.0
-  resolution: "@datadog/browser-rum-core@npm:4.26.0"
+"@datadog/browser-rum-core@npm:4.28.1":
+  version: 4.28.1
+  resolution: "@datadog/browser-rum-core@npm:4.28.1"
   dependencies:
-    "@datadog/browser-core": 4.26.0
-  checksum: 3c2d27b0ce21c53eac563c3dc30458de219d68e787737bdeb5952dc9752212d6b1d851f896c0dafb6f074f1b4168b6ba481bc4662131ba690ce98c80ff767741
+    "@datadog/browser-core": 4.28.1
+  checksum: 7e5dcaeeb5b8461a1a9e0b3554e8a36e5ee6e90778c4fff1812e549fb2f7a7c574c8312699ac8c24d959dd84c58750e2c282f9ef57f0424e591e337e94e36063
   languageName: node
   linkType: hard
 
-"@datadog/browser-rum@npm:^4.25.0":
-  version: 4.26.0
-  resolution: "@datadog/browser-rum@npm:4.26.0"
+"@datadog/browser-rum@npm:^4.28.1":
+  version: 4.28.1
+  resolution: "@datadog/browser-rum@npm:4.28.1"
   dependencies:
-    "@datadog/browser-core": 4.26.0
-    "@datadog/browser-rum-core": 4.26.0
+    "@datadog/browser-core": 4.28.1
+    "@datadog/browser-rum-core": 4.28.1
   peerDependencies:
-    "@datadog/browser-logs": 4.26.0
+    "@datadog/browser-logs": 4.28.1
   peerDependenciesMeta:
     "@datadog/browser-logs":
       optional: true
-  checksum: d85f50f575409d3309f24fb80a4912cbbac3f287b7a4e4629da16838df67c486322f293f7e0e75caf76d6b8469c9a1091c5204a59738e45889a8d23ea562b01d
+  checksum: ce01749236f278cb584fec97045e8254402156aa9aa53fa052cf1a1368edb41e1627d94328a4db88e47a0681c28501e4bfafe505d5cc8d92069b141029cb3915
   languageName: node
   linkType: hard
 
@@ -13169,7 +13176,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.3.0
     "@commitlint/prompt-cli": ^17.3.0
     "@datadog/browser-logs": ^4.26.0
-    "@datadog/browser-rum": ^4.25.0
+    "@datadog/browser-rum": ^4.28.1
     "@datadog/datadog-ci": ^2.2.0
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
