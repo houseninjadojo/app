@@ -4193,15 +4193,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember-qunit@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@types/ember-qunit@npm:5.0.2"
+"@types/ember-qunit@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "@types/ember-qunit@npm:6.1.1"
   dependencies:
-    "@types/ember-resolver": "*"
-    "@types/ember__test": "*"
-    "@types/ember__test-helpers": "*"
-    "@types/qunit": "*"
-  checksum: f7c6e9e5721e0708e7290e68e2f14b55baa4dd5d27fd3bb760dc380e92aa03d3b7b93da090d40e34d47d85e6d4451a73e7a7f4398708047164bb10e46da60ad2
+    ember-qunit: "*"
+  checksum: 8dbc88cbf2feb2a5e33dd9e45b5c86b027ac6be9d2422c9eec1bcc3a8a8758137f8bd58c69c767ddae5af46f8811e46448748fb737e8ea77aa5b2f91d1ced61c
   languageName: node
   linkType: hard
 
@@ -4626,7 +4623,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/qunit@npm:*, @types/qunit@npm:^2.19.3":
+"@types/qunit@npm:^2.19.3":
   version: 2.19.3
   resolution: "@types/qunit@npm:2.19.3"
   checksum: bbcea1082a2827f81ddb43f53abf6e6698cb690fa5a1cd59649eee5e9ecf0fe04fae7fb2aaf3015681ac8036f251f4d268819a4935ec5b38832056957ccfb265
@@ -9489,7 +9486,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-auto-import@npm:^2.4.1, ember-auto-import@npm:^2.4.2, ember-auto-import@npm:^2.4.3, ember-auto-import@npm:^2.5.0":
+"ember-auto-import@npm:^2.4.1, ember-auto-import@npm:^2.4.3, ember-auto-import@npm:^2.5.0":
   version: 2.5.0
   resolution: "ember-auto-import@npm:2.5.0"
   dependencies:
@@ -10346,23 +10343,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-qunit@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "ember-qunit@npm:6.0.0"
+"ember-qunit@npm:*, ember-qunit@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "ember-qunit@npm:6.1.1"
   dependencies:
     broccoli-funnel: ^3.0.8
     broccoli-merge-trees: ^3.0.2
     common-tags: ^1.8.0
-    ember-auto-import: ^2.4.2
-    ember-cli-babel: ^7.26.6
+    ember-auto-import: ^2.4.3
+    ember-cli-babel: ^7.26.11
     ember-cli-test-loader: ^3.0.0
     resolve-package-path: ^4.0.3
     silent-error: ^1.1.1
     validate-peer-dependencies: ^2.1.0
   peerDependencies:
-    "@ember/test-helpers": ^2.4.0
+    ember-source: ^3.28 || ^4.0
     qunit: ^2.13.0
-  checksum: 74c4c9316ff509a195e7961bae9aa1da6e6260d1a5e0ce153dff76302d23f974fa652dfc9d484fbe78d64623ba0d837b68d437d56745531118b88b950c6a5608
+  checksum: c663cf9fa4c7923c4f0f07ff04409d701519bbcd7ab94f60752342a572f416703dc28898b6a80b3be0f36e39821988416892dc0e8e15f71933443fabffa7b2b8
   languageName: node
   linkType: hard
 
@@ -13213,7 +13210,7 @@ __metadata:
     "@types/ember-data__model": ^4.0.0
     "@types/ember-data__serializer": ^4.0.1
     "@types/ember-data__store": ^4.0.2
-    "@types/ember-qunit": ^5.0.2
+    "@types/ember-qunit": ^6.1.1
     "@types/ember-resolver": ^5.0.12
     "@types/ember__application": ^4.0.3
     "@types/ember__array": ^4.0.3
@@ -13271,7 +13268,7 @@ __metadata:
     ember-load-initializers: ^2.1.2
     ember-metrics: ^1.5.2
     ember-page-title: ^7.0.0
-    ember-qunit: ^6.0.0
+    ember-qunit: ^6.1.1
     ember-resolver: ^8.0.3
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^6.0.0
