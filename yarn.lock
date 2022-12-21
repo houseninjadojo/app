@@ -3828,6 +3828,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/core@npm:7.28.0":
+  version: 7.28.0
+  resolution: "@sentry/core@npm:7.28.0"
+  dependencies:
+    "@sentry/types": 7.28.0
+    "@sentry/utils": 7.28.0
+    tslib: ^1.9.3
+  checksum: 46316388b60b212caf9ceffd5d5c09c67082c2d0b48edfc6c70d7045cabd0f2c9669a7e3e609c042ff029d41edeea07121934202bdff6b1ec370285b293c48e3
+  languageName: node
+  linkType: hard
+
 "@sentry/ember@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/ember@npm:7.13.0"
@@ -3853,6 +3864,18 @@ __metadata:
     "@sentry/utils": 7.13.0
     tslib: ^1.9.3
   checksum: 690f1eecd4d9f0a87ca4344b551b990df234ec7197b21175293fb713f917c6171ed44f35042af5b83a0bae5e0963a520490bfd905d48bd040a2f2532247e04d6
+  languageName: node
+  linkType: hard
+
+"@sentry/hub@npm:7.28.0":
+  version: 7.28.0
+  resolution: "@sentry/hub@npm:7.28.0"
+  dependencies:
+    "@sentry/core": 7.28.0
+    "@sentry/types": 7.28.0
+    "@sentry/utils": 7.28.0
+    tslib: ^1.9.3
+  checksum: c27bc83589f40396f69dc3711ce3667562e6dcf560cf90d0474d9a567892d05a94740f7ff0d2704282204ea2d82c479e370f8d23024237cf29b4746adae3549d
   languageName: node
   linkType: hard
 
@@ -3897,6 +3920,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.28.0":
+  version: 7.28.0
+  resolution: "@sentry/types@npm:7.28.0"
+  checksum: 722d31939c4e7d29108b5bccdb7b277c57e5f839cd14bdf0d0efe5a70d31bf629ad28f43fcef16d44d648e9d5b4ac0a6b3c386f698153a40cb2667f8e80a1ce9
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/utils@npm:7.13.0"
@@ -3904,6 +3934,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.28.0":
+  version: 7.28.0
+  resolution: "@sentry/utils@npm:7.28.0"
+  dependencies:
+    "@sentry/types": 7.28.0
+    tslib: ^1.9.3
+  checksum: fdb0eac647b91a6c204a3e592aeb100996b13eaf30be4f36cb70c26dfe222957ccf56f695b41bd2abe270679aa5db3080df8d68f8d0e59628b5519fbbf824802
   languageName: node
   linkType: hard
 
@@ -13190,7 +13230,7 @@ __metadata:
     "@sentry/capacitor": 0.10.1
     "@sentry/core": 7.13.0
     "@sentry/ember": 7.13.0
-    "@sentry/hub": 7.13.0
+    "@sentry/hub": 7.28.0
     "@sentry/integrations": 7.13.0
     "@sentry/rrweb": ^0.3.3
     "@sentry/tracing": 7.13.0
