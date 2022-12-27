@@ -3897,6 +3897,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.28.1":
+  version: 7.28.1
+  resolution: "@sentry/types@npm:7.28.1"
+  checksum: 57dcd5737e29990b15c1d723c47b125d325ead0766e2729c3bd0f499f6e034a9ff81b9474546ea6ecd2216b4956dbdcf342ecc13ef5a202468fd732ffb687cbf
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/utils@npm:7.13.0"
@@ -4195,7 +4202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember-resolver@npm:*, @types/ember-resolver@npm:^5.0.12":
+"@types/ember-resolver@npm:^5.0.12":
   version: 5.0.13
   resolution: "@types/ember-resolver@npm:5.0.13"
   dependencies:
@@ -4376,20 +4383,6 @@ __metadata:
   version: 4.0.1
   resolution: "@types/ember__template@npm:4.0.1"
   checksum: 55c1bdccc1f11d428795da20832a1e52d76139af0a2378eb2ac6c18cf2406cd0b80007de4eafa5934a5b61cdf5979d9ad3e3ce27586b5908099e7535462d0b40
-  languageName: node
-  linkType: hard
-
-"@types/ember__test-helpers@npm:*":
-  version: 2.8.2
-  resolution: "@types/ember__test-helpers@npm:2.8.2"
-  dependencies:
-    "@types/ember-resolver": "*"
-    "@types/ember__application": "*"
-    "@types/ember__error": "*"
-    "@types/ember__owner": "*"
-    "@types/ember__test-helpers": "*"
-    "@types/htmlbars-inline-precompile": "*"
-  checksum: 8f89692d1808133b98e225b48ca5e3d94a781d539f092529f18ff525f898e914b3de6393fe7ed97567b5a04ca1fea6325325fd3e54a03b97c14c9ae4e8ee033b
   languageName: node
   linkType: hard
 
@@ -13245,7 +13238,7 @@ __metadata:
     "@sentry/integrations": 7.13.0
     "@sentry/rrweb": ^0.3.3
     "@sentry/tracing": 7.13.0
-    "@sentry/types": 7.13.0
+    "@sentry/types": 7.28.1
     "@sentry/utils": 7.13.0
     "@tsconfig/ember": ^1.1.0
     "@types/branch-sdk": ^2.53.3

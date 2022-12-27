@@ -60,7 +60,7 @@
     "@sentry/integrations": "7.13.0",
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "7.13.0",
-    "@sentry/types": "7.13.0",
+    "@sentry/types": "7.28.1",
     "@sentry/utils": "7.13.0",
     "@tsconfig/ember": "^1.1.0",
     "@types/branch-sdk": "^2.53.3",
