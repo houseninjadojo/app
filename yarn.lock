@@ -2892,7 +2892,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.10":
+"@jridgewell/sourcemap-codec@npm:1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.13":
   version: 1.4.14
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.14"
   checksum: 61100637b6d173d3ba786a5dff019e1a74b1f394f323c1fee337ff390239f053b87266c7a948777f4b1ee68c01a8ad0ab61e5ff4abb5a012a0b091bec391ab97
@@ -4195,7 +4195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember-resolver@npm:*, @types/ember-resolver@npm:^5.0.12":
+"@types/ember-resolver@npm:^5.0.12":
   version: 5.0.13
   resolution: "@types/ember-resolver@npm:5.0.13"
   dependencies:
@@ -4376,20 +4376,6 @@ __metadata:
   version: 4.0.1
   resolution: "@types/ember__template@npm:4.0.1"
   checksum: 55c1bdccc1f11d428795da20832a1e52d76139af0a2378eb2ac6c18cf2406cd0b80007de4eafa5934a5b61cdf5979d9ad3e3ce27586b5908099e7535462d0b40
-  languageName: node
-  linkType: hard
-
-"@types/ember__test-helpers@npm:*":
-  version: 2.8.2
-  resolution: "@types/ember__test-helpers@npm:2.8.2"
-  dependencies:
-    "@types/ember-resolver": "*"
-    "@types/ember__application": "*"
-    "@types/ember__error": "*"
-    "@types/ember__owner": "*"
-    "@types/ember__test-helpers": "*"
-    "@types/htmlbars-inline-precompile": "*"
-  checksum: 8f89692d1808133b98e225b48ca5e3d94a781d539f092529f18ff525f898e914b3de6393fe7ed97567b5a04ca1fea6325325fd3e54a03b97c14c9ae4e8ee033b
   languageName: node
   linkType: hard
 
@@ -10954,9 +10940,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-ember@npm:^11.2.1":
-  version: 11.2.1
-  resolution: "eslint-plugin-ember@npm:11.2.1"
+"eslint-plugin-ember@npm:^11.3.1":
+  version: 11.3.1
+  resolution: "eslint-plugin-ember@npm:11.3.1"
   dependencies:
     "@ember-data/rfc395-data": ^0.0.4
     "@glimmer/syntax": ^0.84.2
@@ -10966,12 +10952,12 @@ __metadata:
     eslint-utils: ^3.0.0
     estraverse: ^5.2.0
     lodash.kebabcase: ^4.1.1
-    magic-string: ^0.26.7
+    magic-string: ^0.27.0
     requireindex: ^1.2.0
     snake-case: ^3.0.3
   peerDependencies:
     eslint: ">= 7"
-  checksum: d184fbf77bd1285ddb0f4b56e3fe05d3c8e22d4c95f0af4059e0fd535b3889763fec5af280eda5f1150d1c325a43666119e1d163859bc5c9f920ae8e58fb7551
+  checksum: 4def1379b32227eaa0acab1b4964aaafe7ac566768effa4d6d88c1e7eb8260c9ae37f903709a8d0a122de1e8539ae94a18f991ddba6cd82935e8d6e142f6d0da
   languageName: node
   linkType: hard
 
@@ -13325,7 +13311,7 @@ __metadata:
     ember-user-activity: "https://github.com/elwayman02/ember-user-activity"
     eslint: ^8.30.0
     eslint-config-prettier: ^8.5.0
-    eslint-plugin-ember: ^11.2.1
+    eslint-plugin-ember: ^11.3.1
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-qunit: ^7.3.4
@@ -15899,12 +15885,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.26.0, magic-string@npm:^0.26.7":
+"magic-string@npm:^0.26.0":
   version: 0.26.7
   resolution: "magic-string@npm:0.26.7"
   dependencies:
     sourcemap-codec: ^1.4.8
   checksum: 89b0d60cbb32bbf3d1e23c46ea93db082d18a8230b972027aecb10a40bba51be519ecce0674f995571e3affe917b76b09f59d8dbc9a1b2c9c4102a2b6e8a2b01
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "magic-string@npm:0.27.0"
+  dependencies:
+    "@jridgewell/sourcemap-codec": ^1.4.13
+  checksum: 273faaa50baadb7a2df6e442eac34ad611304fc08fe16e24fe2e472fd944bfcb73ffb50d2dc972dc04e92784222002af46868cb9698b1be181c81830fd95a13e
   languageName: node
   linkType: hard
 
