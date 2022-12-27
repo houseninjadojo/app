@@ -2156,7 +2156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ember/test-helpers@npm:^2.9.1":
+"@ember/test-helpers@npm:*, @ember/test-helpers@npm:^2.9.1":
   version: 2.9.1
   resolution: "@ember/test-helpers@npm:2.9.1"
   dependencies:
@@ -4382,7 +4382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember__test-helpers@npm:*, @types/ember__test-helpers@npm:^2.8.2":
+"@types/ember__test-helpers@npm:*":
   version: 2.8.2
   resolution: "@types/ember__test-helpers@npm:2.8.2"
   dependencies:
@@ -4393,6 +4393,15 @@ __metadata:
     "@types/ember__test-helpers": "*"
     "@types/htmlbars-inline-precompile": "*"
   checksum: 8f89692d1808133b98e225b48ca5e3d94a781d539f092529f18ff525f898e914b3de6393fe7ed97567b5a04ca1fea6325325fd3e54a03b97c14c9ae4e8ee033b
+  languageName: node
+  linkType: hard
+
+"@types/ember__test-helpers@npm:^2.9.1":
+  version: 2.9.1
+  resolution: "@types/ember__test-helpers@npm:2.9.1"
+  dependencies:
+    "@ember/test-helpers": "*"
+  checksum: cdba1e3a92b501e6564a6a359e0b1b3f10f8e54faabe5a5faf4d16cde4cf84e4621869efed2e128dae416d560ce81db46cb322bcc72b35ee4b3362c6111eb9fa
   languageName: node
   linkType: hard
 
@@ -13268,7 +13277,7 @@ __metadata:
     "@types/ember__string": ^3.0.10
     "@types/ember__template": ^4.0.1
     "@types/ember__test": ^4.0.1
-    "@types/ember__test-helpers": ^2.8.2
+    "@types/ember__test-helpers": ^2.9.1
     "@types/ember__utils": ^4.0.2
     "@types/jquery": ^3.5.14
     "@types/node": ^18.11.15
