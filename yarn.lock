@@ -4142,10 +4142,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/ember@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@tsconfig/ember@npm:1.1.0"
-  checksum: 0117e9bf20ee382625a59d1f4b658e129dd43c0c95c23206099e9977cd8e3e4110ccf3ba9fa61e8854d704c7be40b68770d665b82ed42630dc9eddf2e575b278
+"@tsconfig/ember@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@tsconfig/ember@npm:2.0.0"
+  checksum: 03ec9113bb454c61b1f06b843f14d53526f2e0cc111b347bc18bdb6dba2de40429e2b34baa66a408e6b7af3ebbb8d75cf1cb8ede948b329f18abb87016d11678
   languageName: node
   linkType: hard
 
@@ -13383,7 +13383,7 @@ __metadata:
     "@sentry/tracing": 7.13.0
     "@sentry/types": 7.13.0
     "@sentry/utils": 7.13.0
-    "@tsconfig/ember": ^1.1.0
+    "@tsconfig/ember": ^2.0.0
     "@types/branch-sdk": ^2.53.3
     "@types/canvas-confetti": ^1.6.0
     "@types/crypto-js": ^4.1.1
