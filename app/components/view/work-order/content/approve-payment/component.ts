@@ -7,7 +7,6 @@ import {
   ActionSheetButton,
   ActionSheetButtonStyle,
 } from '@capacitor/action-sheet';
-import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DashboardRoute } from 'houseninja/data/enums/routes';
 import IntercomService from 'houseninja/services/intercom';
@@ -19,6 +18,7 @@ import { ValidationError } from '@ember-data/adapter/error';
 import Invoice from 'houseninja/models/invoice';
 import MetricsService from 'houseninja/services/metrics';
 import SessionService from 'houseninja/services/session';
+import TelemetryService from 'houseninja/services/telemetry';
 
 type Args = {
   model: WorkOrder;
@@ -30,6 +30,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @service declare metrics: MetricsService;
   @service declare session: SessionService;
   @service declare store: StoreService;
+  @service declare telemetry: TelemetryService;
   @service declare toast: ToastService;
 
   @tracked showWebDialog = false;
@@ -104,7 +105,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
         this.toggleIsProcessing();
       }
       this.sendMetrics('error', 'payment');
-      captureException(e as Error);
+      this.telemetry.captureException(e as Error);
     }
   }
 
