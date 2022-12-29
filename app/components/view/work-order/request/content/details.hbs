@@ -1,0 +1,51 @@
+<p class="hn center strong">Tell Us More</p>
+<p class="hn mb-2">What is this <span class="hn strong">{{@request.category.name}}</span> service request regarding? </p>
+<div>
+    <div class="hn radio-input-container">        
+        <ul class="options mb-4">
+            {{#each @request.category.details as |option|}}
+                <li class="radio-option {{if (eq option.name @request.detail) "checked"}}">                    
+                    <label for={{option.name}}>
+                        <input 
+                            type="radio" 
+                            id={{option.name}} 
+                            name="reason" 
+                            value={{option.name}} 
+                            checked={{if (eq option.name @request.detail) true}} 
+                            {{on "change" (fn @handleDetailChange option.name)}}
+                        />
+                        <span class="hn radio-option-circle"></span>{{option.name}}
+                    </label>                    
+                </li>
+            {{/each}}                  
+        </ul>
+    </div>
+    <div class="additional-comments mb-4">
+        <label for="additional-comments">Additional comments</label>
+        <textarea rows="5" id="additional-comments" {{on "input" @handleAdditionalChange}} value={{@request.additional}} />
+    </div>
+    {{!-- 
+    <div class="image-attachment mb-4">            
+        <p class="hn">Attach photos related to your request</p>
+        <Primitive::ThumbnailGallery @images={{@request.images}} @allowAdding={{true}} />
+    </div> 
+    --}}
+    <div class="actions">            
+        <Primitive::Button
+            @size='md'
+            @variant='solid'
+            @semantic='accent'                        
+            {{on 'click' @handleSubmit}}
+        >
+                Request Service
+        </Primitive::Button>
+        <Primitive::Button
+            @size='md'
+            @variant='floating'
+            @semantic='alert'                        
+            {{on 'click' @handleNevermindClick}}
+        >
+                Nevermind, cancel my request
+        </Primitive::Button>
+    </div>
+</div>

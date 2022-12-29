@@ -1,0 +1,20 @@
+<div class="hn work-order">    
+    {{#if this.isLoading}}        
+    {{else}}        
+        <div class="hn work-order request content">
+            {{component (concat "view/work-order/request/content" "/" this.contentType)
+                request=this.request
+                categories=this.categories
+                currentStep=this.currentStep
+                timingPriorities=this.timingPriorities
+                handleTimingPriorityClick=this.handleTimingPriorityClick
+                handleCategoryClick=this.handleCategoryClick
+                handleNevermindClick=this.handleNevermindClick            
+                handleDetailChange=this.handleDetailChange
+                handleAdditionalChange=this.handleAdditionalChange
+
+                handleSubmit=this.handleSubmit
+            }}
+        </div>
+    {{/if}}
+</div>
