@@ -1,6 +1,6 @@
 <div class="hn thumbnail-gallery">
     {{#if @allowAdding}}        
-        <button class="image-container add-symbol-container" {{on "click" this.toggleUploadMenu}}>
+        <button type="button" class="image-container add-symbol-container" {{on "click" this.toggleUploadMenu}}>
             <Primitive::Image @src={{"/assets/icons/plus.svg"}} @alt={{"plus symbol"}} @width="24" />                                    
         </button>
     {{/if}}

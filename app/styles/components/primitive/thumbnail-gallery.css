@@ -6,20 +6,21 @@
 
 .hn.thumbnail-gallery .image-container {
   flex: 0 1 calc(33%);
-  border: 1px solid var(--gray-100);  
+  border: 1px solid var(--gray-100);
 }
 
-.hn.thumbnail-gallery .image-container img:not(.add-symbol-container img), .hn.thumbnail-gallery .image-container.add-symbol-container {
+.hn.thumbnail-gallery .image-container img:not(.add-symbol-container img),
+.hn.thumbnail-gallery .image-container.add-symbol-container {
   width: 100%;
   overflow: hidden;
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
 
-.hn.thumbnail-gallery .image-container.add-symbol-container {  
+.hn.thumbnail-gallery .image-container.add-symbol-container {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--gray-100);
-  border: 1px solid var(--gray-400);  
+  border: 1px solid var(--gray-400);
 }
