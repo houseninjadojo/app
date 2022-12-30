@@ -4345,13 +4345,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember-resolver@npm:^5.0.12":
-  version: 5.0.13
-  resolution: "@types/ember-resolver@npm:5.0.13"
+"@types/ember-resolver@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@types/ember-resolver@npm:9.0.0"
   dependencies:
-    "@types/ember__object": "*"
-    "@types/ember__owner": "*"
-  checksum: 3ece114d8368768d8198e3156b2df51b4be9d4f9ab8d60f2a1cb63a301b48ec485f51f5ddc8ad9b6f4d3739d252107463ff2508bec559efb7d8593e4975e3f48
+    ember-resolver: "*"
+  checksum: 0d88b7794d1f8fda904858a1161f375b2652379eeb60d8de7b3dd8962eb4617b4bebfe130299bf71f54c5c3acf1343e31131589eaf798c2059f5b52fa1fc0187
   languageName: node
   linkType: hard
 
@@ -10510,17 +10509,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-resolver@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "ember-resolver@npm:8.0.3"
+"ember-resolver@npm:*, ember-resolver@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "ember-resolver@npm:9.0.1"
   dependencies:
-    babel-plugin-debug-macros: ^0.3.4
-    broccoli-funnel: ^3.0.8
-    broccoli-merge-trees: ^4.2.0
-    ember-cli-babel: ^7.26.6
-    ember-cli-version-checker: ^5.1.2
-    resolve: ^1.20.0
-  checksum: 510c48a3318b5b2884bfc4322767dfe66980ffd50f4e44e90d4228e91bd34a04876367c78dc987857d645eec6252e86c91e1050237c112ed27a3a4914e452fd2
+    ember-cli-babel: ^7.26.11
+  peerDependencies:
+    ember-source: ^4.8.3
+  peerDependenciesMeta:
+    ember-source:
+      optional: true
+  checksum: 20586d8b3c694ef699f305b31281c52681e77216ab2eb4445dd069504b0886c785744950065117f26f9f1abbb8b4f56606eb1b3bc16fd3ba567ed8af3f46fcb7
   languageName: node
   linkType: hard
 
@@ -13358,7 +13357,7 @@ __metadata:
     "@types/ember-data__serializer": ^4.0.1
     "@types/ember-data__store": ^4.0.2
     "@types/ember-qunit": ^6.1.1
-    "@types/ember-resolver": ^5.0.12
+    "@types/ember-resolver": ^9.0.0
     "@types/ember__application": ^4.0.3
     "@types/ember__array": ^4.0.3
     "@types/ember__component": ^4.0.11
@@ -13416,7 +13415,7 @@ __metadata:
     ember-metrics: ^1.5.2
     ember-page-title: ^7.0.0
     ember-qunit: ^6.1.1
-    ember-resolver: ^8.0.3
+    ember-resolver: ^9.0.1
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^6.0.0
     ember-source: ~4.9.3
