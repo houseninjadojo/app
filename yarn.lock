@@ -13485,7 +13485,7 @@ __metadata:
     eslint-plugin-qunit: ^7.3.4
     liquid-fire: ^0.34.0
     loader.js: ^4.7.0
-    lottie-web: ^5.10.0
+    lottie-web: ^5.10.1
     miragejs: ^0.1.46
     moment: ^2.29.4
     npm-run-all: ^4.1.5
@@ -15994,10 +15994,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.10.0":
-  version: 5.10.0
-  resolution: "lottie-web@npm:5.10.0"
-  checksum: f590581b59437ffac984ee3fe3deaa03aa0d6f97b37443a9fd5f42c5e237fc40de8713685b075a90723d421db9d0b4dcabd1f48ae2fc1335d4beb123149561f6
+"lottie-web@npm:^5.10.1":
+  version: 5.10.1
+  resolution: "lottie-web@npm:5.10.1"
+  checksum: 5da7d0804b4b895d795e3eb299e45a0dfd1c7a5268784668ff72965d4c6e0806e0b60984fade74dd681909cc325d45b13d4a8e24c96e73472a00646e16b628b4
   languageName: node
   linkType: hard
 
