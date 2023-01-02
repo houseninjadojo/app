@@ -48,3 +48,4 @@ export default class CameraService extends Service {
     }
   }
 }
+export { CameraSource, Photo };

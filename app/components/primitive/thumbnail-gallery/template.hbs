@@ -1,24 +1,17 @@
 <div class="hn thumbnail-gallery">
-    {{#if @allowAdding}}        
-        <button type="button" class="image-container add-symbol-container" {{on "click" this.toggleUploadMenu}}>
+    {{#if @handleAddImage}}        
+        <button type="button" class="image-container add-symbol-container" {{on "click" @handleAddImage}}>
             <Primitive::Image @src={{"/assets/icons/plus.svg"}} @alt={{"plus symbol"}} @width="24" />                                    
         </button>
     {{/if}}
     {{#each @images as |uri| }}
         <div class="image-container">
             <Primitive::Image @src={{uri}} @alt={{"thumbnail"}} @width="400" />        
+            {{#if @handleDiscardImage}}
+                <button type="button" class="remove" {{on "click" (fn @handleDiscardImage uri)}}>
+                    <Primitive::Image @src={{"/assets/icons/x.svg"}} @alt={{"x symbol"}} @width="16" />                                    
+                </button>
+            {{/if}}
         </div>
     {{/each}}
 </div>
-<Primitive::Modal::Sheet @isVisible={{this.showUploadMenu}} @toggleModal={{this.toggleUploadMenu}}>
-    <ul class="hn-menu">
-        {{#each this.uploadOptions as |option| }}
-            <li class="hn-sheet-menu-option">
-                <Primitive::Button @variant="plain" {{!-- {{on "click" (fn option.select option)}} --}}>
-                    {{option.label}}
-                    <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
-                </Primitive::Button>
-            </li>
-        {{/each}}
-    </ul>
-</Primitive::Modal::Sheet>

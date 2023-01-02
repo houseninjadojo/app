@@ -2,10 +2,15 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-
+import { Filesystem } from '@capacitor/filesystem';
 import RouterService from '@ember/routing/router-service';
+import base64ToBlob from 'houseninja/utils/base64-to-blob';
+import CameraService, { CameraSource, Photo } from 'houseninja/services/camera';
+import LoaderService from 'houseninja/services/loader';
+import ViewService from 'houseninja/services/view';
 import type Detail from 'houseninja/models/service-category';
 import type ServiceCategoryModel from 'houseninja/models/service-category';
+import { debug } from '@ember/debug';
 
 enum WorkOrderCreateViewContent {
   TimingPriority = 'timing-priority',
@@ -28,6 +33,7 @@ export enum ServiceTimingPriority {
   JustEstimate = 'I just want an estimate',
 }
 
+type ActiveStorageSignedId = string;
 type ImageUri = string;
 
 interface Request {
@@ -35,7 +41,13 @@ interface Request {
   category: ServiceCategoryModel | null;
   detail: Detail | null;
   additional: string;
-  images: Array<ImageUri>;
+  images: Array<ActiveStorageSignedId>;
+}
+
+interface ImageMenuOption {
+  id: CameraSource.Camera | CameraSource.Photos;
+  label: string;
+  handleClick: (option: ImageMenuOption) => Promise<void>;
 }
 
 type Args = {
@@ -43,13 +55,13 @@ type Args = {
 };
 
 export default class WorkOrderViewComponent extends Component<Args> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare loader: any;
+  @service declare activeStorage: any;
+  @service declare camera: CameraService;
+  @service declare loader: LoaderService;
   @service declare router: RouterService;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare view: any;
+  @service declare view: ViewService;
 
-  @tracked currentStep: RequestStep = 1;
+  @tracked currentStep: RequestStep = 3;
   @tracked request: Request = {
     priority: null,
     category: null,
@@ -60,12 +72,13 @@ export default class WorkOrderViewComponent extends Component<Args> {
       // 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1144982182.jpg',
       // 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg',
       // 'https://media.npr.org/assets/img/2021/08/11/gettyimages-1279899488_wide-f3860ceb0ef19643c335cb34df3fa1de166e2761.jpg',
-      // 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1144982182.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=1200:*',
-      // 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1144982182.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=1200:*',
-      // 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1144982182.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=1200:*',
     ],
   };
+  @tracked images: Photo[] = [];
+  @tracked imagePreviews: ImageUri[] = [];
   @tracked selectedCategory: ServiceCategoryModel | null = null;
+  @tracked showImageSourceMenu = false;
+  @tracked uploadProgress = 0;
 
   timingPriorities = [
     ServiceTimingPriority.Urgently,
@@ -73,6 +86,23 @@ export default class WorkOrderViewComponent extends Component<Args> {
     ServiceTimingPriority.ThisMonth,
     ServiceTimingPriority.JustEstimate,
   ];
+
+  get imageSourceOptions(): Array<ImageMenuOption> {
+    return [
+      {
+        id: CameraSource.Camera,
+        label: 'Take a Photo',
+        handleClick: (option: ImageMenuOption) =>
+          this.handleImageSourceSelection(option),
+      },
+      {
+        id: CameraSource.Photos,
+        label: 'Select from Photo Library',
+        handleClick: (option: ImageMenuOption) =>
+          this.handleImageSourceSelection(option),
+      },
+    ];
+  }
 
   get categories(): ServiceCategoryModel[] {
     return this.args.model;
@@ -97,6 +127,74 @@ export default class WorkOrderViewComponent extends Component<Args> {
 
   private updateRequestObj(): void {
     this.request = { ...this.request };
+  }
+
+  private collectImageForPreview(image: Photo): void {
+    if (image.webPath) {
+      this.imagePreviews = [image.webPath, ...this.imagePreviews];
+      this.images = [image, ...this.images];
+    }
+  }
+
+  private getFileName(): string {
+    let prefix = '';
+    if (this.request.category) {
+      prefix = this.request.category.name
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase())
+        .join('-');
+    }
+    return `${prefix}-request-image-${this.request.images.length + 1}`;
+  }
+
+  private collectImageForStorage(image: ActiveStorageSignedId): void {
+    this.request['images'] = [image, ...this.request['images']];
+  }
+
+  private async processImages(images: Array<Photo>): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const that = this;
+
+    images.map(async (image) => {
+      if (image.path && image.webPath) {
+        const contents = await Filesystem.readFile({
+          path: image.path,
+        });
+        const blob = base64ToBlob(contents.data, `image/${image.format}`);
+        const file = new File([blob], this.getFileName(), {
+          type: `image/${image.format}`,
+        });
+
+        try {
+          const uploadedFile = await this.activeStorage.upload(file, {
+            onProgress: (progress: any /*, event */) => {
+              that.uploadProgress = progress;
+            },
+          });
+
+          this.collectImageForStorage(uploadedFile.signedId);
+          that.updateRequestObj();
+        } catch (e: any) {
+          debug(e);
+        }
+      }
+    });
+  }
+
+  private async setCameraServiceImage(source: ImageMenuOption) {
+    await this.camera.setCameraServiceImage(source.id);
+    const image = this.camera.image;
+    const webPath = image?.webPath;
+    if (image) {
+      webPath && this.collectImageForPreview(image);
+
+      this.updateRequestObj();
+      this.toggleImageSourceMenu();
+    }
+  }
+
+  private async handleImageSourceSelection(option: ImageMenuOption) {
+    this.setCameraServiceImage(option);
   }
 
   @action
@@ -128,8 +226,6 @@ export default class WorkOrderViewComponent extends Component<Args> {
   handleDetailChange(value: Detail): void {
     this.request['detail'] = value;
     this.updateRequestObj();
-
-    // this.incrementStep();
   }
 
   @action
@@ -137,14 +233,24 @@ export default class WorkOrderViewComponent extends Component<Args> {
     const target = e.target as HTMLInputElement;
     this.request['additional'] = target.value;
     this.updateRequestObj();
-
-    // this.incrementStep();
   }
 
   @action
-  handleSubmit(): void {
-    //SUBMIT REQUEST
+  handleDiscardImage(imageUri: ImageUri): void {
+    this.imagePreviews = this.imagePreviews.filter((uri) => uri !== imageUri);
+    this.images = this.images.filter((i) => i.webPath !== imageUri);
+    this.updateRequestObj();
+  }
+
+  @action
+  toggleImageSourceMenu(): void {
+    this.showImageSourceMenu = !this.showImageSourceMenu;
+  }
+
+  @action
+  async handleSubmit(): Promise<void> {
     console.log(this.request);
+    // await this.processImages(this.images);
   }
 
   @action

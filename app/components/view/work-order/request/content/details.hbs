@@ -23,13 +23,11 @@
     <div class="additional-comments mb-4">
         <label for="additional-comments">Additional comments</label>
         <textarea rows="5" id="additional-comments" {{on "input" @handleAdditionalChange}} value={{@request.additional}} />
-    </div>
-    {{!-- 
+    </div>    
     <div class="image-attachment mb-4">            
         <p class="hn">Attach photos related to your request</p>
-        <Primitive::ThumbnailGallery @images={{@request.images}} @allowAdding={{true}} />
-    </div> 
-    --}}
+        <Primitive::ThumbnailGallery @images={{@imagePreviews}} @handleAddImage={{@toggleImageSourceMenu}} @handleDiscardImage={{@handleDiscardImage}} />
+    </div>    
     <div class="actions">            
         <Primitive::Button
             @size='md'
@@ -49,3 +47,15 @@
         </Primitive::Button>
     </div>
 </div>
+<Primitive::Modal::Sheet @isVisible={{@showImageSourceMenu}} @toggleModal={{@toggleImageSourceMenu}}>
+    <ul class="hn-menu">
+        {{#each @imageSourceOptions as |option| }}
+            <li class="hn-sheet-menu-option">
+                <Primitive::Button @variant="plain" {{on "click" (fn option.handleClick option)}}>
+                    {{option.label}}
+                    <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                </Primitive::Button>
+            </li>
+        {{/each}}
+    </ul>
+</Primitive::Modal::Sheet>
