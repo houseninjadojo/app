@@ -154,8 +154,6 @@ export default class WorkOrderViewComponent extends Component<Args> {
 
   private async processImages(images: Array<Photo>): Promise<void> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const that = this;
-
     images.map(async (image) => {
       if (image.path && image.webPath) {
         const contents = await Filesystem.readFile({
