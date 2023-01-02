@@ -167,7 +167,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
         try {
           const uploadedFile = await this.activeStorage.upload(file, {
             onProgress: (progress: any /*, event */) => {
-              that.uploadProgress = progress;
+              this.uploadProgress = progress;
             },
           });
 
