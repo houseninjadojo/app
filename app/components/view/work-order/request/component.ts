@@ -149,6 +149,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
 
   private collectImageForStorage(image: ActiveStorageSignedId): void {
     this.request['images'] = [image, ...this.request['images']];
+    this.updateRequestObj();
   }
 
   private async processImages(images: Array<Photo>): Promise<void> {
@@ -173,7 +174,6 @@ export default class WorkOrderViewComponent extends Component<Args> {
           });
 
           this.collectImageForStorage(uploadedFile.signedId);
-          that.updateRequestObj();
         } catch (e: any) {
           debug(e);
         }
