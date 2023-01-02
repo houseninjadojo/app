@@ -11119,9 +11119,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-ember@npm:^11.3.1":
-  version: 11.3.1
-  resolution: "eslint-plugin-ember@npm:11.3.1"
+"eslint-plugin-ember@npm:^11.4.0":
+  version: 11.4.0
+  resolution: "eslint-plugin-ember@npm:11.4.0"
   dependencies:
     "@ember-data/rfc395-data": ^0.0.4
     "@glimmer/syntax": ^0.84.2
@@ -11130,13 +11130,14 @@ __metadata:
     ember-template-imports: ^3.1.1
     eslint-utils: ^3.0.0
     estraverse: ^5.2.0
+    lodash.camelcase: ^4.1.1
     lodash.kebabcase: ^4.1.1
     magic-string: ^0.27.0
     requireindex: ^1.2.0
     snake-case: ^3.0.3
   peerDependencies:
     eslint: ">= 7"
-  checksum: 4def1379b32227eaa0acab1b4964aaafe7ac566768effa4d6d88c1e7eb8260c9ae37f903709a8d0a122de1e8539ae94a18f991ddba6cd82935e8d6e142f6d0da
+  checksum: 75f6c9d69bed36ad53fd5fa461833eab01c1afb042b187bb941475b00025e9f431f64fe1d4a841111fb93c58dcb72dd56aff65bbcf8c5089cca385de274b3a6b
   languageName: node
   linkType: hard
 
@@ -13490,7 +13491,7 @@ __metadata:
     ember-user-activity: "https://github.com/elwayman02/ember-user-activity"
     eslint: ^8.31.0
     eslint-config-prettier: ^8.5.0
-    eslint-plugin-ember: ^11.3.1
+    eslint-plugin-ember: ^11.4.0
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-qunit: ^7.3.4
@@ -15616,7 +15617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.camelcase@npm:^4.3.0":
+"lodash.camelcase@npm:^4.1.1, lodash.camelcase@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
   checksum: cb9227612f71b83e42de93eccf1232feeb25e705bdb19ba26c04f91e885bfd3dd5c517c4a97137658190581d3493ea3973072ca010aab7e301046d90740393d1
