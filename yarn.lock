@@ -13514,7 +13514,7 @@ __metadata:
     tracked-built-ins: ^3.1.0
     typescript: ^4.9.3
     webpack: ^5.75.0
-    whatwg-url: 11.0.0
+    whatwg-url: 12.0.0
   languageName: unknown
   linkType: soft
 
@@ -22975,13 +22975,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whatwg-url@npm:11.0.0":
-  version: 11.0.0
-  resolution: "whatwg-url@npm:11.0.0"
+"whatwg-url@npm:12.0.0":
+  version: 12.0.0
+  resolution: "whatwg-url@npm:12.0.0"
   dependencies:
     tr46: ^3.0.0
     webidl-conversions: ^7.0.0
-  checksum: ed4826aaa57e66bb3488a4b25c9cd476c46ba96052747388b5801f137dd740b73fde91ad207d96baf9f17fbcc80fc1a477ad65181b5eb5fa718d27c69501d7af
+  checksum: 523871a0c3aa43535b163b5d8a718ac8f869618068e92d79925e303dd11352cf21c1a66dfe4860384237d6967ecaa3de88b252b47dcb938b31cdc170a2cec462
   languageName: node
   linkType: hard
 
