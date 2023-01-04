@@ -39,7 +39,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@commitlint/prompt-cli": "^17.4.0",
-    "@datadog/browser-logs": "^4.28.1",
+    "@datadog/browser-logs": "^4.29.0",
     "@datadog/browser-rum": "^4.29.0",
     "@datadog/datadog-ci": "^2.2.0",
     "@ember/jquery": "^2.0.0",
