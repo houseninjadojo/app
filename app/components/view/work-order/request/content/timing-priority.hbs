@@ -1,0 +1,9 @@
+<p class="hn center strong">When do you need this service performed?</p>
+<p class="hn center alert mb-2">If this is an emergency or if you smell smoke or gas, call <span class="hn strong">911</span> immediately.</p>
+<div>
+    {{#each @timingPriorities as |priority|}}
+        <Primitive::Button @size="lg" @variant="outline" @semantic="primary" @class="mb-4" {{on "click" (fn @handleTimingPriorityClick priority)}}>
+            {{priority}}
+        </Primitive::Button>
+    {{/each}}
+</div>

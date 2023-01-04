@@ -131,3 +131,23 @@
 .hn.work-order .payment-confirmation .encouragement {
   font-size: 24px;
 }
+
+.hn.work-order.request.content {
+  background-color: var(--white);
+  padding: 16px;
+}
+
+.hn.work-order.request.content div .additional-comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hn.work-order.request.content div .actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

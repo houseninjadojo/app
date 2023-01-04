@@ -78,6 +78,7 @@ function routes() {
   });
   this.resource('property', { path: '/properties' });
   this.get('/service-areas');
+  this.get('/service-categories');
   this.get('/subscription-plans');
   this.resource('subscription', { path: '/subscriptions' });
   this.resource('user', { path: '/users' });

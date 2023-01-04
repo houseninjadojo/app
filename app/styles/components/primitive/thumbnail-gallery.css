@@ -1,0 +1,43 @@
+.hn.thumbnail-gallery {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.hn.thumbnail-gallery .image-container {
+  position: relative;
+  flex: 0 1 calc(33%);
+  border: 1px solid var(--gray-100);
+}
+
+.hn.thumbnail-gallery .image-container button.remove {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0 0 0 / 32%);
+  border-radius: 100px;
+  border: 1px solid rgb(255 255 255 / 80%);
+  padding: 2px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.hn.thumbnail-gallery .image-container button.remove img {
+  filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(349deg) brightness(107%) contrast(101%);
+}
+
+.hn.thumbnail-gallery .image-container img:not(.add-symbol-container img),
+.hn.thumbnail-gallery .image-container.add-symbol-container {
+  width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.hn.thumbnail-gallery .image-container.add-symbol-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-400);
+}

@@ -6,6 +6,7 @@ export default function (server) {
   // server.createList('post', 10);
 
   // server.createList('property', 1);
+  // server.createList('service-category', 10);
   server.create('user', {
     id: 'c1022bb5-80f3-4248-918c-48f6eb7114c0',
     email: 'miles@houseninja.co',

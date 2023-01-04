@@ -1,0 +1,13 @@
+<p class="hn center strong">Select Service</p>
+<div>
+    <ul class="settings-menu">
+        {{#each @categories as |category|}}
+            <li class="menu-item">
+                <Primitive::Button {{on "click" (fn @handleCategoryClick category)}} @variant="plain">                
+                    <span class="menu-item-label">{{category.name}}</span>
+                    <img src="/assets/icons/greater-than.svg" alt="right arrow" class="menu-item-icon" />
+                </Primitive::Button>
+            </li>
+        {{/each}}        
+    </ul>        
+</div>

@@ -79,6 +79,7 @@ export enum VaultRoute {
 export enum WorkOrderRoute {
   Index = 'work-orders.index',
   Show = 'work-orders.work-order',
+  Request = 'work-orders.request',
 }
 
 export const NATIVE_MOBILE_ROUTE = {
@@ -130,5 +131,6 @@ export const NATIVE_MOBILE_ROUTE = {
   WORK_ORDERS: {
     INDEX: 'work-orders',
     SHOW: 'work-orders.work-order',
+    REQUEST: 'work-orders.request',
   },
 };

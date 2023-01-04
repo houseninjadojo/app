@@ -76,6 +76,7 @@ Router.map(function () {
   });
   this.route('work-orders', function () {
     this.route('index');
+    this.route('request');
     this.route('work-order', { path: '/:work_order_id' });
   });
 
