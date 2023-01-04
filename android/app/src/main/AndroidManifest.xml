@@ -45,6 +45,18 @@
                 <data
                     android:scheme="https"
                     android:host="@string/applink_host_alternate" />
+                <data
+                    android:scheme="http"
+                    android:host="@string/test_applink_host" />
+                <data
+                    android:scheme="https"
+                    android:host="@string/test_applink_host" />
+                <data
+                    android:scheme="http"
+                    android:host="@string/test_applink_host_alternate" />
+                <data
+                    android:scheme="https"
+                    android:host="@string/test_applink_host_alternate" />
             </intent-filter>
 
             <intent-filter>

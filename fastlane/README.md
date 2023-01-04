@@ -23,6 +23,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Build app
 
+### android upload
+
+```sh
+[bundle exec] fastlane android upload
+```
+
+Upload to Play Store
+
+### android internal
+
+```sh
+[bundle exec] fastlane android internal
+```
+
+Release Internal
+
 ### android release
 
 ```sh
@@ -30,6 +46,14 @@ Build app
 ```
 
 Release
+
+### android increment_version
+
+```sh
+[bundle exec] fastlane android increment_version
+```
+
+
 
 ----
 
