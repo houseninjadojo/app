@@ -275,7 +275,7 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'fastlane/'
-      - run: bundle exec fastlane android release
+      - run: bundle exec fastlane android internal
         working-directory: 'fastlane/'
       - uses: actions/upload-artifact@v3
         if: success()

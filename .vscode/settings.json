@@ -2,5 +2,6 @@
   "gitlens.showWelcomeOnInstall": false,
   "eslint.packageManager": "yarn",
   "eslint.lintTask.enable": true,
-  "dotenv.enableAutocloaking": false
+  "dotenv.enableAutocloaking": false,
+  "svg.preview.background": "transparent"
 }
