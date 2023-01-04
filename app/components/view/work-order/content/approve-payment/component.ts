@@ -20,33 +20,15 @@ import Invoice from 'houseninja/models/invoice';
 import MetricsService from 'houseninja/services/metrics';
 import SessionService from 'houseninja/services/session';
 
-import type Property from 'houseninja/models/property';
-import type PaymentMethod from 'houseninja/models/payment-method';
-
-// const cardsStub = [
-//   {
-//     id: 'asdf',
-//     cardBrand: 'TEST MASTERCARD',
-//     lastFour: '9999',
-//   },
-//   {
-//     id: 'zxcv',
-//     cardBrand: 'TEST VISA',
-//     lastFour: '8888',
-//   },
-//   {
-//     id: 'qwer',
-//     cardBrand: 'TEST CARD',
-//     lastFour: '7777',
-//     isDefault: true,
-//   },
-// ];
+import CreditCard from 'houseninja/models/credit-card';
+import CurrentService from 'houseninja/services/current';
 
 type Args = {
   model: WorkOrder;
 };
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component<Args> {
+  @service declare current: CurrentService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
   @service declare metrics: MetricsService;
@@ -58,9 +40,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked creditCard = this.allPaymentMethods.filter(
-    (c: PaymentMethod) => c.isDefault
+  @tracked creditCard: CreditCard | undefined = this.allPaymentMethods.filter(
+    (c: CreditCard) => c.isDefault
   )[0];
+
+  // @tracked creditCard: CreditCard | undefined | null = null;
 
   constructor(owner: unknown, args: Args) {
     super(owner, args);
@@ -97,12 +81,43 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.toggleWebDialog();
   }
 
-  get allPaymentMethods(): PaymentMethod[] {
-    return this.property.user.paymentMethods;
+  get allPaymentMethods(): Array<CreditCard> {
+    const user = this.current.user;
+    let paymentMethods: Array<CreditCard> = [];
+
+    if (user) {
+      paymentMethods = user
+        .get('paymentMethods')
+        .toArray()
+        .map((p) => p as CreditCard);
+    }
+
+    console.log('user', user);
+    console.log('paymentMethods', paymentMethods);
+
+    return paymentMethods;
   }
 
-  get property(): any {
-    return this.args.model.property;
+  get paymentMethodSelectConfig() {
+    const allCards = this.allPaymentMethods.toArray();
+    const mappedCards = allCards?.map((c: CreditCard) => {
+      return {
+        value: c.id,
+        label: `${c.cardBrand ? c.cardBrand.toUpperCase() : 'Card'} ending in ${
+          c.lastFour
+        } ${c.isDefault ? '(default) ' : ''}`,
+        selected: c.isDefault,
+      };
+    });
+
+    console.log('allCards', allCards);
+    console.log('mappedCards', mappedCards);
+
+    return {
+      id: 'payment-methods',
+      label: 'Payment Method',
+      options: mappedCards || [],
+    };
   }
 
   @action
@@ -153,11 +168,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     } else {
       this.webConfirmation();
     }
-  }
-
-  @action
-  requestDifferentPayment(): void {
-    this.intercom.showComposer('I would like to update my payment method.');
   }
 
   @action
