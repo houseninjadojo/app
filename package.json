@@ -37,7 +37,7 @@
     "@babel/plugin-proposal-decorators": "^7.20.7",
     "@capacitor/cli": "4.6.1",
     "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/config-conventional": "^17.4.0",
     "@commitlint/prompt-cli": "^17.4.0",
     "@datadog/browser-logs": "^4.29.0",
     "@datadog/browser-rum": "^4.29.0",
