@@ -280,13 +280,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: success()
         with:
-          name: House Ninja.ipa
-          path: 'ios/App/House Ninja.ipa'
-      - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: House Ninja.app.dSYM.zip
-          path: 'ios/App/House Ninja.app.dSYM.zip'
+          name: app-release.aab
+          path: 'android/app/build/outputs/bundle/release/app-release.aab'
       - name: Datadog
         uses: masci/datadog@v1
         with:
