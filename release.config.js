@@ -26,6 +26,7 @@ module.exports = {
       {
         assets: [
           'CHANGELOG.md',
+          'android/app/build.gradle',
           'package.json',
           'yarn.lock',
         ]
@@ -36,6 +37,7 @@ module.exports = {
       {
         assets: [
           'CHANGELOG.md',
+          'android/app/build.gradle',
           'package.json',
         ],
       },

@@ -5,7 +5,9 @@
     <string name="package_name">co.houseninja.application</string>
     <string name="custom_url_scheme">co.houseninja.application</string>
 
-    <string name="applink_host">w.hnja.io</string>
+    <string name="test_applink_host">w.hnja.io</string>
+    <string name="test_applink_host_alternate">houseninja-alternate.test-app.link</string>
+    <string name="applink_host">hnja.app</string>
     <string name="applink_host_alternate">houseninja-alternate.app.link</string>
     <string name="deeplink_scheme">co.houseninja.application</string>
     <string name="branch_key">key_live_am2NwPVSjgO1OyefXDS6ghphBxnYYNHt</string>

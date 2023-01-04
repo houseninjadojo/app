@@ -1,5 +1,7 @@
 'use strict';
 
+const webpack = require('webpack');
+
 /**
  * PostCSS Plugins
  * Format is:
@@ -47,10 +49,61 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
  */
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    autoImport: {
+      webpack: {
+        plugins: [
+          new webpack.IgnorePlugin({
+            resourceRegExp: /^\.\/locale$/,
+            contextRegExp: /moment$/,
+          }),
+        ],
+        optimization: {
+          splitChunks: {
+            cacheGroups: {
+              telemetry: {
+                test: /[\\/]node_modules[\\/](@datadog|mixpanel-browser|@houseninja\/capacitor-mixpanel|branch-sdk)/,
+                name: 'telemetry',
+                chunks: 'all',
+              },
+              capacitor: {
+                test: /[\\/]node_modules[\\/](@capacitor|@capawesome|@ionic|capacitor-secure-storage-plugin|@houseninja\/capacitor-[\w+]|@mineminemine)/,
+                name: 'capacitor',
+                chunks: 'all',
+              },
+              sentry: {
+                test: /[\\/]node_modules[\\/](@sentry|rrweb)/,
+                name: 'sentry',
+                chunks: 'all',
+              },
+              dev: {
+                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js)/,
+                name: 'development',
+                chunks: 'all',
+              },
+              animations: {
+                test: /[\\/]node_modules[\\/](canvas-confetti|lottie-web)/,
+                name: 'animations',
+                chunks: 'all',
+              },
+            },
+          },
+        },
+      },
+    },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
     babel: {
-      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+      plugins: [
+        ...require('ember-cli-code-coverage').buildBabelPlugin(),
+      ],
+    },
+    // Polyfill crypto.randomUUID
+    '@embroider/macros': {
+      setConfig: {
+        '@ember-data/store': {
+          polyfillUUID: true
+        },
+      },
     },
     // PostCSS Configuration
     // @see https://jeffjewiss.github.io/ember-cli-postcss/docs
