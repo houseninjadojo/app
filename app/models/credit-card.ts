@@ -35,11 +35,11 @@ export default class CreditCardModel extends PaymentMethod {
     };
   }
 
-  get lastFour() {
-    return this.cardNumber.substring(this.cardNumber.length - 4) ?? '';
+  get lastFour(): string {
+    return this.cardNumber?.substring(this.cardNumber.length - 4) ?? '';
   }
 
-  get cardBrand() {
+  get cardBrand(): string {
     return this.brand?.toUpperCase() ?? '';
   }
 }
