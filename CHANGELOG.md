@@ -1,3 +1,10 @@
+## [1.28.6](https://github.com/houseninjadojo/app/compare/v1.28.5...v1.28.6) (2023-01-04)
+
+
+### Bug Fixes
+
+* this.cardNumber.substr not a function ([#1497](https://github.com/houseninjadojo/app/issues/1497)) ([bdd41ef](https://github.com/houseninjadojo/app/commit/bdd41efd73bbfce5d31e9fb7bb9dd1b2d432cd02))
+
 ## [1.28.5](https://github.com/houseninjadojo/app/compare/v1.28.4...v1.28.5) (2022-12-13)
 
 
