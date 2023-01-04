@@ -61,7 +61,7 @@ export default class WorkOrderViewComponent extends Component<Args> {
   @service declare router: RouterService;
   @service declare view: ViewService;
 
-  @tracked currentStep: RequestStep = 3;
+  @tracked currentStep: RequestStep = 1;
   @tracked request: Request = {
     priority: null,
     category: null,
