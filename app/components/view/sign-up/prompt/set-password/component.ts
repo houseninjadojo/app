@@ -1,23 +1,38 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
+import { tracked } from 'tracked-built-ins';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import {
   inputValidation,
   passwordValidation,
 } from 'houseninja/utils/components/input-validation';
-import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import {
   NATIVE_MOBILE_ROUTE,
   SIGNUP_ROUTE,
 } from 'houseninja/data/enums/routes';
+import CurrentService from 'houseninja/services/current';
+import TelemetryService from 'houseninja/services/telemetry';
+import RouterService from '@ember/routing/router-service';
+import OnboardingService from 'houseninja/services/onboarding';
+import StoreService from 'houseninja/services/store';
+import User from 'houseninja/models/user';
+import { Field } from 'houseninja';
 
-export default class SetPasswordComponent extends Component {
-  @service current;
-  @service router;
-  @service onboarding;
-  @service store;
+type Args = {
+  user: User;
+};
+
+type PasswordValidation =
+  | ReturnType<typeof passwordValidation>
+  | typeof passwordValidation;
+
+export default class SetPasswordComponent extends Component<Args> {
+  @service declare current: CurrentService;
+  @service declare router: RouterService;
+  @service declare onboarding: OnboardingService;
+  @service declare store: StoreService;
+  @service declare telemetry: TelemetryService;
 
   @tracked passwordHasBeenSet = false;
 
@@ -34,16 +49,16 @@ export default class SetPasswordComponent extends Component {
   @tracked formIsInvalid = true;
   @tracked isLoading = false;
 
-  @tracked requirementsModel = passwordValidation;
+  @tracked requirementsModel: PasswordValidation = passwordValidation;
 
-  fields = [
+  fields: Field[] = [
     {
       type: 'password',
       id: 'password',
       required: true,
       label: 'New Password',
       placeholder: '',
-      value: null,
+      value: undefined,
     },
     {
       type: 'password',
@@ -51,30 +66,34 @@ export default class SetPasswordComponent extends Component {
       required: true,
       label: 'Confirm Password',
       placeholder: '',
-      value: null,
+      value: undefined,
     },
   ];
 
-  constructor() {
-    super(...arguments);
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
 
     if (isPresent(this.args.user)) {
-      this.passwords.password = this.args.user.password;
-      this.passwords.passwordConfirmation = this.args.user.password;
+      this.passwords.password = this.args.user.password ?? '';
+      this.passwords.passwordConfirmation = this.args.user.password ?? '';
       this.formIsInvalid = false;
     }
   }
 
-  __isOnboarding() {
+  __isOnboarding(): boolean {
     const ONBOARDING_PARAM = 'code';
-    return this.router.location.location.search.includes(ONBOARDING_PARAM);
+    return isPresent(this.router.currentRoute.queryParams[ONBOARDING_PARAM]);
   }
 
   @action
-  validateForm(e) {
-    this.passwords[e.target.id] = e.target.value;
-    this.fields.filter((f) => f.id === e.target.id)[0].value =
-      this.passwords[e.target.id];
+  validateForm(e: InputEvent): void {
+    const target = e.target as HTMLInputElement;
+    const targetId = target.id as keyof typeof this.passwords;
+    const field = this.fields.find((f) => f.id === targetId);
+    this.passwords[targetId] = target.value;
+    if (field) {
+      field.value = this.passwords[targetId];
+    }
 
     this.requirementsModel = passwordValidation(this.fields);
     this.formIsInvalid = inputValidation(this.fields, [
@@ -83,7 +102,7 @@ export default class SetPasswordComponent extends Component {
   }
 
   @action
-  async savePassword() {
+  async savePassword(): Promise<void> {
     this.isLoading = true;
     let user;
     if (isPresent(this.args.user)) {
@@ -104,7 +123,7 @@ export default class SetPasswordComponent extends Component {
         }
       } catch (e) {
         this.errors = user.errors;
-        captureException(e);
+        this.telemetry.captureException(e as Error);
       } finally {
         this.isLoading = false;
       }
@@ -112,7 +131,7 @@ export default class SetPasswordComponent extends Component {
   }
 
   @action
-  login() {
+  login(): void {
     this.router.transitionTo(NATIVE_MOBILE_ROUTE.AUTH.LOGIN);
   }
 }

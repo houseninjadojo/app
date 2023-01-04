@@ -9,7 +9,7 @@ import RouterService from '@ember/routing/router-service';
 export default class WelcomeComponent extends Component {
   @service declare router: RouterService;
 
-  interval?: ReturnType<typeof setTimeout>;
+  interval?: Timer;
 
   @action
   nextStep() {

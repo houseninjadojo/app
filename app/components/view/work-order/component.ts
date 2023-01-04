@@ -4,9 +4,11 @@ import { service } from '@ember/service';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
+import LoaderService from 'houseninja/services/loader';
 import WorkOrder from 'houseninja/models/work-order';
 import IntercomService from 'houseninja/services/intercom';
 import RouterService from '@ember/routing/router-service';
+import ViewService from 'houseninja/services/view';
 
 enum WorkOrderViewContent {
   ApprovePayment = 'approve-payment',
@@ -21,12 +23,10 @@ type Args = {
 };
 
 export default class WorkOrderViewComponent extends Component<Args> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare loader: any;
+  @service declare loader: LoaderService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare view: any;
+  @service declare view: ViewService;
 
   paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;

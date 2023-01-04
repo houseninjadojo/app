@@ -7,7 +7,6 @@ import {
   ActionSheetButtonStyle,
   type ShowActionsResult,
 } from '@capacitor/action-sheet';
-import { captureException } from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DashboardRoute } from 'houseninja/data/enums/routes';
 
@@ -18,6 +17,7 @@ import type IntercomService from 'houseninja/services/intercom';
 import type SessionService from 'houseninja/services/session';
 import type ToastService from 'houseninja/services/toast';
 import type MetricsService from 'houseninja/services/metrics';
+import type TelemetryService from 'houseninja/services/telemetry';
 
 interface Args {
   model: WorkOrder;
@@ -33,6 +33,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   @service declare metrics: MetricsService;
   @service declare router: RouterService;
   @service declare session: SessionService;
+  @service declare telemetry: TelemetryService;
   @service declare toast: ToastService;
 
   @tracked showWebDialog = false;
@@ -103,7 +104,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       this.estimate.approvedAt = undefined;
       this.toggleIsProcessing();
       this.sendMetrics('error', 'approve');
-      captureException(e as Error);
+      this.telemetry.captureException(e as Error);
     }
   }
 
@@ -148,7 +149,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
       this.toast.showError(
         'There was an error while declining this estimate. If this happens again, please contact us at hello@houseninja.co.'
       );
-      captureException(e as Error);
+      this.telemetry.captureException(e as Error);
       this.sendMetrics('error', 'decline');
       this.estimate.declinedAt = undefined;
     } finally {

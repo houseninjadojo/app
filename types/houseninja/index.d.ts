@@ -16,6 +16,8 @@ declare global {
       readonly [key: string]: string | undefined;
     }
   }
+
+  type Timer = ReturnType<typeof setTimeout>;
 }
 
 export {};
@@ -30,3 +32,13 @@ export type Resolved<P> = P extends Promise<infer T> ? T : P;
 
 /** Get the resolved model value from a route. */
 export type ModelFrom<R extends Route> = Resolved<ReturnType<R['model']>>;
+
+export interface Field {
+  id: string;
+  required: boolean;
+  label?: string;
+  placeholder?: string;
+  type?: string;
+  value?: string | number | boolean;
+  disabled?: boolean;
+}

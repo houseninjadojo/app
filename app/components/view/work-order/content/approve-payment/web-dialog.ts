@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { captureException } from 'houseninja/utils/sentry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { TrackedObject } from 'tracked-built-ins';
@@ -15,6 +14,7 @@ import type PaymentMethod from 'houseninja/models/payment-method';
 import type ToastService from 'houseninja/services/toast';
 import type User from 'houseninja/models/user';
 import type MetricsService from 'houseninja/services/metrics';
+import type TelemetryService from 'houseninja/services/telemetry';
 
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import DS from 'ember-data';
@@ -46,6 +46,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
   @service declare router: RouterService;
   @service declare metrics: MetricsService;
   @service declare store: StoreService;
+  @service declare telemetry: TelemetryService;
   @service declare toast: ToastService;
 
   @tracked paymentMethodFormIsInvalid = true;
@@ -144,7 +145,7 @@ export default class WorkOrderApprovePaymentWebDialogViewContentComponent extend
           );
         }
       }
-      captureException(e as Error);
+      this.telemetry.captureException(e as Error);
       this.metrics.trackEvent({
         event: 'external.payment-approval.error',
         properties: {
