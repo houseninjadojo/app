@@ -59,11 +59,7 @@ android_project_dir = "android"
 gradle_path         = "android/app/build.gradle"
 keystore_path       = "#{android_full_dir}/houseninja.keystore"
 version_code        = build_version_code(version, build_number)
-json_key_data_raw   = begin
-  JSON.parse(ENV["PLAY_STORE_CREDENTIALS"]&.gsub(/\s/,''))
-rescue
-  nil
-end
+json_key_data_raw   = ENV["PLAY_STORE_CREDENTIALS"]
 
 default_platform(:ios)
 
