@@ -1,3 +1,10 @@
+## [1.28.7](https://github.com/houseninjadojo/app/compare/v1.28.6...v1.28.7) (2023-01-05)
+
+
+### Bug Fixes
+
+* build failure ([#1498](https://github.com/houseninjadojo/app/issues/1498)) ([5b9200e](https://github.com/houseninjadojo/app/commit/5b9200e5e523f5e4b6a97600e230493d96a59f34))
+
 ## [1.28.6](https://github.com/houseninjadojo/app/compare/v1.28.5...v1.28.6) (2023-01-04)
 
 
