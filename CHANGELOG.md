@@ -1,3 +1,10 @@
+## [1.28.8](https://github.com/houseninjadojo/app/compare/v1.28.7...v1.28.8) (2023-01-05)
+
+
+### Bug Fixes
+
+* select correct folder ([15be1ff](https://github.com/houseninjadojo/app/commit/15be1ff58da045fafea294f4a196b16795fb5be2))
+
 ## [1.28.7](https://github.com/houseninjadojo/app/compare/v1.28.6...v1.28.7) (2023-01-05)
 
 
