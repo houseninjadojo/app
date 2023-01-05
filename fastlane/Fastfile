@@ -19,7 +19,7 @@ def build_version_code(version, build_number)
 end
 
 def root_dir
-  if !ENV['GITHUB_WORKSPACE'].nil? && File.directory?(ENV['GITHUB_WORKSPACE'])
+  if ENV["CI"] && File.directory?(ENV['GITHUB_WORKSPACE'])
     ENV['GITHUB_WORKSPACE']
   else
     File.expand_path("..")
@@ -58,8 +58,12 @@ android_full_dir    = "#{root_dir}/android"
 android_project_dir = "android"
 gradle_path         = "android/app/build.gradle"
 keystore_path       = "#{android_full_dir}/houseninja.keystore"
-json_key_data_raw   = ENV["PLAY_STORE_CREDENTIALS"]
 version_code        = build_version_code(version, build_number)
+json_key_data_raw   = begin
+  JSON.parse(ENV["PLAY_STORE_CREDENTIALS"]&.gsub(/\s/,''))
+rescue
+  nil
+end
 
 default_platform(:ios)
 
