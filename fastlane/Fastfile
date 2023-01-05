@@ -18,6 +18,14 @@ def build_version_code(version, build_number)
   code.to_i.to_s + build_number.rjust(2, "0")
 end
 
+def root_dir
+  if !ENV['GITHUB_WORKSPACE'].nil? && File.directory?(ENV['GITHUB_WORKSPACE'])
+    ENV['GITHUB_WORKSPACE']
+  else
+    File.expand_path("..")
+  end
+end
+
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
@@ -46,8 +54,10 @@ version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
 
 # android
+android_full_dir    = "#{root_dir}/android"
 android_project_dir = "android"
 gradle_path         = "android/app/build.gradle"
+keystore_path       = "#{android_full_dir}/houseninja.keystore"
 json_key_data_raw   = ENV["PLAY_STORE_CREDENTIALS"]
 version_code        = build_version_code(version, build_number)
 
@@ -63,7 +73,7 @@ platform :android do
       # gradle_path: gradle_path,
       print_command: true,
       properties: {
-        "android.injected.signing.store.file" => "houseninja.keystore",
+        "android.injected.signing.store.file" => keystore_path,
         "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
         "android.injected.signing.key.alias" => ENV["ANDROID_KEY_NAME"],
         "android.injected.signing.key.password" => ENV["ANDROID_KEY_PASSWORD"]
