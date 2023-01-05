@@ -1,3 +1,10 @@
+## [1.28.10](https://github.com/houseninjadojo/app/compare/v1.28.9...v1.28.10) (2023-01-05)
+
+
+### Bug Fixes
+
+* **ci/cd:** revert to android build with env ([f4edf7d](https://github.com/houseninjadojo/app/commit/f4edf7dab4ad175f7be85379935c4191277730c8))
+
 ## [1.28.9](https://github.com/houseninjadojo/app/compare/v1.28.8...v1.28.9) (2023-01-05)
 
 
