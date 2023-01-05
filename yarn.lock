@@ -541,7 +541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-class-properties@npm:^7.1.0, @babel/plugin-proposal-class-properties@npm:^7.13.0, @babel/plugin-proposal-class-properties@npm:^7.16.5, @babel/plugin-proposal-class-properties@npm:^7.16.7, @babel/plugin-proposal-class-properties@npm:^7.18.6":
+"@babel/plugin-proposal-class-properties@npm:^7.1.0, @babel/plugin-proposal-class-properties@npm:^7.16.5, @babel/plugin-proposal-class-properties@npm:^7.16.7, @babel/plugin-proposal-class-properties@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/plugin-proposal-class-properties@npm:7.18.6"
   dependencies:
@@ -2287,21 +2287,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@embroider/shared-internals@npm:^0.40.0":
-  version: 0.40.0
-  resolution: "@embroider/shared-internals@npm:0.40.0"
-  dependencies:
-    ember-rfc176-data: ^0.3.17
-    fs-extra: ^7.0.1
-    lodash: ^4.17.10
-    pkg-up: ^3.1.0
-    resolve-package-path: ^1.2.2
-    semver: ^7.3.2
-    typescript-memoize: ^1.0.0-alpha.3
-  checksum: 4d69fdb4a805bc1591084c7016465f87787b6a8552b0638b11950e54710212adbba28bddc6c81ff26465f5db064e2993de04d5a0350ce1f3fc34132fc8a767c5
-  languageName: node
-  linkType: hard
-
 "@embroider/shared-internals@npm:^1.0.0":
   version: 1.8.3
   resolution: "@embroider/shared-internals@npm:1.8.3"
@@ -3275,6 +3260,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/browser@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/browser@npm:7.29.0"
+  dependencies:
+    "@sentry/core": 7.29.0
+    "@sentry/replay": 7.29.0
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
+    tslib: ^1.9.3
+  checksum: 136b9d03a9ff38e72f4d8fd335f23469341d0095d1f075a36d85ef2cd6bd0763635a7e1cbc7abe14508291e88cffe549eda6016c858564b55c1d4e81ef67882f
+  languageName: node
+  linkType: hard
+
 "@sentry/capacitor@npm:0.10.1":
   version: 0.10.1
   resolution: "@sentry/capacitor@npm:0.10.1"
@@ -3333,20 +3331,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/ember@npm:7.13.0":
-  version: 7.13.0
-  resolution: "@sentry/ember@npm:7.13.0"
+"@sentry/core@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/core@npm:7.29.0"
   dependencies:
-    "@embroider/macros": ~0.47.2
-    "@sentry/browser": 7.13.0
-    "@sentry/tracing": 7.13.0
-    "@sentry/types": 7.13.0
-    "@sentry/utils": 7.13.0
-    ember-auto-import: ~1.12.1 || ~2.2.0
-    ember-cli-babel: ~7.26.6
-    ember-cli-htmlbars: ^6.0.1
-    ember-cli-typescript: ^4.2.1
-  checksum: 60d79c4a5d991ba6491e77014c48980c783284b56b74368df07a869be496c54d9669ca0f4531e4ef673c34d0ddd304e6286f1a047e446d2103194b58a184f87a
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
+    tslib: ^1.9.3
+  checksum: d9330ed3528f2328b524cb237e400368dcb6c36b8afb791d28141e98ab5c0b56dc306a65cfc7164108cb5616346dabe793a39a140257f723906dc25a03b7ebcd
+  languageName: node
+  linkType: hard
+
+"@sentry/ember@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/ember@npm:7.29.0"
+  dependencies:
+    "@embroider/macros": ^1.9.0
+    "@sentry/browser": 7.29.0
+    "@sentry/tracing": 7.29.0
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
+    ember-auto-import: ^1.12.1 || ^2.4.3
+    ember-cli-babel: ^7.26.11
+    ember-cli-htmlbars: ^6.1.1
+    ember-cli-typescript: ^5.1.1
+  checksum: 03d2ea3d7358dfb533486006f91fb3c3e0c3e501ec3b9478cdba4cb83395fcefcad97af7443a6a78886f5fcbf4d45b2a7432c55de42b9ceb9b44207c085b7110
   languageName: node
   linkType: hard
 
@@ -3373,6 +3382,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/replay@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/replay@npm:7.29.0"
+  dependencies:
+    "@sentry/core": 7.29.0
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
+  peerDependencies:
+    "@sentry/browser": ">=7.24.0"
+  checksum: 539e18c128bb7966c9d4ea91ebd9cde6d42f42f96fa648d7ead5bff699e643f3792f57a344376586fab26f659f5e1431176faf0e12e6ea53508fd48ba928dd12
+  languageName: node
+  linkType: hard
+
 "@sentry/rrweb@npm:^0.3.3":
   version: 0.3.3
   resolution: "@sentry/rrweb@npm:0.3.3"
@@ -3395,10 +3417,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/tracing@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/tracing@npm:7.29.0"
+  dependencies:
+    "@sentry/core": 7.29.0
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
+    tslib: ^1.9.3
+  checksum: 7ad9040664a8c65693aba2bdd9cecc8334ce25a296c01727d38649c7141106b78c92142626ce8e44983b4272e0f411010a3df99843a1af6d4f89e4f67ce6f57e
+  languageName: node
+  linkType: hard
+
 "@sentry/types@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/types@npm:7.13.0"
   checksum: 8bd94d1cf735af61a3cea77e7e925e487dc84b925fa1e1a0aa9a566096e5d99d3bb72c6ea2f03c20d7894824f35edbb8b25352b3a1c78e62729a77a93a1abf71
+  languageName: node
+  linkType: hard
+
+"@sentry/types@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/types@npm:7.29.0"
+  checksum: 53815b66662a193cfd7024b9fb2477afb8178a771aa59f3bef10578cc940a9d7207722f9f04e2ca65a8e118cef012ac42f4936aa921aacdfc00a914bec88b009
   languageName: node
   linkType: hard
 
@@ -3409,6 +3450,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/utils@npm:7.29.0"
+  dependencies:
+    "@sentry/types": 7.29.0
+    tslib: ^1.9.3
+  checksum: 9914a2129692a5713453437d75b957a18ad5a4ef8085776e5499208ad329dea8da27ee2e2b74fdc089a3831b4e2929f8e6c0f3bc75528f41023d85de5077f462
   languageName: node
   linkType: hard
 
@@ -8663,7 +8714,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-auto-import@npm:^2.4.1, ember-auto-import@npm:^2.4.3, ember-auto-import@npm:^2.5.0":
+"ember-auto-import@npm:^1.12.1 || ^2.4.3, ember-auto-import@npm:^2.4.1, ember-auto-import@npm:^2.4.3, ember-auto-import@npm:^2.5.0":
   version: 2.5.0
   resolution: "ember-auto-import@npm:2.5.0"
   dependencies:
@@ -8698,46 +8749,6 @@ __metadata:
     typescript-memoize: ^1.0.0-alpha.3
     walk-sync: ^3.0.0
   checksum: e9ebb9b6c078bdf0cb92dd68db5dbd15337219003256cf525dd948cd10054aea7f14aa2c4e26b3df369ff2cdc354969666920a2aca7113e92d0e1d2789711c6c
-  languageName: node
-  linkType: hard
-
-"ember-auto-import@npm:~1.12.1 || ~2.2.0":
-  version: 2.2.4
-  resolution: "ember-auto-import@npm:2.2.4"
-  dependencies:
-    "@babel/core": ^7.1.6
-    "@babel/plugin-proposal-class-properties": ^7.13.0
-    "@babel/plugin-proposal-decorators": ^7.13.5
-    "@babel/preset-env": ^7.10.2
-    "@babel/traverse": ^7.1.6
-    "@embroider/shared-internals": ^0.40.0
-    babel-loader: ^8.0.6
-    babel-plugin-ember-modules-api-polyfill: ^3.5.0
-    babel-plugin-htmlbars-inline-precompile: ^5.2.1
-    babel-plugin-syntax-dynamic-import: ^6.18.0
-    broccoli-debug: ^0.6.4
-    broccoli-funnel: ^3.0.8
-    broccoli-merge-trees: ^4.2.0
-    broccoli-plugin: ^4.0.0
-    broccoli-source: ^3.0.0
-    css-loader: ^5.2.0
-    debug: ^4.3.1
-    ember-cli-babel: ^7.0.0
-    fs-extra: ^6.0.1
-    fs-tree-diff: ^2.0.0
-    handlebars: ^4.3.1
-    js-string-escape: ^1.0.1
-    lodash: ^4.17.19
-    mkdirp: ^0.5.1
-    parse5: ^6.0.1
-    resolve: ^1.20.0
-    resolve-package-path: ^3.1.0
-    rimraf: ^2.6.2
-    semver: ^7.3.4
-    style-loader: ^2.0.0
-    typescript-memoize: ^1.0.0-alpha.3
-    walk-sync: ^0.3.3
-  checksum: 21f4e8f5a52764b0584cb2ea38a52f0c0b21c1ff09c12f6f0c904ad5e4be8b98063ce0f39eda69d0b1e77418c39341f7e6badc44552747566a6659dbb7fbf446
   languageName: node
   linkType: hard
 
@@ -8798,7 +8809,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-babel@npm:^7.0.0, ember-cli-babel@npm:^7.1.0, ember-cli-babel@npm:^7.1.2, ember-cli-babel@npm:^7.10.0, ember-cli-babel@npm:^7.13.0, ember-cli-babel@npm:^7.13.2, ember-cli-babel@npm:^7.17.2, ember-cli-babel@npm:^7.20.5, ember-cli-babel@npm:^7.22.1, ember-cli-babel@npm:^7.23.0, ember-cli-babel@npm:^7.23.1, ember-cli-babel@npm:^7.26.10, ember-cli-babel@npm:^7.26.11, ember-cli-babel@npm:^7.26.3, ember-cli-babel@npm:^7.26.5, ember-cli-babel@npm:^7.26.6, ember-cli-babel@npm:^7.7.3, ember-cli-babel@npm:~7.26.6":
+"ember-cli-babel@npm:^7.0.0, ember-cli-babel@npm:^7.1.0, ember-cli-babel@npm:^7.1.2, ember-cli-babel@npm:^7.10.0, ember-cli-babel@npm:^7.13.0, ember-cli-babel@npm:^7.13.2, ember-cli-babel@npm:^7.17.2, ember-cli-babel@npm:^7.20.5, ember-cli-babel@npm:^7.22.1, ember-cli-babel@npm:^7.23.0, ember-cli-babel@npm:^7.23.1, ember-cli-babel@npm:^7.26.10, ember-cli-babel@npm:^7.26.11, ember-cli-babel@npm:^7.26.3, ember-cli-babel@npm:^7.26.5, ember-cli-babel@npm:^7.26.6, ember-cli-babel@npm:^7.7.3":
   version: 7.26.11
   resolution: "ember-cli-babel@npm:7.26.11"
   dependencies:
@@ -9163,7 +9174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-typescript@npm:^5.1.0, ember-cli-typescript@npm:^5.2.1":
+"ember-cli-typescript@npm:^5.1.0, ember-cli-typescript@npm:^5.1.1, ember-cli-typescript@npm:^5.2.1":
   version: 5.2.1
   resolution: "ember-cli-typescript@npm:5.2.1"
   dependencies:
@@ -12283,7 +12294,7 @@ __metadata:
     "@sentry/browser": 7.13.0
     "@sentry/capacitor": 0.10.1
     "@sentry/core": 7.13.0
-    "@sentry/ember": 7.13.0
+    "@sentry/ember": 7.29.0
     "@sentry/hub": 7.13.0
     "@sentry/integrations": 7.13.0
     "@sentry/rrweb": ^0.3.3
@@ -14524,7 +14535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.10, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.17.5, lodash@npm:^4.7.0":
+"lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.17.5, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -17633,7 +17644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve-package-path@npm:^1.0.11, resolve-package-path@npm:^1.2.2, resolve-package-path@npm:^1.2.6":
+"resolve-package-path@npm:^1.0.11, resolve-package-path@npm:^1.2.6":
   version: 1.2.7
   resolution: "resolve-package-path@npm:1.2.7"
   dependencies:
