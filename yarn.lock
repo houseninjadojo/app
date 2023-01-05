@@ -3402,6 +3402,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/types@npm:7.29.0"
+  checksum: 53815b66662a193cfd7024b9fb2477afb8178a771aa59f3bef10578cc940a9d7207722f9f04e2ca65a8e118cef012ac42f4936aa921aacdfc00a914bec88b009
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.13.0":
   version: 7.13.0
   resolution: "@sentry/utils@npm:7.13.0"
@@ -3409,6 +3416,16 @@ __metadata:
     "@sentry/types": 7.13.0
     tslib: ^1.9.3
   checksum: e655e2bd444c9f8aedac4bc52e9a75bf74ef0086ffb1b9efc9cf6670aab9b0deca45e9d7c808e7d19e51ff4b40bcd178b6c5b2ea55e8cfb81da630db6b75bfe2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/utils@npm:7.29.0"
+  dependencies:
+    "@sentry/types": 7.29.0
+    tslib: ^1.9.3
+  checksum: 9914a2129692a5713453437d75b957a18ad5a4ef8085776e5499208ad329dea8da27ee2e2b74fdc089a3831b4e2929f8e6c0f3bc75528f41023d85de5077f462
   languageName: node
   linkType: hard
 
@@ -12289,7 +12306,7 @@ __metadata:
     "@sentry/rrweb": ^0.3.3
     "@sentry/tracing": 7.13.0
     "@sentry/types": 7.13.0
-    "@sentry/utils": 7.13.0
+    "@sentry/utils": 7.29.0
     "@tsconfig/ember": ^2.0.0
     "@types/branch-sdk": ^2.53.3
     "@types/canvas-confetti": ^1.6.0
