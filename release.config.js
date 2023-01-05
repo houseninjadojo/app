@@ -1,5 +1,5 @@
 module.exports = {
-  dryRun: false,
+  dryRun: true,
   debug: true,
   branches: [
     '+([0-9])?(.{+([0-9]),x}).x',
@@ -26,9 +26,8 @@ module.exports = {
       {
         assets: [
           'CHANGELOG.md',
-          'android/app/build.gradle',
           'package.json',
-          'yarn.lock',
+          { path: 'android/app/build.gradle', label: "build.grade" },
         ]
       },
     ],
@@ -37,8 +36,8 @@ module.exports = {
       {
         assets: [
           'CHANGELOG.md',
-          'android/app/build.gradle',
           'package.json',
+          { path: 'android/app/build.gradle', label: "build.grade" },
         ],
       },
     ],
