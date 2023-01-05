@@ -3,6 +3,7 @@ name: ci / release / generate
 concurrency: release-lock
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows:
       - "ci / tests"
