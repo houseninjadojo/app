@@ -1,5 +1,5 @@
 module.exports = {
-  dryRun: true,
+  dryRun: false,
   debug: true,
   branches: [
     '+([0-9])?(.{+([0-9]),x}).x',
