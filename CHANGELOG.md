@@ -1,3 +1,10 @@
+## [1.28.9](https://github.com/houseninjadojo/app/compare/v1.28.8...v1.28.9) (2023-01-05)
+
+
+### Bug Fixes
+
+* **android:** parse JSON keys ([e773350](https://github.com/houseninjadojo/app/commit/e7733501bf08bd1837454f192053f514029f4f50))
+
 ## [1.28.8](https://github.com/houseninjadojo/app/compare/v1.28.7...v1.28.8) (2023-01-05)
 
 
