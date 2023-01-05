@@ -9,9 +9,11 @@ on:
       - "ci / tests"
     branches:
       - main
-      - semantic-release
     types:
       - completed
+  push:
+    branches:
+      - semantic-release
 
 jobs:
   semantic-release:
