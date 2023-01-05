@@ -92,9 +92,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
         .map((p) => p as CreditCard);
     }
 
-    console.log('user', user);
-    console.log('paymentMethods', paymentMethods);
-
     return paymentMethods;
   }
 
@@ -109,9 +106,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
         selected: c.isDefault,
       };
     });
-
-    console.log('allCards', allCards);
-    console.log('mappedCards', mappedCards);
 
     return {
       id: 'payment-methods',
