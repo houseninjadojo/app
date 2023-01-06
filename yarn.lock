@@ -1803,13 +1803,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-core@npm:4.29.0":
-  version: 4.29.0
-  resolution: "@datadog/browser-core@npm:4.29.0"
-  checksum: 9c1b5ce05c959e54476e78cead45b16e140dae4cbaacaedc038dcf69ca42a6f7cc3ea47574df351ec3cf09867c2e97a7d83a24919ee182e4ab80db9ba34e1e92
-  languageName: node
-  linkType: hard
-
 "@datadog/browser-core@npm:4.29.1":
   version: 4.29.1
   resolution: "@datadog/browser-core@npm:4.29.1"
@@ -1817,17 +1810,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-logs@npm:^4.29.0":
-  version: 4.29.0
-  resolution: "@datadog/browser-logs@npm:4.29.0"
+"@datadog/browser-logs@npm:^4.29.1":
+  version: 4.29.1
+  resolution: "@datadog/browser-logs@npm:4.29.1"
   dependencies:
-    "@datadog/browser-core": 4.29.0
+    "@datadog/browser-core": 4.29.1
   peerDependencies:
-    "@datadog/browser-rum": 4.29.0
+    "@datadog/browser-rum": 4.29.1
   peerDependenciesMeta:
     "@datadog/browser-rum":
       optional: true
-  checksum: d1098178696f38cf9c0de9721f6aba19cfcc3ff62db6f46d0fda18d0a3325e62d385a850facf1326c2bc81f4d1b9cff7c920901b83c2d1450e6cf407daf00bf5
+  checksum: 45e2cde795710d8d537e72eda166c5ed9b7c4ef54e842326db79d98a9fb0c72443d25ef7992423625d866f84c8a82929dce2fd27a128cb022977a78b73693999
   languageName: node
   linkType: hard
 
@@ -12289,7 +12282,7 @@ __metadata:
     "@capacitor/share": ^4.1.0
     "@capacitor/splash-screen": ^4.1.2
     "@capawesome/capacitor-file-picker": ^0.5.2
-    "@datadog/browser-logs": ^4.29.0
+    "@datadog/browser-logs": ^4.29.1
     "@datadog/browser-rum": ^4.29.1
     "@datadog/datadog-ci": ^2.2.0
     "@ember/jquery": ^2.0.0
