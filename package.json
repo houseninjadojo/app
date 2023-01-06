@@ -37,7 +37,7 @@
     "@babel/plugin-proposal-decorators": "^7.20.7",
     "@capacitor/cli": "4.6.1",
     "@datadog/browser-logs": "^4.29.0",
-    "@datadog/browser-rum": "^4.29.0",
+    "@datadog/browser-rum": "^4.29.1",
     "@datadog/datadog-ci": "^2.2.0",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
