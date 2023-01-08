@@ -6,29 +6,9 @@ on:
       - opened
       - reopened
       - synchronize
-    paths-ignore:
-      - 'android/**'
-      - 'ios/**'
-      - 'docs/**'
-      - '.github/**'
-      - '.vscode/**'
-      - 'bin/build.sh'
-      - 'vendor/ssl/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
   push:
     branches:
-      - main
-    paths-ignore:
-      - 'android/**'
-      - 'ios/**'
-      - 'docs/**'
-      - '.github/**'
-      - '.vscode/**'
-      - 'bin/build.sh'
-      - 'vendor/ssl/**'
-      - 'README.md'
-      - 'CHANGELOG.md'
+      - dependabot-selfupdate
 
 env:
   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
@@ -48,7 +28,31 @@ env:
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
 jobs:
+  skip-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            android/**
+            ios/**
+            docs/**
+            .github/**
+            .vscode/**
+            bin/build.sh
+            vendor/ssl/**
+            README.md
+            CHANGELOG.md
+      - name: Create annotation for build error
+        run: echo "::error::No files were changed, skipping build."
+
   test:
+    needs: [skip-check]
     name: ember test
     runs-on: ubuntu-latest
     timeout-minutes: 10
