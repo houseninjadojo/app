@@ -11,11 +11,14 @@ import type Subscription from './subscription';
 import type User from './user';
 
 /**
- * Generic Parent Class for payment models
+ * A PaymentMethod is a credit card or other payment method that a user has
+ * associated with their account. PaymentMethods can be associated with
+ * Subscriptions, and can be used to pay for those Subscriptions.
  *
- * @see app/models/payment-method/card
+ * PaymentMethods are associated with Users via the inverse relationship
+ * `user.paymentMethods`.
  */
-export default class PaymentMethodModel extends Model {
+export default class PaymentMethod extends Model {
   @belongsTo('subscription', { async: true, inverse: 'paymentMethod' })
   declare subscription: AsyncBelongsTo<Subscription>;
 

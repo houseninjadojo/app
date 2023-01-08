@@ -134,6 +134,11 @@ export default class IntercomService extends Service {
     }
   }
 
+  /**
+   * Shows the Intercom composer with a pre-filled message.
+   *
+   * @param message - The pre-filled message.
+   */
   async showComposer(message: string): Promise<void> {
     debug('[intercom] showing composer');
     startSpan({ op: 'intercom.show.composer' })?.finish();
