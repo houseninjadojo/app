@@ -30,6 +30,8 @@ env:
 jobs:
   skip-check:
     runs-on: ubuntu-latest
+    outputs:
+      should-skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -48,11 +50,9 @@ jobs:
             vendor/ssl/**
             README.md
             CHANGELOG.md
-      - name: Create annotation for build error
-        run: echo "::error::No files were changed, skipping build."
 
   hbs:
-    needs: [skip-check]
+    if: ! ${{ needs.skip-check.outputs.should-skip }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -64,7 +64,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:hbs
   js:
-    needs: [skip-check]
+    if: ! ${{ needs.skip-check.outputs.should-skip }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -76,7 +76,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:js
   css:
-    needs: [skip-check]
+    if: ! ${{ needs.skip-check.outputs.should-skip }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
