@@ -6,9 +6,29 @@ on:
       - opened
       - reopened
       - synchronize
+    paths-ignore:
+      - 'android/**'
+      - 'ios/**'
+      - 'docs/**'
+      - '.github/**'
+      - '.vscode/**'
+      - 'bin/build.sh'
+      - 'vendor/ssl/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
   push:
     branches:
       - main
+    paths-ignore:
+      - 'android/**'
+      - 'ios/**'
+      - 'docs/**'
+      - '.github/**'
+      - '.vscode/**'
+      - 'bin/build.sh'
+      - 'vendor/ssl/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
 
 env:
   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
