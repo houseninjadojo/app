@@ -52,7 +52,7 @@ jobs:
             CHANGELOG.md
 
   hbs:
-    if: ! ${{ needs.skip-check.outputs.should-skip }}
+    if: needs.skip-check.outputs.should-skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -64,7 +64,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:hbs
   js:
-    if: ! ${{ needs.skip-check.outputs.should-skip }}
+    if: needs.skip-check.outputs.should-skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -76,7 +76,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint:js
   css:
-    if: ! ${{ needs.skip-check.outputs.should-skip }}
+    if: needs.skip-check.outputs.should-skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

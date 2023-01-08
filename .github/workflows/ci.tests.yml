@@ -52,7 +52,7 @@ jobs:
             CHANGELOG.md
 
   test:
-    if: ! ${{ needs.skip-check.outputs.should-skip }}
+    if: needs.skip-check.outputs.should-skip == 'false'
     name: ember test
     runs-on: ubuntu-latest
     timeout-minutes: 10
