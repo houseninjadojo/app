@@ -13,7 +13,6 @@ on:
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-  CACHE_KEY_YARN: build-yarn-${{ github.run_id }}
 
 jobs:
   build:
