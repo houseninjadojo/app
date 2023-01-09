@@ -136,7 +136,7 @@ jobs:
     needs: web
     if: success()
     name: build / ios
-    uses: ./.github/workflows/cd.release.ios.yml@buildcache
+    uses: ./.github/workflows/cd.release.ios.yml
     with:
       datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
       sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -146,7 +146,7 @@ jobs:
     needs: web
     if: success()
     name: build / android
-    uses: ./.github/workflows/cd.release.android.yml@buildcache
+    uses: ./.github/workflows/cd.release.android.yml
     with:
       datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
       sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
