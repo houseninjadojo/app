@@ -202,7 +202,12 @@ jobs:
         id: restore-yarn
         with:
           enableCrossOsArchive: true
-          path: .
+          path: |
+            package.json
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
+            node_modules/
           key: build-yarn-${{ github.run_id }}
           restore-keys: |
             build-yarn-
@@ -210,7 +215,7 @@ jobs:
         id: restore-fastlane
         with:
           enableCrossOsArchive: true
-          path: .
+          path: fastlane/
           key: build-fastlane-${{ github.run_id }}
           restore-keys: |
             build-fastlane-
@@ -218,7 +223,7 @@ jobs:
         id: restore-ios
         with:
           enableCrossOsArchive: true
-          path: .
+          path: ios/
           key: build-ios-${{ github.run_id }}
           restore-keys: |
             build-ios-
