@@ -101,23 +101,23 @@ jobs:
               service: "github-actions"
 
   web:
-    needs: build
+    needs: release
     if: success()
-    name: web
+    name: release
     uses: ./.github/workflows/cd.release.web.yml
     secrets: inherit
 
   ios:
     needs: build
     if: success()
-    name: build / ios
+    name: build + release
     uses: ./.github/workflows/cd.release.ios.yml
     secrets: inherit
 
   android:
     needs: build
     if: success()
-    name: build / android
+    name: build + release
     uses: ./.github/workflows/cd.release.android.yml
     secrets: inherit
 

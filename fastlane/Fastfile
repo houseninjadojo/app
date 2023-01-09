@@ -98,7 +98,7 @@ platform :android do
   lane :internal do
     increment_version
     build
-    upload(track: "internal", release_status: "draft")
+    # upload(track: "internal", release_status: "draft")
   end
 
   desc "Release"
