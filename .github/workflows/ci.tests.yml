@@ -31,7 +31,7 @@ jobs:
   skip-check:
     runs-on: ubuntu-latest
     outputs:
-      should-skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
+      should-skip: ${{ steps.changed-files.outputs.only_changed == true }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -50,12 +50,13 @@ jobs:
             vendor/ssl/**
             README.md
             CHANGELOG.md
-      - run: echo $ONLY_CHANGED
+      - run: echo $ONLY_CHANGED_BOOL $ONLY_CHANGED_STR
         env:
-          ONLY_CHANGED: ${{ steps.changed-files.outputs.only_changed }}
+          ONLY_CHANGED_BOOL: ${{ steps.changed-files.outputs.only_changed == true }}
+          ONLY_CHANGED_STR: ${{ steps.changed-files.outputs.only_changed == 'true' }}
 
   test:
-    if: needs.skip-check.outputs.should-skip == 'false'
+    if: needs.skip-check.outputs.should-skip == false
     name: ember test
     runs-on: ubuntu-latest
     timeout-minutes: 10
