@@ -85,44 +85,79 @@ jobs:
           cp .env.vault ios/App/.env.vault
           cp .env.vault android/app/.env.vault
           cp .env.vault fastlane/.env.vault
-      - run: |
-          tar -czvf web.tar.gz dist
-          tar -czvf ios.tar.gz ios
-          tar -czvf android.tar.gz android
-          tar -czvf fastlane.tar.gz fastlane
-      - uses: actions/upload-artifact@v3
+      # - run: |
+      #     tar -czvf web.tar.gz dist
+      #     tar -czvf ios.tar.gz ios
+      #     tar -czvf android.tar.gz android
+      #     tar -czvf fastlane.tar.gz fastlane
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: package.json
+      #     path: package.json
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: yarn
+      #     path: |
+      #       yarn.lock
+      #       .yarnrc.yml
+      #       .yarn/
+      - uses: actions/cache/save@v3
         if: success()
+        id: cache-package-json
         with:
-          name: package.json
-          path: package.json
-      - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: yarn
           path: |
+            package.json
             yarn.lock
             .yarnrc.yml
             .yarn/
-      - uses: actions/upload-artifact@v3
+            node_modules/
+          key: build-yarn-${{ github.job }}
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: web.tar.gz
+      #     path: web.tar.gz
+      - uses: actions/cache/save@v3
         if: success()
+        id: cache-web
         with:
-          name: web.tar.gz
-          path: web.tar.gz
-      - uses: actions/upload-artifact@v3
+          path: dist/
+          key: build-web-${{ github.job }}
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: ios.tar.gz
+      #     path: ios.tar.gz
+      - uses: actions/cache/save@v3
         if: success()
+        id: cache-ios
         with:
-          name: ios.tar.gz
-          path: ios.tar.gz
-      - uses: actions/upload-artifact@v3
+          path: ios/
+          key: build-ios-${{ github.job }}
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: android.tar.gz
+      #     path: android.tar.gz
+      - uses: actions/cache/save@v3
         if: success()
+        id: cache-android
         with:
-          name: android.tar.gz
-          path: android.tar.gz
-      - uses: actions/upload-artifact@v3
+          path: android/
+          key: build-android-${{ github.job }}
+      # - uses: actions/upload-artifact@v3
+      #   if: success()
+      #   with:
+      #     name: fastlane.tar.gz
+      #     path: fastlane.tar.gz
+      - uses: actions/cache/save@v3
         if: success()
+        id: cache-fastlane
         with:
-          name: fastlane.tar.gz
-          path: fastlane.tar.gz
+          path: fastlane/
+          key: build-fastlane-${{ github.job }}
       - name: Datadog
         uses: masci/datadog@v1
         with:
@@ -157,25 +192,46 @@ jobs:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
-      - uses: actions/download-artifact@v3
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: package.json
+      #     path: .
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: yarn
+      #     path: .
+      - uses: actions/cache/restore@v3
+        id: restore-yarn
         with:
-          name: package.json
           path: .
-      - uses: actions/download-artifact@v3
+          key: |
+            build-yarn-${{ github.job }}
+            build-yarn-
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: fastlane.tar.gz
+      #     path: .
+      - uses: actions/cache/restore@v3
+        id: restore-fastlane
         with:
-          name: yarn
           path: .
-      - uses: actions/download-artifact@v3
+          key: |
+            build-fastlane-${{ github.job }}
+            build-fastlane-
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: ios.tar.gz
+      #     path: .
+      - uses: actions/cache/restore@v3
+        id: restore-ios
         with:
-          name: fastlane.tar.gz
           path: .
-      - uses: actions/download-artifact@v3
-        with:
-          name: ios.tar.gz
-          path: .
-      - run: |
-          tar -xzvf ios.tar.gz
-          tar -xzvf fastlane.tar.gz
+          key: |
+            build-ios-${{ github.job }}
+            build-ios-
+      # - run: |
+      #     tar -xzvf ios.tar.gz
+      #     tar -xzvf fastlane.tar.gz
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
