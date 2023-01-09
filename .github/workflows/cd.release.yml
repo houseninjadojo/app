@@ -6,9 +6,6 @@ on:
   release:
     types:
       - published
-  push:
-    branches:
-      - buildcache
 
 env:
   RUBY_VERSION: 3.0.3

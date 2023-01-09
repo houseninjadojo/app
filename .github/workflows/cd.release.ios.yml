@@ -89,12 +89,12 @@ jobs:
         if: success()
         with:
           name: House Ninja.ipa
-          path: 'ios/App/House Ninja.ipa'
+          path: 'House Ninja.ipa'
       - uses: actions/upload-artifact@v3
         if: success()
         with:
           name: House Ninja.app.dSYM.zip
-          path: 'ios/App/House Ninja.app.dSYM.zip'
+          path: 'House Ninja.app.dSYM.zip'
       - uses: actions/cache/save@v3
         id: save-pods
         with:
