@@ -205,9 +205,7 @@ jobs:
         id: restore-yarn
         with:
           path: .
-          key: |
-            ${{ env.CACHE_KEY_YARN }}
-            build-yarn-
+          key: ${{ env.CACHE_KEY_YARN }}
       # - uses: actions/download-artifact@v3
       #   with:
       #     name: fastlane.tar.gz
@@ -216,9 +214,7 @@ jobs:
         id: restore-fastlane
         with:
           path: .
-          key: |
-            build-fastlane-${{ github.run_id }}
-            build-fastlane-
+          key: build-fastlane-${{ github.run_id }}
       # - uses: actions/download-artifact@v3
       #   with:
       #     name: ios.tar.gz
@@ -227,9 +223,7 @@ jobs:
         id: restore-ios
         with:
           path: .
-          key: |
-            build-ios-${{ github.run_id }}
-            build-ios-
+          key: build-ios-${{ github.run_id }}
       # - run: |
       #     tar -xzvf ios.tar.gz
       #     tar -xzvf fastlane.tar.gz
