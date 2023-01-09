@@ -50,6 +50,9 @@ jobs:
             vendor/ssl/**
             README.md
             CHANGELOG.md
+      - run: echo $ONLY_CHANGED
+        env:
+          ONLY_CHANGED: ${{ steps.changed-files.outputs.only_changed }}
 
   test:
     if: needs.skip-check.outputs.should-skip == 'false'
