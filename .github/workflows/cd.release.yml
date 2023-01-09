@@ -97,15 +97,15 @@ jobs:
           logs: |
             - ddsource: "github"
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
-              message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              message: "{\"message\":\"[ci/cd] app - finished build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
 
-  # web:
-  #   needs: build
-  #   if: success()
-  #   name: release / web
-  #   uses: ./.github/workflows/cd.release.web.yml
-  #   secrets: inherit
+  web:
+    needs: build
+    if: success()
+    name: web
+    uses: ./.github/workflows/cd.release.web.yml
+    secrets: inherit
 
   ios:
     needs: build
@@ -122,7 +122,7 @@ jobs:
     secrets: inherit
 
   reporter:
-    needs: [build, ios, android]
+    needs: [web, ios, android]
     if: always()
     runs-on: ubuntu-latest
     steps:
