@@ -101,7 +101,7 @@ jobs:
               service: "github-actions"
 
   web:
-    needs: release
+    needs: build
     if: success()
     name: release
     uses: ./.github/workflows/cd.release.web.yml
