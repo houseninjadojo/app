@@ -222,7 +222,7 @@ jobs:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
       - uses: actions/cache/save@v3
-        if: ${{ step.restore-ios.outputs.cache-hit != 'true' }}
+        if: steps.restore-ios.outputs.cache-hit != 'true'
         id: save-pods
         with:
           path: ios/App/Pods
