@@ -16,8 +16,8 @@ env:
   CACHE_KEY_YARN: build-yarn-${{ github.run_id }}
 
 jobs:
-  web:
-    name: build / web
+  build:
+    name: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -31,7 +31,7 @@ jobs:
           logs: |
             - ddsource: "github"
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
-              message: "{\"message\":\"[ci/cd] app - starting web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              message: "{\"message\":\"[ci/cd] app - starting build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -45,37 +45,6 @@ jobs:
       - run: yarn build
         env:
           NODE_ENV: production
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@main
-      # - name: Create Sentry release
-      #   uses: getsentry/action-release@v1
-      #   env:
-      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      #     SENTRY_ORG: houseninja
-      #     SENTRY_PROJECT: app
-      #   with:
-      #     environment: production
-      #     sourcemaps: dist/assets
-      #     version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
-      #     url_prefix: ~/
-      #     finalize: false
-      # - name: upload datadog sourcemaps
-      #   run: yarn run upload:sourcemaps:datadog
-      #   env:
-      #     SERVICE: app
-      #     VERSION: ${{ steps.package-version.outputs.current-version }}
-      #     DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
-      #     DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-      # - name: Publish to Cloudflare Pages
-      #   uses: cloudflare/pages-action@1
-      #   with:
-      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      #     projectName: houseninja
-      #     directory: dist
-      #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -132,25 +101,37 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
 
+  web:
+    needs: build
+    if: success()
+    name: release / web
+    uses: ./.github/workflows/cd.release.web.yml
+    # with:
+    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
+    #   cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    #   cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
   ios:
-    needs: web
+    needs: build
     if: success()
     name: build / ios
     uses: ./.github/workflows/cd.release.ios.yml
-    with:
-      datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-      sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
+    # with:
+    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
 
   android:
-    needs: web
+    needs: build
     if: success()
     name: build / android
     uses: ./.github/workflows/cd.release.android.yml
-    with:
-      datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-      sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
+    # with:
+    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
 
   reporter:
     needs: [web, ios, android]

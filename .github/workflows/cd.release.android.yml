@@ -1,16 +1,9 @@
 on:
   workflow_call:
-    secrets:
-      datadog-api-key:
-        required: true
-      sentry-auth-token:
-        required: true
-      dotenv-it-token:
-        required: true
-
+    secrets: inherit
 env:
   RUBY_VERSION: 3.0.3
-  DATADOG_API_KEY: ${{ secrets.datadog-api-key }}
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
 jobs:
   android:
@@ -21,7 +14,7 @@ jobs:
       - name: Datadog
         uses: masci/datadog@v1
         with:
-          api-key: ${{ secrets.datadog-api-key }}
+          api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
@@ -29,7 +22,7 @@ jobs:
               service: "github-actions"
       - uses: mathieu-bour/setup-sentry-cli@v1.3.0
         with:
-          token: ${{ secrets.sentry-auth-token }}
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
       - uses: actions/cache/restore@v3
@@ -61,7 +54,7 @@ jobs:
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'fastlane/'
         env:
-          DOTENV_IT_TOKEN: ${{ secrets.dotenv-it-token }}
+          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN}}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
