@@ -122,7 +122,7 @@ jobs:
     secrets: inherit
 
   reporter:
-    needs: [web, ios, android]
+    needs: [build, ios, android]
     if: always()
     runs-on: ubuntu-latest
     steps:
