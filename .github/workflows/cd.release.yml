@@ -100,29 +100,26 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - finished web build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
 
-  web:
-    needs: build
-    if: success()
-    name: release / web
-    uses: ./.github/workflows/cd.release.web.yml
-    with:
-      secrets: inherit
+  # web:
+  #   needs: build
+  #   if: success()
+  #   name: release / web
+  #   uses: ./.github/workflows/cd.release.web.yml
+  #   secrets: inherit
 
   ios:
     needs: build
     if: success()
     name: build / ios
     uses: ./.github/workflows/cd.release.ios.yml
-    with:
-      secrets: inherit
+    secrets: inherit
 
   android:
     needs: build
     if: success()
     name: build / android
     uses: ./.github/workflows/cd.release.android.yml
-    with:
-      secrets: inherit
+    secrets: inherit
 
   reporter:
     needs: [web, ios, android]
