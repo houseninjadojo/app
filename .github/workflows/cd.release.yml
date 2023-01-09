@@ -113,7 +113,7 @@ jobs:
             .yarnrc.yml
             .yarn/
             node_modules/
-          key: build-yarn-${{ github.job }}
+          key: build-yarn-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -124,7 +124,7 @@ jobs:
         id: cache-web
         with:
           path: dist/
-          key: build-web-${{ github.job }}
+          key: build-web-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -135,7 +135,7 @@ jobs:
         id: cache-ios
         with:
           path: ios/
-          key: build-ios-${{ github.job }}
+          key: build-ios-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -146,7 +146,7 @@ jobs:
         id: cache-android
         with:
           path: android/
-          key: build-android-${{ github.job }}
+          key: build-android-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -157,7 +157,7 @@ jobs:
         id: cache-fastlane
         with:
           path: fastlane/
-          key: build-fastlane-${{ github.job }}
+          key: build-fastlane-${{ github.run_id }}
       - name: Datadog
         uses: masci/datadog@v1
         with:
@@ -205,7 +205,7 @@ jobs:
         with:
           path: .
           key: |
-            build-yarn-${{ github.job }}
+            build-yarn-${{ github.run_id }}
             build-yarn-
       # - uses: actions/download-artifact@v3
       #   with:
@@ -216,7 +216,7 @@ jobs:
         with:
           path: .
           key: |
-            build-fastlane-${{ github.job }}
+            build-fastlane-${{ github.run_id }}
             build-fastlane-
       # - uses: actions/download-artifact@v3
       #   with:
@@ -227,7 +227,7 @@ jobs:
         with:
           path: .
           key: |
-            build-ios-${{ github.job }}
+            build-ios-${{ github.run_id }}
             build-ios-
       # - run: |
       #     tar -xzvf ios.tar.gz
