@@ -108,13 +108,14 @@ jobs:
         if: success()
         id: cache-package-json
         with:
+          enableCrossOsArchive: true
           path: |
             package.json
             yarn.lock
             .yarnrc.yml
             .yarn/
             node_modules/
-          key: ${{ env.CACHE_KEY_YARN }}
+          key: build-yarn-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -124,6 +125,7 @@ jobs:
         if: success()
         id: cache-web
         with:
+          enableCrossOsArchive: true
           path: dist/
           key: build-web-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
@@ -135,6 +137,7 @@ jobs:
         if: success()
         id: cache-ios
         with:
+          enableCrossOsArchive: true
           path: ios/
           key: build-ios-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
@@ -146,6 +149,7 @@ jobs:
         if: success()
         id: cache-android
         with:
+          enableCrossOsArchive: true
           path: android/
           key: build-android-${{ github.run_id }}
       # - uses: actions/upload-artifact@v3
@@ -157,6 +161,7 @@ jobs:
         if: success()
         id: cache-fastlane
         with:
+          enableCrossOsArchive: true
           path: fastlane/
           key: build-fastlane-${{ github.run_id }}
       - name: Datadog
@@ -193,40 +198,30 @@ jobs:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: package.json
-      #     path: .
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: yarn
-      #     path: .
       - uses: actions/cache/restore@v3
         id: restore-yarn
         with:
+          enableCrossOsArchive: true
           path: .
-          key: ${{ env.CACHE_KEY_YARN }}
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: fastlane.tar.gz
-      #     path: .
+          key: build-yarn-${{ github.run_id }}
+          restore-keys: |
+            build-yarn-
       - uses: actions/cache/restore@v3
         id: restore-fastlane
         with:
+          enableCrossOsArchive: true
           path: .
           key: build-fastlane-${{ github.run_id }}
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: ios.tar.gz
-      #     path: .
+          restore-keys: |
+            build-fastlane-
       - uses: actions/cache/restore@v3
         id: restore-ios
         with:
+          enableCrossOsArchive: true
           path: .
           key: build-ios-${{ github.run_id }}
-      # - run: |
-      #     tar -xzvf ios.tar.gz
-      #     tar -xzvf fastlane.tar.gz
+          restore-keys: |
+            build-ios-
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -298,25 +293,27 @@ jobs:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
-      - uses: actions/download-artifact@v3
+      - uses: actions/cache/restore@v3
+        id: restore-yarn
         with:
-          name: package.json
           path: .
-      - uses: actions/download-artifact@v3
+          key: build-yarn-${{ github.run_id }}
+          restore-keys: |
+            build-yarn-
+      - uses: actions/cache/restore@v3
+        id: restore-fastlane
         with:
-          name: yarn
           path: .
-      - uses: actions/download-artifact@v3
+          key: build-fastlane-${{ github.run_id }}
+          restore-keys: |
+            build-fastlane-
+      - uses: actions/cache/restore@v3
+        id: restore-android
         with:
-          name: fastlane.tar.gz
           path: .
-      - uses: actions/download-artifact@v3
-        with:
-          name: android.tar.gz
-          path: .
-      - run: |
-          tar -xzvf android.tar.gz
-          tar -xzvf fastlane.tar.gz
+          key: build-android-${{ github.run_id }}
+          restore-keys: |
+            build-android-
       - uses: actions/setup-node@v3
         with:
           node-version: '16'

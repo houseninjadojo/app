@@ -35,46 +35,27 @@ jobs:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
           organization: houseninja
           project: app
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: package.json
-      #     path: .
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: yarn
-      #     path: .
       - uses: actions/cache/restore@v3
         id: restore-yarn
         with:
           path: .
-          key: |
-            build-yarn-${{ github.run_id }}
+          key: build-yarn-${{ github.run_id }}
+          restore-keys: |
             build-yarn-
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: fastlane.tar.gz
-      #     path: .
       - uses: actions/cache/restore@v3
         id: restore-fastlane
         with:
           path: .
-          key: |
-            build-fastlane-${{ github.run_id }}
+          key: build-fastlane-${{ github.run_id }}
+          restore-keys: |
             build-fastlane-
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: ios.tar.gz
-      #     path: .
       - uses: actions/cache/restore@v3
         id: restore-ios
         with:
           path: .
-          key: |
-            build-ios-${{ github.run_id }}
+          key: build-ios-${{ github.run_id }}
+          restore-keys: |
             build-ios-
-      # - run: |
-      #     tar -xzvf ios.tar.gz
-      #     tar -xzvf fastlane.tar.gz
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
