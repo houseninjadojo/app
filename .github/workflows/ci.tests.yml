@@ -8,7 +8,7 @@ on:
       - synchronize
   push:
     branches:
-      - dependabot-selfupdate
+      - main
 
 env:
   API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
