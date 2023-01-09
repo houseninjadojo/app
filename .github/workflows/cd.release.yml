@@ -106,32 +106,24 @@ jobs:
     if: success()
     name: release / web
     uses: ./.github/workflows/cd.release.web.yml
-    # with:
-    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
-    #   cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    #   cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    with:
+      secrets: inherit
 
   ios:
     needs: build
     if: success()
     name: build / ios
     uses: ./.github/workflows/cd.release.ios.yml
-    # with:
-    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
+    with:
+      secrets: inherit
 
   android:
     needs: build
     if: success()
     name: build / android
     uses: ./.github/workflows/cd.release.android.yml
-    # with:
-    #   datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-    #   sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-    #   dotenv-it-token: ${{ secrets.DOTENV_IT_TOKEN }}
+    with:
+      secrets: inherit
 
   reporter:
     needs: [web, ios, android]

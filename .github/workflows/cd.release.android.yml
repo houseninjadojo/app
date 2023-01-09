@@ -1,6 +1,6 @@
 on:
   workflow_call:
-    secrets: inherit
+
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
