@@ -1,3 +1,10 @@
+## [1.28.11](https://github.com/houseninjadojo/app/compare/v1.28.10...v1.28.11) (2023-01-09)
+
+
+### Bug Fixes
+
+* **ci/cd:** buildcache ([#1524](https://github.com/houseninjadojo/app/issues/1524)) ([af0b2f1](https://github.com/houseninjadojo/app/commit/af0b2f131ba6f81e76d050497f4d69aa41c437fa))
+
 ## [1.28.10](https://github.com/houseninjadojo/app/compare/v1.28.9...v1.28.10) (2023-01-05)
 
 
