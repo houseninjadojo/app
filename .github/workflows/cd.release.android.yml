@@ -1,5 +1,12 @@
 on:
   workflow_call:
+    secrets:
+      DATADOG_API_KEY:
+        required: true
+      SENTRY_AUTH_TOKEN:
+        required: true
+      DOTENV_IT_TOKEN:
+        required: true
 
 env:
   RUBY_VERSION: 3.0.3
