@@ -13,6 +13,7 @@ on:
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  YARN_CACHE_KEY: build-yarn-${{ github.run_id }}
 
 jobs:
   web:
@@ -113,7 +114,7 @@ jobs:
             .yarnrc.yml
             .yarn/
             node_modules/
-          key: build-yarn-${{ github.run_id }}
+          key: ${{ env.YARN_CACHE_KEY }}
       # - uses: actions/upload-artifact@v3
       #   if: success()
       #   with:
@@ -205,7 +206,7 @@ jobs:
         with:
           path: .
           key: |
-            build-yarn-${{ github.run_id }}
+            ${{ env.YARN_CACHE_KEY }}
             build-yarn-
       # - uses: actions/download-artifact@v3
       #   with:
