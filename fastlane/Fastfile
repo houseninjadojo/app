@@ -47,6 +47,7 @@ sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
 xcode_project_path      = "ios/App/App.xcodeproj"
 xcode_workspace         = "ios/App/App.xcworkspace"
+buildcache_xcargs       = "CC='clang' CPLUSPLUS='clang++' LD='clang' LDPLUSPLUS='clang++'"
 
 # get version
 package      = load_json(json_path: "package.json")
@@ -125,9 +126,11 @@ end
 platform :ios do
   desc "build app"
   lane :build do
+    xcargs = ENV["CI"] ? buildcache_xcargs : nil
     build_app(
       scheme: scheme,
       workspace: xcode_workspace,
+      xcargs: xcargs,
     )
   end
 
@@ -143,16 +146,16 @@ platform :ios do
 
   desc "Sandbox Release"
   lane :sandbox do
-    initialize_sentry
-    start_time = Time.now.to_i
+    # initialize_sentry
+    # start_time = Time.now.to_i
     setup_ci if ENV["CI"]
     api_key = fetch_api_key
     sign_code(api_key: api_key)
     increment_version
     build
-    end_time = Time.now.to_i
-    upload(api_key: api_key)
-    finalize_sentry(start_time: start_time, end_time: end_time)
+    # end_time = Time.now.to_i
+    # upload(api_key: api_key)
+    # finalize_sentry(start_time: start_time, end_time: end_time)
   end
 
   private_lane :fetch_api_key do

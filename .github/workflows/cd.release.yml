@@ -6,6 +6,9 @@ on:
   release:
     types:
       - published
+  push:
+    branches:
+      - buildcache
 
 env:
   RUBY_VERSION: 3.0.3
@@ -44,34 +47,34 @@ jobs:
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
-      - name: Create Sentry release
-        uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: houseninja
-          SENTRY_PROJECT: app
-        with:
-          environment: production
-          sourcemaps: dist/assets
-          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
-          url_prefix: ~/
-          finalize: false
-      - name: upload datadog sourcemaps
-        run: yarn run upload:sourcemaps:datadog
-        env:
-          SERVICE: app
-          VERSION: ${{ steps.package-version.outputs.current-version }}
-          DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
-          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: houseninja
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+      # - name: Create Sentry release
+      #   uses: getsentry/action-release@v1
+      #   env:
+      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      #     SENTRY_ORG: houseninja
+      #     SENTRY_PROJECT: app
+      #   with:
+      #     environment: production
+      #     sourcemaps: dist/assets
+      #     version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+      #     url_prefix: ~/
+      #     finalize: false
+      # - name: upload datadog sourcemaps
+      #   run: yarn run upload:sourcemaps:datadog
+      #   env:
+      #     SERVICE: app
+      #     VERSION: ${{ steps.package-version.outputs.current-version }}
+      #     DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
+      #     DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      # - name: Publish to Cloudflare Pages
+      #   uses: cloudflare/pages-action@1
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      #     projectName: houseninja
+      #     directory: dist
+      #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -148,6 +151,7 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
+      - uses: mikehardy/buildcache-action@v1
       - uses: mathieu-bour/setup-sentry-cli@v1.3.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -223,7 +227,8 @@ jobs:
 
   android:
     needs: web
-    if: success()
+    # if: success()
+    if: failure()
     runs-on: ubuntu-latest
     name: build / android
     timeout-minutes: 30
