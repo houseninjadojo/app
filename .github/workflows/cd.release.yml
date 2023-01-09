@@ -338,7 +338,7 @@ jobs:
     runs-on: ubuntu-latest
     name: cleanup
     steps:
-      - uses: geekyeggo/delete-artifact@v1
+      - uses: geekyeggo/delete-artifact@v2
         name: clean artifacts
         with:
           name: |
