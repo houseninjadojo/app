@@ -13,12 +13,10 @@ env:
   DATADOG_API_KEY: ${{ secrets.datadog-api-key }}
 
 jobs:
-  ios:
-    runs-on: macos-12
-    name: build / ios
+  android:
+    runs-on: ubuntu-latest
+    name: build / android
     timeout-minutes: 30
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
       - name: Datadog
         uses: masci/datadog@v1
@@ -27,9 +25,8 @@ jobs:
           logs: |
             - ddsource: "github"
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
-              message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              message: "{\"message\":\"[ci/cd] app - starting android build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      - uses: mikehardy/buildcache-action@v1
       - uses: mathieu-bour/setup-sentry-cli@v1.3.0
         with:
           token: ${{ secrets.sentry-auth-token }}
@@ -55,26 +52,12 @@ jobs:
           restore-keys: |
             build-fastlane-
       - uses: actions/cache/restore@v3
-        id: restore-ios
+        id: restore-android
         with:
-          path: ios/
-          key: build-ios-${{ github.run_id }}
+          path: android/
+          key: build-android-${{ github.run_id }}
           restore-keys: |
-            build-ios-
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
-          working-directory: 'ios/App'
-      - uses: actions/cache/restore@v3
-        id: restore-pods
-        with:
-          path: ios/App/Pods
-          key: build-pods-${{ hashFiles('ios/App/Podfile.lock') }}
-          restore-keys: |
-            build-pods-
-      - run: pod install --deployment
-        working-directory: 'ios/App'
+            build-android-
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
         working-directory: 'fastlane/'
         env:
@@ -84,29 +67,19 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'fastlane/'
-      - run: bundle exec fastlane ios sandbox
+      - run: bundle exec fastlane android internal
         working-directory: 'fastlane/'
       - uses: actions/upload-artifact@v3
         if: success()
         with:
-          name: House Ninja.ipa
-          path: 'ios/App/House Ninja.ipa'
-      - uses: actions/upload-artifact@v3
-        if: success()
-        with:
-          name: House Ninja.app.dSYM.zip
-          path: 'ios/App/House Ninja.app.dSYM.zip'
-      - uses: actions/cache/save@v3
-        id: save-pods
-        with:
-          path: ios/App/Pods
-          key: build-pods-${{ hashFiles('ios/App/Podfile.lock') }}
+          name: app-release.aab
+          path: 'android/app/build/outputs/bundle/release/app-release.aab'
       - name: Datadog
         uses: masci/datadog@v1
         with:
-          api-key: ${{ secrets.datadog-api-key }}
+          api-key: ${{ secrets.DATADOG_API_KEY }}
           logs: |
             - ddsource: "github"
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
-              message: "{\"message\":\"[ci/cd] app - finished ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              message: "{\"message\":\"[ci/cd] app - finished android build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
