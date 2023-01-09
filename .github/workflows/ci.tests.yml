@@ -53,7 +53,7 @@ jobs:
 
   test:
     needs: skip-check
-    if: needs.skip-check.outputs.should-skip == 'true'
+    if: needs.skip-check.outputs.should-skip == 'false'
     name: ember test
     runs-on: ubuntu-latest
     timeout-minutes: 10
