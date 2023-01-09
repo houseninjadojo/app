@@ -182,7 +182,7 @@
     "@capacitor/push-notifications": "^4.1.2",
     "@capacitor/share": "^4.1.0",
     "@capacitor/splash-screen": "^4.1.2",
-    "@capawesome/capacitor-file-picker": "^0.5.5",
+    "@capawesome/capacitor-file-picker": "^0.5.6",
     "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "@houseninja/capacitor-intercom": "4.3.0",
     "@houseninja/capacitor-mixpanel": "^2.0.0",

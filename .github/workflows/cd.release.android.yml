@@ -1,0 +1,114 @@
+on:
+  workflow_call:
+    secrets:
+      DATADOG_API_KEY:
+        required: true
+      SENTRY_AUTH_TOKEN:
+        required: true
+      DOTENV_IT_TOKEN:
+        required: true
+
+env:
+  RUBY_VERSION: 3.0.3
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - starting android build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
+      - uses: mathieu-bour/setup-sentry-cli@v1.3.0
+        with:
+          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          organization: houseninja
+          project: app
+      - uses: actions/cache/restore@v3
+        id: restore-yarn
+        with:
+          path: |
+            package.json
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
+            node_modules/
+          key: build-yarn-${{ github.run_id }}
+          restore-keys: |
+            build-yarn-
+      - uses: actions/cache/restore@v3
+        id: restore-fastlane
+        with:
+          path: fastlane/
+          key: build-fastlane-${{ github.run_id }}
+          restore-keys: |
+            build-fastlane-
+      - uses: actions/cache/restore@v3
+        id: restore-android
+        with:
+          path: android/
+          key: build-android-${{ github.run_id }}
+          restore-keys: |
+            build-android-
+      - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
+        working-directory: 'fastlane/'
+        env:
+          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN}}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+          working-directory: 'fastlane/'
+      # Gradle cache
+      - name: Cache Gradle packages
+        id: restore-gradle
+        uses: actions/cache@v3
+        continue-on-error: true
+        with:
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+            android/.gradle/*
+          key: cache-gradle-${{ github.run_id }}
+      - uses: actions/cache/restore@v3
+        id: restore-android-build-cache
+        with:
+          path: |
+            android/app/build/generated/*
+            android/app/build/intermediates/*
+            android/app/build/tmp/*
+          key: build-cache-android-${{ github.run_id }}
+          restore-keys: |
+            build-cache-android-
+      - run: bundle exec fastlane android internal
+        working-directory: 'fastlane/'
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: app-release.aab
+          path: 'android/app/build/outputs/bundle/release/app-release.aab'
+      - uses: actions/cache/save@v3
+        id: cache-android-build
+        with:
+          path: |
+            android/app/build/generated/*
+            android/app/build/intermediates/*
+            android/app/build/tmp/*
+          key: build-cache-android-${{ github.run_id }}
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished android build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"

@@ -47,6 +47,7 @@ sentry_org_slug         = "houseninja"
 sentry_project_slug     = "app"
 xcode_project_path      = "ios/App/App.xcodeproj"
 xcode_workspace         = "ios/App/App.xcworkspace"
+buildcache_xcargs       = "CC='clang' CPLUSPLUS='clang++' LD='clang' LDPLUSPLUS='clang++'"
 
 # get version
 package      = load_json(json_path: "package.json")
@@ -125,9 +126,11 @@ end
 platform :ios do
   desc "build app"
   lane :build do
+    xcargs = ENV["CI"] ? buildcache_xcargs : nil
     build_app(
       scheme: scheme,
       workspace: xcode_workspace,
+      xcargs: xcargs,
     )
   end
 

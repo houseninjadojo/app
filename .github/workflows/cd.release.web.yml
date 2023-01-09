@@ -1,0 +1,81 @@
+on:
+  workflow_call:
+    secrets:
+      DATADOG_API_KEY:
+        required: true
+      SENTRY_AUTH_TOKEN:
+        required: true
+      DOTENV_IT_TOKEN:
+        required: true
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+      CLOUDFLARE_API_TOKEN:
+        required: true
+
+env:
+  RUBY_VERSION: 3.0.3
+  DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - releasing to web\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: houseninja
+          SENTRY_PROJECT: app
+        with:
+          environment: production
+          sourcemaps: dist/assets
+          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
+          url_prefix: ~/
+          finalize: false
+      - name: upload datadog sourcemaps
+        run: yarn run upload:sourcemaps:datadog
+        env:
+          SERVICE: app
+          VERSION: ${{ steps.package-version.outputs.current-version }}
+          DD_SOURCEMAP_PREFIX: https://app.houseninja.co/
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: houseninja
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+      - name: Datadog
+        uses: masci/datadog@v1
+        with:
+          api-key: ${{ secrets.DATADOG_API_KEY }}
+          logs: |
+            - ddsource: "github"
+              ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
+              message: "{\"message\":\"[ci/cd] app - finished web release\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
+              service: "github-actions"

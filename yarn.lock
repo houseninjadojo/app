@@ -1772,12 +1772,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capawesome/capacitor-file-picker@npm:^0.5.5":
-  version: 0.5.5
-  resolution: "@capawesome/capacitor-file-picker@npm:0.5.5"
+"@capawesome/capacitor-file-picker@npm:^0.5.6":
+  version: 0.5.6
+  resolution: "@capawesome/capacitor-file-picker@npm:0.5.6"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: 51b4348eff8d60b646bb432af51c72fbc6ee0d0810f1a59a35fb4562056c836a6df62dccd99d2354185a450b996fc2d917c567e48b30f1b6dc9d44a8161be328
+  checksum: ebd2b279f4af89838b9f66cb8dc0f1aa0d49455b7ca118c41f3e93e8233c5d52a1d7705b335915bb50ef3e197e1f3432a9147d9647a83521fcb1f2bda02bf339
   languageName: node
   linkType: hard
 
@@ -12281,7 +12281,7 @@ __metadata:
     "@capacitor/push-notifications": ^4.1.2
     "@capacitor/share": ^4.1.0
     "@capacitor/splash-screen": ^4.1.2
-    "@capawesome/capacitor-file-picker": ^0.5.5
+    "@capawesome/capacitor-file-picker": ^0.5.6
     "@datadog/browser-logs": ^4.29.1
     "@datadog/browser-rum": ^4.29.1
     "@datadog/datadog-ci": ^2.2.0

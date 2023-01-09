@@ -4,6 +4,9 @@ require('dotenv').config();
 // eslint-disable-next-line
 const environment = process.env.NODE_ENV || 'development';
 
+const serverUrl =
+  environment === 'development' ? process.env.CAPACITOR_SERVER_URL : undefined;
+
 /**
  * Capactior Configuration
  * https://capacitorjs.com/docs/config
@@ -33,9 +36,9 @@ const ios = {
 const server = {
   hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
   iosScheme: process.env.APP_SCHEME,
-  androidScheme: process.env.APP_SCHEME,
+  androidScheme: 'http',
   cleartext: environment === 'development',
-  url: process.env.CAPACITOR_SERVER_URL,
+  url: serverUrl,
   allowNavigation: [
     'localhost:4200',
     'auth.houseninja.co',
