@@ -86,24 +86,6 @@ jobs:
           cp .env.vault ios/App/.env.vault
           cp .env.vault android/app/.env.vault
           cp .env.vault fastlane/.env.vault
-      # - run: |
-      #     tar -czvf web.tar.gz dist
-      #     tar -czvf ios.tar.gz ios
-      #     tar -czvf android.tar.gz android
-      #     tar -czvf fastlane.tar.gz fastlane
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: package.json
-      #     path: package.json
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: yarn
-      #     path: |
-      #       yarn.lock
-      #       .yarnrc.yml
-      #       .yarn/
       - uses: actions/cache/save@v3
         if: success()
         id: cache-package-json
@@ -116,52 +98,28 @@ jobs:
             .yarn/
             node_modules/
           key: build-yarn-${{ github.run_id }}
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: web.tar.gz
-      #     path: web.tar.gz
       - uses: actions/cache/save@v3
         if: success()
         id: cache-web
         with:
-          enableCrossOsArchive: true
           path: dist/
           key: build-web-${{ github.run_id }}
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: ios.tar.gz
-      #     path: ios.tar.gz
       - uses: actions/cache/save@v3
         if: success()
         id: cache-ios
         with:
-          enableCrossOsArchive: true
           path: ios/
           key: build-ios-${{ github.run_id }}
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: android.tar.gz
-      #     path: android.tar.gz
       - uses: actions/cache/save@v3
         if: success()
         id: cache-android
         with:
-          enableCrossOsArchive: true
           path: android/
           key: build-android-${{ github.run_id }}
-      # - uses: actions/upload-artifact@v3
-      #   if: success()
-      #   with:
-      #     name: fastlane.tar.gz
-      #     path: fastlane.tar.gz
       - uses: actions/cache/save@v3
         if: success()
         id: cache-fastlane
         with:
-          enableCrossOsArchive: true
           path: fastlane/
           key: build-fastlane-${{ github.run_id }}
       - name: Datadog
@@ -201,7 +159,6 @@ jobs:
       - uses: actions/cache/restore@v3
         id: restore-yarn
         with:
-          enableCrossOsArchive: true
           path: |
             package.json
             yarn.lock
@@ -214,7 +171,6 @@ jobs:
       - uses: actions/cache/restore@v3
         id: restore-fastlane
         with:
-          enableCrossOsArchive: true
           path: fastlane/
           key: build-fastlane-${{ github.run_id }}
           restore-keys: |
@@ -222,27 +178,26 @@ jobs:
       - uses: actions/cache/restore@v3
         id: restore-ios
         with:
-          enableCrossOsArchive: true
           path: ios/
           key: build-ios-${{ github.run_id }}
           restore-keys: |
             build-ios-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn workspaces focus --production
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '16'
+      # - run: yarn workspaces focus --production
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'ios/App'
-      - uses: actions/cache@v3
+      - uses: actions/cache/restore@v3
+        id: restore-pods
         with:
           path: ios/App/Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('ios/App/Podfile.lock') }}
+          key: build-pods-${{ hashFiles('ios/App/Podfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pods-
+            build-pods-
       - run: pod install --deployment
         working-directory: 'ios/App'
       - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
@@ -266,6 +221,12 @@ jobs:
         with:
           name: House Ninja.app.dSYM.zip
           path: 'ios/App/House Ninja.app.dSYM.zip'
+      - uses: actions/cache/save@v3
+        if: ${{ step.restore-ios.outputs.cache-hit != 'true' }}
+        id: save-pods
+        with:
+          path: ios/App/Pods
+          key: build-pods-${{ hashFiles('ios/App/Podfile.lock') }}
       - name: Datadog
         uses: masci/datadog@v1
         with:
