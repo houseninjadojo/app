@@ -1810,17 +1810,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-logs@npm:^4.29.1":
-  version: 4.29.1
-  resolution: "@datadog/browser-logs@npm:4.29.1"
+"@datadog/browser-core@npm:4.30.0":
+  version: 4.30.0
+  resolution: "@datadog/browser-core@npm:4.30.0"
+  checksum: 3b5259eba2dd1807f9a37a86f948c035c4ec503b1a7f4836556d2431a6fbba56c19e1ae704957ba13b65948186ad4278cb14479b277282c093b2fe6927ae8651
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-logs@npm:^4.30.0":
+  version: 4.30.0
+  resolution: "@datadog/browser-logs@npm:4.30.0"
   dependencies:
-    "@datadog/browser-core": 4.29.1
+    "@datadog/browser-core": 4.30.0
   peerDependencies:
-    "@datadog/browser-rum": 4.29.1
+    "@datadog/browser-rum": 4.30.0
   peerDependenciesMeta:
     "@datadog/browser-rum":
       optional: true
-  checksum: 45e2cde795710d8d537e72eda166c5ed9b7c4ef54e842326db79d98a9fb0c72443d25ef7992423625d866f84c8a82929dce2fd27a128cb022977a78b73693999
+  checksum: 48bbd9f485e8ceb1dd729c21f85516a95dc36609631fb24ecaf96555c5c05e3ef1acf4f0f29af7e089a5740b46f87e4e033c5711db02ba6fcb24c5ffbb4b901c
   languageName: node
   linkType: hard
 
@@ -12282,7 +12289,7 @@ __metadata:
     "@capacitor/share": ^4.1.0
     "@capacitor/splash-screen": ^4.1.2
     "@capawesome/capacitor-file-picker": ^0.5.6
-    "@datadog/browser-logs": ^4.29.1
+    "@datadog/browser-logs": ^4.30.0
     "@datadog/browser-rum": ^4.29.1
     "@datadog/datadog-ci": ^2.2.0
     "@ember/jquery": ^2.0.0
