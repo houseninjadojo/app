@@ -1,3 +1,10 @@
+## [1.28.18](https://github.com/houseninjadojo/app/compare/v1.28.17...v1.28.18) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** try startsWith ([a167687](https://github.com/houseninjadojo/app/commit/a167687f1a2ff9f80746f4dc849cd8c9f9ad131f))
+
 ## [1.28.17](https://github.com/houseninjadojo/app/compare/v1.28.16...v1.28.17) (2023-01-10)
 
 
