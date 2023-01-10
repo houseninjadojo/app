@@ -1,3 +1,10 @@
+## [1.28.16](https://github.com/houseninjadojo/app/compare/v1.28.15...v1.28.16) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** loosen restrictions ([bae7d62](https://github.com/houseninjadojo/app/commit/bae7d625f58f3dde3b5da7f7d4d835abc396c43d))
+
 ## [1.28.15](https://github.com/houseninjadojo/app/compare/v1.28.14...v1.28.15) (2023-01-10)
 
 
