@@ -1,3 +1,10 @@
+## [1.28.12](https://github.com/houseninjadojo/app/compare/v1.28.11...v1.28.12) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** web release workflow ([#1525](https://github.com/houseninjadojo/app/issues/1525)) ([c59451a](https://github.com/houseninjadojo/app/commit/c59451a7e9ab910c82b3ed0bfdce542fe86b1275))
+
 ## [1.28.11](https://github.com/houseninjadojo/app/compare/v1.28.10...v1.28.11) (2023-01-09)
 
 
