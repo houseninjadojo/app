@@ -21,7 +21,7 @@ jobs:
     env:
       EVENT_NAME: ${{ github.event_name }}
       COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-      STARTS_WITH: ${{ startsWith('chore(release)', github.event.head_commit.message) }}
+      STARTS_WITH: ${{ contains("chore(release)", github.event.head_commit.message) }}
     steps:
       - run: echo $EVENT_NAME
       - run: echo $COMMIT_MESSAGE
@@ -30,9 +30,7 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: >-
-      github.event_name == 'push' &&
-      startsWith('chore(release)', github.event.head_commit.message)
+    if: ${{ github.event_name == 'push' && contains("chore(release)", github.event.head_commit.message) }}
     permissions:
       contents: read
       deployments: write
