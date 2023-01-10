@@ -20,8 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     if: |
-      github.event.head_commit.author.name == 'semantic-release-bot' &&
-      contains('chore(release):', github.event.head_commit.message)
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.head_commit.author.name == 'semantic-release-bot' &&
+      contains('chore(release)', github.event.head_commit.message))
     permissions:
       contents: read
       deployments: write
@@ -164,15 +165,15 @@ jobs:
                 - "status:failure"
                 - "env:production"
 
-  cleanup:
-    needs: [ios, android]
-    if: always()
-    runs-on: ubuntu-latest
-    name: cleanup
-    steps:
-      - uses: geekyeggo/delete-artifact@v2
-        name: clean artifacts
-        with:
-          name: |
-            node_modules.tar.gz
-            android.tar.gz
+  # cleanup:
+  #   needs: [ios, android]
+  #   if: always()
+  #   runs-on: ubuntu-latest
+  #   name: cleanup
+  #   steps:
+  #     - uses: geekyeggo/delete-artifact@v2
+  #       name: clean artifacts
+  #       with:
+  #         name: |
+  #           node_modules.tar.gz
+  #           android.tar.gz
