@@ -10,24 +10,10 @@ env:
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
 jobs:
-  event_info:
-    name: event info
-    runs-on: ubuntu-latest
-    env:
-      EVENT_NAME: ${{ github.event_name }}
-      COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-      STARTS_WITH: ${{ startsWith(github.event.head_commit.message, 'chore(release):') }}
-      CONTAINS: ${{ contains(github.event.head_commit.message, 'chore(release):') }}
-    steps:
-      - run: echo $EVENT_NAME
-      - run: echo $COMMIT_MESSAGE
-      - run: echo $STARTS_WITH
-      - run: echo $CONTAINS
   build:
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: github.event_name == 'push' && startsWith(github.event.head_commit.message, 'chore(release):')
     permissions:
       contents: read
       deployments: write
