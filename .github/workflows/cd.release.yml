@@ -19,9 +19,7 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: |
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'push' && contains('chore(release)', github.event.head_commit.message))
+    if: startsWith('chore(release)', github.event.head_commit.message)
     permissions:
       contents: read
       deployments: write
