@@ -1,3 +1,10 @@
+## [1.28.22](https://github.com/houseninjadojo/app/compare/v1.28.21...v1.28.22) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** dang nabit ([8c90bd3](https://github.com/houseninjadojo/app/commit/8c90bd357790c4ab4f46c34be43ed6b3c3aab500))
+
 ## [1.28.21](https://github.com/houseninjadojo/app/compare/v1.28.20...v1.28.21) (2023-01-10)
 
 
