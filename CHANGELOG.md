@@ -1,3 +1,10 @@
+## [1.28.25](https://github.com/houseninjadojo/app/compare/v1.28.24...v1.28.25) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** remove filter ([9ca9ec5](https://github.com/houseninjadojo/app/commit/9ca9ec5c05751c93e7389a5910f1d423d20e3cc7))
+
 ## [1.28.24](https://github.com/houseninjadojo/app/compare/v1.28.23...v1.28.24) (2023-01-10)
 
 
