@@ -1,3 +1,10 @@
+## [1.28.15](https://github.com/houseninjadojo/app/compare/v1.28.14...v1.28.15) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** dont skip ci in release ([f6d3c1a](https://github.com/houseninjadojo/app/commit/f6d3c1a68bcb4064459b3ee1fa2fbced9edc102d))
+
 ## [1.28.14](https://github.com/houseninjadojo/app/compare/v1.28.13...v1.28.14) (2023-01-10)
 
 
