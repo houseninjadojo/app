@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: cd / release
+          workflow: cd.release.yml
           ref: main

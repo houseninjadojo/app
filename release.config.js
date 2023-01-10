@@ -39,7 +39,7 @@ module.exports = {
           'package.json',
           { path: 'android/app/build.gradle', label: "build.gradel" },
         ],
-        message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}'
+        message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes} [skip ci]'
       },
     ],
   ],
