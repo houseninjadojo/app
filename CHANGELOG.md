@@ -1,3 +1,10 @@
+## [1.28.14](https://github.com/houseninjadojo/app/compare/v1.28.13...v1.28.14) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** trigger release with push select ([a0580c2](https://github.com/houseninjadojo/app/commit/a0580c2c08dcb1abbe4b29268eaa345dc5bda578))
+
 ## [1.28.13](https://github.com/houseninjadojo/app/compare/v1.28.12...v1.28.13) (2023-01-10)
 
 
