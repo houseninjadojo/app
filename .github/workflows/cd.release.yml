@@ -3,6 +3,7 @@ name: cd / release
 concurrency: app-release-lock
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'

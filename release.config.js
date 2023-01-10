@@ -27,7 +27,7 @@ module.exports = {
         assets: [
           'CHANGELOG.md',
           'package.json',
-          { path: 'android/app/build.gradle', label: "build.grade" },
+          { path: 'android/app/build.gradle', label: "build.gradel" },
         ]
       },
     ],
@@ -37,8 +37,9 @@ module.exports = {
         assets: [
           'CHANGELOG.md',
           'package.json',
-          { path: 'android/app/build.gradle', label: "build.grade" },
+          { path: 'android/app/build.gradle', label: "build.gradel" },
         ],
+        message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}'
       },
     ],
   ],
