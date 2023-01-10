@@ -78,6 +78,8 @@ jobs:
             ~/.gradle/caches/build-cache-*
             android/.gradle/*
           key: cache-gradle-${{ github.run_id }}
+          restore-keys: |
+            cache-gradle-
       - uses: actions/cache/restore@v3
         id: restore-android-build-cache
         with:

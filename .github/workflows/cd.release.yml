@@ -3,9 +3,11 @@ name: cd / release
 concurrency: app-release-lock
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'CHANGELOG.md'
 
 env:
   RUBY_VERSION: 3.0.3
@@ -16,6 +18,9 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    if: |
+      github.event.head_commit.author.name == 'semantic-release-bot' &&
+      contains('chore(release):', github.event.head_commit.message)
     permissions:
       contents: read
       deployments: write
