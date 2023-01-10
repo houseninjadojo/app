@@ -1,3 +1,10 @@
+## [1.28.24](https://github.com/houseninjadojo/app/compare/v1.28.23...v1.28.24) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** dispatch to yml ([35cc695](https://github.com/houseninjadojo/app/commit/35cc6950c594ebdd7e35ad22aff66a2f8e5df9b7))
+
 ## [1.28.23](https://github.com/houseninjadojo/app/compare/v1.28.22...v1.28.23) (2023-01-10)
 
 
