@@ -4,11 +4,6 @@ concurrency: app-release-lock
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'CHANGELOG.md'
 
 env:
   RUBY_VERSION: 3.0.3

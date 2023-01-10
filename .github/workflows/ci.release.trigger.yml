@@ -1,0 +1,19 @@
+name: cd / trigger
+
+concurrency: release-trigger
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  trigger-build:
+    name: trigger cd build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: cd / release
+          ref: main
