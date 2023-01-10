@@ -1,3 +1,10 @@
+## [1.28.20](https://github.com/houseninjadojo/app/compare/v1.28.19...v1.28.20) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** one more try ([ef59f88](https://github.com/houseninjadojo/app/commit/ef59f88e8b844edf557ea0f426086f96507f4fd2))
+
 ## [1.28.19](https://github.com/houseninjadojo/app/compare/v1.28.18...v1.28.19) (2023-01-10)
 
 
