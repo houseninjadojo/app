@@ -33,7 +33,25 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - releasing to web\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      - uses: actions/checkout@v3
+      - uses: actions/cache/restore@v3
+        id: restore-yarn
+        with:
+          path: |
+            package.json
+            yarn.lock
+            .yarnrc.yml
+            .yarn/
+            node_modules/
+          key: build-yarn-${{ github.run_id }}
+          restore-keys: |
+            build-yarn-
+      - uses: actions/cache/restore@v3
+        id: restore-web
+        with:
+          path: dist/
+          key: build-web-${{ github.run_id }}
+          restore-keys: |
+            build-web-
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
