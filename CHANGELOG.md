@@ -1,3 +1,10 @@
+## [1.28.17](https://github.com/houseninjadojo/app/compare/v1.28.16...v1.28.17) (2023-01-10)
+
+
+### Bug Fixes
+
+* **ci/cd:** change skip condition ([975bc7c](https://github.com/houseninjadojo/app/commit/975bc7c48a24dc14611a5cc64f126bd35bed24ed))
+
 ## [1.28.16](https://github.com/houseninjadojo/app/compare/v1.28.15...v1.28.16) (2023-01-10)
 
 
