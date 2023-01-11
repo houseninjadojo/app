@@ -8,7 +8,7 @@ jobs:
     name: ChatGPT summarizes your PRs.
     steps:
       - name: ChatGPT Summary
-        uses: mileszim/chatgpt-action@v1
+        uses: mileszim/chatgpt-action@v1.0.0
         id: chatgpt
         with:
           number: ${{ github.event.pull_request.number }}
