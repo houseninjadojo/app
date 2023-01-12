@@ -9558,7 +9558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-resolver@npm:*, ember-resolver@npm:^9.0.1":
+"ember-resolver@npm:*":
   version: 9.0.1
   resolution: "ember-resolver@npm:9.0.1"
   dependencies:
@@ -9569,6 +9569,21 @@ __metadata:
     ember-source:
       optional: true
   checksum: 20586d8b3c694ef699f305b31281c52681e77216ab2eb4445dd069504b0886c785744950065117f26f9f1abbb8b4f56606eb1b3bc16fd3ba567ed8af3f46fcb7
+  languageName: node
+  linkType: hard
+
+"ember-resolver@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "ember-resolver@npm:10.0.0"
+  dependencies:
+    ember-cli-babel: ^7.26.11
+  peerDependencies:
+    "@ember/string": ^3.0.1
+    ember-source: ^4.8.3
+  peerDependenciesMeta:
+    ember-source:
+      optional: true
+  checksum: de4f943d347ee990f2bac12315e2d539b4329a317669e94e280e4e8a37d942ef8bde3b5f2d991457be25e0f31505a057d6c17ea2f13d7a330ccf39be4a5710e7
   languageName: node
   linkType: hard
 
@@ -12377,7 +12392,7 @@ __metadata:
     ember-metrics: ^1.5.2
     ember-page-title: ^7.0.0
     ember-qunit: ^6.1.1
-    ember-resolver: ^9.0.1
+    ember-resolver: ^10.0.0
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^6.0.0
     ember-source: ~4.9.3
