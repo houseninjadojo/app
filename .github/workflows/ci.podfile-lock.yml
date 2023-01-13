@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     # if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
     steps:
       - uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable
-      - run: npx cap sync ios
+      - run: npx cap update
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
