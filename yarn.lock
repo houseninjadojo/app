@@ -12453,7 +12453,7 @@ __metadata:
     liquid-fire: ^0.34.0
     loader.js: ^4.7.0
     lottie-web: ^5.10.1
-    miragejs: ^0.1.46
+    miragejs: ^0.1.47
     moment: ^2.29.4
     npm-run-all: ^4.1.5
     postcss: ^8.4.21
@@ -15291,7 +15291,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miragejs@npm:^0.1.43, miragejs@npm:^0.1.46":
+"miragejs@npm:^0.1.43":
   version: 0.1.46
   resolution: "miragejs@npm:0.1.46"
   dependencies:
@@ -15322,6 +15322,40 @@ __metadata:
     lodash.values: ^4.3.0
     pretender: ^3.4.7
   checksum: 1184cd053c6e49bd39333fcebb21750eda64e79f002bdf16199eeec0b494091caf758b0624c9300778075f06f6d4b795c6ef09136930ebe25acba1e0374adcba
+  languageName: node
+  linkType: hard
+
+"miragejs@npm:^0.1.47":
+  version: 0.1.47
+  resolution: "miragejs@npm:0.1.47"
+  dependencies:
+    "@miragejs/pretender-node-polyfill": ^0.1.0
+    inflected: ^2.0.4
+    lodash.assign: ^4.2.0
+    lodash.camelcase: ^4.3.0
+    lodash.clonedeep: ^4.5.0
+    lodash.compact: ^3.0.1
+    lodash.find: ^4.6.0
+    lodash.flatten: ^4.4.0
+    lodash.forin: ^4.4.0
+    lodash.get: ^4.4.2
+    lodash.has: ^4.5.2
+    lodash.invokemap: ^4.6.0
+    lodash.isempty: ^4.4.0
+    lodash.isequal: ^4.5.0
+    lodash.isfunction: ^3.0.9
+    lodash.isinteger: ^4.0.4
+    lodash.isplainobject: ^4.0.6
+    lodash.lowerfirst: ^4.3.1
+    lodash.map: ^4.6.0
+    lodash.mapvalues: ^4.6.0
+    lodash.pick: ^4.4.0
+    lodash.snakecase: ^4.1.1
+    lodash.uniq: ^4.5.0
+    lodash.uniqby: ^4.7.0
+    lodash.values: ^4.3.0
+    pretender: ^3.4.7
+  checksum: b50cd640c07bdd2a05df20c5113685818c3c6c63a00af2b9ac59f7ba3bd1da4e2fbe5a9cf11ca7c635c4b2e66d5585704f1dae2d48d06096b9d58d0c57ebf087
   languageName: node
   linkType: hard
 
