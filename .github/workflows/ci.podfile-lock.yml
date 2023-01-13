@@ -1,0 +1,57 @@
+name: ci / deps / podfile.lock
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'dependabot/**'
+jobs:
+  update-podfile-lock:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Checkout PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr checkout ${{ github.event.pull_request.number }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --immutable
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.0
+          bundler-cache: true
+          working-directory: 'ios/App'
+      - uses: actions/cache/restore@v3
+        id: restore-pods
+        with:
+          path: ios/App/Pods
+          key: build-pods-${{ hashFiles('ios/App/Podfile') }}
+          restore-keys: |
+            build-pods-
+      - run: gem install cocoapods
+        working-directory: 'ios/App'
+      - run: mkdir -p dist && touch dist/index.html
+      - run: npx cap update ios
+      - name: Commit changes
+        continue-on-error: true
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ios/App/Podfile.lock
+          git commit -m "ci: update Podfile.lock [skip ci]"
+      - name: Push changes
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push
