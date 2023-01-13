@@ -30,7 +30,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable
-      - run: mkdir -p dist
+      - run: mkdir -p dist && touch dist/index.html
       - run: npx cap update ios
       - name: Commit changes
         run: |
