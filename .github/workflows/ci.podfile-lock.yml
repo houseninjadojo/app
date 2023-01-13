@@ -2,10 +2,10 @@ name: ci / podfile.lock sync
 
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+    # types:
+    #   - opened
+    #   - reopened
+    #   - synchronize
     branches:
       - dependabot/**
       - auto-update-podfile
@@ -16,8 +16,11 @@ jobs:
       contents: write
       pull-requests: write
     runs-on: macos-latest
-    if: contains(github.event.pull_request.title, 'capacitor')
+    # if:
     steps:
+      - run: echo $RESULTS
+        env:
+          RESULTS: ${{ contains(github.event.pull_request.title, 'capacitor') }}
       - name: Checkout PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
