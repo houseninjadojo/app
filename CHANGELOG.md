@@ -1,3 +1,10 @@
+## [1.28.26](https://github.com/houseninjadojo/app/compare/v1.28.25...v1.28.26) (2023-01-13)
+
+
+### Bug Fixes
+
+* **build:** force release ([48209df](https://github.com/houseninjadojo/app/commit/48209df924ed75fb2f755598715f7a4e0d0c612d))
+
 ## [1.28.25](https://github.com/houseninjadojo/app/compare/v1.28.24...v1.28.25) (2023-01-10)
 
 
