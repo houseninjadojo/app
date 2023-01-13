@@ -1,0 +1,87 @@
+- match:
+    dependency_type: all
+    update_type: security:minor
+
+- match:
+    dependency_type: all
+    update_type: semver:patch
+
+- match:
+    dependency_name: "@types/*"
+    update_type: all
+
+- match:
+    dependency_name: "@babel/eslint-parser"
+    update_type: all
+
+- match:
+    dependency_name: "@babel/plugin-proposal-decorators"
+    update_type: all
+
+- match:
+    dependency_name: "@datadog/datadog-ci"
+    update_type: all
+
+- match:
+    dependency_name: "@ember/test-helpers"
+    update_type: all
+
+- match:
+    dependency_name: "@faker-js/faker"
+    update_type: all
+
+- match:
+    dependency_name: "@percy/*"
+    update_type: all
+
+- match:
+    dependency_name: "@tsconfig/ember"
+    update_type: all
+
+- match:
+    dependency_name: "@typescript-*"
+    update_type: all
+
+- match:
+    dependency_name: "dotenv-vault"
+    update_type: all
+
+- match:
+    dependency_name: "ember-sinon-qunit"
+    update_type: all
+
+- match:
+    dependency_name: "ember-qunit"
+    update_type: all
+
+- match:
+    dependency_name: "eslint-plugin-*"
+    update_type: all
+
+- match:
+    dependency_name: "qunit-*"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-terser"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-inject-live-reload"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-app-version"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-code-coverage"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-dependency-checker"
+    update_type: all
+
+- match:
+    dependency_name: "ember-cli-deprecation-workflow"
+    update_type: all
