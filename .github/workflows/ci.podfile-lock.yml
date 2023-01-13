@@ -14,7 +14,7 @@ jobs:
       contents: write
       pull-requests: write
     runs-on: ubuntu-latest
-    # if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
+    if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
     steps:
       - uses: actions/checkout@v3
       - name: Checkout PR
