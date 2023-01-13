@@ -50,12 +50,12 @@ const options: LogsInitConfiguration = {
 const rumOptions = {
   ...ENV.datadog,
   env: ENV.environment,
-  sampleRate: 100,
+  sessionSampleRate: 100,
   sessionReplaySampleRate: 100, // if not included, the default is 100
   trackFrustrations: true,
   trackResources: true,
   trackLongTasks: true,
-  trackInteractions: true,
+  trackUserInteractions: true,
   telemetrySampleRate: 0,
   allowedTracingOrigins: [
     'https://api.houseninja.co',
