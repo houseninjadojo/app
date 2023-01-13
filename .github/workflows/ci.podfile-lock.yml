@@ -1,16 +1,13 @@
-name: ci / podfile.lock sync
+name: ci / deps / podfile.lock
 
 on:
   pull_request:
-    # types:
-    #   - opened
-    #   - reopened
-    #   - synchronize
-  # push:
-  #   branches:
-  #     - dependabot/**
-  #     - auto-update-podfile
-
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - 'dependabot/**'
 jobs:
   update-podfile-lock:
     permissions:

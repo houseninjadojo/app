@@ -1,11 +1,9 @@
-name: ci / dependabot auto-merge
+name: ci / deps / auto-merge
 
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+    branches:
+      - 'dependabot/**'
 
 jobs:
   auto-merge:
