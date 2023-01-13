@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: benc-uk/workflow-dispatch@v1
+      - uses: benc-uk/workflow-dispatch@v121
         with:
           workflow: cd.release.yml
           ref: main
