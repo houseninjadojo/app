@@ -1,9 +1,16 @@
-name: Dependabot auto-approve
-on: pull_request
+name: ci / dependabot auto-merge
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
     steps:
       - uses: actions/checkout@v3
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
