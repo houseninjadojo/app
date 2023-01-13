@@ -1803,13 +1803,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-core@npm:4.29.1":
-  version: 4.29.1
-  resolution: "@datadog/browser-core@npm:4.29.1"
-  checksum: 8bc45cf4151cb8c07b09de8c670c0484c478c23d9151f18e652f32d19c69bbd889f861db3742dc605ec0c601bc79483cb346ab6bb527b3c237827e5c5bef0475
-  languageName: node
-  linkType: hard
-
 "@datadog/browser-core@npm:4.30.0":
   version: 4.30.0
   resolution: "@datadog/browser-core@npm:4.30.0"
@@ -1831,27 +1824,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/browser-rum-core@npm:4.29.1":
-  version: 4.29.1
-  resolution: "@datadog/browser-rum-core@npm:4.29.1"
+"@datadog/browser-rum-core@npm:4.30.0":
+  version: 4.30.0
+  resolution: "@datadog/browser-rum-core@npm:4.30.0"
   dependencies:
-    "@datadog/browser-core": 4.29.1
-  checksum: 8870d4bc24d6a1d7a3d86cb64c2edabde18c0c478df0a221b33d4f7655e6b0f6ec79a40969982c95b5fbe83cd39baa133ea8f8475c65e9c82254031aefddb8a8
+    "@datadog/browser-core": 4.30.0
+  checksum: 5d90d16e14801517cf74a41547edcf10f6e56fd77944050c96d1f23a8d78e62dcb3901aef481e9a5ab78afe3117b0b3de9d40fd8d1f162a0bb3cf01783c1a229
   languageName: node
   linkType: hard
 
-"@datadog/browser-rum@npm:^4.29.1":
-  version: 4.29.1
-  resolution: "@datadog/browser-rum@npm:4.29.1"
+"@datadog/browser-rum@npm:^4.30.0":
+  version: 4.30.0
+  resolution: "@datadog/browser-rum@npm:4.30.0"
   dependencies:
-    "@datadog/browser-core": 4.29.1
-    "@datadog/browser-rum-core": 4.29.1
+    "@datadog/browser-core": 4.30.0
+    "@datadog/browser-rum-core": 4.30.0
   peerDependencies:
-    "@datadog/browser-logs": 4.29.1
+    "@datadog/browser-logs": 4.30.0
   peerDependenciesMeta:
     "@datadog/browser-logs":
       optional: true
-  checksum: 6c6433f130ec9b503a2b25afb05d1374e7e5e85f798808015622eeb6139dedb97a6c045a90cc70401ad3de8d442a54484166f4ce7ae03d94c6ad937f65154608
+  checksum: 731d2baa3146c14a01f0df9a09a14f0c8b3f61967839148c45695c1b81ab31a0d9a68ba42d4fca4c049af06819856500ae64cbf6d195054a6c313f25c4d7d8ac
   languageName: node
   linkType: hard
 
@@ -12350,7 +12343,7 @@ __metadata:
     "@capacitor/splash-screen": ^4.1.2
     "@capawesome/capacitor-file-picker": ^0.5.6
     "@datadog/browser-logs": ^4.30.0
-    "@datadog/browser-rum": ^4.29.1
+    "@datadog/browser-rum": ^4.30.0
     "@datadog/datadog-ci": ^2.2.0
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
