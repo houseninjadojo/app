@@ -42,7 +42,7 @@ const options: LogsInitConfiguration = {
   forwardErrorsToLogs: true,
   forwardConsoleLogs: 'all',
   forwardReports: 'all',
-  sampleRate: 100,
+  sessionSampleRate: 100,
   trackSessionAcrossSubdomains: true,
   useCrossSiteSessionCookie: true,
 };
