@@ -6,10 +6,10 @@ on:
     #   - opened
     #   - reopened
     #   - synchronize
-  push:
-    branches:
-      - dependabot/**
-      - auto-update-podfile
+  # push:
+  #   branches:
+  #     - dependabot/**
+  #     - auto-update-podfile
 
 jobs:
   update-podfile-lock:
@@ -17,11 +17,9 @@ jobs:
       contents: write
       pull-requests: write
     runs-on: macos-latest
-    # if:
+    # if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
     steps:
-      - run: echo $RESULTS
-        env:
-          RESULTS: ${{ contains(github.event.pull_request.title, 'capacitor') }}
+      - uses: actions/checkout@v3
       - name: Checkout PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
