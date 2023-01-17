@@ -1,9 +1,10 @@
 name: ci / deps / auto-merge
 
 on:
-  push:
+  pull_request:
     branches:
-      - dependabot/npm_and_yarn/**
+      - 'dependabot/npm_and_yarn/**'
+      - 'dependabot/**'
 
 jobs:
   auto-merge:
