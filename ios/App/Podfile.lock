@@ -6,7 +6,7 @@ PODS:
     - Capacitor
   - CapacitorApp (4.1.1):
     - Capacitor
-  - CapacitorBrowser (4.1.0):
+  - CapacitorBrowser (4.1.1):
     - Capacitor
   - CapacitorCamera (4.1.4):
     - Capacitor
@@ -208,7 +208,7 @@ SPEC CHECKSUMS:
   Capacitor: a83814f7b8678d3fbb8989324f51b442eafdb6f7
   CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
   CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
-  CapacitorBrowser: 05b68799d62b7b864974f59a5af3e4ddcce953f1
+  CapacitorBrowser: b7d161fb82d591294cb81fcb12f950ae73470035
   CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
   CapacitorCordova: 855dd572d01508c8992d5470e0dfe33ebb169c4d
   CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
