@@ -21,11 +21,19 @@
         <p class="hn field"><span class="hn label">Date of Service: </span>{{if @model.scheduledDate @model.scheduledDate }}</p>
         <p class="hn field"><span class="hn label">Notes: <br/></span>{{if @model.invoice.formattedNotes @model.invoice.formattedNotes}}</p>
     </div>
+    <Primitive::Select
+        @id={{this.paymentMethodSelectConfig.id}}
+        @options={{this.paymentMethodSelectConfig.options}}
+        @label={{this.paymentMethodSelectConfig.label}}
+        @onChange={{this.handlePaymentMethodChange}}
+        {{!-- @required={{field.required}} --}}
+        {{!-- @disabled={{true}} --}}        
+    />
     <Primitive::Button @type="button" @size="md" @variant="solid" @semantic="accent" @disabled={{this.isProcessing}} {{on "click" this.confirm}}>
         Approve Payment
     </Primitive::Button>
-    {{#if this.isNativePlatform}}
-        <p class="mt-4">This will charge your {{this.creditCard.cardBrand}} ending in {{this.creditCard.lastFour}}. If you would like to use a different method of payment, please <button class="hn accent override" type="button" {{on "click" this.requestDifferentPayment}}><span class="underline"><strong>tap here</strong></span></button> to message us.</p>
+    {{#if (and this.isNativePlatform this.creditCard)}}
+        <p class="mt-4">This will charge your {{this.creditCard.cardBrand}} ending in {{this.creditCard.lastFour}}.</p>
     {{/if}}
     <View::WorkOrder::Content::ApprovePayment::WebDialog
         @isVisible={{this.showWebDialog}}
@@ -37,9 +45,7 @@
     />
 </Primitive::Section>
 <View::WorkOrder::Content::ApprovePayment::Processing
-    @paid={{this.paid}}
-    @paymentFailed={{this.paymentFailed}}
-    @requestDifferentPayment={{this.requestDifferentPayment}}
+    @paid={{this.paid}}    
     @isProcessing={{this.isProcessing}}
     @isDoneProcessing={{this.isDoneProcessing}}
     @isNativePlatform={{this.isNativePlatform}}

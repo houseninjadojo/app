@@ -48,7 +48,17 @@ Router.map(function () {
   });
   this.route('settings', function () {
     this.route('contact');
-    this.route('payment');
+    this.route('payment-methods', function () {
+      this.route('index');
+      this.route('new');
+      this.route(
+        'payment-method',
+        { path: '/:payment_method_id' },
+        function () {
+          this.route('edit');
+        }
+      );
+    });
     this.route('security');
     this.route('property');
   });

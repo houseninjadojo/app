@@ -5,7 +5,7 @@ declare module 'houseninja/app/components' {
     label?: string;
     placeholder?: string;
     type?: string;
-    value?: string | number | boolean;
+    value?: string | number | boolean | null;
     disabled?: boolean;
   }
 

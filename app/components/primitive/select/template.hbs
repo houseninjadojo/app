@@ -10,7 +10,7 @@
               required={{@required}}
               disabled={{@disabled}}
               value={{@value}}
-              {{on 'change' @onChange}}
+              {{on 'change' this.handleChange}}
             >
                 {{#each @options as |o|}}
                     <option value={{o.value}} selected={{o.selected}}>{{o.label}}</option>
@@ -26,7 +26,7 @@
               required={{@required}}
               disabled={{@disabled}}
               value={{@value}}
-              {{on 'change' @onChange}}
+              {{on 'change' this.handleChange}}
             >
                 {{#each @options as |o|}}
                     <option value={{o.value}} selected={{o.selected}}>{{o.label}}</option>

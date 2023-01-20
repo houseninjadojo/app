@@ -30,8 +30,8 @@ export default class AccountSettingsComponent extends Component {
       name: NATIVE_MOBILE_ROUTE.SETTINGS.CONTACT,
     },
     {
-      label: 'Payment Method',
-      name: NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT,
+      label: 'Payment Methods',
+      name: NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT_METHODS.INDEX,
     },
     {
       label: 'Security Settings',

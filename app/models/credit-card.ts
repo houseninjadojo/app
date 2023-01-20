@@ -1,7 +1,9 @@
 import { attr } from '@ember-data/model';
+import { isPresent } from '@ember/utils';
 import PaymentMethod from './payment-method';
 
 interface CreditCardArgs {
+  isDefault?: boolean;
   brand?: string;
   country?: string;
   cvv?: string;
@@ -12,7 +14,7 @@ interface CreditCardArgs {
   lastFour?: string;
 }
 
-export default class CreditCardModel extends PaymentMethod {
+export default class CreditCard extends PaymentMethod {
   @attr('string') declare brand?: string;
   @attr('string') declare country?: string;
   @attr('string') declare cvv?: string;
@@ -22,16 +24,17 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('string') declare zipcode?: string;
 
   get obfuscated(): CreditCardArgs {
-    const brand = this.brand?.toUpperCase();
     return {
-      brand,
+      brand: this.cardBrand,
       country: '',
-      cvv: '',
-      expMonth: undefined,
-      expYear: undefined,
+      cvv: '•••',
+      expMonth: this.expMonth,
+      expYear: this.expYear,
       cardNumber: '',
-      zipcode: '',
-      lastFour: this.cardNumber?.substring(this.cardNumber.length - 4) ?? '',
+      zipcode: this.zipcode,
+      lastFour: isPresent(this.cardNumber)
+        ? `•••• ${this.cardNumber.substring(this.cardNumber.length - 4)}`
+        : '',
     };
   }
 
@@ -40,6 +43,10 @@ export default class CreditCardModel extends PaymentMethod {
   }
 
   get cardBrand(): string {
-    return this.brand?.toUpperCase() ?? '';
+    if (isPresent(this.brand)) {
+      return this.brand?.toUpperCase();
+    } else {
+      return 'CARD';
+    }
   }
 }

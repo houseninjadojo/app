@@ -202,7 +202,7 @@ export default class WorkOrderApproveEstimateViewContentComponent extends Compon
   }
 
   get estimate(): Estimate {
-    return this.args.model.estimate;
+    return this.args.model?.estimate;
   }
 
   get formattedTotal(): string | undefined {

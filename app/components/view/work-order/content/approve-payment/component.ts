@@ -20,11 +20,15 @@ import Invoice from 'houseninja/models/invoice';
 import MetricsService from 'houseninja/services/metrics';
 import SessionService from 'houseninja/services/session';
 
+import CreditCard from 'houseninja/models/credit-card';
+import CurrentService from 'houseninja/services/current';
+
 type Args = {
   model: WorkOrder;
 };
 
 export default class WorkOrderApprovePaymentViewContentComponent extends Component<Args> {
+  @service declare current: CurrentService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
   @service declare metrics: MetricsService;
@@ -36,7 +40,11 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   @tracked isProcessing = false;
   @tracked isDoneProcessing = false;
   @tracked paid = false;
-  @tracked paymentFailed = false;
+  @tracked creditCard: CreditCard | undefined = this.allPaymentMethods.filter(
+    (c: CreditCard) => c.isDefault
+  )[0];
+
+  // @tracked creditCard: CreditCard | undefined | null = null;
 
   constructor(owner: unknown, args: Args) {
     super(owner, args);
@@ -73,6 +81,39 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
     this.toggleWebDialog();
   }
 
+  get allPaymentMethods(): Array<CreditCard> {
+    const user = this.current.user;
+    let paymentMethods: Array<CreditCard> = [];
+
+    if (user) {
+      paymentMethods = user
+        .get('paymentMethods')
+        .toArray()
+        .map((p) => p as CreditCard);
+    }
+
+    return paymentMethods;
+  }
+
+  get paymentMethodSelectConfig() {
+    const allCards = this.allPaymentMethods.toArray();
+    const mappedCards = allCards?.map((c: CreditCard) => {
+      return {
+        value: c.id,
+        label: `${c.cardBrand ? c.cardBrand.toUpperCase() : 'Card'} ending in ${
+          c.lastFour
+        } ${c.isDefault ? '(default) ' : ''}`,
+        selected: c.isDefault,
+      };
+    });
+
+    return {
+      id: 'payment-methods',
+      label: 'Payment Method',
+      options: mappedCards || [],
+    };
+  }
+
   @action
   toggleIsProcessing(): void {
     this.isProcessing = !this.isProcessing;
@@ -84,6 +125,7 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
     const payment = this.store.createRecord('payment', {
       invoice: this.invoice,
+      paymentMethod: this.creditCard,
     });
 
     try {
@@ -123,11 +165,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
   }
 
   @action
-  requestDifferentPayment(): void {
-    this.intercom.showComposer('I would like to update my payment method.');
-  }
-
-  @action
   inquireAboutInvoice(): void {
     this.intercom.showComposer(
       `I have a question about the invoice for the ${this.args.model?.description} service request.`
@@ -154,10 +191,6 @@ export default class WorkOrderApprovePaymentViewContentComponent extends Compone
 
   get formattedTotal(): string | undefined {
     return this.invoice?.formattedTotal;
-  }
-
-  get creditCard(): string {
-    return this.store.peekAll('credit-card').firstObject;
   }
 
   sendMetrics(event: string, step?: string): void {

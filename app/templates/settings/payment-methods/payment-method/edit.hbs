@@ -1,0 +1,15 @@
+{{page-title 'Settings - New Payment Method'}}
+<Primitive::Modal::Tray
+  @onBack={{this.resetForm}}
+  @saveAction={{this.saveAction}}
+  @formIsInvalid={{this.formIsInvalid}}
+>
+  <View::AccountSettings::PaymentMethods::PaymentMethod
+    @addOrUpdate='Update'
+    @paymentMethod={{this.model}}
+    @fields={{this.fields}}
+    @handleSetAsDefault={{this.handleSetAsDefault}}
+    @handleInput={{this.handleInput}}
+    @handleRemoveAction={{this.handleRemoveAction}}
+  />
+</Primitive::Modal::Tray>

@@ -15,7 +15,7 @@ import type User from './user';
  *
  * @see app/models/payment-method/card
  */
-export default class PaymentMethodModel extends Model {
+export default class PaymentMethod extends Model {
   @belongsTo('subscription', { async: true, inverse: 'paymentMethod' })
   declare subscription: AsyncBelongsTo<Subscription>;
 
@@ -31,6 +31,7 @@ export default class PaymentMethodModel extends Model {
   @hasMany('payments', { async: true, inverse: 'paymentMethod' })
   declare payments: AsyncHasMany<Payment>;
 
+  @attr('boolean') declare isDefault: boolean;
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;
 }

@@ -4,14 +4,22 @@ export function formatCreditCardNumberElement(inputEl: HTMLInputElement): void {
   trackCursorPosition(inputEl, formatCardNumberElement, '-');
 }
 
-export function formatCreditCardNumber(num: string): string {
+function normalizeCardNumber(num: string): string {
   return num.replace(/\D/g, '');
 }
 
-function formatCardNumberElement(inputEl: HTMLInputElement): string {
-  const value: string = formatCreditCardNumber(inputEl.value);
-  let formattedValue: string = value;
+function formatCardNumberElement(inputEl: HTMLInputElement) {
+  return formatCreditCardNumber(inputEl.value, inputEl);
+}
+
+export function formatCreditCardNumber(
+  cardNumber: string,
+  inputEl: HTMLInputElement | null = null
+): string {
+  const value: string = normalizeCardNumber(cardNumber);
+  let formattedValue = '';
   let maxLength = '';
+
   // american express, 15 digits
   if (/^3[47]\d{0,13}$/.test(value)) {
     formattedValue = value
@@ -26,6 +34,6 @@ function formatCardNumberElement(inputEl: HTMLInputElement): string {
       .replace(/(\d{4})-(\d{4})-(\d{4})/, '$1-$2-$3-');
     maxLength = '19';
   }
-  inputEl.setAttribute('maxlength', maxLength);
+  inputEl?.setAttribute('maxlength', maxLength);
   return formattedValue;
 }
