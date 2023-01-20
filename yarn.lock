@@ -1709,12 +1709,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/ios@npm:4.6.1":
-  version: 4.6.1
-  resolution: "@capacitor/ios@npm:4.6.1"
+"@capacitor/ios@npm:4.6.2":
+  version: 4.6.2
+  resolution: "@capacitor/ios@npm:4.6.2"
   peerDependencies:
     "@capacitor/core": ^4.6.0
-  checksum: 3503b426cb127670ff98adf1a0b143995cc20c1b4b20f40ca8771cf9b4bed78d9e37a034621bdc90f9288568064e5527a9499f1dab3176c230efbd9371b332be
+  checksum: 1d0fb657498134f8c445575574c9305d586514ed108756a3168c01681c9b87a8f5c99e9602bd82b49411acbcaac64413a7d210a0c64c5b99eb58916e5e1a63ab
   languageName: node
   linkType: hard
 
@@ -12289,7 +12289,7 @@ __metadata:
     "@capacitor/dialog": ^4.1.0
     "@capacitor/filesystem": ^4.1.4
     "@capacitor/haptics": ^4.1.0
-    "@capacitor/ios": 4.6.1
+    "@capacitor/ios": 4.6.2
     "@capacitor/keyboard": ^4.1.0
     "@capacitor/local-notifications": ^4.1.4
     "@capacitor/preferences": ^4.0.2
