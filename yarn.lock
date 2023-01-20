@@ -1618,12 +1618,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/browser@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@capacitor/browser@npm:4.1.0"
+"@capacitor/browser@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@capacitor/browser@npm:4.1.1"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: bbfb214dbe1f7dc33a52dbbf4e369f5fadaad4986f4230112ceb3d58ac77a846fe4dbe94ea651d208784de63fa1fc657012fbfcde785d1b2c3f51df20c2fbcce
+  checksum: 93ee5cfb1ef25b21881e073f9b2fa9b544dae06937893691f4809eb3dc995d7ce5ff07c5418f1564f49a1c47b1ebf7406a4c058e189508bdcf39edbb71594c37
   languageName: node
   linkType: hard
 
@@ -12281,7 +12281,7 @@ __metadata:
     "@capacitor/action-sheet": ^4.1.0
     "@capacitor/android": 4.6.2
     "@capacitor/app": ^4.1.1
-    "@capacitor/browser": ^4.1.0
+    "@capacitor/browser": ^4.1.1
     "@capacitor/camera": ^4.1.4
     "@capacitor/cli": 4.6.1
     "@capacitor/core": 4.6.1
