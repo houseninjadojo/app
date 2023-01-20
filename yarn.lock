@@ -1763,12 +1763,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/splash-screen@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@capacitor/splash-screen@npm:4.1.2"
+"@capacitor/splash-screen@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "@capacitor/splash-screen@npm:4.1.3"
   peerDependencies:
     "@capacitor/core": ^4.0.0
-  checksum: ac05f7ddd1af34824209f66efd61a9e2f6a90dfcc8d4aea6e8f33ebcafeca8dbd5f7a8f42bb3ceddc27083370426941db4e2dcf197f394ed078d50ab35b1c9fb
+  checksum: 7a9bf0c3853d74ef3c00c17fcaee2c7fbf92733e60557c7df3b228444ea9d2fc6c86376af6808db80695b8a4c9038b7d50c29e0d3ea2decf462d423d8dc144a4
   languageName: node
   linkType: hard
 
@@ -12326,7 +12326,7 @@ __metadata:
     "@capacitor/preferences": ^4.0.2
     "@capacitor/push-notifications": ^4.1.2
     "@capacitor/share": ^4.1.0
-    "@capacitor/splash-screen": ^4.1.2
+    "@capacitor/splash-screen": ^4.1.3
     "@capawesome/capacitor-file-picker": ^0.5.9
     "@datadog/browser-logs": ^4.30.1
     "@datadog/browser-rum": ^4.30.1
