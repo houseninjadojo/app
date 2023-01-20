@@ -8874,9 +8874,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-code-coverage@npm:^2.0.0-beta.4":
-  version: 2.0.0-beta.4
-  resolution: "ember-cli-code-coverage@npm:2.0.0-beta.4"
+"ember-cli-code-coverage@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "ember-cli-code-coverage@npm:2.0.0"
   dependencies:
     "@embroider/compat": ^0.47.0
     "@embroider/core": ^0.47.0
@@ -8890,7 +8890,7 @@ __metadata:
     istanbul-reports: ^3.0.2
     node-dir: ^0.1.17
     walk-sync: ^2.1.0
-  checksum: c80de41ff21273de2184926171f90352f2de6240b799dbe357595c7162ec17425e4fbde404e58ef02b773d74161f529832df6247df72cf31722585b80b6c73e0
+  checksum: 21200bd1cc877f2b87977aa93dbd0856dfffd2591e0f012af11a9025286f234dc97ee12b67d6d139ad35fae3185d9ce65e0f65fc3bd9383c72f49da21a933d65
   languageName: node
   linkType: hard
 
@@ -12402,7 +12402,7 @@ __metadata:
     ember-cli-app-version: ^5.0.0
     ember-cli-babel: ^7.26.11
     ember-cli-capacitor: ^0.1.1
-    ember-cli-code-coverage: ^2.0.0-beta.4
+    ember-cli-code-coverage: ^2.0.0
     ember-cli-dependency-checker: ^3.3.1
     ember-cli-deprecation-workflow: ^2.1.0
     ember-cli-dotenv: ^3.1.0
