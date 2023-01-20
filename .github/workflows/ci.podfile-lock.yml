@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
     steps:
-      - name: Get commit message
-        uses: dotCMS/commit-message-getter@v1
-        id: commit-message-getter
-        with:
-          excludeDescription: 'true' # optional: this excludes the description body of a pull request
-          excludeTitle: 'false' # optional: this excludes the title of a pull request
-          checkAllCommitMessages: 'false' # optional: this checks all commits associated with a pull request
-      - run: exit 0
-        if: contains(steps.commit-message-getter.outputs.message, 'capacitor') == false
+      # - name: Get commit message
+      #   uses: dotCMS/commit-message-getter@v1
+      #   id: commit-message-getter
+      #   with:
+      #     excludeDescription: 'true' # optional: this excludes the description body of a pull request
+      #     excludeTitle: 'false' # optional: this excludes the title of a pull request
+      #     checkAllCommitMessages: 'false' # optional: this checks all commits associated with a pull request
+      # - run: exit 0
+      #   if: contains(steps.commit-message-getter.outputs.message, 'capacitor') == false
       - uses: actions/checkout@v3
       - name: Checkout PR
         env:
