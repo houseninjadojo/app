@@ -3,11 +3,6 @@ name: ci / deps / podfile.lock
 on:
   workflow_dispatch:
   pull_request:
-    # branches:
-    #   - 'dependabot/npm_and_yarn/**'
-    #   - 'dependabot/**'
-    branches:
-      - try-auto-check
 
 jobs:
   update-podfile-lock:
@@ -15,7 +10,7 @@ jobs:
       contents: write
       pull-requests: write
     runs-on: ubuntu-latest
-    # if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
+    if: ${{ contains(github.event.pull_request.title, 'capacitor') }}
     steps:
       - name: Get commit message
         uses: dotCMS/commit-message-getter@v1
@@ -24,7 +19,6 @@ jobs:
           excludeDescription: 'true' # optional: this excludes the description body of a pull request
           excludeTitle: 'false' # optional: this excludes the title of a pull request
           checkAllCommitMessages: 'false' # optional: this checks all commits associated with a pull request
-          accessToken: ${{ secrets.GITHUB_TOKEN }} # github access token is only required if checkAllCommitMessages is true
       - run: exit 0
         if: contains(steps.commit-message-getter.outputs.message, 'capacitor') == false
       - uses: actions/checkout@v3
