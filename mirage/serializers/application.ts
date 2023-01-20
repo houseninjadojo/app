@@ -8,7 +8,7 @@ export default JSONAPISerializer.extend({
    * @example
    *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
    */
-  keyForAttribute(attr) {
+  keyForAttribute(attr: string): string {
     return underscore(attr);
   },
 
@@ -18,7 +18,7 @@ export default JSONAPISerializer.extend({
    * @example
    *   { "hello-world": "Hello World" } => { "hello_world": "Hello World" }
    */
-  keyForRelationship(key /* , relationship, method */) {
+  keyForRelationship(key: string /* , relationship, method */): string {
     return underscore(key);
   },
 });
