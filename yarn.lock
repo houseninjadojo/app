@@ -1600,12 +1600,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:4.6.1":
-  version: 4.6.1
-  resolution: "@capacitor/android@npm:4.6.1"
+"@capacitor/android@npm:4.6.2":
+  version: 4.6.2
+  resolution: "@capacitor/android@npm:4.6.2"
   peerDependencies:
     "@capacitor/core": ^4.6.0
-  checksum: 179f21f0cce3f3b28d9d55352e1e7298a92b76856eecbf857bfb3ed88c3eba5bbcf944f8493453ce139a853a3b627b17de0c05ebb5f14861573f3347279e676e
+  checksum: fdaa814a08d31bdcb39fa036a6b1747df6d05ccc08995d88207c13569a952ef14fad2b0ba89c09fa9e118c103b53de4179ec1ff58c25337a6b125a22455f0dba
   languageName: node
   linkType: hard
 
@@ -12279,7 +12279,7 @@ __metadata:
     "@babel/eslint-parser": ^7.19.1
     "@babel/plugin-proposal-decorators": ^7.20.7
     "@capacitor/action-sheet": ^4.1.0
-    "@capacitor/android": 4.6.1
+    "@capacitor/android": 4.6.2
     "@capacitor/app": ^4.1.1
     "@capacitor/browser": ^4.1.0
     "@capacitor/camera": ^4.1.4
