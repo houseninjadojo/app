@@ -50,6 +50,7 @@ function routes() {
   this.resource('device', { path: '/devices' });
   this.get('/home-care-tips');
 
+  this.resource('rating', { path: '/ratings' });
   this.resource('estimate', { path: '/estimates' });
   this.resource('invoice', { path: '/invoices' });
   this.get('/invoices/:id', (schema, request) => {

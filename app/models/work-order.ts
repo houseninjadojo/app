@@ -8,6 +8,7 @@ import Model, { AsyncBelongsTo, attr, belongsTo } from '@ember-data/model';
 
 import type Estimate from 'houseninja/models/estimate';
 import type Invoice from './invoice';
+import type Rating from './rating';
 import type Property from './property';
 
 export default class WorkOrder extends Model {
@@ -19,6 +20,9 @@ export default class WorkOrder extends Model {
 
   @belongsTo('property', { async: true, inverse: 'workOrders' })
   declare property: AsyncBelongsTo<Property>;
+
+  @belongsTo('rating', { async: false, inverse: 'workOrder' })
+  declare rating: Rating;
 
   @attr('string') declare authCode?: string;
   @attr('string') declare cost?: string;
