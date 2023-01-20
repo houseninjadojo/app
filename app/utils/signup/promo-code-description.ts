@@ -1,10 +1,11 @@
 import { isBlank, isPresent } from '@ember/utils';
+import PromoCode from 'houseninja/models/promo-code';
 
-function fmt(code) {
+function fmt(code: string): string {
   return isPresent(code) ? code.toUpperCase() : '';
 }
 
-export function signupPromoCodeDescription(promoCode) {
+export function signupPromoCodeDescription(promoCode: PromoCode): string {
   if (isBlank(promoCode)) {
     return '';
   }
@@ -24,7 +25,10 @@ export function signupPromoCodeDescription(promoCode) {
   }
 }
 
-export function signupPromoCodeAlert(input, promoCode) {
+export function signupPromoCodeAlert(
+  input: string,
+  promoCode: PromoCode
+): object | null {
   if (isBlank(promoCode)) {
     return {
       title: `Promo Code '${fmt(input)}' is not valid`,

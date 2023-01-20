@@ -51,7 +51,7 @@ jobs:
             README.md
             CHANGELOG.md
 
-  test:
+  ember:
     needs: skip-check
     if: needs.skip-check.outputs.should-skip == 'false'
     name: ember test

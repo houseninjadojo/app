@@ -5,7 +5,7 @@ import type Invoice from './invoice';
 import type Subscription from './subscription';
 import type User from './user';
 
-export default class PromoCodeModel extends Model {
+export default class PromoCode extends Model {
   @hasMany('invoice', { async: true, inverse: 'promoCode' })
   declare invoices: AsyncHasMany<Invoice>;
 
