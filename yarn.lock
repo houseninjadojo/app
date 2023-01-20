@@ -1848,9 +1848,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/datadog-ci@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@datadog/datadog-ci@npm:2.2.0"
+"@datadog/datadog-ci@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "@datadog/datadog-ci@npm:2.3.2"
   dependencies:
     "@types/datadog-metrics": 0.6.1
     async-retry: 1.3.1
@@ -1881,7 +1881,7 @@ __metadata:
     yamux-js: 0.1.1
   bin:
     datadog-ci: dist/cli.js
-  checksum: 516192fc226eeabeadf771add3286d5c3f689053b359a2f129a21a2216e414253e6a4d41a891d447d7186c4018cf908a6e4770aefe5601a6a6a6ac5ee9b31669
+  checksum: 2a837e3ab3a3b503a1aac9948b4e3d008df46e49ad1cd1bace5008e5ba590f842878b76191153bb619a9f0c65a433af37b16601be3c452d385cefac9b14b42e6
   languageName: node
   linkType: hard
 
@@ -12299,7 +12299,7 @@ __metadata:
     "@capawesome/capacitor-file-picker": ^0.5.7
     "@datadog/browser-logs": ^4.30.1
     "@datadog/browser-rum": ^4.30.1
-    "@datadog/datadog-ci": ^2.2.0
+    "@datadog/datadog-ci": ^2.3.2
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
     "@ember/render-modifiers": ^2.0.5
