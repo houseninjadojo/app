@@ -9016,9 +9016,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-mirage@https://github.com/kiwi-josh/ember-cli-mirage#fix/deprecation-early-static":
+"ember-cli-mirage@npm:^2.4.0":
   version: 2.4.0
-  resolution: "ember-cli-mirage@https://github.com/kiwi-josh/ember-cli-mirage.git#commit=d303abad86a491d99ca3af69536943dd77204676"
+  resolution: "ember-cli-mirage@npm:2.4.0"
   dependencies:
     "@embroider/macros": ^0.41.0
     broccoli-file-creator: ^2.1.1
@@ -9042,7 +9042,7 @@ __metadata:
       optional: true
     ember-qunit:
       optional: true
-  checksum: 12ea456ec1b0c1affd4105f26d07dd458292493e10f9c507908a3f437aacec28132b7aa2dbc51b5d3a901e2f7c6a5f11015fb83f0aea28910b7abff2a6661385
+  checksum: 459aed2d946ebb9d378e30b3b902157df4378ffc2f1686fa7179ee031240a1733d0b516c5813855ef701c2cc7359b2dccc7a60ddad87f7a5140a4057b5645b5a
   languageName: node
   linkType: hard
 
@@ -12385,7 +12385,7 @@ __metadata:
     ember-cli-dotenv: ^3.1.0
     ember-cli-htmlbars: ^6.2.0
     ember-cli-inject-live-reload: ^2.1.0
-    ember-cli-mirage: "https://github.com/kiwi-josh/ember-cli-mirage#fix/deprecation-early-static"
+    ember-cli-mirage: ^2.4.0
     ember-cli-postcss: ^8.2.0
     ember-cli-sri: ^2.1.1
     ember-cli-terser: ^4.0.2
