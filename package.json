@@ -187,7 +187,7 @@
     "@capawesome/capacitor-file-picker": "^0.5.9",
     "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "@houseninja/capacitor-intercom": "4.3.0",
-    "@houseninja/capacitor-mixpanel": "^2.0.0",
+    "@houseninja/capacitor-mixpanel": "^2.1.0",
     "@mineminemine/fcm": "^4.0.3",
     "@sentry/capacitor": "0.10.1",
     "capacitor-secure-storage-plugin": "^0.8.1"

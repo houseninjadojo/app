@@ -88,7 +88,7 @@ PODS:
   - HouseninjaCapacitorIntercom (4.3.0):
     - Capacitor
     - Intercom
-  - HouseninjaCapacitorMixpanel (2.0.0):
+  - HouseninjaCapacitorMixpanel (2.1.0):
     - Capacitor
     - Mixpanel-swift
   - Intercom (14.0.6)
@@ -232,7 +232,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
   HouseninjaCapacitorIntercom: 31246e27d64d1ee1234a3b45b8db869b42dbb804
-  HouseninjaCapacitorMixpanel: d15eddaf6e391e3ed416260b58b2dc7c2847bbaa
+  HouseninjaCapacitorMixpanel: b70348e8115b1a53420be6ec16d4063d8eb97fb2
   Intercom: 443c886cc5a6eb276a5c82f1dd5ba5031cc27151
   MineminemineFcm: c5da7f364c3221b1bca61bf6b1c5cb0167bc3a5c
   Mixpanel-swift: 95fa64d39f15141f1c5b7797003e2123d4c3207e
