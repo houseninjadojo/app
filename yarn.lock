@@ -1664,12 +1664,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:4.6.1":
-  version: 4.6.1
-  resolution: "@capacitor/core@npm:4.6.1"
+"@capacitor/core@npm:4.6.2":
+  version: 4.6.2
+  resolution: "@capacitor/core@npm:4.6.2"
   dependencies:
     tslib: ^2.1.0
-  checksum: e86714e96503c7feced070f98b68aedbb5cf070131ffff724e1e638f5441eb05ce4d2dd767557f0dd83214ecc523f8aad9938d1f1a91d2651f2201ff231067f6
+  checksum: eb1d6256c1f70c0f30aaf0cb322b28d35ee898bef810dc66c6f5ca255ebcb084b8ed3dfcabcfde645e287bea3e389428f004b416cd1f17425579537ac472726c
   languageName: node
   linkType: hard
 
@@ -12324,7 +12324,7 @@ __metadata:
     "@capacitor/browser": ^4.1.1
     "@capacitor/camera": ^4.1.4
     "@capacitor/cli": 4.6.1
-    "@capacitor/core": 4.6.1
+    "@capacitor/core": 4.6.2
     "@capacitor/device": ^4.1.0
     "@capacitor/dialog": ^4.1.0
     "@capacitor/filesystem": ^4.1.4
