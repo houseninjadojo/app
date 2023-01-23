@@ -49,7 +49,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.6, @babel/core@npm:^7.12.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.5, @babel/core@npm:^7.16.10, @babel/core@npm:^7.16.7, @babel/core@npm:^7.19.3, @babel/core@npm:^7.20.2, @babel/core@npm:^7.3.4":
+"@babel/core@npm:^7.1.6, @babel/core@npm:^7.12.0, @babel/core@npm:^7.12.3, @babel/core@npm:^7.14.5, @babel/core@npm:^7.16.10, @babel/core@npm:^7.16.7, @babel/core@npm:^7.20.2, @babel/core@npm:^7.3.4":
   version: 7.20.5
   resolution: "@babel/core@npm:7.20.5"
   dependencies:
@@ -72,7 +72,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.20.12":
+"@babel/core@npm:^7.19.6, @babel/core@npm:^7.20.12":
   version: 7.20.12
   resolution: "@babel/core@npm:7.20.12"
   dependencies:
@@ -7308,14 +7308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.4.0":
-  version: 3.7.0
-  resolution: "ci-info@npm:3.7.0"
-  checksum: 6e5df0250382ff3732703b36b958d2d892dd3c481f9671666f96c2ab7888be744bc4dca81395be958dcb828502d94f18fa9aa8901c5a3c9923cda212df02724c
-  languageName: node
-  linkType: hard
-
-"ci-info@npm:^3.7.1":
+"ci-info@npm:^3.5.0, ci-info@npm:^3.7.1":
   version: 3.7.1
   resolution: "ci-info@npm:3.7.1"
   checksum: 72d93d5101ea1c186511277fbd8d06ae8a6e028cc2fb94361e92bf735b39c5ebd192e8d15a66ff8c4e3ed569f87c2f844e96f90e141b2de5c649f77ec34ff601
@@ -9289,11 +9282,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli@npm:~4.9.2":
-  version: 4.9.2
-  resolution: "ember-cli@npm:4.9.2"
+"ember-cli@npm:~4.10.0":
+  version: 4.10.0
+  resolution: "ember-cli@npm:4.10.0"
   dependencies:
-    "@babel/core": ^7.19.3
+    "@babel/core": ^7.19.6
     "@babel/plugin-transform-modules-amd": ^7.18.6
     amd-name-resolver: ^1.3.1
     babel-plugin-module-resolver: ^4.1.0
@@ -9317,7 +9310,7 @@ __metadata:
     calculate-cache-key-for-tree: ^2.0.0
     capture-exit: ^2.0.0
     chalk: ^4.1.2
-    ci-info: ^3.4.0
+    ci-info: ^3.5.0
     clean-base-url: ^1.0.0
     compression: ^1.7.4
     configstore: ^5.0.1
@@ -9349,7 +9342,7 @@ __metadata:
     heimdalljs-graph: ^1.0.0
     heimdalljs-logger: ^0.1.10
     http-proxy: ^1.18.1
-    inflection: ^1.13.1
+    inflection: ^1.13.4
     inquirer: ^8.2.1
     is-git-url: ^1.0.0
     is-language-code: ^3.1.0
@@ -9389,7 +9382,7 @@ __metadata:
     yam: ^1.0.0
   bin:
     ember: bin/ember
-  checksum: e7b6d07e5fbe7eec73afa25fae26b9685d1b9cc8cab37113750b3246be56db0db269b54b95db8391f40f9f18d9c456aae61bc65c97ecf69e955c306381eabb1c
+  checksum: 76685177759d338eda73890c221dcdf8bb190b6484861c5eaf8ebd9d79cee0bdb3562b899ee96691ca4e8ae0484ed2d428a8a4a30e6e3cf51e0aee3e47c8b0f9
   languageName: node
   linkType: hard
 
@@ -12416,7 +12409,7 @@ __metadata:
     crypto-js: ^4.1.1
     dotenv-vault: ^1.17.0
     ember-auto-import: ^2.5.0
-    ember-cli: ~4.9.2
+    ember-cli: ~4.10.0
     ember-cli-app-version: ^5.0.0
     ember-cli-babel: ^7.26.11
     ember-cli-capacitor: ^0.1.1
@@ -12764,7 +12757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inflection@npm:^1.13.1, inflection@npm:^1.13.2":
+"inflection@npm:^1.13.2, inflection@npm:^1.13.4":
   version: 1.13.4
   resolution: "inflection@npm:1.13.4"
   checksum: 6744feede9998ad8abd2b1db4af79f494a166e656a0aa949d90c8f4a945c1d07038a3756bf7af78c8f6fce368ba213a7ebf35da3edeffd39f1da0ff465eed6eb
