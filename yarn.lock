@@ -7307,10 +7307,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.4.0, ci-info@npm:^3.7.0":
+"ci-info@npm:^3.4.0":
   version: 3.7.0
   resolution: "ci-info@npm:3.7.0"
   checksum: 6e5df0250382ff3732703b36b958d2d892dd3c481f9671666f96c2ab7888be744bc4dca81395be958dcb828502d94f18fa9aa8901c5a3c9923cda212df02724c
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.7.1":
+  version: 3.7.1
+  resolution: "ci-info@npm:3.7.1"
+  checksum: 72d93d5101ea1c186511277fbd8d06ae8a6e028cc2fb94361e92bf735b39c5ebd192e8d15a66ff8c4e3ed569f87c2f844e96f90e141b2de5c649f77ec34ff601
   languageName: node
   linkType: hard
 
@@ -9752,14 +9759,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-template-lint@npm:^5.3.1":
-  version: 5.3.1
-  resolution: "ember-template-lint@npm:5.3.1"
+"ember-template-lint@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "ember-template-lint@npm:5.3.2"
   dependencies:
     "@lint-todo/utils": ^13.0.3
     aria-query: ^5.0.2
     chalk: ^5.2.0
-    ci-info: ^3.7.0
+    ci-info: ^3.7.1
     date-fns: ^2.29.2
     ember-template-imports: ^3.4.0
     ember-template-recast: ^6.1.3
@@ -9776,7 +9783,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     ember-template-lint: bin/ember-template-lint.js
-  checksum: 1ebbddfeefcb93ba4ac788927dbe10d6d193f7e181dd22285a9b6b8bce04f8a9d53e5f98c4da3e769147af7b91d61ba599204dee9e1c6e7dce4b955731b53775
+  checksum: 21223ab793b570d87a7e41b00f9c2a4eb59696ea170699a44b47615fd30836f94d6145d1c91d52cf68518d98372f8ec6f2dcdca3dfba68f02f48e543dcd714dd
   languageName: node
   linkType: hard
 
@@ -12437,7 +12444,7 @@ __metadata:
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^6.0.0
     ember-source: ~4.9.3
-    ember-template-lint: ^5.3.1
+    ember-template-lint: ^5.3.2
     ember-truth-helpers: ^3.1.1
     ember-user-activity: "https://github.com/elwayman02/ember-user-activity"
     eslint: ^8.32.0
