@@ -3,9 +3,11 @@ import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
 import Sentry, { captureException } from 'houseninja/utils/sentry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
-import DeviceModel from 'houseninja/models/device';
+import Device from 'houseninja/models/device';
 import { UnauthorizedError } from '@ember-data/adapter/error';
 import { debug } from '@ember/debug';
+import ENV from 'houseninja/config/environment';
+import { getId, getInfo } from 'houseninja/utils/native/device';
 
 import type IntercomService from 'houseninja/services/intercom';
 import type MetricsService from 'houseninja/services/metrics';
@@ -24,7 +26,7 @@ export default class CurrentService extends Service {
   isLoadingUser = false;
 
   user?: User;
-  device?: DeviceModel;
+  device?: Device;
   pushTokens?: { apnsDeviceToken?: string; fcmToken?: string };
 
   signup = new TrackedObject({
@@ -39,7 +41,7 @@ export default class CurrentService extends Service {
     const { apns, fcm } = tokens;
     this.pushTokens = { apnsDeviceToken: apns, fcmToken: fcm };
     await stash('pushToken', this.pushTokens);
-    if (this.device instanceof DeviceModel) {
+    if (this.device instanceof Device) {
       this.device.setProperties(this.pushTokens);
       await this.device.save();
     }
@@ -90,7 +92,6 @@ export default class CurrentService extends Service {
       if (!this.user) {
         await this.loadUser();
       }
-
       let device = this.store.peekAll('device').get('firstObject');
       if (!device) {
         const stashedDevice = await unstash('device');
@@ -98,7 +99,6 @@ export default class CurrentService extends Service {
           stashedDevice,
         });
       }
-
       Sentry.addBreadcrumb({
         type: 'info',
         category: 'device.register',
@@ -108,10 +108,8 @@ export default class CurrentService extends Service {
           device: { id: device.id },
         },
       });
-
       device.user = this.user;
       device.setProperties(this.pushTokens);
-
       try {
         await device.save();
       } catch (e) {
@@ -138,4 +136,43 @@ export default class CurrentService extends Service {
       this.isLoadingUser = false;
     }
   });
+
+  async syncDevice(): Promise<void> {
+    if (ENV.environment === 'test') return;
+    const device_id = await getId();
+    const info = await getInfo();
+    const pushToken = await unstash('pushToken');
+    const deviceInfo = {
+      ...info,
+      ...pushToken,
+      deviceId: device_id,
+    };
+    debug(`[device] initializing device id=${device_id}`);
+    try {
+      let device;
+      // check if we know about the device already
+      const devices = await this.store.query('device', {
+        filter: {
+          device_id,
+        },
+      });
+      if (devices.length > 0) {
+        // we know about this device, so update any changes
+        device = devices.firstObject;
+        device.setProperties(deviceInfo);
+      } else {
+        // this is a new device, so create it
+        device = this.store.createRecord('device', deviceInfo);
+      }
+      await device.save();
+    } catch (e) {
+      if (e instanceof UnauthorizedError) {
+        debug('[device] unauthorized, skipping device registration');
+      } else {
+        captureException(e as Error);
+      }
+    }
+    await stash('device', deviceInfo);
+    this.device = deviceInfo;
+  }
 }
