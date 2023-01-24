@@ -10,6 +10,21 @@
     "embertooling.emberjs",
     "embertooling.prettier-for-handlebars-vscode",
     "esbenp.prettier-vscode",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "1password.op-vscode",
+    "mikestead.dotenv",
+    "dotenv.dotenv-vscode",
+    "formulahendry.github-actions",
+    "me-dutour-mathieu.vscode-github-actions",
+    "vscjava.vscode-gradle",
+    "ms-vscode.vscode-typescript-next",
+    "christian-kohler.npm-intellisense",
+    "dotdevru.prettier-java",
+    "rebornix.ruby",
+    "jock.svg",
+    "kasik96.swift",
+    "wingrunr21.vscode-ruby",
+    "adelphes.android-dev-ext",
+    "formulahendry.auto-rename-tag"
   ]
 }
