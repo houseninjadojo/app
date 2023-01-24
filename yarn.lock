@@ -12413,7 +12413,7 @@ __metadata:
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-qunit: ^7.3.4
-    liquid-fire: ^0.34.0
+    liquid-fire: ^0.35.0
     loader.js: ^4.7.0
     lottie-web: ^5.10.2
     miragejs: ^0.1.46
@@ -14038,9 +14038,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"liquid-fire@npm:^0.34.0":
-  version: 0.34.0
-  resolution: "liquid-fire@npm:0.34.0"
+"liquid-fire@npm:^0.35.0":
+  version: 0.35.0
+  resolution: "liquid-fire@npm:0.35.0"
   dependencies:
     "@embroider/macros": ^1.0.0
     broccoli-funnel: ^3.0.8
@@ -14054,7 +14054,7 @@ __metadata:
     velocity-animate: ^1.5.2
   peerDependencies:
     ember-source: ">= 3.8.0"
-  checksum: fe0512ab7556838e135dc26946564495f930901e4e4b494ef2f8f1bf9798794f07aa3ae917f0d7ba309cea1ac5a63ef0ff0cd4bf805728ec0ea796bd696e9c6c
+  checksum: 80d9e401a31e7011899302122a3e74a9a6f22009fa40034c7fe78e4f1f436ba7393fbf90baf244cd0dafa3d2c21d2767ebbde10f7f3e214295338322227c5b80
   languageName: node
   linkType: hard
 
