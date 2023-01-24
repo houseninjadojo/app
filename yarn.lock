@@ -9787,15 +9787,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-user-activity@https://github.com/elwayman02/ember-user-activity":
-  version: 6.0.0
-  resolution: "ember-user-activity@https://github.com/elwayman02/ember-user-activity.git#commit=aa477db859d52183cfabb04741fa8a2c1fa7688c"
+"ember-user-activity@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "ember-user-activity@npm:7.0.0"
   dependencies:
     ember-classic-decorator: ^3.0.1
     ember-cli-babel: ^7.26.11
   peerDependencies:
     ember-source: ^3.28.0 || ^4.0.0
-  checksum: 2fcb8d1b0aacafe3596e29f50d7be17a8b477c222d6a7d27e958d1ba7f3e8b7b01eb18a5b88194c125f1cf4a2008e07227b99b83b0154caf4bd734a4de668d19
+  checksum: 585ed65f93bb89bc1b0b6e28434f0c253fc642cd332004c0b93d072e7be619638f188d3d1e1b2f9dffac49731dc39a32e36e7a6f52239eae095f953e55454639
   languageName: node
   linkType: hard
 
@@ -12406,7 +12406,7 @@ __metadata:
     ember-source: ~4.9.3
     ember-template-lint: ^5.3.2
     ember-truth-helpers: ^3.1.1
-    ember-user-activity: "https://github.com/elwayman02/ember-user-activity"
+    ember-user-activity: ^7.0.0
     eslint: ^8.32.0
     eslint-config-prettier: ^8.6.0
     eslint-plugin-ember: ^11.4.3
