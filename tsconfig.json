@@ -8,12 +8,19 @@
     "paths": {
       "houseninja/tests/*": ["tests/*"],
       "houseninja/mirage/*": ["mirage/*"],
+      "houseninja/mocks/*": ["mocks/*"],
       "houseninja/*": ["app/*"],
       "*": ["types/*"]
     },
     "skipLibCheck": true
   },
-  "include": ["app/**/*", "tests/**/*", "types/**/*", "mirage/**/*"],
+  "include": [
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*",
+    "mirage/**/*",
+    "mocks/**/*"
+  ],
   "glint": {
     "environment": "ember-loose"
   }

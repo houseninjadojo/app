@@ -4,6 +4,10 @@ import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { registerDestructor } from '@ember/destroyable';
+import { DEBUG } from '@glimmer/env';
 
 import type Transition from '@ember/routing/transition';
 import type IntercomService from 'houseninja/services/intercom';
@@ -42,6 +46,11 @@ class ApplicationRoute extends Route {
     await this.session.setup();
     await this.notifications.setup();
     await this.branch.setup();
+
+    // Don't include MSW in production, only in DEBUG (tests, development)
+    if (DEBUG) {
+      await setupMSW(this);
+    }
   }
 
   afterModel(): void {
@@ -55,6 +64,18 @@ class ApplicationRoute extends Route {
     this.loader.setApplicationLoader(transition);
     return true;
   }
+}
+
+async function setupMSW(context: ThisType<ApplicationRoute>) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { worker } = await import('public/mocks/browser');
+
+  await worker.start();
+
+  // Prevent duplication in tests,
+  // where the app is setup and torn down a lot
+  registerDestructor(context, () => worker.stop());
 }
 
 export default instrumentRoutePerformance(ApplicationRoute);
