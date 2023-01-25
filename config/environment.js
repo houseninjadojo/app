@@ -109,6 +109,10 @@ module.exports = function (environment) {
       },
     ],
 
+    msw: {
+      enabled: true,
+    },
+
     sentry: {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 1.0,
@@ -137,8 +141,11 @@ module.exports = function (environment) {
     // Sentry
     ENV.sentry.debug = true;
 
+    // MSW
+    ENV.msw.enabled = true;
+
     // Mirage
-    ENV['ember-cli-mirage'].enabled = true;
+    ENV['ember-cli-mirage'].enabled = false;
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

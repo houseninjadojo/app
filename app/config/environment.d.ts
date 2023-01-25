@@ -62,6 +62,9 @@ declare const config: {
       android: string;
     };
   };
+  msw: {
+    enabled: boolean;
+  };
   sentry: {
     dsn: string | undefined;
     tracesSampleRate: number;
