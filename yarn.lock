@@ -3643,7 +3643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ember-data@npm:*, @types/ember-data@npm:^4.4.6":
+"@types/ember-data@npm:*":
   version: 4.4.6
   resolution: "@types/ember-data@npm:4.4.6"
   dependencies:
@@ -3652,6 +3652,18 @@ __metadata:
     "@types/ember__object": "*"
     "@types/rsvp": "*"
   checksum: 641f43f5c82aab651ef00555ffe07cdf8c1e0ac581ade582479e48b3e89a258efbf083391b20b723c239eadac0418b1eb4c3ce14ec9a61477ac33f758379fae7
+  languageName: node
+  linkType: hard
+
+"@types/ember-data@npm:^4.4.7":
+  version: 4.4.7
+  resolution: "@types/ember-data@npm:4.4.7"
+  dependencies:
+    "@types/ember": "*"
+    "@types/ember__error": "*"
+    "@types/ember__object": "*"
+    "@types/rsvp": "*"
+  checksum: 27a451bd38de867c7910b978273154fae56412c8916a3010b31520444e08e65d08d3845f83220015a4470e4682c9c80319f7608397bb5063dc55d18ab74ad4cf
   languageName: node
   linkType: hard
 
@@ -12336,7 +12348,7 @@ __metadata:
     "@types/canvas-confetti": ^1.6.0
     "@types/crypto-js": ^4.1.1
     "@types/ember": ^4.0.3
-    "@types/ember-data": ^4.4.6
+    "@types/ember-data": ^4.4.7
     "@types/ember-data__adapter": ^4.0.1
     "@types/ember-data__model": ^4.0.0
     "@types/ember-data__serializer": ^4.0.1
