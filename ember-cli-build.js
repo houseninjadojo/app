@@ -68,6 +68,10 @@ if (process.env.BUILD_STATS) {
   );
 }
 
+const exclude = ['production', 'sandbox'].includes(process.env.EMBER_ENV)
+  ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js']
+  : [];
+
 /**
  * Build Options
  * @see https://cli.emberjs.com/release/advanced-use/
@@ -75,6 +79,7 @@ if (process.env.BUILD_STATS) {
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
+      exclude,
       webpack: {
         plugins: webpackPlugins,
         optimization: {
