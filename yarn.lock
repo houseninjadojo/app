@@ -9757,9 +9757,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-template-lint@npm:^5.3.2":
-  version: 5.3.2
-  resolution: "ember-template-lint@npm:5.3.2"
+"ember-template-lint@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "ember-template-lint@npm:5.3.3"
   dependencies:
     "@lint-todo/utils": ^13.0.3
     aria-query: ^5.0.2
@@ -9781,7 +9781,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     ember-template-lint: bin/ember-template-lint.js
-  checksum: 21223ab793b570d87a7e41b00f9c2a4eb59696ea170699a44b47615fd30836f94d6145d1c91d52cf68518d98372f8ec6f2dcdca3dfba68f02f48e543dcd714dd
+  checksum: 071126f0df2bd8f7d4a0217029dca00ce3574bf2c2e1382b49330e7dffe3b9c14029c4b559d8f0626119614f9da3029fa7668aeb78ece802e5f7619aa04a9a15
   languageName: node
   linkType: hard
 
@@ -12442,7 +12442,7 @@ __metadata:
     ember-simple-auth: ^4.2.2
     ember-sinon-qunit: ^7.0.0
     ember-source: ~4.9.3
-    ember-template-lint: ^5.3.2
+    ember-template-lint: ^5.3.3
     ember-truth-helpers: ^3.1.1
     ember-user-activity: ^7.0.0
     eslint: ^8.32.0
