@@ -96,7 +96,7 @@ module.exports = function (defaults) {
                 chunks: 'all',
               },
               dev: {
-                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js)/,
+                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js|sinon|qunit)/,
                 name: 'development',
                 chunks: 'all',
               },
