@@ -1849,9 +1849,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/datadog-ci@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "@datadog/datadog-ci@npm:2.3.2"
+"@datadog/datadog-ci@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@datadog/datadog-ci@npm:2.4.0"
   dependencies:
     "@types/datadog-metrics": 0.6.1
     async-retry: 1.3.1
@@ -1866,13 +1866,13 @@ __metadata:
     fuzzy: ^0.1.3
     glob: 7.1.4
     inquirer: ^8.2.5
-    inquirer-checkbox-plus-prompt: ^1.0.1
+    inquirer-checkbox-plus-prompt: ^1.4.2
     js-yaml: 3.13.1
     ora: 5.4.1
     proxy-agent: 5.0.0
     rimraf: ^3.0.2
     semver: ^7.3.7
-    simple-git: 3.15.0
+    simple-git: 3.16.0
     ssh2: 1.9.0
     ssh2-streams: 0.4.10
     sshpk: 1.16.1
@@ -1882,7 +1882,7 @@ __metadata:
     yamux-js: 0.1.1
   bin:
     datadog-ci: dist/cli.js
-  checksum: 2a837e3ab3a3b503a1aac9948b4e3d008df46e49ad1cd1bace5008e5ba590f842878b76191153bb619a9f0c65a433af37b16601be3c452d385cefac9b14b42e6
+  checksum: b33de662c541212d05f03ea3e9486e7bffccd7ba2dddbbf2a4d13ab21c041f41bfa6fe2375a067ccd994449c874cde6bae2ce226bae97f9fc21f57cc33ebf356
   languageName: node
   linkType: hard
 
@@ -7181,6 +7181,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:4.1.2, chalk@npm:^4.0.0, chalk@npm:^4.0.2, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "chalk@npm:4.1.2"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
 "chalk@npm:^1.0.0, chalk@npm:^1.1.3":
   version: 1.1.3
   resolution: "chalk@npm:1.1.3"
@@ -7191,16 +7201,6 @@ __metadata:
     strip-ansi: ^3.0.0
     supports-color: ^2.0.0
   checksum: 9d2ea6b98fc2b7878829eec223abcf404622db6c48396a9b9257f6d0ead2acf18231ae368d6a664a83f272b0679158da12e97b5229f794939e555cc574478acd
-  languageName: node
-  linkType: hard
-
-"chalk@npm:^4.0.0, chalk@npm:^4.0.2, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "chalk@npm:4.1.2"
-  dependencies:
-    ansi-styles: ^4.1.0
-    supports-color: ^7.1.0
-  checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
   languageName: node
   linkType: hard
 
@@ -12344,7 +12344,7 @@ __metadata:
     "@capawesome/capacitor-file-picker": ^0.5.9
     "@datadog/browser-logs": ^4.31.0
     "@datadog/browser-rum": ^4.31.0
-    "@datadog/datadog-ci": ^2.3.2
+    "@datadog/datadog-ci": ^2.4.0
     "@ember/jquery": ^2.0.0
     "@ember/optional-features": ^2.0.0
     "@ember/render-modifiers": ^2.0.5
@@ -12836,17 +12836,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer-checkbox-plus-prompt@npm:^1.0.1":
-  version: 1.4.1
-  resolution: "inquirer-checkbox-plus-prompt@npm:1.4.1"
+"inquirer-checkbox-plus-prompt@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "inquirer-checkbox-plus-prompt@npm:1.4.2"
   dependencies:
+    chalk: 4.1.2
     cli-cursor: ^3.1.0
     figures: ^3.0.0
     lodash: ^4.17.5
     rxjs: ^6.6.7
   peerDependencies:
-    inquirer: ^8.2.5
-  checksum: 51428c3a2e0bb9040147e5fbb957b485d656261b4e939632aed2ccbaedadf9f529a4eb58dd9a3f1b03537315b65387231166d4f7f71f2c6b352ad39d9aea8703
+    inquirer: < 9.x
+  checksum: 0bdadc94e4bd13cc3b918b3a7d343376939e5713ccceb51b28293649bd51c476aaa6aab6cafecf89c784cffcaf879c307ab3830a12d3e54ba7a26c6e81c85d27
   languageName: node
   linkType: hard
 
@@ -18417,14 +18418,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:3.15.0":
-  version: 3.15.0
-  resolution: "simple-git@npm:3.15.0"
+"simple-git@npm:3.16.0":
+  version: 3.16.0
+  resolution: "simple-git@npm:3.16.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
     debug: ^4.3.4
-  checksum: 4733d1b769965a7608254c3a5b27532e02e60d4369bc9b397ce47159dd153344a3774739fd2602f693947ed64631b30145b970988fb007b5b779459e9abcdee8
+  checksum: fd28eb43be39d158d2c321cd34eb00f61c365513478ff2bb31f4da06315dcd018e03c6ece9f99558f3fd8834171072850aed1376bf50f8d922b0e2dadede0c2d
   languageName: node
   linkType: hard
 
