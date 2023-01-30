@@ -3012,7 +3012,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/core@npm:^1, @oclif/core@npm:^1.20.3, @oclif/core@npm:^1.21.0":
+"@oclif/color@npm:^1.0.3":
+  version: 1.0.4
+  resolution: "@oclif/color@npm:1.0.4"
+  dependencies:
+    ansi-styles: ^4.2.1
+    chalk: ^4.1.0
+    strip-ansi: ^6.0.1
+    supports-color: ^8.1.1
+    tslib: ^2
+  checksum: 5dc377db5684dc482d299d79037a9dcdfc104482d01a60d99f4f8e92cbc8b89e533086f34f3f6e702ba025d4882e24816199c33529a545a8d43ff8bf542d1cfd
+  languageName: node
+  linkType: hard
+
+"@oclif/core@npm:^1, @oclif/core@npm:^1.21.0":
   version: 1.21.0
   resolution: "@oclif/core@npm:1.21.0"
   dependencies:
@@ -3048,6 +3061,42 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oclif/core@npm:^2.0.3, @oclif/core@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@oclif/core@npm:2.0.7"
+  dependencies:
+    "@types/cli-progress": ^3.11.0
+    ansi-escapes: ^4.3.2
+    ansi-styles: ^4.3.0
+    cardinal: ^2.1.1
+    chalk: ^4.1.2
+    clean-stack: ^3.0.1
+    cli-progress: ^3.10.0
+    debug: ^4.3.4
+    ejs: ^3.1.6
+    fs-extra: ^9.1.0
+    get-package-type: ^0.1.0
+    globby: ^11.1.0
+    hyperlinker: ^1.0.0
+    indent-string: ^4.0.0
+    is-wsl: ^2.2.0
+    js-yaml: ^3.14.1
+    natural-orderby: ^2.0.3
+    object-treeify: ^1.1.33
+    password-prompt: ^1.1.2
+    semver: ^7.3.7
+    string-width: ^4.2.3
+    strip-ansi: ^6.0.1
+    supports-color: ^8.1.1
+    supports-hyperlinks: ^2.2.0
+    tslib: ^2.4.1
+    widest-line: ^3.1.0
+    wordwrap: ^1.0.0
+    wrap-ansi: ^7.0.0
+  checksum: 03aba6b9642daa2345a0516a9a3c58bb03797d174e0e4b0bd11b1e44e6c81b5d746e9bdf6b58ffa313fb667f9ea8f7af4ccbee1d054f60970c15e3e74047ef51
+  languageName: node
+  linkType: hard
+
 "@oclif/linewrap@npm:^1.0.0":
   version: 1.0.0
   resolution: "@oclif/linewrap@npm:1.0.0"
@@ -3064,15 +3113,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-not-found@npm:^2.3.9":
-  version: 2.3.9
-  resolution: "@oclif/plugin-not-found@npm:2.3.9"
+"@oclif/plugin-not-found@npm:^2.3.13":
+  version: 2.3.17
+  resolution: "@oclif/plugin-not-found@npm:2.3.17"
   dependencies:
-    "@oclif/color": ^1.0.2
-    "@oclif/core": ^1.20.3
+    "@oclif/color": ^1.0.3
+    "@oclif/core": ^2.0.3
     fast-levenshtein: ^3.0.0
     lodash: ^4.17.21
-  checksum: 79852aa0bf5a8d05e0938df93bf554bea32193e1d8e23f88729034ddcc8154cdbbb8a2002eb626d626a1bd8fb2b92dad83cd7d0cdd13877843d97cb44be7bfa7
+  checksum: 625e2a44e2d721f9a951f483160221960feb7aa1119a1e9ce0272be6f965daf471aca31eeaf65143edc71c04c71bebba180dd41c6bbeebd88c9c225d1ad0c893
   languageName: node
   linkType: hard
 
@@ -3096,18 +3145,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oclif/plugin-warn-if-update-available@npm:^2.0.14":
-  version: 2.0.16
-  resolution: "@oclif/plugin-warn-if-update-available@npm:2.0.16"
+"@oclif/plugin-warn-if-update-available@npm:^2.0.18":
+  version: 2.0.24
+  resolution: "@oclif/plugin-warn-if-update-available@npm:2.0.24"
   dependencies:
-    "@oclif/core": ^1.21.0
+    "@oclif/core": ^2.0.7
     chalk: ^4.1.0
     debug: ^4.1.0
     fs-extra: ^9.0.1
     http-call: ^5.2.2
     lodash: ^4.17.21
     semver: ^7.3.8
-  checksum: 1d7c2d2c061ed27709c52a0be83d60b22e4838162c107c23be1a2cec5f0533702141307b90b803add389aa3cea6baf9f989c89be9f5f4d8ffb7f6327c3324f2f
+  checksum: 11803004d71a77913db5cfe9b400a2b94d46c5cb6c69d5c2de5bec3ebe629f43197738f0801d271c390ccb6df80aedabb7cf7b7b82e5041f9940f74c39027cbd
   languageName: node
   linkType: hard
 
@@ -3594,6 +3643,15 @@ __metadata:
   version: 4.3.4
   resolution: "@types/chai@npm:4.3.4"
   checksum: 571184967beb03bf64c4392a13a7d44e72da9af5a1e83077ff81c39cf59c0fda2a5c78d2005084601cf8f3d11726608574d8b5b4a0e3e9736792807afd926cd0
+  languageName: node
+  linkType: hard
+
+"@types/cli-progress@npm:^3.11.0":
+  version: 3.11.0
+  resolution: "@types/cli-progress@npm:3.11.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: d4401622333e888925b47c5d5bb0b89dddae17cc020f909a64ad7275b326bf3c6e9cd467f625a197fd958a1e49220d32f4a2b0bf2948fee330c719a9b985674e
   languageName: node
   linkType: hard
 
@@ -8507,32 +8565,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-vault-core@npm:0.6.1":
-  version: 0.6.1
-  resolution: "dotenv-vault-core@npm:0.6.1"
+"dotenv-vault-core@npm:0.7.0":
+  version: 0.7.0
+  resolution: "dotenv-vault-core@npm:0.7.0"
   dependencies:
     dotenv: ^16.0.3
-  checksum: 60247462582a9c1a6f5923e821fa72b0206a1ad69cd138260d0d5eb1bbd7835c29a29b49e53d080a5502fc3d309c916eefcb119af8e764c47e8aef25d9cda983
+  checksum: 66084a7a836a364204131a4eb29b33fac0ed240d053ca12c20d0d6883d0f39390777f5332b34ae6906a18c102de0720b8bdfad3d7119cf4d50d38e9ab70373f5
   languageName: node
   linkType: hard
 
-"dotenv-vault@npm:^1.17.0":
-  version: 1.17.0
-  resolution: "dotenv-vault@npm:1.17.0"
+"dotenv-vault@npm:^1.18.0":
+  version: 1.18.0
+  resolution: "dotenv-vault@npm:1.18.0"
   dependencies:
     "@oclif/core": ^1
     "@oclif/plugin-help": ^5.1.19
-    "@oclif/plugin-not-found": ^2.3.9
+    "@oclif/plugin-not-found": ^2.3.13
     "@oclif/plugin-update": ^3.0.7
-    "@oclif/plugin-warn-if-update-available": ^2.0.14
+    "@oclif/plugin-warn-if-update-available": ^2.0.18
     abortcontroller-polyfill: 1.7.5
     axios: ^0.27.2
     chalk: ^4.1.2
     dotenv: 16.0.3
-    dotenv-vault-core: 0.6.1
+    dotenv-vault-core: 0.7.0
   bin:
     dotenv-vault: bin/run
-  checksum: 69968af775560b8de23e6b9c7c662145809f96b11fcf3628a0cee8b0cd44df8b0c62a4d8cabcdf43bc197e1a014bfdeade3c33058c6e537d9ab68e487e8743e0
+  checksum: 7d6a0412087a7a85e84dd3ba354158c0d8af99114d1d50f189620873188eb6c53d961c632a73b77969893f8e1c96eb455fa341ca6e5ecbaa5df8e8275033d1d0
   languageName: node
   linkType: hard
 
@@ -12411,7 +12469,7 @@ __metadata:
     canvas-confetti: ^1.6.0
     capacitor-secure-storage-plugin: ^0.8.1
     crypto-js: ^4.1.1
-    dotenv-vault: ^1.17.0
+    dotenv-vault: ^1.18.0
     ember-auto-import: ^2.6.0
     ember-cli: ~4.10.0
     ember-cli-app-version: ^5.0.0
