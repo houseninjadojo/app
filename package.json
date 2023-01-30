@@ -158,6 +158,7 @@
     "tracked-built-ins": "^3.1.0",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
+    "webpack-stats-plugin": "^1.1.1",
     "whatwg-url": "12.0.0"
   },
   "engines": {

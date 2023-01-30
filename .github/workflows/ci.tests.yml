@@ -72,7 +72,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
       - run: mkdir -p tmp
       - run: yarn test:ci -o tmp/app
         env:
@@ -110,3 +110,27 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - tests finished for ${{ github.ref_name }} - ${{ job.status }}\", \"level\":\"${{ job.status }}\", \"ci.branch\":\"${{ github.ref_name }}\", \"ci.service\":\"app\", \"ci.step\":\"tests\"}"
               service: "github-actions"
 
+  bundle-size:
+    needs: skip-check
+    if: needs.skip-check.outputs.should-skip == 'false'
+    name: bundle size
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - run: yarn build
+        env:
+          BUILD_STATS: true
+      # Send webpack stats and build information to RelativeCI
+      - name: Send webpack stats to RelativeCI
+        uses: relative-ci/agent-action@v2
+        with:
+          webpackStatsFile: dist/webpack-stats.json
+          key: ${{ secrets.RELATIVE_CI_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          debug: true

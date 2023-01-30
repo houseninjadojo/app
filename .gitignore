@@ -22,6 +22,7 @@
 /testem.log
 /yarn-error.log
 .DS_Store
+webpack-stats.json
 
 # ember-try
 /.node_modules.ember-try/

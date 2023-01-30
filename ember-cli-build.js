@@ -1,6 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
 
 /**
  * PostCSS Plugins
@@ -44,6 +45,30 @@ const PostCSSImportPlugin = {
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 /**
+ * Webpack Plugins
+ */
+const webpackPlugins = [
+  new webpack.IgnorePlugin({
+    resourceRegExp: /^\.\/locale$/,
+    contextRegExp: /moment$/,
+  }),
+];
+
+if (process.env.BUILD_STATS) {
+  webpackPlugins.push(
+    // Write stats file relative to the build directory
+    new StatsWriterPlugin({
+      filename: '../webpack-stats.json',
+      stats: {
+        assets: true,
+        chunks: true,
+        modules: true
+      }
+    })
+  );
+}
+
+/**
  * Build Options
  * @see https://cli.emberjs.com/release/advanced-use/
  */
@@ -51,12 +76,7 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
       webpack: {
-        plugins: [
-          new webpack.IgnorePlugin({
-            resourceRegExp: /^\.\/locale$/,
-            contextRegExp: /moment$/,
-          }),
-        ],
+        plugins: webpackPlugins,
         optimization: {
           splitChunks: {
             cacheGroups: {
