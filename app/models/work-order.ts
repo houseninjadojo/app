@@ -3,8 +3,9 @@ import {
   WorkOrderUILabel,
 } from 'houseninja/data/work-order-status';
 import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
-
 import Model, { AsyncBelongsTo, attr, belongsTo } from '@ember-data/model';
+import parse from 'date-fns/parse';
+import format from 'date-fns/format';
 
 import type Estimate from 'houseninja/models/estimate';
 import type Invoice from './invoice';
@@ -35,5 +36,20 @@ export default class WorkOrder extends Model {
 
   get statusLabel(): WorkOrderUILabel {
     return getWorkOrderStatusLabel(this.status);
+  }
+
+  get scheduledDateParsed(): Date | undefined {
+    if (!this.scheduledDate) return;
+    return parse(this.scheduledDate, 'MM/dd/yyyy', new Date());
+  }
+
+  get displayDate(): string {
+    if (!this.vendor || !this.scheduledDateParsed) return '';
+    return format(this.scheduledDateParsed, 'MM/dd/yyyy');
+  }
+
+  get displayTime(): string {
+    if (!this.vendor || !this.scheduledTime) return '';
+    return this.scheduledTime;
   }
 }

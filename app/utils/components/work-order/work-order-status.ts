@@ -3,10 +3,16 @@ import {
   WorkOrderUILabel,
   WorkOrderStatusLabel,
 } from 'houseninja/data/work-order-status';
-
 import WorkOrder from 'houseninja/models/work-order';
 
-export const getWorkOrderTag = (status: WorkOrderStatus) => {
+export type WorkOrderTag =
+  | {
+      label: WorkOrderUILabel;
+      type?: 'accent' | 'disabled' | 'accent-outline' | 'secondary' | 'primary';
+    }
+  | undefined;
+
+export const getWorkOrderTag = (status: WorkOrderStatus): WorkOrderTag => {
   switch (status) {
     case WorkOrderStatus.Paused:
       return {
