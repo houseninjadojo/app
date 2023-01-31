@@ -53,7 +53,7 @@ export default class HandleItComponent extends Component<Args> {
     if (sortByCreatedAt) {
       return compareDesc(a.createdAt, b.createdAt);
     } else {
-      return compareDesc(a.scheduledDateParsed, b.scheduledDateParsed);
+      return compareDesc(a.scheduledDate, b.scheduledDate);
     }
   }
 
