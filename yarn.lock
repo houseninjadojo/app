@@ -2180,6 +2180,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@embroider/addon-shim@npm:^1.8.3":
+  version: 1.8.4
+  resolution: "@embroider/addon-shim@npm:1.8.4"
+  dependencies:
+    "@embroider/shared-internals": ^2.0.0
+    broccoli-funnel: ^3.0.8
+    semver: ^7.3.8
+  checksum: 107220e97bbd46ead81dfbbfc6cf7daa61731096a6e81b989659a9a0b29b48b3c97ebdd446b6dc0636c4be369f3744e514b7f5e5c0fdc54c1c0e026f54404cc2
+  languageName: node
+  linkType: hard
+
 "@embroider/compat@npm:^0.47.0":
   version: 0.47.2
   resolution: "@embroider/compat@npm:0.47.2"
@@ -8913,7 +8924,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-babel@npm:^7.0.0, ember-cli-babel@npm:^7.1.0, ember-cli-babel@npm:^7.1.2, ember-cli-babel@npm:^7.10.0, ember-cli-babel@npm:^7.13.0, ember-cli-babel@npm:^7.13.2, ember-cli-babel@npm:^7.20.5, ember-cli-babel@npm:^7.22.1, ember-cli-babel@npm:^7.23.0, ember-cli-babel@npm:^7.23.1, ember-cli-babel@npm:^7.26.10, ember-cli-babel@npm:^7.26.11, ember-cli-babel@npm:^7.26.3, ember-cli-babel@npm:^7.26.5, ember-cli-babel@npm:^7.26.6, ember-cli-babel@npm:^7.7.3, ember-cli-babel@npm:~7.26.6":
+"ember-cli-babel@npm:^7.0.0, ember-cli-babel@npm:^7.1.0, ember-cli-babel@npm:^7.1.2, ember-cli-babel@npm:^7.10.0, ember-cli-babel@npm:^7.13.0, ember-cli-babel@npm:^7.13.2, ember-cli-babel@npm:^7.20.5, ember-cli-babel@npm:^7.22.1, ember-cli-babel@npm:^7.23.0, ember-cli-babel@npm:^7.23.1, ember-cli-babel@npm:^7.26.11, ember-cli-babel@npm:^7.26.3, ember-cli-babel@npm:^7.26.5, ember-cli-babel@npm:^7.26.6, ember-cli-babel@npm:^7.7.3, ember-cli-babel@npm:~7.26.6":
   version: 7.26.11
   resolution: "ember-cli-babel@npm:7.26.11"
   dependencies:
@@ -9300,7 +9311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-typescript@npm:^5.1.0, ember-cli-typescript@npm:^5.2.1":
+"ember-cli-typescript@npm:^5.2.1":
   version: 5.2.1
   resolution: "ember-cli-typescript@npm:5.2.1"
   dependencies:
@@ -12532,7 +12543,7 @@ __metadata:
     stylelint: ^14.16.1
     stylelint-config-standard: ^29.0.0
     tailwindcss: ^3.2.4
-    tracked-built-ins: ^3.1.0
+    tracked-built-ins: ^3.1.1
     typescript: ^4.9.3
     webpack: ^5.75.0
     webpack-stats-plugin: ^1.1.1
@@ -19947,14 +19958,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tracked-built-ins@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "tracked-built-ins@npm:3.1.0"
+"tracked-built-ins@npm:^3.1.1":
+  version: 3.2.0
+  resolution: "tracked-built-ins@npm:3.2.0"
   dependencies:
-    ember-cli-babel: ^7.26.10
-    ember-cli-typescript: ^5.1.0
+    "@embroider/addon-shim": ^1.8.3
     ember-tracked-storage-polyfill: ^1.0.0
-  checksum: ea04824f4dc61984389cf5d79f36dbaa01c57c64769a8687ab130b9629add62c12f17214ca3ffd2a147f6a770002e24adf4486083b424782b357f4282a36e885
+  checksum: 262c8df5cfa2911a9b2288e1d34aa9b07b6e5673d0138531445e86426253176f51f4c96083f60e564a380df1f489cdd0bc522b75a9b04fdadfe374f543bbed85
   languageName: node
   linkType: hard
 
