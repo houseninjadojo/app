@@ -7,9 +7,16 @@ import {
   filterWorkOrdersFor,
   WorkOrderState,
 } from 'houseninja/utils/components/work-order/work-order-status';
-import moment from 'moment';
-export default class HandleItComponent extends Component {
-  @service router;
+import { compareDesc } from 'houseninja/utils/dates';
+import WorkOrder from 'houseninja/models/work-order';
+import RouterService from '@ember/routing/router-service';
+
+type Args = {
+  workOrders: WorkOrder[];
+};
+
+export default class HandleItComponent extends Component<Args> {
+  @service declare router: RouterService;
 
   tabs = [
     {
@@ -21,96 +28,82 @@ export default class HandleItComponent extends Component {
     },
   ];
 
-  get activeWorkOrders() {
+  get activeWorkOrders(): WorkOrder[] {
     return this.args.workOrders
       ?.filter((w) => {
         return isActiveWorkOrder(w.status);
       })
       ?.map((w) => {
         return {
+          ...w,
           id: w.id,
           name: w.description,
-          description: w.vendor && w.scheduledDate ? w.vendor : null,
+          description: w.vendor && w.scheduledDate ? w.vendor : undefined,
           createdAt: w.createdAt,
           scheduledDate: w.scheduledDate,
-          displayDate:
-            w.vendor && w.scheduledDate
-              ? moment(new Date(w.scheduledDate)).format('MM/DD/YYYY')
-              : null,
-          displayTime:
-            w.vendor && w.scheduledDate && w.scheduledTime
-              ? w.scheduledTime
-              : null,
+          displayDate: w.displayDate,
+          displayTime: w.displayTime,
           status: w.status,
           tag: w.status && getWorkOrderTag(w.status),
-          ...w,
         };
-      });
+      }) as unknown as WorkOrder[];
   }
 
-  __newestToOldest(a, b, sortByCreatedAt = false) {
-    const FORMAT = 'MM/DD/YYYY';
-
+  #newestToOldest(a: WorkOrder, b: WorkOrder, sortByCreatedAt = false): number {
     if (sortByCreatedAt) {
-      return moment(b.createdAt, FORMAT) - moment(a.createdAt, FORMAT);
+      return compareDesc(a.createdAt, b.createdAt);
     } else {
-      return moment(b.scheduledDate, FORMAT) - moment(a.scheduledDate, FORMAT);
+      return compareDesc(a.scheduledDate, b.scheduledDate);
     }
   }
 
-  get paymentDueWorkOrders() {
+  get paymentDueWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(
       WorkOrderState.PaymentDue,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return this.__newestToOldest(a, b);
-    });
+    )?.sort(this.#newestToOldest);
   }
 
-  get estimateReviewWorkOrders() {
+  get estimateReviewWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(
       WorkOrderState.Estimate,
       this.activeWorkOrders
-    )?.sort((a, b) => {
-      return this.__newestToOldest(a, b);
-    });
+    )?.sort(this.#newestToOldest);
   }
 
-  get completedWorkOrders() {
+  get completedWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(WorkOrderState.Completed, this.activeWorkOrders);
   }
 
-  get scheduledWorkOrders() {
+  get scheduledWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(WorkOrderState.Scheduled, this.activeWorkOrders);
   }
 
-  get schedulingWorkOrders() {
+  get schedulingWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(
       WorkOrderState.Scheduling,
       this.activeWorkOrders
     );
   }
 
-  get completedAndScheduledAndSchedulingWorkOrders() {
+  get completedAndScheduledAndSchedulingWorkOrders(): WorkOrder[] {
     return [
       ...(this.completedWorkOrders ?? []),
       ...(this.scheduledWorkOrders ?? []),
       ...(this.schedulingWorkOrders ?? []),
-    ]?.sort((a, b) => {
-      return this.__newestToOldest(a, b);
-    });
+    ]?.sort(this.#newestToOldest);
   }
 
-  get initiatedWorkOrders() {
+  get initiatedWorkOrders(): WorkOrder[] {
     return filterWorkOrdersFor(
       WorkOrderState.Initiated,
       this.activeWorkOrders
     )?.sort((a, b) => {
-      return this.__newestToOldest(a, b, true);
+      return this.#newestToOldest(a, b, true);
     });
   }
 
-  get displayedWorkOrders() {
+  get displayedWorkOrders(): WorkOrder[] {
     return [
       ...(this.paymentDueWorkOrders ?? []),
       ...(this.estimateReviewWorkOrders ?? []),
@@ -120,7 +113,7 @@ export default class HandleItComponent extends Component {
   }
 
   @action
-  selectRoute(routeName) {
+  selectRoute(routeName: string): void {
     this.router.transitionTo(routeName);
   }
 }

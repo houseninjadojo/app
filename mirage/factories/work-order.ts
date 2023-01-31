@@ -1,12 +1,10 @@
 import { Factory, association } from 'miragejs';
 import { faker } from '@faker-js/faker';
-import * as moment from 'moment';
+import dayjs from 'dayjs';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
 
 const pastOrFuture = (): Date => {
-  return faker.datatype.boolean()
-    ? faker.date.past(1, moment().toDate())
-    : faker.date.future(1, moment().toDate());
+  return faker.datatype.boolean() ? faker.date.past(1) : faker.date.future(1);
 };
 
 export default Factory.extend({
@@ -14,19 +12,19 @@ export default Factory.extend({
   estimate: association(),
 
   completedAt(): Date {
-    return moment(faker.date.past(3, moment().toDate())).toDate();
+    return faker.date.past(3);
   },
 
   updatedAt(): Date {
-    return moment(faker.date.past(3, moment().toDate())).toDate();
+    return faker.date.past(3);
   },
 
   createdAt(): Date {
-    return moment(faker.date.past(5, moment().toDate())).toDate();
+    return faker.date.past(5);
   },
 
   scheduledDate(): string {
-    return moment(pastOrFuture()).format('MM/DD/YYYY');
+    return dayjs(pastOrFuture()).format('MM/DD/YYYY');
   },
 
   scheduledTime(): string {

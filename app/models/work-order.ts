@@ -3,12 +3,15 @@ import {
   WorkOrderUILabel,
 } from 'houseninja/data/work-order-status';
 import { getWorkOrderStatusLabel } from 'houseninja/utils/components/work-order/work-order-status';
-
 import Model, { AsyncBelongsTo, attr, belongsTo } from '@ember-data/model';
 
 import type Estimate from 'houseninja/models/estimate';
 import type Invoice from './invoice';
 import type Property from './property';
+
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 export default class WorkOrder extends Model {
   @belongsTo('estimate', { async: false, inverse: 'workOrder' })
@@ -35,5 +38,20 @@ export default class WorkOrder extends Model {
 
   get statusLabel(): WorkOrderUILabel {
     return getWorkOrderStatusLabel(this.status);
+  }
+
+  get scheduledDateParsed(): Date | undefined {
+    if (!this.scheduledDate) return;
+    return dayjs(this.scheduledDate, 'MM/DD/YYYY').toDate();
+  }
+
+  get displayDate(): string {
+    if (!this.vendor || !this.scheduledDateParsed) return '';
+    return dayjs(this.scheduledDateParsed).format('MM/DD/YYYY');
+  }
+
+  get displayTime(): string {
+    if (!this.vendor || !this.scheduledTime) return '';
+    return this.scheduledTime;
   }
 }

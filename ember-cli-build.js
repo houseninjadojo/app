@@ -47,12 +47,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 /**
  * Webpack Plugins
  */
-const webpackPlugins = [
-  new webpack.IgnorePlugin({
-    resourceRegExp: /^\.\/locale$/,
-    contextRegExp: /moment$/,
-  }),
-];
+const webpackPlugins = [];
 
 if (process.env.BUILD_STATS) {
   webpackPlugins.push(
