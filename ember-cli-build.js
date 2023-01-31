@@ -3,6 +3,8 @@
 const webpack = require('webpack');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 
+const PROD_BUILD = ['production', 'sandbox'].includes(process.env.NODE_ENV);
+
 /**
  * PostCSS Plugins
  * Format is:
@@ -54,6 +56,14 @@ const webpackPlugins = [
   }),
 ];
 
+if (PROD_BUILD) {
+  webpackPlugins.push(
+    new webpack.IgnorePlugin({
+      resourceRegExp: /(@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js|sinon|qunit)/,
+    })
+  )
+};
+
 if (process.env.BUILD_STATS) {
   webpackPlugins.push(
     // Write stats file relative to the build directory
@@ -68,7 +78,7 @@ if (process.env.BUILD_STATS) {
   );
 }
 
-const exclude = ['production', 'sandbox'].includes(process.env.EMBER_ENV)
+const exclude = PROD_BUILD
   ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js']
   : [];
 
