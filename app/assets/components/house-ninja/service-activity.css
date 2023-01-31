@@ -1,0 +1,7 @@
+.hn.service-activity {
+  width: 100%;
+}
+
+.hn.service-activity .filled ul.record-list li .record {
+  flex-direction: column;
+}

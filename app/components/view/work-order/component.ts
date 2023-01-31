@@ -2,11 +2,20 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { SettingsRoute, WorkOrderRoute } from 'houseninja/data/enums/routes';
+import { importSync } from '@embroider/macros';
 
 import WorkOrder from 'houseninja/models/work-order';
 import IntercomService from 'houseninja/services/intercom';
 import RouterService from '@ember/routing/router-service';
+import ViewService from 'houseninja/services/view';
+import LoaderService from 'houseninja/services/loader';
+
+import ApproveEstimateComponent from './content/approve-estimate/component';
+import ApprovePaymentComponent from './content/approve-payment/component';
+import ClosedComponent from './content/closed';
+import SchedulingComponent from './content/scheduling';
+import DefaultComponent from './content/default';
 
 enum WorkOrderViewContent {
   ApprovePayment = 'approve-payment',
@@ -16,26 +25,31 @@ enum WorkOrderViewContent {
   Default = 'default',
 }
 
+export type WorkOrderContentComponent =
+  | ApproveEstimateComponent
+  | ApprovePaymentComponent
+  | ClosedComponent
+  | SchedulingComponent
+  | DefaultComponent;
+
 type Args = {
   model: WorkOrder;
 };
 
 export default class WorkOrderViewComponent extends Component<Args> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare loader: any;
+  @service declare loader: LoaderService;
   @service declare intercom: IntercomService;
   @service declare router: RouterService;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @service declare view: any;
+  @service declare view: ViewService;
 
-  paymentRoute: string = NATIVE_MOBILE_ROUTE.SETTINGS.PAYMENT;
+  paymentRoute = SettingsRoute.Payment;
   issueMessage = `I have a question about the ${this.args.model?.description} service request.`;
 
   get isLoading() {
     return this.loader.isLoading;
   }
 
-  get contentType(): string {
+  get contentType(): WorkOrderViewContent {
     const status = this.args.model?.status ?? '';
     switch (status) {
       case WorkOrderStatus.InvoiceSentToCustomer:
@@ -53,10 +67,17 @@ export default class WorkOrderViewComponent extends Component<Args> {
     }
   }
 
+  get whichComponent(): WorkOrderContentComponent {
+    const component = importSync(
+      `./${this.contentType}`
+    ) as WorkOrderContentComponent;
+    return component;
+  }
+
   @action
   selectRoute(route: string | WorkOrder): void {
     if (typeof route === 'object') {
-      this.router.transitionTo(NATIVE_MOBILE_ROUTE.WORK_ORDERS.SHOW, route.id);
+      this.router.transitionTo(WorkOrderRoute.Show, route.id);
     } else {
       if (route === this.paymentRoute) {
         this.view.preservePreviousRoute(this.router);

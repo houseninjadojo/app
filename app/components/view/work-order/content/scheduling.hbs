@@ -1,5 +1,11 @@
 <div class="actions">
-    <Primitive::Button @type="button" @size="md" @variant="outline" @semantic="primary" {{on "click" @handleReportAnIssue}}>
+    <Primitive::Button
+      @type="button"
+      @size="md"
+      @variant="outline"
+      @semantic="primary"
+      {{on "click" @handleReportAnIssue}}
+    >
         I have a question
     </Primitive::Button>
     <hr/>
@@ -10,6 +16,6 @@
         <p class="hn field"><span class="hn label">Status: </span>{{@model.statusLabel}}</p>
         <p class="hn field"><span class="hn label">Vendor: </span>{{if @model.vendor @model.vendor}}</p>
         <p class="hn field"><span class="hn label">Scheduled Date: </span>{{!-- {{if (and @model.vendor @model.scheduledDate) @model.scheduledDate }} --}}</p>
-        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{!-- {{if (and @model.vendor @model.scheduledDate @model.scheduledTime) @model.scheduledTime }} --}}</p>        
+        <p class="hn field"><span class="hn label">Scheduled Time: </span>{{!-- {{if (and @model.vendor @model.scheduledDate @model.scheduledTime) @model.scheduledTime }} --}}</p>
     </div>
 </Primitive::Section>
