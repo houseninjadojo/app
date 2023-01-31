@@ -1,6 +1,6 @@
 import { Factory, association } from 'miragejs';
 import { faker } from '@faker-js/faker';
-import format from 'date-fns/format';
+import dayjs from 'dayjs';
 import { WorkOrderStatus } from 'houseninja/data/work-order-status';
 
 const pastOrFuture = (): Date => {
@@ -24,7 +24,7 @@ export default Factory.extend({
   },
 
   scheduledDate(): string {
-    return format(pastOrFuture(), 'MM/dd/yyyy');
+    return dayjs(pastOrFuture()).format('MM/DD/YYYY');
   },
 
   scheduledTime(): string {

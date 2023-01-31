@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { isHistoricalWorkOrder } from 'houseninja/utils/components/work-order/work-order-status';
-import format from 'date-fns/format';
-import compareDesc from 'date-fns/compareDesc';
+import dayjs from 'dayjs';
+import { compareDesc } from 'houseninja/utils/dates';
 import WorkOrder from 'houseninja/models/work-order';
 
 type Args = {
@@ -23,17 +23,12 @@ export default class WorkHistoryComponent extends Component<Args> {
           displayTime: null, // Don't display time
           completedAt: w.completedAt,
           displayDate:
-            (w.completedAt && format(w.completedAt, 'MM/dd/yyyy')) || '',
+            (w.completedAt && dayjs(w.completedAt).format('MM/DD/YYYY')) || '',
           status: w.status,
           // tag: w.status && getWorkOrderTag(w.status),
         };
       })
-      ?.sort((a, b) => {
-        if (!a.completedAt && !b.completedAt) return 0;
-        if (!a.completedAt) return 1;
-        if (!b.completedAt) return -1;
-        return compareDesc(a.completedAt, b.completedAt);
-      });
+      ?.sort((a, b) => compareDesc(a.completedAt, b.completedAt));
   }
 
   displayedWorkOrders = [...(this.inactiveWorkOrders ?? [])];

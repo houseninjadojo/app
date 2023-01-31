@@ -99,7 +99,7 @@
     "broccoli-terser-sourcemap": "^4.1.0",
     "canvas-confetti": "^1.6.0",
     "crypto-js": "^4.1.1",
-    "date-fns": "^2.29.3",
+    "dayjs": "^1.11.7",
     "dotenv-vault": "^1.18.0",
     "ember-auto-import": "^2.6.0",
     "ember-cli": "~4.10.0",

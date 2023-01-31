@@ -7,7 +7,7 @@ import {
   filterWorkOrdersFor,
   WorkOrderState,
 } from 'houseninja/utils/components/work-order/work-order-status';
-import compareDesc from 'date-fns/compareDesc';
+import { compareDesc } from 'houseninja/utils/dates';
 import WorkOrder from 'houseninja/models/work-order';
 import RouterService from '@ember/routing/router-service';
 
@@ -53,10 +53,7 @@ export default class HandleItComponent extends Component<Args> {
     if (sortByCreatedAt) {
       return compareDesc(a.createdAt, b.createdAt);
     } else {
-      return compareDesc(
-        a.scheduledDateParsed ?? 0,
-        b.scheduledDateParsed ?? 0
-      );
+      return compareDesc(a.scheduledDateParsed, b.scheduledDateParsed);
     }
   }
 
