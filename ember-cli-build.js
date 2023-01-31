@@ -79,7 +79,7 @@ if (process.env.BUILD_STATS) {
 }
 
 const exclude = PROD_BUILD
-  ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js']
+  ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js', 'ember-testing']
   : [];
 
 /**
@@ -96,7 +96,8 @@ module.exports = function (defaults) {
             ...defaultModules,
             'miragejs',
             'sinon',
-            'qunit'
+            'qunit',
+            'ember-testing',
           ];
         } else {
           return defaultModules;
