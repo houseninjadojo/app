@@ -1,3 +1,10 @@
+## [1.28.29](https://github.com/houseninjadojo/app/compare/v1.28.28...v1.28.29) (2023-01-31)
+
+
+### Bug Fixes
+
+* **deps:** replace moment with dayjs (2kb) ([#1596](https://github.com/houseninjadojo/app/issues/1596)) ([d513788](https://github.com/houseninjadojo/app/commit/d5137886fdb3594c7a23b3637edc1303b6205b95))
+
 ## [1.28.28](https://github.com/houseninjadojo/app/compare/v1.28.27...v1.28.28) (2023-01-27)
 
 
