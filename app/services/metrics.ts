@@ -2,7 +2,7 @@ import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { htmlTreeAsString } from '@sentry/utils';
 import { default as BaseMetricsService } from 'ember-metrics/services/metrics';
-import UserActivityService from 'houseninja/services/user-activity';
+// import UserActivityService from 'houseninja/services/user-activity';
 import EventBusService, {
   ListenableEvented,
 } from 'houseninja/services/event-bus';
@@ -10,7 +10,7 @@ import EventBusService, {
 export default class MetricsService extends BaseMetricsService {
   @service declare eventBus: EventBusService;
   @service declare router: RouterService;
-  @service declare userActivity: UserActivityService;
+  // @service declare userActivity: UserActivityService;
 
   async reset(): Promise<void> {
     this.context = {};
@@ -23,7 +23,7 @@ export default class MetricsService extends BaseMetricsService {
 
   setupListeners(): void {
     this.eventBus.on('router.route-did-change', this, this.onRouteChanged);
-    this.eventBus.on('user-activity.pointerdown', this, this.onClick);
+    // this.eventBus.on('user-activity.pointerdown', this, this.onClick);
   }
 
   teardownListeners(): void {
@@ -57,7 +57,7 @@ export default class MetricsService extends BaseMetricsService {
       'Router',
       'routeDidChange'
     );
-    this.eventBus.subscribe(this.userActivity, 'UserActivity', 'pointerdown');
+    // this.eventBus.subscribe(this.userActivity, 'UserActivity', 'pointerdown');
   }
 
   private async removeAllListeners(): Promise<void> {
