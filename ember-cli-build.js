@@ -79,7 +79,7 @@ if (process.env.BUILD_STATS) {
 }
 
 const exclude = PROD_BUILD
-  ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js', 'ember-testing']
+  ? ['sinon', 'qunit', 'miragejs', 'ember-cli-mirage', 'crypto-js', 'ember-testing', 'ember-sinon-qunit', 'ember-qunit']
   : [];
 
 /**
@@ -98,6 +98,8 @@ module.exports = function (defaults) {
             'sinon',
             'qunit',
             'ember-testing',
+            'ember-sinon-qunit',
+            'ember-qunit'
           ];
         } else {
           return defaultModules;
@@ -124,7 +126,7 @@ module.exports = function (defaults) {
                 chunks: 'all',
               },
               dev: {
-                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js|sinon|qunit)/,
+                test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js|sinon|qunit|ember-testing|ember-sinon-qunit)/,
                 name: 'development',
                 chunks: 'all',
               },
