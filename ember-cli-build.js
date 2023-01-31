@@ -90,6 +90,18 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
       exclude,
+       earlyBootSet: (defaultModules) => {
+        if (PROD_BUILD) {
+          return [
+            ...defaultModules,
+            'miragejs',
+            'sinon',
+            'qunit'
+          ];
+        } else {
+          return defaultModules;
+        }
+      },
       webpack: {
         plugins: webpackPlugins,
         optimization: {
