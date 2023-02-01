@@ -8903,18 +8903,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-classic-decorator@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "ember-classic-decorator@npm:3.0.1"
-  dependencies:
-    "@embroider/macros": ^1.0.0
-    babel-plugin-filter-imports: ^4.0.0
-    ember-cli-babel: ^7.26.11
-    ember-cli-htmlbars: ^6.0.1
-  checksum: 902efc8003491d9b9fa92b274e3a715281ece496a6a6cef9ccdab584d6cf9efd077103ab49032ba8ace6b3ce5aa1c4be69ff024f3b4800bcab22b45a53885f96
-  languageName: node
-  linkType: hard
-
 "ember-cli-app-version@npm:^5.0.0":
   version: 5.0.0
   resolution: "ember-cli-app-version@npm:5.0.0"
@@ -9909,15 +9897,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-user-activity@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "ember-user-activity@npm:7.0.0"
+"ember-user-activity@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "ember-user-activity@npm:7.1.0"
   dependencies:
-    ember-classic-decorator: ^3.0.1
     ember-cli-babel: ^7.26.11
   peerDependencies:
     ember-source: ^3.28.0 || ^4.0.0
-  checksum: 585ed65f93bb89bc1b0b6e28434f0c253fc642cd332004c0b93d072e7be619638f188d3d1e1b2f9dffac49731dc39a32e36e7a6f52239eae095f953e55454639
+  checksum: 03f32e60b2ac118a49312412a43afeb10aa5f34cd356e3f38bdb3664d2f972f6a85a1399c23ca0e5e640f925f864c5ffed2215db4e6f36bf74aac08601699a7f
   languageName: node
   linkType: hard
 
@@ -12529,7 +12516,7 @@ __metadata:
     ember-source: ~4.9.3
     ember-template-lint: ^5.3.3
     ember-truth-helpers: ^3.1.1
-    ember-user-activity: ^7.0.0
+    ember-user-activity: ^7.1.0
     eslint: ^8.33.0
     eslint-config-prettier: ^8.6.0
     eslint-plugin-ember: ^11.4.5
