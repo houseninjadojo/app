@@ -29,9 +29,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.0

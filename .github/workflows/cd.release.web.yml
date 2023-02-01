@@ -35,17 +35,15 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - releasing to web\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
       - uses: actions/cache/restore@v3
-        id: restore-yarn
+        id: restore-pnpm
         with:
           path: |
             package.json
-            yarn.lock
-            .yarnrc.yml
-            .yarn/
+            pnpm-lock.yaml
             node_modules/
-          key: build-yarn-${{ github.run_id }}
+          key: build-pnpm-${{ github.run_id }}
           restore-keys: |
-            build-yarn-
+            build-pnpm-
       - uses: actions/cache/restore@v3
         id: restore-web
         with:
@@ -56,8 +54,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --immutable
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
@@ -75,7 +73,7 @@ jobs:
           url_prefix: ~/
           finalize: false
       - name: upload datadog sourcemaps
-        run: yarn run upload:sourcemaps:datadog
+        run: pnpm run upload:sourcemaps:datadog
         env:
           SERVICE: app
           VERSION: ${{ steps.package-version.outputs.current-version }}
