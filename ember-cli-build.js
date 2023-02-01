@@ -1,16 +1,16 @@
 'use strict';
 
-const isProduction = () => {
-  return EmberApp.env() === 'production';
-};
-
-const webpack = require('webpack');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 
 /**
- * Ember Application
+ * Helpers
  */
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const isProduction = () => {
+  return EmberApp.env() === 'production'
+    || process.env.EMBER_ENV === 'production'
+    || process.env.NODE_ENV === 'production';
+};
 
 /**
  * Webpack Plugins
@@ -40,6 +40,18 @@ module.exports = function (defaults) {
     autoImport: {
       alias: {
         sinon: 'sinon/pkg/sinon-esm',
+      },
+      webpack: {
+        plugins: [
+          new StatsWriterPlugin({
+            filename: '../webpack-stats.json',
+            stats: {
+              assets: true,
+              chunks: true,
+              modules: true
+            }
+          })
+        ]
       }
     },
     // Babel Configuration
@@ -50,13 +62,13 @@ module.exports = function (defaults) {
       ],
     },
     // Polyfill crypto.randomUUID
-    // '@embroider/macros': {
-    //   setConfig: {
-    //     '@ember-data/store': {
-    //       polyfillUUID: true
-    //     },
-    //   },
-    // },
+    '@embroider/macros': {
+      setConfig: {
+        '@ember-data/store': {
+          polyfillUUID: true
+        },
+      },
+    },
     // Ember Configuration
     // @see https://cli.emberjs.com/release/advanced-use/
     sourcemaps: {
@@ -71,7 +83,7 @@ module.exports = function (defaults) {
     staticHelpers: true,
     staticModifiers: true,
     staticComponents: true,
-    splitAtRoutes: [],
+    splitAtRoutes: ['/', 'signup', 'dashboard/home', 'dashboard/handle-it'],
     allowUnsafeDynamicComponents: true,
     skipBabel: [
       { package: 'qunit' },
@@ -82,7 +94,7 @@ module.exports = function (defaults) {
       publicAssetURL: '/',
       // Embroider lets us send our own options to the style-loader
       cssLoaderOptions: {
-        // don't create source maps in production
+        // create source maps in production
         sourceMap: isProduction() === true,
         // enable CSS modules
         modules: {
@@ -96,6 +108,7 @@ module.exports = function (defaults) {
         },
       },
       webpackConfig: {
+        devtool: 'source-map',
         module: {
           rules: [
             {
@@ -107,7 +120,7 @@ module.exports = function (defaults) {
                   // use the PostCSS loader addon
                   loader: 'postcss-loader',
                   options: {
-                    sourceMap: isProduction() === false,
+                    sourceMap: isProduction() === true,
                     postcssOptions: {
                       config: './postcss.config.js',
                     },
@@ -125,7 +138,17 @@ module.exports = function (defaults) {
             },
           ],
         },
-        plugins: webpackPlugins,
+        plugins: [
+          // Write stats file relative to the build directory
+          new StatsWriterPlugin({
+            filename: '../webpack-stats.json',
+            stats: {
+              assets: true,
+              chunks: true,
+              modules: true
+            }
+          })
+        ],
         // optimization: {
         //   splitChunks: {
         //     cacheGroups: {
