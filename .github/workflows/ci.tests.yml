@@ -68,6 +68,7 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - tests starting for ${{ github.ref_name }}\", \"level\":\"info\", \"ci.branch\":\"${{ github.ref_name }}\", \"ci.service\":\"app\", \"ci.step\":\"tests\"}"
               service: "github-actions"
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -118,6 +119,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '18'

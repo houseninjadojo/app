@@ -51,6 +51,7 @@ jobs:
           key: build-web-${{ github.run_id }}
           restore-keys: |
             build-web-
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
