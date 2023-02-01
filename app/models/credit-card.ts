@@ -20,24 +20,7 @@ export default class CreditCardModel extends PaymentMethod {
   @attr('number') declare expYear: string;
   @attr('string') declare cardNumber: string;
   @attr('string') declare zipcode?: string;
-
-  get obfuscated(): CreditCardArgs {
-    const brand = this.brand?.toUpperCase();
-    return {
-      brand,
-      country: '',
-      cvv: '',
-      expMonth: undefined,
-      expYear: undefined,
-      cardNumber: '',
-      zipcode: '',
-      lastFour: this.cardNumber?.substring(this.cardNumber.length - 4) ?? '',
-    };
-  }
-
-  get lastFour(): string {
-    return this.cardNumber?.substring(this.cardNumber.length - 4) ?? '';
-  }
+  @attr('number') declare lastFour: number;
 
   get cardBrand(): string {
     return this.brand?.toUpperCase() ?? '';
