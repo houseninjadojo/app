@@ -212,7 +212,7 @@
     "@ember-data/json-api": "4.10.0-alpha.20",
     "@ember-data/model": "4.10.0-alpha.20",
     "@ember-data/serializer": "4.10.0-alpha.20",
-    "@ember-data/store": "4.10.0-alpha.20",
+    "@ember-data/store": "4.10.0-beta.3",
     "@ember-data/tracking": "4.10.0-alpha.20",
     "sourcemap-codec": "jridgewell/sourcemap-codec"
   },
