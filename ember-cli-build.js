@@ -38,6 +38,9 @@ if (process.env.BUILD_STATS) {
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
+      alias: {
+        sinon: 'sinon/pkg/sinon-esm',
+      }
     },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
@@ -47,13 +50,13 @@ module.exports = function (defaults) {
       ],
     },
     // Polyfill crypto.randomUUID
-    '@embroider/macros': {
-      setConfig: {
-        '@ember-data/store': {
-          polyfillUUID: true
-        },
-      },
-    },
+    // '@embroider/macros': {
+    //   setConfig: {
+    //     '@ember-data/store': {
+    //       polyfillUUID: true
+    //     },
+    //   },
+    // },
     // Ember Configuration
     // @see https://cli.emberjs.com/release/advanced-use/
     sourcemaps: {
@@ -68,7 +71,12 @@ module.exports = function (defaults) {
     staticHelpers: true,
     staticModifiers: true,
     staticComponents: true,
-    splitAtRoutes: ['signup'],
+    splitAtRoutes: [],
+    allowUnsafeDynamicComponents: true,
+    skipBabel: [
+      { package: 'qunit' },
+      { package: 'sinon' }
+    ],
     packagerOptions: {
       // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
       publicAssetURL: '/',
