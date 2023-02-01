@@ -2,6 +2,7 @@ import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { htmlTreeAsString } from '@sentry/utils';
 import { default as BaseMetricsService } from 'ember-metrics/services/metrics';
+/* Importing the UserActivityService from the houseninja/services/user-activity file. */
 // import UserActivityService from 'houseninja/services/user-activity';
 import EventBusService, {
   ListenableEvented,
