@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-      - run: npm run semantic-release
+      - run: pnpm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
   reporter:

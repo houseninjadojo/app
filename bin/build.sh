@@ -1,4 +1,4 @@
 # !/bin/bash
 
-yarn run env:load
-yarn run build:env
+pnpm run env:load
+pnpm run build:env
