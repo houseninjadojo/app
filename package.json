@@ -47,7 +47,7 @@
     "@faker-js/faker": "^7.6.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@percy/cli": "^1.17.0",
+    "@percy/cli": "^1.18.0",
     "@percy/ember": "^4.1.0",
     "@sentry/browser": "7.13.0",
     "@sentry/core": "7.13.0",
