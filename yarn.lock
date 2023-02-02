@@ -9803,7 +9803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-template-imports@npm:^3.1.1, ember-template-imports@npm:^3.4.0":
+"ember-template-imports@npm:^3.4.0":
   version: 3.4.0
   resolution: "ember-template-imports@npm:3.4.0"
   dependencies:
@@ -9819,6 +9819,23 @@ __metadata:
   peerDependencies:
     ember-cli-htmlbars: ^6.0.0
   checksum: 1cb15d03aa5fa004cc0297b8aff7679f91a12185a49402141c44e5a5c7c234366b7b99360b0cc4e8841b43ac52ca5e2a4e1e2ff1ec9d702a5fd673cf1c335dfc
+  languageName: node
+  linkType: hard
+
+"ember-template-imports@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "ember-template-imports@npm:3.4.1"
+  dependencies:
+    babel-import-util: ^0.2.0
+    broccoli-stew: ^3.0.0
+    ember-cli-babel-plugin-helpers: ^1.1.1
+    ember-cli-version-checker: ^5.1.2
+    line-column: ^1.0.2
+    magic-string: ^0.25.7
+    parse-static-imports: ^1.1.0
+    string.prototype.matchall: ^4.0.6
+    validate-peer-dependencies: ^1.1.0
+  checksum: 02c2a9c95e092b034411fea9329df410e8565c5c6707a1e14513a97a21367844a25fb357cdb222f14de1c8b59f1e0edef7ed55b82371c91edbe8a9a402509e69
   languageName: node
   linkType: hard
 
@@ -10215,15 +10232,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-ember@npm:^11.4.5":
-  version: 11.4.5
-  resolution: "eslint-plugin-ember@npm:11.4.5"
+"eslint-plugin-ember@npm:^11.4.6":
+  version: 11.4.6
+  resolution: "eslint-plugin-ember@npm:11.4.6"
   dependencies:
     "@ember-data/rfc395-data": ^0.0.4
     "@glimmer/syntax": ^0.84.2
     css-tree: ^2.0.4
     ember-rfc176-data: ^0.3.15
-    ember-template-imports: ^3.1.1
+    ember-template-imports: ^3.4.1
     eslint-utils: ^3.0.0
     estraverse: ^5.2.0
     lodash.camelcase: ^4.1.1
@@ -10233,7 +10250,7 @@ __metadata:
     snake-case: ^3.0.3
   peerDependencies:
     eslint: ">= 7"
-  checksum: 99b1fe4d672bf58dea42e1ed213ff2b9df9dddeb6578158c5f1902f526ad8cf27f92fdec0c9b356d3e9a208849dce8eb100e61c2948e7f7469caf3f46f68dff8
+  checksum: 9645631012b22ba40cf7c310ac31287bfefec061bc848e3591015ed3ca26c00176eea01d67336d53bc464a6316b50bfc4dc30167c14fbcabbc0a25b819e6da7e
   languageName: node
   linkType: hard
 
@@ -12512,7 +12529,7 @@ __metadata:
     ember-user-activity: ^7.1.0
     eslint: ^8.33.0
     eslint-config-prettier: ^8.6.0
-    eslint-plugin-ember: ^11.4.5
+    eslint-plugin-ember: ^11.4.6
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-qunit: ^7.3.4
