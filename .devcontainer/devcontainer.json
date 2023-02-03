@@ -1,0 +1,71 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "House Ninja App",
+
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:0-18",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers-contrib/features/asdf-package:1": {
+      "plugin": "ruby",
+      "version": "3.0.2"
+    },
+    "ghcr.io/devcontainers-contrib/features/asdf-package:1": {
+      "plugin": "java",
+      "version": "openjdk-18"
+    },
+    "ghcr.io/devcontainers-contrib/features/asdf-package:1": {
+      "plugin": "swift",
+      "version": "5.7.1"
+    },
+    "ghcr.io/devcontainers-contrib/features/npm-package:1": {
+      "package": "ember-cli",
+      "version": "4.10.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mikestead.dotenv",
+        "dotenv.dotenv-vscode",
+        "EditorConfig.EditorConfig",
+        "phanitejakomaravolu.EmberES6Snippets",
+        "dbaeumer.vscode-eslint",
+        "formulahendry.github-actions",
+        "GitHub.copilot",
+        "lifeart.vscode-glimmer-syntax",
+        "lokalise.i18n-ally",
+        "ms-vscode.vscode-typescript-next",
+        "DavidAnson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "christian-kohler.path-intellisense",
+        "esbenp.prettier-vscode",
+        "dotdevru.prettier-java",
+        "rebornix.ruby",
+        "lifeart.vscode-ember-unstable",
+        "stylelint.vscode-stylelint",
+        "Kasik96.swift",
+        "bradlc.vscode-tailwindcss",
+        "wingrunr21.vscode-ruby",
+        "bung87.vscode-gemfile"
+      ]
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [4200, 80],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "yarn install"
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
