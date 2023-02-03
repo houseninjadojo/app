@@ -33,31 +33,34 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:hbs
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint:hbs
   js:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:js
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint:js
   css:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:css
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint:css

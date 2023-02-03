@@ -68,13 +68,14 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - tests starting for ${{ github.ref_name }}\", \"level\":\"info\", \"ci.branch\":\"${{ github.ref_name }}\", \"ci.service\":\"app\", \"ci.step\":\"tests\"}"
               service: "github-actions"
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --immutable
+          node-version: '18'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
       - run: mkdir -p tmp
-      - run: yarn test:ci -o tmp/app
+      - run: pnpm test:ci -o tmp/app
         env:
           COVERAGE: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
@@ -118,12 +119,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'yarn'
-      - run: yarn install --immutable
-      - run: yarn build
+          node-version: '18'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
         env:
           BUILD_STATS: true
       # Send webpack stats and build information to RelativeCI

@@ -23,6 +23,10 @@
       "plugin": "swift",
       "version": "5.7.1"
     },
+    "ghcr.io/devcontainers-contrib/features/asdf-package:1": {
+      "package": "pnpm",
+      "version": "7.26.3"
+    },
     "ghcr.io/devcontainers-contrib/features/npm-package:1": {
       "package": "ember-cli",
       "version": "4.10.0"
@@ -61,7 +65,7 @@
   "forwardPorts": [4200, 80],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "yarn install"
+  "postCreateCommand": "pnpm install"
 
   // Configure tool-specific properties.
   // "customizations": {},
