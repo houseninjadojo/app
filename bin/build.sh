@@ -1,5 +1,3 @@
-# !/bin/bash
-
 echo "Installing pnpm..."
 
 npm install -g pnpm

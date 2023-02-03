@@ -1,3 +1,10 @@
+## [1.28.30](https://github.com/houseninjadojo/app/compare/v1.28.29...v1.28.30) (2023-02-01)
+
+
+### Bug Fixes
+
+* deploy commit ([da0a1ec](https://github.com/houseninjadojo/app/commit/da0a1ecf0894d3b3848520be5f6448f391147d47))
+
 ## [1.28.29](https://github.com/houseninjadojo/app/compare/v1.28.28...v1.28.29) (2023-01-31)
 
 
