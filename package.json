@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.28.29",
+  "version": "1.28.30",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -36,7 +36,7 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-decorators": "^7.20.13",
     "@capacitor/cli": "4.6.2",
-    "@datadog/browser-logs": "^4.31.0",
+    "@datadog/browser-logs": "^4.32.0",
     "@datadog/browser-rum": "^4.32.0",
     "@datadog/datadog-ci": "^2.4.0",
     "@ember/jquery": "^2.0.0",
@@ -50,7 +50,7 @@
     "@faker-js/faker": "^7.6.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@percy/cli": "^1.17.0",
+    "@percy/cli": "^1.18.0",
     "@percy/ember": "^4.1.0",
     "@sentry/browser": "7.13.0",
     "@sentry/core": "7.13.0",
@@ -107,7 +107,7 @@
     "dotenv-vault": "^1.18.0",
     "ember-auto-import": "^2.6.0",
     "ember-cli": "~4.10.0",
-    "ember-cli-app-version": "^5.0.0",
+    "ember-cli-app-version": "^6.0.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-capacitor": "^0.1.1",
     "ember-cli-code-coverage": "^2.0.0",
@@ -139,7 +139,7 @@
     "ember-user-activity": "^7.1.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-ember": "^11.4.5",
+    "eslint-plugin-ember": "^11.4.6",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-qunit": "^7.3.4",
@@ -200,5 +200,5 @@
   "resolutions": {
     "@embroider/macros": "1.10.0"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "pnpm@7.26.3"
 }

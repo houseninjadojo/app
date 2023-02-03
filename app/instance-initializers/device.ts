@@ -5,7 +5,7 @@ import ENV from 'houseninja/config/environment';
 import { UnauthorizedError } from '@ember-data/adapter/error';
 import { captureException } from 'houseninja/utils/sentry';
 import ApplicationInstance from '@ember/application/instance';
-import StoreService from 'houseninja/services/store';
+import StoreService from '@ember-data/store';
 import CurrentService from 'houseninja/services/current';
 
 /**
@@ -46,7 +46,7 @@ export async function initialize(
         device_id: id,
       },
     });
-    if (devices.length > 0) {
+    if (devices.get('length') > 0) {
       // we know about this device, so update any changes
       device = devices.firstObject;
       device.setProperties(deviceInfo);
