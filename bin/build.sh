@@ -1,4 +1,6 @@
-# !/bin/bash
+echo "Installing pnpm..."
 
-yarn run env:load
-yarn run build:env
+npm install -g pnpm
+pnpm install
+pnpm run env:load
+pnpm run build:env
