@@ -10,12 +10,37 @@
     "packages:postcss",
     "packages:stylelint"
   ],
+  "enabledManagers": [
+    "bundler",
+    "cocoapods",
+    "github-actions",
+    "gradle",
+    "gradle-wrapper",
+    "npm"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/tmp/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/docs/**"
+  ],
+  "prhourlylimit": 5,
+  "automergeStrategy": "squash",
+  "automergeType": "pr",
+  "automerge": true,
+  "platformAutomerge": true,
   "assignees": ["@mileszim"],
   "semanticCommits": "enabled",
   "separateMinorPatch": false,
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "automerge": true
+  },
+  "major": {
+    "dependencyDashboardApproval": true
   },
   "packageRules": [
     {
@@ -28,8 +53,11 @@
       "automerge": true
     },
     {
-      "matchPackagePrefixes": ["@sentry/*"],
-      "matchPackageNames": [],
+      "matchManagers": ["npm"],
+      "matchPackagePrefixes": [
+        "@sentry/*",
+        "sentry-"
+      ],
       "enabled": false
     },
     {
