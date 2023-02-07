@@ -1,0 +1,102 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard",
+    "packages:emberTemplateLint",
+    "packages:jsUnitTest",
+    "packages:eslint",
+    "packages:linters",
+    "packages:postcss",
+    "packages:stylelint"
+  ],
+  "enabledManagers": [
+    "bundler",
+    "cocoapods",
+    "github-actions",
+    "gradle",
+    "gradle-wrapper",
+    "npm"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/tmp/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/docs/**"
+  ],
+  "prHourlyLimit": 5,
+  "automergeStrategy": "squash",
+  "automergeType": "pr",
+  "automerge": true,
+  "platformAutomerge": true,
+  "assignees": ["@mileszim"],
+  "semanticCommits": "enabled",
+  "separateMinorPatch": false,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
+  },
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "enabled": true
+    },
+    {
+      "matchManagers": ["gradle", "gradle-wrapper"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": ["^@sentry", "^sentry-"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchManagers": ["npm"],
+      "automerge": true,
+      "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
+      "matchPackagePrefixes": [
+        "broccoli-",
+        "@types/",
+        "@typescript-eslint/",
+        "@percy/"
+      ]
+    },
+    {
+      "matchManagers": ["npm"],
+      "automerge": true,
+      "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
+      "matchPackageNames": [
+        "@tsconfig/ember",
+        "dotenv-vault",
+        "ember-cli"
+       ]
+    },
+    {
+      "matchManagers": [
+        "cocoapods",
+        "bundler",
+        "gradle",
+        "gradle-wrapper",
+        "npm"
+      ],
+      "matchPaths": [
+        "ios/**",
+        "android/**",
+        "fastlane/**",
+        "pnpm-lock.yaml"
+      ],
+      "lockFileMaintenance": { "enabled": true }
+    }
+  ]
+}
