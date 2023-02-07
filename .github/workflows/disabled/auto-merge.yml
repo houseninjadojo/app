@@ -47,10 +47,6 @@
     update_type: all
 
 - match:
-    dependency_name: "ember-sinon-qunit"
-    update_type: all
-
-- match:
     dependency_name: "ember-qunit"
     update_type: all
 

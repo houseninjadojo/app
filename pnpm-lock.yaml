@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 overrides:
   '@embroider/macros': 1.10.0
+  '@ember-data/store': 4.9.1
 
 specifiers:
   '@algonauti/ember-active-storage': ^2.2.0
@@ -30,11 +31,13 @@ specifiers:
   '@datadog/browser-logs': ^4.32.0
   '@datadog/browser-rum': ^4.32.0
   '@datadog/datadog-ci': ^2.4.0
+  '@ember-data/store': 4.9.1
   '@ember/jquery': ^2.0.0
   '@ember/optional-features': ^2.0.0
   '@ember/render-modifiers': ^2.0.5
   '@ember/string': ^3.0.1
   '@ember/test-helpers': ^2.9.3
+  '@embroider/macros': 1.10.0
   '@faker-js/faker': ^7.6.0
   '@glimmer/component': ^1.1.2
   '@glimmer/tracking': ^1.1.2
@@ -54,7 +57,6 @@ specifiers:
   '@types/ember-data__model': ^4.0.0
   '@types/ember-data__serializer': ^4.0.1
   '@types/ember-data__store': ^4.0.2
-  '@types/ember-qunit': ^6.1.1
   '@types/ember-resolver': ^9.0.0
   '@types/ember__application': ^4.0.3
   '@types/ember__array': ^4.0.3
@@ -116,7 +118,6 @@ specifiers:
   ember-qunit: ^6.1.1
   ember-resolver: ^10.0.0
   ember-simple-auth: ^4.2.2
-  ember-sinon-qunit: ^7.0.0
   ember-source: ~4.9.3
   ember-template-lint: ^5.3.3
   ember-truth-helpers: ^3.1.1
@@ -182,11 +183,13 @@ devDependencies:
   '@datadog/browser-logs': 4.32.0_c3wpid6xjgcicwata4crwobsh4
   '@datadog/browser-rum': 4.32.0_jynbpqzsu25ml5vkse4doibtwa
   '@datadog/datadog-ci': 2.4.0
+  '@ember-data/store': 4.9.1_mybpoovjkvtjzp7n3af36ccvbi
   '@ember/jquery': 2.0.0
   '@ember/optional-features': 2.0.0
   '@ember/render-modifiers': 2.0.5_wac6mb43gwopsgc7yvlsdnrice
   '@ember/string': 3.0.1
   '@ember/test-helpers': 2.9.3_wac6mb43gwopsgc7yvlsdnrice
+  '@embroider/macros': 1.10.0
   '@faker-js/faker': 7.6.0
   '@glimmer/component': 1.1.2_@babel+core@7.20.12
   '@glimmer/tracking': 1.1.2
@@ -202,7 +205,6 @@ devDependencies:
   '@types/ember-data__model': 4.0.0_@babel+core@7.20.12
   '@types/ember-data__serializer': 4.0.1_@babel+core@7.20.12
   '@types/ember-data__store': 4.0.2_@babel+core@7.20.12
-  '@types/ember-qunit': 6.1.1_khpttehaheeunc7peqs3cjloqi
   '@types/ember-resolver': 9.0.0_ohch4lve7fpmj3pwwnb3kns7m4
   '@types/ember__application': 4.0.5_@babel+core@7.20.12
   '@types/ember__array': 4.0.3_@babel+core@7.20.12
@@ -263,7 +265,6 @@ devDependencies:
   ember-qunit: 6.1.1_khpttehaheeunc7peqs3cjloqi
   ember-resolver: 10.0.0_ohch4lve7fpmj3pwwnb3kns7m4
   ember-simple-auth: 4.2.2_ember-fetch@8.1.2
-  ember-sinon-qunit: 7.0.0_tdas45qm5cqgnymdydughuo3p4
   ember-source: 4.9.3_ipwtokbwlukr3yko7oz5lbj6xy
   ember-template-lint: 5.3.3
   ember-truth-helpers: 3.1.1
@@ -2001,6 +2002,36 @@ packages:
       - webpack
     dev: true
 
+  /@ember-data/store/4.9.1_mybpoovjkvtjzp7n3af36ccvbi:
+    resolution: {integrity: sha512-FXgP/oOE5b0YYpIoIU3KXiMTtIHF0SVllebxrsYMQWh2+C3hTV42DDDtEArDV/oBL3i0WARDdiT4aziK7kGl/A==}
+    engines: {node: ^14.8.0 || 16.* || >= 18.*}
+    peerDependencies:
+      '@ember-data/model': 4.9.1
+      '@ember-data/record-data': 4.9.1
+      '@ember-data/tracking': 4.9.1
+      '@ember/string': ^3.0.0
+      '@glimmer/tracking': ^1.1.2
+    peerDependenciesMeta:
+      '@ember-data/model':
+        optional: true
+      '@ember-data/record-data':
+        optional: true
+    dependencies:
+      '@ember-data/canary-features': 4.9.1
+      '@ember-data/private-build-infra': 4.9.1
+      '@ember/string': 3.0.1
+      '@embroider/macros': 1.10.0
+      '@glimmer/tracking': 1.1.2
+      ember-auto-import: 2.6.0_webpack@5.75.0
+      ember-cached-decorator-polyfill: 1.0.1_wac6mb43gwopsgc7yvlsdnrice
+      ember-cli-babel: 7.26.11
+    transitivePeerDependencies:
+      - '@babel/core'
+      - ember-source
+      - supports-color
+      - webpack
+    dev: true
+
   /@ember-data/store/4.9.1_t7n4mnvjevdn76okhfwokftxly:
     resolution: {integrity: sha512-FXgP/oOE5b0YYpIoIU3KXiMTtIHF0SVllebxrsYMQWh2+C3hTV42DDDtEArDV/oBL3i0WARDdiT4aziK7kGl/A==}
     engines: {node: ^14.8.0 || 16.* || >= 18.*}
@@ -3270,18 +3301,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-    dev: true
-
-  /@types/ember-qunit/6.1.1_khpttehaheeunc7peqs3cjloqi:
-    resolution: {integrity: sha512-1g5A3vPKhvB/CuN/EP9rBLXYaJOjzKyLYWeBtNDEQNkTuG1dAo/Hg0CCixgbBgLlzaDP8mR/n1xpg8HqQ8SUKg==}
-    deprecated: This is a stub types definition. ember-qunit provides its own type definitions, so you do not need this installed.
-    dependencies:
-      ember-qunit: 6.1.1_khpttehaheeunc7peqs3cjloqi
-    transitivePeerDependencies:
-      - ember-source
-      - qunit
-      - supports-color
-      - webpack
     dev: true
 
   /@types/ember-resolver/9.0.0_ohch4lve7fpmj3pwwnb3kns7m4:
@@ -8227,23 +8246,6 @@ packages:
       silent-error: 1.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /ember-sinon-qunit/7.0.0_tdas45qm5cqgnymdydughuo3p4:
-    resolution: {integrity: sha512-w4PnPxpp7WzddAswtACUlHdKxQKBvRDC8+Vzw91P3It4QaKthceIsv7QiNQCkC3BqtTrCV8QNsuPik1zOXa+fw==}
-    engines: {node: 14.* || 16.* || >= 18}
-    peerDependencies:
-      ember-source: ^3.28.0 || ^4.0.0
-      sinon: ^15.0.1
-    dependencies:
-      broccoli-funnel: 3.0.8
-      ember-auto-import: 2.6.0_webpack@5.75.0
-      ember-cli-babel: 7.26.11
-      ember-source: 4.9.3_ipwtokbwlukr3yko7oz5lbj6xy
-      sinon: 15.0.1
-    transitivePeerDependencies:
-      - supports-color
-      - webpack
     dev: true
 
   /ember-source-channel-url/3.0.0:
