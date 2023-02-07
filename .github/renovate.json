@@ -59,28 +59,34 @@
     {
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["patch", "pin", "digest"],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
     },
     {
       "matchManagers": ["npm"],
-      "automerge": true,
       "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
       "matchPackagePrefixes": [
         "broccoli-",
         "@types/",
         "@typescript-eslint/",
         "@percy/"
-      ]
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
     },
     {
       "matchManagers": ["npm"],
-      "automerge": true,
       "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
       "matchPackageNames": [
         "@tsconfig/ember",
         "dotenv-vault",
         "ember-cli"
-       ]
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
     },
     {
       "matchManagers": [
@@ -96,7 +102,12 @@
         "fastlane/**",
         "pnpm-lock.yaml"
       ],
-      "lockFileMaintenance": { "enabled": true }
+      "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": true,
+        "automergeType": "pr",
+        "platformAutomerge": true
+      }
     }
   ]
 }
