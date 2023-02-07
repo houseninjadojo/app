@@ -5,7 +5,7 @@ import { Mixpanel } from '@houseninja/capacitor-mixpanel';
 import { assert } from '@ember/debug';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { isPresent } from '@ember/utils';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import ENV from 'houseninja/config/environment';
 
 export default class CapacitorMixpanel extends BaseAdapter {

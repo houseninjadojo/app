@@ -28,7 +28,6 @@ dependencies {
     implementation project(':houseninja-capacitor-intercom')
     implementation project(':houseninja-capacitor-mixpanel')
     implementation project(':mineminemine-fcm')
-    implementation project(':sentry-capacitor')
     implementation project(':capacitor-secure-storage-plugin')
 
 }

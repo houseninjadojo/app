@@ -8,7 +8,6 @@ import HTTP from 'houseninja/utils/http';
 import { isEqual, isEmpty } from '@ember/utils';
 import { later, cancel } from '@ember/runloop';
 import { debug } from '@ember/debug';
-import { startSpan } from 'houseninja/utils/sentry';
 import type { EmberRunTimer } from '@ember/runloop/types';
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -299,11 +298,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async authenticate(code: string, state: string): Promise<ModifiedAuthTokenResponse> {
-    const span = startSpan({
-      op: 'auth.authenticate',
-      description: 'PKCE: authenticate',
-    });
-
     let error: Error | undefined = undefined;
 
     if (!code) {
@@ -314,8 +308,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     }
 
     if (error) {
-      span?.setStatus('error');
-      span?.finish();
       throw error;
     }
 
@@ -339,8 +331,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     )) || {}) as AuthTokenResponse;
 
     if (isEmpty(res?.refresh_token)) {
-      span?.setStatus('error');
-      span?.finish();
       throw new Error('pkce#authenticate - failed token exchange');
     }
 
@@ -365,9 +355,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     // set kind
     data.kind = 'pkce';
 
-    span?.setStatus('succeess');
-    span?.finish();
-
     return data;
   }
 
@@ -386,36 +373,22 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async restore(data: ModifiedAuthTokenResponse): Promise<ModifiedAuthTokenResponse> {
-    const span = startSpan({
-      op: 'auth.restore',
-      description: 'PKCE: restoring session',
-    });
-
     const { refresh_token, expires_at, expires_in } = data;
 
     if (typeof refresh_token !== 'string') {
-      span?.setStatus('error');
-      span?.finish();
       throw new TypeError('Refresh token is missing');
     }
 
     // if the token has expired already, try to refresh it
     if (expires_at && expires_at <= new Date().getTime()) {
-      span?.setStatus('expired');
-      span?.finish();
       return await this.#refresh(refresh_token);
     }
 
     // schedule token refresh for later
     this.#scheduleRefresh(expires_in, refresh_token);
 
-    span?.setTag('expires_in', expires_in);
-
     // fetch user info
     data.userinfo = await this.#getUserinfo(data.access_token);
-
-    span?.setStatus('success');
-    span?.finish();
 
     return data;
   }
@@ -434,11 +407,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    * @public
    */
   async invalidate(data: ModifiedAuthTokenResponse): Promise<void> {
-    const span = startSpan({
-      op: 'auth.invalidate',
-      description: 'PKCE: invalidating session',
-    });
-
     await SecureStorage.clear(`${STASH_TOKEN}:refresh_token`);
 
     // cancel any scheduled future token refresh
@@ -446,8 +414,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
 
     // if no revocation endpoint, do nothing
     if (isEmpty(this.serverTokenRevocationEndpoint)) {
-      span?.setStatus('success');
-      span?.finish();
       return;
     }
 
@@ -471,20 +437,8 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
       await this.#post(this.serverTokenEndpoint, params);
     }
 
-    span?.setStatus('success');
-    span?.finish();
-
     if (isNativePlatform()) {
-      startSpan({
-        op: 'browser.open',
-        description: `OPEN: ${this.logoutEndpoint}`,
-      })?.finish();
-
       this.eventBus.one('browser.browser-page-loaded', () => {
-        startSpan({
-          op: 'browser.close',
-          description: `CLOSE: ${this.logoutEndpoint}`,
-        })?.finish();
         this.browser.close();
       });
 
@@ -507,11 +461,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async #refresh(refresh_token: string /*, retryCount = 0 */): Promise<ModifiedAuthTokenResponse> {
-    const span = startSpan({
-      op: 'auth.refresh',
-      description: 'PKCE: refreshing token',
-    });
-
     // Stash
     const stashed_refresh_token = await SecureStorage.get(
       `${STASH_TOKEN}:refresh_token`
@@ -520,8 +469,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     refresh_token ||= stashed_refresh_token;
 
     if (!refresh_token) {
-      span?.setStatus('error');
-      span?.finish();
       throw new TypeError('pkce#refresh - No refresh token');
     }
 
@@ -541,8 +488,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
     const expires_at = new Date().getTime() + (data.expires_in + 1000);
     data.expires_at = expires_at;
     await this.#scheduleRefresh(data.expires_in, data.refresh_token);
-    span?.setTag('expires_in', data.expires_in);
-    span?.finish();
     return data;
   }
 
@@ -556,14 +501,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async #scheduleRefresh(expires_in: number, refresh_token: string): Promise<void> {
-    startSpan({
-      op: 'auth.schedule_refresh',
-      description: 'PKCE: scheduling token refresh',
-      tags: {
-        expires_in,
-      },
-    })?.finish();
-
     // if token already expired, do nothing
     if (expires_in * 1000 <= new Date().getTime()) {
       return;
@@ -648,11 +585,6 @@ export default class PKCEAuthenticator extends BaseAuthenticator {
    */
   // eslint-disable-next-line prettier/prettier
   async #getUserinfo(accessToken: string): Promise<AuthUserInfo> {
-    startSpan({
-      op: 'auth.user_info',
-      description: 'PKCE: fetching user info',
-    })?.finish();
-
     const headers = {
       Authorization: `Bearer ${accessToken}`,
       Accept: 'application/json',

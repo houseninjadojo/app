@@ -5,7 +5,6 @@ import android.os.Bundle;
 import co.boundstate.BranchDeepLinks;
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
-import io.sentry.capacitor.SentryCapacitor;
 import java.util.ArrayList;
 import io.branch.referral.Branch;
 

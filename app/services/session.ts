@@ -1,11 +1,8 @@
 import BaseSessionService from 'ember-simple-auth/services/session';
 import { service } from '@ember/service';
 import { SplashScreen } from '@capacitor/splash-screen';
-import Sentry from 'houseninja/utils/sentry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DefaultRoute } from 'houseninja/data/enums/routes';
-import { startSpan } from 'houseninja/utils/sentry';
-import { debug } from '@ember/debug';
 
 import type BrowserService from 'houseninja/services/browser';
 import type EventBusService from 'houseninja/services/event-bus';
@@ -14,7 +11,6 @@ import type CurrentService from 'houseninja/services/current';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type Transition from '@ember/routing/transition';
-import type { Span } from '@sentry/types';
 
 /**
  * @see https://github.com/simplabs/ember-simple-auth/blob/master/packages/ember-simple-auth/addon/services/session.js
@@ -29,10 +25,6 @@ export default class SessionService extends BaseSessionService {
 
   async handleAuthentication(routeAfterAuthentication: string): Promise<void> {
     if (this.data?.authenticated.kind === 'payment-approval') {
-      Sentry.addBreadcrumb({
-        category: 'session.authentication.handler',
-        message: 'skipping payment-approval authentication',
-      });
       return;
     }
     super.handleAuthentication(routeAfterAuthentication);
@@ -40,7 +32,6 @@ export default class SessionService extends BaseSessionService {
   }
 
   async setup(): Promise<void> {
-    this.logSentry('setup');
     await super.setup();
     await this.loadIfPKCE();
   }
@@ -62,7 +53,6 @@ export default class SessionService extends BaseSessionService {
   }
 
   async terminate(transition?: Transition): Promise<void> {
-    this.logSentry('terminate');
     if (isNativePlatform()) {
       await SplashScreen.show({
         fadeInDuration: 0,
@@ -79,7 +69,6 @@ export default class SessionService extends BaseSessionService {
   }
 
   async invalidate(): Promise<void> {
-    this.logSentry('invalidate', 'logging out');
     if (isNativePlatform()) {
       await SplashScreen.show({
         fadeInDuration: 0,
@@ -102,28 +91,5 @@ export default class SessionService extends BaseSessionService {
 
   get isExternalSession(): boolean {
     return this.session.data?.authenticated?.kind === 'payment-approval';
-  }
-
-  // eslint-disable-next-line prettier/prettier
-  private logSentry(action: string, message?: string, type?: string, finish = true): Span | void {
-    debug(`[session] ${action} ${message ?? ''}`);
-    const tag = action.includes('.') ? action : `session.${action}`;
-    const msg = message ?? `${action} session`;
-    const span = startSpan({
-      op: tag,
-      description: msg,
-    });
-    Sentry.addBreadcrumb({
-      type,
-      category: tag,
-      message: msg,
-      level: 'info',
-    });
-    if (finish) {
-      span?.finish();
-      return;
-    } else {
-      return span;
-    }
   }
 }

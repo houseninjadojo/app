@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 export default class SettingsSecurityController extends Controller {
   @service router;

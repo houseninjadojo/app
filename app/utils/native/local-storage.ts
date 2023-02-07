@@ -1,7 +1,7 @@
 import { Preferences } from '@capacitor/preferences';
 import { run } from '@ember/runloop';
 import { serializeJSON, deserializeJSON } from 'houseninja/utils/serializers';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 type JSONSerializable =
   | string

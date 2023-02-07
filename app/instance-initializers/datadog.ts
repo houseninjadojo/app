@@ -13,7 +13,7 @@ const beforeSend = (
 ): boolean => {
   if (event.type === 'resource') {
     // drop resource events for other sdks
-    const blacklist = ['cloudflareinsights', 'sentry', 'mixpanel', 'intercom'];
+    const blacklist = ['cloudflareinsights', 'mixpanel', 'intercom'];
     for (const domain of blacklist) {
       if (event.resource.url.includes(domain)) {
         return false;

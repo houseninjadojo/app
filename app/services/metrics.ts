@@ -1,6 +1,5 @@
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import { htmlTreeAsString } from '@sentry/utils';
 import { default as BaseMetricsService } from 'ember-metrics/services/metrics';
 import UserActivityService from 'houseninja/services/user-activity';
 import EventBusService, {

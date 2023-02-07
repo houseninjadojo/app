@@ -6,7 +6,7 @@ import {
   inputValidation,
   passwordValidation,
 } from 'houseninja/utils/components/input-validation';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { isPresent } from '@ember/utils';
 import {
   NATIVE_MOBILE_ROUTE,

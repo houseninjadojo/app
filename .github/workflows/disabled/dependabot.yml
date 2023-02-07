@@ -14,5 +14,5 @@ updates:
       interval: daily
       time: '10:00'
     open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "@sentry/*"
+    # ignore:
+    #   - dependency-name: "@sentry/*"

@@ -3,7 +3,7 @@ import Branch from 'houseninja/lib/branch';
 import { tracked } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
 import ENV from 'houseninja/config/environment';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { debug } from '@ember/debug';
 
 import type { InitOptions } from 'branch-sdk';

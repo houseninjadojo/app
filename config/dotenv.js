@@ -29,7 +29,6 @@ module.exports = function (/* env */) {
       'INTERCOM_IDENTITY_VERIFICATION_SECRET_IOS',
       'INTERCOM_IDENTITY_VERIFICATION_SECRET_ANDROID',
       'MIXPANEL_TOKEN',
-      'SENTRY_DSN',
     ],
     fastbootAllowedKeys: [],
     failOnMissingKey: false,

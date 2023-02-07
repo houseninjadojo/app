@@ -1,7 +1,6 @@
 import Service, { service } from '@ember/service';
 import { bind } from '@ember/runloop';
 import { Capacitor } from '@capacitor/core';
-import Sentry, { startSpan } from 'houseninja/utils/sentry';
 import {
   App,
   type AppState,
@@ -13,7 +12,6 @@ import EventBusService, {
 } from 'houseninja/services/event-bus';
 import type RouterService from '@ember/routing/router-service';
 import type MetricsService from 'ember-metrics/services/metrics';
-import { captureMessage } from '@sentry/hub';
 import { tracked } from '@glimmer/tracking';
 import type TelemetryService from 'houseninja/services/telemetry';
 
@@ -93,11 +91,9 @@ export default class CapacitorService extends Service {
 
   handleAppUrlOpen(event: AppLaunchUrl): void {
     const { url } = event;
-    logUrlOpen(url);
     const { raw } = parseUrl(url);
     const route = this.router.recognize(raw);
     if (!route) {
-      captureMessage(`Could not recognize route: ${raw}`);
       return;
     }
     if (route?.name === 'login.callback') {
@@ -171,18 +167,4 @@ const parseUrl = (url: string) => {
       queryParams,
     },
   };
-};
-
-const logUrlOpen = (url: string) => {
-  startSpan({
-    op: 'app.url.open',
-    description: `opening app with url: ${url}`,
-    tags: { url },
-  })?.finish();
-  Sentry.addBreadcrumb({
-    type: 'user',
-    category: 'app.url.open',
-    message: 'opening app with url',
-    data: { url },
-  });
 };

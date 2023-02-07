@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { instrumentRoutePerformance } from '@sentry/ember';
 import { action } from '@ember/object';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { SplashScreen } from '@capacitor/splash-screen';
@@ -57,4 +56,4 @@ class ApplicationRoute extends Route {
   }
 }
 
-export default instrumentRoutePerformance(ApplicationRoute);
+export default ApplicationRoute;

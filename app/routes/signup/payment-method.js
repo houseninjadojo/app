@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { task } from 'ember-concurrency';
 import { PAYMENT_METHOD } from 'houseninja/data/enums/onboarding-step';
 

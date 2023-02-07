@@ -1,6 +1,5 @@
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
-import { getActiveTransaction } from '@sentry/ember';
-import { captureException } from './sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 type ResponsePayload = HttpResponse | Record<string, unknown> | undefined;
 type HttpRes = Promise<ResponsePayload>;
@@ -14,18 +13,13 @@ type HttpRes = Promise<ResponsePayload>;
  */
 // eslint-disable-next-line prettier/prettier
 export async function get(url: string, headers = {}): HttpRes {
-  const span = httpSpan('get', url);
   let res: HttpRes;
   try {
     const response: HttpResponse = await CapacitorHttp.get({ url, headers });
     res = response.data;
-    span?.setStatus('ok');
   } catch (e) {
-    span?.setStatus('error');
     captureException(e as Error);
     res = Promise.reject(e);
-  } finally {
-    span?.finish();
   }
   return res;
 }
@@ -40,19 +34,14 @@ export async function get(url: string, headers = {}): HttpRes {
  */
 // eslint-disable-next-line prettier/prettier
 export async function post(url: string, headers = {}, data?: unknown): HttpRes {
-  const span = httpSpan('post', url);
   const options = { url, headers, data };
   let res: HttpRes;
   try {
     const response = await CapacitorHttp.post(options);
     res = response.data;
-    span?.setStatus('ok');
   } catch (e) {
-    span?.setStatus('error');
     captureException(e as Error);
     res = Promise.reject(e);
-  } finally {
-    span?.finish();
   }
   return res;
 }
@@ -82,21 +71,4 @@ export function encodeFormData(data: { [key: string]: string }) {
   return Object.keys(data)
     .map((k) => `${k}=${data[k]}`)
     .join('&');
-}
-
-/**
- * @private
- */
-function httpSpan(method: string, url: string) {
-  const transaction = getActiveTransaction();
-  const span = transaction?.startChild({
-    op: 'http.client',
-    description: `${method.toUpperCase()} ${url}`,
-    tags: {
-      capacitor: true,
-      url,
-      method,
-    },
-  });
-  return span;
 }

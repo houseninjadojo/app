@@ -62,20 +62,6 @@ declare const config: {
       android: string;
     };
   };
-  sentry: {
-    dsn: string | undefined;
-    tracesSampleRate: number;
-    debug: boolean;
-    autoSessionTracking: boolean;
-    release: string;
-    browserTracingOptions: {
-      tracingOrigins: string[];
-    };
-  };
-  '@sentry/ember': {
-    enabledComponentDefinitions: boolean;
-    disablePerformance: boolean;
-  };
 };
 
 export default config;

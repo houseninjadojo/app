@@ -6,7 +6,7 @@ import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { ActionSheet, ActionSheetButtonStyle } from '@capacitor/action-sheet';
 import { debug } from '@ember/debug';
 import { isPresent } from '@ember/utils';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 import { impact, ImpactStyle } from 'houseninja/utils/native/haptics';
 

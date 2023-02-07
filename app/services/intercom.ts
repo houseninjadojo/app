@@ -3,7 +3,7 @@ import { service } from '@ember/service';
 import { Intercom } from '@houseninja/capacitor-intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import ENV from 'houseninja/config/environment';
-import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { tracked } from '@glimmer/tracking';
 import { TrackedWeakSet } from 'tracked-built-ins';
 import { bind } from '@ember/runloop';
@@ -41,10 +41,6 @@ export default class IntercomService extends Service {
 
   async setup(): Promise<void> {
     debug('[intercom] setup');
-    Sentry.addBreadcrumb({
-      category: 'intercom.setup',
-      message: 'setting up',
-    });
     // hide launcher on mobile devices
     if (isNativePlatform()) {
       try {
@@ -59,14 +55,6 @@ export default class IntercomService extends Service {
 
   async loginUser(userId: string, email: string, hmac: string): Promise<void> {
     debug('[intercom] logging in user');
-    startSpan({ op: 'intercom.user.register' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.login',
-      message: 'attaching user',
-      data: {
-        user: { id: userId, email },
-      },
-    });
     if (isNativePlatform()) {
       await this.loginUserNative(userId, email, hmac);
     } else {
@@ -118,7 +106,6 @@ export default class IntercomService extends Service {
 
   async show(): Promise<void> {
     debug('[intercom] showing messenger');
-    startSpan({ op: 'intercom.show.messenger' })?.finish();
     this.isOpen = true;
     this.metrics.trackEvent({
       event: 'intercom.open',
@@ -136,7 +123,6 @@ export default class IntercomService extends Service {
 
   async showComposer(message: string): Promise<void> {
     debug('[intercom] showing composer');
-    startSpan({ op: 'intercom.show.composer' })?.finish();
     this.isOpen = true;
     this.metrics.trackEvent({
       event: 'intercom.open',
@@ -155,7 +141,6 @@ export default class IntercomService extends Service {
 
   async hide(): Promise<void> {
     debug('[intercom] hiding messenger');
-    startSpan({ op: 'intercom.hide' })?.finish();
     this.metrics.trackEvent({
       event: 'intercom.hide',
       breadcrumb: {
@@ -173,11 +158,6 @@ export default class IntercomService extends Service {
 
   async logout(): Promise<void> {
     debug('[intercom] logging out user');
-    startSpan({ op: 'intercom.user.logout' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.logout',
-      message: 'logging out',
-    });
     if (this.isOpen) {
       await this.hide();
     }
@@ -189,12 +169,6 @@ export default class IntercomService extends Service {
   }
 
   async logEvent(name: string, data?: Record<string, unknown>): Promise<void> {
-    startSpan({ op: 'intercom.event.log' })?.finish();
-    Sentry.addBreadcrumb({
-      category: 'intercom.event',
-      message: 'logging event',
-      data: { name, data },
-    });
     try {
       await Intercom.logEvent({ name, data });
     } catch (e) {

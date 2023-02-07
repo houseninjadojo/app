@@ -10,7 +10,7 @@ import { isPresent } from '@ember/utils';
 import { Filesystem } from '@capacitor/filesystem';
 import base64ToBlob from 'houseninja/utils/base64-to-blob';
 import { debug } from '@ember/debug';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 // import { Camera, CameraResultType } from '@capacitor/camera';
 

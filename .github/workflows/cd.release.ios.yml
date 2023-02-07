@@ -3,8 +3,6 @@ on:
     secrets:
       DATADOG_API_KEY:
         required: true
-      SENTRY_AUTH_TOKEN:
-        required: true
       DOTENV_IT_TOKEN:
         required: true
 
@@ -29,11 +27,6 @@ jobs:
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
       - uses: mikehardy/buildcache-action@v2
-      - uses: mathieu-bour/setup-sentry-cli@v1.3.0
-        with:
-          token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          organization: houseninja
-          project: app
       - uses: actions/cache/restore@v3
         id: restore-pnpm
         with:

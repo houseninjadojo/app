@@ -7,7 +7,7 @@ import EventBusService, {
   ListenablePlugin,
 } from 'houseninja/services/event-bus';
 import type MetricsService from './metrics';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 export default class BrowserService extends Service {
   @service declare eventBus: EventBusService;

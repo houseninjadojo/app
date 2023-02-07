@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { TrackedObject } from 'tracked-built-ins';

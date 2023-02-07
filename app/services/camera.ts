@@ -6,7 +6,7 @@ import {
   CameraSource,
   Photo,
 } from '@capacitor/camera';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { service } from '@ember/service';
 import { debug } from '@ember/debug';
 import type MetricsService from 'houseninja/services/metrics';

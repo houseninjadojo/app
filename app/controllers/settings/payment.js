@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 export default class SettingsPaymentController extends Controller {
   @service router;

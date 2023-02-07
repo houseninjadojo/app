@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatPhoneNumber } from 'houseninja/utils/components/formatting';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { isPresent, isEmpty } from '@ember/utils';
 import {
   PAYMENT_METHOD,

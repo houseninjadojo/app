@@ -9,7 +9,6 @@ import {
   get as getSecureStorage,
   set as setSecureStorage,
 } from 'houseninja/utils/secure-storage';
-import Sentry from 'houseninja/utils/sentry';
 
 type JSONSerializable =
   | string
@@ -27,10 +26,6 @@ const addMinToCurrentEpoch = (minutes: number): number => {
 
 export default class StorageService extends Service {
   async setup() {
-    Sentry.addBreadcrumb({
-      category: 'storage.setup',
-      message: 'setting up',
-    });
     await setupLocal();
   }
 

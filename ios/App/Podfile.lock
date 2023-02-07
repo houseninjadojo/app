@@ -1,6 +1,6 @@
 PODS:
   - Branch (1.45.2)
-  - Capacitor (4.6.2):
+  - Capacitor (4.6.3):
     - CapacitorCordova
   - CapacitorActionSheet (4.1.0):
     - Capacitor
@@ -10,7 +10,7 @@ PODS:
     - Capacitor
   - CapacitorCamera (4.1.4):
     - Capacitor
-  - CapacitorCordova (4.6.2)
+  - CapacitorCordova (4.6.3)
   - CapacitorDevice (4.1.0):
     - Capacitor
   - CapacitorDialog (4.1.0):
@@ -61,7 +61,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleDataTransport (9.2.0):
+  - GoogleDataTransport (9.2.1):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
@@ -104,39 +104,32 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
-  - Sentry (7.23.0):
-    - Sentry/Core (= 7.23.0)
-  - Sentry/Core (7.23.0)
-  - SentryCapacitor (0.10.1):
-    - Capacitor
-    - Sentry (~> 7.23.0)
   - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
-  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
-  - "CapacitorActionSheet (from `../../node_modules/@capacitor/action-sheet`)"
-  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
-  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
-  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
-  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
-  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
-  - "CapacitorDialog (from `../../node_modules/@capacitor/dialog`)"
-  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
-  - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
-  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
-  - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
-  - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
-  - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
-  - CapacitorSecureStoragePlugin (from `../../node_modules/capacitor-secure-storage-plugin`)
-  - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
-  - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
-  - "CapawesomeCapacitorFilePicker (from `../../node_modules/@capawesome/capacitor-file-picker`)"
+  - "Capacitor (from `../../node_modules/.pnpm/@capacitor+ios@4.6.3_@capacitor+core@4.6.3/node_modules/@capacitor/ios`)"
+  - "CapacitorActionSheet (from `../../node_modules/.pnpm/@capacitor+action-sheet@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/action-sheet`)"
+  - "CapacitorApp (from `../../node_modules/.pnpm/@capacitor+app@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/app`)"
+  - "CapacitorBrowser (from `../../node_modules/.pnpm/@capacitor+browser@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/browser`)"
+  - "CapacitorCamera (from `../../node_modules/.pnpm/@capacitor+camera@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/camera`)"
+  - "CapacitorCordova (from `../../node_modules/.pnpm/@capacitor+ios@4.6.3_@capacitor+core@4.6.3/node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/.pnpm/@capacitor+device@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/device`)"
+  - "CapacitorDialog (from `../../node_modules/.pnpm/@capacitor+dialog@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/dialog`)"
+  - "CapacitorFilesystem (from `../../node_modules/.pnpm/@capacitor+filesystem@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/filesystem`)"
+  - "CapacitorHaptics (from `../../node_modules/.pnpm/@capacitor+haptics@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/haptics`)"
+  - "CapacitorKeyboard (from `../../node_modules/.pnpm/@capacitor+keyboard@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/keyboard`)"
+  - "CapacitorLocalNotifications (from `../../node_modules/.pnpm/@capacitor+local-notifications@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/local-notifications`)"
+  - "CapacitorPreferences (from `../../node_modules/.pnpm/@capacitor+preferences@4.0.2_@capacitor+core@4.6.3/node_modules/@capacitor/preferences`)"
+  - "CapacitorPushNotifications (from `../../node_modules/.pnpm/@capacitor+push-notifications@4.1.2_@capacitor+core@4.6.3/node_modules/@capacitor/push-notifications`)"
+  - "CapacitorSecureStoragePlugin (from `../../node_modules/.pnpm/capacitor-secure-storage-plugin@0.8.1_@capacitor+core@4.6.3/node_modules/capacitor-secure-storage-plugin`)"
+  - "CapacitorShare (from `../../node_modules/.pnpm/@capacitor+share@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/share`)"
+  - "CapacitorSplashScreen (from `../../node_modules/.pnpm/@capacitor+splash-screen@4.1.3_@capacitor+core@4.6.3/node_modules/@capacitor/splash-screen`)"
+  - "CapawesomeCapacitorFilePicker (from `../../node_modules/.pnpm/@capawesome+capacitor-file-picker@0.5.9_@capacitor+core@4.6.3/node_modules/@capawesome/capacitor-file-picker`)"
   - Firebase/Messaging
-  - "HouseninjaCapacitorBranch (from `../../node_modules/@houseninja/capacitor-branch`)"
-  - "HouseninjaCapacitorIntercom (from `../../node_modules/@houseninja/capacitor-intercom`)"
-  - "HouseninjaCapacitorMixpanel (from `../../node_modules/@houseninja/capacitor-mixpanel`)"
-  - "MineminemineFcm (from `../../node_modules/@mineminemine/fcm`)"
-  - "SentryCapacitor (from `../../node_modules/@sentry/capacitor`)"
+  - "HouseninjaCapacitorBranch (from `../../node_modules/.pnpm/@houseninja+capacitor-branch@5.1.0-beta.6_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-branch`)"
+  - "HouseninjaCapacitorIntercom (from `../../node_modules/.pnpm/@houseninja+capacitor-intercom@4.3.0_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-intercom`)"
+  - "HouseninjaCapacitorMixpanel (from `../../node_modules/.pnpm/@houseninja+capacitor-mixpanel@2.1.0_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-mixpanel`)"
+  - "MineminemineFcm (from `../../node_modules/.pnpm/@mineminemine+fcm@4.0.3_@capacitor+core@4.6.3/node_modules/@mineminemine/fcm`)"
 
 SPEC REPOS:
   trunk:
@@ -152,65 +145,62 @@ SPEC REPOS:
     - Mixpanel-swift
     - nanopb
     - PromisesObjC
-    - Sentry
     - SwiftKeychainWrapper
 
 EXTERNAL SOURCES:
   Capacitor:
-    :path: "../../node_modules/@capacitor/ios"
+    :path: "../../node_modules/.pnpm/@capacitor+ios@4.6.3_@capacitor+core@4.6.3/node_modules/@capacitor/ios"
   CapacitorActionSheet:
-    :path: "../../node_modules/@capacitor/action-sheet"
+    :path: "../../node_modules/.pnpm/@capacitor+action-sheet@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/action-sheet"
   CapacitorApp:
-    :path: "../../node_modules/@capacitor/app"
+    :path: "../../node_modules/.pnpm/@capacitor+app@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/app"
   CapacitorBrowser:
-    :path: "../../node_modules/@capacitor/browser"
+    :path: "../../node_modules/.pnpm/@capacitor+browser@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/browser"
   CapacitorCamera:
-    :path: "../../node_modules/@capacitor/camera"
+    :path: "../../node_modules/.pnpm/@capacitor+camera@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/camera"
   CapacitorCordova:
-    :path: "../../node_modules/@capacitor/ios"
+    :path: "../../node_modules/.pnpm/@capacitor+ios@4.6.3_@capacitor+core@4.6.3/node_modules/@capacitor/ios"
   CapacitorDevice:
-    :path: "../../node_modules/@capacitor/device"
+    :path: "../../node_modules/.pnpm/@capacitor+device@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/device"
   CapacitorDialog:
-    :path: "../../node_modules/@capacitor/dialog"
+    :path: "../../node_modules/.pnpm/@capacitor+dialog@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/dialog"
   CapacitorFilesystem:
-    :path: "../../node_modules/@capacitor/filesystem"
+    :path: "../../node_modules/.pnpm/@capacitor+filesystem@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/filesystem"
   CapacitorHaptics:
-    :path: "../../node_modules/@capacitor/haptics"
+    :path: "../../node_modules/.pnpm/@capacitor+haptics@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/haptics"
   CapacitorKeyboard:
-    :path: "../../node_modules/@capacitor/keyboard"
+    :path: "../../node_modules/.pnpm/@capacitor+keyboard@4.1.1_@capacitor+core@4.6.3/node_modules/@capacitor/keyboard"
   CapacitorLocalNotifications:
-    :path: "../../node_modules/@capacitor/local-notifications"
+    :path: "../../node_modules/.pnpm/@capacitor+local-notifications@4.1.4_@capacitor+core@4.6.3/node_modules/@capacitor/local-notifications"
   CapacitorPreferences:
-    :path: "../../node_modules/@capacitor/preferences"
+    :path: "../../node_modules/.pnpm/@capacitor+preferences@4.0.2_@capacitor+core@4.6.3/node_modules/@capacitor/preferences"
   CapacitorPushNotifications:
-    :path: "../../node_modules/@capacitor/push-notifications"
+    :path: "../../node_modules/.pnpm/@capacitor+push-notifications@4.1.2_@capacitor+core@4.6.3/node_modules/@capacitor/push-notifications"
   CapacitorSecureStoragePlugin:
-    :path: "../../node_modules/capacitor-secure-storage-plugin"
+    :path: "../../node_modules/.pnpm/capacitor-secure-storage-plugin@0.8.1_@capacitor+core@4.6.3/node_modules/capacitor-secure-storage-plugin"
   CapacitorShare:
-    :path: "../../node_modules/@capacitor/share"
+    :path: "../../node_modules/.pnpm/@capacitor+share@4.1.0_@capacitor+core@4.6.3/node_modules/@capacitor/share"
   CapacitorSplashScreen:
-    :path: "../../node_modules/@capacitor/splash-screen"
+    :path: "../../node_modules/.pnpm/@capacitor+splash-screen@4.1.3_@capacitor+core@4.6.3/node_modules/@capacitor/splash-screen"
   CapawesomeCapacitorFilePicker:
-    :path: "../../node_modules/@capawesome/capacitor-file-picker"
+    :path: "../../node_modules/.pnpm/@capawesome+capacitor-file-picker@0.5.9_@capacitor+core@4.6.3/node_modules/@capawesome/capacitor-file-picker"
   HouseninjaCapacitorBranch:
-    :path: "../../node_modules/@houseninja/capacitor-branch"
+    :path: "../../node_modules/.pnpm/@houseninja+capacitor-branch@5.1.0-beta.6_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-branch"
   HouseninjaCapacitorIntercom:
-    :path: "../../node_modules/@houseninja/capacitor-intercom"
+    :path: "../../node_modules/.pnpm/@houseninja+capacitor-intercom@4.3.0_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-intercom"
   HouseninjaCapacitorMixpanel:
-    :path: "../../node_modules/@houseninja/capacitor-mixpanel"
+    :path: "../../node_modules/.pnpm/@houseninja+capacitor-mixpanel@2.1.0_@capacitor+core@4.6.3/node_modules/@houseninja/capacitor-mixpanel"
   MineminemineFcm:
-    :path: "../../node_modules/@mineminemine/fcm"
-  SentryCapacitor:
-    :path: "../../node_modules/@sentry/capacitor"
+    :path: "../../node_modules/.pnpm/@mineminemine+fcm@4.0.3_@capacitor+core@4.6.3/node_modules/@mineminemine/fcm"
 
 SPEC CHECKSUMS:
   Branch: 1fc81857f63403d4682305088b11270719dca8db
-  Capacitor: a83814f7b8678d3fbb8989324f51b442eafdb6f7
+  Capacitor: 744b9eea76ac615076a15f1eb2a754f155012e54
   CapacitorActionSheet: ee4d0df75bdf0de950a3a33d71bcb1c4e2832ab4
   CapacitorApp: acd42fe8561fe751ad5b5f459aa85e6acd7bee24
   CapacitorBrowser: b7d161fb82d591294cb81fcb12f950ae73470035
   CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
-  CapacitorCordova: 855dd572d01508c8992d5470e0dfe33ebb169c4d
+  CapacitorCordova: 4c146609d8f3a3ce164ed0996761759c65cc6402
   CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
   CapacitorDialog: c8a6558d29767e76a32a056bb5e0fc9104b985b0
   CapacitorFilesystem: 3d665e5b3719d9f6e240480a7468861b0bb35f93
@@ -228,7 +218,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
   FirebaseInstallations: 36b38c733fd37e50857e5e8d74138648f466f18c
   FirebaseMessaging: e7304d6ce5f83d9139f0a61383a2302beb99b111
-  GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
+  GoogleDataTransport: ea169759df570f4e37bdee1623ec32a7e64e67c4
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   HouseninjaCapacitorBranch: 919ac8f5c56e3b114c299276f263a1a53f1a0d83
   HouseninjaCapacitorIntercom: 31246e27d64d1ee1234a3b45b8db869b42dbb804
@@ -238,10 +228,8 @@ SPEC CHECKSUMS:
   Mixpanel-swift: 95fa64d39f15141f1c5b7797003e2123d4c3207e
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  Sentry: a0d4563fa4ddacba31fdcc35daaa8573d87224d6
-  SentryCapacitor: 075a95f83c96e090ec47c561519fd9288c3aa686
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
-PODFILE CHECKSUM: beedbd23921cfe65b25f4a4dcb9d988dc1c53353
+PODFILE CHECKSUM: 498254e10941089f189b5d14cccfe3abd8ca813d
 
 COCOAPODS: 1.11.3

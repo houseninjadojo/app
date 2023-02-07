@@ -76,10 +76,6 @@
 		"classpath": "com.getcapacitor.community.fcm.FCMPlugin"
 	},
 	{
-		"pkg": "@sentry/capacitor",
-		"classpath": "io.sentry.capacitor.SentryCapacitor"
-	},
-	{
 		"pkg": "capacitor-secure-storage-plugin",
 		"classpath": "com.whitestein.securestorage.SecureStoragePluginPlugin"
 	}

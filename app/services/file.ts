@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { File, FilePicker } from '@capawesome/capacitor-file-picker';
 import { debug } from '@ember/debug';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { service } from '@ember/service';
 
 import type MetricsService from 'houseninja/services/metrics';

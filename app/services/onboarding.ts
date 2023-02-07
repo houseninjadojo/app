@@ -2,7 +2,7 @@ import Service, { service } from '@ember/service';
 import { Task, task } from 'ember-concurrency';
 import { isEmpty, isPresent } from '@ember/utils';
 import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding-step';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { pluralize } from 'ember-inflector';
 
 import type StorageService from 'houseninja/services/storage';

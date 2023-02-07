@@ -1,6 +1,6 @@
 import Service, { service } from '@ember/service';
 import { get as unstash, set as stash } from 'houseninja/utils/secure-storage';
-import Sentry, { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { task, type Task } from 'ember-concurrency';
 import { TrackedObject } from 'tracked-built-ins';
 import DeviceModel from 'houseninja/models/device';
@@ -98,16 +98,6 @@ export default class CurrentService extends Service {
           stashedDevice,
         });
       }
-
-      Sentry.addBreadcrumb({
-        type: 'info',
-        category: 'device.register',
-        message: 'registering device to user',
-        data: {
-          user: { id: this.user?.id },
-          device: { id: device.id },
-        },
-      });
 
       device.user = this.user;
       device.setProperties(this.pushTokens);

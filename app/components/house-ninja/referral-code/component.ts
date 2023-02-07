@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { Share } from '@capacitor/share';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import type RouterService from '@ember/routing/router-service';
 import type StoreService from '@ember-data/store';
 import type CurrentService from 'houseninja/services/current';

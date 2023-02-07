@@ -54,10 +54,6 @@
       "automerge": true
     },
     {
-      "matchPackagePatterns": ["^@sentry", "^sentry-"],
-      "enabled": false
-    },
-    {
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true,

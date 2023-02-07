@@ -1,7 +1,6 @@
 import Service, { service } from '@ember/service';
-import Sentry, { captureException, startSpan } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { PushNotifications } from '@capacitor/push-notifications';
-import { isPresent } from '@ember/utils';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { bind } from '@ember/runloop';
 import { TrackedArray, TrackedMap, tracked } from 'tracked-built-ins';
@@ -77,23 +76,18 @@ export default class NotificationsService extends Service {
 
   triggerEvent(notification: Notification): void {
     const n = notification;
-    const span = makeSpan('notification.event', { n }, false);
     this.eventLog.push(n);
     switch (n.type) {
       case NotificationType.Intercom:
-        span?.setTag('intercom', true) && span?.finish();
         this.intercom.show();
         return;
       case NotificationType.Branch:
-        span?.setTag('branch', true) && span?.finish();
         this.router.transitionTo(n.link as string);
         return;
       case NotificationType.Remote:
-        span?.setTag('remote', true) && span?.finish();
         this.router.transitionTo(n.link as string);
         return;
       default:
-        span?.finish();
         return;
     }
   }
@@ -106,8 +100,6 @@ export default class NotificationsService extends Service {
     const n = this.findOrCreate(notification);
     n.state = NotificationState.Opened;
     debug(`[notifications] handling action: ${actionId}`);
-    makeCrumb('opened', n, 'notification opened');
-    makeSpan('opened', { n, actionId });
     this.metrics.trackEvent({
       event: 'notification.opened',
       properties: { actionId, notification },
@@ -123,14 +115,11 @@ export default class NotificationsService extends Service {
       event: 'notification.received',
       properties: { payload },
     });
-    makeSpan('received', { n });
     this.heap.set(n.id, n);
   }
 
   private async registrationHandler(evt: { value: string }): Promise<void> {
     debug(`[notifications] permission granted`);
-    makeSpan('permissions.granted', { desc: 'permission granted' });
-    makeCrumb('permissions', undefined, 'permission granted');
     this.tokens.apns = evt.value;
     this.tokens.fcm = await getToken();
     this.current.setDeviceTokens(this.tokens);
@@ -138,8 +127,6 @@ export default class NotificationsService extends Service {
 
   private async registrationErrHandler(evt: { error: string }): Promise<void> {
     debug(`[notifications] permission denied`);
-    makeSpan('permissions.denied', { desc: 'permission denied' });
-    makeCrumb('permissions', undefined, 'permission denied');
     const error = new Error(evt.error);
     captureException(error);
   }
@@ -150,7 +137,6 @@ export default class NotificationsService extends Service {
 
   async setup(): Promise<void> {
     if (!isNativePlatform()) return;
-    makeSpan('setup', { desc: 'setting up' });
     await this.setupListeners();
     await this.registerPermissions();
   }
@@ -195,8 +181,6 @@ export default class NotificationsService extends Service {
 
   async registerPermissions(): Promise<void> {
     debug(`[notifications] trying to register permissions`);
-    makeSpan('permissions.register', { desc: 'registering permissions' });
-    makeCrumb('permissions', undefined, 'registering push notifications');
     if (!isNativePlatform()) {
       debug('[notifications] not a native platform, not registering');
       return;
@@ -207,40 +191,3 @@ export default class NotificationsService extends Service {
     }
   }
 }
-
-/**
- * Helpers/Utils
- */
-
-const makeSpan = (
-  event: string,
-  d?: { n?: Notification; actionId?: string; desc?: string },
-  finish = true
-) => {
-  const { n, actionId, desc } = d || {};
-  const tags = {
-    notification: n?.id,
-    ...(actionId ? { 'action-id': actionId } : {}),
-  };
-  const data = { notification: n, actionId };
-  const payload = {
-    op: `notification.${event}`,
-    description: `${n?.id ?? desc}`,
-    ...(isPresent(n) ? { data } : {}),
-    ...(isPresent(n) ? { tags } : {}),
-  };
-  const span = startSpan(payload);
-  if (finish) {
-    span?.finish();
-  } else {
-    return span;
-  }
-};
-
-const makeCrumb = (event: string, n?: Notification, msg?: string) => {
-  Sentry.addBreadcrumb({
-    category: `notifications.${event}`,
-    message: msg,
-    data: n,
-  });
-};

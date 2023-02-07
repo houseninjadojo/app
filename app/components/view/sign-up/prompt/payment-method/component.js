@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 import {

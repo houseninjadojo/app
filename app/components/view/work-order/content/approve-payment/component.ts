@@ -7,7 +7,7 @@ import {
   ActionSheetButton,
   ActionSheetButtonStyle,
 } from '@capacitor/action-sheet';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DashboardRoute } from 'houseninja/data/enums/routes';
 import IntercomService from 'houseninja/services/intercom';

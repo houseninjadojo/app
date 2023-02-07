@@ -1,5 +1,5 @@
 import Store from '@ember-data/store';
-import { captureException } from 'houseninja/utils/sentry';
+import { captureException } from 'houseninja/services/telemetry';
 
 import type Model from '@ember-data/model';
 

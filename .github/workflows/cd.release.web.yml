@@ -3,8 +3,6 @@ on:
     secrets:
       DATADOG_API_KEY:
         required: true
-      SENTRY_AUTH_TOKEN:
-        required: true
       DOTENV_IT_TOKEN:
         required: true
       CLOUDFLARE_ACCOUNT_ID:
@@ -60,19 +58,6 @@ jobs:
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@main
-      - name: Create Sentry release
-        uses: getsentry/action-release@v1
-        continue-on-error: true
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: houseninja
-          SENTRY_PROJECT: app
-        with:
-          environment: production
-          sourcemaps: dist/assets
-          version: co.houseninja.application@${{ steps.package-version.outputs.current-version }}+1
-          url_prefix: ~/
-          finalize: false
       - name: upload datadog sourcemaps
         run: pnpm run upload:sourcemaps:datadog
         env:
