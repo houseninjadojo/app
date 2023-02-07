@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.28.30",
+  "version": "1.28.32",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -35,10 +35,11 @@
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-decorators": "^7.20.13",
-    "@capacitor/cli": "4.6.2",
+    "@capacitor/cli": "4.6.3",
     "@datadog/browser-logs": "^4.32.0",
     "@datadog/browser-rum": "^4.32.0",
     "@datadog/datadog-ci": "^2.4.0",
+    "@ember-data/store": "4.9.1",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.5",
@@ -47,6 +48,7 @@
     "@embroider/compat": "^2.1.1",
     "@embroider/core": "^2.1.1",
     "@embroider/webpack": "^2.1.1",
+    "@embroider/macros": "1.10.0",
     "@faker-js/faker": "^7.6.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
@@ -71,7 +73,6 @@
     "@types/ember-data__model": "^4.0.0",
     "@types/ember-data__serializer": "^4.0.1",
     "@types/ember-data__store": "^4.0.2",
-    "@types/ember-qunit": "^6.1.1",
     "@types/ember-resolver": "^9.0.0",
     "@types/ember__application": "^4.0.3",
     "@types/ember__array": "^4.0.3",
@@ -132,7 +133,6 @@
     "ember-qunit": "^6.1.1",
     "ember-resolver": "^10.0.0",
     "ember-simple-auth": "^4.2.2",
-    "ember-sinon-qunit": "^7.0.0",
     "ember-source": "~4.9.3",
     "ember-template-lint": "^5.3.3",
     "ember-truth-helpers": "^3.1.1",
@@ -173,16 +173,16 @@
   },
   "dependencies": {
     "@capacitor/action-sheet": "^4.1.0",
-    "@capacitor/android": "4.6.2",
+    "@capacitor/android": "4.6.3",
     "@capacitor/app": "^4.1.1",
     "@capacitor/browser": "^4.1.1",
     "@capacitor/camera": "^4.1.4",
-    "@capacitor/core": "4.6.2",
+    "@capacitor/core": "4.6.3",
     "@capacitor/device": "^4.1.0",
     "@capacitor/dialog": "^4.1.0",
     "@capacitor/filesystem": "^4.1.4",
     "@capacitor/haptics": "^4.1.0",
-    "@capacitor/ios": "4.6.2",
+    "@capacitor/ios": "4.6.3",
     "@capacitor/keyboard": "^4.1.1",
     "@capacitor/local-notifications": "^4.1.4",
     "@capacitor/preferences": "^4.0.2",
@@ -198,7 +198,8 @@
     "capacitor-secure-storage-plugin": "^0.8.1"
   },
   "resolutions": {
-    "@embroider/macros": "1.10.0"
+    "@embroider/macros": "1.10.0",
+    "@ember-data/store": "4.9.1"
   },
   "packageManager": "pnpm@7.26.3"
 }

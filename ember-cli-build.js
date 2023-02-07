@@ -38,6 +38,9 @@ if (process.env.BUILD_STATS) {
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
+      alias: {
+        sinon: 'sinon/pkg/sinon-esm',
+      },
     },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
@@ -118,37 +121,6 @@ module.exports = function (defaults) {
           ],
         },
         plugins: webpackPlugins,
-        // optimization: {
-        //   splitChunks: {
-        //     cacheGroups: {
-        //       telemetry: {
-        //         test: /[\\/]node_modules[\\/](@datadog|mixpanel-browser|@houseninja\/capacitor-mixpanel|branch-sdk)/,
-        //         name: 'telemetry',
-        //         chunks: 'all',
-        //       },
-        //       capacitor: {
-        //         test: /[\\/]node_modules[\\/](@capacitor|@capawesome|@ionic|capacitor-secure-storage-plugin|@houseninja\/capacitor-[\w+]|@mineminemine)/,
-        //         name: 'capacitor',
-        //         chunks: 'all',
-        //       },
-        //       sentry: {
-        //         test: /[\\/]node_modules[\\/](@sentry|rrweb)/,
-        //         name: 'sentry',
-        //         chunks: 'all',
-        //       },
-        //       dev: {
-        //         test: /[\\/]node_modules[\\/](@faker-js|miragejs|@miragejs|ember-cli-mirage|crypto-js|sinon|qunit)/,
-        //         name: 'development',
-        //         chunks: 'all',
-        //       },
-        //       animations: {
-        //         test: /[\\/]node_modules[\\/](canvas-confetti|lottie-web)/,
-        //         name: 'animations',
-        //         chunks: 'all',
-        //       },
-        //     },
-        //   },
-        // },
       },
     },
     extraPublicTrees: [],

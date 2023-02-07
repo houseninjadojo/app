@@ -41,8 +41,8 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-appindexing:19.1.0' // App indexing
-    implementation 'com.google.android.gms:play-services-ads:19.4.0' // GAID matching
+    implementation 'com.google.firebase:firebase-appindexing:19.2.0' // App indexing
+    implementation 'com.google.android.gms:play-services-ads:19.8.0' // GAID matching
 }
 
 apply from: 'capacitor.build.gradle'

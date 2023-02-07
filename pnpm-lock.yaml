@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 overrides:
   '@embroider/macros': 1.10.0
+  '@ember-data/store': 4.9.1
 
 specifiers:
   '@algonauti/ember-active-storage': ^2.2.0
@@ -9,17 +10,17 @@ specifiers:
   '@babel/eslint-parser': ^7.19.1
   '@babel/plugin-proposal-decorators': ^7.20.13
   '@capacitor/action-sheet': ^4.1.0
-  '@capacitor/android': 4.6.2
+  '@capacitor/android': 4.6.3
   '@capacitor/app': ^4.1.1
   '@capacitor/browser': ^4.1.1
   '@capacitor/camera': ^4.1.4
-  '@capacitor/cli': 4.6.2
-  '@capacitor/core': 4.6.2
+  '@capacitor/cli': 4.6.3
+  '@capacitor/core': 4.6.3
   '@capacitor/device': ^4.1.0
   '@capacitor/dialog': ^4.1.0
   '@capacitor/filesystem': ^4.1.4
   '@capacitor/haptics': ^4.1.0
-  '@capacitor/ios': 4.6.2
+  '@capacitor/ios': 4.6.3
   '@capacitor/keyboard': ^4.1.1
   '@capacitor/local-notifications': ^4.1.4
   '@capacitor/preferences': ^4.0.2
@@ -30,6 +31,7 @@ specifiers:
   '@datadog/browser-logs': ^4.32.0
   '@datadog/browser-rum': ^4.32.0
   '@datadog/datadog-ci': ^2.4.0
+  '@ember-data/store': 4.9.1
   '@ember/jquery': ^2.0.0
   '@ember/optional-features': ^2.0.0
   '@ember/render-modifiers': ^2.0.5
@@ -37,6 +39,7 @@ specifiers:
   '@ember/test-helpers': ^2.9.3
   '@embroider/compat': ^2.1.1
   '@embroider/core': ^2.1.1
+  '@embroider/macros': 1.10.0
   '@embroider/webpack': ^2.1.1
   '@faker-js/faker': ^7.6.0
   '@glimmer/component': ^1.1.2
@@ -67,7 +70,6 @@ specifiers:
   '@types/ember-data__model': ^4.0.0
   '@types/ember-data__serializer': ^4.0.1
   '@types/ember-data__store': ^4.0.2
-  '@types/ember-qunit': ^6.1.1
   '@types/ember-resolver': ^9.0.0
   '@types/ember__application': ^4.0.3
   '@types/ember__array': ^4.0.3
@@ -129,7 +131,6 @@ specifiers:
   ember-qunit: ^6.1.1
   ember-resolver: ^10.0.0
   ember-simple-auth: ^4.2.2
-  ember-sinon-qunit: ^7.0.0
   ember-source: ~4.9.3
   ember-template-lint: ^5.3.3
   ember-truth-helpers: ^3.1.1
@@ -163,40 +164,41 @@ specifiers:
   whatwg-url: 12.0.0
 
 dependencies:
-  '@capacitor/action-sheet': 4.1.0_@capacitor+core@4.6.2
-  '@capacitor/android': 4.6.2_@capacitor+core@4.6.2
-  '@capacitor/app': 4.1.1_@capacitor+core@4.6.2
-  '@capacitor/browser': 4.1.1_@capacitor+core@4.6.2
-  '@capacitor/camera': 4.1.4_@capacitor+core@4.6.2
-  '@capacitor/core': 4.6.2
-  '@capacitor/device': 4.1.0_@capacitor+core@4.6.2
-  '@capacitor/dialog': 4.1.0_@capacitor+core@4.6.2
-  '@capacitor/filesystem': 4.1.4_@capacitor+core@4.6.2
-  '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.2
-  '@capacitor/ios': 4.6.2_@capacitor+core@4.6.2
-  '@capacitor/keyboard': 4.1.1_@capacitor+core@4.6.2
-  '@capacitor/local-notifications': 4.1.4_@capacitor+core@4.6.2
-  '@capacitor/preferences': 4.0.2_@capacitor+core@4.6.2
-  '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.6.2
-  '@capacitor/share': 4.1.0_@capacitor+core@4.6.2
-  '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.6.2
-  '@capawesome/capacitor-file-picker': 0.5.9_@capacitor+core@4.6.2
-  '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.6.2
-  '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.6.2
-  '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.6.2
-  '@mineminemine/fcm': 4.0.3_@capacitor+core@4.6.2
-  '@sentry/capacitor': 0.10.1_@capacitor+core@4.6.2
-  capacitor-secure-storage-plugin: 0.8.1_@capacitor+core@4.6.2
+  '@capacitor/action-sheet': 4.1.0_@capacitor+core@4.6.3
+  '@capacitor/android': 4.6.3_@capacitor+core@4.6.3
+  '@capacitor/app': 4.1.1_@capacitor+core@4.6.3
+  '@capacitor/browser': 4.1.1_@capacitor+core@4.6.3
+  '@capacitor/camera': 4.1.4_@capacitor+core@4.6.3
+  '@capacitor/core': 4.6.3
+  '@capacitor/device': 4.1.0_@capacitor+core@4.6.3
+  '@capacitor/dialog': 4.1.0_@capacitor+core@4.6.3
+  '@capacitor/filesystem': 4.1.4_@capacitor+core@4.6.3
+  '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.3
+  '@capacitor/ios': 4.6.3_@capacitor+core@4.6.3
+  '@capacitor/keyboard': 4.1.1_@capacitor+core@4.6.3
+  '@capacitor/local-notifications': 4.1.4_@capacitor+core@4.6.3
+  '@capacitor/preferences': 4.0.2_@capacitor+core@4.6.3
+  '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.6.3
+  '@capacitor/share': 4.1.0_@capacitor+core@4.6.3
+  '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.6.3
+  '@capawesome/capacitor-file-picker': 0.5.9_@capacitor+core@4.6.3
+  '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.6.3
+  '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.6.3
+  '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.6.3
+  '@mineminemine/fcm': 4.0.3_@capacitor+core@4.6.3
+  '@sentry/capacitor': 0.10.1_@capacitor+core@4.6.3
+  capacitor-secure-storage-plugin: 0.8.1_@capacitor+core@4.6.3
 
 devDependencies:
   '@algonauti/ember-active-storage': 2.2.0
   '@babel/core': 7.20.12
   '@babel/eslint-parser': 7.19.1_b3mcivpi6zqbotlvqqcfprcnry
   '@babel/plugin-proposal-decorators': 7.20.13_@babel+core@7.20.12
-  '@capacitor/cli': 4.6.2
+  '@capacitor/cli': 4.6.3
   '@datadog/browser-logs': 4.32.0_c3wpid6xjgcicwata4crwobsh4
   '@datadog/browser-rum': 4.32.0_jynbpqzsu25ml5vkse4doibtwa
   '@datadog/datadog-ci': 2.4.0
+  '@ember-data/store': 4.9.1_mybpoovjkvtjzp7n3af36ccvbi
   '@ember/jquery': 2.0.0
   '@ember/optional-features': 2.0.0
   '@ember/render-modifiers': 2.0.5_wac6mb43gwopsgc7yvlsdnrice
@@ -204,6 +206,7 @@ devDependencies:
   '@ember/test-helpers': 2.9.3_wac6mb43gwopsgc7yvlsdnrice
   '@embroider/compat': 2.1.1_@embroider+core@2.1.1
   '@embroider/core': 2.1.1
+  '@embroider/macros': 1.10.0
   '@embroider/webpack': 2.1.1_eyqzvd6leggmxnqpxutivef5lu
   '@faker-js/faker': 7.6.0
   '@glimmer/component': 1.1.2_@babel+core@7.20.12
@@ -229,7 +232,6 @@ devDependencies:
   '@types/ember-data__model': 4.0.0_@babel+core@7.20.12
   '@types/ember-data__serializer': 4.0.1_@babel+core@7.20.12
   '@types/ember-data__store': 4.0.2_@babel+core@7.20.12
-  '@types/ember-qunit': 6.1.1_khpttehaheeunc7peqs3cjloqi
   '@types/ember-resolver': 9.0.0_ohch4lve7fpmj3pwwnb3kns7m4
   '@types/ember__application': 4.0.5_@babel+core@7.20.12
   '@types/ember__array': 4.0.3_@babel+core@7.20.12
@@ -290,7 +292,6 @@ devDependencies:
   ember-qunit: 6.1.1_khpttehaheeunc7peqs3cjloqi
   ember-resolver: 10.0.0_ohch4lve7fpmj3pwwnb3kns7m4
   ember-simple-auth: 4.2.2_ember-fetch@8.1.2
-  ember-sinon-qunit: 7.0.0_tdas45qm5cqgnymdydughuo3p4
   ember-source: 4.9.3_ipwtokbwlukr3yko7oz5lbj6xy
   ember-template-lint: 5.3.3
   ember-truth-helpers: 3.1.1
@@ -1671,48 +1672,48 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@capacitor/action-sheet/4.1.0_@capacitor+core@4.6.2:
+  /@capacitor/action-sheet/4.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-q3gRV3iTOHMuN+ihvNgk0G2dJNNnjkBBXS1tdf1rn9tMdX6BUE9Hi2GmXLI9otKkmJ5JIiURnJURtrn3bp8a+Q==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/android/4.6.2_@capacitor+core@4.6.2:
-    resolution: {integrity: sha512-PQpOJnMi0i/d4UrT8bPdfkwlKAlQLgsyo2YKj+iUYjEIu8sKQvqDirLYnpeKhj4cflIG2u9mh/eFncooA+u2gw==}
+  /@capacitor/android/4.6.3_@capacitor+core@4.6.3:
+    resolution: {integrity: sha512-jYND6OTsvIihxQiox6KARNKzlCHSGnMedXg5DGPZdREM+5F2SIvxBLQxC4/JpFBig2yJCVGsJMmhRkmz12S4FA==}
     peerDependencies:
       '@capacitor/core': ^4.6.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/app/4.1.1_@capacitor+core@4.6.2:
+  /@capacitor/app/4.1.1_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/browser/4.1.1_@capacitor+core@4.6.2:
+  /@capacitor/browser/4.1.1_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-RJKNeRiLm6X668X75YiPN/9t3z1pxVEPjIhLM/AtWAEsHUb8bjroQQ3WGdW/30Wa60a7ywiw3YLqWctfRaYyFw==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/camera/4.1.4_@capacitor+core@4.6.2:
+  /@capacitor/camera/4.1.4_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-7f4n7PlnstYsdGyxc0Kc4hIyS6csFLOjXvffm7pJsuy9pSo+kfdOPdYgGg360QwbUAmA+Yv+J1ZW1eFIwgvWrQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/cli/4.6.2:
-    resolution: {integrity: sha512-035RIynwnmusv9Z/1jPDP+i7Z54ZY3qxNtf6cA69TxZlnozAqBkjPyHGuaAugxSn+4jzCobSLE3456VHhHMx1g==}
+  /@capacitor/cli/4.6.3:
+    resolution: {integrity: sha512-3BLti5iAo8lzkwUeWoZCMBGKxkY2aAlGR0SCmVzok3c2LXJwYNhrlrsoKFRjUHsiO4CmhmtR1ee2gsjvIzkOqQ==}
     engines: {node: '>=12.4.0'}
     hasBin: true
     dependencies:
@@ -1737,106 +1738,106 @@ packages:
       - supports-color
     dev: true
 
-  /@capacitor/core/4.6.2:
-    resolution: {integrity: sha512-M/KpAg+peft/HTb7svLiKHxjbll67ybs1vEqhZuvjXlwro53NxNXR4YJS7+wNXZSiA4Kxjtf+a754xGgZcMarA==}
+  /@capacitor/core/4.6.3:
+    resolution: {integrity: sha512-VJTUoZWUCVrp1cV1S4rqAwcV1/bF7KSVI4+/YUdVIBoHwnNxVweX15k5/etIeUZYaWxM6jwS2iIK9I86+G7ccQ==}
     dependencies:
       tslib: 2.5.0
     dev: false
 
-  /@capacitor/device/4.1.0_@capacitor+core@4.6.2:
+  /@capacitor/device/4.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-BlcYb6e6m+vC1SxeyUDIUGfuNXdKEcpFPDCs/kxk2SByFc/BkvXeoy4NjY4qmTderGELofX9bta5Iy9JV7rGUg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/dialog/4.1.0_@capacitor+core@4.6.2:
+  /@capacitor/dialog/4.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-Uej4+WE6Ec445iTzLVD22fmsPfu8nW+IJyiixtzP5+ZLNhdJ5mjbMUUTUrZTbDUK8hViFRsfLo90qbeGzgMTVA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/filesystem/4.1.4_@capacitor+core@4.6.2:
+  /@capacitor/filesystem/4.1.4_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-ivko1RNK4hq63xhMacq8D6D97N5/SAafTsrmY/pghYrG6Cl2SEY0+IgRu7V9/VWeN3FSplyUPucjUTAFQxXN5g==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/haptics/4.1.0_@capacitor+core@4.6.2:
+  /@capacitor/haptics/4.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-gAIFy50e1VZPdokRFLkl8Y+yZYB3e4brd5yu9DRShbWbheruwU34TxtG5C1NANvq4mbXd3tMXzBi59Q5JFyTHA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/ios/4.6.2_@capacitor+core@4.6.2:
-    resolution: {integrity: sha512-3hQzbAOk+drCLyFjnytvkc20Mr077/9tQrv6iTghDXESDGR6EgcaYUXzKdVwuJscb0R459+5UQ2mYtkx6ES4TQ==}
+  /@capacitor/ios/4.6.3_@capacitor+core@4.6.3:
+    resolution: {integrity: sha512-sjvyIx/7U376YnTWIXjIBspzf0e1ZKocVjpTeqtM9AbUg4XtPQZa1Lje/lT6EFQ71bGTcxmq0wylnPRB7LzHNg==}
     peerDependencies:
       '@capacitor/core': ^4.6.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/keyboard/4.1.1_@capacitor+core@4.6.2:
+  /@capacitor/keyboard/4.1.1_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-fdC7u2TeG4BqwC0LnPnhOdya31C4QKdhk/8pc5lxI9X5jyYAetMCN1kEkKa7KREw4DdzXotJt27B9BXxAza6og==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/local-notifications/4.1.4_@capacitor+core@4.6.2:
+  /@capacitor/local-notifications/4.1.4_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-nEs0SYkOQG7xT8FiKH7CG6BFOJ7jZkWiYt+JbM38s8sSxsAw1D2qfocNIyXstTUxhrJvKBtbl7oTuKg7mGUeuQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/preferences/4.0.2_@capacitor+core@4.6.2:
+  /@capacitor/preferences/4.0.2_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/push-notifications/4.1.2_@capacitor+core@4.6.2:
+  /@capacitor/push-notifications/4.1.2_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-ok6CGvedwK1azmf8VWhrNlg6jhi4PFz3HoyS0GNE2ew7+JGnxN77sgK5q1TVzdkge+vkqipO6uu5bD1xfj/pWQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/share/4.1.0_@capacitor+core@4.6.2:
+  /@capacitor/share/4.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-Gh/cgy7Ee+9fkhw+Q4+9s2S4HiC34/eLoaohqRg1ahtpqvTQ3qdInoEJ23FdILq5cLj2ZPpx2VuEXjpLKX1Z5A==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capacitor/splash-screen/4.1.3_@capacitor+core@4.6.2:
+  /@capacitor/splash-screen/4.1.3_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-WkQQHFVK9kST+D8B0Z0jRGzZRQhtSKPhCkGez9dbOM+ggjCSjaXf90DK0nABbuNuO/99XAY6cJFkrZzw6erTBw==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@capawesome/capacitor-file-picker/0.5.9_@capacitor+core@4.6.2:
+  /@capawesome/capacitor-file-picker/0.5.9_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-uiVkjtFHZ1NyRjGAMaRSP1Eq/3a56oPCQ/XNWqmOkHAqj9ekIO8SP7eRh/StM+S9DEotH3irq1e6Bbrc/I486A==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
   /@cnakazawa/watch/1.0.4:
@@ -1933,8 +1934,84 @@ packages:
       - utf-8-validate
     dev: true
 
+  /@ember-data/canary-features/4.9.1:
+    resolution: {integrity: sha512-Dk80HVWMoRZpoWf/9pVSTM9Db0jG0PN4Cmg+bWG2YWNVIcAUvl4TSzNIY4th8CrA5BOPwhn50KKWBQZZ1CRhiQ==}
+    engines: {node: ^14.8.0 || 16.* || >= 18.*}
+    dependencies:
+      '@embroider/macros': 1.10.0
+      ember-cli-babel: 7.26.11
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@ember-data/private-build-infra/4.9.1:
+    resolution: {integrity: sha512-1c4tXsaFgNgAFol7tflW7ltGPQ8WdGqSprbUzFnyroBotVsvVhNiGBHVsEaQ0W3UQwlwinyyJXlXQiPs/Yv3Iw==}
+    engines: {node: ^14.8.0 || 16.* || >= 18.*}
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/plugin-transform-block-scoping': 7.20.14_@babel+core@7.20.12
+      '@babel/runtime': 7.20.13
+      '@ember-data/canary-features': 4.9.1
+      '@ember/edition-utils': 1.2.0
+      '@embroider/macros': 1.10.0
+      babel-import-util: 1.3.0
+      babel-plugin-debug-macros: 0.3.4_@babel+core@7.20.12
+      babel-plugin-filter-imports: 4.0.0
+      babel6-plugin-strip-class-callcheck: 6.0.0
+      broccoli-debug: 0.6.5
+      broccoli-file-creator: 2.1.1
+      broccoli-funnel: 3.0.8
+      broccoli-merge-trees: 4.2.0
+      broccoli-rollup: 5.0.0
+      calculate-cache-key-for-tree: 2.0.0
+      chalk: 4.1.2
+      ember-cli-babel: 7.26.11
+      ember-cli-path-utils: 1.0.0
+      ember-cli-string-utils: 1.1.0
+      ember-cli-version-checker: 5.1.2
+      git-repo-info: 2.1.1
+      glob: 8.1.0
+      npm-git-info: 1.0.3
+      rimraf: 3.0.2
+      rsvp: 4.8.5
+      semver: 7.3.8
+      silent-error: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@ember-data/rfc395-data/0.0.4:
     resolution: {integrity: sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==}
+    dev: true
+
+  /@ember-data/store/4.9.1_mybpoovjkvtjzp7n3af36ccvbi:
+    resolution: {integrity: sha512-FXgP/oOE5b0YYpIoIU3KXiMTtIHF0SVllebxrsYMQWh2+C3hTV42DDDtEArDV/oBL3i0WARDdiT4aziK7kGl/A==}
+    engines: {node: ^14.8.0 || 16.* || >= 18.*}
+    peerDependencies:
+      '@ember-data/model': 4.9.1
+      '@ember-data/record-data': 4.9.1
+      '@ember-data/tracking': 4.9.1
+      '@ember/string': ^3.0.0
+      '@glimmer/tracking': ^1.1.2
+    peerDependenciesMeta:
+      '@ember-data/model':
+        optional: true
+      '@ember-data/record-data':
+        optional: true
+    dependencies:
+      '@ember-data/canary-features': 4.9.1
+      '@ember-data/private-build-infra': 4.9.1
+      '@ember/string': 3.0.1
+      '@embroider/macros': 1.10.0
+      '@glimmer/tracking': 1.1.2
+      ember-auto-import: 2.6.0_webpack@5.75.0
+      ember-cached-decorator-polyfill: 1.0.1_wac6mb43gwopsgc7yvlsdnrice
+      ember-cli-babel: 7.26.11
+    transitivePeerDependencies:
+      - '@babel/core'
+      - ember-source
+      - supports-color
+      - webpack
     dev: true
 
   /@ember/edition-utils/1.2.0:
@@ -2576,28 +2653,28 @@ packages:
     resolution: {integrity: sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==}
     dev: true
 
-  /@houseninja/capacitor-branch/5.1.0-beta.6_@capacitor+core@4.6.2:
+  /@houseninja/capacitor-branch/5.1.0-beta.6_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-PxvOPanbibEdvjFSrnrYsnA5ARFRiNZQ/x4MNlWebO8bWCs0PflkQDdb8NRhmdYuqDeTQVxgBf7T8D9kAOpFBA==}
     peerDependencies:
       '@capacitor/core': ^4.0.1
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@houseninja/capacitor-intercom/4.3.0_@capacitor+core@4.6.2:
+  /@houseninja/capacitor-intercom/4.3.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-aIW+wuJDerqGMp2F2NXqNUSzByFZto2098UihttN7+AiXkghu9x+8bKSlDCB8FKHRXm58TW9Dri+J6KIUw9cmA==}
     peerDependencies:
       '@capacitor/core': ^4.5.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
-  /@houseninja/capacitor-mixpanel/2.1.0_@capacitor+core@4.6.2:
+  /@houseninja/capacitor-mixpanel/2.1.0_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-jrwTL06itO/OrP5rHLFXzQkYHQrTU+LmEXoY8IiF7xf7Nw1l8hAYSvHh8xHvMYR5Drt7iftWvsIUiR9Tax17LA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
       mixpanel-browser: 2.45.0
     dev: false
 
@@ -2807,13 +2884,13 @@ packages:
       upath: 2.0.1
     dev: true
 
-  /@mineminemine/fcm/4.0.3_@capacitor+core@4.6.2:
+  /@mineminemine/fcm/4.0.3_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-AV9r+BcDqLaA3EAsE228at4MO97RFPwQsBOuTbnh/245u5GhdrLFMw3cSYCXAzXAOqahSiQ4qlfVZXW29qGYLg==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
   /@miragejs/pretender-node-polyfill/0.1.2:
@@ -3173,7 +3250,7 @@ packages:
       '@sentry/utils': 7.13.0
       tslib: 1.14.1
 
-  /@sentry/capacitor/0.10.1_@capacitor+core@4.6.2:
+  /@sentry/capacitor/0.10.1_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-g1Hns/n1gJhgs/Lu1yJF111y/8VM0li1xcgBGYkX2WUL2xYw1DGwd6D3wAOK6YizNvC9cO7uwhTlzj9pEeEEbQ==}
     peerDependencies:
       '@capacitor/core': '>=3.0.0'
@@ -3188,7 +3265,7 @@ packages:
       '@sentry/vue':
         optional: true
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
       '@sentry/browser': 7.13.0
       '@sentry/core': 7.13.0
       '@sentry/hub': 7.13.0
@@ -3383,6 +3460,15 @@ packages:
     resolution: {integrity: sha512-qEQEU8Iot5zejumdgwiO3ARpd75KEV1XBe/BJJvWDSke40HJcjA92LnAHyVM1aiDOUk4ZokuWQlo1cc5t8cQbw==}
     dev: true
 
+  /@types/broccoli-plugin/3.0.0:
+    resolution: {integrity: sha512-f+TcsARR2PovfFRKFdCX0kfH/QoM3ZVD2h1rl2mNvrKO0fq2uBNCBsTU3JanfU4COCt5cXpTfARyUsERlC8vIw==}
+    deprecated: This is a stub types definition. broccoli-plugin provides its own type definitions, so you do not need this installed.
+    dependencies:
+      broccoli-plugin: 4.0.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@types/canvas-confetti/1.6.0:
     resolution: {integrity: sha512-Yq6rIccwcco0TLD5SMUrIM7Fk7Fe/C0jmNRxJJCLtAF6gebDkPuUjK5EHedxecm69Pi/aA+It39Ux4OHmFhjRw==}
     dev: true
@@ -3477,18 +3563,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-    dev: true
-
-  /@types/ember-qunit/6.1.1_khpttehaheeunc7peqs3cjloqi:
-    resolution: {integrity: sha512-1g5A3vPKhvB/CuN/EP9rBLXYaJOjzKyLYWeBtNDEQNkTuG1dAo/Hg0CCixgbBgLlzaDP8mR/n1xpg8HqQ8SUKg==}
-    deprecated: This is a stub types definition. ember-qunit provides its own type definitions, so you do not need this installed.
-    dependencies:
-      ember-qunit: 6.1.1_khpttehaheeunc7peqs3cjloqi
-    transitivePeerDependencies:
-      - ember-source
-      - qunit
-      - supports-color
-      - webpack
     dev: true
 
   /@types/ember-resolver/9.0.0_ohch4lve7fpmj3pwwnb3kns7m4:
@@ -4990,7 +5064,7 @@ packages:
       '@babel/core': ^7.0.0
       webpack: '>=2'
     dependencies:
-      '@babel/core': 7.20.12_supports-color@8.1.1
+      '@babel/core': 7.20.12
       find-cache-dir: 3.3.2
       loader-utils: 2.0.4
       make-dir: 3.1.0
@@ -5526,6 +5600,10 @@ packages:
       to-fast-properties: 1.0.3
     dev: true
 
+  /babel6-plugin-strip-class-callcheck/6.0.0:
+    resolution: {integrity: sha512-biNFJ7JAK4+9BwswDGL0dmYpvXHvswOFR/iKg3Q/f+pNxPEa5bWZkLHI1fW4spPytkHGMe7f/XtYyhzml9hiWg==}
+    dev: true
+
   /babylon/6.18.0:
     resolution: {integrity: sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==}
     hasBin: true
@@ -5621,6 +5699,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -6180,6 +6259,23 @@ packages:
       - supports-color
     dev: true
 
+  /broccoli-rollup/5.0.0:
+    resolution: {integrity: sha512-QdMuXHwsdz/LOS8zu4HP91Sfi4ofimrOXoYP/lrPdRh7lJYD87Lfq4WzzUhGHsxMfzANIEvl/7qVHKD3cFJ4tA==}
+    engines: {node: '>=12.0'}
+    dependencies:
+      '@types/broccoli-plugin': 3.0.0
+      broccoli-plugin: 4.0.7
+      fs-tree-diff: 2.0.1
+      heimdalljs: 0.2.6
+      node-modules-path: 1.0.2
+      rollup: 2.79.1
+      rollup-pluginutils: 2.8.2
+      symlink-or-copy: 1.3.1
+      walk-sync: 2.2.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /broccoli-slow-trees/3.1.0:
     resolution: {integrity: sha512-FRI7mRTk2wjIDrdNJd6znS7Kmmne4VkAkl8Ix1R/VoePFMD0g0tEl671xswzFqaRjpT9Qu+CC4hdXDLDJBuzMw==}
     dependencies:
@@ -6556,12 +6652,12 @@ packages:
     resolution: {integrity: sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==}
     dev: true
 
-  /capacitor-secure-storage-plugin/0.8.1_@capacitor+core@4.6.2:
+  /capacitor-secure-storage-plugin/0.8.1_@capacitor+core@4.6.3:
     resolution: {integrity: sha512-PvTMZsjh5NAopdabp7b+zpu6N/zboBfB1dMldI7wbdCGSaH4LZo8cZLp9U2V1i2Y0V3JI1oWR3iysUrG0m7uPQ==}
     peerDependencies:
       '@capacitor/core': ^4.4.0
     dependencies:
-      '@capacitor/core': 4.6.2
+      '@capacitor/core': 4.6.3
     dev: false
 
   /capture-exit/2.0.0:
@@ -8130,6 +8226,37 @@ packages:
       - webpack
     dev: true
 
+  /ember-cache-primitive-polyfill/1.0.1_@babel+core@7.20.12:
+    resolution: {integrity: sha512-hSPcvIKarA8wad2/b6jDd/eU+OtKmi6uP+iYQbzi5TQpjsqV6b4QdRqrLk7ClSRRKBAtdTuutx+m+X+WlEd2lw==}
+    engines: {node: 10.* || >= 12}
+    dependencies:
+      ember-cli-babel: 7.26.11
+      ember-cli-version-checker: 5.1.2
+      ember-compatibility-helpers: 1.2.6_@babel+core@7.20.12
+      silent-error: 1.1.1
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+    dev: true
+
+  /ember-cached-decorator-polyfill/1.0.1_wac6mb43gwopsgc7yvlsdnrice:
+    resolution: {integrity: sha512-VDgrpIJ6rDDHIfkYrsFR1BM3fpcC0+zFWIOsX0qY44zPrIXjhQWVXs2iVXLIPHprSgf+tFQ3ESxwDscpeRe/0A==}
+    engines: {node: 14.* || >= 16}
+    peerDependencies:
+      ember-source: ^3.13.0 || ^4.0.0
+    dependencies:
+      '@embroider/macros': 1.10.0
+      '@glimmer/tracking': 1.1.2
+      babel-import-util: 1.3.0
+      ember-cache-primitive-polyfill: 1.0.1_@babel+core@7.20.12
+      ember-cli-babel: 7.26.11
+      ember-cli-babel-plugin-helpers: 1.1.1
+      ember-source: 4.9.3_ipwtokbwlukr3yko7oz5lbj6xy
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+    dev: true
+
   /ember-cli-app-version/6.0.0_ember-source@4.9.3:
     resolution: {integrity: sha512-XhzETSTy+RMTIyxM/FaZ/8aJvAwT/iIp8HC9zukpOaSPEm5i6Vm4tskeXY4OBnY3VwFWNXWssDt1hgIkUP76WQ==}
     engines: {node: 14.* || 16.* || >= 18}
@@ -8940,23 +9067,6 @@ packages:
       silent-error: 1.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /ember-sinon-qunit/7.0.0_tdas45qm5cqgnymdydughuo3p4:
-    resolution: {integrity: sha512-w4PnPxpp7WzddAswtACUlHdKxQKBvRDC8+Vzw91P3It4QaKthceIsv7QiNQCkC3BqtTrCV8QNsuPik1zOXa+fw==}
-    engines: {node: 14.* || 16.* || >= 18}
-    peerDependencies:
-      ember-source: ^3.28.0 || ^4.0.0
-      sinon: ^15.0.1
-    dependencies:
-      broccoli-funnel: 3.0.8
-      ember-auto-import: 2.6.0_webpack@5.75.0
-      ember-cli-babel: 7.26.11
-      ember-source: 4.9.3_ipwtokbwlukr3yko7oz5lbj6xy
-      sinon: 15.0.1
-    transitivePeerDependencies:
-      - supports-color
-      - webpack
     dev: true
 
   /ember-source-channel-url/3.0.0:
@@ -9942,6 +10052,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -13361,6 +13472,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /npm-git-info/1.0.3:
+    resolution: {integrity: sha512-i5WBdj4F/ULl16z9ZhsJDMl1EQCMQhHZzBwNnKL2LOA+T8IHNeRkLCVz9uVV9SzUdGTbDq+1oXhIYMe+8148vw==}
+    dev: true
+
   /npm-package-arg/9.1.2:
     resolution: {integrity: sha512-pzd9rLEx4TfNJkovvlBSLGhq31gGu2QDexFPWT19yCDh0JgnRhlBLNo5759N0AJmBk+kQ9Y/hXoLnlgFD+ukmg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
@@ -15247,6 +15362,14 @@ packages:
       rollup-pluginutils: 2.8.2
       signal-exit: 3.0.7
       sourcemap-codec: 1.4.8
+    dev: true
+
+  /rollup/2.79.1:
+    resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /route-recognizer/0.3.4:
@@ -17750,7 +17873,7 @@ packages:
   /xml2js/0.4.19:
     resolution: {integrity: sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==}
     dependencies:
-      sax: 1.2.1
+      sax: 1.2.4
       xmlbuilder: 9.0.7
     dev: true
 
