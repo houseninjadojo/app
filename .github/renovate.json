@@ -8,7 +8,8 @@
     "packages:eslint",
     "packages:linters",
     "packages:postcss",
-    "packages:stylelint"
+    "packages:stylelint",
+    ":semanticCommitTypeAll(chore)"
   ],
   "enabledManagers": [
     "bundler",
