@@ -8,24 +8,24 @@
     "packages:eslint",
     "packages:linters",
     "packages:postcss",
-    "packages:stylelint",
+    "packages:stylelint"
   ],
   "assignees": ["@mileszim"],
-  "semanticCommits": true,
+  "semanticCommits": "enabled",
   "separateMinorPatch": false,
   "vulnerabilityAlerts": {
     "labels": ["security"],
-    "automerge": true,
+    "automerge": true
   },
   "packageRules": [
     {
       "matchManagers": ["github-actions"],
-      "enabled": true,
+      "enabled": true
     },
     {
       "matchManagers": ["java", "gradle"],
       "matchUpdateTypes": ["patch", "pin", "digest"],
-      "automerge": true,
+      "automerge": true
     },
     {
       "matchPackagePrefixes": ["@sentry/*"],
@@ -35,7 +35,7 @@
     {
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["patch", "pin", "digest"],
-      "automerge": true,
+      "automerge": true
     },
     {
       "matchManagers": ["npm"],
@@ -50,7 +50,7 @@
       "matchPackageNames": [
         "@tsconfig/ember",
         "dotenv-vault",
-        "ember-cli",
+        "ember-cli"
        ]
     },
     {
