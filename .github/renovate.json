@@ -23,7 +23,7 @@
       "enabled": true
     },
     {
-      "matchManagers": ["java", "gradle"],
+      "matchManagers": ["gradle", "gradle-wrapper"],
       "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true
     },
