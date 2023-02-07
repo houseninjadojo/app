@@ -1,6 +1,62 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableDependencyDashboard",
+    "packages:emberTemplateLint",
+    "packages:jsUnitTest",
+    "packages:eslint",
+    "packages:linters",
+    "packages:postcss",
+    "packages:stylelint",
+  ],
+  "assignees": ["@mileszim"],
+  "semanticCommits": true,
+  "separateMinorPatch": false,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true,
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "enabled": true,
+    },
+    {
+      "matchManagers": ["java", "gradle"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true,
+    },
+    {
+      "matchPackagePrefixes": ["@sentry/*"],
+      "matchPackageNames": [],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true,
+    },
+    {
+      "matchManagers": ["npm"],
+      "automerge": true,
+      "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
+      "matchPackagePrefixes": [
+        "broccoli-",
+        "@types/",
+        "@typescript-eslint/",
+        "@percy/"
+      ],
+      "matchPackageNames": [
+        "@tsconfig/ember",
+        "dotenv-vault",
+        "ember-cli",
+       ]
+    },
+    {
+      "matchManagers": ["cocoapods", "bundler", "gradle", "gradle-wrapper", "npm"],
+      "matchPaths": ["ios/**", "android/**", "fastlane/**", "pnpm-lock.yaml"],
+      "lockFileMaintenance": { "enabled": true }
+    }
   ]
 }
