@@ -53,6 +53,8 @@ module.exports = {
         './server/**/*.js',
         './capacitor.config.js',
         './lib/utils.js',
+        './postcss.config.js',
+        './tailwind.config.js',
       ],
       parserOptions: {
         sourceType: 'script',
