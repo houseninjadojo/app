@@ -5,6 +5,7 @@ import UserActivityService from 'houseninja/services/user-activity';
 import EventBusService, {
   ListenableEvented,
 } from 'houseninja/services/event-bus';
+import { htmlTreeAsString } from 'houseninja/utils/html-tree-as-string';
 
 export default class MetricsService extends BaseMetricsService {
   @service declare eventBus: EventBusService;
