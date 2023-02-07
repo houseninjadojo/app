@@ -70,6 +70,9 @@ if (process.env.BUILD_STATS) {
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     autoImport: {
+      alias: {
+        sinon: 'sinon/pkg/sinon-esm',
+      },
       webpack: {
         plugins: webpackPlugins,
         optimization: {

@@ -39,11 +39,13 @@
     "@datadog/browser-logs": "^4.32.0",
     "@datadog/browser-rum": "^4.32.0",
     "@datadog/datadog-ci": "^2.4.0",
+    "@ember-data/store": "4.9.1",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.5",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.3",
+    "@embroider/macros": "1.10.0",
     "@faker-js/faker": "^7.6.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
@@ -192,7 +194,8 @@
     "capacitor-secure-storage-plugin": "^0.8.1"
   },
   "resolutions": {
-    "@embroider/macros": "1.10.0"
+    "@embroider/macros": "1.10.0",
+    "@ember-data/store": "4.9.1"
   },
   "packageManager": "pnpm@7.26.3"
 }
