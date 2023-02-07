@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
-import type { PolymorphicEvent, Primitive } from '@sentry/types';
+// import type { PolymorphicEvent, Primitive } from '@sentry/types';
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const objectToString = Object.prototype.toString;
@@ -78,16 +78,16 @@ export function isString(wat: unknown): wat is string {
   return isBuiltin(wat, 'String');
 }
 
-/**
- * Checks whether given value is a primitive (undefined, null, number, boolean, string, bigint, symbol)
- * {@link isPrimitive}.
- *
- * @param wat A value to be checked.
- * @returns A boolean representing the result.
- */
-export function isPrimitive(wat: unknown): wat is Primitive {
-  return wat === null || (typeof wat !== 'object' && typeof wat !== 'function');
-}
+// /**
+//  * Checks whether given value is a primitive (undefined, null, number, boolean, string, bigint, symbol)
+//  * {@link isPrimitive}.
+//  *
+//  * @param wat A value to be checked.
+//  * @returns A boolean representing the result.
+//  */
+// export function isPrimitive(wat: unknown): wat is Primitive {
+//   return wat === null || (typeof wat !== 'object' && typeof wat !== 'function');
+// }
 
 /**
  * Checks whether given value's type is an object literal
@@ -100,16 +100,16 @@ export function isPlainObject(wat: unknown): wat is Record<string, unknown> {
   return isBuiltin(wat, 'Object');
 }
 
-/**
- * Checks whether given value's type is an Event instance
- * {@link isEvent}.
- *
- * @param wat A value to be checked.
- * @returns A boolean representing the result.
- */
-export function isEvent(wat: unknown): wat is PolymorphicEvent {
-  return typeof Event !== 'undefined' && isInstanceOf(wat, Event);
-}
+// /**
+//  * Checks whether given value's type is an Event instance
+//  * {@link isEvent}.
+//  *
+//  * @param wat A value to be checked.
+//  * @returns A boolean representing the result.
+//  */
+// export function isEvent(wat: unknown): wat is PolymorphicEvent {
+//   return typeof Event !== 'undefined' && isInstanceOf(wat, Event);
+// }
 
 /**
  * Checks whether given value's type is an Element instance
