@@ -27,7 +27,7 @@
     "**/coverage/**",
     "**/docs/**"
   ],
-  "prhourlylimit": 5,
+  "prHourlyLimit": 5,
   "automergeStrategy": "squash",
   "automergeType": "pr",
   "automerge": true,
