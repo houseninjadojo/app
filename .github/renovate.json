@@ -53,11 +53,7 @@
       "automerge": true
     },
     {
-      "matchManagers": ["npm"],
-      "matchPackagePrefixes": [
-        "@sentry/*",
-        "sentry-"
-      ],
+      "matchPackagePatterns": ["^@sentry", "^sentry-"],
       "enabled": false
     },
     {
@@ -74,7 +70,12 @@
         "@types/",
         "@typescript-eslint/",
         "@percy/"
-      ],
+      ]
+    },
+    {
+      "matchManagers": ["npm"],
+      "automerge": true,
+      "matchUpdateTypes": ["patch", "pin", "digest", "minor", "major"],
       "matchPackageNames": [
         "@tsconfig/ember",
         "dotenv-vault",
@@ -82,8 +83,19 @@
        ]
     },
     {
-      "matchManagers": ["cocoapods", "bundler", "gradle", "gradle-wrapper", "npm"],
-      "matchPaths": ["ios/**", "android/**", "fastlane/**", "pnpm-lock.yaml"],
+      "matchManagers": [
+        "cocoapods",
+        "bundler",
+        "gradle",
+        "gradle-wrapper",
+        "npm"
+      ],
+      "matchPaths": [
+        "ios/**",
+        "android/**",
+        "fastlane/**",
+        "pnpm-lock.yaml"
+      ],
       "lockFileMaintenance": { "enabled": true }
     }
   ]
