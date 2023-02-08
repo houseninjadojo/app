@@ -60,14 +60,13 @@ module.exports = function (defaults) {
 
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTestSupportTrees: false,
+    staticAddonTestSupportTrees: true,
     staticAddonTrees: false,
-    staticHelpers: false,
-    staticModifiers: false,
+    staticHelpers: true,
+    staticModifiers: true,
     staticComponents: false,
     splitAtRoutes: [],
     skipBabel: [
-      { package: 'miragejs' },
       { package: 'qunit' },
       { package: 'sinon' }
     ],
