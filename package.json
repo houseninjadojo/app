@@ -203,5 +203,5 @@
   "resolutions": {
     "ember-data": "mkszepp/ember-data#fix-embroider-v4-9"
   },
-  "packageManager": "pnpm@7.26.3"
+  "packageManager": "pnpm@7.27.0"
 }
