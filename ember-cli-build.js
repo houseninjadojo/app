@@ -40,9 +40,6 @@ module.exports = function (defaults) {
       alias: {
         sinon: 'sinon/pkg/sinon-esm',
       },
-      // webpack: {
-      //   plugins: webpackPlugins,
-      // },
     },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
@@ -79,9 +76,8 @@ module.exports = function (defaults) {
       publicAssetURL: '/',
       // Embroider lets us send our own options to the style-loader
       cssLoaderOptions: {
-        // create source maps in production
-        // sourceMap: isProdLike() === true,
-        sourceMap: true,
+        // dont create source maps in production
+        sourceMap: isProdLike() === false,
         // enable CSS modules
         modules: {
           // global mode, can be either global or local
@@ -94,7 +90,7 @@ module.exports = function (defaults) {
         },
       },
       webpackConfig: {
-        devtool: 'source-map',
+        devtool: isProdLike() ? 'hidden-source-map' : 'source-map',
         module: {
           rules: [
             {
@@ -106,8 +102,7 @@ module.exports = function (defaults) {
                   // use the PostCSS loader addon
                   loader: 'postcss-loader',
                   options: {
-                    // sourceMap: isProdLike() === false,
-                    sourceMap: true,
+                    sourceMap: isProdLike() === false,
                     postcssOptions: {
                       config: './postcss.config.js',
                     },
