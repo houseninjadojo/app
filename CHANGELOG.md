@@ -1,3 +1,10 @@
+## [1.28.33](https://github.com/houseninjadojo/app/compare/v1.28.32...v1.28.33) (2023-02-08)
+
+
+### Bug Fixes
+
+* remove obfuscated method ([#1608](https://github.com/houseninjadojo/app/issues/1608)) ([2c4a89b](https://github.com/houseninjadojo/app/commit/2c4a89bf212d57d9db593a9b76194cc2ef102fe9))
+
 ## [1.28.32](https://github.com/houseninjadojo/app/compare/v1.28.31...v1.28.32) (2023-02-07)
 
 
