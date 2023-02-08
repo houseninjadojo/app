@@ -197,5 +197,5 @@
     "@embroider/macros": "1.10.0",
     "@ember-data/store": "4.9.1"
   },
-  "packageManager": "pnpm@7.26.3"
+  "packageManager": "pnpm@7.27.0"
 }
