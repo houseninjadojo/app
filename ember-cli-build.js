@@ -20,7 +20,7 @@ if (process.env.BUILD_STATS) {
   webpackPlugins.push(
     // Write stats file relative to the build directory
     new StatsWriterPlugin({
-      filename: '../webpack-stats.json',
+      filename: './webpack-stats.json',
       stats: {
         assets: true,
         chunks: true,
