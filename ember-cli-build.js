@@ -1,8 +1,9 @@
 'use strict';
 
-const isProduction = () => {
-  return EmberApp.env() === 'production';
-};
+/**
+ * Utils
+ */
+const { isProdLike } = require('./lib/utils');
 
 /**
  * Ember Application
@@ -39,9 +40,9 @@ module.exports = function (defaults) {
       alias: {
         sinon: 'sinon/pkg/sinon-esm',
       },
-      webpack: {
-        plugins: webpackPlugins,
-      },
+      // webpack: {
+      //   plugins: webpackPlugins,
+      // },
     },
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
@@ -58,40 +59,42 @@ module.exports = function (defaults) {
         },
       },
     },
-    // Ember Configuration
-    // @see https://cli.emberjs.com/release/advanced-use/
-    sourcemaps: {
-      enabled: true,
-    },
+    // // Ember Configuration
+    // // @see https://cli.emberjs.com/release/advanced-use/
+    // sourcemaps: {
+    //   enabled: true,
+    // },
   });
 
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: false,
     staticAddonTrees: false,
-    staticHelpers: true,
-    staticModifiers: true,
+    staticHelpers: false,
+    staticModifiers: false,
     staticComponents: false,
-    splitAtRoutes: ['signup'],
+    splitAtRoutes: [],
     packagerOptions: {
       // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
       publicAssetURL: '/',
       // Embroider lets us send our own options to the style-loader
       cssLoaderOptions: {
         // create source maps in production
-        sourceMap: isProduction() === true,
+        // sourceMap: isProdLike() === true,
+        sourceMap: true,
         // enable CSS modules
         modules: {
           // global mode, can be either global or local
           // we set to global mode to avoid hashing tailwind classes
           mode: 'global',
           // class naming template
-          localIdentName: isProduction()
+          localIdentName: isProdLike()
             ? '[sha512:hash:base64:5]'
             : '[path][name]__[local]',
         },
       },
       webpackConfig: {
+        devtool: 'source-map',
         module: {
           rules: [
             {
@@ -103,7 +106,8 @@ module.exports = function (defaults) {
                   // use the PostCSS loader addon
                   loader: 'postcss-loader',
                   options: {
-                    sourceMap: isProduction() === false,
+                    // sourceMap: isProdLike() === false,
+                    sourceMap: true,
                     postcssOptions: {
                       config: './postcss.config.js',
                     },
