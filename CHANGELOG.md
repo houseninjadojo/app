@@ -1,3 +1,17 @@
+## [1.28.32](https://github.com/houseninjadojo/app/compare/v1.28.31...v1.28.32) (2023-02-07)
+
+
+### Bug Fixes
+
+* release build ([c6f5eab](https://github.com/houseninjadojo/app/commit/c6f5eabfb555201b9da4095eab43bd59b0a3485e))
+
+## [1.28.31](https://github.com/houseninjadojo/app/compare/v1.28.30...v1.28.31) (2023-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update capacitor monorepo to v4.6.3 ([#1620](https://github.com/houseninjadojo/app/issues/1620)) ([2728f3f](https://github.com/houseninjadojo/app/commit/2728f3f423f1f9cb5c737bef9b58e6688c61a3d0))
+
 ## [1.28.30](https://github.com/houseninjadojo/app/compare/v1.28.29...v1.28.30) (2023-02-01)
 
 
