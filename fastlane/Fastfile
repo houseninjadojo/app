@@ -55,12 +55,13 @@ version      = package["version"]
 full_version = "#{bundle_identifier}@#{version}"
 
 # android
-android_full_dir    = "#{root_dir}/android"
-android_project_dir = "android"
-gradle_path         = "android/app/build.gradle"
-keystore_path       = "#{android_full_dir}/houseninja.keystore"
-version_code        = build_version_code(version, build_number)
-json_key_data_raw   = ENV["PLAY_STORE_CREDENTIALS"]
+android_full_dir     = "#{root_dir}/android"
+android_project_dir  = "android"
+android_mapping_path = "#{android_full_dir}/app/build/outputs/mapping/release/mapping.txt"
+gradle_path          = "android/app/build.gradle"
+keystore_path        = "#{android_full_dir}/houseninja.keystore"
+version_code         = build_version_code(version, build_number)
+json_key_data_raw    = ENV["PLAY_STORE_CREDENTIALS"]
 
 default_platform(:ios)
 
@@ -91,6 +92,7 @@ platform :android do
       release_status: options[:release_status] || "draft",
       # rollout: options[:rollout] || "1",
       changes_not_sent_for_review: false,
+      mapping: android_mapping_path,
     )
   end
 

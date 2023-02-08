@@ -95,6 +95,11 @@ jobs:
         with:
           name: app-release.aab
           path: 'android/app/build/outputs/bundle/release/app-release.aab'
+      - uses: actions/upload-artifact@v3
+        if: success()
+        with:
+          name: mapping.txt
+          path: 'android/app/build/outputs/mapping/release/mapping.txt'
       - uses: actions/cache/save@v3
         id: cache-android-build
         with:
