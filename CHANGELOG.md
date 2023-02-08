@@ -1,3 +1,10 @@
+## [1.28.34](https://github.com/houseninjadojo/app/compare/v1.28.33...v1.28.34) (2023-02-08)
+
+
+### Bug Fixes
+
+* **deps:** fix pnpm node_modules generation and Podfile.lock ([dfc6892](https://github.com/houseninjadojo/app/commit/dfc6892579246607fb0bd4b425f31d6ed8752ec7))
+
 ## [1.28.33](https://github.com/houseninjadojo/app/compare/v1.28.32...v1.28.33) (2023-02-08)
 
 
