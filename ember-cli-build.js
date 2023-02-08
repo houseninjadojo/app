@@ -59,11 +59,6 @@ module.exports = function (defaults) {
         },
       },
     },
-    // // Ember Configuration
-    // // @see https://cli.emberjs.com/release/advanced-use/
-    // sourcemaps: {
-    //   enabled: true,
-    // },
   });
 
   const { Webpack } = require('@embroider/webpack');
@@ -74,6 +69,11 @@ module.exports = function (defaults) {
     staticModifiers: false,
     staticComponents: false,
     splitAtRoutes: [],
+    skipBabel: [
+      { package: 'miragejs' },
+      { package: 'qunit' },
+      { package: 'sinon' }
+    ],
     packagerOptions: {
       // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
       publicAssetURL: '/',

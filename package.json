@@ -39,7 +39,12 @@
     "@datadog/browser-logs": "^4.32.0",
     "@datadog/browser-rum": "^4.32.0",
     "@datadog/datadog-ci": "^2.4.0",
+    "@ember-data/adapter": "4.9.1",
+    "@ember-data/model": "4.9.1",
+    "@ember-data/record-data": "4.9.1",
+    "@ember-data/serializer": "4.9.1",
     "@ember-data/store": "4.9.1",
+    "@ember-data/tracking": "4.9.1",
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.5",
@@ -196,8 +201,7 @@
     "capacitor-secure-storage-plugin": "^0.8.1"
   },
   "resolutions": {
-    "@embroider/macros": "1.10.0",
-    "@ember-data/store": "4.9.1"
+    "ember-data": "mkszepp/ember-data#fix-embroider-v4-9"
   },
   "packageManager": "pnpm@7.26.3"
 }
