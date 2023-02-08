@@ -1,3 +1,10 @@
+## [1.28.35](https://github.com/houseninjadojo/app/compare/v1.28.34...v1.28.35) (2023-02-08)
+
+
+### Bug Fixes
+
+* **fastlane:** fix gemfile.lock ([b03eb78](https://github.com/houseninjadojo/app/commit/b03eb78455a3562a71e7d3b8914f2c5004974640))
+
 ## [1.28.34](https://github.com/houseninjadojo/app/compare/v1.28.33...v1.28.34) (2023-02-08)
 
 
