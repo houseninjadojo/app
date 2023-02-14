@@ -26,7 +26,7 @@ specifiers:
   '@capacitor/push-notifications': ^4.1.2
   '@capacitor/share': ^4.1.0
   '@capacitor/splash-screen': ^4.1.3
-  '@capawesome/capacitor-file-picker': ^0.5.9
+  '@capawesome/capacitor-file-picker': ^0.6.0
   '@datadog/browser-logs': ^4.32.0
   '@datadog/browser-rum': ^4.32.0
   '@datadog/datadog-ci': ^2.4.0
@@ -183,7 +183,7 @@ dependencies:
   '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.6.3
   '@capacitor/share': 4.1.0_@capacitor+core@4.6.3
   '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.6.3
-  '@capawesome/capacitor-file-picker': 0.5.9_@capacitor+core@4.6.3
+  '@capawesome/capacitor-file-picker': 0.6.0_@capacitor+core@4.6.3
   '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.6.3
   '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.6.3
   '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.6.3
@@ -1837,8 +1837,8 @@ packages:
       '@capacitor/core': 4.6.3
     dev: false
 
-  /@capawesome/capacitor-file-picker/0.5.9_@capacitor+core@4.6.3:
-    resolution: {integrity: sha512-uiVkjtFHZ1NyRjGAMaRSP1Eq/3a56oPCQ/XNWqmOkHAqj9ekIO8SP7eRh/StM+S9DEotH3irq1e6Bbrc/I486A==}
+  /@capawesome/capacitor-file-picker/0.6.0_@capacitor+core@4.6.3:
+    resolution: {integrity: sha512-WFVNy4+UYdm00zaSpWZnprF+NxhTXc3lP+uqcr47M6CA+b+bNmvOHe/ZljMicpL+eKLgLGAM5lsOXXuzXXK17Q==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
