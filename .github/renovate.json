@@ -83,6 +83,7 @@
       "matchPackageNames": [
         "@tsconfig/ember",
         "dotenv-vault",
+        "dotenv-vault-core",
         "ember-cli"
       ],
       "automerge": true,
