@@ -1,3 +1,11 @@
+## [1.28.36](https://github.com/houseninjadojo/app/compare/v1.28.35...v1.28.36) (2023-02-14)
+
+
+### Chores
+
+* **deps:** update dependency @capawesome/capacitor-file-picker to ^0.6.0 ([4df23cf](https://github.com/houseninjadojo/app/commit/4df23cf12b079869e7d5c8ff27a18549a80130bd))
+* **release:** improve semantic-release config ([fba6e03](https://github.com/houseninjadojo/app/commit/fba6e03b2f8240c9c5e12de5c4b719bf9f98dc1e))
+
 ## [1.28.35](https://github.com/houseninjadojo/app/compare/v1.28.34...v1.28.35) (2023-02-08)
 
 
