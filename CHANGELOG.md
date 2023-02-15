@@ -1,3 +1,10 @@
+## [1.29.0](https://github.com/houseninjadojo/app/compare/v1.28.36...v1.29.0) (2023-02-15)
+
+
+### Features
+
+* embroider ([#1634](https://github.com/houseninjadojo/app/issues/1634)) ([c175fe3](https://github.com/houseninjadojo/app/commit/c175fe3f28f2100865b0914277dadd283bcb613c))
+
 ## [1.28.36](https://github.com/houseninjadojo/app/compare/v1.28.35...v1.28.36) (2023-02-14)
 
 
