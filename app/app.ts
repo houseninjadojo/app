@@ -6,7 +6,10 @@ import { Intercom } from '@houseninja/capacitor-intercom';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { initializeTelemetry } from 'houseninja/services/telemetry';
 
-// telemetry
+/* CSS */
+import 'houseninja/assets/app.css';
+
+/* Telemetry */
 initializeTelemetry();
 
 export default class App extends Application {

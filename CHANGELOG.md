@@ -1,3 +1,53 @@
+## [1.29.0](https://github.com/houseninjadojo/app/compare/v1.28.36...v1.29.0) (2023-02-15)
+
+
+### Features
+
+* embroider ([#1634](https://github.com/houseninjadojo/app/issues/1634)) ([c175fe3](https://github.com/houseninjadojo/app/commit/c175fe3f28f2100865b0914277dadd283bcb613c))
+
+## [1.28.36](https://github.com/houseninjadojo/app/compare/v1.28.35...v1.28.36) (2023-02-14)
+
+
+### Chores
+
+* **deps:** update dependency @capawesome/capacitor-file-picker to ^0.6.0 ([4df23cf](https://github.com/houseninjadojo/app/commit/4df23cf12b079869e7d5c8ff27a18549a80130bd))
+* **release:** improve semantic-release config ([fba6e03](https://github.com/houseninjadojo/app/commit/fba6e03b2f8240c9c5e12de5c4b719bf9f98dc1e))
+
+## [1.28.35](https://github.com/houseninjadojo/app/compare/v1.28.34...v1.28.35) (2023-02-08)
+
+
+### Bug Fixes
+
+* **fastlane:** fix gemfile.lock ([b03eb78](https://github.com/houseninjadojo/app/commit/b03eb78455a3562a71e7d3b8914f2c5004974640))
+
+## [1.28.34](https://github.com/houseninjadojo/app/compare/v1.28.33...v1.28.34) (2023-02-08)
+
+
+### Bug Fixes
+
+* **deps:** fix pnpm node_modules generation and Podfile.lock ([dfc6892](https://github.com/houseninjadojo/app/commit/dfc6892579246607fb0bd4b425f31d6ed8752ec7))
+
+## [1.28.33](https://github.com/houseninjadojo/app/compare/v1.28.32...v1.28.33) (2023-02-08)
+
+
+### Bug Fixes
+
+* remove obfuscated method ([#1608](https://github.com/houseninjadojo/app/issues/1608)) ([2c4a89b](https://github.com/houseninjadojo/app/commit/2c4a89bf212d57d9db593a9b76194cc2ef102fe9))
+
+## [1.28.32](https://github.com/houseninjadojo/app/compare/v1.28.31...v1.28.32) (2023-02-07)
+
+
+### Bug Fixes
+
+* release build ([c6f5eab](https://github.com/houseninjadojo/app/commit/c6f5eabfb555201b9da4095eab43bd59b0a3485e))
+
+## [1.28.31](https://github.com/houseninjadojo/app/compare/v1.28.30...v1.28.31) (2023-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update capacitor monorepo to v4.6.3 ([#1620](https://github.com/houseninjadojo/app/issues/1620)) ([2728f3f](https://github.com/houseninjadojo/app/commit/2728f3f423f1f9cb5c737bef9b58e6688c61a3d0))
+
 ## [1.28.30](https://github.com/houseninjadojo/app/compare/v1.28.29...v1.28.30) (2023-02-01)
 
 
