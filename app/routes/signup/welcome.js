@@ -5,6 +5,7 @@ import { WELCOME } from 'houseninja/data/enums/onboarding-step';
 export default class SignupWelcomeRoute extends Route {
   @service onboarding;
   @service router;
+  @service current;
 
   activate() {
     // this is a workaround for "disabling" the back button
@@ -31,5 +32,11 @@ export default class SignupWelcomeRoute extends Route {
     // disable this listener when the route is navigated away from
     window.onpopstate = () => null;
     this.onboarding.completeStep(WELCOME);
+  }
+
+  beforeModel() {
+    if (!this.current.user.subscription) {
+      this.router.transitionTo('signup.plan-selection');
+    }
   }
 }
