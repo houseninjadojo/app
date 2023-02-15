@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv-vault-core').config();
+
 const pkg = require('../package.json');
 
 module.exports = function (environment) {
