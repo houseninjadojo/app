@@ -11,9 +11,7 @@
       "houseninja/*": ["app/*"],
       "*": ["types/*"]
     },
-    "skipLibCheck": true,
-    "inlineSourceMap": true,
-    "inlineSources": true
+    "skipLibCheck": true
   },
   "include": ["app/**/*", "tests/**/*", "types/**/*", "mirage/**/*"],
   "glint": {
