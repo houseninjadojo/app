@@ -3,7 +3,7 @@
 /**
  * Utils
  */
-const { isNotProdLike } = require('./lib/utils');
+const { isProdLike, isNotProdLike } = require('./lib/utils');
 
 /**
  * Ember Application
