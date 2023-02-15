@@ -62,7 +62,7 @@ module.exports = function (defaults) {
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,
     staticAddonTrees: false,
-    staticHelpers: true,
+    staticHelpers: false,
     staticModifiers: true,
     staticComponents: false,
     splitAtRoutes: [],
