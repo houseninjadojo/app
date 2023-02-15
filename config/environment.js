@@ -67,6 +67,7 @@ module.exports = function (environment) {
 
     'ember-cli-mirage': {
       enabled: false,
+      useDefaultPassthroughs: false,
     },
 
     'ember-simple-auth': {
@@ -165,11 +166,13 @@ module.exports = function (environment) {
   if (environment === 'sandbox') {
     // Sentry
     ENV.sentry.environment = 'sandbox';
+    ENV['ember-cli-mirage'].excludeFilesFromBuild = true;
   }
 
   if (environment === 'production') {
     // Sentry
     ENV.sentry.environment = 'production';
+    ENV['ember-cli-mirage'].excludeFilesFromBuild = true;
   }
 
   return ENV;

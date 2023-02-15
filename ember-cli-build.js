@@ -44,9 +44,14 @@ module.exports = function (defaults) {
     // Babel Configuration
     // @see https://babeljs.io/docs/en/options
     babel: {
+      sourceMaps: 'inline',
       plugins: [
-        ...require('ember-cli-code-coverage').buildBabelPlugin(),
+        ...require('ember-cli-code-coverage').buildBabelPlugin({ embroider: true }),
       ],
+    },
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js']
     },
     // Polyfill crypto.randomUUID
     '@embroider/macros': {
@@ -66,10 +71,11 @@ module.exports = function (defaults) {
     staticModifiers: true,
     staticComponents: false,
     splitAtRoutes: [],
-    skipBabel: [
-      { package: 'qunit' },
-      { package: 'sinon' }
-    ],
+    // skipBabel: [
+    //   { package: 'qunit' },
+    //   { package: 'sinon' },
+    //   { package: 'miragejs' },
+    // ],
     packagerOptions: {
       // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
       publicAssetURL: '/',
@@ -89,7 +95,7 @@ module.exports = function (defaults) {
         },
       },
       webpackConfig: {
-        devtool: isProdLike() ? 'hidden-source-map' : 'source-map',
+        devtool: isProdLike() ? 'hidden-source-map' : 'inline-source-map',
         module: {
           rules: [
             {
