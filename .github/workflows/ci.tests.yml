@@ -84,22 +84,16 @@ jobs:
         with:
           name: app
           path: tmp/app/
-      - uses: slavcodev/coverage-monitor-action@v1
-        if: contains(github.event.pull_request.user.login, 'dependabot[bot]') == false
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage_path: "coverage/coverage-summary.json"
-          status_context: ci / tests / coverage
-          check: true
-          threshold_alert: 10
-          threshold_warning: 10
-          threshold_metric: lines
-      # - uses: romeovs/lcov-reporter-action@v0.3.1
+      # - uses: slavcodev/coverage-monitor-action@v1
+      #   if: contains(github.event.pull_request.user.login, 'dependabot[bot]') == false
       #   with:
-      #     lcov-file: ./coverage/lcov.info
-      #     github-token: ${{ github.token }}
-      #     filter-changed-files: true
-      #     delete-old-comments: true
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     coverage_path: "coverage/coverage-summary.json"
+      #     status_context: ci / tests / coverage
+      #     check: true
+      #     threshold_alert: 10
+      #     threshold_warning: 10
+      #     threshold_metric: lines
       - name: Datadog
         uses: masci/datadog@v1
         if: always()
