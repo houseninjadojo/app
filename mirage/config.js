@@ -1,15 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable ember/no-get */
 import ENV from 'houseninja/config/environment';
 import {
   discoverEmberDataModels,
   applyEmberDataSerializers,
 } from 'ember-cli-mirage';
 import { createServer } from 'miragejs';
+import ApplicationSerializer from 'houseninja/mirage/serializers/application';
 
 export default function (config) {
-  let finalConfig = {
+  const serializers = applyEmberDataSerializers({
+    application: ApplicationSerializer,
+    ...config.serializers,
+  });
+  const models = { ...discoverEmberDataModels(), ...config.models };
+  const finalConfig = {
     ...config,
-    models: { ...discoverEmberDataModels(), ...config.models },
-    serializers: applyEmberDataSerializers(config.serializers),
+    models,
+    serializers,
     routes,
   };
 
@@ -20,6 +28,7 @@ const INVOICE_ACCESS_TOKEN =
   'BAh7CEkiCGdpZAY6BkVUSSJDZ2lkOi8vaG91c2UtbmluamEvSW52b2ljZS9kOGZiY2UwNS1lNDJkLTRiOGQtODVlYi1hNzJmNGIyMTY5NzEGOwBUSSIMcHVycG9zZQY7AFRJIgxkZWZhdWx0BjsAVEkiD2V4cGlyZXNfYXQGOwBUSSIdMjAyMi0wNi0xM1QwMTo1Mjo0NS4wMTBaBjsAVA==--b68ed54fd83f0c4b3a946cd121918498ab8f15c8';
 // 'eZAGjnH91fpQJ6jg0/pmwt2VegG1DuLsSmloZgcb3tlmTlkuN86Qu4hLaKuMXKtBHckIX+kmcKF/45iKwB1zIUPsfqkJFi1DJvHDvfEBSs0aOnVn5LMBHtFYspfAqQJrmTfHRreTvjKw/Do9jvxj0D2M5a/jq6KP1OToOKZ2fsROJM42TuR2RndRMFgbfAlzTfagFYrsTgX3QbDuashYkAEVb8lAmE9jP/QchPJ5IDacf77aIFxmd0bmmzKtulUyiptKGDwEfFNrmGs9eTtS8eqgxe1COTM=--rTmMzbCLQ8A80GDG--fxrcgmX7B3incGIFfgMLPg==';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function routes() {
   // CodeCov
   this.passthrough('/write-coverage');
@@ -73,7 +82,7 @@ function routes() {
   this.resource('payment', { path: '/payments' });
   this.resource('promo-code', { path: '/promo-codes' });
   this.get('/promo-codes', (schema, request) => {
-    let code = request.queryParams['filter[code]'];
+    const code = request.queryParams['filter[code]'];
     return schema.promoCodes.where({ code });
   });
   this.resource('property', { path: '/properties' });
