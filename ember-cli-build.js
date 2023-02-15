@@ -3,7 +3,7 @@
 /**
  * Utils
  */
-const { isProdLike } = require('./lib/utils');
+const { isNotProdLike } = require('./lib/utils');
 
 /**
  * Ember Application
@@ -111,7 +111,7 @@ const webpackConfig = {
             // use the PostCSS loader addon
             loader: 'postcss-loader',
             options: {
-              sourceMap: isProdLike() === false,
+              sourceMap: isNotProdLike(),
               postcssOptions: {
                 config: './postcss.config.js',
               },
@@ -134,10 +134,12 @@ const webpackConfig = {
 
 /**
  * Embroider - CSS Loader Options
+ *
+ * Embroider lets us send our own options to the style-loader
  */
 const cssLoaderOptions = {
   // dont create source maps in production
-  sourceMap: isProdLike() === false,
+  sourceMap: isNotProdLike(),
   // enable CSS modules
   modules: {
     // global mode, can be either global or local
@@ -152,6 +154,7 @@ const cssLoaderOptions = {
 
 /**
  * Build Options
+ *
  * @see https://cli.emberjs.com/release/advanced-use/
  */
 module.exports = function (defaults) {
@@ -167,8 +170,7 @@ module.exports = function (defaults) {
     ...embroiderBase,
     skipBabel,
     packagerOptions: {
-      publicAssetURL: '/',
-      // Embroider lets us send our own options to the style-loader
+      publicAssetURL,
       cssLoaderOptions,
       webpackConfig,
     },
