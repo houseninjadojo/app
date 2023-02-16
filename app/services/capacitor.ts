@@ -13,7 +13,7 @@ import EventBusService, {
 } from 'houseninja/services/event-bus';
 import type RouterService from '@ember/routing/router-service';
 import type MetricsService from 'ember-metrics/services/metrics';
-import { captureMessage } from '@sentry/hub';
+import { captureMessage } from '@sentry/core';
 import { tracked } from '@glimmer/tracking';
 import type TelemetryService from 'houseninja/services/telemetry';
 

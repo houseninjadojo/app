@@ -2,7 +2,7 @@ import Model, { AsyncHasMany, attr, hasMany } from '@ember-data/model';
 
 import type Subscription from './subscription';
 
-export default class SubscriptionPlanModel extends Model {
+export default class SubscriptionPlan extends Model {
   @hasMany('subscription', { async: true, inverse: 'subscriptionPlan' })
   declare subscriptions: AsyncHasMany<Subscription>;
 

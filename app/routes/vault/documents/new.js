@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import RSVP from 'rsvp';
 
-export default class VaultDocumentsNewRoute extends Route {
+class VaultDocumentsNewRoute extends Route {
   @service router;
   @service store;
 
@@ -16,3 +17,5 @@ export default class VaultDocumentsNewRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(VaultDocumentsNewRoute);

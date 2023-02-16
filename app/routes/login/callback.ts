@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import SecureStorage from 'houseninja/utils/secure-storage';
@@ -13,7 +14,7 @@ type QueryParams = {
   error: string;
 };
 
-export default class LoginCallbackRoute extends Route {
+class LoginCallbackRoute extends Route {
   @service declare browser: BrowserService;
   @service declare session: SessionService;
   @service declare router: RouterService;
@@ -52,3 +53,5 @@ export default class LoginCallbackRoute extends Route {
     }
   }
 }
+
+export default instrumentRoutePerformance(LoginCallbackRoute);

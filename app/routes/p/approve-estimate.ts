@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
@@ -11,7 +12,7 @@ type Params = {
   access_token: string;
 };
 
-export default class ExternalApproveEstimateRoute extends Route {
+class ExternalApproveEstimateRoute extends Route {
   @service declare router: RouterService;
   @service declare session: SessionService;
   @service declare store: StoreService;
@@ -27,3 +28,5 @@ export default class ExternalApproveEstimateRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(ExternalApproveEstimateRoute);

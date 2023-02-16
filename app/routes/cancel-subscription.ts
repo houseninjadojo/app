@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import type StoreService from '@ember-data/store';
 import type User from 'houseninja/models/user';
@@ -10,7 +11,7 @@ interface Model {
   subscription: Subscription | undefined;
 }
 
-export default class CancelSubscriptionRoute extends Route {
+class CancelSubscriptionRoute extends Route {
   @service declare current: CurrentService;
   @service declare store: StoreService;
 
@@ -34,3 +35,5 @@ export default class CancelSubscriptionRoute extends Route {
     return model;
   }
 }
+
+export default instrumentRoutePerformance(CancelSubscriptionRoute);

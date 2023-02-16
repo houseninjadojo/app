@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import EmberObject from '@ember/object';
 
 declare module 'ember-simple-auth/session-stores/base' {

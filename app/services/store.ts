@@ -4,8 +4,8 @@ import { captureException } from 'houseninja/utils/sentry';
 import type Model from '@ember-data/model';
 
 export default class StoreService extends Store {
-  async findFirst(modelName: string): Promise<void> {
-    return await this.findAll(modelName).get('firstObject');
+  async findFirst(modelName: string, options = {}): Promise<void> {
+    return await this.findAll(modelName, options).get('firstObject');
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
