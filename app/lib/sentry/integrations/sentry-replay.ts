@@ -12,13 +12,13 @@ const config = {
   stickySession: true,
 
   // Mask all text content. Will pass text content through `maskTextFn` before sending to server.
-  maskAllText: true,
+  maskAllText: false,
 
   // Mask values of `<input>` elements. Passes input values through `maskInputFn` before sending to server.
   maskAllInputs: true,
 
   // Block all media elements (`img`, `svg`, `video`, `object`, `picture`, `embed`, `map`, `audio`)
-  blockAllMedia: true,
+  blockAllMedia: false,
 };
 
 export default new Replay(config);
