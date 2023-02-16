@@ -52,9 +52,7 @@ specifiers:
   '@sentry/capacitor': 0.11.1
   '@sentry/core': 7.31.1
   '@sentry/ember': 7.31.1
-  '@sentry/hub': 7.31.1
   '@sentry/integrations': 7.31.1
-  '@sentry/tracing': 7.31.1
   '@sentry/types': 7.31.1
   '@sentry/utils': 7.31.1
   '@tsconfig/ember': ^2.0.0
@@ -209,9 +207,7 @@ devDependencies:
   '@sentry/browser': 7.31.1
   '@sentry/core': 7.31.1
   '@sentry/ember': 7.31.1_webpack@5.75.0
-  '@sentry/hub': 7.31.1
   '@sentry/integrations': 7.31.1
-  '@sentry/tracing': 7.31.1
   '@sentry/types': 7.31.1
   '@sentry/utils': 7.31.1
   '@tsconfig/ember': 2.0.0
@@ -3433,6 +3429,7 @@ packages:
       '@sentry/types': 7.31.1
       '@sentry/utils': 7.31.1
       tslib: 1.14.1
+    dev: false
 
   /@sentry/integrations/7.31.1:
     resolution: {integrity: sha512-El+qzwbiXHPDWg8ZmX+W/kCheoaYoaAJuaG2+l3D5Y4ny8JNYfSMCum9qXVEb8oB98fFHfSEoFzB+z54pH+p3w==}
