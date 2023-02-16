@@ -29,6 +29,7 @@ export default class ServiceAreaComponent extends Component {
         // url: '', // iOS appended to main content (text property), but doesn't work
         // dialogTitle: 'Share with buddies', //Android only. Not sure where it presents.
       });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       captureException(e);
     }
