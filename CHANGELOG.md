@@ -1,3 +1,15 @@
+## [1.29.1](https://github.com/houseninjadojo/app/compare/v1.29.0...v1.29.1) (2023-02-16)
+
+
+### Bug Fixes
+
+* **build:** fix ios & android build errors ([045ff3f](https://github.com/houseninjadojo/app/commit/045ff3f6ee0b86ce788e651915b4338be1060bff))
+
+
+### Chores
+
+* **sentry:** bump sentry ([#1646](https://github.com/houseninjadojo/app/issues/1646)) ([44647ce](https://github.com/houseninjadojo/app/commit/44647ce192a8de44bd075fe6969a141681d096f1))
+
 ## [1.29.0](https://github.com/houseninjadojo/app/compare/v1.28.36...v1.29.0) (2023-02-15)
 
 
