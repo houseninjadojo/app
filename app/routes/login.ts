@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { getOwner } from '@ember/application';
@@ -11,7 +12,7 @@ import SessionService from 'houseninja/services/session';
 import RouterService from '@ember/routing/router-service';
 import MetricsService from 'houseninja/services/metrics';
 
-export default class LoginRoute extends Route {
+class LoginRoute extends Route {
   @service declare browser: BrowserService;
   @service declare eventBus: EventBusService;
   @service declare session: SessionService;
@@ -68,3 +69,5 @@ export default class LoginRoute extends Route {
     }
   }
 }
+
+export default instrumentRoutePerformance(LoginRoute);

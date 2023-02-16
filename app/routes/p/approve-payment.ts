@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import MetricsService from 'houseninja/services/metrics';
 import CurrentService from 'houseninja/services/current';
@@ -8,7 +9,7 @@ import WorkOrder from 'houseninja/models/work-order';
 import User from 'houseninja/models/user';
 import Property from 'houseninja/models/property';
 
-export default class ApprovePaymentRoute extends Route {
+class ApprovePaymentRoute extends Route {
   @service declare current: CurrentService;
   @service declare metrics: MetricsService;
   @service declare session: SessionService;
@@ -52,3 +53,5 @@ export default class ApprovePaymentRoute extends Route {
     user?.identifyToMetrics();
   }
 }
+
+export default instrumentRoutePerformance(ApprovePaymentRoute);

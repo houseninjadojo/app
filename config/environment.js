@@ -112,18 +112,16 @@ module.exports = function (environment) {
 
     sentry: {
       dsn: process.env.SENTRY_DSN,
-      tracesSampleRate: 1.0,
+      tracesSampleRate: 0.0,
       debug: false,
       autoSessionTracking: true,
+      replaysSessionSampleRate: 0.0,
+      replaysOnErrorSampleRate: 0.0,
       release: `co.houseninja.application@${pkg.version}+1`,
       browserTracingOptions: {
         tracingOrigins: [
           'api.houseninja.co',
-          'api-origin.houseninja.co',
           'sandbox.api.houseninja.co',
-          'sandbox-origin.api.houseninja.co',
-          'tntmcgm6sar.live.verygoodproxy.com',
-          'tntefwmvax1.sandbox.verygoodproxy.com',
         ],
       }
     },
@@ -166,12 +164,22 @@ module.exports = function (environment) {
   if (environment === 'sandbox') {
     // Sentry
     ENV.sentry.environment = 'sandbox';
+    ENV.sentry.tracesSampleRate = 1.0;
+    ENV.sentry.replaysSessionSampleRate = 1.0;
+    ENV.sentry.replaysOnErrorSampleRate = 1.0;
+
+    // Mirage
     ENV['ember-cli-mirage'].excludeFilesFromBuild = true;
   }
 
   if (environment === 'production') {
     // Sentry
     ENV.sentry.environment = 'production';
+    ENV.sentry.tracesSampleRate = 1.0;
+    ENV.sentry.replaysSessionSampleRate = 1.0;
+    ENV.sentry.replaysOnErrorSampleRate = 1.0;
+
+    // Mirage
     ENV['ember-cli-mirage'].excludeFilesFromBuild = true;
   }
 
