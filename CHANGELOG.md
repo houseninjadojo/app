@@ -1,3 +1,10 @@
+## [1.29.3](https://github.com/houseninjadojo/app/compare/v1.29.2...v1.29.3) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** use DOTENV_KEY_* for env secrets ([3f78949](https://github.com/houseninjadojo/app/commit/3f789497abd52e44ecfdf34d4b3fbf44764fa4ce))
+
 ## [1.29.2](https://github.com/houseninjadojo/app/compare/v1.29.1...v1.29.2) (2023-02-17)
 
 
