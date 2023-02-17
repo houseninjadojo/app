@@ -1,3 +1,16 @@
+## [1.29.2](https://github.com/houseninjadojo/app/compare/v1.29.1...v1.29.2) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** use npx over pnpm dlx ([3d2939b](https://github.com/houseninjadojo/app/commit/3d2939bde67a0ac42fd3fb3b409c857d238f1d64))
+
+
+### Chores
+
+* **sentry:** dont block all text or media in replays ([a82b2d7](https://github.com/houseninjadojo/app/commit/a82b2d712e29a64e760ec9364c2db52ad20a47ba))
+* switch to dotenv-vault for credentials ([#1645](https://github.com/houseninjadojo/app/issues/1645)) ([e90afdd](https://github.com/houseninjadojo/app/commit/e90afddaff6f17436b9a68dfd81833417abc7f53))
+
 ## [1.29.1](https://github.com/houseninjadojo/app/compare/v1.29.0...v1.29.1) (2023-02-16)
 
 
