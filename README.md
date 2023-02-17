@@ -74,7 +74,9 @@ To work with the sandbox API on chrome/browser (not in a simulator), you should 
 
 * `ember serve --environment=sandbox`
 
-Note that you will get CORs errors unless you use an extension to disable CORs.
+Note that you will get CORs errors unless you use a browser extension to disable CORs.
+You can also set ssl to true in .ember-cli if you can get a self signed cert
+working locally. Note this will not work in phone simulators.
 
 ### Code Generators
 
