@@ -66,6 +66,7 @@ jobs:
         with:
           path: ios/
           key: build-ios-${{ github.run_id }}
+          enableCrossOsArchive: true
       - uses: actions/cache/save@v3
         if: success()
         id: cache-android

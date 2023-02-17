@@ -57,6 +57,7 @@ jobs:
         with:
           path: ios/
           key: build-ios-${{ github.run_id }}
+          enableCrossOsArchive: true
           restore-keys: |
             build-ios-
       - uses: ruby/setup-ruby@v1
@@ -75,7 +76,7 @@ jobs:
         working-directory: 'ios/App'
       - run: npx dotenv-vault decrypt $DOTENV_KEY > fastlane/.env
         env:
-          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
