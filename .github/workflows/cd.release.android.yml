@@ -5,12 +5,13 @@ on:
         required: true
       SENTRY_AUTH_TOKEN:
         required: true
-      DOTENV_IT_TOKEN:
+      DOTENV_KEY:
         required: true
 
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
 
 jobs:
   android:
@@ -55,10 +56,9 @@ jobs:
           key: build-android-${{ github.run_id }}
           restore-keys: |
             build-android-
-      - run: npx dotenv-vault pull --yes --dotenvMe=$DOTENV_IT_TOKEN
-        working-directory: 'fastlane/'
+      - run: npx dotenv-vault decrypt $DOTENV_KEY > fastlane/.env
         env:
-          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN}}
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
