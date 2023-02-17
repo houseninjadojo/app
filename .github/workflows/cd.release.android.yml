@@ -56,7 +56,8 @@ jobs:
           key: build-android-${{ github.run_id }}
           restore-keys: |
             build-android-
-      - run: npx dotenv-vault decrypt $DOTENV_KEY > fastlane/.env
+      - run: npx dotenv-vault decrypt $DOTENV_KEY > .env
+        working-directory: fastlane
         env:
           DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       - uses: ruby/setup-ruby@v1
