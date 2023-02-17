@@ -13,7 +13,7 @@ env:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 20
     permissions:
       contents: read
@@ -67,7 +67,6 @@ jobs:
         with:
           path: ios/
           key: build-ios-${{ github.run_id }}
-          enableCrossOsArchive: true
       - uses: actions/cache/save@v3
         if: success()
         id: cache-android
