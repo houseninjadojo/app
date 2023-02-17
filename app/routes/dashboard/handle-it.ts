@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import type StoreService from 'houseninja/services/store';
 
-export default class DashboardHandleItRoute extends Route {
+class DashboardHandleItRoute extends Route {
   @service declare store: StoreService;
 
   async model() {
@@ -12,3 +13,5 @@ export default class DashboardHandleItRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(DashboardHandleItRoute);

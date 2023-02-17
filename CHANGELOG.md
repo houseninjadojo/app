@@ -1,3 +1,56 @@
+## [1.29.6](https://github.com/houseninjadojo/app/compare/v1.29.5...v1.29.6) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** explicit use of ubuntu-22.04 image because of zlib version mismatch ([a361e3a](https://github.com/houseninjadojo/app/commit/a361e3ab738dffd62fa0d0e9cc4c412acc24f180))
+
+## [1.29.5](https://github.com/houseninjadojo/app/compare/v1.29.4...v1.29.5) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** next attempt ([227303d](https://github.com/houseninjadojo/app/commit/227303d9cc9d2e51a23b651cbe43c1bbe49b06c8))
+
+## [1.29.4](https://github.com/houseninjadojo/app/compare/v1.29.3...v1.29.4) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** correct dotenv key env ([38cc46b](https://github.com/houseninjadojo/app/commit/38cc46ba7eac8b1eb1475271fae87741e71dd780))
+
+## [1.29.3](https://github.com/houseninjadojo/app/compare/v1.29.2...v1.29.3) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** use DOTENV_KEY_* for env secrets ([3f78949](https://github.com/houseninjadojo/app/commit/3f789497abd52e44ecfdf34d4b3fbf44764fa4ce))
+
+## [1.29.2](https://github.com/houseninjadojo/app/compare/v1.29.1...v1.29.2) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** use npx over pnpm dlx ([3d2939b](https://github.com/houseninjadojo/app/commit/3d2939bde67a0ac42fd3fb3b409c857d238f1d64))
+
+
+### Chores
+
+* **sentry:** dont block all text or media in replays ([a82b2d7](https://github.com/houseninjadojo/app/commit/a82b2d712e29a64e760ec9364c2db52ad20a47ba))
+* switch to dotenv-vault for credentials ([#1645](https://github.com/houseninjadojo/app/issues/1645)) ([e90afdd](https://github.com/houseninjadojo/app/commit/e90afddaff6f17436b9a68dfd81833417abc7f53))
+
+## [1.29.1](https://github.com/houseninjadojo/app/compare/v1.29.0...v1.29.1) (2023-02-16)
+
+
+### Bug Fixes
+
+* **build:** fix ios & android build errors ([045ff3f](https://github.com/houseninjadojo/app/commit/045ff3f6ee0b86ce788e651915b4338be1060bff))
+
+
+### Chores
+
+* **sentry:** bump sentry ([#1646](https://github.com/houseninjadojo/app/issues/1646)) ([44647ce](https://github.com/houseninjadojo/app/commit/44647ce192a8de44bd075fe6969a141681d096f1))
+
 ## [1.29.0](https://github.com/houseninjadojo/app/compare/v1.28.36...v1.29.0) (2023-02-15)
 
 

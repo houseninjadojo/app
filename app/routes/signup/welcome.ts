@@ -1,13 +1,16 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
-import { WELCOME } from 'houseninja/data/enums/onboarding-step';
+import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
+import OnboardingService from 'houseninja/services/onboarding';
+import RouterService from '@ember/routing/router-service';
 
-export default class SignupWelcomeRoute extends Route {
-  @service onboarding;
-  @service router;
-  @service current;
+class SignupWelcomeRoute extends Route {
+  @service declare onboarding: OnboardingService;
+  @service declare router: RouterService;
+  @service declare current: any;
 
-  activate() {
+  activate(): void {
     // this is a workaround for "disabling" the back button
     // notes:
     //  - this does not work when resuming a login navigates diretly to this page (WELCOME)
@@ -19,19 +22,19 @@ export default class SignupWelcomeRoute extends Route {
     //
     // first we want to add an extra history entry that can be safely navigated to
     // while the event fires
-    history.pushState(null, null, window.location.href);
+    history.pushState(null, '', window.location.href);
     window.onpopstate = () => {
       // set the step here, otherwise it triggers two extra "completeStep" calls
-      this.onboarding.currentStep = WELCOME;
+      this.onboarding.currentStep = OnboardingStep.Welcome;
       // now return from the fake history page to this page (signup/welcome)
       history.forward();
     };
   }
 
-  deactivate() {
+  deactivate(): void {
     // disable this listener when the route is navigated away from
     window.onpopstate = () => null;
-    this.onboarding.completeStep(WELCOME);
+    this.onboarding.completeStep(OnboardingStep.Welcome);
   }
 
   beforeModel() {
@@ -40,3 +43,5 @@ export default class SignupWelcomeRoute extends Route {
     }
   }
 }
+
+export default instrumentRoutePerformance(SignupWelcomeRoute);

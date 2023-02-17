@@ -1,10 +1,11 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { DefaultRoute } from 'houseninja/data/enums/routes';
 import OnboardingService from 'houseninja/services/onboarding';
 import SessionService from 'houseninja/services/session';
 
-export default class SignupRoute extends Route {
+class SignupRoute extends Route {
   @service declare session: SessionService;
   @service declare onboarding: OnboardingService;
 
@@ -16,3 +17,5 @@ export default class SignupRoute extends Route {
     this.onboarding.rehydrate();
   }
 }
+
+export default instrumentRoutePerformance(SignupRoute);

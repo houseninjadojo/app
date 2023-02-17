@@ -5,7 +5,7 @@ on:
         required: true
       SENTRY_AUTH_TOKEN:
         required: true
-      DOTENV_IT_TOKEN:
+      DOTENV_KEY_PRODUCTION:
         required: true
       CLOUDFLARE_ACCOUNT_ID:
         required: true
@@ -15,6 +15,7 @@ on:
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
 
 jobs:
   web:

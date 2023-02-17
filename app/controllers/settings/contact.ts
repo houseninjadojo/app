@@ -12,8 +12,6 @@ import type RouterService from '@ember/routing/router-service';
 import type ViewService from 'houseninja/services/view';
 import type { FieldSet } from 'houseninja/app/components';
 import type User from 'houseninja/models/user';
-import type { ModelFrom } from 'houseninja';
-import type SettingsContactRoute from 'houseninja/routes/settings/contact';
 
 type ContactInfo = {
   firstName?: string;
@@ -24,7 +22,7 @@ type ContactInfo = {
 type TargetId = 'firstName' | 'lastName' | 'email' | 'phoneNumber';
 
 export default class SettingsContactController extends Controller {
-  declare model: ModelFrom<SettingsContactRoute>;
+  declare model: User;
 
   @service declare intercom: IntercomService;
   @service declare router: RouterService;

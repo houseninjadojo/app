@@ -1,20 +1,29 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { isPresent } from '@ember/utils';
-import { SERVICE_AREA } from 'houseninja/data/enums/onboarding-step';
+import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { next } from '@ember/runloop';
-import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
+import { SignupRoute } from 'houseninja/data/enums/routes';
+import OnboardingService from 'houseninja/services/onboarding';
+import RouterService from '@ember/routing/router-service';
+import StoreService from 'houseninja/services/store';
+import User from 'houseninja/models/user';
 
-export default class SignupIndexRoute extends Route {
-  @service router;
-  @service onboarding;
-  @service store;
+type QueryParams = {
+  onboardingCode?: string;
+};
+
+class SignupIndexRoute extends Route {
+  @service declare router: RouterService;
+  @service declare onboarding: OnboardingService;
+  @service declare store: StoreService;
 
   queryParams = {
     onboardingCode: { refreshModel: false },
   };
 
-  async model(params) {
+  async model(params: QueryParams): Promise<string | undefined> {
     // deal with an onboarding code passed into query params
     if (params.onboardingCode) {
       const user = await this.onboarding.userFromOnboardingCode(
@@ -26,11 +35,11 @@ export default class SignupIndexRoute extends Route {
     return this.onboarding.zipcode;
   }
 
-  deactivate() {
-    this.onboarding.completeStep(SERVICE_AREA);
+  deactivate(): void {
+    this.onboarding.completeStep(OnboardingStep.ServiceArea);
   }
 
-  async rehydrateAndRedirect(user) {
+  async rehydrateAndRedirect(user: User): Promise<void> {
     if (isPresent(user) && user.shouldResumeOnboarding) {
       // load what we need to rehydrate signup
       await this.onboarding.rehydrateFromRemote.perform();
@@ -41,7 +50,9 @@ export default class SignupIndexRoute extends Route {
         this.onboarding.routeFromStep(user.onboardingStep)
       );
     } else {
-      this.router.transitionTo(SIGNUP_ROUTE.INDEX);
+      this.router.transitionTo(SignupRoute.Index);
     }
   }
 }
+
+export default instrumentRoutePerformance(SignupIndexRoute);

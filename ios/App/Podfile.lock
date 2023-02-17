@@ -34,7 +34,7 @@ PODS:
     - Capacitor
   - CapacitorSplashScreen (4.1.3):
     - Capacitor
-  - CapawesomeCapacitorFilePicker (0.5.9):
+  - CapawesomeCapacitorFilePicker (0.6.0):
     - Capacitor
   - Firebase/CoreOnly (10.4.0):
     - FirebaseCore (= 10.4.0)
@@ -104,12 +104,12 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
-  - Sentry (7.23.0):
-    - Sentry/Core (= 7.23.0)
-  - Sentry/Core (7.23.0)
-  - SentryCapacitor (0.10.1):
+  - Sentry (7.27.1):
+    - Sentry/Core (= 7.27.1)
+  - Sentry/Core (7.27.1)
+  - SentryCapacitor (0.11.1):
     - Capacitor
-    - Sentry (~> 7.23.0)
+    - Sentry (~> 7.27.1)
   - SwiftKeychainWrapper (4.0.1)
 
 DEPENDENCIES:
@@ -222,7 +222,7 @@ SPEC CHECKSUMS:
   CapacitorSecureStoragePlugin: e616d090177dfbf9754dd1bdb515a8f23855bf4e
   CapacitorShare: d81b40de329187f4669ad8a40ce90fe2bbe3eecd
   CapacitorSplashScreen: bbc115828cb68942421565812cc0922d66465937
-  CapawesomeCapacitorFilePicker: 62c5c9867b66d2bf470bda1f3fa186e9eadc480f
+  CapawesomeCapacitorFilePicker: 0dac2ae4391119fff16607b29f224ff0bf240f35
   Firebase: ba3501b5142a57747eac74d27c96d2b313bdec90
   FirebaseCore: b8697a177690b69b0dbce9d612b69b893be70469
   FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
@@ -238,8 +238,8 @@ SPEC CHECKSUMS:
   Mixpanel-swift: 95fa64d39f15141f1c5b7797003e2123d4c3207e
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  Sentry: a0d4563fa4ddacba31fdcc35daaa8573d87224d6
-  SentryCapacitor: 075a95f83c96e090ec47c561519fd9288c3aa686
+  Sentry: bc644307e2eb6a4c9c55cf117a80b895bb2a25a7
+  SentryCapacitor: eca3e6109e2efa6f98fca57413adc5593aa9810d
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
 
 PODFILE CHECKSUM: beedbd23921cfe65b25f4a4dcb9d988dc1c53353

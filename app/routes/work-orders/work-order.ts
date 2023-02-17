@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
@@ -7,13 +8,13 @@ import type StoreService from '@ember-data/store';
 
 import WorkOrder from 'houseninja/models/work-order';
 import Transition from '@ember/routing/transition';
-import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
+import { AuthRoute } from 'houseninja/data/enums/routes';
 
 type Params = {
   work_order_id: string;
 };
 
-export default class WorkOrderRoute extends Route {
+class WorkOrderRoute extends Route {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @service declare current: any;
   @service declare router: RouterService;
@@ -21,10 +22,7 @@ export default class WorkOrderRoute extends Route {
   @service declare store: StoreService;
 
   async beforeModel(transition: Transition): Promise<void> {
-    this.session.requireAuthentication(
-      transition,
-      NATIVE_MOBILE_ROUTE.AUTH.LOGIN_OR_SIGNUP
-    );
+    this.session.requireAuthentication(transition, AuthRoute.LoginOrSignup);
     try {
       await this.current.loadUser();
     } catch {
@@ -49,3 +47,5 @@ export default class WorkOrderRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(WorkOrderRoute);

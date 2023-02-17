@@ -1,11 +1,12 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import isNativePlatform from 'houseninja/utils/is-native-platform';
 import { DefaultRoute } from 'houseninja/data/enums/routes';
 import SessionService from 'houseninja/services/session';
 import RouterService from '@ember/routing/router-service';
 
-export default class IndexRoute extends Route {
+class IndexRoute extends Route {
   @service declare session: SessionService;
   @service declare router: RouterService;
 
@@ -33,3 +34,5 @@ export default class IndexRoute extends Route {
     }
   }
 }
+
+export default instrumentRoutePerformance(IndexRoute);

@@ -8,11 +8,12 @@ on:
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
 
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 20
     permissions:
       contents: read
@@ -34,9 +35,6 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile --shamefully-hoist
-      - run: pnpm env:load
-        env:
-          DOTENV_IT_TOKEN: ${{ secrets.DOTENV_IT_TOKEN }}
       - run: pnpm run build
         env:
           NODE_ENV: production
@@ -46,10 +44,7 @@ jobs:
       - run: pnpm cap sync --deployment
         env:
           NODE_ENV: production
-      - run: |
-          cp .env.vault ios/App/.env.vault
-          cp .env.vault android/app/.env.vault
-          cp .env.vault fastlane/.env.vault
+      - run: cp .env.vault fastlane/.env.vault
       - uses: actions/cache/save@v3
         if: success()
         id: cache-package-json
