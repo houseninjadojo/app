@@ -5,6 +5,7 @@ import { SET_PASSWORD } from 'houseninja/data/enums/onboarding-step';
 export default class SignupSetPasswordRoute extends Route {
   @service store;
   @service onboarding;
+  @service router;
 
   async model() {
     return await this.onboarding.fetchLocalModel('user');
@@ -12,5 +13,11 @@ export default class SignupSetPasswordRoute extends Route {
 
   deactivate() {
     this.onboarding.completeStep(SET_PASSWORD);
+  }
+
+  beforeModel() {
+    if (!this.current.user?.subscription) {
+      this.router.transitionTo('signup.payment-method');
+    }
   }
 }

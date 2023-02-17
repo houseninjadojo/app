@@ -16,6 +16,8 @@ type ModelResponse = {
 
 export default class SignupWalkthroughBookingRoute extends Route {
   @service declare onboarding: OnboardingService;
+  @service declare current: any;
+  @service declare router: any;
 
   async model(): Promise<ModelResponse> {
     return RSVP.hash({
@@ -27,5 +29,11 @@ export default class SignupWalkthroughBookingRoute extends Route {
 
   deactivate(): void {
     this.onboarding.completeStep(OnboardingStep.WalkthroughBooking);
+  }
+
+  beforeModel() {
+    if (!this.current.user?.subscription) {
+      this.router.transitionTo('signup.payment-method');
+    }
   }
 }

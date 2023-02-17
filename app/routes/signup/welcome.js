@@ -35,8 +35,8 @@ export default class SignupWelcomeRoute extends Route {
   }
 
   beforeModel() {
-    if (!this.current.user.subscription) {
-      this.router.transitionTo('signup.plan-selection');
+    if (!this.current.user?.subscription) {
+      this.router.transitionTo('signup.payment-method');
     }
   }
 }
