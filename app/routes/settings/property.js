@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 
-export default class SettingsPropertyRoute extends Route {
+class SettingsPropertyRoute extends Route {
   @service current;
   @service store;
 
@@ -16,3 +17,5 @@ export default class SettingsPropertyRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(SettingsPropertyRoute);

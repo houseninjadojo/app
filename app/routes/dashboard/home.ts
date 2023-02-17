@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 import RSVP from 'rsvp';
@@ -11,7 +12,7 @@ import type Transition from '@ember/routing/transition';
 import type UserModel from 'houseninja/models/user';
 import type PropertyModel from 'houseninja/models/property';
 
-export default class DashboarHomeRoute extends Route {
+class DashboardHomeRoute extends Route {
   @service declare current: CurrentService;
   @service declare session: SessionService;
   @service declare store: StoreService;
@@ -51,3 +52,5 @@ export default class DashboarHomeRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(DashboardHomeRoute);

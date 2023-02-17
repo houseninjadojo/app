@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import RSVP from 'rsvp';
 import { NATIVE_MOBILE_ROUTE } from 'houseninja/data/enums/routes';
 
-export default class VaultDocumentsEditRoute extends Route {
+class VaultDocumentsEditRoute extends Route {
   @service router;
   @service store;
 
@@ -17,3 +18,5 @@ export default class VaultDocumentsEditRoute extends Route {
     });
   }
 }
+
+export default instrumentRoutePerformance(VaultDocumentsEditRoute);

@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import RSVP from 'rsvp';
@@ -14,7 +15,7 @@ type ModelResponse = {
   user?: User;
 };
 
-export default class SignupWalkthroughBookingRoute extends Route {
+class SignupWalkthroughBookingRoute extends Route {
   @service declare onboarding: OnboardingService;
 
   async model(): Promise<ModelResponse> {
@@ -29,3 +30,5 @@ export default class SignupWalkthroughBookingRoute extends Route {
     this.onboarding.completeStep(OnboardingStep.WalkthroughBooking);
   }
 }
+
+export default instrumentRoutePerformance(SignupWalkthroughBookingRoute);

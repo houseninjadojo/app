@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Service from '@ember/service';
 
 declare module 'ember-metrics/services/metrics' {
