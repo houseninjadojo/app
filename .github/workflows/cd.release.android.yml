@@ -5,13 +5,13 @@ on:
         required: true
       SENTRY_AUTH_TOKEN:
         required: true
-      DOTENV_KEY:
+      DOTENV_KEY_PRODUCTION:
         required: true
 
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-  DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
 
 jobs:
   android:

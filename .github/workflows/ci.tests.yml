@@ -11,7 +11,7 @@ on:
       - main
 
 env:
-  DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY_TEST }}
   # API_ACTIVE_STORAGE_HOST: ${{ secrets.API_ACTIVE_STORAGE_HOST }}
   # API_HOST: ${{ secrets.API_HOST }}
   # APP_HOST: ${{ secrets.APP_HOST }}

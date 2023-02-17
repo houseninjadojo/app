@@ -8,7 +8,7 @@ on:
 env:
   RUBY_VERSION: 3.0.3
   DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-  DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+  DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
 
 jobs:
   build:
