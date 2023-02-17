@@ -1,3 +1,10 @@
+## [1.29.5](https://github.com/houseninjadojo/app/compare/v1.29.4...v1.29.5) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** next attempt ([227303d](https://github.com/houseninjadojo/app/commit/227303d9cc9d2e51a23b651cbe43c1bbe49b06c8))
+
 ## [1.29.4](https://github.com/houseninjadojo/app/compare/v1.29.3...v1.29.4) (2023-02-17)
 
 
