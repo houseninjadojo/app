@@ -1,3 +1,10 @@
+## [1.29.6](https://github.com/houseninjadojo/app/compare/v1.29.5...v1.29.6) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** explicit use of ubuntu-22.04 image because of zlib version mismatch ([a361e3a](https://github.com/houseninjadojo/app/commit/a361e3ab738dffd62fa0d0e9cc4c412acc24f180))
+
 ## [1.29.5](https://github.com/houseninjadojo/app/compare/v1.29.4...v1.29.5) (2023-02-17)
 
 
