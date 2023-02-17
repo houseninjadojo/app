@@ -1,3 +1,10 @@
+## [1.29.4](https://github.com/houseninjadojo/app/compare/v1.29.3...v1.29.4) (2023-02-17)
+
+
+### Bug Fixes
+
+* **ci/cd:** correct dotenv key env ([38cc46b](https://github.com/houseninjadojo/app/commit/38cc46ba7eac8b1eb1475271fae87741e71dd780))
+
 ## [1.29.3](https://github.com/houseninjadojo/app/compare/v1.29.2...v1.29.3) (2023-02-17)
 
 
