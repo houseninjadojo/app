@@ -56,12 +56,6 @@ jobs:
           key: build-android-${{ github.run_id }}
           restore-keys: |
             build-android-
-      # - run: |
-      #     npx dotenv-vault decrypt $DOTENV_KEY > .env
-      #     ls -al .env
-      #   working-directory: 'fastlane/'
-      #   env:
-      #     DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -91,18 +85,7 @@ jobs:
           key: build-cache-android-${{ github.run_id }}
           restore-keys: |
             build-cache-android-
-      - run: |
-          cat .env.vault
-          echo $DOTENV_KEY
-          echo $DOTENV_VAULT_PATH
-        working-directory: 'fastlane/'
-        env:
-          DOTENV_VAULT_PATH: .env.vault
       - run: npx dotenv-vault decrypt $DOTENV_KEY > .env
-        working-directory: 'fastlane/'
-        env:
-          DOTENV_VAULT_PATH: .env.vault
-      - run: bundle exec fastlane android dotenv_vaulter
         working-directory: 'fastlane/'
         env:
           DOTENV_VAULT_PATH: .env.vault

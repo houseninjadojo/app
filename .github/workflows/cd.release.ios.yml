@@ -73,17 +73,15 @@ jobs:
             build-pods-
       - run: pod install --deployment
         working-directory: 'ios/App'
-      # - run: |
-      #     npx dotenv-vault decrypt $DOTENV_KEY > .env
-      #     ls -al .env
-      #   working-directory: 'fastlane/'
-      #   env:
-      #     DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'fastlane/'
+      - run: npx dotenv-vault decrypt $DOTENV_KEY > .env
+        working-directory: 'fastlane/'
+        env:
+          DOTENV_VAULT_PATH: .env.vault
       - run: bundle exec fastlane ios sandbox
         working-directory: 'fastlane/'
         env:
