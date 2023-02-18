@@ -5,7 +5,9 @@ opt_out_usage
 # load dotenv
 puts "vault_path: #{File.file?('./.env.vault')}"
 puts "ENV['DOTENV_VAULT_PATH']: #{File.file?(ENV['DOTENV_VAULT_PATH'])}"
+puts "ENV['DOTENV_KEY']: #{ENV['DOTENV_KEY']}"
 dotenv_vault(vault_path: './.env.vault')
+puts ENV
 puts "ENV['ANDROID_KEY_NAME']: #{ENV['ANDROID_KEY_NAME']}"
 puts "ENV['ANDROID_KEYSTORE_NAME']: #{ENV['ANDROID_KEYSTORE_NAME']}"
 
