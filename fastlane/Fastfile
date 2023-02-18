@@ -5,8 +5,6 @@ opt_out_usage
 # load dotenv
 dotenv_vault(vault_path: '../env.vault')
 
-puts ENV['INTERCOM_APP_ID']
-
 # helpers
 
 def build_version_code(version, build_number)
@@ -61,10 +59,6 @@ json_key_data_raw   = ENV['PLAY_STORE_CREDENTIALS']
 default_platform(:ios)
 
 platform :android do
-  lane :test_env do
-    puts ENV['APP_HOST']
-  end
-
   desc 'Build app'
   lane :build do
     gradle(
