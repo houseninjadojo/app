@@ -86,6 +86,8 @@ jobs:
           working-directory: 'fastlane/'
       - run: bundle exec fastlane ios sandbox
         working-directory: 'fastlane/'
+        env:
+          DOTENV_VAULT_PATH: .env.vault
       - uses: actions/upload-artifact@v3
         if: success()
         with:

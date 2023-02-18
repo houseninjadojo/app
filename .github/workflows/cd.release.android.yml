@@ -94,9 +94,14 @@ jobs:
       - run: |
           cat .env.vault
           echo $DOTENV_KEY
+          echo $DOTENV_VAULT_PATH
         working-directory: 'fastlane/'
+        env:
+          DOTENV_VAULT_PATH: .env.vault
       - run: bundle exec fastlane android internal
         working-directory: 'fastlane/'
+        env:
+          DOTENV_VAULT_PATH: .env.vault
       - uses: actions/upload-artifact@v3
         if: success()
         with:
