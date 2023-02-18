@@ -1,11 +1,13 @@
-git_url("https://github.com/houseninjadojo/fastlane-match-content")
+# frozen_string_literal: true
 
-storage_mode("git")
+git_url('https://github.com/houseninjadojo/fastlane-match-content')
 
-type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
+storage_mode('git')
 
-app_identifier(["co.houseninja.application"])
-username("miles@houseninja.co") # Your Apple Developer Portal username
+type('appstore') # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier(['co.houseninja.application'])
+username('miles@houseninja.co') # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options

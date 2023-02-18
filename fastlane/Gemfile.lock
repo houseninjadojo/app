@@ -35,6 +35,9 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
+    dotenv-vault (0.10.0)
+      dotenv
+      lockbox
     emoji_regex (3.2.3)
     excon (0.94.0)
     faraday (1.10.2)
@@ -105,6 +108,8 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-dotenv_vault (0.10.0.beta.2)
+      dotenv-vault (~> 0.10.0)
     fastlane-plugin-load_json (0.0.1)
     fastlane-plugin-sentry (1.15.0)
       os (~> 1.1, >= 1.1.4)
@@ -156,6 +161,7 @@ GEM
     jmespath (1.6.1)
     json (2.6.2)
     jwt (2.5.0)
+    lockbox (1.1.2)
     memoist (0.16.2)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
@@ -222,6 +228,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   fastlane
+  fastlane-plugin-dotenv_vault
   fastlane-plugin-load_json
   fastlane-plugin-sentry
   fastlane-plugin-versioning

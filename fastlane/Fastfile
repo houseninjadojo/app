@@ -1,113 +1,113 @@
+# frozen_string_literal: true
+
 opt_out_usage
 
-fastlane_require 'dotenv'
+# load dotenv
+dotenv_vault(vault_path: '../env.vault')
 
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
+puts ENV['INTERCOM_APP_ID']
+
+# helpers
 
 def build_version_code(version, build_number)
-  code = version.split(".").map{ |c| c.rjust(3, "0") }.join("")
-  code.to_i.to_s + build_number.rjust(2, "0")
+  code = version.split('.').map{ |c| c.rjust(3, '0') }.join
+  code.to_i.to_s + build_number.rjust(2, '0')
 end
 
 def root_dir
-  if ENV["CI"] && File.directory?(ENV['GITHUB_WORKSPACE'])
+  if ENV['CI'] && File.directory?(ENV['GITHUB_WORKSPACE'])
     ENV['GITHUB_WORKSPACE']
   else
-    File.expand_path("..")
+    File.expand_path('..')
   end
 end
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-app_store_key_id        = ENV["APPSTORE_KEY_ID"]
-app_store_issuer_id     = ENV["APPSTORE_ISSUER_ID"]
-app_store_key_content   = "#{ENV["APPSTORE_PRIVATE_KEY"]}".gsub('\n', '\\n')
-apple_team_id           = ENV["APPLE_TEAM_ID"]
-build_number            = "1"
-bundle_identifier       = "co.houseninja.application"
-gh_user                 = "mileszim"
-gh_pat                  = ENV["GHCR_PAT"]
+app_store_key_id        = ENV['APPSTORE_KEY_ID']
+app_store_issuer_id     = ENV['APPSTORE_ISSUER_ID']
+app_store_key_content   = ENV['APPSTORE_PRIVATE_KEY'].to_s.gsub('\n', '\\n')
+apple_team_id           = ENV['APPLE_TEAM_ID']
+build_number            = '1'
+bundle_identifier       = 'co.houseninja.application'
+gh_user                 = 'mileszim'
+gh_pat                  = ENV['GHCR_PAT']
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
-provision_profile_name  = "match AppStore co.houseninja.application"
-scheme                  = "HouseNinja"
-sentry_auth_token       = ENV["SENTRY_AUTH_TOKEN"]
-sentry_deploy_name      = "testflight"
-sentry_env              = "sandbox"
-sentry_org_slug         = "houseninja"
-sentry_project_slug     = "app"
-xcode_project_path      = "ios/App/App.xcodeproj"
-xcode_workspace         = "ios/App/App.xcworkspace"
+provision_profile_name  = 'match AppStore co.houseninja.application'
+scheme                  = 'HouseNinja'
+sentry_auth_token       = ENV['SENTRY_AUTH_TOKEN']
+sentry_deploy_name      = 'testflight'
+sentry_env              = 'sandbox'
+sentry_org_slug         = 'houseninja'
+sentry_project_slug     = 'app'
+xcode_project_path      = 'ios/App/App.xcodeproj'
+xcode_workspace         = 'ios/App/App.xcworkspace'
 buildcache_xcargs       = "CC='clang' CPLUSPLUS='clang++' LD='clang' LDPLUSPLUS='clang++'"
 
 # get version
-package      = load_json(json_path: "package.json")
-version      = package["version"]
-full_version = "#{bundle_identifier}@#{version}"
+package      = load_json(json_path: 'package.json')
+version      = package['version']
+# full_version = "#{bundle_identifier}@#{version}"
 
 # android
 android_full_dir    = "#{root_dir}/android"
-android_project_dir = "android"
-gradle_path         = "android/app/build.gradle"
+android_project_dir = 'android'
+gradle_path         = 'android/app/build.gradle'
 keystore_path       = "#{android_full_dir}/houseninja.keystore"
 version_code        = build_version_code(version, build_number)
-json_key_data_raw   = ENV["PLAY_STORE_CREDENTIALS"]
+json_key_data_raw   = ENV['PLAY_STORE_CREDENTIALS']
 
 default_platform(:ios)
 
 platform :android do
-  desc "Build app"
+  lane :test_env do
+    puts ENV['APP_HOST']
+  end
+
+  desc 'Build app'
   lane :build do
     gradle(
-      task: "bundle",
-      build_type: "Release",
+      task: 'bundle',
+      build_type: 'Release',
       project_dir: android_project_dir,
       # gradle_path: gradle_path,
       print_command: true,
       properties: {
-        "android.injected.signing.store.file" => keystore_path,
-        "android.injected.signing.store.password" => ENV["ANDROID_KEYSTORE_PASSWORD"],
-        "android.injected.signing.key.alias" => ENV["ANDROID_KEY_NAME"],
-        "android.injected.signing.key.password" => ENV["ANDROID_KEY_PASSWORD"]
+        'android.injected.signing.store.file' => keystore_path,
+        'android.injected.signing.store.password' => ENV['ANDROID_KEYSTORE_PASSWORD'],
+        'android.injected.signing.key.alias' => ENV['ANDROID_KEY_NAME'],
+        'android.injected.signing.key.password' => ENV['ANDROID_KEY_PASSWORD']
       }
     )
   end
 
-  desc "Upload to Play Store"
+  desc 'Upload to Play Store'
   lane :upload do |options|
     upload_to_play_store(
-      track: options[:track] || "internal",
-      track_promote_to: options[:track_promote_to] || "production",
+      track: options[:track] || 'internal',
+      track_promote_to: options[:track_promote_to] || 'production',
       json_key_data: json_key_data_raw,
-      release_status: options[:release_status] || "draft",
-      # rollout: options[:rollout] || "1",
+      release_status: options[:release_status] || 'draft',
+      # rollout: options[:rollout] || '1',
       changes_not_sent_for_review: false,
     )
   end
 
-  desc "Release Internal"
+  desc 'Release Internal'
   lane :internal do
     increment_version
     build
-    upload(track: "internal", release_status: "draft")
+    upload(track: 'internal', release_status: 'draft')
   end
 
-  desc "Release"
+  desc 'Release'
   lane :release do
     increment_version
     build
     upload(
-      track: "production",
-      release_status: "completed"
+      track: 'production',
+      release_status: 'completed'
     )
   end
 
@@ -124,9 +124,9 @@ platform :android do
 end
 
 platform :ios do
-  desc "build app"
+  desc 'build app'
   lane :build do
-    xcargs = ENV["CI"] ? buildcache_xcargs : nil
+    xcargs = ENV['CI'] ? buildcache_xcargs : nil
     build_app(
       scheme: scheme,
       workspace: xcode_workspace,
@@ -134,7 +134,7 @@ platform :ios do
     )
   end
 
-  desc "upload to testflight"
+  desc 'upload to testflight'
   lane :upload do |options|
     upload_to_testflight(
       api_key: options[:api_key],
@@ -144,11 +144,11 @@ platform :ios do
     )
   end
 
-  desc "Sandbox Release"
+  desc 'Sandbox Release'
   lane :sandbox do
     initialize_sentry
     start_time = Time.now.to_i
-    setup_ci if ENV["CI"]
+    setup_ci if ENV['CI']
     api_key = fetch_api_key
     sign_code(api_key: api_key)
     increment_version
@@ -173,7 +173,7 @@ platform :ios do
   private_lane :sign_code do |options|
     sync_code_signing(
       api_key: options[:api_key],
-      type: "appstore",
+      type: 'appstore',
       app_identifier: bundle_identifier,
       readonly: false,
       git_basic_authorization: git_basic_authorization,
@@ -203,7 +203,9 @@ platform :ios do
       version: version,
       build: build_number,
       app_identifier: bundle_identifier,
-      # finalize: true # Whether to finalize the release. If not provided or false, the release can be finalized using the sentry_finalize_release action
+      # Whether to finalize the release. If not provided or false,
+      # the release can be finalized using the sentry_finalize_release action
+      # finalize: true
     )
   end
 
@@ -212,7 +214,7 @@ platform :ios do
       auth_token: sentry_auth_token,
       org_slug: sentry_org_slug,
       project_slug: sentry_project_slug,
-      path: "ios/App",
+      path: 'ios/App',
     )
     sentry_create_deploy(
       auth_token: sentry_auth_token,
