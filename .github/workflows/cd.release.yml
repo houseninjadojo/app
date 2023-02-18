@@ -44,7 +44,7 @@ jobs:
       - run: pnpm cap sync --deployment
         env:
           NODE_ENV: production
-      # - run: cp .env.vault fastlane/.env.vault
+      - run: cp .env.vault fastlane/.env.vault
       - uses: actions/cache/save@v3
         if: success()
         id: cache-package-json

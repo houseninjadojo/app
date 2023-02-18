@@ -3,7 +3,7 @@
 opt_out_usage
 
 # load dotenv
-dotenv_vault(vault_path: '../env.vault')
+dotenv_vault(vault_path: './.env.vault')
 
 # helpers
 
