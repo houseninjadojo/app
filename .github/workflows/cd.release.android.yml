@@ -98,6 +98,10 @@ jobs:
         working-directory: 'fastlane/'
         env:
           DOTENV_VAULT_PATH: .env.vault
+      - run: bundle exec fastlane android dotenv_vaulter
+        working-directory: 'fastlane/'
+      - run: npx dotenv-vault decrypt $DOTENV_KEY > .env
+        working-directory: 'fastlane/'
       - run: bundle exec fastlane android internal
         working-directory: 'fastlane/'
         env:

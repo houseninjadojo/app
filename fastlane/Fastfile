@@ -63,6 +63,10 @@ json_key_data_raw   = ENV['PLAY_STORE_CREDENTIALS']
 default_platform(:ios)
 
 platform :android do
+  lane :dotenv_vaulter do
+    puts ::DotenvVault.parse("./.env.vault").to_h.to_json
+  end
+
   desc 'Build app'
   lane :build do
     dotenv_vault
