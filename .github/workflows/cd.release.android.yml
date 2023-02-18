@@ -91,6 +91,10 @@ jobs:
           key: build-cache-android-${{ github.run_id }}
           restore-keys: |
             build-cache-android-
+      - run: |
+          cat .env.vault
+          echo $DOTENV_KEY
+        working-directory: 'fastlane/'
       - run: bundle exec fastlane android internal
         working-directory: 'fastlane/'
       - uses: actions/upload-artifact@v3

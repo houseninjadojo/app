@@ -3,7 +3,9 @@
 opt_out_usage
 
 # load dotenv
-dotenv_vault(vault_path: './.env.vault')
+dotenv_vault
+puts "ENV['ANDROID_KEY_NAME']: #{ENV['ANDROID_KEY_NAME']}"
+puts "ENV['ANDROID_KEYSTORE_NAME']: #{ENV['ANDROID_KEYSTORE_NAME']}"
 
 # helpers
 
