@@ -31,6 +31,4 @@ Layout/SpaceBeforeBlockBraces:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'Pluginfile'
-    - 'Gemfile'
+  Enabled: false

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 app_identifier('co.houseninja.application')
 apple_id('miles@houseninja.co')
 

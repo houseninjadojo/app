@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 opt_out_usage
 
 # load dotenv
@@ -7,7 +5,7 @@ puts "vault_path: #{File.file?('./.env.vault')}"
 puts "ENV['DOTENV_VAULT_PATH']: #{File.file?(ENV['DOTENV_VAULT_PATH'])}"
 puts "ENV['DOTENV_KEY']: #{ENV['DOTENV_KEY']}"
 dotenv_vault(vault_path: './.env.vault')
-puts ENV
+puts ENV.to_h.to_json
 puts "ENV['ANDROID_KEY_NAME']: #{ENV['ANDROID_KEY_NAME']}"
 puts "ENV['ANDROID_KEYSTORE_NAME']: #{ENV['ANDROID_KEYSTORE_NAME']}"
 
@@ -67,6 +65,8 @@ default_platform(:ios)
 platform :android do
   desc 'Build app'
   lane :build do
+    dotenv_vault
+    puts ENV.to_h.to_json
     gradle(
       task: 'bundle',
       build_type: 'Release',
