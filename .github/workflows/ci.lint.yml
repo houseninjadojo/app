@@ -22,13 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
