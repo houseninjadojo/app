@@ -3,5 +3,16 @@
   "eslint.packageManager": "pnpm",
   "eslint.lintTask.enable": true,
   "dotenv.enableAutocloaking": false,
-  "svg.preview.background": "transparent"
+  "svg.preview.background": "transparent",
+  "eslint.options": {
+    "configFile": "../.github/linters/.eslintrc.json"
+  },
+  "prettier.configPath": "../.github/linters/.prettierrc.json",
+  "stylelint.config": {
+    "configFile": "../.github/linters/.stylelintrc.json"
+  },
+  // "emberTemplate": {
+
+  // },
+  "eslint.codeActionsOnSave.rules": null
 }
