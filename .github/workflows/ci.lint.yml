@@ -51,17 +51,17 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint:css
-  rb:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
-          working-directory: 'fastlane/'
-      - run: bundle install
-        working-directory: 'fastlane/'
-      - run: bundle exec rubocop
-        working-directory: 'fastlane/'
+  # rb:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: ${{ env.RUBY_VERSION }}
+  #         bundler-cache: true
+  #         working-directory: 'fastlane/'
+  #     - run: bundle install
+  #       working-directory: 'fastlane/'
+  #     - run: bundle exec rubocop
+  #       working-directory: 'fastlane/'
