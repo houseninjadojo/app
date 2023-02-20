@@ -122,6 +122,7 @@ jobs:
       - run: pnpm build
         env:
           BUILD_STATS: true
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       # Send webpack stats and build information to RelativeCI
       - name: Send webpack stats to RelativeCI
         uses: relative-ci/agent-action@v2
