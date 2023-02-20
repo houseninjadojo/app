@@ -1,3 +1,10 @@
+## [1.29.11](https://github.com/houseninjadojo/app/compare/v1.29.10...v1.29.11) (2023-02-20)
+
+
+### Bug Fixes
+
+* capacitor build ([#1653](https://github.com/houseninjadojo/app/issues/1653)) ([a6da4ce](https://github.com/houseninjadojo/app/commit/a6da4ceb93306bacb2aca135f21bd9204d31eddd))
+
 ## [1.29.10](https://github.com/houseninjadojo/app/compare/v1.29.9...v1.29.10) (2023-02-20)
 
 
