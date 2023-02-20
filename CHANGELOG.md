@@ -1,3 +1,15 @@
+## [1.29.10](https://github.com/houseninjadojo/app/compare/v1.29.9...v1.29.10) (2023-02-20)
+
+
+### Bug Fixes
+
+* **dotenv:** use dotenv vault for fastlane builds ([#1648](https://github.com/houseninjadojo/app/issues/1648)) ([9f5fd98](https://github.com/houseninjadojo/app/commit/9f5fd98cca15fc684c8ed970a10c7aba1583ae90))
+
+
+### Chores
+
+* **deps:** update dependency ember-source to ~4.11.0 ([d2bf015](https://github.com/houseninjadojo/app/commit/d2bf0156e88f3fa471dccf3dda4e7f6b3e5a015c))
+
 ## [1.29.9](https://github.com/houseninjadojo/app/compare/v1.29.8...v1.29.9) (2023-02-20)
 
 
