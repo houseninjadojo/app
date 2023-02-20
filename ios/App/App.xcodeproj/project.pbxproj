@@ -382,8 +382,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBlack;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution: House Ninja, Inc. (76HLG2JBUV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: House Ninja, Inc. (76HLG2JBUV)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 76HLG2JBUV;
