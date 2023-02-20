@@ -15,7 +15,7 @@ export default class DatadogRum extends BaseAdapter {
 
   // eslint-disable-next-line ember/classic-decorator-hooks
   init(): void {
-    if (ENV.environment === 'test') {
+    if (ENV.env === 'test') {
       this.enabled = false;
     }
   }

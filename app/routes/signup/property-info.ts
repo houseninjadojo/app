@@ -11,7 +11,11 @@ class SignupPropertyInfoRoute extends Route {
   @service declare onboarding: OnboardingService;
   @service declare router: RouterService;
 
-  beforeModel(): void {
+  async beforeModel(): Promise<void> {
+    const isSubscribed = await this.onboarding.isSubscribed();
+    if (!isSubscribed) {
+      this.router.transitionTo(SignupRoute.PaymentMethod);
+    }
     if (this.onboarding.currentStep === OnboardingStep.WalkthroughBooking) {
       this.router.transitionTo(SignupRoute.WalkthroughBooking);
     }

@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 // eslint-disable-next-line
-const environment = process.env.NODE_ENV || 'development';
+const environment = process.env.ENV || process.env.NODE_ENV || 'development';
 
 const serverUrl =
   environment === 'development' ? process.env.CAPACITOR_SERVER_URL : undefined;

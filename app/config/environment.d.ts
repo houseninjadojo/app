@@ -4,6 +4,7 @@
  */
 declare const config: {
   environment: string;
+  env: string;
   modulePrefix: string;
   podModulePrefix: string;
   locationType: 'history' | 'hash' | 'none' | 'auto';

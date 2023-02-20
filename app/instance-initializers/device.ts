@@ -19,7 +19,7 @@ export async function initialize(
 ): Promise<void> {
   // this breaks in tests
   // @todo fix this
-  if (ENV.environment === 'test') {
+  if (ENV.env === 'test') {
     return;
   }
 

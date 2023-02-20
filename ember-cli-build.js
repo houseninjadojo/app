@@ -5,7 +5,9 @@ require('dotenv-vault-core').config();
 /**
  * Utils
  */
-const { isProdLike, isNotProdLike } = require('./lib/utils');
+const { isProdLike, isNotProdLike, isCF } = require('./lib/utils');
+const includeSourceMaps = isCF || isNotProdLike();
+
 
 /**
  * Ember Application
@@ -101,7 +103,7 @@ const publicAssetURL = '/';
  * Embroider - Webpack Configuration
  */
 const webpackConfig = {
-  devtool: isProdLike() ? 'hidden-source-map' : 'inline-source-map',
+  devtool: includeSourceMaps() ? 'hidden-source-map' : 'inline-source-map',
   module: {
     rules: [
       {
@@ -141,7 +143,7 @@ const webpackConfig = {
  */
 const cssLoaderOptions = {
   // dont create source maps in production
-  sourceMap: isNotProdLike(),
+  sourceMap: includeSourceMaps(),
   // enable CSS modules
   modules: {
     // global mode, can be either global or local
