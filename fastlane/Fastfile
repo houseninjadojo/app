@@ -32,7 +32,7 @@ apple_team_id           = ENV['APPLE_TEAM_ID']
 apple_team_name         = ENV['APPLE_TEAM_NAME']
 build_number            = '1'
 bundle_identifier       = 'co.houseninja.application'
-code_sign_identity      = 'Apple Distribution: House Ninja, Inc. (76HLG2JBUV)'
+code_sign_identity      = 'Apple Distribution'
 gh_user                 = 'mileszim'
 gh_pat                  = ENV['GHCR_PAT']
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
@@ -45,7 +45,7 @@ sentry_org_slug         = 'houseninja'
 sentry_project_slug     = 'app'
 xcode_project_path      = 'ios/App/App.xcodeproj'
 xcode_workspace         = 'ios/App/App.xcworkspace'
-buildcache_xcargs       = "CC='clang' CPLUSPLUS='clang++' LD='clang' LDPLUSPLUS='clang++' CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM="
+buildcache_xcargs       = "CC='clang' CPLUSPLUS='clang++' LD='clang' LDPLUSPLUS='clang++'"
 
 # get version
 package      = load_json(json_path: 'package.json')
