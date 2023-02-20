@@ -17,8 +17,8 @@ jobs:
   ios:
     runs-on: macos-12
     timeout-minutes: 30
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
+    # env:
+    #   DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
       - name: Datadog
         uses: masci/datadog@v1
@@ -29,7 +29,6 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      - uses: mikehardy/buildcache-action@v2
       - uses: mathieu-bour/setup-sentry-cli@v1.3.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -73,19 +72,21 @@ jobs:
             build-pods-
       - run: pod install --deployment
         working-directory: 'ios/App'
-      - run: |
-          npx dotenv-vault decrypt $DOTENV_KEY > .env
-          ls -al .env
-        working-directory: 'fastlane/'
-        env:
-          DOTENV_KEY: ${{ secrets.DOTENV_KEY_PRODUCTION }}
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
           working-directory: 'fastlane/'
+      - run: npx dotenv-vault decrypt $DOTENV_KEY > .env
+        working-directory: 'fastlane/'
+        env:
+          DOTENV_VAULT_PATH: .env.vault
+      - uses: mikehardy/buildcache-action@v2
       - run: bundle exec fastlane ios sandbox
         working-directory: 'fastlane/'
+        continue-on-error: true
+        env:
+          DOTENV_VAULT_PATH: .env.vault
       - uses: actions/upload-artifact@v3
         if: success()
         with:
