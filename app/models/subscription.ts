@@ -12,7 +12,22 @@ import type PromoCode from './promo-code';
 import type SubscriptionPlan from './subscription-plan';
 import type User from './user';
 
-export default class SubscriptionModel extends Model {
+export enum SubscriptionStatus {
+  Active = 'active',
+  Canceled = 'canceled',
+  Incomplete = 'incomplete',
+  IncompleteExpired = 'incomplete_expired',
+  PastDue = 'past_due',
+  Trialing = 'trialing',
+  Unpaid = 'unpaid',
+}
+
+export const ACTIVE_STATUSES = [
+  SubscriptionStatus.Active,
+  SubscriptionStatus.Trialing,
+];
+
+export default class Subscription extends Model {
   @belongsTo('credit-card', { async: true, inverse: 'subscriptions' })
   declare paymentMethod: AsyncBelongsTo<CreditCard>;
 
@@ -38,4 +53,12 @@ export default class SubscriptionModel extends Model {
 
   @attr('date') declare createdAt: Date;
   @attr('date') declare updatedAt: Date;
+
+  get isActive(): boolean {
+    return ACTIVE_STATUSES.includes(this.statusEnum);
+  }
+
+  get statusEnum(): SubscriptionStatus {
+    return this.status as SubscriptionStatus;
+  }
 }

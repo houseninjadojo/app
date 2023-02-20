@@ -12,6 +12,7 @@ import type StoreService from '@ember-data/store';
 import type { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import type Model from '@ember-data/model';
 import type User from 'houseninja/models/user';
+import type Subscription from 'houseninja/models/subscription';
 
 const CACHED_MODELS = [
   'payment-method',
@@ -127,6 +128,13 @@ export default class OnboardingService extends Service {
 
   set zipcode(zip) {
     this.storage.setLocal('zipcode', zip, TTL_MINUTES);
+  }
+
+  async isSubscribed(): Promise<boolean> {
+    const subscription = (await this.fetchLocalModel(
+      'subscription'
+    )) as Subscription;
+    return subscription?.isActive;
   }
 
   // eslint-disable-next-line prettier/prettier
