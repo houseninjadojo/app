@@ -41,6 +41,9 @@ const autoImport = {
   alias: {
     sinon: 'sinon/pkg/sinon-esm',
   },
+  babel: {
+    plugins: [require.resolve('ember-auto-import/babel-plugin')],
+  },
 };
 
 /**
