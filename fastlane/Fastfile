@@ -172,7 +172,7 @@ platform :ios do
       api_key: options[:api_key],
       type: 'appstore',
       app_identifier: bundle_identifier,
-      readonly: false,
+      readonly: true,
       git_basic_authorization: git_basic_authorization,
     )
     update_code_signing_settings(
