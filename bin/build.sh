@@ -1,2 +1,4 @@
-npm install
-npm run build:env
+corepack enable
+corepack prepare pnpm@latest --activate
+pnpm install
+pnpm build
