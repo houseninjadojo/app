@@ -1,3 +1,10 @@
+## [1.29.9](https://github.com/houseninjadojo/app/compare/v1.29.8...v1.29.9) (2023-02-20)
+
+
+### Bug Fixes
+
+* dynamic import of lottie-web ([#1651](https://github.com/houseninjadojo/app/issues/1651)) ([137d169](https://github.com/houseninjadojo/app/commit/137d169323c866c4337f794ac5a3f0f0b966031a))
+
 ## [1.29.8](https://github.com/houseninjadojo/app/compare/v1.29.7...v1.29.8) (2023-02-20)
 
 
