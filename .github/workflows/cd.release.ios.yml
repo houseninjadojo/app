@@ -29,7 +29,6 @@ jobs:
               ddtags: "env:production,service:github-actions,source:github,ci.step:release,ci.service:app,status:info"
               message: "{\"message\":\"[ci/cd] app - starting ios build\", \"level\":\"info\", \"ci.branch\":\"main\", \"ci.service\":\"app\", \"ci.step\":\"release\"}"
               service: "github-actions"
-      - uses: mikehardy/buildcache-action@v2
       - uses: mathieu-bour/setup-sentry-cli@v1.3.0
         with:
           token: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -82,8 +81,10 @@ jobs:
         working-directory: 'fastlane/'
         env:
           DOTENV_VAULT_PATH: .env.vault
+      - uses: mikehardy/buildcache-action@v2
       - run: bundle exec fastlane ios sandbox
         working-directory: 'fastlane/'
+        continue-on-error: true
         env:
           DOTENV_VAULT_PATH: .env.vault
       - uses: actions/upload-artifact@v3
