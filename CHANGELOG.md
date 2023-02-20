@@ -1,3 +1,10 @@
+## [1.29.7](https://github.com/houseninjadojo/app/compare/v1.29.6...v1.29.7) (2023-02-17)
+
+
+### Bug Fixes
+
+* **dotenv:** update .env.vault ([80af335](https://github.com/houseninjadojo/app/commit/80af3353b093738f86c57b7195acc38ee7b210b4))
+
 ## [1.29.6](https://github.com/houseninjadojo/app/compare/v1.29.5...v1.29.6) (2023-02-17)
 
 
