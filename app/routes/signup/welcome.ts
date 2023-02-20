@@ -2,13 +2,22 @@ import Route from '@ember/routing/route';
 import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
 import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
+import { SignupRoute } from 'houseninja/data/enums/routes';
 import OnboardingService from 'houseninja/services/onboarding';
 import RouterService from '@ember/routing/router-service';
+import CurrentService from 'houseninja/services/current';
 
 class SignupWelcomeRoute extends Route {
   @service declare onboarding: OnboardingService;
   @service declare router: RouterService;
-  @service declare current: any;
+  @service declare current: CurrentService;
+
+  async beforeModel(): Promise<void> {
+    const isSubscribed = await this.onboarding.isSubscribed();
+    if (!isSubscribed) {
+      this.router.transitionTo(SignupRoute.PaymentMethod);
+    }
+  }
 
   activate(): void {
     // this is a workaround for "disabling" the back button
@@ -35,12 +44,6 @@ class SignupWelcomeRoute extends Route {
     // disable this listener when the route is navigated away from
     window.onpopstate = () => null;
     this.onboarding.completeStep(OnboardingStep.Welcome);
-  }
-
-  beforeModel() {
-    if (!this.current.user?.subscription) {
-      this.router.transitionTo('signup.payment-method');
-    }
   }
 }
 

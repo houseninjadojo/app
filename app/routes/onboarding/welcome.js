@@ -1,10 +1,18 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { WELCOME } from 'houseninja/data/enums/onboarding-step';
+import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 
 export default class OnboardingWelcomeRoute extends Route {
   @service onboarding;
   @service router;
+
+  async beforeModel() {
+    const isSubscribed = await this.onboarding.isSubscribed();
+    if (!isSubscribed) {
+      this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
+    }
+  }
 
   activate() {
     // this is a workaround for "disabling" the back button
