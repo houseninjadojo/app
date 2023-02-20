@@ -1,5 +1,5 @@
-// eslint-disable-next-line
-require('dotenv').config();
+require('dotenv-vault-core').config();
+require('dotenv-vault-core').config();
 
 // eslint-disable-next-line
 const environment = process.env.ENV || process.env.NODE_ENV || 'development';
