@@ -29,8 +29,10 @@ end
 # app_store_key_content   = ENV['APPSTORE_PRIVATE_KEY'].to_s
 app_store_api_key       = ENV['APP_STORE_API_KEY']&.gsub("\\\n", '\n')
 apple_team_id           = ENV['APPLE_TEAM_ID']
+apple_team_name         = ENV['APPLE_TEAM_NAME']
 build_number            = '1'
 bundle_identifier       = 'co.houseninja.application'
+code_sign_identity      = 'Apple Distribution: House Ninja, Inc. (76HLG2JBUV)'
 gh_user                 = 'mileszim'
 gh_pat                  = ENV['GHCR_PAT']
 git_basic_authorization = Base64.strict_encode64("#{gh_user}:#{gh_pat}")
@@ -123,7 +125,12 @@ platform :ios do
   desc 'build app'
   lane :build do
     xcargs = ENV['CI'] ? buildcache_xcargs : nil
+    update_project_team(
+      path: xcode_project_path,
+      teamid: apple_team_id
+    )
     build_app(
+      codesigning_identity: code_sign_identity,
       scheme: scheme,
       workspace: xcode_workspace,
       xcargs: xcargs,
@@ -173,15 +180,22 @@ platform :ios do
       api_key: options[:api_key],
       type: 'appstore',
       app_identifier: bundle_identifier,
-      readonly: true,
+      readonly: false,
       git_basic_authorization: git_basic_authorization,
+      team_id: apple_team_id,
+      team_name: apple_team_name,
+      platform: 'ios',
+      profile_name: provision_profile_name,
+      verbose: true,
     )
     update_code_signing_settings(
       use_automatic_signing: false,
       path: xcode_project_path,
-      team_id: apple_team_id,
+      # team_id: apple_team_id,
       bundle_identifier: bundle_identifier,
       profile_name: provision_profile_name,
+      sdk: 'iphoneos',
+      code_sign_identity: code_sign_identity
     )
   end
 
