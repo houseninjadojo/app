@@ -1,12 +1,11 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import lottieWeb from 'lottie-web';
 import { logoLoader } from './animation-object/logo-loader';
 import { logoLoaderFinished } from './animation-object/logo-loader-checked';
 
 export default class LogoLoaderComponent extends Component {
   @action
-  showLoader(selector) {
+  async showLoader(selector) {
     const container = document.getElementById(selector);
     const defaultOptions = {
       container,
@@ -23,6 +22,7 @@ export default class LogoLoaderComponent extends Component {
       loop: false,
       animationData: logoLoaderFinished,
     };
+    const lottieWeb = (await import('lottie-web')).default;
 
     lottieWeb
       .loadAnimation(

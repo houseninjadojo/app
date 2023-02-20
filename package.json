@@ -1,6 +1,6 @@
 {
   "name": "houseninja",
-  "version": "1.29.6",
+  "version": "1.29.9",
   "private": true,
   "description": "House Ninja Mobile App",
   "repository": "https://github.com/houseninjadojo/app.git",
@@ -13,8 +13,8 @@
   "scripts": {
     "build": "ember build --environment=production",
     "build:env": "ember build --environment=$NODE_ENV",
-    "env:build": "npx dotenv-vault build",
-    "env:push:ci": "npx dotenv-vault push ci",
+    "env:build": "npx dotenv-vault@latest build",
+    "env:push:ci": "npx dotenv-vault@latest push ci",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
@@ -192,5 +192,5 @@
   "resolutions": {
     "ember-data": "4.7.3"
   },
-  "packageManager": "pnpm@7.27.0"
+  "packageManager": "pnpm@7.27.1"
 }

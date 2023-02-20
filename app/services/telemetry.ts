@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import ENV from 'houseninja/config/environment';
 import { init as initSentry } from 'houseninja/lib/sentry';
 
-const isAllowedEnvironment: boolean = ['sandbox', 'production'].includes(ENV.environment); // eslint-disable-line prettier/prettier
+const isAllowedEnvironment: boolean = ['sandbox', 'production'].includes(ENV.env); // eslint-disable-line prettier/prettier
 const doNotRecord = !isAllowedEnvironment;
 let startedAtBoot = false;
 

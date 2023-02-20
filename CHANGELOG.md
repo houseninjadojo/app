@@ -1,3 +1,29 @@
+## [1.29.9](https://github.com/houseninjadojo/app/compare/v1.29.8...v1.29.9) (2023-02-20)
+
+
+### Bug Fixes
+
+* dynamic import of lottie-web ([#1651](https://github.com/houseninjadojo/app/issues/1651)) ([137d169](https://github.com/houseninjadojo/app/commit/137d169323c866c4337f794ac5a3f0f0b966031a))
+
+## [1.29.8](https://github.com/houseninjadojo/app/compare/v1.29.7...v1.29.8) (2023-02-20)
+
+
+### Bug Fixes
+
+* require a subscription to proceed to the welcome route ([#1641](https://github.com/houseninjadojo/app/issues/1641)) ([e916442](https://github.com/houseninjadojo/app/commit/e91644287348d07194f07cd8b5f3b534ca56a2d5))
+
+
+### Chores
+
+* **deps:** update pnpm to v7.27.1 ([83e11f5](https://github.com/houseninjadojo/app/commit/83e11f5bbbbd89641937ddc5c0b854881ef03e77))
+
+## [1.29.7](https://github.com/houseninjadojo/app/compare/v1.29.6...v1.29.7) (2023-02-17)
+
+
+### Bug Fixes
+
+* **dotenv:** update .env.vault ([80af335](https://github.com/houseninjadojo/app/commit/80af3353b093738f86c57b7195acc38ee7b210b4))
+
 ## [1.29.6](https://github.com/houseninjadojo/app/compare/v1.29.5...v1.29.6) (2023-02-17)
 
 

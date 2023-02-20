@@ -5,7 +5,9 @@ require('dotenv-vault-core').config();
 /**
  * Utils
  */
-const { isProdLike, isNotProdLike } = require('./lib/utils');
+const { isProdLike, isNotProdLike, isCF } = require('./lib/utils');
+const includeSourceMaps = isCF || isNotProdLike();
+
 
 /**
  * Ember Application
@@ -39,6 +41,9 @@ const autoImport = {
   alias: {
     sinon: 'sinon/pkg/sinon-esm',
   },
+  babel: {
+    plugins: [require.resolve('ember-auto-import/babel-plugin')],
+  },
 };
 
 /**
@@ -48,7 +53,8 @@ const autoImport = {
 // const babel = {
 //   sourceMaps: 'inline',
 //   plugins: [
-//     ...require('ember-cli-code-coverage').buildBabelPlugin({ embroider: true }),
+//     // ...require('ember-cli-code-coverage').buildBabelPlugin({ embroider: true }),
+//     // require.resolve('ember-auto-import/babel-plugin'),
 //   ],
 // };
 
@@ -101,7 +107,7 @@ const publicAssetURL = '/';
  * Embroider - Webpack Configuration
  */
 const webpackConfig = {
-  devtool: isProdLike() ? 'hidden-source-map' : 'inline-source-map',
+  devtool: includeSourceMaps() ? 'hidden-source-map' : 'inline-source-map',
   module: {
     rules: [
       {
@@ -141,7 +147,7 @@ const webpackConfig = {
  */
 const cssLoaderOptions = {
   // dont create source maps in production
-  sourceMap: isNotProdLike(),
+  sourceMap: includeSourceMaps(),
   // enable CSS modules
   modules: {
     // global mode, can be either global or local

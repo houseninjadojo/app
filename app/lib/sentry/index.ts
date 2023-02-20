@@ -10,7 +10,7 @@ const { sentry: sentryConfig } = config;
 const sentryOptions = {
   ...sentryConfig,
   integrations,
-  environment: config.environment,
+  env: config.env,
   denyUrls: [
     /localhost/,
     /127\.0\.0\.1/,

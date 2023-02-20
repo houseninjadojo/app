@@ -7,7 +7,7 @@ import { datadogRum } from '@datadog/browser-rum';
 export default Sentry;
 
 export function captureException(ex: Error): void {
-  if (config.environment === 'development') {
+  if (config.env === 'development') {
     console.error(ex);
   } else {
     datadogRum.addError(ex);

@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import lottieWeb from 'lottie-web';
 import { splashLoader } from './animation-object/logo-splash';
 
 export default class SplashLoaderComponent extends Component {
@@ -20,7 +19,7 @@ export default class SplashLoaderComponent extends Component {
   }
 
   @action
-  showLoader(selector) {
+  async showLoader(selector) {
     const container = document.getElementById(selector);
     const defaultOptions = {
       container,
@@ -32,6 +31,8 @@ export default class SplashLoaderComponent extends Component {
       loop: false,
       animationData: splashLoader,
     };
+
+    const lottieWeb = (await import('lottie-web')).default;
 
     const animation = lottieWeb.loadAnimation(startOptions);
     animation.setSpeed(1);

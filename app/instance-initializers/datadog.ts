@@ -38,7 +38,7 @@ const beforeSend = (
 
 const options: LogsInitConfiguration = {
   ...ENV.datadog,
-  env: ENV.environment,
+  // env: ENV.environment,
   forwardErrorsToLogs: true,
   forwardConsoleLogs: 'all',
   forwardReports: 'all',
@@ -49,7 +49,7 @@ const options: LogsInitConfiguration = {
 
 const rumOptions = {
   ...ENV.datadog,
-  env: ENV.environment,
+  // env: ENV.environment,
   sessionSampleRate: 100,
   sessionReplaySampleRate: 100, // if not included, the default is 100
   trackFrustrations: true,
@@ -67,17 +67,17 @@ const rumOptions = {
 };
 
 export function initializeLogs() {
-  if (['test', 'development'].includes(ENV.environment)) return;
+  if (['test', 'development'].includes(ENV.env)) return;
   if (!ENV.datadog.clientToken) return;
   datadogLogs.init(options);
-  datadogLogs.setLoggerGlobalContext({ env: ENV.environment });
-  datadogLogs.setGlobalContextProperty('env', ENV.environment);
+  datadogLogs.setLoggerGlobalContext({ env: ENV.env });
+  datadogLogs.setGlobalContextProperty('env', ENV.env);
   datadogLogs.logger.setHandler(['console', 'http']);
   datadogLogs.logger.info('datadog initialized');
 }
 
 export function initializeRum() {
-  if (['test', 'development'].includes(ENV.environment)) return;
+  if (['test', 'development'].includes(ENV.env)) return;
   if (!ENV.datadog.clientToken || !ENV.datadog.applicationId) return;
   datadogRum.init(rumOptions);
 }

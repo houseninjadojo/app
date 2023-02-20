@@ -84,7 +84,7 @@ platform :android do
     upload_to_play_store(
       track: options[:track] || 'internal',
       track_promote_to: options[:track_promote_to] || 'production',
-      json_key_data: json_key_data_raw,
+      json_key_data: json_key_data_raw.gsub("\\\\n", "\\n"),
       release_status: options[:release_status] || 'draft',
       # rollout: options[:rollout] || '1',
       changes_not_sent_for_review: false,
