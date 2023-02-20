@@ -41,6 +41,9 @@ const autoImport = {
   alias: {
     sinon: 'sinon/pkg/sinon-esm',
   },
+  babel: {
+    plugins: [require.resolve('ember-auto-import/babel-plugin')],
+  },
 };
 
 /**
@@ -50,7 +53,8 @@ const autoImport = {
 // const babel = {
 //   sourceMaps: 'inline',
 //   plugins: [
-//     ...require('ember-cli-code-coverage').buildBabelPlugin({ embroider: true }),
+//     // ...require('ember-cli-code-coverage').buildBabelPlugin({ embroider: true }),
+//     // require.resolve('ember-auto-import/babel-plugin'),
 //   ],
 // };
 
