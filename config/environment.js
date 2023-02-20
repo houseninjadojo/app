@@ -5,6 +5,8 @@ require('dotenv-vault-core').config();
 const pkg = require('../package.json');
 
 module.exports = function (environment) {
+  const env = process.env.ENV || environment || 'development';
+
   let ENV = {
     modulePrefix: 'houseninja',
     environment,
@@ -24,6 +26,8 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    env,
 
     apiHost: process.env.API_HOST,
     appHost: process.env.APP_HOST,
@@ -58,6 +62,7 @@ module.exports = function (environment) {
     datadog: {
       applicationId: process.env.DATADOG_RUM_APP_ID,
       clientToken: process.env.DATADOG_CLIENT_TOKEN,
+      env,
       side: 'datadoghq.com',
       service: 'app',
       version: pkg.version,
@@ -116,6 +121,7 @@ module.exports = function (environment) {
       dsn: process.env.SENTRY_DSN,
       tracesSampleRate: 0.0,
       debug: false,
+      env,
       autoSessionTracking: true,
       replaysSessionSampleRate: 0.0,
       replaysOnErrorSampleRate: 0.0,
@@ -134,7 +140,7 @@ module.exports = function (environment) {
     },
   };
 
-  if (environment === 'development') {
+  if (env === 'development') {
     // Sentry
     ENV.sentry.debug = true;
 
@@ -148,7 +154,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
-  if (environment === 'test') {
+  if (env === 'test') {
     // Mirage
     ENV['ember-cli-mirage'].enabled = true;
 
@@ -163,7 +169,7 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'sandbox') {
+  if (env === 'sandbox') {
     // Sentry
     ENV.sentry.environment = 'sandbox';
     ENV.sentry.tracesSampleRate = 1.0;
@@ -174,7 +180,7 @@ module.exports = function (environment) {
     ENV['ember-cli-mirage'].excludeFilesFromBuild = true;
   }
 
-  if (environment === 'production') {
+  if (env === 'production') {
     // Sentry
     ENV.sentry.environment = 'production';
     ENV.sentry.tracesSampleRate = 1.0;
