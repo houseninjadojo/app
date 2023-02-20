@@ -1,3 +1,15 @@
+## [1.29.8](https://github.com/houseninjadojo/app/compare/v1.29.7...v1.29.8) (2023-02-20)
+
+
+### Bug Fixes
+
+* require a subscription to proceed to the welcome route ([#1641](https://github.com/houseninjadojo/app/issues/1641)) ([e916442](https://github.com/houseninjadojo/app/commit/e91644287348d07194f07cd8b5f3b534ca56a2d5))
+
+
+### Chores
+
+* **deps:** update pnpm to v7.27.1 ([83e11f5](https://github.com/houseninjadojo/app/commit/83e11f5bbbbd89641937ddc5c0b854881ef03e77))
+
 ## [1.29.7](https://github.com/houseninjadojo/app/compare/v1.29.6...v1.29.7) (2023-02-17)
 
 
