@@ -13,8 +13,8 @@
   "scripts": {
     "build": "ember build --environment=production",
     "build:env": "ember build --environment=$NODE_ENV",
-    "env:build": "npx dotenv-vault build",
-    "env:push:ci": "npx dotenv-vault push ci",
+    "env:build": "npx dotenv-vault@latest build",
+    "env:push:ci": "npx dotenv-vault@latest push ci",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
