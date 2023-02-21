@@ -1,3 +1,10 @@
+## [1.29.12](https://github.com/houseninjadojo/app/compare/v1.29.11...v1.29.12) (2023-02-21)
+
+
+### Bug Fixes
+
+* **android:** splash assets ([#1655](https://github.com/houseninjadojo/app/issues/1655)) ([881ecda](https://github.com/houseninjadojo/app/commit/881ecda4cf5772089763feed7bb274fab3ae44f8))
+
 ## [1.29.11](https://github.com/houseninjadojo/app/compare/v1.29.10...v1.29.11) (2023-02-20)
 
 
