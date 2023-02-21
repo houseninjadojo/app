@@ -12,6 +12,7 @@
     <string name="deeplink_scheme">co.houseninja.application</string>
     <string name="branch_key">key_live_am2NwPVSjgO1OyefXDS6ghphBxnYYNHt</string>
     <string name="branch_test_key">key_test_ggWUFKIMinJ3PAjl8Mh8BalcFrg00QSI</string>
-    <bool name="branch_test_mode">false</bool>
+  <string name="houseninja">House Ninja</string>
+  <bool name="branch_test_mode">false</bool>
     <!-- set above to "true" to use test key -->
 </resources>
