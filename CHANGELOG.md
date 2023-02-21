@@ -1,3 +1,10 @@
+## [1.29.13](https://github.com/houseninjadojo/app/compare/v1.29.12...v1.29.13) (2023-02-21)
+
+
+### Bug Fixes
+
+* **android:** error on load ([#1656](https://github.com/houseninjadojo/app/issues/1656)) ([3cd6e52](https://github.com/houseninjadojo/app/commit/3cd6e528c625fc5a2403dce0672f5ee3ffe21ce5))
+
 ## [1.29.12](https://github.com/houseninjadojo/app/compare/v1.29.11...v1.29.12) (2023-02-21)
 
 
