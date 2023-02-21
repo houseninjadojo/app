@@ -13,9 +13,8 @@ class SignupSetPasswordRoute extends Route {
   @service declare router: RouterService;
   @service declare store: StoreService;
 
-  async beforeModel(): Promise<void> {
-    const isSubscribed = await this.onboarding.isSubscribed();
-    if (!isSubscribed) {
+  beforeModel(): void {
+    if (!this.onboarding.isSubscribed) {
       this.router.transitionTo(SignupRoute.PaymentMethod);
     }
   }

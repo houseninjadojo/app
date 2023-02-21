@@ -9,7 +9,6 @@ import type OnboardingService from 'houseninja/services/onboarding';
 import type Property from 'houseninja/models/property';
 import type ServiceArea from 'houseninja/models/service-area';
 import type User from 'houseninja/models/user';
-import CurrentService from 'houseninja/services/current';
 import RouterService from '@ember/routing/router-service';
 
 type ModelResponse = {
@@ -20,12 +19,10 @@ type ModelResponse = {
 
 class SignupWalkthroughBookingRoute extends Route {
   @service declare onboarding: OnboardingService;
-  @service declare current: CurrentService;
   @service declare router: RouterService;
 
-  async beforeModel(): Promise<void> {
-    const isSubscribed = await this.onboarding.isSubscribed();
-    if (!isSubscribed) {
+  beforeModel(): void {
+    if (!this.onboarding.isSubscribed) {
       this.router.transitionTo(SignupRoute.PaymentMethod);
     }
     if (this.onboarding.currentStep === OnboardingStep.WalkthroughBooking) {

@@ -5,7 +5,7 @@ import { nextStep as nextOnboardingStep } from 'houseninja/data/enums/onboarding
 import { captureException } from 'houseninja/utils/sentry';
 import { pluralize } from 'ember-inflector';
 import { TrackedAsyncData } from 'ember-async-data';
-import { cached } from 'tracked-toolbox';
+import { cached } from '@glimmer/tracking';
 
 import type StorageService from 'houseninja/services/storage';
 import type MetricsService from 'houseninja/services/metrics';
@@ -133,11 +133,12 @@ export default class OnboardingService extends Service {
   }
 
   @cached
-  isSubscribed(): Promise<boolean> {
-    const subscription = (await this.fetchLocalModel(
-      'subscription'
-    )) as Subscription;
-    return subscription?.isActive;
+  get isSubscribed(): boolean {
+    const tracked = new TrackedAsyncData(
+      this.fetchLocalModel('subscription') as Promise<Subscription>,
+      this
+    );
+    return tracked.isResolved && tracked.value?.isActive;
   }
 
   // eslint-disable-next-line prettier/prettier

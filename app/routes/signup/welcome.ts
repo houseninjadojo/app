@@ -5,16 +5,13 @@ import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import { SignupRoute } from 'houseninja/data/enums/routes';
 import OnboardingService from 'houseninja/services/onboarding';
 import RouterService from '@ember/routing/router-service';
-import CurrentService from 'houseninja/services/current';
 
 class SignupWelcomeRoute extends Route {
   @service declare onboarding: OnboardingService;
   @service declare router: RouterService;
-  @service declare current: CurrentService;
 
-  async beforeModel(): Promise<void> {
-    const isSubscribed = await this.onboarding.isSubscribed();
-    if (!isSubscribed) {
+  beforeModel(): void {
+    if (!this.onboarding.isSubscribed) {
       this.router.transitionTo(SignupRoute.PaymentMethod);
     }
   }

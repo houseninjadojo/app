@@ -6,9 +6,8 @@ import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
 export default class OnboardingBookingConfirmationRoute extends Route {
   @service onboarding;
 
-  async beforeModel() {
-    const isSubscribed = await this.onboarding.isSubscribed();
-    if (!isSubscribed) {
+  beforeModel() {
+    if (!this.onboarding.isSubscribed) {
       this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
     }
   }
