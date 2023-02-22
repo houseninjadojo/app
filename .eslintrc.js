@@ -16,11 +16,12 @@ module.exports = {
     //   legacyDecorators: true,
     // },
   },
-  plugins: ['ember'],
+  plugins: ['ember', '@ionic'],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:prettier/recommended',
+    'plugin:@ionic/eslint-config/recommended',
   ],
   env: {
     browser: true,

@@ -1,0 +1,8 @@
+{
+  "name": "houseninja",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom",
+  "npmClient": "pnpm"
+}

@@ -12,7 +12,9 @@
   },
   "scripts": {
     "build": "ember build --environment=production",
-    "build:env": "ember build --environment=$NODE_ENV",
+    "cap:sync": "npx cap sync",
+    "cap:sync:ios": "npx cap sync ios",
+    "cap:sync:android": "npx cap sync android",
     "env:build": "npx dotenv-vault@latest build",
     "env:push:ci": "npx dotenv-vault@latest push ci",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
@@ -28,7 +30,9 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "test:ci": "percy exec -- ember test",
-    "upload:sourcemaps:datadog": "datadog-ci sourcemaps upload dist --service $SERVICE --release-version $VERSION --minified-path-prefix $DD_SOURCEMAP_PREFIX"
+    "upload:sourcemaps:datadog": "datadog-ci sourcemaps upload dist --service $SERVICE --release-version $VERSION --minified-path-prefix $DD_SOURCEMAP_PREFIX",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run start"
   },
   "devDependencies": {
     "@algonauti/ember-active-storage": "^2.2.0",
@@ -51,6 +55,7 @@
     "@faker-js/faker": "^7.6.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
+    "@ionic/eslint-config": "^0.3.0",
     "@percy/cli": "^1.18.0",
     "@percy/ember": "^4.1.0",
     "@sentry/browser": "7.31.1",
@@ -96,6 +101,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-terser-sourcemap": "^4.1.0",
     "canvas-confetti": "^1.6.0",
+    "cordova-res": "0.15.4",
     "crypto-js": "^4.1.1",
     "cssnano": "^5.1.14",
     "dayjs": "^1.11.7",

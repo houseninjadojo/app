@@ -352,7 +352,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F7BC8DB78F8A6EF44E3CE61 /* Pods-House Ninja.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBlack;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Black";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -377,7 +377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 304250E6951515E8467EC42C /* Pods-House Ninja.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBlack;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Black";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: House Ninja, Inc. (76HLG2JBUV)";
