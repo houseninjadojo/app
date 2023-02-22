@@ -7,9 +7,8 @@ export default class OnboardingWelcomeRoute extends Route {
   @service onboarding;
   @service router;
 
-  async beforeModel() {
-    const isSubscribed = await this.onboarding.isSubscribed();
-    if (!isSubscribed) {
+  beforeModel() {
+    if (!this.onboarding.isSubscribed) {
       this.router.transitionTo(SIGNUP_ROUTE.PAYMENT_METHOD);
     }
   }

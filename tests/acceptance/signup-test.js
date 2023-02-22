@@ -31,7 +31,7 @@ module('Acceptance | Signup', function (hooks) {
   module('Subscribed Gate', function () {
     test('signup/welcome should redirect to signup/payment-method if not subscribed', async function (assert) {
       let onboarding = this.owner.lookup('service:onboarding');
-      onboarding.isSubscribed = () => false;
+      onboarding.isSubscribed = false;
 
       await visit('/signup/welcome');
       assert.strictEqual(currentURL(), '/signup/payment-method');
@@ -40,7 +40,7 @@ module('Acceptance | Signup', function (hooks) {
 
     test('signup/walkthrough-booking should redirect to signup/payment-method if not subscribed', async function (assert) {
       let onboarding = this.owner.lookup('service:onboarding');
-      onboarding.isSubscribed = () => false;
+      onboarding.isSubscribed = false;
 
       await visit('/signup/walkthrough-booking');
       assert.strictEqual(currentURL(), '/signup/payment-method');
@@ -48,7 +48,7 @@ module('Acceptance | Signup', function (hooks) {
 
     test('signup/set-password should redirect to signup/payment-method if not subscribed', async function (assert) {
       let onboarding = this.owner.lookup('service:onboarding');
-      onboarding.isSubscribed = () => false;
+      onboarding.isSubscribed = false;
 
       await visit('/signup/set-password');
       assert.strictEqual(currentURL(), '/signup/payment-method');
@@ -56,7 +56,7 @@ module('Acceptance | Signup', function (hooks) {
 
     test('signup/booking-confirmation should redirect to signup/payment-method if not subscribed', async function (assert) {
       let onboarding = this.owner.lookup('service:onboarding');
-      onboarding.isSubscribed = () => false;
+      onboarding.isSubscribed = false;
 
       await visit('/signup/booking-confirmation');
       assert.strictEqual(currentURL(), '/signup/payment-method');
@@ -64,7 +64,7 @@ module('Acceptance | Signup', function (hooks) {
 
     test('signup/property-info should redirect to signup/payment-method if not subscribed', async function (assert) {
       let onboarding = this.owner.lookup('service:onboarding');
-      onboarding.isSubscribed = () => false;
+      onboarding.isSubscribed = false;
 
       await visit('/signup/property-info');
       assert.strictEqual(currentURL(), '/signup/payment-method');

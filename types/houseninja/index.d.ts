@@ -2,6 +2,7 @@
 
 import Ember from 'ember';
 import Route from '@ember/routing/route';
+import 'ember-cached-decorator-polyfill';
 
 declare global {
   // Prevents ESLint from "fixing" this via its auto-fix to turn it into a type
