@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
+import { formatCreditCardNumberElement, formatExpMonth } from 'houseninja/utils/components/formatting';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
@@ -144,7 +144,11 @@ export default class PaymentMethodComponent extends Component {
 
   @action
   validateForm(e) {
-    if (e.target.id === 'cardNumber') {
+    if (e.target.id === 'expMonth') {
+      this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
+      formatExpMonth(e.target);
+      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+    } else if (e.target.id === 'cardNumber') {
       this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       formatCreditCardNumberElement(e.target);
       this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;

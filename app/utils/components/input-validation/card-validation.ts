@@ -26,8 +26,8 @@ export function cardValidation(fields: Field[]): CardValidation {
       /^(\d{4})-(\d{4})-(\d{4})-(\d{4})$/.test(cardNumber) ||
       /^(\d{4})-(\d{6})-(\d{5})$/.test(cardNumber),
     cvvIsValid: /^(\d{3,4})$/.test(cvv),
-    monthIsValid: /^(\d{2})$/.test(expMonth),
-    yearIsValid: /^(\d{2}|\d{4})$/.test(expYear),
+    monthIsValid: /^(\d{2})$/.test(expMonth), // this only tests 2 digits not that the month is 1-12
+    yearIsValid: /^(\d{2}|\d{4})$/.test(expYear), //should only be in future
     zipcodeIsValid: /^(\d{5})$/.test(zipcode),
     //agreedToTerms: true,
   };
