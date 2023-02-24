@@ -1,11 +1,19 @@
-require('dotenv-vault-core').config();
-require('dotenv-vault-core').config();
+import dotenvVaultCore from 'dotenv-vault-core';
+import { environment, serverUrl, loggingBehavior } from './lib/cap-utils';
 
-// eslint-disable-next-line
-const environment = process.env.ENV || process.env.NODE_ENV || 'development';
+dotenvVaultCore.config();
+dotenvVaultCore.config();
 
-const serverUrl =
-  environment === 'development' ? process.env.CAPACITOR_SERVER_URL : undefined;
+const allowedNavigation = (environment) => {
+  switch (environment) {
+    case 'development':
+      return ['localhost', 'localhost:4200', 'sandbox.auth.houseninja.co'];
+    case 'sandbox':
+      return ['localhost', 'sandbox.auth.houseninja.co'];
+    case 'production':
+      return ['localhost', 'auth.houseninja.co', 'houseninja.co'];
+  }
+};
 
 /**
  * Capactior Configuration
@@ -16,7 +24,7 @@ const base = {
   appId: process.env.CAPACITOR_APP_ID,
   appName: 'House Ninja',
   bundledWebRuntime: false,
-  loggingBehavior: 'debug',
+  loggingBehavior,
   npmClient: 'pnpm',
   webDir: 'dist',
 };
@@ -39,13 +47,7 @@ const server = {
   androidScheme: 'http',
   cleartext: environment === 'development',
   url: serverUrl,
-  allowNavigation: [
-    'localhost:4200',
-    'auth.houseninja.co',
-    'sandbox.auth.houseninja.co',
-    'houseninja.co',
-    '*.houseninja.co',
-  ],
+  allowNavigation: allowedNavigation(environment),
 };
 
 const plugins = {
@@ -91,24 +93,19 @@ const config = {
 };
 
 if (environment === 'production') {
-  config.loggingBehavior = 'production';
+  //
 }
 
 if (environment === 'sandbox') {
-  config.loggingBehavior = 'production';
+  //
 }
 
 if (environment === 'test') {
-  config.server.url = null;
+  // config.server.url = undefined;
 }
 
 if (environment === 'development') {
   // nothing yet
 }
 
-if (environment === 'mobile') {
-  config.server.url = 'co.houseninja.application://localhost:4200';
-}
-
-// eslint-disable-next-line
-module.exports = config;
+export default config;
