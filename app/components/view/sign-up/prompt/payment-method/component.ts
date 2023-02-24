@@ -51,14 +51,6 @@ export default class PaymentMethodComponent extends Component<Args> {
   @tracked promoCodeDescription = '';
   @tracked promoCodeInput = '';
 
-  // @tracked errors = {
-  //   cardNumber: [],
-  //   cvv: [],
-  //   expMonth: [],
-  //   expYear: [],
-  //   zipcode: [],
-  // };
-
   fields: Field[] = [
     {
       id: 'cardNumber',
@@ -113,7 +105,7 @@ export default class PaymentMethodComponent extends Component<Args> {
   }
 
   @action
-  handleAgreement(agreesToTermsAndConditions: any) {
+  handleAgreement(agreesToTermsAndConditions: boolean) {
     this.agreedToTermsAndConditions = agreesToTermsAndConditions;
     this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
     this.showTermsAndConditionsComponent(false);
@@ -152,7 +144,6 @@ export default class PaymentMethodComponent extends Component<Args> {
   validateForm(e: Event) {
     const target = <HTMLInputElement>e.target;
     if (target.id === 'expMonth') {
-      //this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       formatExpMonth(target);
       this.args.creditCard.set('expMonth', formatExpMonth(target));
       const field = this.fields.find((f) => f.id === 'expMonth');
@@ -160,7 +151,6 @@ export default class PaymentMethodComponent extends Component<Args> {
         field.value = this.args.creditCard.get('expMonth');
       }
     } else if (target.id === 'cardNumber') {
-      //this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       this.args.creditCard.set(
         'cardNumber',
         formatCreditCardNumberElement(target)
@@ -171,30 +161,18 @@ export default class PaymentMethodComponent extends Component<Args> {
         field.value = this.args.creditCard.get('cardNumber');
       }
     } else if (target.id === 'expYear') {
-      // this.paymentMethod[e.target.id] = e.target.value;
-      // console.log(`setting ${e.target.id} to ${e.target.value}`);
-      // this.fields.filter((f) => f.id === e.target.id)[0].value =
-      //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('expYear', target.value);
       const field = this.fields.find((f) => f.id === 'expYear');
       if (field) {
         field.value = this.args.creditCard.get('expYear');
       }
     } else if (target.id === 'zipcode') {
-      // this.paymentMethod[e.target.id] = e.target.value;
-      // console.log(`setting ${e.target.id} to ${e.target.value}`);
-      // this.fields.filter((f) => f.id === e.target.id)[0].value =
-      //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('zipcode', target.value);
       const field = this.fields.find((f) => f.id === 'zipcode');
       if (field) {
         field.value = this.args.creditCard.get('zipcode');
       }
     } else if (target.id === 'cvv') {
-      // this.paymentMethod[e.target.id] = e.target.value;
-      // console.log(`setting ${e.target.id} to ${e.target.value}`);
-      // this.fields.filter((f) => f.id === e.target.id)[0].value =
-      //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('cvv', target.value);
       const field = this.fields.find((f) => f.id === 'cvv');
       if (field) {
@@ -215,22 +193,7 @@ export default class PaymentMethodComponent extends Component<Args> {
     const user = await this.onboarding.fetchLocalModel('user');
     const subscription = await this.findOrCreateSubscription();
 
-    //let paymentMethod;
     try {
-      // if (isPresent(this.args.creditCard)) {
-      //   paymentMethod = this.args.paymentMethod;
-      //   paymentMethod.setProperties({
-      //     ...this.paymentMethod,
-      //     subscription,
-      //     user,
-      //   });
-      // } else {
-      //   paymentMethod = this.store.createRecord('credit-card', {
-      //     ...this.paymentMethod,
-      //     subscription,
-      //     user,
-      //   });
-      // }
       this.args.creditCard.set('subscription', subscription);
       this.args.creditCard.set('user', user);
 
@@ -239,7 +202,6 @@ export default class PaymentMethodComponent extends Component<Args> {
 
       this.router.transitionTo(SIGNUP_ROUTE.WELCOME);
     } catch (e: any) {
-      //this.errors = this.args.creditCard.errors;
       captureException(e);
     } finally {
       this.isLoading = false;
