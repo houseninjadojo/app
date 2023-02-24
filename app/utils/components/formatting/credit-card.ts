@@ -1,7 +1,9 @@
 import { trackCursorPosition } from './track-cursor-position';
 
-export function formatCreditCardNumberElement(inputEl: HTMLInputElement): void {
-  trackCursorPosition(inputEl, formatCardNumberElement, '-');
+export function formatCreditCardNumberElement(
+  inputEl: HTMLInputElement
+): string {
+  return trackCursorPosition(inputEl, formatCardNumberElement, '-');
 }
 
 export function formatCreditCardNumber(num: string): string {

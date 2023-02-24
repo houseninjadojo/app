@@ -21,6 +21,8 @@ import StoreService from 'houseninja/services/store';
 import OnboardingService from 'houseninja/services/onboarding';
 import type PromoCode from 'houseninja/models/promo-code';
 import type CreditCard from 'houseninja/models/credit-card';
+import type Subscription from 'houseninja/models/subscription';
+import type { Field } from 'houseninja/app/components';
 
 const DEBOUNCE_MS = 250;
 
@@ -57,7 +59,7 @@ export default class PaymentMethodComponent extends Component<Args> {
   //   zipcode: [],
   // };
 
-  fields = [
+  fields: Field[] = [
     {
       id: 'cardNumber',
       required: true,
@@ -72,7 +74,6 @@ export default class PaymentMethodComponent extends Component<Args> {
       placeholder: '',
     },
     {
-      type: 'number',
       id: 'expMonth',
       required: true,
       label: 'Month',
@@ -97,13 +98,7 @@ export default class PaymentMethodComponent extends Component<Args> {
   constructor(owner: unknown, args: Args) {
     super(owner, args);
 
-    if (isPresent(this.args.creditCard)) {
-      // this.paymentMethod =
-      // this.paymentMethod.cardNumber = this.args.paymentMethod.get('cardNumber');
-      // this.paymentMethod.cvv = this.args.paymentMethod.get('cvv');
-      // this.paymentMethod.expMonth = this.args.paymentMethod.get('expMonth');
-      // this.paymentMethod.expYear = this.args.paymentMethod.get('expYear');
-      // this.paymentMethod.zipcode = this.args.paymentMethod.get('zipcode');
+    if (!this.args.creditCard.isNew) {
       this.formIsValid = true;
     }
   }
@@ -159,36 +154,58 @@ export default class PaymentMethodComponent extends Component<Args> {
     if (target.id === 'expMonth') {
       //this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       formatExpMonth(target);
-      //this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
       this.args.creditCard.set('expMonth', formatExpMonth(target));
+      const field = this.fields.find((f) => f.id === 'expMonth');
+      if (field) {
+        field.value = this.args.creditCard.get('expMonth');
+      }
     } else if (target.id === 'cardNumber') {
       //this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
       this.args.creditCard.set(
         'cardNumber',
         formatCreditCardNumberElement(target)
       );
-      //this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
+      const field = this.fields.find((f) => f.id === 'cardNumber');
+      console.log(this.args.creditCard.get('cardNumber'));
+      if (field) {
+        field.value = this.args.creditCard.get('cardNumber');
+      }
     } else if (target.id === 'expYear') {
       // this.paymentMethod[e.target.id] = e.target.value;
       // console.log(`setting ${e.target.id} to ${e.target.value}`);
       // this.fields.filter((f) => f.id === e.target.id)[0].value =
       //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('expYear', target.value);
+      const field = this.fields.find((f) => f.id === 'expYear');
+      if (field) {
+        field.value = this.args.creditCard.get('expYear');
+      }
     } else if (target.id === 'zipcode') {
       // this.paymentMethod[e.target.id] = e.target.value;
       // console.log(`setting ${e.target.id} to ${e.target.value}`);
       // this.fields.filter((f) => f.id === e.target.id)[0].value =
       //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('zipcode', target.value);
+      const field = this.fields.find((f) => f.id === 'zipcode');
+      if (field) {
+        field.value = this.args.creditCard.get('zipcode');
+      }
     } else if (target.id === 'cvv') {
       // this.paymentMethod[e.target.id] = e.target.value;
       // console.log(`setting ${e.target.id} to ${e.target.value}`);
       // this.fields.filter((f) => f.id === e.target.id)[0].value =
       //   this.paymentMethod[e.target.id];
       this.args.creditCard.set('cvv', target.value);
+      const field = this.fields.find((f) => f.id === 'cvv');
+      if (field) {
+        field.value = this.args.creditCard.get('cvv');
+      }
     }
 
-    this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
+    console.log(this.fields);
+    const validationObject = inputValidation(this.fields, ['cardIsValid']);
+    console.log(validationObject);
+    this.formIsValid = !validationObject.isInvalid;
     this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
   }
 
@@ -229,13 +246,15 @@ export default class PaymentMethodComponent extends Component<Args> {
     }
   }
 
-  async findOrCreateSubscription() {
+  async findOrCreateSubscription(): Promise<Subscription> {
     const user = await this.onboarding.fetchLocalModel('user');
     const subscriptionPlan = await this.onboarding.fetchLocalModel(
       'subscription-plan'
     );
     const promoCode = this.promoCode;
-    let subscription = await this.onboarding.fetchLocalModel('subscription');
+    let subscription = (await this.onboarding.fetchLocalModel(
+      'subscription'
+    )) as Subscription;
     if (isPresent(subscription)) {
       subscription.setProperties({
         promoCode,
