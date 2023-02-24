@@ -1,4 +1,6 @@
 import dotenvVaultCore from 'dotenv-vault-core';
+import { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize } from '@capacitor/keyboard';
 import { environment, serverUrl, loggingBehavior } from './lib/cap-utils';
 
 dotenvVaultCore.config();
@@ -20,76 +22,61 @@ const allowedNavigation = (environment) => {
  * https://capacitorjs.com/docs/config
  */
 
-const base = {
+const config: CapacitorConfig = {
   appId: process.env.CAPACITOR_APP_ID,
   appName: 'House Ninja',
   bundledWebRuntime: false,
   loggingBehavior,
-  npmClient: 'pnpm',
   webDir: 'dist',
-};
-
-const android = {
-  allowMixedContent: false,
-  buildOptions: {
-    releaseType: 'APK',
+  android: {
+    allowMixedContent: false,
+    buildOptions: {
+      releaseType: 'APK',
+    },
   },
-};
-
-const ios = {
-  contentInset: 'never',
-  scrollEnabled: 'false',
-};
-
-const server = {
-  hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
-  iosScheme: process.env.APP_SCHEME,
-  androidScheme: 'http',
-  cleartext: environment === 'development',
-  url: serverUrl,
-  allowNavigation: allowedNavigation(environment),
-};
-
-const plugins = {
-  CapacitorCookies: {
-    enabled: false,
+  ios: {
+    contentInset: 'never',
+    scrollEnabled: false,
   },
-  SplashScreen: {
-    launchShowDuration: 0,
-    launchAutoHide: true,
-    backgroundColor: '#000000',
+  server: {
+    hostname: process.env.CAPACITOR_SERVER_HOSTNAME,
+    iosScheme: process.env.APP_SCHEME,
+    androidScheme: 'http',
+    cleartext: environment === 'development',
+    url: serverUrl,
+    allowNavigation: allowedNavigation(environment),
   },
-  Keyboard: {
-    resize: 'body',
+  plugins: {
+    CapacitorCookies: {
+      enabled: false,
+    },
+    SplashScreen: {
+      launchShowDuration: 0,
+      launchAutoHide: true,
+      backgroundColor: '#000000',
+    },
+    Keyboard: {
+      resize: KeyboardResize.Body,
+    },
+    PushNotifications: {
+      presentationOptions: ['badge', 'sound', 'alert'],
+    },
+    LocalNotifications: {
+      smallIcon: '',
+      iconColor: '',
+      sound: '',
+    },
+    Intercom: {
+      androidApiKey: process.env.INTERCOM_ANDROID_API_KEY,
+      androidAppId: process.env.INTERCOM_APP_ID,
+      iosApiKey: process.env.INTERCOM_IOS_API_KEY,
+      iosAppId: process.env.INTERCOM_APP_ID,
+    },
+    Mixpanel: {
+      token: process.env.MIXPANEL_TOKEN ?? '',
+    },
   },
-  PushNotifications: {
-    presentationOptions: ['badge', 'sound', 'alert'],
-  },
-  LocalNotifications: {
-    smallIcon: '',
-    iconColor: '',
-    sound: '',
-  },
-  Intercom: {
-    androidApiKey: process.env.INTERCOM_ANDROID_API_KEY,
-    androidAppId: process.env.INTERCOM_APP_ID,
-    iosApiKey: process.env.INTERCOM_IOS_API_KEY,
-    iosAppId: process.env.INTERCOM_APP_ID,
-  },
-  Mixpanel: {
-    token: process.env.MIXPANEL_TOKEN,
-  },
-};
-
-const cordova = {};
-
-const config = {
-  ...base,
-  android,
-  ios,
-  server,
-  plugins,
-  cordova,
+  cordova: {},
 };
 
 if (environment === 'production') {
@@ -101,11 +88,11 @@ if (environment === 'sandbox') {
 }
 
 if (environment === 'test') {
-  // config.server.url = undefined;
+  //
 }
 
 if (environment === 'development') {
-  // nothing yet
+  //
 }
 
 export default config;

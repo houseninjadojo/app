@@ -26,6 +26,7 @@ specifiers:
   '@capacitor/push-notifications': ^4.1.2
   '@capacitor/share': ^4.1.0
   '@capacitor/splash-screen': ^4.1.3
+  '@capacitor/toast': ^4.1.0
   '@capawesome/capacitor-file-picker': ^0.6.0
   '@datadog/browser-logs': ^4.32.0
   '@datadog/browser-rum': ^4.32.0
@@ -45,6 +46,7 @@ specifiers:
   '@houseninja/capacitor-branch': 5.1.0-beta.6
   '@houseninja/capacitor-intercom': 4.3.0
   '@houseninja/capacitor-mixpanel': ^2.1.0
+  '@ionic/pwa-elements': ^3.1.1
   '@mineminemine/fcm': ^4.0.3
   '@percy/cli': ^1.18.0
   '@percy/ember': ^4.1.0
@@ -114,7 +116,6 @@ specifiers:
   ember-concurrency: ^2.3.7
   ember-content-loader: ^3.0.0
   ember-data: 4.7.3
-  ember-export-application-global: ^2.0.1
   ember-fetch: ^8.1.1
   ember-inflector: ^4.0.2
   ember-load-initializers: ^2.1.2
@@ -172,10 +173,12 @@ dependencies:
   '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.7.0
   '@capacitor/share': 4.1.0_@capacitor+core@4.7.0
   '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.7.0
+  '@capacitor/toast': 4.1.0_@capacitor+core@4.7.0
   '@capawesome/capacitor-file-picker': 0.6.0_@capacitor+core@4.7.0
   '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.7.0
   '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.7.0
   '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.7.0
+  '@ionic/pwa-elements': 3.1.1
   '@mineminemine/fcm': 4.0.3_@capacitor+core@4.7.0
   '@sentry/capacitor': 0.11.1_@capacitor+core@4.7.0
   capacitor-secure-storage-plugin: 0.8.1_@capacitor+core@4.7.0
@@ -267,7 +270,6 @@ devDependencies:
   ember-concurrency: 2.3.7_@babel+core@7.20.12
   ember-content-loader: 3.0.0
   ember-data: 4.7.3_la66t7xldg4uecmyawueag5wkm
-  ember-export-application-global: 2.0.1
   ember-fetch: 8.1.2
   ember-inflector: 4.0.2
   ember-load-initializers: 2.1.2_@babel+core@7.20.12
@@ -1815,6 +1817,14 @@ packages:
       '@capacitor/core': 4.7.0
     dev: false
 
+  /@capacitor/toast/4.1.0_@capacitor+core@4.7.0:
+    resolution: {integrity: sha512-hU3GoA1dT+dsMuDOlEeiaU2mdd4VCLvIzgbp7Vk0Mqy9tbg++W4t7hcewlawzJGs6FxH59rIekf2lz7m4ir33w==}
+    peerDependencies:
+      '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 4.7.0
+    dev: false
+
   /@capawesome/capacitor-file-picker/0.6.0_@capacitor+core@4.7.0:
     resolution: {integrity: sha512-WFVNy4+UYdm00zaSpWZnprF+NxhTXc3lP+uqcr47M6CA+b+bNmvOHe/ZljMicpL+eKLgLGAM5lsOXXuzXXK17Q==}
     peerDependencies:
@@ -2801,6 +2811,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@ionic/pwa-elements/3.1.1:
+    resolution: {integrity: sha512-BoEX1pSrKn5dP4VQwaf8DweAmT4ynmpW+9f6oj/W1xLe54bmuXcUY07ziuZX1DLu50xHSYcO5qJ/dbYC/w6wgA==}
+    dev: false
 
   /@ionic/utils-array/2.1.5:
     resolution: {integrity: sha512-HD72a71IQVBmQckDwmA8RxNVMTbxnaLbgFOl+dO5tbvW9CkkSFCv41h6fUuNsSEVgngfkn0i98HDuZC8mk+lTA==}
@@ -8697,11 +8711,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
-    dev: true
-
-  /ember-export-application-global/2.0.1:
-    resolution: {integrity: sha512-B7wiurPgsxsSGzJuPFkpBWnaeuCu2PGpG2BjyrfA1VcL7//o+5RSnZqiCEY326y7qmxb2GoCgo0ft03KBU0rRw==}
-    engines: {node: '>= 4'}
     dev: true
 
   /ember-factory-for-polyfill/1.3.1:

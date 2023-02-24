@@ -121,7 +121,6 @@
     "ember-concurrency": "^2.3.7",
     "ember-content-loader": "^3.0.0",
     "ember-data": "4.7.3",
-    "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
     "ember-inflector": "^4.0.2",
     "ember-load-initializers": "^2.1.2",
@@ -162,7 +161,8 @@
     "whatwg-url": "12.0.0"
   },
   "engines": {
-    "node": "14.* || 16.* || >= 18.*"
+    "node": "14.* || 16.* || >= 18.*",
+    "pnpm": ">=6.0.0"
   },
   "ember": {
     "edition": "octane"
@@ -185,10 +185,12 @@
     "@capacitor/push-notifications": "^4.1.2",
     "@capacitor/share": "^4.1.0",
     "@capacitor/splash-screen": "^4.1.3",
+    "@capacitor/toast": "^4.1.0",
     "@capawesome/capacitor-file-picker": "^0.6.0",
     "@houseninja/capacitor-branch": "5.1.0-beta.6",
     "@houseninja/capacitor-intercom": "4.3.0",
     "@houseninja/capacitor-mixpanel": "^2.1.0",
+    "@ionic/pwa-elements": "^3.1.1",
     "@mineminemine/fcm": "^4.0.3",
     "@sentry/capacitor": "0.11.1",
     "capacitor-secure-storage-plugin": "^0.8.1"
@@ -196,5 +198,8 @@
   "resolutions": {
     "ember-data": "4.7.3"
   },
-  "packageManager": "pnpm@7.27.1"
+  "packageManager": "pnpm@7.27.1",
+  "allowedDeprecatedVersions": {
+    "@types/source-map": "*"
+  }
 }
