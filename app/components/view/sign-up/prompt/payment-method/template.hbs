@@ -15,10 +15,10 @@
                     @required={{field.required}}
                     @type={{field.type}}
                     @placeholder={{field.placeholder}}
-                    @value={{mut (get this.paymentMethod field.id)}}
+                    @value={{mut (get @creditCard field.id)}}
                     @onInput={{this.validateForm}}
                     @maxLength={{field.maxLength}}
-                    @errors={{(get this.errors field.id)}}
+                    @errors={{(get @creditCard.errors field.id)}}
                 />
             {{/each}}
             <Primitive::Input
