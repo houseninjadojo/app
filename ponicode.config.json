@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1",
+  "javascript": {
+    "name": "houseninja",
+    "rootDir": "/",
+    "testEnvironment": "typescript",
+    "testLocationStrategy": "relativeToProjectRoot",
+    "testLocationFolder": "./tests/ponicode"
+  }
+}
