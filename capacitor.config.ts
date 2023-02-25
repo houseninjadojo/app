@@ -386,7 +386,7 @@ const config: CapacitorConfig = {
      *
      * @since 3.0.0
      */
-    includePlugins: [],
+    // includePlugins: [],
 
     /**
      * Sets WKWebView configuration for limitsNavigationsToAppBoundDomains.
@@ -521,7 +521,7 @@ const config: CapacitorConfig = {
      *
      * @since 3.3.0
      */
-    accessOrigins: [],
+    // accessOrigins: [],
 
     /**
      * Configure Cordova preferences.
