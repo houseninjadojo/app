@@ -46,6 +46,9 @@ export default class ViewService extends Service {
 
   @action
   preservePreviousRoute(router: RouterService = this.router): void {
+    if (!router.currentRoute) {
+      return;
+    }
     const { name, params } = router.currentRoute;
     const newHistory = [
       ...this.history.preservedPreviousRoute,
