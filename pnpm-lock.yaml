@@ -26,7 +26,6 @@ specifiers:
   '@capacitor/push-notifications': ^4.1.2
   '@capacitor/share': ^4.1.0
   '@capacitor/splash-screen': ^4.1.3
-  '@capacitor/toast': ^4.1.0
   '@capawesome/capacitor-file-picker': ^0.6.0
   '@datadog/browser-logs': ^4.32.0
   '@datadog/browser-rum': ^4.32.0
@@ -173,7 +172,6 @@ dependencies:
   '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.7.0
   '@capacitor/share': 4.1.0_@capacitor+core@4.7.0
   '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.7.0
-  '@capacitor/toast': 4.1.0_@capacitor+core@4.7.0
   '@capawesome/capacitor-file-picker': 0.6.0_@capacitor+core@4.7.0
   '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.7.0
   '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.7.0
@@ -1811,14 +1809,6 @@ packages:
 
   /@capacitor/splash-screen/4.1.3_@capacitor+core@4.7.0:
     resolution: {integrity: sha512-WkQQHFVK9kST+D8B0Z0jRGzZRQhtSKPhCkGez9dbOM+ggjCSjaXf90DK0nABbuNuO/99XAY6cJFkrZzw6erTBw==}
-    peerDependencies:
-      '@capacitor/core': ^4.0.0
-    dependencies:
-      '@capacitor/core': 4.7.0
-    dev: false
-
-  /@capacitor/toast/4.1.0_@capacitor+core@4.7.0:
-    resolution: {integrity: sha512-hU3GoA1dT+dsMuDOlEeiaU2mdd4VCLvIzgbp7Vk0Mqy9tbg++W4t7hcewlawzJGs6FxH59rIekf2lz7m4ir33w==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:

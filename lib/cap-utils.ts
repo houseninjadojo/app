@@ -14,3 +14,14 @@ export const serverUrl = (() => {
 export const loggingBehavior = (() => {
   return environment === 'development' ? 'debug' : 'production';
 })();
+
+export const allowedNavigation = (environment) => {
+  switch (environment) {
+    case 'development':
+      return ['localhost', 'localhost:4200', 'sandbox.auth.houseninja.co'];
+    case 'sandbox':
+      return ['localhost', 'sandbox.auth.houseninja.co'];
+    case 'production':
+      return ['localhost', 'auth.houseninja.co', 'houseninja.co'];
+  }
+};
