@@ -120,7 +120,7 @@
     "ember-cli-typescript": "^5.2.1",
     "ember-concurrency": "^2.3.7",
     "ember-content-loader": "^3.0.0",
-    "ember-data": "4.11.1",
+    "ember-data": "4.11.3",
     "ember-fetch": "^8.1.1",
     "ember-inflector": "^4.0.2",
     "ember-load-initializers": "^2.1.2",
@@ -195,7 +195,7 @@
     "capacitor-secure-storage-plugin": "^0.8.1"
   },
   "resolutions": {
-    "ember-data": "4.11.1"
+    "ember-data": "4.11.3"
   },
   "packageManager": "pnpm@7.28.0",
   "allowedDeprecatedVersions": {
