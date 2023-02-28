@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 
 import config from 'houseninja/config/environment';
-import { initialize } from 'houseninja/initializers/console';
+import { initialize, content } from 'houseninja/initializers/console';
 import { module, test } from 'qunit';
 import Resolver from 'ember-resolver';
 import { run } from '@ember/runloop';
@@ -28,10 +28,14 @@ module('Unit | Initializer | console', function (hooks) {
     run(this.application, 'destroy');
   });
 
-  // TODO: Replace this with your real tests.
-  test('it works', async function (assert) {
+  test('it should not log in test env', async function (assert) {
     await this.application.boot();
+    assert.false(!!content('test'));
+  });
 
-    assert.ok(true);
+  test('it should log in other env', async function (assert) {
+    await this.application.boot();
+    assert.true(!!content('development'));
+    assert.true(!!content('production'));
   });
 });
