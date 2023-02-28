@@ -6,7 +6,9 @@ import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
 import {
   formatCreditCardNumberElement,
+  formatCvv,
   formatExpMonth,
+  formatExpYear,
 } from 'houseninja/utils/components/formatting';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
@@ -56,26 +58,28 @@ export default class PaymentMethodComponent extends Component<Args> {
       id: 'cardNumber',
       required: true,
       label: 'Card Number',
+      inputmode: 'numeric',
       placeholder: '',
     },
     {
-      type: 'number',
       id: 'cvv',
       required: true,
       label: 'Security Code',
+      inputmode: 'numeric',
       placeholder: '',
     },
     {
       id: 'expMonth',
       required: true,
       label: 'Month',
+      inputmode: 'numeric',
       placeholder: 'MM',
     },
     {
-      type: 'number',
       id: 'expYear',
       required: true,
       label: 'Year',
+      inputmode: 'numeric',
       placeholder: 'YY',
     },
     {
@@ -83,6 +87,7 @@ export default class PaymentMethodComponent extends Component<Args> {
       id: 'zipcode',
       required: true,
       label: 'Zipcode',
+      inputmode: 'numeric',
       placeholder: '',
     },
   ];
@@ -144,7 +149,6 @@ export default class PaymentMethodComponent extends Component<Args> {
   validateForm(e: Event) {
     const target = <HTMLInputElement>e.target;
     if (target.id === 'expMonth') {
-      formatExpMonth(target);
       this.args.creditCard.set('expMonth', formatExpMonth(target));
       const field = this.fields.find((f) => f.id === 'expMonth');
       if (field) {
@@ -161,7 +165,7 @@ export default class PaymentMethodComponent extends Component<Args> {
         field.value = this.args.creditCard.get('cardNumber');
       }
     } else if (target.id === 'expYear') {
-      this.args.creditCard.set('expYear', target.value);
+      this.args.creditCard.set('expYear', formatExpYear(target));
       const field = this.fields.find((f) => f.id === 'expYear');
       if (field) {
         field.value = this.args.creditCard.get('expYear');
@@ -173,7 +177,7 @@ export default class PaymentMethodComponent extends Component<Args> {
         field.value = this.args.creditCard.get('zipcode');
       }
     } else if (target.id === 'cvv') {
-      this.args.creditCard.set('cvv', target.value);
+      this.args.creditCard.set('cvv', formatCvv(target));
       const field = this.fields.find((f) => f.id === 'cvv');
       if (field) {
         field.value = this.args.creditCard.get('cvv');
