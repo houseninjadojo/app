@@ -15,7 +15,7 @@ const sentryOptions = {
     /localhost/,
     /127\.0\.0\.1/,
     /api2\.branch\.io/,
-    /browser-intake-datadoghq\.com/,
+    /[\w-]+\.browser-intake-datadoghq\.com/,
   ],
   ignoreErrors: [
     /DEPRECATION/,
