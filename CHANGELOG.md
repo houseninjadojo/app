@@ -1,3 +1,19 @@
+## [1.29.14](https://github.com/houseninjadojo/app/compare/v1.29.13...v1.29.14) (2023-02-25)
+
+
+### Bug Fixes
+
+* check if there's a currentRoute before attempting to preserve previous ([#1664](https://github.com/houseninjadojo/app/issues/1664)) ([c83b76b](https://github.com/houseninjadojo/app/commit/c83b76b294e63b6823e133f8d59a4e2da6a06f74))
+
+
+### Chores
+
+* **deps:** update capacitor monorepo to v4.7.0 ([4907349](https://github.com/houseninjadojo/app/commit/49073490ca10373c9146be89792d05f3e2933096))
+* **deps:** update dependency ember-data to v4.11.1 ([802c1b3](https://github.com/houseninjadojo/app/commit/802c1b3564577caf5cca27ad4bb2bce248284108))
+* **deps:** update dependency gradle to v7.6.1 ([b7f71ff](https://github.com/houseninjadojo/app/commit/b7f71ff8f0cd479cba965f8623eb0fb4bb86a7f4))
+* **deps:** update pnpm to v7.28.0 ([c6df17a](https://github.com/houseninjadojo/app/commit/c6df17aa07ecca14fbd73b9b6c0dfbdae8d66077))
+* **deps:** update Podfile.lock ([e0a3997](https://github.com/houseninjadojo/app/commit/e0a3997bd10a039e6d9ec24b9c8d94cd841ea047))
+
 ## [1.29.13](https://github.com/houseninjadojo/app/compare/v1.29.12...v1.29.13) (2023-02-21)
 
 
