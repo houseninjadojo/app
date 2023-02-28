@@ -45,7 +45,7 @@ export default class CurrentService extends Service {
     }
   }
 
-  _loadUser: Task<void, []> = task(this, { drop: true }, async () => {
+  _loadUser: Task<void, []> = task(this, async () => {
     if (!this.session.data?.authenticated?.userinfo) {
       return;
     }
