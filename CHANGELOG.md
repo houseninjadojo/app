@@ -1,3 +1,25 @@
+## [1.29.15](https://github.com/houseninjadojo/app/compare/v1.29.14...v1.29.15) (2023-02-28)
+
+
+### Bug Fixes
+
+* payment method route ([#1669](https://github.com/houseninjadojo/app/issues/1669)) ([edf055f](https://github.com/houseninjadojo/app/commit/edf055f0f7427154b7f278608f135f73cef8abe5))
+
+
+### Docs
+
+* add note about CORs in sandbox env to README ([#1647](https://github.com/houseninjadojo/app/issues/1647)) ([e498439](https://github.com/houseninjadojo/app/commit/e4984390e78281bbfd498ccd6213b33ad5e92c7a))
+
+
+### Chores
+
+* **config:** capacitor config improvements ([#1666](https://github.com/houseninjadojo/app/issues/1666)) ([903dd16](https://github.com/houseninjadojo/app/commit/903dd16ee65f1790a3106abb8766e0cc8628987e))
+* console ascii ([#1670](https://github.com/houseninjadojo/app/issues/1670)) ([611cccc](https://github.com/houseninjadojo/app/commit/611cccc9b71863b6188ce2f21f55cd857669432a))
+* **deps:** update dependency com.android.tools.build:gradle to v7.4.2 ([beea5ad](https://github.com/houseninjadojo/app/commit/beea5adb289e8d153b3021be61997e931eeb1dfa))
+* **deps:** update dependency ember-data to v4.11.2 ([70e4a8b](https://github.com/houseninjadojo/app/commit/70e4a8bd63a90f8c2206061c1fbf9a7b63586797))
+* **deps:** update dependency ember-data to v4.11.3 ([6d4a9db](https://github.com/houseninjadojo/app/commit/6d4a9dbe41adc4808de878b13c30d1a122b6c1c6))
+* **sentry:** update blacklist to prevent logs filled by datadog traces ([#1673](https://github.com/houseninjadojo/app/issues/1673)) ([1b5d23f](https://github.com/houseninjadojo/app/commit/1b5d23f6f2ab0e2bd380b64ffe6c27fcd233b5bf))
+
 ## [1.29.14](https://github.com/houseninjadojo/app/compare/v1.29.13...v1.29.14) (2023-02-25)
 
 
