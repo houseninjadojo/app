@@ -160,7 +160,6 @@ export default class PaymentMethodComponent extends Component<Args> {
         formatCreditCardNumberElement(target)
       );
       const field = this.fields.find((f) => f.id === 'cardNumber');
-      console.log(this.args.creditCard.get('cardNumber'));
       if (field) {
         field.value = this.args.creditCard.get('cardNumber');
       }
@@ -184,9 +183,7 @@ export default class PaymentMethodComponent extends Component<Args> {
       }
     }
 
-    console.log(this.fields);
     const validationObject = inputValidation(this.fields, ['cardIsValid']);
-    console.log(validationObject);
     this.formIsValid = !validationObject.isInvalid;
     this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
   }
