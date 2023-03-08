@@ -152,7 +152,7 @@ specifiers:
   typescript: ^4.9.5
   webpack: ^5.75.0
   webpack-stats-plugin: ^1.1.1
-  whatwg-url: 12.0.0
+  whatwg-url: 12.0.1
 
 dependencies:
   '@capacitor/action-sheet': 4.1.0_@capacitor+core@4.7.0
@@ -305,7 +305,7 @@ devDependencies:
   typescript: 4.9.5
   webpack: 5.75.0
   webpack-stats-plugin: 1.1.1
-  whatwg-url: 12.0.0
+  whatwg-url: 12.0.1
 
 packages:
 
@@ -16626,9 +16626,9 @@ packages:
       punycode: 2.3.0
     dev: true
 
-  /tr46/3.0.0:
-    resolution: {integrity: sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==}
-    engines: {node: '>=12'}
+  /tr46/4.1.1:
+    resolution: {integrity: sha512-2lv/66T7e5yNyhAAC4NaKe5nVavzuGJQVVtRYLyQ2OI8tsJ61PMLlelehb0wi2Hx6+hT/OJUWZcw8MjlSRnxvw==}
+    engines: {node: '>=14'}
     dependencies:
       punycode: 2.3.0
     dev: true
@@ -17348,11 +17348,11 @@ packages:
     resolution: {integrity: sha512-M4yMwr6mAnQz76TbJm914+gPpB/nCwvZbJU28cUD6dR004SAxDLOOSUaB1JDRqLtaOV/vi0IC5lEAGFgrjGv/g==}
     dev: true
 
-  /whatwg-url/12.0.0:
-    resolution: {integrity: sha512-N2SCrbcSPw0gDyNqE+y5qH1gqiOe+HagWfgRJy2SmDO3C23mISmJhQ3zvZljBv2DWfBdLXypAtecWYZ+mg1krQ==}
+  /whatwg-url/12.0.1:
+    resolution: {integrity: sha512-Ed/LrqB8EPlGxjS+TrsXcpUond1mhccS3pchLhzSgPCnTimUCKj3IZE75pAs5m6heB2U2TMerKFUXheyHY+VDQ==}
     engines: {node: '>=14'}
     dependencies:
-      tr46: 3.0.0
+      tr46: 4.1.1
       webidl-conversions: 7.0.0
     dev: true
 
