@@ -4,7 +4,12 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { task, timeout } from 'ember-concurrency';
 import { inputValidation } from 'houseninja/utils/components/input-validation';
-import { formatCreditCardNumberElement } from 'houseninja/utils/components/formatting';
+import {
+  formatCreditCardNumberElement,
+  formatCvv,
+  formatExpMonth,
+  formatExpYear,
+} from 'houseninja/utils/components/formatting';
 import { captureException } from 'houseninja/utils/sentry';
 import { isPresent } from '@ember/utils';
 import { SIGNUP_ROUTE } from 'houseninja/data/enums/routes';
@@ -12,66 +17,69 @@ import {
   signupPromoCodeDescription,
   signupPromoCodeAlert,
 } from 'houseninja/utils/signup/promo-code-description';
+import RouterService from '@ember/routing/router-service';
+import CurrentService from 'houseninja/services/current';
+import StoreService from 'houseninja/services/store';
+import OnboardingService from 'houseninja/services/onboarding';
+import type PromoCode from 'houseninja/models/promo-code';
+import type CreditCard from 'houseninja/models/credit-card';
+import type Subscription from 'houseninja/models/subscription';
+import type { Field } from 'houseninja/app/components';
 
 const DEBOUNCE_MS = 250;
 
-export default class PaymentMethodComponent extends Component {
-  @service current;
-  @service router;
-  @service store;
-  @service onboarding;
+interface PromoCodeAlert {
+  title: string;
+  detail: string;
+}
+
+type Args = {
+  creditCard: CreditCard;
+};
+
+export default class PaymentMethodComponent extends Component<Args> {
+  @service declare current: CurrentService;
+  @service declare router: RouterService;
+  @service declare store: StoreService;
+  @service declare onboarding: OnboardingService;
 
   @tracked isLoading = false;
   @tracked showTermsAndConditions = false;
   @tracked agreedToTermsAndConditions = false;
   @tracked formIsValid = false;
   @tracked shallNotPass = true;
-  @tracked promoCode;
-  @tracked promoCodeAlert;
+  @tracked promoCode?: PromoCode;
+  @tracked promoCodeAlert?: PromoCodeAlert;
   @tracked promoCodeDescription = '';
   @tracked promoCodeInput = '';
-  @tracked paymentMethod = {
-    cardNumber: null,
-    cvv: null,
-    expMonth: null,
-    expYear: null,
-    zipcode: null,
-  };
 
-  @tracked errors = {
-    cardNumber: [],
-    cvv: [],
-    expMonth: [],
-    expYear: [],
-    zipcode: [],
-  };
-
-  fields = [
+  fields: Field[] = [
     {
       id: 'cardNumber',
       required: true,
       label: 'Card Number',
+      inputmode: 'numeric',
       placeholder: '',
     },
     {
-      type: 'number',
       id: 'cvv',
       required: true,
       label: 'Security Code',
+      inputmode: 'numeric',
       placeholder: '',
     },
     {
-      type: 'number',
       id: 'expMonth',
       required: true,
       label: 'Month',
+      inputmode: 'numeric',
       placeholder: 'MM',
     },
     {
-      type: 'number',
       id: 'expYear',
       required: true,
       label: 'Year',
+      inputmode: 'numeric',
       placeholder: 'YY',
     },
     {
@@ -79,21 +87,15 @@ export default class PaymentMethodComponent extends Component {
       id: 'zipcode',
       required: true,
       label: 'Zipcode',
+      inputmode: 'numeric',
       placeholder: '',
     },
   ];
 
-  constructor() {
-    super(...arguments);
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
 
-    if (isPresent(this.args.paymentMethod)) {
-      this.paymentMethod = this.args.paymentMethod.getProperties(
-        'cardNumber',
-        'cvv',
-        'expMonth',
-        'expYear',
-        'zipcode'
-      );
+    if (!this.args.creditCard.isNew) {
       this.formIsValid = true;
     }
   }
@@ -103,20 +105,21 @@ export default class PaymentMethodComponent extends Component {
     this.router.transitionTo(SIGNUP_ROUTE.CONTACT_INFO);
   }
 
-  @action showTermsAndConditionsComponent(isVisible) {
+  @action showTermsAndConditionsComponent(isVisible: boolean) {
     this.showTermsAndConditions = isVisible;
   }
 
   @action
-  handleAgreement(agreesToTermsAndConditions) {
+  handleAgreement(agreesToTermsAndConditions: boolean) {
     this.agreedToTermsAndConditions = agreesToTermsAndConditions;
     this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
     this.showTermsAndConditionsComponent(false);
   }
 
   @task({ restartable: true })
-  *checkPromoCode(e) {
-    this.promoCodeInput = e.target.value;
+  *checkPromoCode(e: Event) {
+    const target = <HTMLInputElement>e.target;
+    this.promoCodeInput = target.value;
 
     if (this.promoCodeInput.length < 3) {
       return null;
@@ -129,7 +132,7 @@ export default class PaymentMethodComponent extends Component {
           code: this.promoCodeInput,
         },
       });
-    } catch (e) {
+    } catch (e: any) {
       captureException(e);
     } finally {
       this.promoCode =
@@ -143,18 +146,45 @@ export default class PaymentMethodComponent extends Component {
   }
 
   @action
-  validateForm(e) {
-    if (e.target.id === 'cardNumber') {
-      this.paymentMethod[e.target.id] = e.target.value.replace(/\D/g, '');
-      formatCreditCardNumberElement(e.target);
-      this.fields.filter((f) => f.id === e.target.id)[0].value = e.target.value;
-    } else {
-      this.paymentMethod[e.target.id] = e.target.value;
-      this.fields.filter((f) => f.id === e.target.id)[0].value =
-        this.paymentMethod[e.target.id];
+  validateForm(e: Event) {
+    const target = <HTMLInputElement>e.target;
+    if (target.id === 'expMonth') {
+      this.args.creditCard.set('expMonth', formatExpMonth(target));
+      const field = this.fields.find((f) => f.id === 'expMonth');
+      if (field) {
+        field.value = this.args.creditCard.get('expMonth');
+      }
+    } else if (target.id === 'cardNumber') {
+      this.args.creditCard.set(
+        'cardNumber',
+        formatCreditCardNumberElement(target)
+      );
+      const field = this.fields.find((f) => f.id === 'cardNumber');
+      if (field) {
+        field.value = this.args.creditCard.get('cardNumber');
+      }
+    } else if (target.id === 'expYear') {
+      this.args.creditCard.set('expYear', formatExpYear(target));
+      const field = this.fields.find((f) => f.id === 'expYear');
+      if (field) {
+        field.value = this.args.creditCard.get('expYear');
+      }
+    } else if (target.id === 'zipcode') {
+      this.args.creditCard.set('zipcode', target.value);
+      const field = this.fields.find((f) => f.id === 'zipcode');
+      if (field) {
+        field.value = this.args.creditCard.get('zipcode');
+      }
+    } else if (target.id === 'cvv') {
+      this.args.creditCard.set('cvv', formatCvv(target));
+      const field = this.fields.find((f) => f.id === 'cvv');
+      if (field) {
+        field.value = this.args.creditCard.get('cvv');
+      }
     }
 
-    this.formIsValid = !inputValidation(this.fields, ['cardIsValid']).isInvalid;
+    const validationObject = inputValidation(this.fields, ['cardIsValid']);
+    this.formIsValid = !validationObject.isInvalid;
     this.shallNotPass = !(this.formIsValid && this.agreedToTermsAndConditions);
   }
 
@@ -164,44 +194,30 @@ export default class PaymentMethodComponent extends Component {
     const user = await this.onboarding.fetchLocalModel('user');
     const subscription = await this.findOrCreateSubscription();
 
-    let paymentMethod;
     try {
-      if (isPresent(this.args.paymentMethod)) {
-        paymentMethod = this.args.paymentMethod;
-        paymentMethod.setProperties({
-          ...this.paymentMethod,
-          subscription,
-          user,
-        });
-      } else {
-        paymentMethod = this.store.createRecord('credit-card', {
-          ...this.paymentMethod,
-          subscription,
-          user,
-        });
-      }
+      this.args.creditCard.set('subscription', subscription);
+      this.args.creditCard.set('user', user);
 
-      await paymentMethod.save();
+      await this.args.creditCard.save();
       await subscription.save();
 
       this.router.transitionTo(SIGNUP_ROUTE.WELCOME);
-    } catch (e) {
-      if (isPresent(paymentMethod)) {
-        this.errors = paymentMethod.errors;
-      }
+    } catch (e: any) {
       captureException(e);
     } finally {
       this.isLoading = false;
     }
   }
 
-  async findOrCreateSubscription() {
+  async findOrCreateSubscription(): Promise<Subscription> {
     const user = await this.onboarding.fetchLocalModel('user');
     const subscriptionPlan = await this.onboarding.fetchLocalModel(
       'subscription-plan'
     );
     const promoCode = this.promoCode;
-    let subscription = await this.onboarding.fetchLocalModel('subscription');
+    let subscription = (await this.onboarding.fetchLocalModel(
+      'subscription'
+    )) as Subscription;
     if (isPresent(subscription)) {
       subscription.setProperties({
         promoCode,
