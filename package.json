@@ -197,7 +197,7 @@
   "resolutions": {
     "ember-data": "4.12.0"
   },
-  "packageManager": "pnpm@7.33.0",
+  "packageManager": "pnpm@7.33.7",
   "allowedDeprecatedVersions": {
     "@types/source-map": "*"
   }
