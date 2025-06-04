@@ -9,17 +9,17 @@ specifiers:
   '@babel/eslint-parser': ^7.19.1
   '@babel/plugin-proposal-decorators': ^7.20.13
   '@capacitor/action-sheet': ^4.1.0
-  '@capacitor/android': 4.8.0
+  '@capacitor/android': 4.8.2
   '@capacitor/app': ^4.1.1
   '@capacitor/browser': ^4.1.1
   '@capacitor/camera': ^4.1.4
-  '@capacitor/cli': 4.8.0
-  '@capacitor/core': 4.8.0
+  '@capacitor/cli': 4.8.2
+  '@capacitor/core': 4.8.2
   '@capacitor/device': ^4.1.0
   '@capacitor/dialog': ^4.1.0
   '@capacitor/filesystem': ^4.1.4
   '@capacitor/haptics': ^4.1.0
-  '@capacitor/ios': 4.8.0
+  '@capacitor/ios': 4.8.2
   '@capacitor/keyboard': ^4.1.1
   '@capacitor/local-notifications': ^4.1.4
   '@capacitor/preferences': ^4.0.2
@@ -155,38 +155,38 @@ specifiers:
   whatwg-url: 12.0.1
 
 dependencies:
-  '@capacitor/action-sheet': 4.1.0_@capacitor+core@4.8.0
-  '@capacitor/android': 4.8.0_@capacitor+core@4.8.0
-  '@capacitor/app': 4.1.1_@capacitor+core@4.8.0
-  '@capacitor/browser': 4.1.1_@capacitor+core@4.8.0
-  '@capacitor/camera': 4.1.4_@capacitor+core@4.8.0
-  '@capacitor/core': 4.8.0
-  '@capacitor/device': 4.1.0_@capacitor+core@4.8.0
-  '@capacitor/dialog': 4.1.0_@capacitor+core@4.8.0
-  '@capacitor/filesystem': 4.1.4_@capacitor+core@4.8.0
-  '@capacitor/haptics': 4.1.0_@capacitor+core@4.8.0
-  '@capacitor/ios': 4.8.0_@capacitor+core@4.8.0
-  '@capacitor/keyboard': 4.1.1_@capacitor+core@4.8.0
-  '@capacitor/local-notifications': 4.1.4_@capacitor+core@4.8.0
-  '@capacitor/preferences': 4.0.2_@capacitor+core@4.8.0
-  '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.8.0
-  '@capacitor/share': 4.1.0_@capacitor+core@4.8.0
-  '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.8.0
-  '@capawesome/capacitor-file-picker': 0.6.0_@capacitor+core@4.8.0
-  '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.8.0
-  '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.8.0
-  '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.8.0
+  '@capacitor/action-sheet': 4.1.0_@capacitor+core@4.8.2
+  '@capacitor/android': 4.8.2_@capacitor+core@4.8.2
+  '@capacitor/app': 4.1.1_@capacitor+core@4.8.2
+  '@capacitor/browser': 4.1.1_@capacitor+core@4.8.2
+  '@capacitor/camera': 4.1.4_@capacitor+core@4.8.2
+  '@capacitor/core': 4.8.2
+  '@capacitor/device': 4.1.0_@capacitor+core@4.8.2
+  '@capacitor/dialog': 4.1.0_@capacitor+core@4.8.2
+  '@capacitor/filesystem': 4.1.4_@capacitor+core@4.8.2
+  '@capacitor/haptics': 4.1.0_@capacitor+core@4.8.2
+  '@capacitor/ios': 4.8.2_@capacitor+core@4.8.2
+  '@capacitor/keyboard': 4.1.1_@capacitor+core@4.8.2
+  '@capacitor/local-notifications': 4.1.4_@capacitor+core@4.8.2
+  '@capacitor/preferences': 4.0.2_@capacitor+core@4.8.2
+  '@capacitor/push-notifications': 4.1.2_@capacitor+core@4.8.2
+  '@capacitor/share': 4.1.0_@capacitor+core@4.8.2
+  '@capacitor/splash-screen': 4.1.3_@capacitor+core@4.8.2
+  '@capawesome/capacitor-file-picker': 0.6.0_@capacitor+core@4.8.2
+  '@houseninja/capacitor-branch': 5.1.0-beta.6_@capacitor+core@4.8.2
+  '@houseninja/capacitor-intercom': 4.3.0_@capacitor+core@4.8.2
+  '@houseninja/capacitor-mixpanel': 2.1.0_@capacitor+core@4.8.2
   '@ionic/pwa-elements': 3.1.1
-  '@mineminemine/fcm': 4.0.3_@capacitor+core@4.8.0
-  '@sentry/capacitor': 0.11.1_@capacitor+core@4.8.0
-  capacitor-secure-storage-plugin: 0.9.0_@capacitor+core@4.8.0
+  '@mineminemine/fcm': 4.0.3_@capacitor+core@4.8.2
+  '@sentry/capacitor': 0.11.1_@capacitor+core@4.8.2
+  capacitor-secure-storage-plugin: 0.9.0_@capacitor+core@4.8.2
 
 devDependencies:
   '@algonauti/ember-active-storage': 2.2.0
   '@babel/core': 7.20.12
   '@babel/eslint-parser': 7.19.1_b3mcivpi6zqbotlvqqcfprcnry
   '@babel/plugin-proposal-decorators': 7.20.13_@babel+core@7.20.12
-  '@capacitor/cli': 4.8.0
+  '@capacitor/cli': 4.8.2
   '@datadog/browser-logs': 4.32.0_c3wpid6xjgcicwata4crwobsh4
   '@datadog/browser-rum': 4.32.0_jynbpqzsu25ml5vkse4doibtwa
   '@datadog/datadog-ci': 2.4.0
@@ -2840,48 +2840,48 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@capacitor/action-sheet/4.1.0_@capacitor+core@4.8.0:
+  /@capacitor/action-sheet/4.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-q3gRV3iTOHMuN+ihvNgk0G2dJNNnjkBBXS1tdf1rn9tMdX6BUE9Hi2GmXLI9otKkmJ5JIiURnJURtrn3bp8a+Q==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/android/4.8.0_@capacitor+core@4.8.0:
-    resolution: {integrity: sha512-VFKEWZ7dDExcGnsEz+5euFV6eyEsNZt2WR/rbeE3NXW/1FQZhM5qtqXxGwSUpFkhhlyP1KE0NJoC9EWmHEi+ug==}
+  /@capacitor/android/4.8.2_@capacitor+core@4.8.2:
+    resolution: {integrity: sha512-sWMlHJq9F/+TP6BZHoI0ztvt1kon64lu5IiJnqn80g1U/dSJdvYKhPzphwtFWmvzywQcwf25nRnaTAI/coUY+g==}
     peerDependencies:
-      '@capacitor/core': ^4.7.0
+      '@capacitor/core': ^4.8.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/app/4.1.1_@capacitor+core@4.8.0:
+  /@capacitor/app/4.1.1_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/browser/4.1.1_@capacitor+core@4.8.0:
+  /@capacitor/browser/4.1.1_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-RJKNeRiLm6X668X75YiPN/9t3z1pxVEPjIhLM/AtWAEsHUb8bjroQQ3WGdW/30Wa60a7ywiw3YLqWctfRaYyFw==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/camera/4.1.4_@capacitor+core@4.8.0:
+  /@capacitor/camera/4.1.4_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-7f4n7PlnstYsdGyxc0Kc4hIyS6csFLOjXvffm7pJsuy9pSo+kfdOPdYgGg360QwbUAmA+Yv+J1ZW1eFIwgvWrQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/cli/4.8.0:
-    resolution: {integrity: sha512-Hbs1SKjvyg5wdcMGRt+CzebdgjlnVDjn92WV1p16gsrBwqWm+uDYMNpFQ7vWKALFL9AZCi/r8lXHmuX/HoD2Kw==}
+  /@capacitor/cli/4.8.2:
+    resolution: {integrity: sha512-jOpuajj8Qp5XgWEEC5vxEJcs9HkwSceW8fpvFIFssA/JuS9HeKCurGgpsAWiEHSfpqQevhxISg0l0MEwTpr/JA==}
     engines: {node: '>=12.4.0'}
     hasBin: true
     dependencies:
@@ -2906,106 +2906,106 @@ packages:
       - supports-color
     dev: true
 
-  /@capacitor/core/4.8.0:
-    resolution: {integrity: sha512-hFgLi1bGmADMmYMFAaitEsVheF3QgoMU4TrHkMgik51NzHwUq3nBdP5+A9oNS9qe3dEDyegoaHF8X9oJc9v8QQ==}
+  /@capacitor/core/4.8.2:
+    resolution: {integrity: sha512-lrDvHyQu3LWWWXkCkHATY8D3GCBIWyqnmQUiGxlTJfu9BEdmfflq+OZuDKIy4H+KYChaXM1QnymNIuWrDFXgXw==}
     dependencies:
       tslib: 2.5.0
     dev: false
 
-  /@capacitor/device/4.1.0_@capacitor+core@4.8.0:
+  /@capacitor/device/4.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-BlcYb6e6m+vC1SxeyUDIUGfuNXdKEcpFPDCs/kxk2SByFc/BkvXeoy4NjY4qmTderGELofX9bta5Iy9JV7rGUg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/dialog/4.1.0_@capacitor+core@4.8.0:
+  /@capacitor/dialog/4.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-Uej4+WE6Ec445iTzLVD22fmsPfu8nW+IJyiixtzP5+ZLNhdJ5mjbMUUTUrZTbDUK8hViFRsfLo90qbeGzgMTVA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/filesystem/4.1.4_@capacitor+core@4.8.0:
+  /@capacitor/filesystem/4.1.4_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-ivko1RNK4hq63xhMacq8D6D97N5/SAafTsrmY/pghYrG6Cl2SEY0+IgRu7V9/VWeN3FSplyUPucjUTAFQxXN5g==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/haptics/4.1.0_@capacitor+core@4.8.0:
+  /@capacitor/haptics/4.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-gAIFy50e1VZPdokRFLkl8Y+yZYB3e4brd5yu9DRShbWbheruwU34TxtG5C1NANvq4mbXd3tMXzBi59Q5JFyTHA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/ios/4.8.0_@capacitor+core@4.8.0:
-    resolution: {integrity: sha512-FbEXFzZIe5EGZNKpGxHNUEGKjcKK0XY45P3QXLoJPF3fEndW96ThLZOy3rHjt436sTu41NubFpPyIzyyy1YgMA==}
+  /@capacitor/ios/4.8.2_@capacitor+core@4.8.2:
+    resolution: {integrity: sha512-NBcXs6uDWcLYr9RedkhtyQckLVCPrteC9kFDSnKx3I1qQWXj7RK5g0oULCSWzQ92yxp5RsPFAfs5YdNn1JuFrQ==}
     peerDependencies:
-      '@capacitor/core': ^4.7.0
+      '@capacitor/core': ^4.8.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/keyboard/4.1.1_@capacitor+core@4.8.0:
+  /@capacitor/keyboard/4.1.1_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-fdC7u2TeG4BqwC0LnPnhOdya31C4QKdhk/8pc5lxI9X5jyYAetMCN1kEkKa7KREw4DdzXotJt27B9BXxAza6og==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/local-notifications/4.1.4_@capacitor+core@4.8.0:
+  /@capacitor/local-notifications/4.1.4_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-nEs0SYkOQG7xT8FiKH7CG6BFOJ7jZkWiYt+JbM38s8sSxsAw1D2qfocNIyXstTUxhrJvKBtbl7oTuKg7mGUeuQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/preferences/4.0.2_@capacitor+core@4.8.0:
+  /@capacitor/preferences/4.0.2_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/push-notifications/4.1.2_@capacitor+core@4.8.0:
+  /@capacitor/push-notifications/4.1.2_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-ok6CGvedwK1azmf8VWhrNlg6jhi4PFz3HoyS0GNE2ew7+JGnxN77sgK5q1TVzdkge+vkqipO6uu5bD1xfj/pWQ==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/share/4.1.0_@capacitor+core@4.8.0:
+  /@capacitor/share/4.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-Gh/cgy7Ee+9fkhw+Q4+9s2S4HiC34/eLoaohqRg1ahtpqvTQ3qdInoEJ23FdILq5cLj2ZPpx2VuEXjpLKX1Z5A==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capacitor/splash-screen/4.1.3_@capacitor+core@4.8.0:
+  /@capacitor/splash-screen/4.1.3_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-WkQQHFVK9kST+D8B0Z0jRGzZRQhtSKPhCkGez9dbOM+ggjCSjaXf90DK0nABbuNuO/99XAY6cJFkrZzw6erTBw==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@capawesome/capacitor-file-picker/0.6.0_@capacitor+core@4.8.0:
+  /@capawesome/capacitor-file-picker/0.6.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-WFVNy4+UYdm00zaSpWZnprF+NxhTXc3lP+uqcr47M6CA+b+bNmvOHe/ZljMicpL+eKLgLGAM5lsOXXuzXXK17Q==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
   /@cnakazawa/watch/1.0.4:
@@ -4062,28 +4062,28 @@ packages:
     resolution: {integrity: sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==}
     dev: true
 
-  /@houseninja/capacitor-branch/5.1.0-beta.6_@capacitor+core@4.8.0:
+  /@houseninja/capacitor-branch/5.1.0-beta.6_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-PxvOPanbibEdvjFSrnrYsnA5ARFRiNZQ/x4MNlWebO8bWCs0PflkQDdb8NRhmdYuqDeTQVxgBf7T8D9kAOpFBA==}
     peerDependencies:
       '@capacitor/core': ^4.0.1
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@houseninja/capacitor-intercom/4.3.0_@capacitor+core@4.8.0:
+  /@houseninja/capacitor-intercom/4.3.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-aIW+wuJDerqGMp2F2NXqNUSzByFZto2098UihttN7+AiXkghu9x+8bKSlDCB8FKHRXm58TW9Dri+J6KIUw9cmA==}
     peerDependencies:
       '@capacitor/core': ^4.5.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
-  /@houseninja/capacitor-mixpanel/2.1.0_@capacitor+core@4.8.0:
+  /@houseninja/capacitor-mixpanel/2.1.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-jrwTL06itO/OrP5rHLFXzQkYHQrTU+LmEXoY8IiF7xf7Nw1l8hAYSvHh8xHvMYR5Drt7iftWvsIUiR9Tax17LA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
       mixpanel-browser: 2.45.0
     dev: false
 
@@ -4297,13 +4297,13 @@ packages:
       upath: 2.0.1
     dev: true
 
-  /@mineminemine/fcm/4.0.3_@capacitor+core@4.8.0:
+  /@mineminemine/fcm/4.0.3_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-AV9r+BcDqLaA3EAsE228at4MO97RFPwQsBOuTbnh/245u5GhdrLFMw3cSYCXAzXAOqahSiQ4qlfVZXW29qGYLg==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
   /@miragejs/pretender-node-polyfill/0.1.2:
@@ -4524,7 +4524,7 @@ packages:
       '@sentry/utils': 7.31.1
       tslib: 1.14.1
 
-  /@sentry/capacitor/0.11.1_@capacitor+core@4.8.0:
+  /@sentry/capacitor/0.11.1_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-lt2D9RcOTD4ekO70iYiZQLmk07e4NvxlNToBflAcpiDgyop3Yn6lxTPoL+agSX/QxymHmh1w96gZtp7vKpKE/A==}
     requiresBuild: true
     peerDependencies:
@@ -4540,7 +4540,7 @@ packages:
       '@sentry/vue':
         optional: true
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
       '@sentry/browser': 7.31.1
       '@sentry/core': 7.31.1
       '@sentry/hub': 7.31.1
@@ -7931,12 +7931,12 @@ packages:
     resolution: {integrity: sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==}
     dev: true
 
-  /capacitor-secure-storage-plugin/0.9.0_@capacitor+core@4.8.0:
+  /capacitor-secure-storage-plugin/0.9.0_@capacitor+core@4.8.2:
     resolution: {integrity: sha512-P5fiC94opcLHu41vceo9weXH+20g0SPYKkeAx+qm9eKNcVFqpcuI4dqwivXlGXYNMDygyjSQuAaFwZ4gW0Y91Q==}
     peerDependencies:
       '@capacitor/core': ^5.0.0
     dependencies:
-      '@capacitor/core': 4.8.0
+      '@capacitor/core': 4.8.2
     dev: false
 
   /capture-exit/2.0.0:
@@ -11723,7 +11723,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11923,6 +11923,7 @@ packages:
 
   /glob/5.0.15:
     resolution: {integrity: sha512-c9IPMazfRITpmAAKi22dK1VKxGDX9ehhqfABDriL/lzO92xcUKEJPQHrVA/2YHSNFB4iFlykVmWvwo48nr3OxA==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       inflight: 1.0.6
       inherits: 2.0.4
@@ -11944,6 +11945,7 @@ packages:
 
   /glob/7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -12568,6 +12570,7 @@ packages:
 
   /inflight/1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -14287,11 +14290,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       yallist: 4.0.0
-    dev: true
-
-  /minipass/4.0.1:
-    resolution: {integrity: sha512-V9esFpNbK0arbN3fm2sxDKqMYgIp7XtVdE4Esj+PE4Qaaxdg1wIw48ITQIOn1sc8xXSmUviVL3cyjMqPlrVkiA==}
-    engines: {node: '>=8'}
     dev: true
 
   /minipass/4.2.8:
@@ -16488,6 +16486,7 @@ packages:
 
   /rimraf/2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -16495,6 +16494,7 @@ packages:
 
   /rimraf/2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -16502,6 +16502,7 @@ packages:
 
   /rimraf/3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -17693,7 +17694,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.0.1
+      minipass: 4.2.8
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
