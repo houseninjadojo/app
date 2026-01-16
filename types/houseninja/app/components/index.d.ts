@@ -3,6 +3,7 @@ declare module 'houseninja/app/components' {
     id: string;
     required: boolean;
     label?: string;
+    inputmode?: string;
     placeholder?: string;
     type?: string;
     value?: string | number | boolean;

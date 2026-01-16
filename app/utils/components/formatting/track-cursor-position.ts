@@ -36,4 +36,5 @@ export function trackCursorPosition(
   node.selectionEnd = cursor;
   // store last value
   inputEl.setAttribute('data-lastvalue', formattedValue);
+  return formattedValue;
 }
