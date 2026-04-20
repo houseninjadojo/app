@@ -1,10 +1,11 @@
 import { isBlank, isPresent } from '@ember/utils';
+import type PromoCode from 'houseninja/models/promo-code';
 
-function fmt(code) {
+function fmt(code: string | undefined) {
   return isPresent(code) ? code.toUpperCase() : '';
 }
 
-export function signupPromoCodeDescription(promoCode) {
+export function signupPromoCodeDescription(promoCode: PromoCode | undefined) {
   if (isBlank(promoCode)) {
     return '';
   }
@@ -24,13 +25,22 @@ export function signupPromoCodeDescription(promoCode) {
   }
 }
 
-export function signupPromoCodeAlert(input, promoCode) {
+// TODO where to define this in one place instead of two?
+interface PromoCodeAlert {
+  title: string;
+  detail: string;
+}
+
+export function signupPromoCodeAlert(
+  input: string | undefined,
+  promoCode: PromoCode | undefined
+): PromoCodeAlert | undefined {
   if (isBlank(promoCode)) {
     return {
       title: `Promo Code '${fmt(input)}' is not valid`,
       detail: `Please try again with a different code.`,
     };
   } else {
-    return null;
+    return undefined;
   }
 }

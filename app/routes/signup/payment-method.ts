@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { instrumentRoutePerformance } from '@sentry/ember';
 import { service } from '@ember/service';
+import { isPresent } from '@ember/utils';
 import { OnboardingStep } from 'houseninja/data/enums/onboarding-step';
 import StoreService from 'houseninja/services/store';
 import OnboardingService from 'houseninja/services/onboarding';
@@ -17,7 +18,11 @@ class SignupPaymentMethodRoute extends Route {
     await this.store.findFirst('subscription-plan', { backgroundReload: true });
 
     // return the credit card model from the last step
-    return this.onboarding.fetchLocalModel('credit-card');
+    let creditCard = await this.onboarding.fetchLocalModel('credit-card');
+    if (!isPresent(creditCard)) {
+      creditCard = this.store.createRecord('credit-card');
+    }
+    return creditCard;
   }
 
   deactivate(): void {
