@@ -52,7 +52,7 @@
     "@embroider/core": "^2.1.1",
     "@embroider/macros": "1.11.1",
     "@embroider/webpack": "^2.1.1",
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^10.0.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@percy/cli": "^1.18.0",
